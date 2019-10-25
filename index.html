@@ -59,6 +59,145 @@
       
         
 
+<article id="post-常用 es 查询盘点" class="article article-type-post" itemscope itemprop="blogPost" data-scroll-reveal>
+  
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h2 itemprop="name">
+      <a class="article-title" href="/2019/10/25/%E5%B8%B8%E7%94%A8%20es%20%E6%9F%A5%E8%AF%A2%E7%9B%98%E7%82%B9/">常用 es 查询盘点</a>
+    </h2>
+  
+  
+
+
+
+
+      </header>
+    
+
+    
+      <div class="article-meta">
+        <a href="/2019/10/25/%E5%B8%B8%E7%94%A8%20es%20%E6%9F%A5%E8%AF%A2%E7%9B%98%E7%82%B9/" class="article-date">
+  <time datetime="2019-10-25T08:23:48.260Z" itemprop="datePublished">2019-10-25</time>
+</a>
+        
+      </div>
+    
+
+    
+
+    <div class="article-entry" itemprop="articleBody">
+      
+
+
+      
+
+      
+        <h2 id="常用-es-查询盘点"><a href="#常用-es-查询盘点" class="headerlink" title="常用 es 查询盘点"></a>常用 es 查询盘点</h2><p>熟悉了关系型数据库的结构概念以及查询，再去使用属于非关系型数据库的 Elasticsearch 时，简直是噩梦。第一道难关便是概念上的转换。索引？类型？文档？what？</p>
+<blockquote>
+<p>下面是概念上的对应，大家可以类比了解</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Relational DB -&gt; Databases -&gt; Tables -&gt; Rows -&gt; Columns</span><br><span class="line">Elasticsearch -&gt; Indices   -&gt; Types  -&gt; Documents -&gt; Fields</span><br></pre></td></tr></table></figure>
+
+<p>熟悉了各种概念后，下一道难关便是增删改查，而最最常用的是<strong>查询</strong>！如同 SQL 一样，它有一套自己的查询语句，称为 DSL。所以，下面为大家总结一下常用的查询，然后你就可以像翻字典一样，用时瞄两眼了 ~ 嘿嘿，真他娘的是个天才 … </p>
+<h3 id="1-基础的不能再基础查询"><a href="#1-基础的不能再基础查询" class="headerlink" title="1.基础的不能再基础查询"></a>1.基础的不能再基础查询</h3><p><strong>查询所有的索引及容量：</strong></p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">GET _cat/indices</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><code>GET</code> 代表请求方式；<code>_cat/indices</code> 代表查询部分。访问的 <code>url</code> 写全为：</p>
+<figure class="highlight http"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">localhost:9200/_cat/indices</span></span><br></pre></td></tr></table></figure>
+</blockquote>
+<p><strong>查询某一索引的映射结构：</strong></p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">GET 索引名/_mapping</span><br></pre></td></tr></table></figure>
+
+<p><strong>查询所有的相同前缀索引：（如以 yan 开头）</strong></p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">GET yan*/_search</span><br></pre></td></tr></table></figure>
+
+<p><strong>查询所有索引模板：</strong></p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">GET _template</span><br></pre></td></tr></table></figure>
+
+<p><strong>查询具体索引模板：</strong></p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">GET _template/模板名</span><br></pre></td></tr></table></figure>
+
+<p><strong>查询集群健康状态：</strong></p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">GET _cluster/health</span><br></pre></td></tr></table></figure>
+
+<p><strong>查询所有节点：</strong></p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">GET _cat/nodes</span><br></pre></td></tr></table></figure>
+
+<p><strong>查询索引及分片的分布：</strong></p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">GET _cat/shards</span><br></pre></td></tr></table></figure>
+
+<p><strong>查询所有插件:</strong></p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">GET _cat/plugins</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-有点难度的查询"><a href="#2-有点难度的查询" class="headerlink" title="2.有点难度的查询"></a>2.有点难度的查询</h3><p><strong>查询某个索引的全部数据：</strong></p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">GET /index/type/_search</span><br><span class="line">&#123;</span><br><span class="line">  "query": &#123;</span><br><span class="line">    "match_all": &#123;&#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>当然你也可以直接写 URL 查询（默认返回 10 条文档）：</p>
+<figure class="highlight http"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">localhost:9200/索引名/_search?pretty</span></span><br></pre></td></tr></table></figure>
+<p>pretty参数是为了浏览器显示的美观一些。</p>
+</blockquote>
+<p><strong>根据某一字段精确查询：</strong></p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">GET /index/type/_search</span><br><span class="line">&#123;</span><br><span class="line">  "query": &#123;</span><br><span class="line">    "term": &#123; "字段名" : "值" &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>根据某一字段模糊匹配：</strong></p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">GET /index/type/_search</span><br><span class="line">&#123;</span><br><span class="line">  "query": &#123;</span><br><span class="line">    "match": &#123; "字段名" : "值" &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>根据某一字段值进行范围查找：</strong></p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">GET /index/type/_search</span><br><span class="line">&#123;</span><br><span class="line">  "query": &#123;</span><br><span class="line">    "range": &#123;</span><br><span class="line">    	# 字段名: 条件</span><br><span class="line">        "age":&#123; "gte" : 15 , "lte" : 25 &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>gte 是大于等于；lte 是小于等于</p>
+</blockquote>
+<p><strong>根据条件进行过滤查询：</strong></p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">GET /index/type/_search</span><br><span class="line">&#123;</span><br><span class="line">  "query": &#123;</span><br><span class="line">    "bool": &#123;</span><br><span class="line">      "filter": &#123;</span><br><span class="line">        "term":&#123;"字段":"值"&#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>多条件”或”关系：</strong></p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">GET /index/type/_search</span><br><span class="line">&#123;</span><br><span class="line">	"query": &#123;</span><br><span class="line">		"bool": &#123;</span><br><span class="line">			"should": [&#123;</span><br><span class="line">				"term": &#123;</span><br><span class="line">					"字段": "值"</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;, &#123;</span><br><span class="line">				"match": &#123;</span><br><span class="line">					"字段": "值"</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;]</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>多条件”与”关系：</strong></p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">GET /index/type/_search</span><br><span class="line">&#123;</span><br><span class="line">  "query": &#123;</span><br><span class="line">    "bool": &#123;</span><br><span class="line">      "must" : [&#123;</span><br><span class="line">        "match" : &#123;</span><br><span class="line">          "name" : "Ethanyan"</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;,&#123;</span><br><span class="line">        "range":&#123;</span><br><span class="line">        "age":&#123;</span><br><span class="line">          "from" : 18 , "to" : 26</span><br><span class="line">        &#125; </span><br><span class="line">        &#125;</span><br><span class="line">      &#125;]</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>严格匹配：</strong></p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">GET /index/type/_search</span><br><span class="line">&#123;</span><br><span class="line">  "query": &#123;</span><br><span class="line">    "bool": &#123;</span><br><span class="line">      "must" : &#123;</span><br><span class="line">        "range" : &#123;</span><br><span class="line">          "age" : &#123; "from" : 18, "to" : 26 &#125;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>严格不匹配：</strong></p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">GET /index/type/_search</span><br><span class="line">&#123;</span><br><span class="line">  "query": &#123;</span><br><span class="line">    "bool": &#123;</span><br><span class="line">      "must_not" : &#123;</span><br><span class="line">        "term" : &#123;</span><br><span class="line">          "name" : "Ethanyan"</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>复合查询：</strong></p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">GET /index/type/_search</span><br><span class="line">&#123;</span><br><span class="line">	"query": &#123;</span><br><span class="line">		"bool": &#123;</span><br><span class="line">			"should": [&#123;</span><br><span class="line">					"match": &#123;</span><br><span class="line">						"age": 18</span><br><span class="line">					&#125;</span><br><span class="line">				&#125;,  </span><br><span class="line">				&#123;</span><br><span class="line">					"match": &#123;</span><br><span class="line">						"age": 26</span><br><span class="line">					&#125;</span><br><span class="line">				&#125;</span><br><span class="line">			],</span><br><span class="line">			"filter": &#123; </span><br><span class="line">				"match": &#123;  </span><br><span class="line">					"name": "Ethanyan" </span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-注意事项"><a href="#3-注意事项" class="headerlink" title="3.注意事项"></a>3.注意事项</h3><p>1.索引名、模板名之类的名称不能出现字母大写</p>
+<p>2.在查询时，需要写 DSL 语句，所以需要携带请求体，那么为什么还是 get 请求？</p>
+<p>答：原则上 get 请求不能携带请求体，但凡事有例外，试验后确实可以，我也不晓得为什么。下方为官方文档，全为 get 请求：</p>
+<p><img src="./img/esquery.png" alt=""></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/10/25/%E5%B8%B8%E7%94%A8%20es%20%E6%9F%A5%E8%AF%A2%E7%9B%98%E7%82%B9/" data-id="ck25vg4190004msn8crs079e8"
+         class="article-share-link">Share</a>
+      
+    </footer>
+
+  </div>
+
+  
+
+  
+
+</article>
+
+
+
+      
+        
+
 <article id="post-FirstTest" class="article article-type-post" itemscope itemprop="blogPost" data-scroll-reveal>
   
   <div class="article-inner">
@@ -104,7 +243,273 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/10/25/FirstTest/" data-id="ck25uca1y0000dgn84qpmbceh"
+      <a data-url="http://yoursite.com/2019/10/25/FirstTest/" data-id="ck25vg40u0001msn83py35cah"
+         class="article-share-link">Share</a>
+      
+    </footer>
+
+  </div>
+
+  
+
+  
+
+</article>
+
+
+
+      
+        
+
+<article id="post-Elasticsearch 中这些必备 API 你晓得嘛？" class="article article-type-post" itemscope itemprop="blogPost" data-scroll-reveal>
+  
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h2 itemprop="name">
+      <a class="article-title" href="/2019/10/20/Elasticsearch%20%E4%B8%AD%E8%BF%99%E4%BA%9B%E5%BF%85%E5%A4%87%20API%20%E4%BD%A0%E6%99%93%E5%BE%97%E5%98%9B%EF%BC%9F/">Elasticsearch 中这些必备 API 你晓得嘛？</a>
+    </h2>
+  
+  
+
+
+
+
+      </header>
+    
+
+    
+      <div class="article-meta">
+        <a href="/2019/10/20/Elasticsearch%20%E4%B8%AD%E8%BF%99%E4%BA%9B%E5%BF%85%E5%A4%87%20API%20%E4%BD%A0%E6%99%93%E5%BE%97%E5%98%9B%EF%BC%9F/" class="article-date">
+  <time datetime="2019-10-20T10:14:58.858Z" itemprop="datePublished">2019-10-20</time>
+</a>
+        
+      </div>
+    
+
+    
+
+    <div class="article-entry" itemprop="articleBody">
+      
+
+
+      
+
+      
+        <h1 id="Elasticsearch-中这些必备-API-你晓得嘛？"><a href="#Elasticsearch-中这些必备-API-你晓得嘛？" class="headerlink" title="Elasticsearch 中这些必备 API 你晓得嘛？"></a>Elasticsearch 中这些必备 API 你晓得嘛？</h1><h2 id="1-索引备份迁移"><a href="#1-索引备份迁移" class="headerlink" title="1.索引备份迁移"></a>1.索引备份迁移</h2><p>众所周知，ES 中的 mapping 只能在索引建立初期进行创建，且建立之后不可更改。mapping 对应的字段会映射成指定类型，未定义字段则自动映射，一般为 text 类型。那么想更改索引名或者更改某字段的 mapping 时，是否就束手无策了呢？当然不是！！！官方提供了一个接口，供索引备份迁移操作使用，那便是 <strong>reindex</strong>。当旧索引与新索引在同一节点时，效率相当高，万条数据瞬间完成（<code>大约只需0.4s</code>）。数百万数据也只需几分钟即可完成 操作，是不是很溜呢？快来学习一下吧。</p>
+<p><strong>请求方式：POST</strong></p>
+<p><strong>请求 API <code>_reindex</code></strong></p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">"source"</span>: &#123;</span><br><span class="line">    <span class="attr">"index"</span>: <span class="string">"要备份的索引名"</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">"dest"</span>: &#123;</span><br><span class="line">    <span class="attr">"index"</span>: <span class="string">"新建的索引名"</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>如果新索引中有数据，且 id 与旧索引中重复，那么会进行覆盖操作。</p>
+</blockquote>
+<p>但是当数据量实在太大，高达几十 G 的时候，速度就会变得很慢，那是因为它底层还是利用了 scroll 操作。该如何进行<strong>优化</strong>呢？可以提升批量操作的文档数大小，如下：</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">"source"</span>: &#123;</span><br><span class="line">    <span class="attr">"index"</span>: <span class="string">"要备份的索引名"</span>,</span><br><span class="line">    <span class="attr">"size"</span> : <span class="number">5000</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">"dest"</span>: &#123;</span><br><span class="line">    <span class="attr">"index"</span>  : <span class="string">"新建的索引名"</span>,</span><br><span class="line">    <span class="attr">"routing"</span>: <span class="string">"=cat"</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>批量操作大小是如何确定的呢？是根据文档数以及文档容量进行确定的。根据查阅资料得知，一个好的起点是<strong>每批处理数据 5-15 MB</strong>，这是个什么概念？</p>
+<blockquote>
+<p>1000 个 1kb 的文档大约 1MB；1000 个 100kb 的文档是 100MB。</p>
+</blockquote>
+<p>然后<strong>逐步增加每批处理数据容量</strong>，进行调优，直到最终性能无法再次提升。还有一个方法，那便是提升硬件，比如<strong>换固态</strong>，你懂得~</p>
+<p>还有一种方法提升写入效率，这是终极操作，那便是 <code>sliced</code>。<code>reindex</code> 支持 Sliced Scroll 操作。它的原理可以简单的理解为将每次的 Scroll 请求分解，分解后并行化请求，从而提升效率。方式为：</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">POST _reindex?slices=5&amp;refresh</span><br><span class="line">&#123;</span><br><span class="line">  <span class="attr">"source"</span>: &#123;</span><br><span class="line">    <span class="attr">"index"</span>: <span class="string">"要备份的索引名"</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">"dest"</span>: &#123;</span><br><span class="line">    <span class="attr">"index"</span>: <span class="string">"新建的索引名"</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="2-删除索引中指定的数据"><a href="#2-删除索引中指定的数据" class="headerlink" title="2.删除索引中指定的数据"></a>2.删除索引中指定的数据</h2><p><strong>请求方式：POST</strong></p>
+<p><strong>请求 API <code>_delete_by_query</code></strong></p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="attr">"query"</span>: &#123;</span><br><span class="line">        <span class="attr">"match"</span>: &#123;</span><br><span class="line">            <span class="attr">"字段名"</span>: <span class="string">"字段值"</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>方法便是先查出指定数据再删除。</p>
+</blockquote>
+<h2 id="3-设置副本数、分片、动态映射"><a href="#3-设置副本数、分片、动态映射" class="headerlink" title="3. 设置副本数、分片、动态映射"></a>3. 设置副本数、分片、动态映射</h2><p>设置这些指标项可在建立 mapping 时一同设置。</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="attr">"settings"</span>:&#123;</span><br><span class="line">        <span class="attr">"index"</span>:&#123;</span><br><span class="line">            // 刷新间隔</span><br><span class="line">            "refresh_interval":"3s"</span><br><span class="line">        &#125;,</span><br><span class="line">        // 副本数</span><br><span class="line">        "number_of_replicas":"0",</span><br><span class="line">        // 切片（分布在每个节点上的切片）</span><br><span class="line">        "number_of_shards":"1"</span><br><span class="line">    &#125;,</span><br><span class="line">    "mappings":&#123;</span><br><span class="line">        "_doc":&#123;</span><br><span class="line">            // 自动映射为 keyword 类型而不是默认的text类型</span><br><span class="line">            "dynamic_templates":[</span><br><span class="line">                &#123;</span><br><span class="line">                    <span class="attr">"string_fields"</span>:&#123;</span><br><span class="line">                        <span class="attr">"match"</span>:<span class="string">"*"</span>,</span><br><span class="line">                        <span class="attr">"match_mapping_type"</span>:<span class="string">"string"</span>,</span><br><span class="line">                        <span class="attr">"mapping"</span>:&#123;</span><br><span class="line">                            <span class="attr">"type"</span>:<span class="string">"keyword"</span>,</span><br><span class="line">                            <span class="attr">"norms"</span>:<span class="literal">false</span></span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            ],</span><br><span class="line">            // 建立mapping</span><br><span class="line">            "properties":&#123;</span><br><span class="line">                "mydate":&#123;</span><br><span class="line">                    "type":"date",</span><br><span class="line">                    "format":"yyyy/MM/dd HH:mm:ss||date_time||strict_date_time"</span><br><span class="line">                &#125;,</span><br><span class="line">                "字段名":&#123;</span><br><span class="line">                    "type":"字段类型"</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/10/20/Elasticsearch%20%E4%B8%AD%E8%BF%99%E4%BA%9B%E5%BF%85%E5%A4%87%20API%20%E4%BD%A0%E6%99%93%E5%BE%97%E5%98%9B%EF%BC%9F/" data-id="ck25vg4110002msn843zt6i5p"
+         class="article-share-link">Share</a>
+      
+    </footer>
+
+  </div>
+
+  
+
+  
+
+</article>
+
+
+
+      
+        
+
+<article id="post-Git 彻底删除某个commit的方法" class="article article-type-post" itemscope itemprop="blogPost" data-scroll-reveal>
+  
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h2 itemprop="name">
+      <a class="article-title" href="/2019/09/24/Git%20%E5%BD%BB%E5%BA%95%E5%88%A0%E9%99%A4%E6%9F%90%E4%B8%AAcommit%E7%9A%84%E6%96%B9%E6%B3%95/">Git 彻底删除某个commit的方法</a>
+    </h2>
+  
+  
+
+
+
+
+      </header>
+    
+
+    
+      <div class="article-meta">
+        <a href="/2019/09/24/Git%20%E5%BD%BB%E5%BA%95%E5%88%A0%E9%99%A4%E6%9F%90%E4%B8%AAcommit%E7%9A%84%E6%96%B9%E6%B3%95/" class="article-date">
+  <time datetime="2019-09-24T03:02:03.887Z" itemprop="datePublished">2019-09-24</time>
+</a>
+        
+      </div>
+    
+
+    
+
+    <div class="article-entry" itemprop="articleBody">
+      
+
+
+      
+
+      
+        <h2 id="Git-彻底删除某个commit的方法"><a href="#Git-彻底删除某个commit的方法" class="headerlink" title="Git 彻底删除某个commit的方法"></a>Git 彻底删除某个commit的方法</h2><p>如果因为一些原因，需要删除某个错误的 <code>commit</code>，而且需要干净的操作，彻底让其消失，不留痕迹，该如何操作？</p>
+<blockquote>
+<p>我向仓库提交了一个大文件，大约 300M，push 失败（因为 git 最大能提交 100M 文件），删除本地文件不行，尝试过修改配置文件，解除 git 只能提交小于 100M 文件的限制，但是未起作用。只能通过删除包含提交此文件的 commit 解决。</p>
+</blockquote>
+<p>废话少说，直奔主题。</p>
+<p>1.首先输入如下命令查看历史提交的 commit：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git log</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>重要的是<strong>记下</strong>要删除的 commit 的<strong>上一条</strong> commit 的 <strong>commit号</strong>。如下图，如果要删除箭头所指的 commit，需要记录红框中的 commit号：</p>
+</blockquote>
+<p><img src="./img/gitlog.png" alt=""></p>
+<p>2.然后执行如下的命令：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git rebase -i commit号</span><br></pre></td></tr></table></figure>
+
+<p>会出现如下界面：</p>
+<p><img src="./img/gitrebase.png" alt=""></p>
+<p>3.然后将要删除的 commit号 的前缀 <code>pick</code> 改为 <code>drop</code>。</p>
+<p>4.然后可以通过如下命令再次查看是否已经删除：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git log</span><br></pre></td></tr></table></figure>
+
+<p>5.最后通过如下命令将现在的状态推送到远程仓库即可：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push origin HEAD -force</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/09/24/Git%20%E5%BD%BB%E5%BA%95%E5%88%A0%E9%99%A4%E6%9F%90%E4%B8%AAcommit%E7%9A%84%E6%96%B9%E6%B3%95/" data-id="ck25vg4150003msn8ah3w5n2x"
+         class="article-share-link">Share</a>
+      
+    </footer>
+
+  </div>
+
+  
+
+  
+
+</article>
+
+
+
+      
+        
+
+<article id="post-Git 上传大文件" class="article article-type-post" itemscope itemprop="blogPost" data-scroll-reveal>
+  
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h2 itemprop="name">
+      <a class="article-title" href="/2019/09/24/Git%20%E4%B8%8A%E4%BC%A0%E5%A4%A7%E6%96%87%E4%BB%B6/">Git 上传大文件</a>
+    </h2>
+  
+  
+
+
+
+
+      </header>
+    
+
+    
+      <div class="article-meta">
+        <a href="/2019/09/24/Git%20%E4%B8%8A%E4%BC%A0%E5%A4%A7%E6%96%87%E4%BB%B6/" class="article-date">
+  <time datetime="2019-09-24T03:02:03.886Z" itemprop="datePublished">2019-09-24</time>
+</a>
+        
+      </div>
+    
+
+    
+
+    <div class="article-entry" itemprop="articleBody">
+      
+
+
+      
+
+      
+        <h1 id="Git-上传大文件"><a href="#Git-上传大文件" class="headerlink" title="Git 上传大文件"></a>Git 上传大文件</h1><p>我们知道 github 上面限制每次推送的文件不能超过 100M，否则报错失败，那么非要推送大文件呢？有没有什么解决办法呢？答案当然是肯定的。这就用到了 <code>Git LFS</code> 了。</p>
+<p>因为只试验了 windows 平台，本文以此为例。其他系统可上网搜如何下载安装对应版本的 <code>git-lfs</code>。</p>
+<h2 id="1-windows-平台安装-git-lfs"><a href="#1-windows-平台安装-git-lfs" class="headerlink" title="1.windows 平台安装 git-lfs"></a>1.windows 平台安装 git-lfs</h2><p>1.先打开网址：</p>
+<figure class="highlight http"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">https://github.com/git-lfs/git-lfs/releases</span></span><br></pre></td></tr></table></figure>
+
+<p>2.然后点击最新版本的版本号，将页面拉取到最底部，下载安装：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Windows Installer</span><br></pre></td></tr></table></figure>
+
+<p>3.运行下载的 exe 文件：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">windows installer</span><br></pre></td></tr></table></figure>
+
+<h2 id="2-使用"><a href="#2-使用" class="headerlink" title="2.使用"></a>2.使用</h2><p>1.打开 <code>git bash</code>，首先输入下列命令开启 lfs 功能：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git lfs install</span><br></pre></td></tr></table></figure>
+
+<p>2.然后使用如下命令进行大文件追踪，然后会生成文件 <code>.gitattributes</code>：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git lfs track '大文件名'</span><br><span class="line"><span class="meta">#</span><span class="bash"> 追踪大文件test.tar.gz</span></span><br><span class="line">git lfs track 'test.tar.gz'</span><br></pre></td></tr></table></figure>
+
+<p>3.添加文件 <code>.gittributes</code>：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git add .gitattributes</span><br></pre></td></tr></table></figure>
+
+<p>4.然后提交文件 <code>.gitattributes</code>：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git commit -m 'submit .gitattributes file'</span><br></pre></td></tr></table></figure>
+
+<p>5.将文件 <code>.gitattributes</code> 推送到远程仓库：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push -u origin master</span><br></pre></td></tr></table></figure>
+
+<p>6.添加大文件：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git add test.tar.gz</span><br></pre></td></tr></table></figure>
+
+<p>7.提交大文件：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git commit -m 'submit big file.'</span><br></pre></td></tr></table></figure>
+
+<p>8.直接推送大文件到远程：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push</span><br></pre></td></tr></table></figure>
+
+<p>然后你就会发现大文件推送到远程的 github 仓库了。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/09/24/Git%20%E4%B8%8A%E4%BC%A0%E5%A4%A7%E6%96%87%E4%BB%B6/" data-id="ck25vg40b0000msn8d7f92e66"
          class="article-share-link">Share</a>
       
     </footer>
@@ -133,6 +538,8 @@
       <ul class="list-inline">
   
     <li><i class="fe fe-smile-alt"></i> <span id="busuanzi_value_site_uv"></span></li>
+  
+    <li><i class="fe fe-bookmark"></i> <span id="busuanzi_value_page_pv"></span></li>
   
 </ul>
     </div>
