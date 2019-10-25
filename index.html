@@ -59,7 +59,7 @@
       
         
 
-<article id="post-常用 es 查询盘点" class="article article-type-post" itemscope itemprop="blogPost" data-scroll-reveal>
+<article id="post-常用-es-查询盘点" class="article article-type-post" itemscope itemprop="blogPost" data-scroll-reveal>
   
   <div class="article-inner">
     
@@ -67,7 +67,7 @@
         
   
     <h2 itemprop="name">
-      <a class="article-title" href="/2019/10/25/%E5%B8%B8%E7%94%A8%20es%20%E6%9F%A5%E8%AF%A2%E7%9B%98%E7%82%B9/">常用 es 查询盘点</a>
+      <a class="article-title" href="/2019/10/25/%E5%B8%B8%E7%94%A8-es-%E6%9F%A5%E8%AF%A2%E7%9B%98%E7%82%B9/">常用 es 查询盘点</a>
     </h2>
   
   
@@ -80,8 +80,8 @@
 
     
       <div class="article-meta">
-        <a href="/2019/10/25/%E5%B8%B8%E7%94%A8%20es%20%E6%9F%A5%E8%AF%A2%E7%9B%98%E7%82%B9/" class="article-date">
-  <time datetime="2019-10-25T08:23:48.260Z" itemprop="datePublished">2019-10-25</time>
+        <a href="/2019/10/25/%E5%B8%B8%E7%94%A8-es-%E6%9F%A5%E8%AF%A2%E7%9B%98%E7%82%B9/" class="article-date">
+  <time datetime="2019-10-25T09:18:57.000Z" itemprop="datePublished">2019-10-25</time>
 </a>
         
       </div>
@@ -161,7 +161,7 @@
 <figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">GET /index/type/_search</span><br><span class="line">&#123;</span><br><span class="line">	"query": &#123;</span><br><span class="line">		"bool": &#123;</span><br><span class="line">			"should": [&#123;</span><br><span class="line">				"term": &#123;</span><br><span class="line">					"字段": "值"</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;, &#123;</span><br><span class="line">				"match": &#123;</span><br><span class="line">					"字段": "值"</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;]</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p><strong>多条件”与”关系：</strong></p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">GET /index/type/_search</span><br><span class="line">&#123;</span><br><span class="line">  "query": &#123;</span><br><span class="line">    "bool": &#123;</span><br><span class="line">      "must" : [&#123;</span><br><span class="line">        "match" : &#123;</span><br><span class="line">          "name" : "Ethanyan"</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;,&#123;</span><br><span class="line">        "range":&#123;</span><br><span class="line">        "age":&#123;</span><br><span class="line">          "from" : 18 , "to" : 26</span><br><span class="line">        &#125; </span><br><span class="line">        &#125;</span><br><span class="line">      &#125;]</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">GET /index/type/_search</span><br><span class="line">&#123;</span><br><span class="line">  "query": &#123;</span><br><span class="line">    "bool": &#123;</span><br><span class="line">      "must" : [&#123;</span><br><span class="line">        "match" : &#123;</span><br><span class="line">          "name" : "Ethanyan"</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;,&#123;</span><br><span class="line">        "range":&#123;</span><br><span class="line">        "age":&#123;</span><br><span class="line">          "from" : 18 , "to" : 26</span><br><span class="line">        &#125; </span><br><span class="line">        &#125;</span><br><span class="line">      &#125;]</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p><strong>严格匹配：</strong></p>
 <figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">GET /index/type/_search</span><br><span class="line">&#123;</span><br><span class="line">  "query": &#123;</span><br><span class="line">    "bool": &#123;</span><br><span class="line">      "must" : &#123;</span><br><span class="line">        "range" : &#123;</span><br><span class="line">          "age" : &#123; "from" : 18, "to" : 26 &#125;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -170,18 +170,98 @@
 <figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">GET /index/type/_search</span><br><span class="line">&#123;</span><br><span class="line">  "query": &#123;</span><br><span class="line">    "bool": &#123;</span><br><span class="line">      "must_not" : &#123;</span><br><span class="line">        "term" : &#123;</span><br><span class="line">          "name" : "Ethanyan"</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p><strong>复合查询：</strong></p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">GET /index/type/_search</span><br><span class="line">&#123;</span><br><span class="line">	"query": &#123;</span><br><span class="line">		"bool": &#123;</span><br><span class="line">			"should": [&#123;</span><br><span class="line">					"match": &#123;</span><br><span class="line">						"age": 18</span><br><span class="line">					&#125;</span><br><span class="line">				&#125;,  </span><br><span class="line">				&#123;</span><br><span class="line">					"match": &#123;</span><br><span class="line">						"age": 26</span><br><span class="line">					&#125;</span><br><span class="line">				&#125;</span><br><span class="line">			],</span><br><span class="line">			"filter": &#123; </span><br><span class="line">				"match": &#123;  </span><br><span class="line">					"name": "Ethanyan" </span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">GET /index/type/_search</span><br><span class="line">&#123;</span><br><span class="line">	"query": &#123;</span><br><span class="line">		"bool": &#123;</span><br><span class="line">			"should": [&#123;</span><br><span class="line">					"match": &#123;</span><br><span class="line">						"age": 18</span><br><span class="line">					&#125;</span><br><span class="line">				&#125;,  </span><br><span class="line">				&#123;</span><br><span class="line">					"match": &#123;</span><br><span class="line">						"age": 26</span><br><span class="line">					&#125;</span><br><span class="line">				&#125;</span><br><span class="line">			],</span><br><span class="line">			"filter": &#123; </span><br><span class="line">				"match": &#123;  </span><br><span class="line">					"name": "Ethanyan" </span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <h3 id="3-注意事项"><a href="#3-注意事项" class="headerlink" title="3.注意事项"></a>3.注意事项</h3><p>1.索引名、模板名之类的名称不能出现字母大写</p>
 <p>2.在查询时，需要写 DSL 语句，所以需要携带请求体，那么为什么还是 get 请求？</p>
 <p>答：原则上 get 请求不能携带请求体，但凡事有例外，试验后确实可以，我也不晓得为什么。下方为官方文档，全为 get 请求：</p>
-<img src="/.com//esquery.png">
-
+<p><img src="/.com//esquery.png" alt="esquery"></p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/10/25/%E5%B8%B8%E7%94%A8%20es%20%E6%9F%A5%E8%AF%A2%E7%9B%98%E7%82%B9/" data-id="ck25wyrkh0003j0n8e5ohec15"
+      <a data-url="http://yoursite.com/2019/10/25/%E5%B8%B8%E7%94%A8-es-%E6%9F%A5%E8%AF%A2%E7%9B%98%E7%82%B9/" data-id="ck25xfd800004mcn815w57igx"
+         class="article-share-link">Share</a>
+      
+    </footer>
+
+  </div>
+
+  
+
+  
+
+</article>
+
+
+
+      
+        
+
+<article id="post-Git-彻底删除某个commit的方法" class="article article-type-post" itemscope itemprop="blogPost" data-scroll-reveal>
+  
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h2 itemprop="name">
+      <a class="article-title" href="/2019/10/25/Git-%E5%BD%BB%E5%BA%95%E5%88%A0%E9%99%A4%E6%9F%90%E4%B8%AAcommit%E7%9A%84%E6%96%B9%E6%B3%95/">Git 彻底删除某个commit的方法</a>
+    </h2>
+  
+  
+
+
+
+
+      </header>
+    
+
+    
+      <div class="article-meta">
+        <a href="/2019/10/25/Git-%E5%BD%BB%E5%BA%95%E5%88%A0%E9%99%A4%E6%9F%90%E4%B8%AAcommit%E7%9A%84%E6%96%B9%E6%B3%95/" class="article-date">
+  <time datetime="2019-10-25T09:15:20.000Z" itemprop="datePublished">2019-10-25</time>
+</a>
+        
+      </div>
+    
+
+    
+
+    <div class="article-entry" itemprop="articleBody">
+      
+
+
+      
+
+      
+        <h2 id="Git-彻底删除某个commit的方法"><a href="#Git-彻底删除某个commit的方法" class="headerlink" title="Git 彻底删除某个commit的方法"></a>Git 彻底删除某个commit的方法</h2><p>如果因为一些原因，需要删除某个错误的 <code>commit</code>，而且需要干净的操作，彻底让其消失，不留痕迹，该如何操作？</p>
+<blockquote>
+<p>我向仓库提交了一个大文件，大约 300M，push 失败（因为 git 最大能提交 100M 文件），删除本地文件不行，尝试过修改配置文件，解除 git 只能提交小于 100M 文件的限制，但是未起作用。只能通过删除包含提交此文件的 commit 解决。</p>
+</blockquote>
+<p>废话少说，直奔主题。</p>
+<p>1.首先输入如下命令查看历史提交的 commit：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git log</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>重要的是<strong>记下</strong>要删除的 commit 的<strong>上一条</strong> commit 的 <strong>commit号</strong>。如下图，如果要删除箭头所指的 commit，需要记录红框中的 commit号：</p>
+</blockquote>
+<p><img src="/.com//gitlog.png" alt="gitlog"></p>
+<p>2.然后执行如下的命令：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git rebase -i commit号</span><br></pre></td></tr></table></figure>
+
+<p>会出现如下界面：</p>
+<p><img src="/.com//gitrebase.png" alt="gitrebase"></p>
+<p>3.然后将要删除的 commit号 的前缀 <code>pick</code> 改为 <code>drop</code>。</p>
+<p>4.然后可以通过如下命令再次查看是否已经删除：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git log</span><br></pre></td></tr></table></figure>
+
+<p>5.最后通过如下命令将现在的状态推送到远程仓库即可：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push origin HEAD -force</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/10/25/Git-%E5%BD%BB%E5%BA%95%E5%88%A0%E9%99%A4%E6%9F%90%E4%B8%AAcommit%E7%9A%84%E6%96%B9%E6%B3%95/" data-id="ck25xfd7y0003mcn82r4z3vrc"
          class="article-share-link">Share</a>
       
     </footer>
@@ -244,7 +324,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/10/25/FirstTest/" data-id="ck25wyrkb0002j0n80qi6dtr1"
+      <a data-url="http://yoursite.com/2019/10/25/FirstTest/" data-id="ck25xfd7c0000mcn811uvhy3q"
          class="article-share-link">Share</a>
       
     </footer>
@@ -332,92 +412,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/10/20/Elasticsearch%20%E4%B8%AD%E8%BF%99%E4%BA%9B%E5%BF%85%E5%A4%87%20API%20%E4%BD%A0%E6%99%93%E5%BE%97%E5%98%9B%EF%BC%9F/" data-id="ck25wyrjp0000j0n81o956ycg"
-         class="article-share-link">Share</a>
-      
-    </footer>
-
-  </div>
-
-  
-
-  
-
-</article>
-
-
-
-      
-        
-
-<article id="post-Git 彻底删除某个commit的方法" class="article article-type-post" itemscope itemprop="blogPost" data-scroll-reveal>
-  
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h2 itemprop="name">
-      <a class="article-title" href="/2019/09/24/Git%20%E5%BD%BB%E5%BA%95%E5%88%A0%E9%99%A4%E6%9F%90%E4%B8%AAcommit%E7%9A%84%E6%96%B9%E6%B3%95/">Git 彻底删除某个commit的方法</a>
-    </h2>
-  
-  
-
-
-
-
-      </header>
-    
-
-    
-      <div class="article-meta">
-        <a href="/2019/09/24/Git%20%E5%BD%BB%E5%BA%95%E5%88%A0%E9%99%A4%E6%9F%90%E4%B8%AAcommit%E7%9A%84%E6%96%B9%E6%B3%95/" class="article-date">
-  <time datetime="2019-09-24T03:02:03.887Z" itemprop="datePublished">2019-09-24</time>
-</a>
-        
-      </div>
-    
-
-    
-
-    <div class="article-entry" itemprop="articleBody">
-      
-
-
-      
-
-      
-        <h2 id="Git-彻底删除某个commit的方法"><a href="#Git-彻底删除某个commit的方法" class="headerlink" title="Git 彻底删除某个commit的方法"></a>Git 彻底删除某个commit的方法</h2><p>如果因为一些原因，需要删除某个错误的 <code>commit</code>，而且需要干净的操作，彻底让其消失，不留痕迹，该如何操作？</p>
-<blockquote>
-<p>我向仓库提交了一个大文件，大约 300M，push 失败（因为 git 最大能提交 100M 文件），删除本地文件不行，尝试过修改配置文件，解除 git 只能提交小于 100M 文件的限制，但是未起作用。只能通过删除包含提交此文件的 commit 解决。</p>
-</blockquote>
-<p>废话少说，直奔主题。</p>
-<p>1.首先输入如下命令查看历史提交的 commit：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git log</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>重要的是<strong>记下</strong>要删除的 commit 的<strong>上一条</strong> commit 的 <strong>commit号</strong>。如下图，如果要删除箭头所指的 commit，需要记录红框中的 commit号：</p>
-</blockquote>
-<img src="/.com//gitlog.png">
-
-<p>2.然后执行如下的命令：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git rebase -i commit号</span><br></pre></td></tr></table></figure>
-
-<p>会出现如下界面：</p>
-<img src="/.com//gitrebase.png">
-
-<p>3.然后将要删除的 commit号 的前缀 <code>pick</code> 改为 <code>drop</code>。</p>
-<p>4.然后可以通过如下命令再次查看是否已经删除：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git log</span><br></pre></td></tr></table></figure>
-
-<p>5.最后通过如下命令将现在的状态推送到远程仓库即可：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push origin HEAD -force</span><br></pre></td></tr></table></figure>
-
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/09/24/Git%20%E5%BD%BB%E5%BA%95%E5%88%A0%E9%99%A4%E6%9F%90%E4%B8%AAcommit%E7%9A%84%E6%96%B9%E6%B3%95/" data-id="ck25wyrk50001j0n837hqehze"
+      <a data-url="http://yoursite.com/2019/10/20/Elasticsearch%20%E4%B8%AD%E8%BF%99%E4%BA%9B%E5%BF%85%E5%A4%87%20API%20%E4%BD%A0%E6%99%93%E5%BE%97%E5%98%9B%EF%BC%9F/" data-id="ck25xfd7o0001mcn8d4jdbi0q"
          class="article-share-link">Share</a>
       
     </footer>
@@ -512,7 +507,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/09/24/Git%20%E4%B8%8A%E4%BC%A0%E5%A4%A7%E6%96%87%E4%BB%B6/" data-id="ck25wyrkl0004j0n83wyk06nf"
+      <a data-url="http://yoursite.com/2019/09/24/Git%20%E4%B8%8A%E4%BC%A0%E5%A4%A7%E6%96%87%E4%BB%B6/" data-id="ck25xfd7u0002mcn8hg2ydcqi"
          class="article-share-link">Share</a>
       
     </footer>
