@@ -1,5 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?bd2936c630e7d2df7d37c66935707f45";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
 <head>
   <meta charset="utf-8">
   
@@ -56,6 +66,239 @@
     <h1 class="page-type-title"></h1>
 
     
+      
+        
+
+<article id="post-Elasticsearch 中这些必备 API 你晓得嘛？" class="article article-type-post" itemscope itemprop="blogPost" data-scroll-reveal>
+  
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h2 itemprop="name">
+      <a class="article-title" href="/2019/10/25/Elasticsearch%20%E4%B8%AD%E8%BF%99%E4%BA%9B%E5%BF%85%E5%A4%87%20API%20%E4%BD%A0%E6%99%93%E5%BE%97%E5%98%9B%EF%BC%9F/">Elasticsearch 中这些必备 API 你晓得嘛？</a>
+    </h2>
+  
+  
+
+
+
+
+      </header>
+    
+
+    
+      <div class="article-meta">
+        <a href="/2019/10/25/Elasticsearch%20%E4%B8%AD%E8%BF%99%E4%BA%9B%E5%BF%85%E5%A4%87%20API%20%E4%BD%A0%E6%99%93%E5%BE%97%E5%98%9B%EF%BC%9F/" class="article-date">
+  <time datetime="2019-10-25T12:18:57.000Z" itemprop="datePublished">2019-10-25</time>
+</a>
+        
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/elasticsearch/">elasticsearch</a>
+  </div>
+
+      </div>
+    
+
+    
+
+    <div class="article-entry" itemprop="articleBody">
+      
+
+
+      
+
+      
+        <h2 id="1-索引备份迁移"><a href="#1-索引备份迁移" class="headerlink" title="1.索引备份迁移"></a>1.索引备份迁移</h2><p>众所周知，ES 中的 mapping 只能在索引建立初期进行创建，且建立之后不可更改。mapping 对应的字段会映射成指定类型，未定义字段则自动映射，一般为 text 类型。那么想更改索引名或者更改某字段的 mapping 时，是否就束手无策了呢？当然不是！！！官方提供了一个接口，供索引备份迁移操作使用，那便是 <strong>reindex</strong>。当旧索引与新索引在同一节点时，效率相当高，万条数据瞬间完成（<code>大约只需0.4s</code>）。数百万数据也只需几分钟即可完成 操作，是不是很溜呢？快来学习一下吧。</p>
+<p><strong>请求方式：POST</strong></p>
+<p><strong>请求 API <code>_reindex</code></strong></p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">"source"</span>: &#123;</span><br><span class="line">    <span class="attr">"index"</span>: <span class="string">"要备份的索引名"</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">"dest"</span>: &#123;</span><br><span class="line">    <span class="attr">"index"</span>: <span class="string">"新建的索引名"</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>如果新索引中有数据，且 id 与旧索引中重复，那么会进行覆盖操作。</p>
+</blockquote>
+<p>但是当数据量实在太大，高达几十 G 的时候，速度就会变得很慢，那是因为它底层还是利用了 scroll 操作。该如何进行<strong>优化</strong>呢？可以提升批量操作的文档数大小，如下：</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">"source"</span>: &#123;</span><br><span class="line">    <span class="attr">"index"</span>: <span class="string">"要备份的索引名"</span>,</span><br><span class="line">    <span class="attr">"size"</span> : <span class="number">5000</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">"dest"</span>: &#123;</span><br><span class="line">    <span class="attr">"index"</span>  : <span class="string">"新建的索引名"</span>,</span><br><span class="line">    <span class="attr">"routing"</span>: <span class="string">"=cat"</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>批量操作大小是如何确定的呢？是根据文档数以及文档容量进行确定的。根据查阅资料得知，一个好的起点是<strong>每批处理数据 5-15 MB</strong>，这是个什么概念？</p>
+<blockquote>
+<p>1000 个 1kb 的文档大约 1MB；1000 个 100kb 的文档是 100MB。</p>
+</blockquote>
+<p>然后<strong>逐步增加每批处理数据容量</strong>，进行调优，直到最终性能无法再次提升。还有一个方法，那便是提升硬件，比如<strong>换固态</strong>，你懂得~</p>
+<p>还有一种方法提升写入效率，这是终极操作，那便是 <code>sliced</code>。<code>reindex</code> 支持 Sliced Scroll 操作。它的原理可以简单的理解为将每次的 Scroll 请求分解，分解后并行化请求，从而提升效率。方式为：</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">POST _reindex?slices=5&amp;refresh</span><br><span class="line">&#123;</span><br><span class="line">  <span class="attr">"source"</span>: &#123;</span><br><span class="line">    <span class="attr">"index"</span>: <span class="string">"要备份的索引名"</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">"dest"</span>: &#123;</span><br><span class="line">    <span class="attr">"index"</span>: <span class="string">"新建的索引名"</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="2-删除索引中指定的数据"><a href="#2-删除索引中指定的数据" class="headerlink" title="2.删除索引中指定的数据"></a>2.删除索引中指定的数据</h2><p><strong>请求方式：POST</strong></p>
+<p><strong>请求 API <code>_delete_by_query</code></strong></p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="attr">"query"</span>: &#123;</span><br><span class="line">        <span class="attr">"match"</span>: &#123;</span><br><span class="line">            <span class="attr">"字段名"</span>: <span class="string">"字段值"</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>方法便是先查出指定数据再删除。</p>
+</blockquote>
+<h2 id="3-设置副本数、分片、动态映射"><a href="#3-设置副本数、分片、动态映射" class="headerlink" title="3. 设置副本数、分片、动态映射"></a>3. 设置副本数、分片、动态映射</h2><p>设置这些指标项可在建立 mapping 时一同设置。</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="attr">"settings"</span>:&#123;</span><br><span class="line">        <span class="attr">"index"</span>:&#123;</span><br><span class="line">            // 刷新间隔</span><br><span class="line">            "refresh_interval":"3s"</span><br><span class="line">        &#125;,</span><br><span class="line">        // 副本数</span><br><span class="line">        "number_of_replicas":"0",</span><br><span class="line">        // 切片（分布在每个节点上的切片）</span><br><span class="line">        "number_of_shards":"1"</span><br><span class="line">    &#125;,</span><br><span class="line">    "mappings":&#123;</span><br><span class="line">        "_doc":&#123;</span><br><span class="line">            // 自动映射为 keyword 类型而不是默认的text类型</span><br><span class="line">            "dynamic_templates":[</span><br><span class="line">                &#123;</span><br><span class="line">                    <span class="attr">"string_fields"</span>:&#123;</span><br><span class="line">                        <span class="attr">"match"</span>:<span class="string">"*"</span>,</span><br><span class="line">                        <span class="attr">"match_mapping_type"</span>:<span class="string">"string"</span>,</span><br><span class="line">                        <span class="attr">"mapping"</span>:&#123;</span><br><span class="line">                            <span class="attr">"type"</span>:<span class="string">"keyword"</span>,</span><br><span class="line">                            <span class="attr">"norms"</span>:<span class="literal">false</span></span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            ],</span><br><span class="line">            // 建立mapping</span><br><span class="line">            "properties":&#123;</span><br><span class="line">                "mydate":&#123;</span><br><span class="line">                    "type":"date",</span><br><span class="line">                    "format":"yyyy/MM/dd HH:mm:ss||date_time||strict_date_time"</span><br><span class="line">                &#125;,</span><br><span class="line">                "字段名":&#123;</span><br><span class="line">                    "type":"字段类型"</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/10/25/Elasticsearch%20%E4%B8%AD%E8%BF%99%E4%BA%9B%E5%BF%85%E5%A4%87%20API%20%E4%BD%A0%E6%99%93%E5%BE%97%E5%98%9B%EF%BC%9F/" data-id="ck27ph8510000a8n85rdy7n6m"
+         class="article-share-link">Share</a>
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/elasticsearch/" rel="tag">elasticsearch</a></li></ul>
+
+    </footer>
+		
+	<!-- 来必力City版安装代码 -->
+<div id="lv-container" data-id="city" data-uid="MTAyMC80NzI0OS8yMzc0OQ==">
+<script type="text/javascript">
+   (function(d, s) {
+       var j, e = d.getElementsByTagName(s)[0];
+
+       if (typeof LivereTower === 'function') { return; }
+
+       j = d.createElement(s);
+       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+       j.async = true;
+
+       e.parentNode.insertBefore(j, e);
+   })(document, 'script');
+</script>
+<noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
+</div>
+<!-- City版安装代码已完成 -->
+
+  </div>
+
+  
+
+  
+
+</article>
+
+
+
+      
+        
+
+<article id="post-Git 上传大文件" class="article article-type-post" itemscope itemprop="blogPost" data-scroll-reveal>
+  
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h2 itemprop="name">
+      <a class="article-title" href="/2019/10/25/Git%20%E4%B8%8A%E4%BC%A0%E5%A4%A7%E6%96%87%E4%BB%B6/">Git 上传大文件</a>
+    </h2>
+  
+  
+
+
+
+
+      </header>
+    
+
+    
+      <div class="article-meta">
+        <a href="/2019/10/25/Git%20%E4%B8%8A%E4%BC%A0%E5%A4%A7%E6%96%87%E4%BB%B6/" class="article-date">
+  <time datetime="2019-10-25T12:18:57.000Z" itemprop="datePublished">2019-10-25</time>
+</a>
+        
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/git/">git</a>
+  </div>
+
+      </div>
+    
+
+    
+
+    <div class="article-entry" itemprop="articleBody">
+      
+
+
+      
+
+      
+        <p>我们知道 github 上面限制每次推送的文件不能超过 100M，否则报错失败，那么非要推送大文件呢？有没有什么解决办法呢？答案当然是肯定的。这就用到了 <code>Git LFS</code> 了。</p>
+<p>因为只试验了 windows 平台，本文以此为例。其他系统可上网搜如何下载安装对应版本的 <code>git-lfs</code>。</p>
+<h2 id="1-windows-平台安装-git-lfs"><a href="#1-windows-平台安装-git-lfs" class="headerlink" title="1.windows 平台安装 git-lfs"></a>1.windows 平台安装 git-lfs</h2><p>1.先打开网址：</p>
+<figure class="highlight http"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">https://github.com/git-lfs/git-lfs/releases</span></span><br></pre></td></tr></table></figure>
+
+<p>2.然后点击最新版本的版本号，将页面拉取到最底部，下载安装：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Windows Installer</span><br></pre></td></tr></table></figure>
+
+<p>3.运行下载的 exe 文件：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">windows installer</span><br></pre></td></tr></table></figure>
+
+<h2 id="2-使用"><a href="#2-使用" class="headerlink" title="2.使用"></a>2.使用</h2><p>1.打开 <code>git bash</code>，首先输入下列命令开启 lfs 功能：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git lfs install</span><br></pre></td></tr></table></figure>
+
+<p>2.然后使用如下命令进行大文件追踪，然后会生成文件 <code>.gitattributes</code>：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git lfs track '大文件名'</span><br><span class="line"><span class="meta">#</span><span class="bash"> 追踪大文件test.tar.gz</span></span><br><span class="line">git lfs track 'test.tar.gz'</span><br></pre></td></tr></table></figure>
+
+<p>3.添加文件 <code>.gittributes</code>：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git add .gitattributes</span><br></pre></td></tr></table></figure>
+
+<p>4.然后提交文件 <code>.gitattributes</code>：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git commit -m 'submit .gitattributes file'</span><br></pre></td></tr></table></figure>
+
+<p>5.将文件 <code>.gitattributes</code> 推送到远程仓库：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push -u origin master</span><br></pre></td></tr></table></figure>
+
+<p>6.添加大文件：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git add test.tar.gz</span><br></pre></td></tr></table></figure>
+
+<p>7.提交大文件：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git commit -m 'submit big file.'</span><br></pre></td></tr></table></figure>
+
+<p>8.直接推送大文件到远程：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push</span><br></pre></td></tr></table></figure>
+
+<p>然后你就会发现大文件推送到远程的 github 仓库了。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/10/25/Git%20%E4%B8%8A%E4%BC%A0%E5%A4%A7%E6%96%87%E4%BB%B6/" data-id="ck27ph85e0001a8n8gkkbcnbi"
+         class="article-share-link">Share</a>
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/git/" rel="tag">git</a></li></ul>
+
+    </footer>
+		
+	<!-- 来必力City版安装代码 -->
+<div id="lv-container" data-id="city" data-uid="MTAyMC80NzI0OS8yMzc0OQ==">
+<script type="text/javascript">
+   (function(d, s) {
+       var j, e = d.getElementsByTagName(s)[0];
+
+       if (typeof LivereTower === 'function') { return; }
+
+       j = d.createElement(s);
+       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+       j.async = true;
+
+       e.parentNode.insertBefore(j, e);
+   })(document, 'script');
+</script>
+<noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
+</div>
+<!-- City版安装代码已完成 -->
+
+  </div>
+
+  
+
+  
+
+</article>
+
+
+
       
         
 
@@ -184,240 +427,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/10/25/%E5%B8%B8%E7%94%A8-es-%E6%9F%A5%E8%AF%A2%E7%9B%98%E7%82%B9/" data-id="ck27oztk80000ngn8a5yb6bit"
-         class="article-share-link">Share</a>
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/elasticsearch/" rel="tag">elasticsearch</a></li></ul>
-
-    </footer>
-		
-	<!-- 来必力City版安装代码 -->
-<div id="lv-container" data-id="city" data-uid="MTAyMC80NzI0OS8yMzc0OQ==">
-<script type="text/javascript">
-   (function(d, s) {
-       var j, e = d.getElementsByTagName(s)[0];
-
-       if (typeof LivereTower === 'function') { return; }
-
-       j = d.createElement(s);
-       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
-       j.async = true;
-
-       e.parentNode.insertBefore(j, e);
-   })(document, 'script');
-</script>
-<noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
-</div>
-<!-- City版安装代码已完成 -->
-
-  </div>
-
-  
-
-  
-
-</article>
-
-
-
-      
-        
-
-<article id="post-Git 上传大文件" class="article article-type-post" itemscope itemprop="blogPost" data-scroll-reveal>
-  
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h2 itemprop="name">
-      <a class="article-title" href="/2019/10/25/Git%20%E4%B8%8A%E4%BC%A0%E5%A4%A7%E6%96%87%E4%BB%B6/">Git 上传大文件</a>
-    </h2>
-  
-  
-
-
-
-
-      </header>
-    
-
-    
-      <div class="article-meta">
-        <a href="/2019/10/25/Git%20%E4%B8%8A%E4%BC%A0%E5%A4%A7%E6%96%87%E4%BB%B6/" class="article-date">
-  <time datetime="2019-10-25T12:18:57.000Z" itemprop="datePublished">2019-10-25</time>
-</a>
-        
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/git/">git</a>
-  </div>
-
-      </div>
-    
-
-    
-
-    <div class="article-entry" itemprop="articleBody">
-      
-
-
-      
-
-      
-        <p>我们知道 github 上面限制每次推送的文件不能超过 100M，否则报错失败，那么非要推送大文件呢？有没有什么解决办法呢？答案当然是肯定的。这就用到了 <code>Git LFS</code> 了。</p>
-<p>因为只试验了 windows 平台，本文以此为例。其他系统可上网搜如何下载安装对应版本的 <code>git-lfs</code>。</p>
-<h2 id="1-windows-平台安装-git-lfs"><a href="#1-windows-平台安装-git-lfs" class="headerlink" title="1.windows 平台安装 git-lfs"></a>1.windows 平台安装 git-lfs</h2><p>1.先打开网址：</p>
-<figure class="highlight http"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">https://github.com/git-lfs/git-lfs/releases</span></span><br></pre></td></tr></table></figure>
-
-<p>2.然后点击最新版本的版本号，将页面拉取到最底部，下载安装：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Windows Installer</span><br></pre></td></tr></table></figure>
-
-<p>3.运行下载的 exe 文件：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">windows installer</span><br></pre></td></tr></table></figure>
-
-<h2 id="2-使用"><a href="#2-使用" class="headerlink" title="2.使用"></a>2.使用</h2><p>1.打开 <code>git bash</code>，首先输入下列命令开启 lfs 功能：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git lfs install</span><br></pre></td></tr></table></figure>
-
-<p>2.然后使用如下命令进行大文件追踪，然后会生成文件 <code>.gitattributes</code>：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git lfs track '大文件名'</span><br><span class="line"><span class="meta">#</span><span class="bash"> 追踪大文件test.tar.gz</span></span><br><span class="line">git lfs track 'test.tar.gz'</span><br></pre></td></tr></table></figure>
-
-<p>3.添加文件 <code>.gittributes</code>：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git add .gitattributes</span><br></pre></td></tr></table></figure>
-
-<p>4.然后提交文件 <code>.gitattributes</code>：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git commit -m 'submit .gitattributes file'</span><br></pre></td></tr></table></figure>
-
-<p>5.将文件 <code>.gitattributes</code> 推送到远程仓库：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push -u origin master</span><br></pre></td></tr></table></figure>
-
-<p>6.添加大文件：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git add test.tar.gz</span><br></pre></td></tr></table></figure>
-
-<p>7.提交大文件：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git commit -m 'submit big file.'</span><br></pre></td></tr></table></figure>
-
-<p>8.直接推送大文件到远程：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push</span><br></pre></td></tr></table></figure>
-
-<p>然后你就会发现大文件推送到远程的 github 仓库了。</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/10/25/Git%20%E4%B8%8A%E4%BC%A0%E5%A4%A7%E6%96%87%E4%BB%B6/" data-id="ck27oztkp0001ngn8bb9q28dn"
-         class="article-share-link">Share</a>
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/git/" rel="tag">git</a></li></ul>
-
-    </footer>
-		
-	<!-- 来必力City版安装代码 -->
-<div id="lv-container" data-id="city" data-uid="MTAyMC80NzI0OS8yMzc0OQ==">
-<script type="text/javascript">
-   (function(d, s) {
-       var j, e = d.getElementsByTagName(s)[0];
-
-       if (typeof LivereTower === 'function') { return; }
-
-       j = d.createElement(s);
-       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
-       j.async = true;
-
-       e.parentNode.insertBefore(j, e);
-   })(document, 'script');
-</script>
-<noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
-</div>
-<!-- City版安装代码已完成 -->
-
-  </div>
-
-  
-
-  
-
-</article>
-
-
-
-      
-        
-
-<article id="post-Elasticsearch 中这些必备 API 你晓得嘛？" class="article article-type-post" itemscope itemprop="blogPost" data-scroll-reveal>
-  
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h2 itemprop="name">
-      <a class="article-title" href="/2019/10/25/Elasticsearch%20%E4%B8%AD%E8%BF%99%E4%BA%9B%E5%BF%85%E5%A4%87%20API%20%E4%BD%A0%E6%99%93%E5%BE%97%E5%98%9B%EF%BC%9F/">Elasticsearch 中这些必备 API 你晓得嘛？</a>
-    </h2>
-  
-  
-
-
-
-
-      </header>
-    
-
-    
-      <div class="article-meta">
-        <a href="/2019/10/25/Elasticsearch%20%E4%B8%AD%E8%BF%99%E4%BA%9B%E5%BF%85%E5%A4%87%20API%20%E4%BD%A0%E6%99%93%E5%BE%97%E5%98%9B%EF%BC%9F/" class="article-date">
-  <time datetime="2019-10-25T12:18:57.000Z" itemprop="datePublished">2019-10-25</time>
-</a>
-        
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/elasticsearch/">elasticsearch</a>
-  </div>
-
-      </div>
-    
-
-    
-
-    <div class="article-entry" itemprop="articleBody">
-      
-
-
-      
-
-      
-        <h2 id="1-索引备份迁移"><a href="#1-索引备份迁移" class="headerlink" title="1.索引备份迁移"></a>1.索引备份迁移</h2><p>众所周知，ES 中的 mapping 只能在索引建立初期进行创建，且建立之后不可更改。mapping 对应的字段会映射成指定类型，未定义字段则自动映射，一般为 text 类型。那么想更改索引名或者更改某字段的 mapping 时，是否就束手无策了呢？当然不是！！！官方提供了一个接口，供索引备份迁移操作使用，那便是 <strong>reindex</strong>。当旧索引与新索引在同一节点时，效率相当高，万条数据瞬间完成（<code>大约只需0.4s</code>）。数百万数据也只需几分钟即可完成 操作，是不是很溜呢？快来学习一下吧。</p>
-<p><strong>请求方式：POST</strong></p>
-<p><strong>请求 API <code>_reindex</code></strong></p>
-<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">"source"</span>: &#123;</span><br><span class="line">    <span class="attr">"index"</span>: <span class="string">"要备份的索引名"</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">"dest"</span>: &#123;</span><br><span class="line">    <span class="attr">"index"</span>: <span class="string">"新建的索引名"</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>如果新索引中有数据，且 id 与旧索引中重复，那么会进行覆盖操作。</p>
-</blockquote>
-<p>但是当数据量实在太大，高达几十 G 的时候，速度就会变得很慢，那是因为它底层还是利用了 scroll 操作。该如何进行<strong>优化</strong>呢？可以提升批量操作的文档数大小，如下：</p>
-<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">"source"</span>: &#123;</span><br><span class="line">    <span class="attr">"index"</span>: <span class="string">"要备份的索引名"</span>,</span><br><span class="line">    <span class="attr">"size"</span> : <span class="number">5000</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">"dest"</span>: &#123;</span><br><span class="line">    <span class="attr">"index"</span>  : <span class="string">"新建的索引名"</span>,</span><br><span class="line">    <span class="attr">"routing"</span>: <span class="string">"=cat"</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>批量操作大小是如何确定的呢？是根据文档数以及文档容量进行确定的。根据查阅资料得知，一个好的起点是<strong>每批处理数据 5-15 MB</strong>，这是个什么概念？</p>
-<blockquote>
-<p>1000 个 1kb 的文档大约 1MB；1000 个 100kb 的文档是 100MB。</p>
-</blockquote>
-<p>然后<strong>逐步增加每批处理数据容量</strong>，进行调优，直到最终性能无法再次提升。还有一个方法，那便是提升硬件，比如<strong>换固态</strong>，你懂得~</p>
-<p>还有一种方法提升写入效率，这是终极操作，那便是 <code>sliced</code>。<code>reindex</code> 支持 Sliced Scroll 操作。它的原理可以简单的理解为将每次的 Scroll 请求分解，分解后并行化请求，从而提升效率。方式为：</p>
-<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">POST _reindex?slices=5&amp;refresh</span><br><span class="line">&#123;</span><br><span class="line">  <span class="attr">"source"</span>: &#123;</span><br><span class="line">    <span class="attr">"index"</span>: <span class="string">"要备份的索引名"</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">"dest"</span>: &#123;</span><br><span class="line">    <span class="attr">"index"</span>: <span class="string">"新建的索引名"</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="2-删除索引中指定的数据"><a href="#2-删除索引中指定的数据" class="headerlink" title="2.删除索引中指定的数据"></a>2.删除索引中指定的数据</h2><p><strong>请求方式：POST</strong></p>
-<p><strong>请求 API <code>_delete_by_query</code></strong></p>
-<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="attr">"query"</span>: &#123;</span><br><span class="line">        <span class="attr">"match"</span>: &#123;</span><br><span class="line">            <span class="attr">"字段名"</span>: <span class="string">"字段值"</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>方法便是先查出指定数据再删除。</p>
-</blockquote>
-<h2 id="3-设置副本数、分片、动态映射"><a href="#3-设置副本数、分片、动态映射" class="headerlink" title="3. 设置副本数、分片、动态映射"></a>3. 设置副本数、分片、动态映射</h2><p>设置这些指标项可在建立 mapping 时一同设置。</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="attr">"settings"</span>:&#123;</span><br><span class="line">        <span class="attr">"index"</span>:&#123;</span><br><span class="line">            // 刷新间隔</span><br><span class="line">            "refresh_interval":"3s"</span><br><span class="line">        &#125;,</span><br><span class="line">        // 副本数</span><br><span class="line">        "number_of_replicas":"0",</span><br><span class="line">        // 切片（分布在每个节点上的切片）</span><br><span class="line">        "number_of_shards":"1"</span><br><span class="line">    &#125;,</span><br><span class="line">    "mappings":&#123;</span><br><span class="line">        "_doc":&#123;</span><br><span class="line">            // 自动映射为 keyword 类型而不是默认的text类型</span><br><span class="line">            "dynamic_templates":[</span><br><span class="line">                &#123;</span><br><span class="line">                    <span class="attr">"string_fields"</span>:&#123;</span><br><span class="line">                        <span class="attr">"match"</span>:<span class="string">"*"</span>,</span><br><span class="line">                        <span class="attr">"match_mapping_type"</span>:<span class="string">"string"</span>,</span><br><span class="line">                        <span class="attr">"mapping"</span>:&#123;</span><br><span class="line">                            <span class="attr">"type"</span>:<span class="string">"keyword"</span>,</span><br><span class="line">                            <span class="attr">"norms"</span>:<span class="literal">false</span></span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            ],</span><br><span class="line">            // 建立mapping</span><br><span class="line">            "properties":&#123;</span><br><span class="line">                "mydate":&#123;</span><br><span class="line">                    "type":"date",</span><br><span class="line">                    "format":"yyyy/MM/dd HH:mm:ss||date_time||strict_date_time"</span><br><span class="line">                &#125;,</span><br><span class="line">                "字段名":&#123;</span><br><span class="line">                    "type":"字段类型"</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/10/25/Elasticsearch%20%E4%B8%AD%E8%BF%99%E4%BA%9B%E5%BF%85%E5%A4%87%20API%20%E4%BD%A0%E6%99%93%E5%BE%97%E5%98%9B%EF%BC%9F/" data-id="ck27oztl00004ngn8e1i10ixr"
+      <a data-url="http://yoursite.com/2019/10/25/%E5%B8%B8%E7%94%A8-es-%E6%9F%A5%E8%AF%A2%E7%9B%98%E7%82%B9/" data-id="ck27ph85o0004a8n8b8pc5yox"
          class="article-share-link">Share</a>
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/elasticsearch/" rel="tag">elasticsearch</a></li></ul>
@@ -523,7 +533,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/10/25/Git-%E5%BD%BB%E5%BA%95%E5%88%A0%E9%99%A4%E6%9F%90%E4%B8%AAcommit%E7%9A%84%E6%96%B9%E6%B3%95/" data-id="ck27oztl40005ngn8eacz6xk0"
+      <a data-url="http://yoursite.com/2019/10/25/Git-%E5%BD%BB%E5%BA%95%E5%88%A0%E9%99%A4%E6%9F%90%E4%B8%AAcommit%E7%9A%84%E6%96%B9%E6%B3%95/" data-id="ck27ph85v0005a8n8aycc9b56"
          class="article-share-link">Share</a>
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/git/" rel="tag">git</a></li></ul>
