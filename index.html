@@ -147,65 +147,6 @@
 
     <div class="post-header index">
         <h1 class="title">
-            <a href="/2019/10/25/Elasticsearch%20%E4%B8%AD%E8%BF%99%E4%BA%9B%E5%BF%85%E5%A4%87%20API%20%E4%BD%A0%E6%99%93%E5%BE%97%E5%98%9B%EF%BC%9F/">
-                Elasticsearch 中这些必备 API 你晓得嘛？
-            </a>
-        </h1>
-        <div class="post-info">
-            
-                <span class="date">2019-10-25</span>
-            
-            
-            
-                <span class="category">
-                    <a href="/categories/elasticsearch/">elasticsearch</a>
-                </span>
-            
-        </div>
-    </div>
-
-    
-        <div class="content">
-            <h2 id="1-索引备份迁移"><a href="#1-索引备份迁移" class="headerlink" title="1.索引备份迁移"></a>1.索引备份迁移</h2><p>众所周知，ES 中的 mapping 只能在索引建立初期进行创建，且建立之后不可更改。mapping 对应的字段会映射成指定类型，未定义字段则自动映射，一般为 text 类型。那么想更改索引名或者更改某字段的 mapping 时，是否就束手无策了呢？当然不是！！！官方提供了一个接口，供索引备份迁移操作使用，那便是 <strong>reindex</strong>。当旧索引与新索引在同一节点时，效率相当高，万条数据瞬间完成（<code>大约只需0.4s</code>）。数百万数据也只需几分钟即可完成 操作，是不是很溜呢？快来学习一下吧。</p>
-<p><strong>请求方式：POST</strong></p>
-<p><strong>请求 API <code>_reindex</code></strong></p>
-<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">"source"</span>: &#123;</span><br><span class="line">    <span class="attr">"index"</span>: <span class="string">"要备份的索引名"</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">"dest"</span>: &#123;</span><br><span class="line">    <span class="attr">"index"</span>: <span class="string">"新建的索引名"</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>如果新索引中有数据，且 id 与旧索引中重复，那么会进行覆盖操作。</p>
-</blockquote>
-<p>但是当数据量实在太大，高达几十 G 的时候，速度就会变得很慢，那是因为它底层还是利用了 scroll 操作。该如何进行<strong>优化</strong>呢？可以提升批量操作的文档数大小，如下：</p>
-<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">"source"</span>: &#123;</span><br><span class="line">    <span class="attr">"index"</span>: <span class="string">"要备份的索引名"</span>,</span><br><span class="line">    <span class="attr">"size"</span> : <span class="number">5000</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">"dest"</span>: &#123;</span><br><span class="line">    <span class="attr">"index"</span>  : <span class="string">"新建的索引名"</span>,</span><br><span class="line">    <span class="attr">"routing"</span>: <span class="string">"=cat"</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>批量操作大小是如何确定的呢？是根据文档数以及文档容量进行确定的。根据查阅资料得知，一个好的起点是<strong>每批处理数据 5-15 MB</strong>，这是个什么概念？</p>
-<blockquote>
-<p>1000 个 1kb 的文档大约 1MB；1000 个 100kb 的文档是 100MB。</p>
-</blockquote>
-<p>然后<strong>逐步增加每批处理数据容量</strong>，进行调优，直到最终性能无法再次提升。还有一个方法，那便是提升硬件，比如<strong>换固态</strong>，你懂得~</p>
-<p>还有一种方法提升写入效率，这是终极操作，那便是 <code>sliced</code>。<code>reindex</code> 支持 Sliced Scroll 操作。它的原理可以简单的理解为将每次的 Scroll 请求分解，分解后并行化请求，从而提升效率。方式为：</p>
-<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">POST _reindex?slices=5&amp;refresh</span><br><span class="line">&#123;</span><br><span class="line">  <span class="attr">"source"</span>: &#123;</span><br><span class="line">    <span class="attr">"index"</span>: <span class="string">"要备份的索引名"</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">"dest"</span>: &#123;</span><br><span class="line">    <span class="attr">"index"</span>: <span class="string">"新建的索引名"</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="2-删除索引中指定的数据"><a href="#2-删除索引中指定的数据" class="headerlink" title="2.删除索引中指定的数据"></a>2.删除索引中指定的数据</h2><p><strong>请求方式：POST</strong></p>
-<p><strong>请求 API <code>_delete_by_query</code></strong></p>
-<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="attr">"query"</span>: &#123;</span><br><span class="line">        <span class="attr">"match"</span>: &#123;</span><br><span class="line">            <span class="attr">"字段名"</span>: <span class="string">"字段值"</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>方法便是先查出指定数据再删除。</p>
-</blockquote>
-<h2 id="3-设置副本数、分片、动态映射"><a href="#3-设置副本数、分片、动态映射" class="headerlink" title="3. 设置副本数、分片、动态映射"></a>3. 设置副本数、分片、动态映射</h2><p>设置这些指标项可在建立 mapping 时一同设置。</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="attr">"settings"</span>:&#123;</span><br><span class="line">        <span class="attr">"index"</span>:&#123;</span><br><span class="line">            // 刷新间隔</span><br><span class="line">            "refresh_interval":"3s"</span><br><span class="line">        &#125;,</span><br><span class="line">        // 副本数</span><br><span class="line">        "number_of_replicas":"0",</span><br><span class="line">        // 切片（分布在每个节点上的切片）</span><br><span class="line">        "number_of_shards":"1"</span><br><span class="line">    &#125;,</span><br><span class="line">    "mappings":&#123;</span><br><span class="line">        "_doc":&#123;</span><br><span class="line">            // 自动映射为 keyword 类型而不是默认的text类型</span><br><span class="line">            "dynamic_templates":[</span><br><span class="line">                &#123;</span><br><span class="line">                    <span class="attr">"string_fields"</span>:&#123;</span><br><span class="line">                        <span class="attr">"match"</span>:<span class="string">"*"</span>,</span><br><span class="line">                        <span class="attr">"match_mapping_type"</span>:<span class="string">"string"</span>,</span><br><span class="line">                        <span class="attr">"mapping"</span>:&#123;</span><br><span class="line">                            <span class="attr">"type"</span>:<span class="string">"keyword"</span>,</span><br><span class="line">                            <span class="attr">"norms"</span>:<span class="literal">false</span></span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            ],</span><br><span class="line">            // 建立mapping</span><br><span class="line">            "properties":&#123;</span><br><span class="line">                "mydate":&#123;</span><br><span class="line">                    "type":"date",</span><br><span class="line">                    "format":"yyyy/MM/dd HH:mm:ss||date_time||strict_date_time"</span><br><span class="line">                &#125;,</span><br><span class="line">                "字段名":&#123;</span><br><span class="line">                    "type":"字段类型"</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-        </div>
-    
-
-</div>
-            
-                
-<div class="post">
-
-    <div class="post-header index">
-        <h1 class="title">
             <a href="/2019/10/25/Git%20%E4%B8%8A%E4%BC%A0%E5%A4%A7%E6%96%87%E4%BB%B6/">
                 Git 上传大文件
             </a>
@@ -214,6 +155,8 @@
             
                 <span class="date">2019-10-25</span>
             
+            
+                <a href="http://yoursite.com/2019/10/25/Git%20%E4%B8%8A%E4%BC%A0%E5%A4%A7%E6%96%87%E4%BB%B6/#disqus_thread" class="comments article-comment-link">Comments</a>
             
             
                 <span class="category">
@@ -272,6 +215,67 @@
 
     <div class="post-header index">
         <h1 class="title">
+            <a href="/2019/10/25/Elasticsearch%20%E4%B8%AD%E8%BF%99%E4%BA%9B%E5%BF%85%E5%A4%87%20API%20%E4%BD%A0%E6%99%93%E5%BE%97%E5%98%9B%EF%BC%9F/">
+                Elasticsearch 中这些必备 API 你晓得嘛？
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2019-10-25</span>
+            
+            
+                <a href="http://yoursite.com/2019/10/25/Elasticsearch%20%E4%B8%AD%E8%BF%99%E4%BA%9B%E5%BF%85%E5%A4%87%20API%20%E4%BD%A0%E6%99%93%E5%BE%97%E5%98%9B%EF%BC%9F/#disqus_thread" class="comments article-comment-link">Comments</a>
+            
+            
+                <span class="category">
+                    <a href="/categories/elasticsearch/">elasticsearch</a>
+                </span>
+            
+        </div>
+    </div>
+
+    
+        <div class="content">
+            <h2 id="1-索引备份迁移"><a href="#1-索引备份迁移" class="headerlink" title="1.索引备份迁移"></a>1.索引备份迁移</h2><p>众所周知，ES 中的 mapping 只能在索引建立初期进行创建，且建立之后不可更改。mapping 对应的字段会映射成指定类型，未定义字段则自动映射，一般为 text 类型。那么想更改索引名或者更改某字段的 mapping 时，是否就束手无策了呢？当然不是！！！官方提供了一个接口，供索引备份迁移操作使用，那便是 <strong>reindex</strong>。当旧索引与新索引在同一节点时，效率相当高，万条数据瞬间完成（<code>大约只需0.4s</code>）。数百万数据也只需几分钟即可完成 操作，是不是很溜呢？快来学习一下吧。</p>
+<p><strong>请求方式：POST</strong></p>
+<p><strong>请求 API <code>_reindex</code></strong></p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">"source"</span>: &#123;</span><br><span class="line">    <span class="attr">"index"</span>: <span class="string">"要备份的索引名"</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">"dest"</span>: &#123;</span><br><span class="line">    <span class="attr">"index"</span>: <span class="string">"新建的索引名"</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>如果新索引中有数据，且 id 与旧索引中重复，那么会进行覆盖操作。</p>
+</blockquote>
+<p>但是当数据量实在太大，高达几十 G 的时候，速度就会变得很慢，那是因为它底层还是利用了 scroll 操作。该如何进行<strong>优化</strong>呢？可以提升批量操作的文档数大小，如下：</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">"source"</span>: &#123;</span><br><span class="line">    <span class="attr">"index"</span>: <span class="string">"要备份的索引名"</span>,</span><br><span class="line">    <span class="attr">"size"</span> : <span class="number">5000</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">"dest"</span>: &#123;</span><br><span class="line">    <span class="attr">"index"</span>  : <span class="string">"新建的索引名"</span>,</span><br><span class="line">    <span class="attr">"routing"</span>: <span class="string">"=cat"</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>批量操作大小是如何确定的呢？是根据文档数以及文档容量进行确定的。根据查阅资料得知，一个好的起点是<strong>每批处理数据 5-15 MB</strong>，这是个什么概念？</p>
+<blockquote>
+<p>1000 个 1kb 的文档大约 1MB；1000 个 100kb 的文档是 100MB。</p>
+</blockquote>
+<p>然后<strong>逐步增加每批处理数据容量</strong>，进行调优，直到最终性能无法再次提升。还有一个方法，那便是提升硬件，比如<strong>换固态</strong>，你懂得~</p>
+<p>还有一种方法提升写入效率，这是终极操作，那便是 <code>sliced</code>。<code>reindex</code> 支持 Sliced Scroll 操作。它的原理可以简单的理解为将每次的 Scroll 请求分解，分解后并行化请求，从而提升效率。方式为：</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">POST _reindex?slices=5&amp;refresh</span><br><span class="line">&#123;</span><br><span class="line">  <span class="attr">"source"</span>: &#123;</span><br><span class="line">    <span class="attr">"index"</span>: <span class="string">"要备份的索引名"</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">"dest"</span>: &#123;</span><br><span class="line">    <span class="attr">"index"</span>: <span class="string">"新建的索引名"</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="2-删除索引中指定的数据"><a href="#2-删除索引中指定的数据" class="headerlink" title="2.删除索引中指定的数据"></a>2.删除索引中指定的数据</h2><p><strong>请求方式：POST</strong></p>
+<p><strong>请求 API <code>_delete_by_query</code></strong></p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="attr">"query"</span>: &#123;</span><br><span class="line">        <span class="attr">"match"</span>: &#123;</span><br><span class="line">            <span class="attr">"字段名"</span>: <span class="string">"字段值"</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>方法便是先查出指定数据再删除。</p>
+</blockquote>
+<h2 id="3-设置副本数、分片、动态映射"><a href="#3-设置副本数、分片、动态映射" class="headerlink" title="3. 设置副本数、分片、动态映射"></a>3. 设置副本数、分片、动态映射</h2><p>设置这些指标项可在建立 mapping 时一同设置。</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="attr">"settings"</span>:&#123;</span><br><span class="line">        <span class="attr">"index"</span>:&#123;</span><br><span class="line">            // 刷新间隔</span><br><span class="line">            "refresh_interval":"3s"</span><br><span class="line">        &#125;,</span><br><span class="line">        // 副本数</span><br><span class="line">        "number_of_replicas":"0",</span><br><span class="line">        // 切片（分布在每个节点上的切片）</span><br><span class="line">        "number_of_shards":"1"</span><br><span class="line">    &#125;,</span><br><span class="line">    "mappings":&#123;</span><br><span class="line">        "_doc":&#123;</span><br><span class="line">            // 自动映射为 keyword 类型而不是默认的text类型</span><br><span class="line">            "dynamic_templates":[</span><br><span class="line">                &#123;</span><br><span class="line">                    <span class="attr">"string_fields"</span>:&#123;</span><br><span class="line">                        <span class="attr">"match"</span>:<span class="string">"*"</span>,</span><br><span class="line">                        <span class="attr">"match_mapping_type"</span>:<span class="string">"string"</span>,</span><br><span class="line">                        <span class="attr">"mapping"</span>:&#123;</span><br><span class="line">                            <span class="attr">"type"</span>:<span class="string">"keyword"</span>,</span><br><span class="line">                            <span class="attr">"norms"</span>:<span class="literal">false</span></span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            ],</span><br><span class="line">            // 建立mapping</span><br><span class="line">            "properties":&#123;</span><br><span class="line">                "mydate":&#123;</span><br><span class="line">                    "type":"date",</span><br><span class="line">                    "format":"yyyy/MM/dd HH:mm:ss||date_time||strict_date_time"</span><br><span class="line">                &#125;,</span><br><span class="line">                "字段名":&#123;</span><br><span class="line">                    "type":"字段类型"</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+        </div>
+    
+
+</div>
+            
+                
+<div class="post">
+
+    <div class="post-header index">
+        <h1 class="title">
             <a href="/2019/10/25/%E5%B8%B8%E7%94%A8-es-%E6%9F%A5%E8%AF%A2%E7%9B%98%E7%82%B9/">
                 常用 es 查询盘点
             </a>
@@ -280,6 +284,8 @@
             
                 <span class="date">2019-10-25</span>
             
+            
+                <a href="http://yoursite.com/2019/10/25/%E5%B8%B8%E7%94%A8-es-%E6%9F%A5%E8%AF%A2%E7%9B%98%E7%82%B9/#disqus_thread" class="comments article-comment-link">Comments</a>
             
             
                 <span class="category">
@@ -391,6 +397,8 @@
                 <span class="date">2019-10-25</span>
             
             
+                <a href="http://yoursite.com/2019/10/25/Git-%E5%BD%BB%E5%BA%95%E5%88%A0%E9%99%A4%E6%9F%90%E4%B8%AAcommit%E7%9A%84%E6%96%B9%E6%B3%95/#disqus_thread" class="comments article-comment-link">Comments</a>
+            
             
                 <span class="category">
                     <a href="/categories/git/">git</a>
@@ -458,11 +466,11 @@
         <ul>
             
             <li>
-                <a class="footer-post" href="/2019/10/25/Elasticsearch%20%E4%B8%AD%E8%BF%99%E4%BA%9B%E5%BF%85%E5%A4%87%20API%20%E4%BD%A0%E6%99%93%E5%BE%97%E5%98%9B%EF%BC%9F/">Elasticsearch 中这些必备 API 你</a>
+                <a class="footer-post" href="/2019/10/25/Git%20%E4%B8%8A%E4%BC%A0%E5%A4%A7%E6%96%87%E4%BB%B6/">Git 上传大文件</a>
             </li>
             
             <li>
-                <a class="footer-post" href="/2019/10/25/Git%20%E4%B8%8A%E4%BC%A0%E5%A4%A7%E6%96%87%E4%BB%B6/">Git 上传大文件</a>
+                <a class="footer-post" href="/2019/10/25/Elasticsearch%20%E4%B8%AD%E8%BF%99%E4%BA%9B%E5%BF%85%E5%A4%87%20API%20%E4%BD%A0%E6%99%93%E5%BE%97%E5%98%9B%EF%BC%9F/">Elasticsearch 中这些必备 API 你</a>
             </li>
             
             <li>
@@ -484,11 +492,11 @@
     <ul>
         
         <li>
-            <a class="footer-post" href="/categories/elasticsearch/">elasticsearch</a>
+            <a class="footer-post" href="/categories/git/">git</a>
         </li>
         
         <li>
-            <a class="footer-post" href="/categories/git/">git</a>
+            <a class="footer-post" href="/categories/elasticsearch/">elasticsearch</a>
         </li>
         
     </ul>
@@ -616,6 +624,18 @@
 <script src="/js/main.js"></script>
 
 <!-- Disqus Comments -->
+
+<script type="text/javascript">
+    var disqus_shortname = 'ethanyan6';
+
+    (function(){
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
 
 
 
