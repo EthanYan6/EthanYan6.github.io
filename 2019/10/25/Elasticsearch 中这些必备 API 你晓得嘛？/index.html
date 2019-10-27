@@ -227,6 +227,15 @@
 
 </div>
         </section>
+		
+		{% if theme.word_count %}
+		  <span class="post-letters-count">
+			&nbsp; | &nbsp;
+			<span>{{ wordcount(post.content) }} 字</span>
+			&nbsp; | &nbsp;
+			<span>{{ min2read(post.content) }} min</span>
+		  </span>
+		{% endif %}
 
     </div>
 </div>
@@ -388,7 +397,7 @@
         <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                 <div class="footer-copyright">
-                    @Untitled. All right reserved | Design & Hexo <a href="http://www.codeblocq.com/" target="_blank" rel="noopener">Jonathan Klughertz Ethan Yan</a>
+                    @Untitled. All right reserved | Design by Ethan Yan
                 </div>
             </div>
         </div>
