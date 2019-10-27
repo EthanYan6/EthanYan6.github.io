@@ -10,6 +10,9 @@
 
     <!--Description-->
     
+        <meta name="description" content="最近都在搭建自己的博客，不断的调整显示效果，以及添加一些初始功能，总算大体框架完成，细枝末节尚待商榷。小闫同学的博客地址为  http://www.pythonnote.cn/  ，希望大家多多捧场 ~ 当然也希望大家多多关注公众号『全栈技术精选』
+先来几张效果图压场，deng ~ deng ~ dengdeng">
+    
 
     <!--Author-->
     
@@ -18,7 +21,7 @@
 
     <!--Open Graph Title-->
     
-        <meta property="og:title" content="小闫同学劝你多喝热水"/>
+        <meta property="og:title" content="hexo命令速查小册"/>
     
 
     <!--Open Graph Description-->
@@ -29,7 +32,7 @@
 
     <!--Type page-->
     
-        <meta property="og:type" content="website" />
+        <meta property="og:type" content="article" />
     
 
     <!--Page Cover-->
@@ -40,7 +43,7 @@
 
     <!-- Title -->
     
-    <title>elasticsearch - 小闫同学劝你多喝热水</title>
+    <title>hexo命令速查小册 - 小闫同学劝你多喝热水</title>
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous">
@@ -127,9 +130,7 @@
 <div class="container">
 
     <!-- Main Content -->
-    
-
-<div class="row">
+    <div class="row">
     <div class="col-sm-12">
 
         <!--Title and Logo-->
@@ -137,34 +138,127 @@
     <div class="logo">
         <a href="/"><i class="logo-icon fa fa-cube" aria-hidden="true"></i></a>
         
-            <h1 id="main-title" class="title">#elasticsearch</h1>
-        
     </div>
 </header>
 
-        <section class="main archive-container">
+        <section class="main">
             
-                <div class="archive-post">
-    <a href="/2019/10/25/Elasticsearch%20%E4%B8%AD%E8%BF%99%E4%BA%9B%E5%BF%85%E5%A4%87%20API%20%E4%BD%A0%E6%99%93%E5%BE%97%E5%98%9B%EF%BC%9F/">
-        <span class="archive-date">
-            Oct 2019
-        </span>
-        Elasticsearch 中这些必备 API 你晓得嘛？
-    </a>
+<div class="post">
+
+    <div class="post-header">
+        <h1 class="title">
+            <a href="/2019/10/27/hexo%E5%91%BD%E4%BB%A4%E9%80%9F%E6%9F%A5%E5%B0%8F%E5%86%8C/">
+                hexo命令速查小册
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2019-10-27</span>
+            
+            
+                <a href="#disqus_thread" class="comments">Comments</a>
+            
+            
+                <span class="category">
+                    <a href="/categories/hexo/">hexo</a>
+                </span>
+            
+        </div>
+    </div>
+
+    <div class="content">
+
+        <!-- Gallery -->
+        
+
+        <!-- Post Content -->
+        <p>最近都在搭建自己的博客，不断的调整显示效果，以及添加一些初始功能，总算大体框架完成，细枝末节尚待商榷。小闫同学的博客地址为  <a href="http://www.pythonnote.cn/" target="_blank" rel="noopener">http://www.pythonnote.cn/</a>  ，希望大家多多捧场 ~ 当然也希望大家多多关注公众号『全栈技术精选』</p>
+<p>先来几张效果图压场，deng ~ deng ~ dengdeng</p>
+<a id="more"></a>
+
+<p><img src="https://github.com/EthanYan6/pic/raw/master/hexo%E5%91%BD%E4%BB%A4%E9%80%9F%E6%9F%A5%E5%B0%8F%E5%86%8C/blog1.png" alt></p>
+<p><img src="https://github.com/EthanYan6/pic/raw/master/hexo%E5%91%BD%E4%BB%A4%E9%80%9F%E6%9F%A5%E5%B0%8F%E5%86%8C/blog2.png" alt></p>
+<p><img src="https://github.com/EthanYan6/pic/raw/master/hexo%E5%91%BD%E4%BB%A4%E9%80%9F%E6%9F%A5%E5%B0%8F%E5%86%8C/blog3.png" alt></p>
+<p>前端超牛逼的效果有没有感动到 ~ 这当然不是我自己做的，还要感谢 Jonathan Klughertz</p>
+<p>如果认为这篇文章要教如何搭建个人博客，那就让你失望了，因为百度上面相关教程太多太多，我不认为自己写的比其他人更详细更好。只是给大家指引一下方向即可。</p>
+<p>搭建博客的过程中使用到了框架 Node.js、HEXO 以及 GitHub 。</p>
+<p>下面就经常使用到的 hexo 的命令做一个总结，方便在使用过程中快速查阅。</p>
+<h4 id="创建新文章"><a href="#创建新文章" class="headerlink" title="创建新文章"></a>创建新文章</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hexo n "article name"</span><br><span class="line">或者</span><br><span class="line">hexo new "article name"</span><br></pre></td></tr></table></figure>
+
+<h4 id="快速部署"><a href="#快速部署" class="headerlink" title="快速部署"></a>快速部署</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo clean &amp;&amp; hexo g &amp;&amp; hexo d</span><br></pre></td></tr></table></figure>
+
+<p>其实上述为 3 个命令，为了节省时间，我经常联合使用。</p>
+<blockquote>
+<p>hexo clean 清除缓存</p>
+<p>hexo g 生成静态页面（generate）</p>
+<p>hexo d 部署（deploy）</p>
+</blockquote>
+<h4 id="本地效果预览"><a href="#本地效果预览" class="headerlink" title="本地效果预览"></a>本地效果预览</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo s</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>s 为 server 的简写，因此你也可以写成 hexo server。hexo 的命令大多都是如此</p>
+</blockquote>
+<h4 id="文章摘要"><a href="#文章摘要" class="headerlink" title="文章摘要"></a>文章摘要</h4><p>首页会根据分页效果展示文章，如果不设置摘要，文章会拉长页面篇幅。</p>
+<p>我们只需要在文章摘要后添加一行内容即可：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--more--&gt;</span><br></pre></td></tr></table></figure>
+
+<p>最后效果图为：</p>
+<p><img src="https://github.com/EthanYan6/pic/raw/master/hexo%E5%91%BD%E4%BB%A4%E9%80%9F%E6%9F%A5%E5%B0%8F%E5%86%8C/blog4.png" alt></p>
+<h4 id="添加标签"><a href="#添加标签" class="headerlink" title="添加标签"></a>添加标签</h4><p>先执行：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo new page "tags"</span><br></pre></td></tr></table></figure>
+
+<p>再在目录 <code>source/tags/index.md</code> 中添加：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">title: tags</span><br><span class="line">date: 2019-05-27 13:47:40</span><br><span class="line">type: "tags"</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
+
+<p>最后只需要在写文章时添加 <code>tags</code> 属性即可。</p>
+<p>如果只添加一个标签：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tags: test</span><br></pre></td></tr></table></figure>
+
+<p>多标签，文章开头添加：（yaml语法）</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">tags:</span><br><span class="line">- test1</span><br><span class="line">- test2</span><br><span class="line">- test3</span><br></pre></td></tr></table></figure>
+
+<h4 id="添加文章分类目录"><a href="#添加文章分类目录" class="headerlink" title="添加文章分类目录"></a>添加文章分类目录</h4><p>添加分类如同标签一样，只需要将 <code>tags</code> 换成 <code>categories</code> 即可，如：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo new page "categories"</span><br></pre></td></tr></table></figure>
+
+<h4 id="文章中插入图片"><a href="#文章中插入图片" class="headerlink" title="文章中插入图片"></a>文章中插入图片</h4><p>如果在 Markdown 中直接插图，再转成静态页面时，路径会找不到，导致图片无法正常显示。解决办法有很多，我最新欢的便是利用 GitHub 新建一个放置图片的仓库，（当然很多人使用七牛云也很方便）然后在文章中使用插入连接的方式插入图片即可：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">![](https://github.com/EthanYan6/pic/raw/master/hexo%E5%91%BD%E4%BB%A4%E9%80%9F%E6%9F%A5%E5%B0%8F%E5%86%8C/blog1.png)</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>连接地址以下步骤获取：打开GitHub图片仓库后，看到 Download 按钮，右键复制链接即可获取</p>
+</blockquote>
+<h4 id="绑定域名"><a href="#绑定域名" class="headerlink" title="绑定域名"></a>绑定域名</h4><p>大家首先需要去腾讯或者阿里购买一个域名，然后备案，再通过解析绑定个人博客地址。百度教程超详细，不过多阐述</p>
+<p>命令暂且总结到此，预知后事如何，且听下回分解 ~</p>
+
+    </div>
+
+    
+
+    
+        <div class="post-tags">
+            <i class="fa fa-tags" aria-hidden="true"></i>
+            <a href="/tags/hexo/">#hexo</a> <a href="/tags/blog/">#blog</a> <a href="/tags/command/">#command</a>
+        </div>
+    
+
+    <!-- Comments -->
+    
+    <div class="comments">
+        
+<div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 </div>
-            
-                <div class="archive-post">
-    <a href="/2019/10/25/%E5%B8%B8%E7%94%A8-es-%E6%9F%A5%E8%AF%A2%E7%9B%98%E7%82%B9/">
-        <span class="archive-date">
-            Oct 2019
-        </span>
-        常用 es 查询盘点
-    </a>
+
+
+
+    </div>
+    
+
 </div>
-            
         </section>
+
     </div>
 </div>
+
 
 </div>
 
@@ -356,7 +450,7 @@
         var dsq = document.createElement('script');
         dsq.type = 'text/javascript';
         dsq.async = true;
-        dsq.src = '//' + disqus_shortname + '.disqus.com/count.js';
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
         (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
     }());
 </script>
