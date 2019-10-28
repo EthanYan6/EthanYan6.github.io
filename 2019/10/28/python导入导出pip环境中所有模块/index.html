@@ -20,7 +20,7 @@
 
     <!--Open Graph Title-->
     
-        <meta property="og:title" content="Python后端面试汇总"/>
+        <meta property="og:title" content="python导入导出pip环境中所有模块"/>
     
 
     <!--Open Graph Description-->
@@ -44,7 +44,7 @@
 
     <!-- Title -->
     
-    <title>Python后端面试汇总 - 小闫同学劝你多喝热水</title>
+    <title>python导入导出pip环境中所有模块 - 小闫同学劝你多喝热水</title>
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous">
@@ -148,8 +148,8 @@
 
     <div class="post-header">
         <h1 class="title">
-            <a href="/2019/10/28/Python%E5%90%8E%E7%AB%AF%E9%9D%A2%E8%AF%95%E6%B1%87%E6%80%BB/">
-                Python后端面试汇总
+            <a href="/2019/10/28/python%E5%AF%BC%E5%85%A5%E5%AF%BC%E5%87%BApip%E7%8E%AF%E5%A2%83%E4%B8%AD%E6%89%80%E6%9C%89%E6%A8%A1%E5%9D%97/">
+                python导入导出pip环境中所有模块
             </a>
         </h1>
         <div class="post-info">
@@ -161,7 +161,7 @@
             
             
                 <span class="category">
-                    <a href="/categories/面试题/">面试题</a>
+                    <a href="/categories/python/">python</a>
                 </span>
             
         </div>
@@ -173,19 +173,18 @@
         
 
         <!-- Post Content -->
-        <p>只身打入敌人内部，亲身经历，题目汇总，亲情大奉献，请点击以下链接观看：</p>
-<p><a href="http://mp.weixin.qq.com/mp/homepage?__biz=Mzg3NTA0OTM1OQ==&hid=8&sn=811ae175b0ce7f4208d0a3bea3157ac0&scene=18#wechat_redirect" target="_blank" rel="noopener">python面试题大汇总</a></p>
+        <p>刚入职接手项目，python 环境如何搭建？项目依赖模块如何安装？备份环境时如何将所有 pip 安装的模块导出？请看下文</p>
 <a id="more"></a>
 
+<p>导出所有模块：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip freeze &gt;requirements.txt</span><br></pre></td></tr></table></figure>
 
+<p>导入所有模块：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install -r requirements.txt</span><br></pre></td></tr></table></figure>
 
-
-
-
-
-
-
-<p>点进来干什么，题目全在链接里面了 ~ </p>
+<blockquote>
+<p><strong>注意</strong>：执行此命令时<strong>需要联网</strong>，其原理还是依次对文件中每一个模块进行 <code>pip install</code></p>
+</blockquote>
 
     </div>
 
@@ -194,7 +193,7 @@
     
         <div class="post-tags">
             <i class="fa fa-tags" aria-hidden="true"></i>
-            <a href="/tags/python/">#python</a> <a href="/tags/面试题/">#面试题</a>
+            <a href="/tags/python/">#python</a>
         </div>
     
 
