@@ -7,6 +7,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="baidu-site-verification" content="PAccMtHMMV" />
 
     <!--Description-->
     
@@ -252,8 +253,8 @@
 
     <div class="post-header index">
         <h1 class="title">
-            <a href="/2019/10/25/Git%20%E4%B8%8A%E4%BC%A0%E5%A4%A7%E6%96%87%E4%BB%B6/">
-                Git 上传大文件
+            <a href="/2019/10/25/Elasticsearch%20%E4%B8%AD%E8%BF%99%E4%BA%9B%E5%BF%85%E5%A4%87%20API%20%E4%BD%A0%E6%99%93%E5%BE%97%E5%98%9B%EF%BC%9F/">
+                Elasticsearch 中这些必备 API 你晓得嘛？
             </a>
         </h1>
         <div class="post-info">
@@ -261,11 +262,11 @@
                 <span class="date">2019-10-25</span>
             
             
-                <a href="http://yoursite.com/2019/10/25/Git%20%E4%B8%8A%E4%BC%A0%E5%A4%A7%E6%96%87%E4%BB%B6/#disqus_thread" class="comments article-comment-link">Comments</a>
+                <a href="http://yoursite.com/2019/10/25/Elasticsearch%20%E4%B8%AD%E8%BF%99%E4%BA%9B%E5%BF%85%E5%A4%87%20API%20%E4%BD%A0%E6%99%93%E5%BE%97%E5%98%9B%EF%BC%9F/#disqus_thread" class="comments article-comment-link">Comments</a>
             
             
                 <span class="category">
-                    <a href="/categories/git/">git</a>
+                    <a href="/categories/elasticsearch/">elasticsearch</a>
                 </span>
             
         </div>
@@ -273,9 +274,9 @@
 
     
         <div class="content">
-            <p>我们知道 github 上面限制每次推送的文件不能超过 100M，否则报错失败，那么非要推送大文件呢？有没有什么解决办法呢？答案当然是肯定的。这就用到了 <code>Git LFS</code> 。</p>
+            <h2 id="1-索引备份迁移"><a href="#1-索引备份迁移" class="headerlink" title="1.索引备份迁移"></a>1.索引备份迁移</h2><p>众所周知，ES 中的 mapping 只能在索引建立初期进行创建，且建立之后不可更改。mapping 对应的字段会映射成指定类型，未定义字段则自动映射，一般为 text 类型。那么想更改索引名或者更改某字段的 mapping 时，是否就束手无策了呢？当然不是！！！官方提供了一个接口，供索引备份迁移操作使用，那便是 <strong>reindex</strong>。当旧索引与新索引在同一节点时，效率相当高，万条数据瞬间完成（<code>大约只需0.4s</code>）。数百万数据也只需几分钟即可完成 操作，是不是很溜呢？快来学习一下吧。</p>
         </div>
-        <a href="/2019/10/25/Git%20%E4%B8%8A%E4%BC%A0%E5%A4%A7%E6%96%87%E4%BB%B6/" class="read-more">Read More</a>
+        <a href="/2019/10/25/Elasticsearch%20%E4%B8%AD%E8%BF%99%E4%BA%9B%E5%BF%85%E5%A4%87%20API%20%E4%BD%A0%E6%99%93%E5%BE%97%E5%98%9B%EF%BC%9F/" class="read-more">Read More</a>
     
 
 </div>
@@ -334,7 +335,7 @@
             </li>
             
             <li>
-                <a class="footer-post" href="/2019/10/25/Git%20%E4%B8%8A%E4%BC%A0%E5%A4%A7%E6%96%87%E4%BB%B6/">Git 上传大文件</a>
+                <a class="footer-post" href="/2019/10/25/Elasticsearch%20%E4%B8%AD%E8%BF%99%E4%BA%9B%E5%BF%85%E5%A4%87%20API%20%E4%BD%A0%E6%99%93%E5%BE%97%E5%98%9B%EF%BC%9F/">Elasticsearch 中这些必备 API 你</a>
             </li>
             
         </ul>
@@ -348,7 +349,7 @@
     <ul>
         
         <li>
-            <a class="footer-post" href="/categories/%E9%9D%A2%E8%AF%95%E9%A2%98/">面试题</a>
+            <a class="footer-post" href="/categories/hexo/">hexo</a>
         </li>
         
         <li>
@@ -356,11 +357,11 @@
         </li>
         
         <li>
-            <a class="footer-post" href="/categories/hexo/">hexo</a>
+            <a class="footer-post" href="/categories/%E9%9D%A2%E8%AF%95%E9%A2%98/">面试题</a>
         </li>
         
         <li>
-            <a class="footer-post" href="/categories/git/">git</a>
+            <a class="footer-post" href="/categories/elasticsearch/">elasticsearch</a>
         </li>
         
     </ul>
