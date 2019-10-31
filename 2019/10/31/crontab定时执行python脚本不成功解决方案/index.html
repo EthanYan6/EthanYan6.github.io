@@ -21,7 +21,7 @@
 
     <!--Open Graph Title-->
     
-        <meta property="og:title" content="小闫同学劝你多喝热水"/>
+        <meta property="og:title" content="crontab定时执行python脚本不成功解决方案"/>
     
 
     <!--Open Graph Description-->
@@ -34,7 +34,7 @@
 
     <!--Type page-->
     
-        <meta property="og:type" content="website" />
+        <meta property="og:type" content="article" />
     
 
     <!--Page Cover-->
@@ -45,7 +45,7 @@
 
     <!-- Title -->
     
-    <title>page - 小闫同学劝你多喝热水</title>
+    <title>crontab定时执行python脚本不成功解决方案 - 小闫同学劝你多喝热水</title>
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous">
@@ -140,173 +140,92 @@
     <div class="logo">
         <a href="/"><i class="logo-icon fa fa-cube" aria-hidden="true"></i></a>
         
-            <h1 id="main-title" class="title">小闫同学劝你多喝热水</h1>
-        
     </div>
 </header>
 
         <section class="main">
             
-                
 <div class="post">
 
-    <div class="post-header index">
+    <div class="post-header">
         <h1 class="title">
-            <a href="/2019/10/25/Git%20%E4%B8%8A%E4%BC%A0%E5%A4%A7%E6%96%87%E4%BB%B6/">
-                Git 上传大文件
+            <a href="/2019/10/31/crontab%E5%AE%9A%E6%97%B6%E6%89%A7%E8%A1%8Cpython%E8%84%9A%E6%9C%AC%E4%B8%8D%E6%88%90%E5%8A%9F%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/">
+                crontab定时执行python脚本不成功解决方案
             </a>
         </h1>
         <div class="post-info">
             
-                <span class="date">2019-10-25</span>
+                <span class="date">2019-10-31</span>
             
             
-                <a href="http://yoursite.com/2019/10/25/Git%20%E4%B8%8A%E4%BC%A0%E5%A4%A7%E6%96%87%E4%BB%B6/#disqus_thread" class="comments article-comment-link">Comments</a>
+                <a href="#disqus_thread" class="comments">Comments</a>
             
             
                 <span class="category">
-                    <a href="/categories/git/">git</a>
+                    <a href="/categories/Linux/">Linux</a>
                 </span>
             
         </div>
     </div>
 
-    
-        <div class="content">
-            <center>Author：闫玉良</center> 
+    <div class="content">
 
-<p>我们知道 github 上面限制每次推送的文件不能超过 100M，否则报错失败，那么非要推送大文件呢？有没有什么解决办法呢？答案当然是肯定的。这就用到了 <code>Git LFS</code> 。</p>
-        </div>
-        <a href="/2019/10/25/Git%20%E4%B8%8A%E4%BC%A0%E5%A4%A7%E6%96%87%E4%BB%B6/" class="read-more">Read More</a>
-    
+        <!-- Gallery -->
+        
 
-</div>
-            
-                
-<div class="post">
+        <!-- Post Content -->
+         <center>Author：闫玉良</center> 
 
-    <div class="post-header index">
-        <h1 class="title">
-            <a href="/2019/10/25/Elasticsearch%20%E4%B8%AD%E8%BF%99%E4%BA%9B%E5%BF%85%E5%A4%87%20API%20%E4%BD%A0%E6%99%93%E5%BE%97%E5%98%9B%EF%BC%9F/">
-                Elasticsearch 中这些必备 API 你晓得嘛？
-            </a>
-        </h1>
-        <div class="post-info">
-            
-                <span class="date">2019-10-25</span>
-            
-            
-                <a href="http://yoursite.com/2019/10/25/Elasticsearch%20%E4%B8%AD%E8%BF%99%E4%BA%9B%E5%BF%85%E5%A4%87%20API%20%E4%BD%A0%E6%99%93%E5%BE%97%E5%98%9B%EF%BC%9F/#disqus_thread" class="comments article-comment-link">Comments</a>
-            
-            
-                <span class="category">
-                    <a href="/categories/elasticsearch/">elasticsearch</a>
-                </span>
-            
-        </div>
+<p>目前有一个需求是定时执行某个 python 脚本，但是在 Linux 上设置 crontab 后，不生效？手动执行生效？于是使用下面的方法执行即可：</p>
+<a id="more"></a>
+
+<p>大体思路为先写一个 <code>shell</code> 脚本，脚本中执行 <code>python</code> 文件，然后定时执行 <code>shell</code> 脚本即可。具体原因不明，正在探索中 …… 目前只提供一种解决方案。</p>
+<p>1.使用如下命令创建脚本：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vi start.sh</span><br></pre></td></tr></table></figure>
+
+<p>2.然后在 <code>start.sh</code> 脚本中结合本身情况输入内容，示例：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">!/usr/bin/bash</span></span><br><span class="line">cd /opt</span><br><span class="line">/usr/bin/python3 /opt/test_mail.py</span><br></pre></td></tr></table></figure>
+
+<p>3.然后使用如下命令，编辑定时任务：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">crontab -e</span><br></pre></td></tr></table></figure>
+
+<p>4.假如设定每天 8 点执行脚本，设置如下：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">0 8 * * * /opt/start.sh</span><br></pre></td></tr></table></figure>
+
+<p>5.保存定时任务，几分钟后自动生效。</p>
+<blockquote>
+<p><strong>注意</strong>：所有的路径都使用<strong>绝对路径</strong>，否则仍然无效。</p>
+</blockquote>
+
     </div>
 
     
-        <div class="content">
-            <center>Author：闫玉良</center> 
 
-<h2 id="1-索引备份迁移"><a href="#1-索引备份迁移" class="headerlink" title="1.索引备份迁移"></a>1.索引备份迁移</h2><p>众所周知，ES 中的 mapping 只能在索引建立初期进行创建，且建立之后不可更改。mapping 对应的字段会映射成指定类型，未定义字段则自动映射，一般为 text 类型。那么想更改索引名或者更改某字段的 mapping 时，是否就束手无策了呢？当然不是！！！官方提供了一个接口，供索引备份迁移操作使用，那便是 <strong>reindex</strong>。当旧索引与新索引在同一节点时，效率相当高，万条数据瞬间完成（<code>大约只需0.4s</code>）。数百万数据也只需几分钟即可完成 操作，是不是很溜呢？快来学习一下吧。</p>
+    
+        <div class="post-tags">
+            <i class="fa fa-tags" aria-hidden="true"></i>
+            <a href="/tags/python/">#python</a> <a href="/tags/Linux/">#Linux</a> <a href="/tags/crontab/">#crontab</a> <a href="/tags/定时任务/">#定时任务</a>
         </div>
-        <a href="/2019/10/25/Elasticsearch%20%E4%B8%AD%E8%BF%99%E4%BA%9B%E5%BF%85%E5%A4%87%20API%20%E4%BD%A0%E6%99%93%E5%BE%97%E5%98%9B%EF%BC%9F/" class="read-more">Read More</a>
     
 
+    <!-- Comments -->
+    
+    <div class="comments">
+        
+<div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 </div>
-            
-                
-<div class="post">
 
-    <div class="post-header index">
-        <h1 class="title">
-            <a href="/2019/10/25/%E5%B8%B8%E7%94%A8-es-%E6%9F%A5%E8%AF%A2%E7%9B%98%E7%82%B9/">
-                常用 es 查询盘点
-            </a>
-        </h1>
-        <div class="post-info">
-            
-                <span class="date">2019-10-25</span>
-            
-            
-                <a href="http://yoursite.com/2019/10/25/%E5%B8%B8%E7%94%A8-es-%E6%9F%A5%E8%AF%A2%E7%9B%98%E7%82%B9/#disqus_thread" class="comments article-comment-link">Comments</a>
-            
-            
-                <span class="category">
-                    <a href="/categories/elasticsearch/">elasticsearch</a>
-                </span>
-            
-        </div>
+
+
     </div>
-
-    
-        <div class="content">
-            <center>Author：闫玉良</center> 
-
-<p>熟悉了关系型数据库的结构概念以及查询，再去使用属于非关系型数据库的 Elasticsearch 时，简直是噩梦。第一道难关便是概念上的转换。索引？类型？文档？what？</p>
-        </div>
-        <a href="/2019/10/25/%E5%B8%B8%E7%94%A8-es-%E6%9F%A5%E8%AF%A2%E7%9B%98%E7%82%B9/" class="read-more">Read More</a>
     
 
 </div>
-            
-                
-<div class="post">
-
-    <div class="post-header index">
-        <h1 class="title">
-            <a href="/2019/10/25/Git-%E5%BD%BB%E5%BA%95%E5%88%A0%E9%99%A4%E6%9F%90%E4%B8%AAcommit%E7%9A%84%E6%96%B9%E6%B3%95/">
-                Git 彻底删除某个commit的方法
-            </a>
-        </h1>
-        <div class="post-info">
-            
-                <span class="date">2019-10-25</span>
-            
-            
-                <a href="http://yoursite.com/2019/10/25/Git-%E5%BD%BB%E5%BA%95%E5%88%A0%E9%99%A4%E6%9F%90%E4%B8%AAcommit%E7%9A%84%E6%96%B9%E6%B3%95/#disqus_thread" class="comments article-comment-link">Comments</a>
-            
-            
-                <span class="category">
-                    <a href="/categories/git/">git</a>
-                </span>
-            
-        </div>
-    </div>
-
-    
-        <div class="content">
-            <center>Author：闫玉良</center> 
-
-<p>如果因为一些原因，需要删除某个错误的 <code>commit</code>，而且需要干净的操作，彻底让其消失，不留痕迹，该如何操作？</p>
-        </div>
-        <a href="/2019/10/25/Git-%E5%BD%BB%E5%BA%95%E5%88%A0%E9%99%A4%E6%9F%90%E4%B8%AAcommit%E7%9A%84%E6%96%B9%E6%B3%95/" class="read-more">Read More</a>
-    
-
-</div>
-            
         </section>
+
     </div>
 </div>
-
-
-
-    <div class="row">
-        <div class="col-sm-12">
-            <div class="wrap-pagination">
-                <a class="" href="/">
-                    <i class="fa fa-chevron-left" aria-hidden="true"></i>
-                </a>
-                <a class="disabled" href="/">
-                    <i class="fa fa-chevron-right" aria-hidden="true"></i>
-                </a>
-            </div>
-        </div>
-    </div>
-
-
 
 
 </div>
@@ -503,7 +422,7 @@
         var dsq = document.createElement('script');
         dsq.type = 'text/javascript';
         dsq.async = true;
-        dsq.src = '//' + disqus_shortname + '.disqus.com/count.js';
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
         (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
     }());
 </script>
