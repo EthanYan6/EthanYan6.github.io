@@ -21,7 +21,7 @@
 
     <!--Open Graph Title-->
     
-        <meta property="og:title" content="Git 上传大文件"/>
+        <meta property="og:title" content="小闫同学劝你多喝热水"/>
     
 
     <!--Open Graph Description-->
@@ -34,7 +34,7 @@
 
     <!--Type page-->
     
-        <meta property="og:type" content="article" />
+        <meta property="og:type" content="website" />
     
 
     <!--Page Cover-->
@@ -45,7 +45,7 @@
 
     <!-- Title -->
     
-    <title>Git 上传大文件 - 小闫同学劝你多喝热水</title>
+    <title>windows - 小闫同学劝你多喝热水</title>
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous">
@@ -132,7 +132,9 @@
 <div class="container">
 
     <!-- Main Content -->
-    <div class="row">
+    
+
+<div class="row">
     <div class="col-sm-12">
 
         <!--Title and Logo-->
@@ -140,111 +142,25 @@
     <div class="logo">
         <a href="/"><i class="logo-icon fa fa-cube" aria-hidden="true"></i></a>
         
+            <h1 id="main-title" class="title">#windows</h1>
+        
     </div>
 </header>
 
-        <section class="main">
+        <section class="main archive-container">
             
-<div class="post">
-
-    <div class="post-header">
-        <h1 class="title">
-            <a href="/2019/10/25/Git%20%E4%B8%8A%E4%BC%A0%E5%A4%A7%E6%96%87%E4%BB%B6/">
-                Git 上传大文件
-            </a>
-        </h1>
-        <div class="post-info">
-            
-                <span class="date">2019-10-25</span>
-            
-            
-                <a href="#disqus_thread" class="comments">Comments</a>
-            
-            
-                <span class="category">
-                    <a href="/categories/git/">git</a>
-                </span>
-            
-        </div>
-    </div>
-
-    <div class="content">
-
-        <!-- Gallery -->
-        
-
-        <!-- Post Content -->
-         <center>Author：闫玉良</center> 
-
-<p>我们知道 github 上面限制每次推送的文件不能超过 100M，否则报错失败，那么非要推送大文件呢？有没有什么解决办法呢？答案当然是肯定的。这就用到了 <code>Git LFS</code> 。</p>
- <a id="more"></a> 
-
-<p>因为只试验了 windows 平台，本文以此为例。其他系统可上网搜如何下载安装对应版本的 <code>git-lfs</code>。</p>
-<h2 id="1-windows-平台安装-git-lfs"><a href="#1-windows-平台安装-git-lfs" class="headerlink" title="1.windows 平台安装 git-lfs"></a>1.windows 平台安装 git-lfs</h2><p>1.先打开网址：</p>
-<figure class="highlight http"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">https://github.com/git-lfs/git-lfs/releases</span></span><br></pre></td></tr></table></figure>
-
-<p>2.然后点击最新版本的版本号，将页面拉取到最底部，下载安装：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Windows Installer</span><br></pre></td></tr></table></figure>
-
-<p>3.运行下载的 exe 文件：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">windows installer</span><br></pre></td></tr></table></figure>
-
-<h2 id="2-使用"><a href="#2-使用" class="headerlink" title="2.使用"></a>2.使用</h2><p>1.打开 <code>git bash</code>，首先输入下列命令开启 lfs 功能：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git lfs install</span><br></pre></td></tr></table></figure>
-
-<p>2.然后使用如下命令进行大文件追踪，然后会生成文件 <code>.gitattributes</code>：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git lfs track '大文件名'</span><br><span class="line"><span class="meta">#</span><span class="bash"> 追踪大文件test.tar.gz</span></span><br><span class="line">git lfs track 'test.tar.gz'</span><br></pre></td></tr></table></figure>
-
-<p>3.添加文件 <code>.gittributes</code>：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git add .gitattributes</span><br></pre></td></tr></table></figure>
-
-<p>4.然后提交文件 <code>.gitattributes</code>：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git commit -m 'submit .gitattributes file'</span><br></pre></td></tr></table></figure>
-
-<p>5.将文件 <code>.gitattributes</code> 推送到远程仓库：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push -u origin master</span><br></pre></td></tr></table></figure>
-
-<p>6.添加大文件：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git add test.tar.gz</span><br></pre></td></tr></table></figure>
-
-<p>7.提交大文件：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git commit -m 'submit big file.'</span><br></pre></td></tr></table></figure>
-
-<p>8.直接推送大文件到远程：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push</span><br></pre></td></tr></table></figure>
-
-<p>然后你就会发现大文件推送到远程的 github 仓库了。</p>
-
-    </div>
-
-    
-
-    
-        <div class="post-tags">
-            <i class="fa fa-tags" aria-hidden="true"></i>
-            <a href="/tags/git/">#git</a>
-        </div>
-    
-
-    <!-- Comments -->
-    
-    <div class="comments">
-        
-<div id="disqus_thread">
-    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+                <div class="archive-post">
+    <a href="/2019/11/14/bat%E8%84%9A%E6%9C%AC%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/">
+        <span class="archive-date">
+            Nov 2019
+        </span>
+        bat脚本常用命令
+    </a>
 </div>
-
-
-
-    </div>
-    
-
-</div>
+            
         </section>
-
     </div>
 </div>
-
 
 </div>
 
@@ -440,7 +356,7 @@
         var dsq = document.createElement('script');
         dsq.type = 'text/javascript';
         dsq.async = true;
-        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        dsq.src = '//' + disqus_shortname + '.disqus.com/count.js';
         (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
     }());
 </script>
