@@ -10,12 +10,11 @@ categories:
 ---
 
 <center>Author：闫玉良</center>
-
 bat 脚本？如果不是从事微软开发相关工作的人员，是不是感觉很耳熟但是又好像不熟悉？还等什么，一睹为快
 
 <!--more-->
 
-bat 脚本是 windows 上所用的脚本，我们经常使用的 cmd 一些命令就可以使用。也许你会说为什么不适用 powershell 脚本？因为古老的一些服务器上面没有安装 powershell 你信不信？比如 windows server 2003。
+bat 脚本是 windows 上所用的脚本，我们经常使用的 cmd 一些命令就可以使用。也许你会说为什么不使用 powershell 脚本？因为古老的一些服务器上面没有安装 powershell 你信不信？比如 windows server 2003。
 
 很荣幸，我遇到了，没有什么办法，只能查阅相关资料迎难而上了！脚本其实很简单，下面做一个记录，供大家有需要时获取：
 
