@@ -175,8 +175,8 @@
 
         <!-- Post Content -->
          <center>Author：闫玉良</center> 
+那些不使用鼠标的人是否是打肿脸充胖子？因囊中羞涩而安装的xx软件装不上怎么办？MacBook Pro真的那么好用吗？下面为您解答
 
-<p>那些不使用鼠标的人是否是打肿脸充胖子？因囊中羞涩而安装的xx软件装不上怎么办？MacBook Pro真的那么好用吗？下面为您解答</p>
 <a id="more"></a>
 
 <p>经过不懈的努力，小闫同学终于使用上了 MacBook Pro，先小小的炫耀一番。（不要打我哈~）</p>
@@ -198,42 +198,41 @@
 <p>如果当前窗口处于最大化状态，那么此命令无效 </p>
 </blockquote>
 <p>3.快速将最小化的窗口调出来： </p>
-<pre><code>3.1 先使用如下快捷键，打开所有的应用
+<p>​    3.1 先使用如下快捷键，打开所有的应用</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">command + tab</span><br></pre></td></tr></table></figure>
 
-`command + tab `
+<p>​    3.2 按住 command 键不松开，按 tab 键向后选择，按 shift + tab 键向前选择</p>
+<p>​    3.3 选中图标之后按住 option 键，松开 command 键即可打开应用</p>
+<p>4.类似 home 键和 end 键的快捷操作：</p>
+<p>​    4.1 快速移动到行首：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">control + A</span><br></pre></td></tr></table></figure>
 
-3.2 按住 command 键不松开，按 tab 键向后选择，按 shift + tab 键向前选择
+<p>​    4.2 快速移动到行尾：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">control + E</span><br></pre></td></tr></table></figure>
 
-3.3 选中图标之后按住 option 键，松开 command 键即可打开应用</code></pre><p>4.类似 home 键和 end 键的快捷操作：</p>
-<pre><code>4.1 快速移动到行首：
+<p>​    4.3 到下一行：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">control + N</span><br></pre></td></tr></table></figure>
 
-`control + A`
+<p>​    4.4 到上一行：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">control + P</span><br></pre></td></tr></table></figure>
 
-4.2 快速移动到行尾：
+<p>​    4.5 从光标处开始删除，知道行尾：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">control + K</span><br></pre></td></tr></table></figure>
 
-`control + E`
 
-4.3 到下一行：
 
-`control + N `
-
-4.4 到上一行：
-
-`control + P`
-
-4.5 从光标处开始删除，知道行尾：
-
-`control + K`</code></pre><h2 id="安装软件出现文件已损坏"><a href="#安装软件出现文件已损坏" class="headerlink" title="安装软件出现文件已损坏"></a>安装软件出现文件已损坏</h2><p>1.关闭软件，点击取消，先别着急移到废纸篓 </p>
+<h2 id="安装软件出现文件已损坏"><a href="#安装软件出现文件已损坏" class="headerlink" title="安装软件出现文件已损坏"></a>安装软件出现文件已损坏</h2><p>1.关闭软件，点击取消，先别着急移到废纸篓 </p>
 <p>2.输入如下命令，开启安装任何应用：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo spctl --master-disable</span><br></pre></td></tr></table></figure>
 
 <p>3.如果是10.15的新系统，有可能还是失败，那么输入如下命令即可解决： </p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">xattr -cr /Applications/MindNode.app</span><br></pre></td></tr></table></figure>
 
-<pre><code>3.1 上方的命令是先输入：
-xattr -cr
+<p>​    3.1 上方的命令是先输入：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">xattr -cr</span><br></pre></td></tr></table></figure>
 
-3.2 然后将损坏的应用图标拖到终端命令后，按回车即可 </code></pre>
+<p>​    3.2 然后将损坏的应用图标拖到终端命令后，按回车即可 </p>
+
     </div>
 
     
