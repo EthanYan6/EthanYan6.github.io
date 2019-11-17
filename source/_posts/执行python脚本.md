@@ -12,6 +12,7 @@ categories:
 
  <center>Author：闫玉良</center> 
 Linux 设置定时任务，crontab 执行 python 脚本不生效的问题：
+<!--more-->
 
 尝试方法：
 
