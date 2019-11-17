@@ -10,7 +10,6 @@ categories:
 ---
 
  <center>Author：闫玉良</center> 
-
 那些不使用鼠标的人是否是打肿脸充胖子？因囊中羞涩而安装的xx软件装不上怎么办？MacBook Pro真的那么好用吗？下面为您解答
 
 <!--more-->
@@ -51,35 +50,49 @@ categories:
 
 3.快速将最小化的窗口调出来： 
 
-	3.1 先使用如下快捷键，打开所有的应用
-	
-	`command + tab `
-	
-	3.2 按住 command 键不松开，按 tab 键向后选择，按 shift + tab 键向前选择
-	
-	3.3 选中图标之后按住 option 键，松开 command 键即可打开应用
+​	3.1 先使用如下快捷键，打开所有的应用
+
+```shell
+command + tab 
+```
+
+​	3.2 按住 command 键不松开，按 tab 键向后选择，按 shift + tab 键向前选择
+
+​	3.3 选中图标之后按住 option 键，松开 command 键即可打开应用
 
 4.类似 home 键和 end 键的快捷操作：
 
-	4.1 快速移动到行首：
-	
-	`control + A`
-	
-	4.2 快速移动到行尾：
-	
-	`control + E`
-	
-	4.3 到下一行：
-	
-	`control + N `
-	
-	4.4 到上一行：
-	
-	`control + P`
-	
-	4.5 从光标处开始删除，知道行尾：
-	
-	`control + K`
+​	4.1 快速移动到行首：
+
+```shell
+control + A
+```
+
+​	4.2 快速移动到行尾：
+
+```shell
+control + E
+```
+
+​	4.3 到下一行：
+
+```shell
+control + N
+```
+
+​	4.4 到上一行：
+
+```shel
+control + P
+```
+
+​	4.5 从光标处开始删除，知道行尾：
+
+```shell
+control + K
+```
+
+
 
 ## 安装软件出现文件已损坏
 
@@ -97,7 +110,10 @@ sudo spctl --master-disable
 xattr -cr /Applications/MindNode.app
 ```
 
-	3.1 上方的命令是先输入：
-	xattr -cr
+​	3.1 上方的命令是先输入：
 
-	3.2 然后将损坏的应用图标拖到终端命令后，按回车即可 
+```shell
+	xattr -cr
+```
+
+​	3.2 然后将损坏的应用图标拖到终端命令后，按回车即可 
