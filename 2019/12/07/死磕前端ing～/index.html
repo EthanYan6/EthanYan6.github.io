@@ -205,7 +205,7 @@
 <p>17.<code>table</code> 是表格标签，与其配合的有 <code>tr</code> 行标签， <code>th</code> 表头单元格， <code>td</code> 普通单元格</p>
 <h3 id="1-2-实体符号以及注释"><a href="#1-2-实体符号以及注释" class="headerlink" title="1.2 实体符号以及注释"></a>1.2 实体符号以及注释</h3><p>大家都知道国人写文章的习惯为段首缩进两字符，如果在 <code>p</code> 标签起始位置手敲俩空格后，页面展示会发现怎么只有一个空格？？？那是因为被浏览器吃了，想要显示多个空格，就需要空格的实体符号了。那便是 <code>&amp;nbsp;</code>。</p>
 <p>另外，为了防止歧义的产生，还有俩实体符合值得一提，那便是大于号和小于号。毕竟它们长得太像标签的尖括号了。小于号表示为<code>&amp;lt;</code>；大于号表示为 <code>&amp;gt;</code></p>
-<p>注释为 <code>&lt;!-- xxx --&gt;&gt;</code></p>
+<p>注释为 <code>&lt;!-- xxx --&gt;</code></p>
 <h3 id="1-3-行元素与行内元素"><a href="#1-3-行元素与行内元素" class="headerlink" title="1.3 行元素与行内元素"></a>1.3 行元素与行内元素</h3><p><strong>行元素</strong>就是单独占一行的标签，也就是后面再有标签去要到下一行去！咱们看看都有谁这么霸道，不要脸：标题标签 <code>h</code>（标题嘛，情有可原）；段落标签 <code>p</code> （凑合着也说的过去）；<code>div</code> 标签（这个东西就把它理解成容器吧，毕竟它没有语义，中性的很～）</p>
 <p><strong>行内元素</strong>就是老实人，只占自己的位置。元素之间可以排开（设置宽高是无效的，它的宽和高是由内容撑开的）。这些老实人都有谁呢？图片标签 <code>img</code>  和通用内联容器标签 <code>span</code> 以及超链接标签  <code>a</code></p>
 <h3 id="1-4-布局"><a href="#1-4-布局" class="headerlink" title="1.4 布局"></a>1.4 布局</h3><p>不想做将军的士兵，不是好士兵。论谋略、论布局，咱也有一手。</p>
@@ -269,7 +269,7 @@
 <p>14.text-align 设置文字水平对齐方式</p>
 <p>15.text-indent 设置文字首行缩进</p>
 <blockquote>
-<p>css 中的注视为：</p>
+<p>css 中的注释为：</p>
 <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* xxx */</span></span><br></pre></td></tr></table></figure>
 </blockquote>
 <p>16.display 设置元素的类型与隐藏。（none 为隐藏；inline 为行内元素；block 为块元素）</p>
@@ -350,10 +350,10 @@
 <p>1.普通属性，即 html 中的属性，直接写就完事了</p>
 <p>2.class 类属性需要改写。如：className</p>
 <p>3.style 属性有横杠的也需要改写。如 font-size 改写为 .fontSize</p>
-<h3 id="3-5-事件属性以及匿名函数"><a href="#3-5-事件属性以及匿名函数" class="headerlink" title="3.5 事件属性以及匿名函数"></a>3.5 事件属性以及匿名函数</h3><h4 id="3-4-1-事件属性"><a href="#3-4-1-事件属性" class="headerlink" title="3.4.1 事件属性"></a>3.4.1 事件属性</h4><p>大家经常进行的鼠标点击、鼠标移入、鼠标移出都就是事件属性。我们可以通过将函数名赋值给元素事件属性的方式将事件和函数关联起来。</p>
+<h3 id="3-5-事件属性以及匿名函数"><a href="#3-5-事件属性以及匿名函数" class="headerlink" title="3.5 事件属性以及匿名函数"></a>3.5 事件属性以及匿名函数</h3><h4 id="3-5-1-事件属性"><a href="#3-5-1-事件属性" class="headerlink" title="3.5.1 事件属性"></a>3.5.1 事件属性</h4><p>大家经常进行的鼠标点击、鼠标移入、鼠标移出都就是事件属性。我们可以通过将函数名赋值给元素事件属性的方式将事件和函数关联起来。</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> oBtn = <span class="built_in">document</span>.getElementById(<span class="string">'btn'</span>);</span><br><span class="line"></span><br><span class="line">oBtn.onclick = myalert;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">myalert</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  alert(<span class="string">'ok!'</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h4 id="3-4-2-匿名函数"><a href="#3-4-2-匿名函数" class="headerlink" title="3.4.2 匿名函数"></a>3.4.2 匿名函数</h4><p>js 中匿名函数很好写，我们改写上一段代码为例：</p>
+<h4 id="3-5-2-匿名函数"><a href="#3-5-2-匿名函数" class="headerlink" title="3.5.2 匿名函数"></a>3.5.2 匿名函数</h4><p>js 中匿名函数很好写，我们改写上一段代码为例：</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> oBtn = <span class="built_in">document</span>.getElementById(<span class="string">'btn'</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 注意下面写法</span></span><br><span class="line">oBtn.onclick = <span class="function"><span class="keyword">function</span> (<span class="params"></span>)</span>&#123;</span><br><span class="line">  alert(<span class="string">'ok!'</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <h3 id="3-6-数组及操作方法"><a href="#3-6-数组及操作方法" class="headerlink" title="3.6 数组及操作方法"></a>3.6 数组及操作方法</h3><p>如同 python 中的列表，定义数组可以有下面两种方法：</p>
@@ -467,6 +467,10 @@
     <ul>
         
         <li>
+            <a class="footer-post" href="/categories/Mac/">Mac</a>
+        </li>
+        
+        <li>
             <a class="footer-post" href="/categories/%E9%9D%A2%E8%AF%95%E9%A2%98/">面试题</a>
         </li>
         
@@ -475,11 +479,7 @@
         </li>
         
         <li>
-            <a class="footer-post" href="/categories/Mac/">Mac</a>
-        </li>
-        
-        <li>
-            <a class="footer-post" href="/categories/windows/">windows</a>
+            <a class="footer-post" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a>
         </li>
         
     </ul>
