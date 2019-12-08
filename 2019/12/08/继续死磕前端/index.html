@@ -234,7 +234,7 @@
 <p>5.后一个元素：</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="string">'#box'</span>).next();</span><br></pre></td></tr></table></figure>
 
-<p>已经知道了如何定位某个元素，那么如何定位一个集合呢？这个也不难：</p>
+<p>已经知道了如何定位某个元素，那么如何定位一个精确的集合呢？这个也不难：</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//选择id是box的元素之前所有的同辈元素</span></span><br><span class="line">$(<span class="string">'#box'</span>).prevAll();</span><br><span class="line"></span><br><span class="line"><span class="comment">//选择id是box的元素后面所有的同辈元素</span></span><br><span class="line">$(<span class="string">'#box'</span>).nextAll(); </span><br><span class="line"></span><br><span class="line"><span class="comment">//选择id是box的元素的父元素</span></span><br><span class="line">$(<span class="string">'#box'</span>).parent(); </span><br><span class="line"></span><br><span class="line"><span class="comment">//选择id是box的元素的所有子元素</span></span><br><span class="line">$(<span class="string">'#box'</span>).children(); </span><br><span class="line"></span><br><span class="line"><span class="comment">//选择id是box的元素的同级元素</span></span><br><span class="line">$(<span class="string">'#box'</span>).siblings();</span><br></pre></td></tr></table></figure>
 
 <p>有人会想，如果我写错了，没找到报错怎么办？大可放心，jquery 有容错机制，即使没有找到元素，也不会出错。还为你提供了验证是否找到的方法，那便是 length 属性。length 值为 0 时代表没选择到想要元素；为 1 则代表选择到了相应的元素。</p>
@@ -330,7 +330,7 @@
 <p><code>g</code>： global，全文搜索，默认搜索到第一个结果接停止</p>
 <p><code>i</code>： ingore case，忽略大小写，默认大小写敏感</p>
 <p>还有常用的<strong>函数</strong></p>
-<p>test</p>
+<p><code>test</code></p>
 <p>用法：<code>正则.test(字符串)</code> 匹配成功，就返回真，否则就返回假</p>
 <p><strong>正则默认规则</strong> </p>
 <p>匹配成功就结束，不会继续匹配，区分大小写</p>
@@ -493,11 +493,11 @@
     <ul>
         
         <li>
-            <a class="footer-post" href="/categories/%E9%9D%A2%E8%AF%95%E9%A2%98/">面试题</a>
+            <a class="footer-post" href="/categories/Mac/">Mac</a>
         </li>
         
         <li>
-            <a class="footer-post" href="/categories/Mac/">Mac</a>
+            <a class="footer-post" href="/categories/%E9%9D%A2%E8%AF%95%E9%A2%98/">面试题</a>
         </li>
         
         <li>
