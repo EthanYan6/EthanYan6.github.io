@@ -8,7 +8,6 @@ categories:
 ---
 
  <center>Author：闫玉良</center> 
-
 这么久没有发文，很多人关心我是否离开了这个美丽的世界 ... 这些同学，是如何居心？出来，我保证不打死你们。不过很久没有更新文章，确实抱歉，我的错，我有罪 ～（小声逼逼：我又不是签约作家，还被逼出了连载的味道，也是没谁了。）
 
 今天咱们唠唠前端那点事儿，和前端死磕到底。
@@ -167,7 +166,7 @@ id 为标签的名字。在数据库中 id 一般为唯一键，此处同理。
 
 提到前端，不得不提到一个东西，那便是盒子模型。也就是浏览器中常看到的下列图片：
 
-<img src="https://github.com/EthanYan6/pic/raw/master/%E6%AD%BB%E7%A3%95%E5%89%8D%E7%AB%AFing%EF%BD%9E/Snipaste_2019-12-07_15-33-11.png" alt="盒子模型" style="zoom:50%;" />
+<img src="https://github.com/EthanYan6/pic/raw/master/%E6%AD%BB%E7%A3%95%E5%89%8D%E7%AB%AFing%EF%BD%9E/Snipaste_2019-12-07_15-33-11.png" alt="哟，老弟？什么年代了，网速还加载不出我的图片啊？换光纤吧！此处为盒子模型图片" style="zoom:50%;" />
 
 盒子模型主要还是为了理解如下几个概念而形象化的东西。
 
