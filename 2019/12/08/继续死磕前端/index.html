@@ -246,7 +246,7 @@
 <p>再看看其他操作样式的类名吧：</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 为id为div1的对象追加样式divClass2</span></span><br><span class="line">$(<span class="string">"#div1"</span>).addClass(<span class="string">"divClass2"</span>) </span><br><span class="line"></span><br><span class="line"><span class="comment">// 移除id为div1的对象的class名为divClass的样式</span></span><br><span class="line">$(<span class="string">"#div1"</span>).removeClass(<span class="string">"divClass"</span>)  </span><br><span class="line"></span><br><span class="line"><span class="comment">// 移除多个样式</span></span><br><span class="line">$(<span class="string">"#div1"</span>).removeClass(<span class="string">"divClass divClass2"</span>) </span><br><span class="line"></span><br><span class="line"><span class="comment">// 重复切换anotherClass样式</span></span><br><span class="line">$(<span class="string">"#div1"</span>).toggleClass(<span class="string">"anotherClass"</span>)</span><br></pre></td></tr></table></figure>
 
-<h4 id="1-2-绑定点击事件"><a href="#1-2-绑定点击事件" class="headerlink" title="1.2 绑定点击事件"></a>1.2 绑定点击事件</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="string">'#btn'</span>).click(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="comment">// 内部的 this 指的是原生对象</span></span><br><span class="line">  ...</span><br><span class="line">  <span class="comment">// 使用 jquery 对象用 $(this)</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h4 id="1-2-绑定点击事件"><a href="#1-2-绑定点击事件" class="headerlink" title="1.2 绑定点击事件"></a>1.2 绑定点击事件</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="string">'#btn'</span>).click(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="comment">// 内部的 this 指的是原生对象</span></span><br><span class="line">  ...</span><br><span class="line">  <span class="comment">// 使用 jquery 对象用 $(this)</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
 
 <blockquote>
 <p>js 对象与 jquery 对象有些许不同，jquery 对象是对 js 对象的封装，然后让其拥有了 jquery 的操作方法。他俩之间可以相互转换。</p>
@@ -497,11 +497,11 @@
         </li>
         
         <li>
-            <a class="footer-post" href="/categories/%E9%9D%A2%E8%AF%95%E9%A2%98/">面试题</a>
+            <a class="footer-post" href="/categories/hexo/">hexo</a>
         </li>
         
         <li>
-            <a class="footer-post" href="/categories/hexo/">hexo</a>
+            <a class="footer-post" href="/categories/%E9%9D%A2%E8%AF%95%E9%A2%98/">面试题</a>
         </li>
         
         <li>
