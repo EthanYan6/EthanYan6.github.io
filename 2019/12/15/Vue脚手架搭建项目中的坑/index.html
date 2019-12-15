@@ -194,7 +194,7 @@
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">✘  http://eslint.org/docs/rules/quotes  Strings must use singlequote</span><br><span class="line">src/components/EnterPage.vue:13:9</span><br><span class="line">  name: "CopClass",</span><br></pre></td></tr></table></figure>
 
 <p>瞧，告诉你字符串必须使用单引号，还指出了具体的位置。</p>
-<h4 id="3-空格坑"><a href="#3-空格坑" class="headerlink" title="3.空格坑"></a>3.空格坑</h4><p>在 <code>data</code> 传递参数 <code>msg</code> 时，可要注意了向下面的几种情况都会报错：</p>
+<h4 id="3-空格坑"><a href="#3-空格坑" class="headerlink" title="3.空格坑"></a>3.空格坑</h4><p>在 <code>data</code> 传递参数 <code>msg</code> 时，可要注意了，像下面的几种情况都会报错：</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// first</span></span><br><span class="line">  data() &#123;</span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">      msg: <span class="string">'今晚吃什么'</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"><span class="comment">// second</span></span><br><span class="line">  data ()&#123;</span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">      msg: <span class="string">'今晚吃什么'</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"><span class="comment">// third</span></span><br><span class="line">  data () &#123;</span><br><span class="line">    <span class="keyword">return</span>&#123;</span><br><span class="line">      msg: <span class="string">'今晚吃什么'</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
 
 <p>都会及时告诉你某某处缺少空格，请核查。</p>
@@ -280,15 +280,15 @@
         </li>
         
         <li>
+            <a class="footer-post" href="/categories/%E9%9D%A2%E8%AF%95%E9%A2%98/">面试题</a>
+        </li>
+        
+        <li>
             <a class="footer-post" href="/categories/Mac/">Mac</a>
         </li>
         
         <li>
-            <a class="footer-post" href="/categories/windows/">windows</a>
-        </li>
-        
-        <li>
-            <a class="footer-post" href="/categories/%E9%9D%A2%E8%AF%95%E9%A2%98/">面试题</a>
+            <a class="footer-post" href="/categories/hexo/">hexo</a>
         </li>
         
     </ul>
