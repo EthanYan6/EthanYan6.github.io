@@ -21,7 +21,7 @@
 
     <!--Open Graph Title-->
     
-        <meta property="og:title" content="小闫同学劝你多喝烫水"/>
+        <meta property="og:title" content="CentOS这些情况你也遇到过"/>
     
 
     <!--Open Graph Description-->
@@ -34,7 +34,7 @@
 
     <!--Type page-->
     
-        <meta property="og:type" content="website" />
+        <meta property="og:type" content="article" />
     
 
     <!--Page Cover-->
@@ -45,7 +45,7 @@
 
     <!-- Title -->
     
-    <title>vue - 小闫同学劝你多喝烫水</title>
+    <title>CentOS这些情况你也遇到过 - 小闫同学劝你多喝烫水</title>
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous">
@@ -132,9 +132,7 @@
 <div class="container">
 
     <!-- Main Content -->
-    
-
-<div class="row">
+    <div class="row">
     <div class="col-sm-12">
 
         <!--Title and Logo-->
@@ -142,43 +140,137 @@
     <div class="logo">
         <a href="/"><i class="logo-icon fa fa-cube" aria-hidden="true"></i></a>
         
-            <h1 id="main-title" class="title">#vue</h1>
-        
     </div>
 </header>
 
-        <section class="main archive-container">
+        <section class="main">
             
-                <div class="archive-post">
-    <a href="/2019/12/15/Vue%E8%84%9A%E6%89%8B%E6%9E%B6%E6%90%AD%E5%BB%BA%E9%A1%B9%E7%9B%AE%E4%B8%AD%E7%9A%84%E5%9D%91/">
-        <span class="archive-date">
-            Dec 2019
-        </span>
-        Vue脚手架搭建项目中的坑
-    </a>
+<div class="post">
+
+    <div class="post-header">
+        <h1 class="title">
+            <a href="/2019/12/22/CentOS%E8%BF%99%E4%BA%9B%E6%83%85%E5%86%B5%E4%BD%A0%E4%B9%9F%E9%81%87%E5%88%B0%E8%BF%87/">
+                CentOS这些情况你也遇到过
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2019-12-22</span>
+            
+            
+                <a href="#disqus_thread" class="comments">Comments</a>
+            
+            
+                <span class="category">
+                    <a href="/categories/Linux/">Linux</a>
+                </span>
+            
+        </div>
+    </div>
+
+    <div class="content">
+
+        <!-- Gallery -->
+        
+
+        <!-- Post Content -->
+        <center>Author: 闫玉良</center>
+
+<p><code>CentOS</code> 虚拟机许久未用，忘记密码如何是好？删掉再来又岂能甘心？想安装某个命令，直接 <code>yum install</code> 就可以了吗？远程连接服务器报错该怎样操作？</p>
+<a id="more"></a>
+
+<h2 id="1-CentOS-无法登陆情况下修改密码"><a href="#1-CentOS-无法登陆情况下修改密码" class="headerlink" title="1.CentOS 无法登陆情况下修改密码"></a>1.CentOS 无法登陆情况下修改密码</h2><p><strong>背景：</strong>虚拟机忘记 <code>root</code> 密码，不知如何登陆</p>
+<p><strong>环境：</strong><code>CentOS</code>，<code>root</code> 账户</p>
+<p><strong>操作：</strong></p>
+<p>1.开启虚拟机，在进入系统前选择项页面，按 <code>e</code> 键进入系统配置文件</p>
+<p>2.向下移动光标，找到 <code>Linux16</code> 开头，大概意思如下的一句话：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Linux16 /vmlinuz-3.10.0xxxxxx.x86_64 root=UUID=xxxxxxxx ro  crashkernel=auto rhgb quiet LANG=zh_CN.UTF-8</span><br></pre></td></tr></table></figure>
+
+<p>3.在该行的最后加空格，输入 <code>init=/bin/sh</code></p>
+<p>4.接下来按 <code>Ctrl + x</code> 组合键进入单用户模式</p>
+<blockquote>
+<p>等待一会，会发现已经进入系统，只不过，命令行前缀变为类似 <code>sh-4.2#</code> 的效果</p>
+</blockquote>
+<p>5.输入如下命令：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mount -o remount,rw /</span><br></pre></td></tr></table></figure>
+
+<p>6.之后输入如下命令：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">passwd</span><br></pre></td></tr></table></figure>
+
+<p>7.接下来就是修改 <code>root</code> 账号密码了</p>
+<blockquote>
+<p>重复输入一个不少于8位的密码（密码在输入时是不显示的，只需要正确输入并回车即可）</p>
+</blockquote>
+<p>8.出现 <code>successfully</code> 字样表示修改成功，但要生效还需继续操作</p>
+<p>9.输入如下命令：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">touch /.autorelabel</span><br></pre></td></tr></table></figure>
+
+<p>10.操作完毕，还有一步：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">exec /sbin/init</span><br></pre></td></tr></table></figure>
+
+<p>接下来就是等待系统重启（可能需要几分钟，需耐心等待，勿中途关机）</p>
+<h2 id="2-安装命令小技巧"><a href="#2-安装命令小技巧" class="headerlink" title="2.安装命令小技巧"></a>2.安装命令小技巧</h2><p>安装命令，大家一定会想到：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install xxx</span><br></pre></td></tr></table></figure>
+
+<p>但并非所有命令都是如此。有些则处于某工具包中，需要下载其基础环境，那该如何操作？</p>
+<p>只需执行：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum search xxx</span><br></pre></td></tr></table></figure>
+
+<p>耐心等待几分钟，直到执行完毕。然后安装最后提示模块即可。</p>
+<h4 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum search killall</span><br></pre></td></tr></table></figure>
+
+<p>提示：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Loaded plugins: fastestmirror, security</span><br><span class="line">Loading mirror speeds from cached hostfile</span><br><span class="line"></span><br><span class="line">base: mirrors.163.com</span><br><span class="line">extras: mirrors.aliyun.com</span><br><span class="line">*&gt; updates: mirrors.aliyun.com</span><br><span class="line">-----------------------------------Matched:killall-----------------------------------/</span><br><span class="line">psmisc.x86_64 : Utilities for managing processes on your system</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>可看到 <code>killall</code> 命令处于 <code>psmisc.x86_64</code> 中</p>
+</blockquote>
+<p>然后输入：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install psmisc.x86_64</span><br></pre></td></tr></table></figure>
+
+<h2 id="3-远程连接服务器"><a href="#3-远程连接服务器" class="headerlink" title="3.远程连接服务器"></a>3.远程连接服务器</h2><p><strong>背景：</strong>使用 <code>ssh</code> 连接服务器进行相关操作，报错</p>
+<p><strong>环境：</strong>本地 <code>MacOS</code>，服务器 <code>CentOS</code></p>
+<p><strong>操作：</strong></p>
+<p>1.使用命令进行远程连接，然后报错如下：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">❱ ssh root@192.168.xx.xx</span><br><span class="line">@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@</span><br><span class="line">@    WARNING: REMOTE HOST IDENTIFICATION HAS CHANGED!     @</span><br><span class="line">@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@</span><br><span class="line">IT IS POSSIBLE THAT SOMEONE IS DOING SOMETHING NASTY!</span><br><span class="line">Someone could be eavesdropping on you right now (man-in-the-middle attack)!</span><br><span class="line">It is also possible that a host key has just been changed.</span><br><span class="line">The fingerprint for the ECDSA key sent by the remote host is</span><br><span class="line">SHA256:ZBm9L5432tibaN5+weK4h9NJzqrc76lvxOUkVvSLGac.</span><br><span class="line">Please contact your system administrator.</span><br><span class="line">Add correct host key in /Users/ethanyan/.ssh/known_hosts to get rid of this message.</span><br><span class="line">Offending ECDSA key in /Users/ethanyan/.ssh/known_hosts:6</span><br><span class="line">ECDSA host key for 192.168.xx.xx has changed and you have requested strict checking.</span><br><span class="line">Host key verification failed.</span><br></pre></td></tr></table></figure>
+
+<p>2.使用如下命令进行解决：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -R 你要访问的IP地址</span><br></pre></td></tr></table></figure>
+
+<p>3.最后再次使用命令进行连接发现连接成功：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh 用户@你要访问的ip地址</span><br></pre></td></tr></table></figure>
+
+
+    </div>
+
+    
+
+    
+        <div class="post-tags">
+            <i class="fa fa-tags" aria-hidden="true"></i>
+            <a href="/tags/Linux/">#Linux</a> <a href="/tags/CentOS/">#CentOS</a>
+        </div>
+    
+
+    <!-- Comments -->
+    
+    <div class="comments">
+        
+<div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 </div>
-            
-                <div class="archive-post">
-    <a href="/2019/12/09/%E5%89%8D%E7%AB%AF%E6%94%BB%E5%9D%9A%E6%88%98/">
-        <span class="archive-date">
-            Dec 2019
-        </span>
-        前端攻坚战
-    </a>
+
+
+
+    </div>
+    
+
 </div>
-            
-                <div class="archive-post">
-    <a href="/2019/12/12/%E6%89%B6%E6%88%91%E8%B5%B7%E6%9D%A5-%E6%88%91%E8%BF%98%E5%8F%AF%E4%BB%A5%E5%AD%A6%EF%BD%9E/">
-        <span class="archive-date">
-            Dec 2019
-        </span>
-        扶我起来,我还可以学～
-    </a>
-</div>
-            
         </section>
+
     </div>
 </div>
+
 
 </div>
 
@@ -374,7 +466,7 @@
         var dsq = document.createElement('script');
         dsq.type = 'text/javascript';
         dsq.async = true;
-        dsq.src = '//' + disqus_shortname + '.disqus.com/count.js';
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
         (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
     }());
 </script>
