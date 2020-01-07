@@ -21,7 +21,7 @@
 
     <!--Open Graph Title-->
     
-        <meta property="og:title" content="小闫同学劝你多喝烫水"/>
+        <meta property="og:title" content="如果你是mac用户，这个问题不信你没遇到！"/>
     
 
     <!--Open Graph Description-->
@@ -34,7 +34,7 @@
 
     <!--Type page-->
     
-        <meta property="og:type" content="website" />
+        <meta property="og:type" content="article" />
     
 
     <!--Page Cover-->
@@ -45,7 +45,7 @@
 
     <!-- Title -->
     
-    <title>elasticsearch - 小闫同学劝你多喝烫水</title>
+    <title>如果你是mac用户，这个问题不信你没遇到！ - 小闫同学劝你多喝烫水</title>
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous">
@@ -132,9 +132,7 @@
 <div class="container">
 
     <!-- Main Content -->
-    
-
-<div class="row">
+    <div class="row">
     <div class="col-sm-12">
 
         <!--Title and Logo-->
@@ -142,34 +140,105 @@
     <div class="logo">
         <a href="/"><i class="logo-icon fa fa-cube" aria-hidden="true"></i></a>
         
-            <h1 id="main-title" class="title">elasticsearch</h1>
-        
     </div>
 </header>
 
-        <section class="main archive-container">
+        <section class="main">
             
-                <div class="archive-post">
-    <a href="/2019/10/25/Elasticsearch%20%E4%B8%AD%E8%BF%99%E4%BA%9B%E5%BF%85%E5%A4%87%20API%20%E4%BD%A0%E6%99%93%E5%BE%97%E5%98%9B%EF%BC%9F/">
-        <span class="archive-date">
-            Oct 2019
-        </span>
-        Elasticsearch 中这些必备 API 你晓得嘛？
-    </a>
+<div class="post">
+
+    <div class="post-header">
+        <h1 class="title">
+            <a href="/2020/01/07/%E5%A6%82%E6%9E%9C%E4%BD%A0%E6%98%AFmac%E7%94%A8%E6%88%B7%EF%BC%8C%E8%BF%99%E4%B8%AA%E9%97%AE%E9%A2%98%E4%B8%8D%E4%BF%A1%E4%BD%A0%E6%B2%A1%E9%81%87%E5%88%B0%EF%BC%81/">
+                如果你是mac用户，这个问题不信你没遇到！
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2020-01-07</span>
+            
+            
+                <a href="#disqus_thread" class="comments">Comments</a>
+            
+            
+                <span class="category">
+                    <a href="/categories/Mac/">Mac</a>
+                </span>
+            
+        </div>
+    </div>
+
+    <div class="content">
+
+        <!-- Gallery -->
+        
+
+        <!-- Post Content -->
+        <p>Mac 用户在使用 python 的虚拟环境时，你现在或者将来一定会遇到此问题，早发现早治疗 ～</p>
+<a id="more"></a>
+
+<h3 id="1-问题"><a href="#1-问题" class="headerlink" title="1.问题"></a>1.问题</h3><p>在虚拟环境中执行 <code>python</code> 等相关命令时，报如下所示错误：</p>
+<img src="https://github.com/EthanYan6/pic/raw/master/python%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83%E6%8A%A5%E9%94%99-2.png" alt="报错2" style="zoom:50%;">
+
+<p>使用 <code>pip</code> 命令报错依旧：</p>
+<img src="https://github.com/EthanYan6/pic/raw/master/python%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83%E6%8A%A5%E9%94%99-1.png" alt="报错1" style="zoom:50%;">
+
+<p>是不是很诡异？</p>
+<h3 id="2-原因分析"><a href="#2-原因分析" class="headerlink" title="2.原因分析"></a>2.原因分析</h3><p>出现上述问题，在查询过 <code>Google</code> 和 <code>stackoverflow</code> 等之后，发现了共性：都是使用 <code>MAC</code> 的用户，而且使用了  <code>brew</code> 包管理工具。</p>
+<p>在执行命令 <code>brew update</code> 命令之后会升级所有管理的模块，比如 <code>Python</code> 。因此遇到 <code>Python</code> 有版本更新时，嘻嘻，恭喜你中奖了。</p>
+<p><code>Mac</code> 在创建虚拟环境后，会发现文件夹下有一些链接文件，各种软链接其实指向了系统的 <code>Python</code> （节省空间所致），所以当你更新了 <code>Python</code> 之后，它所在的路径中包含的版本号也会更新，路径立即失效（软链接其实就保存的就是绝对路径），你的虚拟环境也就无法正常启动了。</p>
+<h3 id="3-解决办法"><a href="#3-解决办法" class="headerlink" title="3.解决办法"></a>3.解决办法</h3><p>网上有一些解决办法，如下：</p>
+<p>1.既然知道原因，那么重新修复这些软链接不就好了？于是，开始了 <code>删除创建</code> 之旅。</p>
+<blockquote>
+<p>我滴个乖乖！你知道哪个犄角旮旯里还藏着一个不怀好意的软链接嘛？然后网友提供了各种命令：</p>
+<p><code>find ~/.virtualenvs/my-virtual-env/ -type l</code> 别闹了好吗？几十个，我怎么弄？放弃放弃，如果你愿意，那么请查看这篇帖子仔细研究即可：<a href="https://stackoverflow.com/questions/23233252/broken-references-in-virtualenvs" target="_blank" rel="noopener">https://stackoverflow.com/questions/23233252/broken-references-in-virtualenvs</a></p>
+</blockquote>
+<p>2.重新装系统</p>
+<blockquote>
+<p>这个。。。不至于吧，杀鸡焉用宰牛刀？既然知道问题，解决就好了嘛</p>
+</blockquote>
+<p>3.删除虚拟环境</p>
+<blockquote>
+<p>这个听起来不错，这也正是我想讲的方法。前提是你有 <code>requirements.txt</code> 文件，要不然还是麻烦点使用办法 1 吧。</p>
+</blockquote>
+<h3 id="4-实操"><a href="#4-实操" class="headerlink" title="4.实操"></a>4.实操</h3><p>删除重建虚拟环境即可，但如果这么简单，还用往下讲解吗？笑话！以后再出现，难不成还在删除吗？且听我的骚操作。</p>
+<p>删除虚拟环境后，再创建时，请使用如下命令：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">virtualenv --no-site-packages --always-copy 虚拟环境名称 -p python3</span><br></pre></td></tr></table></figure>
+
+<p>1.<code>--no-site-packages</code> ：创建虚拟环境时，不会安装系统环境中的任何模块（也就是创建一个全新的环境）</p>
+<p>2.<code>-p python3</code> 指定创建的虚拟环境为 <code>python3.x</code> 版本</p>
+<p>3.<code>--always-copy</code> 可以跟踪系统 <code>python</code> 信息，即使你升级了系统的 <code>python</code> ，虚拟环境仍然可以使用。</p>
+
+    </div>
+
+    
+
+    
+        <div class="post-tags">
+            <i class="fa fa-tags" aria-hidden="true"></i>
+            <a href="/tags/python/">#python</a> <a href="/tags/MacOS/">#MacOS</a> <a href="/tags/virtualenv/">#virtualenv</a>
+        </div>
+    
+
+    <!-- Comments -->
+    
+    <div class="comments">
+        
+<div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 </div>
-            
-                <div class="archive-post">
-    <a href="/2019/10/25/%E5%B8%B8%E7%94%A8-es-%E6%9F%A5%E8%AF%A2%E7%9B%98%E7%82%B9/">
-        <span class="archive-date">
-            Oct 2019
-        </span>
-        常用 es 查询盘点
-    </a>
+
+
+
+    </div>
+    
+
 </div>
-            
         </section>
+
     </div>
 </div>
+
 
 </div>
 
@@ -365,7 +434,7 @@
         var dsq = document.createElement('script');
         dsq.type = 'text/javascript';
         dsq.async = true;
-        dsq.src = '//' + disqus_shortname + '.disqus.com/count.js';
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
         (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
     }());
 </script>
