@@ -175,10 +175,12 @@
 
         <!-- Post Content -->
          <center>Author：闫玉良</center> 
+## 1.索引备份迁移
 
-<h2 id="1-索引备份迁移"><a href="#1-索引备份迁移" class="headerlink" title="1.索引备份迁移"></a>1.索引备份迁移</h2><p>众所周知，ES 中的 mapping 只能在索引建立初期进行创建，且建立之后不可更改。mapping 对应的字段会映射成指定类型，未定义字段则自动映射，一般为 text 类型。那么想更改索引名或者更改某字段的 mapping 时，是否就束手无策了呢？当然不是！！！官方提供了一个接口，供索引备份迁移操作使用，那便是 <strong>reindex</strong>。当旧索引与新索引在同一节点时，效率相当高，万条数据瞬间完成（<code>大约只需0.4s</code>）。数百万数据也只需几分钟即可完成 操作，是不是很溜呢？快来学习一下吧。</p>
+<p>众所周知，ES 中的 mapping 只能在索引建立初期进行创建，且建立之后不可更改。mapping 对应的字段会映射成指定类型，未定义字段则自动映射，一般为 text 类型。那么想更改索引名或者更改某字段的 mapping 时，是否就束手无策了呢？当然不是！！！官方提供了一个接口，供索引备份迁移操作使用，那便是 <strong>reindex</strong>。当旧索引与新索引在同一节点时，效率相当高，万条数据瞬间完成（<code>大约只需0.4s</code>）。数百万数据也只需几分钟即可完成 操作，是不是很溜呢？快来学习一下吧。</p>
  <a id="more"></a> 
 
+<p><strong><em>更多精彩文章请关注公众号『Pythonnote』或者『全栈技术精选』</em></strong></p>
 <p><strong>请求方式：POST</strong></p>
 <p><strong>请求 API <code>_reindex</code></strong></p>
 <figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">"source"</span>: &#123;</span><br><span class="line">    <span class="attr">"index"</span>: <span class="string">"要备份的索引名"</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">"dest"</span>: &#123;</span><br><span class="line">    <span class="attr">"index"</span>: <span class="string">"新建的索引名"</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -250,7 +252,7 @@
             <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 footer-about">
                 <h2>About</h2>
                 <p>
-                    This website is the exclusive blog of Ethan Yan. If there is any infringement, please inform us in time. I will delete it in the first time. If you try to find my contact information, you may be disappointed, hahahahahahaha......
+                    This website is the exclusive blog of Ethan Yan. If there is any infringement, please inform us in time. I will delete it in the first time. If you try to find my contact information, you may be disappointed, hahahahahahaha......更多精彩文章请关注公众号『Pythonnote』或者『全栈技术精选』
                 </p>
             </div>
             
@@ -289,11 +291,11 @@
         </li>
         
         <li>
-            <a class="footer-post" href="/categories/windows/">windows</a>
+            <a class="footer-post" href="/categories/hexo/">hexo</a>
         </li>
         
         <li>
-            <a class="footer-post" href="/categories/hexo/">hexo</a>
+            <a class="footer-post" href="/categories/windows/">windows</a>
         </li>
         
         <li>

@@ -177,7 +177,7 @@
         <p>Mac 用户在使用 python 的虚拟环境时，你现在或者将来一定会遇到此问题，早发现早治疗 ～</p>
 <a id="more"></a>
 
-<p><strong><em>更多精彩文章请关注公众号『Pythonnote』或者『全站技术精选』</em></strong></p>
+<p><strong><em>更多精彩文章请关注公众号『Pythonnote』或者『全栈技术精选』</em></strong></p>
 <h3 id="1-问题"><a href="#1-问题" class="headerlink" title="1.问题"></a>1.问题</h3><p>在虚拟环境中执行 <code>python</code> 等相关命令时，报如下所示错误：</p>
 <img src="https://github.com/EthanYan6/pic/raw/master/python%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83%E6%8A%A5%E9%94%99-2.png" alt="报错2" style="zoom:50%;">
 
@@ -188,7 +188,7 @@
 <h3 id="2-原因分析"><a href="#2-原因分析" class="headerlink" title="2.原因分析"></a>2.原因分析</h3><p>出现上述问题，在查询过 <code>Google</code> 和 <code>stackoverflow</code> 等之后，发现了共性：都是使用 <code>MAC</code> 的用户，而且使用了  <code>brew</code> 包管理工具。</p>
 <p>在执行 <code>brew update</code> 命令之后会升级所有管理的模块，比如 <code>Python</code> 。因此遇到 <code>Python</code> 有版本更新时，嘻嘻，恭喜你中奖了。</p>
 <p><code>Mac</code> 在创建虚拟环境后，会发现文件夹下有一些链接文件，各种软链接其实指向了系统的 <code>Python</code> （节省空间所致），所以当你更新了 <code>Python</code> 之后，它所在的路径中包含的版本号也会更新，路径立即失效（软链接其实就保存的就是绝对路径），你的虚拟环境也就无法正常启动了。</p>
-<p><strong><em>更多精彩文章请关注公众号『Pythonnote』或者『全站技术精选』</em></strong></p>
+<p><strong><em>更多精彩文章请关注公众号『Pythonnote』或者『全栈技术精选』</em></strong></p>
 <h3 id="3-解决办法"><a href="#3-解决办法" class="headerlink" title="3.解决办法"></a>3.解决办法</h3><p>网上有一些解决办法，如下：</p>
 <p>1.既然知道原因，那么重新修复这些软链接不就好了？于是，开始了 <code>删除创建</code> 之旅。</p>
 <blockquote>
@@ -210,7 +210,7 @@
 <p>1.<code>--no-site-packages</code> ：创建虚拟环境时，不会安装系统环境中的任何模块（也就是创建一个全新的环境）</p>
 <p>2.<code>-p python3</code> 指定创建的虚拟环境为 <code>python3.x</code> 版本</p>
 <p>3.<code>--always-copy</code> 可以跟踪系统 <code>python</code> 信息，即使你升级了系统的 <code>python</code> ，虚拟环境仍然可以使用。</p>
-<p><strong><em>更多精彩文章请关注公众号『Pythonnote』或者『全站技术精选』</em></strong></p>
+<p><strong><em>更多精彩文章请关注公众号『Pythonnote』或者『全栈技术精选』</em></strong></p>
 
     </div>
 
@@ -219,7 +219,7 @@
     
         <div class="post-tags">
             <i class="fa fa-tags" aria-hidden="true"></i>
-            <a href="/tags/MacOS/">#MacOS</a> <a href="/tags/python/">#python</a> <a href="/tags/virtualenv/">#virtualenv</a>
+            <a href="/tags/python/">#python</a> <a href="/tags/MacOS/">#MacOS</a> <a href="/tags/virtualenv/">#virtualenv</a>
         </div>
     
 
@@ -254,7 +254,7 @@
             <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 footer-about">
                 <h2>About</h2>
                 <p>
-                    This website is the exclusive blog of Ethan Yan. If there is any infringement, please inform us in time. I will delete it in the first time. If you try to find my contact information, you may be disappointed, hahahahahahaha......
+                    This website is the exclusive blog of Ethan Yan. If there is any infringement, please inform us in time. I will delete it in the first time. If you try to find my contact information, you may be disappointed, hahahahahahaha......更多精彩文章请关注公众号『Pythonnote』或者『全栈技术精选』
                 </p>
             </div>
             
@@ -293,11 +293,11 @@
         </li>
         
         <li>
-            <a class="footer-post" href="/categories/windows/">windows</a>
+            <a class="footer-post" href="/categories/hexo/">hexo</a>
         </li>
         
         <li>
-            <a class="footer-post" href="/categories/hexo/">hexo</a>
+            <a class="footer-post" href="/categories/windows/">windows</a>
         </li>
         
         <li>
