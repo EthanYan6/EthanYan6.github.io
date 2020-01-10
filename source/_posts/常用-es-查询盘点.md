@@ -6,10 +6,11 @@ categories: elasticsearch
 ---
 
  <center>Author：闫玉良</center> 
-
 熟悉了关系型数据库的结构概念以及查询，再去使用属于非关系型数据库的 Elasticsearch 时，简直是噩梦。第一道难关便是概念上的转换。索引？类型？文档？what？
 
  <!-- more --> 
+
+***更多精彩文章请关注公众号『Pythonnote』或者『全栈技术精选』***
 
 > 下面是概念上的对应，大家可以类比了解
 

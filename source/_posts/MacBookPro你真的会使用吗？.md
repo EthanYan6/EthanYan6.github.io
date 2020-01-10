@@ -14,6 +14,8 @@ categories:
 
 <!--more-->
 
+***更多精彩文章请关注公众号『Pythonnote』或者『全栈技术精选』***
+
 经过不懈的努力，小闫同学终于使用上了 MacBook Pro，先小小的炫耀一番。（不要打我哈~）
 
 ![小闫同学的 MacBook Pro](https://github.com/EthanYan6/pic/raw/master/MacBookPro%E4%BD%A0%E7%9C%9F%E7%9A%84%E4%BC%9A%E4%BD%BF%E7%94%A8%E5%90%97%EF%BC%9F/IMG_0212.jpg)

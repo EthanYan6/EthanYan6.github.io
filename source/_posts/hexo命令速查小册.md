@@ -10,12 +10,13 @@ categories:
 ---
 
  <center>Author：闫玉良</center> 
-
 最近都在搭建自己的博客，不断的调整显示效果，以及添加一些初始功能，总算大体框架完成，细枝末节尚待商榷。小闫同学的博客地址为  http://www.pythonnote.cn/  ，希望大家多多捧场 ~ 当然也希望大家多多关注公众号『全栈技术精选』
 
 先来几张效果图压场，deng ~ deng ~ dengdeng
 
 <!--more-->
+
+***更多精彩文章请关注公众号『Pythonnote』或者『全栈技术精选』***
 
 ![](https://github.com/EthanYan6/pic/raw/master/hexo%E5%91%BD%E4%BB%A4%E9%80%9F%E6%9F%A5%E5%B0%8F%E5%86%8C/blog1.png)
 

@@ -14,6 +14,8 @@ categories:
 Linux 设置定时任务，crontab 执行 python 脚本不生效的问题：
 <!--more-->
 
+***更多精彩文章请关注公众号『Pythonnote』或者『全栈技术精选』***
+
 尝试方法：
 
 1.给 python 脚本第一行添加如下代码：
