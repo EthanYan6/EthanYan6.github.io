@@ -10,6 +10,8 @@ categories:
 
 ---
 
+ <center>Author：闫玉良</center> 
+
 Mac 用户在使用 python 的虚拟环境时，你现在或者将来一定会遇到此问题，早发现早治疗 ～
 
 <!--more-->
