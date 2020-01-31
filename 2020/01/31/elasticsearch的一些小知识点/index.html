@@ -21,7 +21,7 @@
 
     <!--Open Graph Title-->
     
-        <meta property="og:title" content="python 字符串前面的那些特殊字符"/>
+        <meta property="og:title" content="elasticsearch的一些小知识点"/>
     
 
     <!--Open Graph Description-->
@@ -45,7 +45,7 @@
 
     <!-- Title -->
     
-    <title>python 字符串前面的那些特殊字符 - 小闫同学劝你多喝烫水</title>
+    <title>elasticsearch的一些小知识点 - 小闫同学劝你多喝烫水</title>
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous">
@@ -149,20 +149,20 @@
 
     <div class="post-header">
         <h1 class="title">
-            <a href="/2019/11/04/python%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%89%8D%E9%9D%A2%E7%9A%84%E9%82%A3%E4%BA%9B%E7%89%B9%E6%AE%8A%E5%AD%97%E7%AC%A6/">
-                python 字符串前面的那些特殊字符
+            <a href="/2020/01/31/elasticsearch%E7%9A%84%E4%B8%80%E4%BA%9B%E5%B0%8F%E7%9F%A5%E8%AF%86%E7%82%B9/">
+                elasticsearch的一些小知识点
             </a>
         </h1>
         <div class="post-info">
             
-                <span class="date">2019-11-04</span>
+                <span class="date">2020-01-31</span>
             
             
                 <a href="#disqus_thread" class="comments">Comments</a>
             
             
                 <span class="category">
-                    <a href="/categories/python/">python</a>
+                    <a href="/categories/elasticsearch/">elasticsearch</a>
                 </span>
             
         </div>
@@ -175,32 +175,45 @@
 
         <!-- Post Content -->
         <center>Author：闫玉良</center>
-对于 Python 的字符串大家并不陌生，引号引用即为字符串。那么字符串前面经常加的一些特殊字母就让初学者懵逼了，今天我们就来详细讲一下 ......
 
+<p>这个假期有多少人新添了一份职业「云监工」，又有多少人干起了小区保安的工作（统计着进出小区的车辆），还有一些人无聊到数火龙果的「黑芝麻」…… 实不相瞒，我也一样，只不过无聊之际，偶尔看看书。之前对于 elasticsearch 介绍过一些常用的 API ，今天再做一些额外的补充。</p>
+<blockquote>
+<p>「云监工」：网络流行词，来源于央视频直播武汉开建的防治传染病医院火神山医院的建设工地，网友们虽然不能到现场出把力，但也给自己加了一个身份：云监工，通过直播镜头去“监督”医院的建设进度。</p>
+<p>小区保安工作：很多人在家无聊，自觉统计着出入小区人员车辆数量，以帮助监督是否有人在疫情期间四处乱逛。</p>
+<p>数火龙果的籽：这个起源于网友晒出的图片，为一个火龙果所有的籽标上了序号。</p>
+</blockquote>
 <a id="more"></a>
 
 <p><strong><em>更多精彩文章请关注公众号『Pythonnote』或者『全栈技术精选』</em></strong></p>
-<h2 id="1-u"><a href="#1-u" class="headerlink" title="1.u"></a>1.u</h2><p>作为程序员，看到 <code>u</code> 字符，首先想到的便是 <code>Unicode</code> 这个单词。没错，它确实也代表此含义。目的是告知后面字符串采用 <code>Unicode</code> 编码格式，应用对象自然是容易出现问题的<strong>中文字符串</strong>。</p>
-<p>有时我们存储完成后，再次取用发现格式不一致，或者显示乱码等问题，使用 <code>u</code> 便很好解决了。</p>
-<h2 id="2-f"><a href="#2-f" class="headerlink" title="2.f"></a>2.f</h2><p>这个字符经常看到，不知你是否还注意到一个现象，那便是出现此字符的字符串，字符串中必定会有大括号。哈哈，忘记也没有关系，要不然我讲什么呢？</p>
-<p>此字符代表的是在后面字符串中可以使用大括号（大括号中可以使用 <code>python</code> 表达式）。如：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">f"testfile-<span class="subst">&#123;str(time.time()).replace(<span class="string">'.'</span>,<span class="string">''</span>)&#125;</span>.txt"</span></span><br></pre></td></tr></table></figure>
+<h2 id="1-短语搜索"><a href="#1-短语搜索" class="headerlink" title="1.短语搜索"></a>1.短语搜索</h2><p>之前向大家介绍了模糊搜索 <code>match</code> ，现在又有了很多复杂的需求：确切的匹配若干个单词（同一字段的值中包含多个词）或者短语。这就用到了一个新的方法 <code>match_phrase</code>，官方示例如下：</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">GET /megacorp/employee/_search</span><br><span class="line">&#123;</span><br><span class="line">    <span class="attr">"query"</span> : &#123;</span><br><span class="line">        <span class="attr">"match_phrase"</span> : &#123;</span><br><span class="line">            <span class="attr">"about"</span> : <span class="string">"rock climbing"</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>输出结果为：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">testfile<span class="number">-15728489624240513.</span>txt</span><br></pre></td></tr></table></figure>
+<p>上述语句查询 <code>about</code> 字段中同时包含 <code>rock</code> 和 <code>climbing</code>（并且是相邻的）的员工记录。<code>match_phrase</code> 方法也可以用于匹配<strong>短语(phrases)</strong></p>
+<p>有一些新来的小伙伴，可能对于上面的表达不是十分清楚，下面详细介绍一下。<code>GET</code> 表示请求方式，<code>/megacorp/employee/_search</code> 表示访问路径 <code>PATH</code>，大括号中的内容即 <code>DSL</code> 语句。</p>
+<h3 id="1-1-API-访问方式"><a href="#1-1-API-访问方式" class="headerlink" title="1.1 API 访问方式"></a>1.1 API 访问方式</h3><h4 id="curl"><a href="#curl" class="headerlink" title="curl"></a>curl</h4><p>与 <code>elasticsearch</code> 进行交互时，可以通过 <code>crul</code> 方式，与其他普通的 <code>HTTP</code> 请求相同：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -X&lt;VERB&gt; '&lt;PROTOCOL&gt;://&lt;HOST&gt;:&lt;PORT&gt;/&lt;PATH&gt;?&lt;QUERY_STRING&gt;' -d '&lt;BODY&gt;'</span><br></pre></td></tr></table></figure>
 
 <blockquote>
-<p>这样我们在字符串中就可以随心所欲的使用任何表达式，不再通过 <code>+</code> 拼接各种字符串了。</p>
+<p><strong>VERB</strong> 表示请求方式：<code>GET</code>, <code>POST</code>, <code>PUT</code>, <code>HEAD</code>, <code>DELETE</code></p>
+<p><strong>PROTOCOL</strong> 表示访问协议，如 <code>HTTP</code> / <code>HTTPS</code> （只有在 <code>Elasticsearch</code> 前面有 <code>https</code> 代理的时候可用）</p>
+<p><strong>HOST</strong> 表示 <code>Elasticsearch</code> 集群中的任何一个节点的主机名，如果是在本地的节点，那么就叫 <code>localhost</code></p>
+<p><strong>PORT</strong> 表示 <code>Elasticsearch HTTP</code> 服务所在的端口，默认为 9200</p>
+<p><strong>PATH</strong> 表示 <code>API</code> 路径，也就是示例中的 <code>/megacorp/employee/_search</code></p>
+<p><strong>QUERY_STRING</strong> 表示一些可选的查询请求参数，例如 <code>?pretty</code> 参数使得返回 <code>JSON</code> 数据更加美观易读。</p>
+<p><strong>BODY</strong> 一个 <code>JSON</code> 格式的请求主体（如果请求需要的话）</p>
 </blockquote>
-<h2 id="3-r"><a href="#3-r" class="headerlink" title="3.r"></a>3.r</h2><p><code>r</code> 这个字符是否更眼熟了？没错，在学习正则表达式时，大家都见过。此字符含义与其相同，代表将字符串中各种特殊符号进行转义，字符串中内容 <code>所见即所得</code> 。比如 ：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">r'你好：\n您的快递'</span></span><br></pre></td></tr></table></figure>
+<h4 id="postman"><a href="#postman" class="headerlink" title="postman"></a>postman</h4><p>大家经常使用到的工具，通过输入请求 <code>url</code> 以及根据需要填写 <code>DSL</code> 语句做为请求体，进行访问。</p>
+<h4 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h4><p>任何其他发送 <code>HTTP</code> 请求的方式</p>
+<h2 id="2-搜索结果高亮"><a href="#2-搜索结果高亮" class="headerlink" title="2.搜索结果高亮"></a>2.搜索结果高亮</h2><p>故名思义，我们可以将搜索到的文档中匹配到的关键词进行高亮显示。它最大的作用就是醒目，让你一眼发现这个文档被匹配的原因。语句也很简单，只需要在之前的查询语句上增加 <code>highlight</code>参数：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">GET /megacorp/employee/_search</span><br><span class="line">&#123;</span><br><span class="line">    <span class="string">"query"</span> : &#123;</span><br><span class="line">        <span class="string">"match_phrase"</span> : &#123;</span><br><span class="line">            <span class="string">"about"</span> : <span class="string">"rock climbing"</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="string">"highlight"</span>: &#123;</span><br><span class="line">        <span class="string">"fields"</span> : &#123;</span><br><span class="line">            <span class="string">"about"</span> : &#123;&#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>其中的 <code>\n</code> 不再表示换行符，而是反斜杠加字母 <code>\n</code></p>
-<h2 id="4-b"><a href="#4-b" class="headerlink" title="4.b"></a>4.b</h2><p>这个字符就更常见了，它表示 <code>bytes</code> 类型。它可以与字符串类型相互转换，使用 <code>encode</code> 与 <code>decode</code>。</p>
-<h3 id="bytes-gt-string"><a href="#bytes-gt-string" class="headerlink" title="bytes -&gt; string"></a>bytes -&gt; string</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">by = <span class="string">b'test'</span></span><br><span class="line">by.decode(<span class="string">'utf8'</span>)</span><br></pre></td></tr></table></figure>
+<p>当我们运行这个语句时，会命中与之前相同的结果，但是在返回结果中会有一个新的部分叫做 <code>highlight</code>，这里包含了来自<code>about</code>字段中的文本，并且用 <code>&lt;em&gt;&lt;/em&gt;</code>来标识匹配到的单词。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">   ...</span><br><span class="line">   <span class="string">"hits"</span>: &#123;</span><br><span class="line">      <span class="string">"total"</span>:      <span class="number">1</span>,</span><br><span class="line">      <span class="string">"max_score"</span>:  <span class="number">0.23013961</span>,</span><br><span class="line">      <span class="string">"hits"</span>: [</span><br><span class="line">         &#123;</span><br><span class="line">            ...</span><br><span class="line">            <span class="string">"_score"</span>:         <span class="number">0.23013961</span>,</span><br><span class="line">            <span class="string">"_source"</span>: &#123;</span><br><span class="line">               <span class="string">"first_name"</span>:  <span class="string">"John"</span>,</span><br><span class="line">               <span class="string">"last_name"</span>:   <span class="string">"Smith"</span>,</span><br><span class="line">               <span class="string">"age"</span>:         <span class="number">25</span>,</span><br><span class="line">               <span class="string">"about"</span>:       <span class="string">"I love to go rock climbing"</span>,</span><br><span class="line">               <span class="string">"interests"</span>: [ <span class="string">"sports"</span>, <span class="string">"music"</span> ]</span><br><span class="line">            &#125;,</span><br><span class="line">            <span class="string">"highlight"</span>: &#123;</span><br><span class="line">               <span class="string">"about"</span>: [</span><br><span class="line">                  <span class="string">"I love to go &lt;em&gt;rock&lt;/em&gt; &lt;em&gt;climbing&lt;/em&gt;"</span> &lt;<span class="number">1</span>&gt;</span><br><span class="line">               ]</span><br><span class="line">            &#125;</span><br><span class="line">         &#125;</span><br><span class="line">      ]</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h3 id="string-gt-bytes"><a href="#string-gt-bytes" class="headerlink" title="string -&gt; bytes"></a>string -&gt; bytes</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">str = <span class="string">'test'</span></span><br><span class="line">str.encode(<span class="string">'utf8'</span>)</span><br></pre></td></tr></table></figure>
-
+<blockquote>
+<p>&lt;1&gt; 原有文本中高亮的片段</p>
+</blockquote>
+<p><strong><em>更多精彩文章请关注公众号『Pythonnote』或者『全栈技术精选』</em></strong></p>
 
     </div>
 
@@ -209,7 +222,7 @@
     
         <div class="post-tags">
             <i class="fa fa-tags" aria-hidden="true"></i>
-            <a href="/tags/python/">#python</a> <a href="/tags/字符串/">#字符串</a>
+            <a href="/tags/elasticsearch/">#elasticsearch</a>
         </div>
     
 
