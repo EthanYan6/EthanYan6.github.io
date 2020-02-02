@@ -178,8 +178,8 @@
 <a id="more"></a>
 
 <p><strong><em>更多精彩文章请关注公众号『Pythonnote』或者『全栈技术精选』</em></strong></p>
-<h2 id="1-OSI、TCP-IP、五层协议的体系结构以及各层协议"><a href="#1-OSI、TCP-IP、五层协议的体系结构以及各层协议" class="headerlink" title="1.OSI、TCP/IP、五层协议的体系结构以及各层协议"></a>1.OSI、TCP/IP、五层协议的体系结构以及各层协议</h2><p><img src="https://images2018.cnblogs.com/blog/1169376/201807/1169376-20180710111640278-854664480.png" alt="img"></p>
-<p><img src="https://images2018.cnblogs.com/blog/1169376/201807/1169376-20180710150252263-1051710920.png" alt="img"></p>
+<h2 id="1-OSI、TCP-IP、五层协议的体系结构以及各层协议"><a href="#1-OSI、TCP-IP、五层协议的体系结构以及各层协议" class="headerlink" title="1.OSI、TCP/IP、五层协议的体系结构以及各层协议"></a>1.OSI、TCP/IP、五层协议的体系结构以及各层协议</h2><p><img src="https://github.com/EthanYan6/pic/raw/master/1.png" alt="img"></p>
+<p><img src="https://github.com/EthanYan6/pic/raw/master/2.png" alt="img"></p>
 <p><strong>OSI分层（7层）</strong>：物理层、数据链路层、网络层、传输层、会话层、表示层、应用层。</p>
 <p><strong>TCP/IP分层（4层）</strong>：网络接口层、网际层、运输层、应用层。</p>
 <p><strong>五层协议（5层）</strong>：物理层、数据链路层、网络层、运输层、应用层。</p>
@@ -227,7 +227,7 @@
 <h2 id="5-TCP三次握手四次挥手"><a href="#5-TCP三次握手四次挥手" class="headerlink" title="5.TCP三次握手四次挥手"></a>5.TCP三次握手四次挥手</h2><h3 id="三次握手"><a href="#三次握手" class="headerlink" title="三次握手"></a>三次握手</h3><p>第一次握手：客户端发送 <code>syn</code> 包( <code>seq=x</code> )到服务器，并进入 <code>SYN_SEND</code> (发送)状态，等待服务器确认；</p>
 <p>第二次握手：服务器收到 <code>syn</code>包，必须确认客户的 <code>SYN</code>（<code>ack=x+1</code>），同时自己也发送一个 <code>SYN</code> 包（<code>seq=y</code> ），即 <code>SYN+ACK</code> 包，此时服务器进入 <code>SYN_RECV</code>（接收）状态；</p>
 <p>第三次握手：客户端收到服务器的 <code>SYN＋ACK</code> 包，向服务器发送确认包 <code>ACK</code> ( <code>ack=y+1</code> )，此包发送完毕，客户端和服务器进入 <code>ESTABLISHED</code>（已建立）状态，完成三次握手。</p>
-<p><img src="https://images2018.cnblogs.com/blog/1169376/201807/1169376-20180710160534586-668094040.png" alt="img"></p>
+<p><img src="https://github.com/EthanYan6/pic/raw/master/3.png" alt="img"></p>
 <p><strong>说明：</strong><br>1）<code>SYN</code> 和 <code>ACK</code> 是标志位（0/1）（<code>ACK=1</code>表明 <code>ack</code> 有效），<code>seq</code> 是序列号，<code>ack</code> 是确认号。</p>
 <p>2）给对方的确认方式就是把对方传来的 <code>seq+1</code> 并赋给 <code>ack</code>。</p>
 <h3 id="四次挥手"><a href="#四次挥手" class="headerlink" title="四次挥手"></a>四次挥手</h3><p>第一次挥手：主动关闭方发送一个 <code>FIN</code>，用来关闭主动方到被动关闭方的数据传送，也就是主动关闭方告诉被动关闭方：我已经不会再给你发数据了(当然，在 <code>fin</code> 包之前发送出去的数据，如果没有收到对应的 <code>ack</code> 确认报文，主动关闭方依然会重发这些数据)，但是，此时主动关闭方还可 以接受数据。</p>
@@ -240,7 +240,7 @@
 <p>3）序号 <code>seq</code>，确认序号 <code>ack</code>，确认标志位 <code>ACK</code> 作用还是一样的，就是确认作用（把 <code>seq</code> 加上1赋给 <code>ack</code>，并把 <code>ACK</code> 置1）</p>
 <p>4）为什么一个3次1个4次不一样？</p>
 <p>因为两端的数据并不是同时发送完，所以两端谁发送完数据都需要自己告诉对方一次，并且对方确认一次。</p>
-<p><img src="https://images2018.cnblogs.com/blog/1169376/201807/1169376-20180710155017430-1664229605.png" alt="img"></p>
+<p><img src="https://github.com/EthanYan6/pic/raw/master/4.png" alt="img"></p>
 <h2 id="6-在浏览器中输入www-baidu-com后执行的全部过程"><a href="#6-在浏览器中输入www-baidu-com后执行的全部过程" class="headerlink" title="6.在浏览器中输入www.baidu.com后执行的全部过程"></a>6.在浏览器中输入<a href="http://www.baidu.com后执行的全部过程" target="_blank" rel="noopener">www.baidu.com后执行的全部过程</a></h2><p>1、客户端浏览器通过 <code>DNS</code> 解析到<a href="http://www.baidu.com的" target="_blank" rel="noopener">www.baidu.com的</a> <code>IP</code> 地址220.181.27.48，通过这个IP地址找到客户端到服务器的路径。客户端浏览器发起一个 <code>HTTP</code> 会话到 220.161.27.48，然后通过 <code>TCP</code> 进行封装数据包，输入到网络层。</p>
 <p> 2、在客户端的<strong>传输层(添加TCP头)</strong>，把 <code>HTTP</code> 会话请求分成报文段，添加源和目的端口，如服务器使用80端口监听客户端的请求，客户端由系统随机选择一个端口如5000，与服务器进行交换，服务器把相应的请求返回给客户端的 5000 端口。然后使用IP层的IP地址查找目的端。</p>
 <p> 3、客户端的<strong>网络层（添加IP头）</strong>不用关系应用层或者传输层的东西，主要做的是通过查找路由表确定如何到达服务器，期间可能经过多个路由器，这些都是由路由器来完成的工作，我不作过多的描述，无非就是通过查找路由表决定通过那个路径到达服务器。</p>
@@ -391,11 +391,11 @@
         </li>
         
         <li>
-            <a class="footer-post" href="/categories/windows/">windows</a>
+            <a class="footer-post" href="/categories/docker/">docker</a>
         </li>
         
         <li>
-            <a class="footer-post" href="/categories/docker/">docker</a>
+            <a class="footer-post" href="/categories/windows/">windows</a>
         </li>
         
         <li>
