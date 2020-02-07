@@ -79,7 +79,7 @@ PUT 索引名称/类型/文档id?refresh
 PUT 索引名称/类型/文档id?routing=父文档id&refresh 
 {
   "text": "xiaoyan",
-  ...		// 父文档中其他的字段与值
+  ...		// 子文档中其他的字段与值
   "join类型的字段名称": {
     "name": "子文档标示字段名", 
     "parent": "父文档id" 
