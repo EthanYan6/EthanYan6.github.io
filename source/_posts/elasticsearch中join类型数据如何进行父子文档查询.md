@@ -51,7 +51,7 @@ PUT 索引名称
 PUT 索引名称/类型/文档id?refresh
 {
   "text": "EthanYan",
-  ...		// 其他父文档中的字段与值
+  ...		// 父文档中其他的字段与值
   "join类型的字段名称": {
     "name": "父文档标示字段名" 
   }
@@ -64,7 +64,7 @@ PUT 索引名称/类型/文档id?refresh
 PUT 索引名称/类型/文档id?refresh
 {
   "text": "EthanYan",
-  ...		// 其他父文档中的字段与值
+  ...		// 父文档中其他的字段与值
   "join类型的字段名称": "父文档标示字段名" 
 }
 ```
@@ -79,7 +79,7 @@ PUT 索引名称/类型/文档id?refresh
 PUT 索引名称/类型/文档id?routing=父文档id&refresh 
 {
   "text": "xiaoyan",
-  ...		// 其他父文档中的字段与值
+  ...		// 父文档中其他的字段与值
   "join类型的字段名称": {
     "name": "子文档标示字段名", 
     "parent": "父文档id" 
