@@ -5,6 +5,8 @@ tags: elasticsearch
 categories: elasticsearch
 ---
 
+ <center>Author：闫玉良</center> 
+
 ES 中 join 类型数据如何根据父文档查询全部子文档？又如何根据子文档查询其父文档呢？
 
 <!--more-->
