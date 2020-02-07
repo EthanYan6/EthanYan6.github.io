@@ -195,7 +195,7 @@
 
 
 <h3 id="2-2-子文档"><a href="#2-2-子文档" class="headerlink" title="2.2 子文档"></a>2.2 子文档</h3><p>构建子文档时可以通过如下方法：</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">PUT 索引名称/类型/文档id?routing=父文档id&amp;refresh </span><br><span class="line">&#123;</span><br><span class="line">  "text": "xiaoyan",</span><br><span class="line">  ...		// 父文档中其他的字段与值</span><br><span class="line">  "join类型的字段名称": &#123;</span><br><span class="line">    "name": "子文档标示字段名", </span><br><span class="line">    "parent": "父文档id" </span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">PUT 索引名称/类型/文档id?routing=父文档id&amp;refresh </span><br><span class="line">&#123;</span><br><span class="line">  "text": "xiaoyan",</span><br><span class="line">  ...		// 子文档中其他的字段与值</span><br><span class="line">  "join类型的字段名称": &#123;</span><br><span class="line">    "name": "子文档标示字段名", </span><br><span class="line">    "parent": "父文档id" </span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <h4 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h4><p>构建子文档时与父文档有些许不同，以下几点需要特别注意：</p>
 <p>1.<code>url</code> 中可以看到有一个参数 <code>routing</code> ，<strong>此参数必须设置</strong>，因为我们需要保证父文档与子文档在同一分片中。其原文描述为：The routing value is mandatory because parent and child documents must be indexed on the same shard.</p>
@@ -299,11 +299,11 @@
         </li>
         
         <li>
-            <a class="footer-post" href="/categories/docker/">docker</a>
+            <a class="footer-post" href="/categories/windows/">windows</a>
         </li>
         
         <li>
-            <a class="footer-post" href="/categories/windows/">windows</a>
+            <a class="footer-post" href="/categories/docker/">docker</a>
         </li>
         
         <li>
