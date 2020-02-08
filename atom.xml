@@ -208,9 +208,9 @@
       <category term="Mac" scheme="http://www.pythonnote.cn/categories/Mac/"/>
     
     
-      <category term="MacOS" scheme="http://www.pythonnote.cn/tags/MacOS/"/>
-    
       <category term="python" scheme="http://www.pythonnote.cn/tags/python/"/>
+    
+      <category term="MacOS" scheme="http://www.pythonnote.cn/tags/MacOS/"/>
     
       <category term="virtualenv" scheme="http://www.pythonnote.cn/tags/virtualenv/"/>
     
@@ -425,36 +425,6 @@ Linux 设置定时任务，crontab 执行 python 脚本不生效的问题：
   </entry>
   
   <entry>
-    <title>tags</title>
-    <link href="http://www.pythonnote.cn/2019/11/15/tags/index/"/>
-    <id>http://www.pythonnote.cn/2019/11/15/tags/index/</id>
-    <published>2019-11-15T14:07:28.552Z</published>
-    <updated>2020-02-08T13:51:58.320Z</updated>
-    
-    <summary type="html">
-    
-    </summary>
-    
-    
-    
-  </entry>
-  
-  <entry>
-    <title>categories</title>
-    <link href="http://www.pythonnote.cn/2019/11/15/categories/index/"/>
-    <id>http://www.pythonnote.cn/2019/11/15/categories/index/</id>
-    <published>2019-11-15T14:07:28.439Z</published>
-    <updated>2020-02-08T13:52:09.230Z</updated>
-    
-    <summary type="html">
-    
-    </summary>
-    
-    
-    
-  </entry>
-  
-  <entry>
     <title>bat脚本常用命令</title>
     <link href="http://www.pythonnote.cn/2019/11/14/bat%E8%84%9A%E6%9C%AC%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/"/>
     <id>http://www.pythonnote.cn/2019/11/14/bat%E8%84%9A%E6%9C%AC%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</id>
@@ -501,6 +471,56 @@ bat 脚本？如果不是从事微软开发相关工作的人员，是不是感�
       <category term="python" scheme="http://www.pythonnote.cn/tags/python/"/>
     
       <category term="字符串" scheme="http://www.pythonnote.cn/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>crontab定时执行python脚本不成功解决方案</title>
+    <link href="http://www.pythonnote.cn/2019/10/31/crontab%E5%AE%9A%E6%97%B6%E6%89%A7%E8%A1%8Cpython%E8%84%9A%E6%9C%AC%E4%B8%8D%E6%88%90%E5%8A%9F%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/"/>
+    <id>http://www.pythonnote.cn/2019/10/31/crontab%E5%AE%9A%E6%97%B6%E6%89%A7%E8%A1%8Cpython%E8%84%9A%E6%9C%AC%E4%B8%8D%E6%88%90%E5%8A%9F%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/</id>
+    <published>2019-10-31T02:58:36.000Z</published>
+    <updated>2020-02-07T07:47:42.414Z</updated>
+    
+    <summary type="html">
+    
+      &lt;center&gt;Author：闫玉良&lt;/center&gt; 
+目前有一个需求是定时执行某个 python 脚本，但是在 Linux 上设置 crontab 后，不生效？手动执行生效？于是使用下面的方法执行即可：
+    
+    </summary>
+    
+    
+      <category term="Linux" scheme="http://www.pythonnote.cn/categories/Linux/"/>
+    
+    
+      <category term="Linux" scheme="http://www.pythonnote.cn/tags/Linux/"/>
+    
+      <category term="python" scheme="http://www.pythonnote.cn/tags/python/"/>
+    
+      <category term="crontab" scheme="http://www.pythonnote.cn/tags/crontab/"/>
+    
+      <category term="定时任务" scheme="http://www.pythonnote.cn/tags/%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>python导入导出pip环境中所有模块</title>
+    <link href="http://www.pythonnote.cn/2019/10/28/python%E5%AF%BC%E5%85%A5%E5%AF%BC%E5%87%BApip%E7%8E%AF%E5%A2%83%E4%B8%AD%E6%89%80%E6%9C%89%E6%A8%A1%E5%9D%97/"/>
+    <id>http://www.pythonnote.cn/2019/10/28/python%E5%AF%BC%E5%85%A5%E5%AF%BC%E5%87%BApip%E7%8E%AF%E5%A2%83%E4%B8%AD%E6%89%80%E6%9C%89%E6%A8%A1%E5%9D%97/</id>
+    <published>2019-10-28T05:24:27.000Z</published>
+    <updated>2020-01-27T08:43:35.697Z</updated>
+    
+    <summary type="html">
+    
+      &lt;center&gt;Author：闫玉良&lt;/center&gt; 
+刚入职接手项目，python 环境如何搭建？项目依赖模块如何安装？备份环境时如何将所有 pip 安装的模块导出？请看下文
+    
+    </summary>
+    
+    
+      <category term="python" scheme="http://www.pythonnote.cn/categories/python/"/>
+    
+    
+      <category term="python" scheme="http://www.pythonnote.cn/tags/python/"/>
     
   </entry>
   
