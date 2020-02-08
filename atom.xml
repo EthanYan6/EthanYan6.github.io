@@ -1,0 +1,527 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>小闫同学劝你多喝烫水</title>
+  
+  <subtitle>公众号『全栈技术精选』</subtitle>
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="http://yoursite.com/"/>
+  <updated>2020-02-07T07:48:03.118Z</updated>
+  <id>http://yoursite.com/</id>
+  
+  <author>
+    <name>小闫同学</name>
+    
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>elasticsearch中join类型数据如何进行父子文档查询</title>
+    <link href="http://yoursite.com/2020/02/07/elasticsearch%E4%B8%ADjoin%E7%B1%BB%E5%9E%8B%E6%95%B0%E6%8D%AE%E5%A6%82%E4%BD%95%E8%BF%9B%E8%A1%8C%E7%88%B6%E5%AD%90%E6%96%87%E6%A1%A3%E6%9F%A5%E8%AF%A2/"/>
+    <id>http://yoursite.com/2020/02/07/elasticsearch%E4%B8%ADjoin%E7%B1%BB%E5%9E%8B%E6%95%B0%E6%8D%AE%E5%A6%82%E4%BD%95%E8%BF%9B%E8%A1%8C%E7%88%B6%E5%AD%90%E6%96%87%E6%A1%A3%E6%9F%A5%E8%AF%A2/</id>
+    <published>2020-02-07T10:58:35.000Z</published>
+    <updated>2020-02-07T07:48:03.118Z</updated>
+    
+    <summary type="html">
+    
+      &lt;center&gt;Author：闫玉良&lt;/center&gt; 
+
+&lt;p&gt;ES 中 join 类型数据如何根据父文档查询全部子文档？又如何根据子文档查询其父文档呢？&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="elasticsearch" scheme="http://yoursite.com/categories/elasticsearch/"/>
+    
+    
+      <category term="elasticsearch" scheme="http://yoursite.com/tags/elasticsearch/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>计算机网络知识点总结</title>
+    <link href="http://yoursite.com/2020/02/02/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%9F%A5%E8%AF%86%E7%82%B9%E6%80%BB%E7%BB%93/"/>
+    <id>http://yoursite.com/2020/02/02/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%9F%A5%E8%AF%86%E7%82%B9%E6%80%BB%E7%BB%93/</id>
+    <published>2020-02-02T07:43:23.000Z</published>
+    <updated>2020-02-02T12:07:45.398Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;strong&gt;《计算机网络》第五版 谢希仁&lt;/strong&gt; 知识点大汇总&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="计算机网络" scheme="http://yoursite.com/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/"/>
+    
+    
+      <category term="计算机网络" scheme="http://yoursite.com/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>elasticsearch的一些小知识点</title>
+    <link href="http://yoursite.com/2020/01/31/elasticsearch%E7%9A%84%E4%B8%80%E4%BA%9B%E5%B0%8F%E7%9F%A5%E8%AF%86%E7%82%B9/"/>
+    <id>http://yoursite.com/2020/01/31/elasticsearch%E7%9A%84%E4%B8%80%E4%BA%9B%E5%B0%8F%E7%9F%A5%E8%AF%86%E7%82%B9/</id>
+    <published>2020-01-31T08:28:16.000Z</published>
+    <updated>2020-01-31T09:43:44.641Z</updated>
+    
+    <summary type="html">
+    
+      &lt;center&gt;Author：闫玉良&lt;/center&gt;
+
+&lt;p&gt;这个假期有多少人新添了一份职业「云监工」，又有多少人干起了小区保安的工作（统计着进出小区的车辆），还有一些人无聊到数火龙果的「黑芝麻」…… 实不相瞒，我也一样，只不过无聊之际，偶尔看看书。之前对于 elasticsearch 介绍过一些常用的 API ，今天再做一些额外的补充。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;「云监工」：网络流行词，来源于央视频直播武汉开建的防治传染病医院火神山医院的建设工地，网友们虽然不能到现场出把力，但也给自己加了一个身份：云监工，通过直播镜头去“监督”医院的建设进度。&lt;/p&gt;
+&lt;p&gt;小区保安工作：很多人在家无聊，自觉统计着出入小区人员车辆数量，以帮助监督是否有人在疫情期间四处乱逛。&lt;/p&gt;
+&lt;p&gt;数火龙果的籽：这个起源于网友晒出的图片，为一个火龙果所有的籽标上了序号。&lt;/p&gt;
+&lt;/blockquote&gt;
+    
+    </summary>
+    
+    
+      <category term="elasticsearch" scheme="http://yoursite.com/categories/elasticsearch/"/>
+    
+    
+      <category term="elasticsearch" scheme="http://yoursite.com/tags/elasticsearch/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>还在拧螺丝？是时候学习造航母了！</title>
+    <link href="http://yoursite.com/2020/01/30/%E8%BF%98%E5%9C%A8%E6%8B%A7%E8%9E%BA%E4%B8%9D%EF%BC%9F%E6%98%AF%E6%97%B6%E5%80%99%E5%AD%A6%E4%B9%A0%E9%80%A0%E8%88%AA%E6%AF%8D%E4%BA%86%EF%BC%81/"/>
+    <id>http://yoursite.com/2020/01/30/%E8%BF%98%E5%9C%A8%E6%8B%A7%E8%9E%BA%E4%B8%9D%EF%BC%9F%E6%98%AF%E6%97%B6%E5%80%99%E5%AD%A6%E4%B9%A0%E9%80%A0%E8%88%AA%E6%AF%8D%E4%BA%86%EF%BC%81/</id>
+    <published>2020-01-30T08:58:02.000Z</published>
+    <updated>2020-01-30T10:40:18.048Z</updated>
+    
+    <summary type="html">
+    
+      &lt;center&gt;Author：闫玉良&lt;/center&gt;
+面试造航母，实际拧螺丝。这是大部分互联网人面对的实际情境，如何跳出舒适的圈子，撤离局部，俯览大局？
+    
+    </summary>
+    
+    
+      <category term="部署" scheme="http://yoursite.com/categories/%E9%83%A8%E7%BD%B2/"/>
+    
+    
+      <category term="架构" scheme="http://yoursite.com/tags/%E6%9E%B6%E6%9E%84/"/>
+    
+      <category term="部署" scheme="http://yoursite.com/tags/%E9%83%A8%E7%BD%B2/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>docker的一些小知识</title>
+    <link href="http://yoursite.com/2020/01/29/docker%E7%9A%84%E4%B8%80%E4%BA%9B%E5%B0%8F%E7%9F%A5%E8%AF%86/"/>
+    <id>http://yoursite.com/2020/01/29/docker%E7%9A%84%E4%B8%80%E4%BA%9B%E5%B0%8F%E7%9F%A5%E8%AF%86/</id>
+    <published>2020-01-29T06:10:49.000Z</published>
+    <updated>2020-01-29T08:42:12.147Z</updated>
+    
+    <summary type="html">
+    
+      &lt;center&gt;Author：闫玉良&lt;/center&gt;
+
+&lt;p&gt;今天玩游戏的时候，突然想到了以前面试被问的一个小问题，特此记录，仅供参考&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="docker" scheme="http://yoursite.com/categories/docker/"/>
+    
+    
+      <category term="docker" scheme="http://yoursite.com/tags/docker/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>图</title>
+    <link href="http://yoursite.com/2020/01/27/%E5%9B%BE/"/>
+    <id>http://yoursite.com/2020/01/27/%E5%9B%BE/</id>
+    <published>2020-01-27T08:40:37.000Z</published>
+    <updated>2020-01-31T03:23:34.144Z</updated>
+    
+    <summary type="html">
+    
+      &lt;center&gt;Author：闫玉良&lt;/center&gt; 
+此图非彼图，今天来学习一种十分重要，在生活中也经常使用的数据结构「图」
+    
+    </summary>
+    
+    
+      <category term="算法" scheme="http://yoursite.com/categories/%E7%AE%97%E6%B3%95/"/>
+    
+      <category term="数据结构" scheme="http://yoursite.com/categories/%E7%AE%97%E6%B3%95/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
+    
+    
+      <category term="算法" scheme="http://yoursite.com/tags/%E7%AE%97%E6%B3%95/"/>
+    
+      <category term="数据结构" scheme="http://yoursite.com/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>机器学习工程师必知的十大算法</title>
+    <link href="http://yoursite.com/2020/01/26/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%B7%A5%E7%A8%8B%E5%B8%88%E5%BF%85%E7%9F%A5%E7%9A%84%E5%8D%81%E5%A4%A7%E7%AE%97%E6%B3%95/"/>
+    <id>http://yoursite.com/2020/01/26/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%B7%A5%E7%A8%8B%E5%B8%88%E5%BF%85%E7%9F%A5%E7%9A%84%E5%8D%81%E5%A4%A7%E7%AE%97%E6%B3%95/</id>
+    <published>2020-01-26T14:51:41.000Z</published>
+    <updated>2020-01-31T03:23:18.053Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;It is no doubt that the sub-field of machine learning / artificial intelligence has increasingly gained more popularity in the past couple of years. As Big Data is the hottest trend in the tech industry at the moment, machine learning is incredibly powerful to make predictions or calculated suggestions based on large amounts of data. Some of the most common examples of machine learning are Netflix’s algorithms to make movie suggestions based on movies you have watched in the past or Amazon’s algorithms that recommend books based on books you have bought before.&lt;/p&gt;
+&lt;p&gt;毫无疑问，机器学习 / 人工智能的子领域在过去几年越来越受欢迎。目前大数据在科技行业已经炙手可热，而基于大量数据来进行预测或者得出建议的机器学习无疑是非常强大的。一些最常见的机器学习例子，比如 Netflix 的算法可以根据你以前看过的电影来进行电影推荐，而 Amazon 的算法则可以根据你以前买过的书来推荐书籍。&lt;/p&gt;
+&lt;p&gt;So if you want to learn more about machine learning, how do you start?&lt;/p&gt;
+&lt;p&gt;所以如果你想了解更多有关机器学习的内容，那么你该如何入门？&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="算法" scheme="http://yoursite.com/categories/%E7%AE%97%E6%B3%95/"/>
+    
+      <category term="机器学习" scheme="http://yoursite.com/categories/%E7%AE%97%E6%B3%95/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+    
+    
+      <category term="算法" scheme="http://yoursite.com/tags/%E7%AE%97%E6%B3%95/"/>
+    
+      <category term="机器学习" scheme="http://yoursite.com/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>如果你是mac用户，这个问题不信你没遇到！</title>
+    <link href="http://yoursite.com/2020/01/07/%E5%A6%82%E6%9E%9C%E4%BD%A0%E6%98%AFmac%E7%94%A8%E6%88%B7%EF%BC%8C%E8%BF%99%E4%B8%AA%E9%97%AE%E9%A2%98%E4%B8%8D%E4%BF%A1%E4%BD%A0%E6%B2%A1%E9%81%87%E5%88%B0%EF%BC%81/"/>
+    <id>http://yoursite.com/2020/01/07/%E5%A6%82%E6%9E%9C%E4%BD%A0%E6%98%AFmac%E7%94%A8%E6%88%B7%EF%BC%8C%E8%BF%99%E4%B8%AA%E9%97%AE%E9%A2%98%E4%B8%8D%E4%BF%A1%E4%BD%A0%E6%B2%A1%E9%81%87%E5%88%B0%EF%BC%81/</id>
+    <published>2020-01-07T11:45:01.000Z</published>
+    <updated>2020-01-27T08:44:00.383Z</updated>
+    
+    <summary type="html">
+    
+      &lt;center&gt;Author：闫玉良&lt;/center&gt; 
+
+&lt;p&gt;Mac 用户在使用 python 的虚拟环境时，你现在或者将来一定会遇到此问题，早发现早治疗 ～&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="Mac" scheme="http://yoursite.com/categories/Mac/"/>
+    
+    
+      <category term="MacOS" scheme="http://yoursite.com/tags/MacOS/"/>
+    
+      <category term="python" scheme="http://yoursite.com/tags/python/"/>
+    
+      <category term="virtualenv" scheme="http://yoursite.com/tags/virtualenv/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>CentOS这些情况你也遇到过</title>
+    <link href="http://yoursite.com/2019/12/22/CentOS%E8%BF%99%E4%BA%9B%E6%83%85%E5%86%B5%E4%BD%A0%E4%B9%9F%E9%81%87%E5%88%B0%E8%BF%87/"/>
+    <id>http://yoursite.com/2019/12/22/CentOS%E8%BF%99%E4%BA%9B%E6%83%85%E5%86%B5%E4%BD%A0%E4%B9%9F%E9%81%87%E5%88%B0%E8%BF%87/</id>
+    <published>2019-12-22T11:15:48.000Z</published>
+    <updated>2020-01-10T02:08:28.797Z</updated>
+    
+    <summary type="html">
+    
+      &lt;center&gt;Author: 闫玉良&lt;/center&gt;
+`CentOS` 虚拟机许久未用，忘记密码如何是好？删掉再来又岂能甘心？想安装某个命令，直接 `yum install` 就可以了吗？远程连接服务器报错该怎样操作？
+    
+    </summary>
+    
+    
+      <category term="Linux" scheme="http://yoursite.com/categories/Linux/"/>
+    
+    
+      <category term="Linux" scheme="http://yoursite.com/tags/Linux/"/>
+    
+      <category term="CentOS" scheme="http://yoursite.com/tags/CentOS/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Vue脚手架搭建项目中的坑</title>
+    <link href="http://yoursite.com/2019/12/15/Vue%E8%84%9A%E6%89%8B%E6%9E%B6%E6%90%AD%E5%BB%BA%E9%A1%B9%E7%9B%AE%E4%B8%AD%E7%9A%84%E5%9D%91/"/>
+    <id>http://yoursite.com/2019/12/15/Vue%E8%84%9A%E6%89%8B%E6%9E%B6%E6%90%AD%E5%BB%BA%E9%A1%B9%E7%9B%AE%E4%B8%AD%E7%9A%84%E5%9D%91/</id>
+    <published>2019-12-15T10:43:13.000Z</published>
+    <updated>2020-01-10T02:15:51.832Z</updated>
+    
+    <summary type="html">
+    
+      &lt;center&gt;Author:闫玉良&lt;/center&gt;
+`Vue` 框架如同 `Python` 中的 `Django` 框架一样，让一切操作变得超级简单，只需在规定的目录下书写规定的代码即可，至于如何运作，框架自己搞定。此篇文章仅用于记录 `Vue` 项目中的一些小坑。
+    
+    </summary>
+    
+    
+      <category term="前端" scheme="http://yoursite.com/categories/%E5%89%8D%E7%AB%AF/"/>
+    
+    
+      <category term="前端" scheme="http://yoursite.com/tags/%E5%89%8D%E7%AB%AF/"/>
+    
+      <category term="vue" scheme="http://yoursite.com/tags/vue/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>扶我起来,我还可以学～</title>
+    <link href="http://yoursite.com/2019/12/12/%E6%89%B6%E6%88%91%E8%B5%B7%E6%9D%A5-%E6%88%91%E8%BF%98%E5%8F%AF%E4%BB%A5%E5%AD%A6%EF%BD%9E/"/>
+    <id>http://yoursite.com/2019/12/12/%E6%89%B6%E6%88%91%E8%B5%B7%E6%9D%A5-%E6%88%91%E8%BF%98%E5%8F%AF%E4%BB%A5%E5%AD%A6%EF%BD%9E/</id>
+    <published>2019-12-12T14:22:22.000Z</published>
+    <updated>2020-01-10T02:16:20.619Z</updated>
+    
+    <summary type="html">
+    
+      &lt;center&gt;Author：闫玉良&lt;/center&gt; 
+长路漫漫，唯夜作伴。虽然一天的工作头昏脑胀，但是仍然放不下我心心念念的前端啊，扶我起来，我还可以学～
+
+&lt;p&gt;学习喜欢的事情，也是一种放松，come on！&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="前端" scheme="http://yoursite.com/categories/%E5%89%8D%E7%AB%AF/"/>
+    
+    
+      <category term="前端" scheme="http://yoursite.com/tags/%E5%89%8D%E7%AB%AF/"/>
+    
+      <category term="vue" scheme="http://yoursite.com/tags/vue/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>前端攻坚战</title>
+    <link href="http://yoursite.com/2019/12/09/%E5%89%8D%E7%AB%AF%E6%94%BB%E5%9D%9A%E6%88%98/"/>
+    <id>http://yoursite.com/2019/12/09/%E5%89%8D%E7%AB%AF%E6%94%BB%E5%9D%9A%E6%88%98/</id>
+    <published>2019-12-09T13:47:27.000Z</published>
+    <updated>2020-01-10T02:15:58.433Z</updated>
+    
+    <summary type="html">
+    
+      &lt;center&gt;Author：闫玉良&lt;/center&gt; 
+前端三大新框架：Angular.js、React.js、Vue.js。今天我们来磕这个最常用，影响极广的框架：Vue.js。
+
+&lt;p&gt;Vue.js可以作为一个js库来使用，也可以用它全套的工具来构建系统界面，这些可以根据项目的需要灵活选择，所以说，Vue.js是一套构建用户界面的渐进式框架。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Vue的核心库只关注视图层，Vue的目标是通过尽可能简单的 API 实现响应的数据绑定，在这一点上Vue.js类似于后台的模板语言。&lt;/p&gt;
+&lt;p&gt;Vue也可以将界面拆分成一个个的组件，通过组件来构建界面，然后用自动化工具来生成单页面(SPA - single page application)系统。&lt;/p&gt;
+&lt;/blockquote&gt;
+    
+    </summary>
+    
+    
+      <category term="前端" scheme="http://yoursite.com/categories/%E5%89%8D%E7%AB%AF/"/>
+    
+    
+      <category term="前端" scheme="http://yoursite.com/tags/%E5%89%8D%E7%AB%AF/"/>
+    
+      <category term="vue" scheme="http://yoursite.com/tags/vue/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>继续死磕前端</title>
+    <link href="http://yoursite.com/2019/12/08/%E7%BB%A7%E7%BB%AD%E6%AD%BB%E7%A3%95%E5%89%8D%E7%AB%AF/"/>
+    <id>http://yoursite.com/2019/12/08/%E7%BB%A7%E7%BB%AD%E6%AD%BB%E7%A3%95%E5%89%8D%E7%AB%AF/</id>
+    <published>2019-12-08T06:22:58.000Z</published>
+    <updated>2020-01-10T02:16:32.036Z</updated>
+    
+    <summary type="html">
+    
+      &lt;center&gt;Author：闫玉良&lt;/center&gt; 
+昨天将所有的基础知识进行了回顾，今天继续磕，不死不休～
+
+&lt;p&gt;今天要说的便是 jquery 这个函数库，毕竟它影响范围之广，不会都不好意说自己会前端？&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="前端" scheme="http://yoursite.com/categories/%E5%89%8D%E7%AB%AF/"/>
+    
+    
+      <category term="前端" scheme="http://yoursite.com/tags/%E5%89%8D%E7%AB%AF/"/>
+    
+      <category term="jquery" scheme="http://yoursite.com/tags/jquery/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>死磕前端ing～</title>
+    <link href="http://yoursite.com/2019/12/07/%E6%AD%BB%E7%A3%95%E5%89%8D%E7%AB%AFing%EF%BD%9E/"/>
+    <id>http://yoursite.com/2019/12/07/%E6%AD%BB%E7%A3%95%E5%89%8D%E7%AB%AFing%EF%BD%9E/</id>
+    <published>2019-12-07T05:39:37.000Z</published>
+    <updated>2020-01-10T02:16:26.278Z</updated>
+    
+    <summary type="html">
+    
+      &lt;center&gt;Author：闫玉良&lt;/center&gt; 
+这么久没有发文，很多人关心我是否离开了这个美丽的世界 ... 这些同学，是如何居心？出来，我保证不打死你们。不过很久没有更新文章，确实抱歉，我的错，我有罪 ～（小声逼逼：我又不是签约作家，还被逼出了连载的味道，也是没谁了。）
+
+&lt;p&gt;今天咱们唠唠前端那点事儿，和前端死磕到底。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="前端" scheme="http://yoursite.com/categories/%E5%89%8D%E7%AB%AF/"/>
+    
+    
+      <category term="前端" scheme="http://yoursite.com/tags/%E5%89%8D%E7%AB%AF/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>crontab 执行python脚本不生效？（续）</title>
+    <link href="http://yoursite.com/2019/11/17/%E6%89%A7%E8%A1%8Cpython%E8%84%9A%E6%9C%AC/"/>
+    <id>http://yoursite.com/2019/11/17/%E6%89%A7%E8%A1%8Cpython%E8%84%9A%E6%9C%AC/</id>
+    <published>2019-11-17T07:17:31.000Z</published>
+    <updated>2020-01-10T02:16:15.201Z</updated>
+    
+    <summary type="html">
+    
+      &lt;center&gt;Author：闫玉良&lt;/center&gt; 
+Linux 设置定时任务，crontab 执行 python 脚本不生效的问题：
+    
+    </summary>
+    
+    
+      <category term="Linux" scheme="http://yoursite.com/categories/Linux/"/>
+    
+    
+      <category term="Linux" scheme="http://yoursite.com/tags/Linux/"/>
+    
+      <category term="python" scheme="http://yoursite.com/tags/python/"/>
+    
+      <category term="crontab" scheme="http://yoursite.com/tags/crontab/"/>
+    
+      <category term="定时任务" scheme="http://yoursite.com/tags/%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>MacBook Pro你真的会使用吗？</title>
+    <link href="http://yoursite.com/2019/11/17/MacBookPro%E4%BD%A0%E7%9C%9F%E7%9A%84%E4%BC%9A%E4%BD%BF%E7%94%A8%E5%90%97%EF%BC%9F/"/>
+    <id>http://yoursite.com/2019/11/17/MacBookPro%E4%BD%A0%E7%9C%9F%E7%9A%84%E4%BC%9A%E4%BD%BF%E7%94%A8%E5%90%97%EF%BC%9F/</id>
+    <published>2019-11-17T06:58:48.000Z</published>
+    <updated>2020-01-10T02:10:42.602Z</updated>
+    
+    <summary type="html">
+    
+      &lt;center&gt;Author：闫玉良&lt;/center&gt; 
+那些不使用鼠标的人是否是打肿脸充胖子？因囊中羞涩而安装的xx软件装不上怎么办？MacBook Pro真的那么好用吗？下面为您解答
+    
+    </summary>
+    
+    
+      <category term="Mac" scheme="http://yoursite.com/categories/Mac/"/>
+    
+    
+      <category term="MacOS" scheme="http://yoursite.com/tags/MacOS/"/>
+    
+      <category term="快捷键" scheme="http://yoursite.com/tags/%E5%BF%AB%E6%8D%B7%E9%94%AE/"/>
+    
+      <category term="MacBook Pro" scheme="http://yoursite.com/tags/MacBook-Pro/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>bat脚本常用命令</title>
+    <link href="http://yoursite.com/2019/11/14/bat%E8%84%9A%E6%9C%AC%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/"/>
+    <id>http://yoursite.com/2019/11/14/bat%E8%84%9A%E6%9C%AC%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</id>
+    <published>2019-11-14T12:23:36.000Z</published>
+    <updated>2020-01-10T02:08:21.176Z</updated>
+    
+    <summary type="html">
+    
+      &lt;center&gt;Author：闫玉良&lt;/center&gt;
+bat 脚本？如果不是从事微软开发相关工作的人员，是不是感觉很耳熟但是又好像不熟悉？还等什么，一睹为快
+    
+    </summary>
+    
+    
+      <category term="windows" scheme="http://yoursite.com/categories/windows/"/>
+    
+      <category term="script" scheme="http://yoursite.com/categories/windows/script/"/>
+    
+    
+      <category term="windows" scheme="http://yoursite.com/tags/windows/"/>
+    
+      <category term="script" scheme="http://yoursite.com/tags/script/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>python 字符串前面的那些特殊字符</title>
+    <link href="http://yoursite.com/2019/11/04/python%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%89%8D%E9%9D%A2%E7%9A%84%E9%82%A3%E4%BA%9B%E7%89%B9%E6%AE%8A%E5%AD%97%E7%AC%A6/"/>
+    <id>http://yoursite.com/2019/11/04/python%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%89%8D%E9%9D%A2%E7%9A%84%E9%82%A3%E4%BA%9B%E7%89%B9%E6%AE%8A%E5%AD%97%E7%AC%A6/</id>
+    <published>2019-11-04T12:10:14.000Z</published>
+    <updated>2020-01-10T02:15:37.856Z</updated>
+    
+    <summary type="html">
+    
+      &lt;center&gt;Author：闫玉良&lt;/center&gt;
+对于 Python 的字符串大家并不陌生，引号引用即为字符串。那么字符串前面经常加的一些特殊字母就让初学者懵逼了，今天我们就来详细讲一下 ......
+    
+    </summary>
+    
+    
+      <category term="python" scheme="http://yoursite.com/categories/python/"/>
+    
+    
+      <category term="python" scheme="http://yoursite.com/tags/python/"/>
+    
+      <category term="字符串" scheme="http://yoursite.com/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>crontab定时执行python脚本不成功解决方案</title>
+    <link href="http://yoursite.com/2019/10/31/crontab%E5%AE%9A%E6%97%B6%E6%89%A7%E8%A1%8Cpython%E8%84%9A%E6%9C%AC%E4%B8%8D%E6%88%90%E5%8A%9F%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/"/>
+    <id>http://yoursite.com/2019/10/31/crontab%E5%AE%9A%E6%97%B6%E6%89%A7%E8%A1%8Cpython%E8%84%9A%E6%9C%AC%E4%B8%8D%E6%88%90%E5%8A%9F%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/</id>
+    <published>2019-10-31T02:58:36.000Z</published>
+    <updated>2020-02-07T07:47:42.414Z</updated>
+    
+    <summary type="html">
+    
+      &lt;center&gt;Author：闫玉良&lt;/center&gt; 
+目前有一个需求是定时执行某个 python 脚本，但是在 Linux 上设置 crontab 后，不生效？手动执行生效？于是使用下面的方法执行即可：
+    
+    </summary>
+    
+    
+      <category term="Linux" scheme="http://yoursite.com/categories/Linux/"/>
+    
+    
+      <category term="Linux" scheme="http://yoursite.com/tags/Linux/"/>
+    
+      <category term="python" scheme="http://yoursite.com/tags/python/"/>
+    
+      <category term="crontab" scheme="http://yoursite.com/tags/crontab/"/>
+    
+      <category term="定时任务" scheme="http://yoursite.com/tags/%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>python导入导出pip环境中所有模块</title>
+    <link href="http://yoursite.com/2019/10/28/python%E5%AF%BC%E5%85%A5%E5%AF%BC%E5%87%BApip%E7%8E%AF%E5%A2%83%E4%B8%AD%E6%89%80%E6%9C%89%E6%A8%A1%E5%9D%97/"/>
+    <id>http://yoursite.com/2019/10/28/python%E5%AF%BC%E5%85%A5%E5%AF%BC%E5%87%BApip%E7%8E%AF%E5%A2%83%E4%B8%AD%E6%89%80%E6%9C%89%E6%A8%A1%E5%9D%97/</id>
+    <published>2019-10-28T05:24:27.000Z</published>
+    <updated>2020-01-27T08:43:35.697Z</updated>
+    
+    <summary type="html">
+    
+      &lt;center&gt;Author：闫玉良&lt;/center&gt; 
+刚入职接手项目，python 环境如何搭建？项目依赖模块如何安装？备份环境时如何将所有 pip 安装的模块导出？请看下文
+    
+    </summary>
+    
+    
+      <category term="python" scheme="http://yoursite.com/categories/python/"/>
+    
+    
+      <category term="python" scheme="http://yoursite.com/tags/python/"/>
+    
+  </entry>
+  
+</feed>
