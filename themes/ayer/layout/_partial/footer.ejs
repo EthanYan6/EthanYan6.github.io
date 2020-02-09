@@ -1,0 +1,47 @@
+<footer class="footer">
+  <div class="outer">
+    <ul class="list-inline">
+      <li>
+        <% if (theme.busuanzi && theme.busuanzi.enable){ %>
+        <%# "不蒜子统计" %>
+        <%- partial('post/busuanzi') %>
+        <% } %>
+      </li>
+      <li>
+        <!-- cnzz统计 -->
+        <% if (theme.cnzz&&theme.cnzz.enable){ %>
+        <script type="text/javascript" src='<%= theme.cnzz.url%>'></script>
+        <% } %>
+      </li>
+    </ul>
+    
+    <ul class="list-inline">
+      <li>
+        友情链接：<a href="https://www.javastudy.cloud">&gt; javaDemo站 &lt;</a><br>
+      </li>
+    </ul>
+
+    <ul class="list-inline">
+      <li>
+        更多精彩文章请关注微信公众号『全栈技术精选』，id 为『Pythonnote』
+      </li>
+    </ul>
+        
+    <ul class="list-inline">
+      <li>
+        &copy;
+        <% if (theme.since && !isNaN(theme.since) && theme.since < date(new Date(), 'YYYY')) { %><%- theme.since%>-<% } %><%= date(new Date(), 'YYYY') %>
+        <%= config.author || config.title %>
+      </li>
+      <li>
+        <% if (theme.pageFooter){ %>
+          Created by
+        <% var hexoLink = '<a href="https://github.com/EthanYan6" target="_blank">EthanYan</a>'; %>
+        <% var themeLink = '<a href="https://github.com/Shen-Yu/hexo-theme-ayer" target="_blank">Ayer</a>'; %>
+        <%- hexoLink %> Thanks <%- themeLink %>
+        <% } %>
+      </li>
+    </ul>
+
+  </div>
+</footer>
