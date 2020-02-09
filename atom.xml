@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.pythonnote.cn/"/>
-  <updated>2020-02-07T07:48:03.118Z</updated>
+  <updated>2020-02-09T06:04:33.321Z</updated>
   <id>http://www.pythonnote.cn/</id>
   
   <author>
@@ -15,6 +15,27 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>git仓库上传了个无法点开的空文件夹是什么鬼？</title>
+    <link href="http://www.pythonnote.cn/2020/02/09/git%E4%BB%93%E5%BA%93%E4%B8%8A%E4%BC%A0%E4%BA%86%E4%B8%AA%E6%97%A0%E6%B3%95%E7%82%B9%E5%BC%80%E7%9A%84%E7%A9%BA%E6%96%87%E4%BB%B6%E5%A4%B9%E6%98%AF%E4%BB%80%E4%B9%88%E9%AC%BC%EF%BC%9F/"/>
+    <id>http://www.pythonnote.cn/2020/02/09/git%E4%BB%93%E5%BA%93%E4%B8%8A%E4%BC%A0%E4%BA%86%E4%B8%AA%E6%97%A0%E6%B3%95%E7%82%B9%E5%BC%80%E7%9A%84%E7%A9%BA%E6%96%87%E4%BB%B6%E5%A4%B9%E6%98%AF%E4%BB%80%E4%B9%88%E9%AC%BC%EF%BC%9F/</id>
+    <published>2020-02-09T05:00:45.000Z</published>
+    <updated>2020-02-09T06:04:33.321Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;诡异之事年年有，只是今年有点多，在仓库上传到 GitHub 后，偶然在 GitHub 中瞄了一眼，我的天？这个图标不像文件夹啊？这个怎么点不开？git 上传正常啊？本地工作区和暂存区都是干净的了啊？&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="git" scheme="http://www.pythonnote.cn/categories/git/"/>
+    
+    
+      <category term="git" scheme="http://www.pythonnote.cn/tags/git/"/>
+    
+  </entry>
   
   <entry>
     <title>elasticsearch中join类型数据如何进行父子文档查询</title>
@@ -499,28 +520,6 @@ bat 脚本？如果不是从事微软开发相关工作的人员，是不是感�
       <category term="crontab" scheme="http://www.pythonnote.cn/tags/crontab/"/>
     
       <category term="定时任务" scheme="http://www.pythonnote.cn/tags/%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>python导入导出pip环境中所有模块</title>
-    <link href="http://www.pythonnote.cn/2019/10/28/python%E5%AF%BC%E5%85%A5%E5%AF%BC%E5%87%BApip%E7%8E%AF%E5%A2%83%E4%B8%AD%E6%89%80%E6%9C%89%E6%A8%A1%E5%9D%97/"/>
-    <id>http://www.pythonnote.cn/2019/10/28/python%E5%AF%BC%E5%85%A5%E5%AF%BC%E5%87%BApip%E7%8E%AF%E5%A2%83%E4%B8%AD%E6%89%80%E6%9C%89%E6%A8%A1%E5%9D%97/</id>
-    <published>2019-10-28T05:24:27.000Z</published>
-    <updated>2020-01-27T08:43:35.697Z</updated>
-    
-    <summary type="html">
-    
-      &lt;center&gt;Author：闫玉良&lt;/center&gt; 
-刚入职接手项目，python 环境如何搭建？项目依赖模块如何安装？备份环境时如何将所有 pip 安装的模块导出？请看下文
-    
-    </summary>
-    
-    
-      <category term="python" scheme="http://www.pythonnote.cn/categories/python/"/>
-    
-    
-      <category term="python" scheme="http://www.pythonnote.cn/tags/python/"/>
     
   </entry>
   

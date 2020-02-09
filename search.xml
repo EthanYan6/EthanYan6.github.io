@@ -1,6 +1,52 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>git仓库上传了个无法点开的空文件夹是什么鬼？</title>
+    <url>/2020/02/09/git%E4%BB%93%E5%BA%93%E4%B8%8A%E4%BC%A0%E4%BA%86%E4%B8%AA%E6%97%A0%E6%B3%95%E7%82%B9%E5%BC%80%E7%9A%84%E7%A9%BA%E6%96%87%E4%BB%B6%E5%A4%B9%E6%98%AF%E4%BB%80%E4%B9%88%E9%AC%BC%EF%BC%9F/</url>
+    <content><![CDATA[<p>诡异之事年年有，只是今年有点多，在仓库上传到 GitHub 后，偶然在 GitHub 中瞄了一眼，我的天？这个图标不像文件夹啊？这个怎么点不开？git 上传正常啊？本地工作区和暂存区都是干净的了啊？</p>
+<a id="more"></a>
+
+<p><strong><em>更多精彩文章请关注公众号『Pythonnote』或者『全栈技术精选』</em></strong></p>
+<h2 id="一、问题描述"><a href="#一、问题描述" class="headerlink" title="一、问题描述"></a>一、问题描述</h2><p>本地仓库提交后，<code>GitHub</code> 中某文件夹无法正常点击，内容无法显示。</p>
+<h2 id="二、原因分析"><a href="#二、原因分析" class="headerlink" title="二、原因分析"></a>二、原因分析</h2><p>经排查，定位到原因：之前仓库中包含了一个特殊的文件夹（此文件夹是另外一个 <code>git</code> 仓库），在执行下面语句时：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">git add .</span><br></pre></td></tr></table></figure>
+
+<p>提示仓库中包含其他仓库，需要解决此问题。本人操作是删除掉此文件夹中的 <code>.git</code> 配置目录，然后依次执行以下命令：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">git add .</span><br><span class="line">git commit -m 'add the new file'</span><br><span class="line">git push</span><br></pre></td></tr></table></figure>
+
+<p>顺利推送仓库到远程，过程中并无报错。这个过程或许是导致问题的原因。</p>
+<h2 id="三、解决办法"><a href="#三、解决办法" class="headerlink" title="三、解决办法"></a>三、解决办法</h2><p>现在问题是本地工作区与暂存区干净如新，远程仓库有问题。该如何解决？这时用到了一个命令：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">git rm --cached &lt;dir_name&gt;</span><br></pre></td></tr></table></figure>
+
+<p>我们先来看一下手册：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">usage: git rm [&lt;options&gt;] [--] &lt;file&gt;...</span><br><span class="line"></span><br><span class="line">    -n, --dry-run         dry run</span><br><span class="line">    -q, --quiet           do not list removed files</span><br><span class="line">    --cached              only remove from the index</span><br><span class="line">    -f, --force           override the up-to-date check</span><br><span class="line">    -r                    allow recursive removal</span><br><span class="line">    --ignore-unmatch      exit with a zero status even if nothing matched</span><br></pre></td></tr></table></figure>
+
+<p>可以看到 <code>--cached</code> 的作用：将文件仅仅从索引中移除，翻译成人能看懂的话便是 「之前已经提交，现在将此目录释放掉，恢复到工作区，未被追踪的状态，即 <code>git add .</code> 命令之前的状态」</p>
+<p>我们执行完此命令之后使用如下命令查看所有改变后的文件状态：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">git status</span><br></pre></td></tr></table></figure>
+
+<p>发现出问题的目录已经变成了红色未被追踪的状态，此时将出问题的目录中所有包含 <code>git</code> 信息的文件和目录都删除，然后再依次执行命令：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">git add .</span><br><span class="line">git commit -m 'add the new file'</span><br><span class="line">git push</span><br></pre></td></tr></table></figure>
+
+<p>去远程仓库中查看后发现问题解决。</p>
+<h2 id="四、总结"><a href="#四、总结" class="headerlink" title="四、总结"></a>四、总结</h2><p>当出现未知问题致使远程仓库同预期结果不一致时，本地可以将问题目录恢复到未被追踪状态，核查完问题之后再次提交最新结果，操作步骤如下：</p>
+<p>1.删除缓存，释放目录，恢复到未被追踪状态：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">git rm --cached &lt;dir_name&gt;</span><br></pre></td></tr></table></figure>
+
+<p>2.依次执行如下操作再次提交：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">git add .</span><br><span class="line">git commit -m 'Information you need to submit'</span><br><span class="line">git push</span><br></pre></td></tr></table></figure>
+
+<p>3.完美解决问题。</p>
+<p><strong><em>更多精彩文章请关注公众号『Pythonnote』或者『全栈技术精选』</em></strong></p>
+]]></content>
+      <categories>
+        <category>git</category>
+      </categories>
+      <tags>
+        <tag>git</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>elasticsearch中join类型数据如何进行父子文档查询</title>
     <url>/2020/02/07/elasticsearch%E4%B8%ADjoin%E7%B1%BB%E5%9E%8B%E6%95%B0%E6%8D%AE%E5%A6%82%E4%BD%95%E8%BF%9B%E8%A1%8C%E7%88%B6%E5%AD%90%E6%96%87%E6%A1%A3%E6%9F%A5%E8%AF%A2/</url>
     <content><![CDATA[ <center>Author：闫玉良</center> 
