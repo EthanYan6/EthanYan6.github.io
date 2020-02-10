@@ -1,6 +1,53 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>关系数据库之视图</title>
+    <url>/2020/02/10/%E5%85%B3%E7%B3%BB%E6%95%B0%E6%8D%AE%E5%BA%93%E4%B9%8B%E8%A7%86%E5%9B%BE/</url>
+    <content><![CDATA[<center>Author：闫玉良</center>
+
+<p>请问视图是什么？视图相关语句有哪些？视图在什么场景下使用？夺命三连</p>
+<a id="more"></a>
+
+<p><strong><em>更多精彩文章请关注公众号『Pythonnote』或者『全栈技术精选』</em></strong></p>
+<p>对于关系数据库来说，绕不开的一个概念便是『视图』，带着篇首的几个问题，我们来认真学习一下。</p>
+<h2 id="视图是什么"><a href="#视图是什么" class="headerlink" title="视图是什么"></a>视图是什么</h2><p>官方文档中如此描述视图：A view is a stored SELECT statement（视图是存储的 <code>SELECT</code> 语句）。我们需要注意，<strong>视图实质上是一组查询语句，是一张虚拟表（可视化的表）而非真正的表</strong>。它将单张表或者多张表中的某些字段或全部字段使用一些特定的查询组合成一张可见的表，如同一张真实的表一样。</p>
+<h2 id="视图相关语法"><a href="#视图相关语法" class="headerlink" title="视图相关语法"></a>视图相关语法</h2><h3 id="1-创建视图"><a href="#1-创建视图" class="headerlink" title="1. 创建视图"></a>1. 创建视图</h3><p>执行以下语句创建一个非常简单的视图，该视图执行 <code>SELECT</code> 语句，并将产品的名称和价格返回给用户。</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">VIEW</span> vw_Names  </span><br><span class="line">   <span class="keyword">AS</span>  </span><br><span class="line">   <span class="keyword">SELECT</span> ProductName, Price <span class="keyword">FROM</span> Products;  </span><br><span class="line">GO</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-删除视图"><a href="#2-删除视图" class="headerlink" title="2. 删除视图"></a>2. 删除视图</h3><p>使用 <code>DROP</code> 语句删除视图 <code>vw_Names</code>：</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">DROP</span> <span class="keyword">VIEW</span> vw_Names;  </span><br><span class="line">GO</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-查询视图"><a href="#3-查询视图" class="headerlink" title="3. 查询视图"></a>3. 查询视图</h3><p>如同查询表一样，可以做一些查询操作，比如：</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> vw_Names</span><br></pre></td></tr></table></figure>
+
+<p>当然也可以添加一些条件：</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> vw_Names <span class="keyword">WHERE</span> ProductName=<span class="string">'武汉热干面'</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="4-更新视图"><a href="#4-更新视图" class="headerlink" title="4.更新视图"></a>4.更新视图</h3><p>使用 <code>SQL CREATE OR REPLACE VIEW</code> 语法来进行更新。</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">OR</span> <span class="keyword">REPLACE</span> <span class="keyword">VIEW</span> 视图名称 <span class="keyword">AS</span></span><br><span class="line"><span class="keyword">SELECT</span> 字段名称(s)</span><br><span class="line"><span class="keyword">FROM</span> 表名</span><br><span class="line"><span class="keyword">WHERE</span> 条件</span><br></pre></td></tr></table></figure>
+
+<p><strong>注意：此处的更新实质上是更新视图的查询语句，看到的效果便是展示的数据发生了变化</strong></p>
+<h4 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h4><p>比如我们要在视图 <code>vw_Names</code> 中添加一个字段 <code>Counts</code>：</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">VIEW</span> vw_Names  </span><br><span class="line">   <span class="keyword">AS</span>  </span><br><span class="line">   <span class="keyword">SELECT</span> ProductName, Price, Counts <span class="keyword">FROM</span> Products;  </span><br><span class="line">GO</span><br></pre></td></tr></table></figure>
+
+<h2 id="视图适用场景"><a href="#视图适用场景" class="headerlink" title="视图适用场景"></a>视图适用场景</h2><ol>
+<li>因权限问题或者数据敏感，不能向外透露全部字段信息</li>
+<li>查询逻辑复杂，再与其他表进行关联使得语句更复杂，使用视图后，可简单的将其理解为一个变量</li>
+</ol>
+<h2 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h2><p>我们在使用视图的时候，相当于执行了视图中的查询语句。更直白的讲<strong>视图是实时更新的</strong>。</p>
+<blockquote>
+<p>每当用户查询视图时，数据库引擎通过使用 SQL 语句来重建数据。</p>
+</blockquote>
+<p><strong><em>更多精彩文章请关注公众号『Pythonnote』或者『全栈技术精选』</em></strong></p>
+]]></content>
+      <categories>
+        <category>sql</category>
+      </categories>
+      <tags>
+        <tag>sql</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>git仓库上传了个无法点开的空文件夹是什么鬼？</title>
     <url>/2020/02/09/git%E4%BB%93%E5%BA%93%E4%B8%8A%E4%BC%A0%E4%BA%86%E4%B8%AA%E6%97%A0%E6%B3%95%E7%82%B9%E5%BC%80%E7%9A%84%E7%A9%BA%E6%96%87%E4%BB%B6%E5%A4%B9%E6%98%AF%E4%BB%80%E4%B9%88%E9%AC%BC%EF%BC%9F/</url>
     <content><![CDATA[ <center>Author：闫玉良</center> 

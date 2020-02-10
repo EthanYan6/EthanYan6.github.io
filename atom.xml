@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.pythonnote.cn/"/>
-  <updated>2020-02-09T06:20:00.189Z</updated>
+  <updated>2020-02-10T12:43:09.954Z</updated>
   <id>http://www.pythonnote.cn/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>关系数据库之视图</title>
+    <link href="http://www.pythonnote.cn/2020/02/10/%E5%85%B3%E7%B3%BB%E6%95%B0%E6%8D%AE%E5%BA%93%E4%B9%8B%E8%A7%86%E5%9B%BE/"/>
+    <id>http://www.pythonnote.cn/2020/02/10/%E5%85%B3%E7%B3%BB%E6%95%B0%E6%8D%AE%E5%BA%93%E4%B9%8B%E8%A7%86%E5%9B%BE/</id>
+    <published>2020-02-10T11:32:24.000Z</published>
+    <updated>2020-02-10T12:43:09.954Z</updated>
+    
+    <summary type="html">
+    
+      &lt;center&gt;Author：闫玉良&lt;/center&gt;
+
+&lt;p&gt;请问视图是什么？视图相关语句有哪些？视图在什么场景下使用？夺命三连&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="sql" scheme="http://www.pythonnote.cn/categories/sql/"/>
+    
+    
+      <category term="sql" scheme="http://www.pythonnote.cn/tags/sql/"/>
+    
+  </entry>
   
   <entry>
     <title>git仓库上传了个无法点开的空文件夹是什么鬼？</title>
@@ -494,34 +517,6 @@ bat 脚本？如果不是从事微软开发相关工作的人员，是不是感�
       <category term="python" scheme="http://www.pythonnote.cn/tags/python/"/>
     
       <category term="字符串" scheme="http://www.pythonnote.cn/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>crontab定时执行python脚本不成功解决方案</title>
-    <link href="http://www.pythonnote.cn/2019/10/31/crontab%E5%AE%9A%E6%97%B6%E6%89%A7%E8%A1%8Cpython%E8%84%9A%E6%9C%AC%E4%B8%8D%E6%88%90%E5%8A%9F%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/"/>
-    <id>http://www.pythonnote.cn/2019/10/31/crontab%E5%AE%9A%E6%97%B6%E6%89%A7%E8%A1%8Cpython%E8%84%9A%E6%9C%AC%E4%B8%8D%E6%88%90%E5%8A%9F%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/</id>
-    <published>2019-10-31T02:58:36.000Z</published>
-    <updated>2020-02-09T06:19:24.511Z</updated>
-    
-    <summary type="html">
-    
-      &lt;center&gt;Author：闫玉良&lt;/center&gt; 
-目前有一个需求是定时执行某个 python 脚本，但是在 Linux 上设置 crontab 后，不生效？手动执行生效？于是使用下面的方法执行即可：
-    
-    </summary>
-    
-    
-      <category term="Linux" scheme="http://www.pythonnote.cn/categories/Linux/"/>
-    
-    
-      <category term="Linux" scheme="http://www.pythonnote.cn/tags/Linux/"/>
-    
-      <category term="python" scheme="http://www.pythonnote.cn/tags/python/"/>
-    
-      <category term="crontab" scheme="http://www.pythonnote.cn/tags/crontab/"/>
-    
-      <category term="定时任务" scheme="http://www.pythonnote.cn/tags/%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1/"/>
     
   </entry>
   
