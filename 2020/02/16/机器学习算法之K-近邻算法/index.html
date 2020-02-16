@@ -1,0 +1,690 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+   
+  <meta name="keywords" content="Python、Java、powershell、shell、Elasticsearch、MySQL、Redis、Django、Flask、爬虫、RPC、数据分析" />
+   
+  <meta name="description" content="多喝热水，热水治百病 &lt;- &lt;-" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <title>
+    机器学习算法之K-近邻算法 |  小闫同学劝你多喝烫水
+  </title>
+  <meta name="generator" content="hexo-theme-yilia-plus">
+  
+  <link rel="shortcut icon" href="/favicon.ico" />
+  
+  <link rel="stylesheet" href="/css/style.css">
+  <script src="/js/pace.min.js"></script>
+
+  
+
+  
+
+<link rel="alternate" href="/atom.xml" title="小闫同学劝你多喝烫水" type="application/atom+xml">
+</head>
+
+</html>
+
+<body>
+  <div id="app">
+    <main class="content">
+      <section class="outer">
+  <article id="post-机器学习算法之K-近邻算法" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
+  机器学习算法之K-近邻算法
+</h1>
+  
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2020/02/16/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%AE%97%E6%B3%95%E4%B9%8BK-%E8%BF%91%E9%82%BB%E7%AE%97%E6%B3%95/" class="article-date">
+  <time datetime="2020-02-16T09:28:14.000Z" itemprop="datePublished">2020-02-16</time>
+</a>
+      
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E7%AE%97%E6%B3%95/">算法</a> / <a class="article-category-link" href="/categories/%E7%AE%97%E6%B3%95/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">机器学习</a>
+  </div>
+
+      
+      
+<div class="word_count">
+    <span class="post-time">
+        <span class="post-meta-item-icon">
+            <i class="ri-quill-pen-line"></i>
+            <span class="post-meta-item-text"> 字数统计:</span>
+            <span class="post-count">2.3k字</span>
+        </span>
+    </span>
+
+    <span class="post-time">
+        &nbsp; | &nbsp;
+        <span class="post-meta-item-icon">
+            <i class="ri-book-open-line"></i>
+            <span class="post-meta-item-text"> 阅读时长≈</span>
+            <span class="post-count">8分钟</span>
+        </span>
+    </span>
+</div>
+
+      
+    </div>
+    
+
+    
+    
+    <div class="tocbot"></div>
+
+
+
+
+
+    
+
+    <div class="article-entry" itemprop="articleBody">
+      
+
+
+      
+
+      
+      <center>Author：闫玉良</center>
+
+<p><code>K Nearest Neighbor</code> 算法又叫 <code>KNN</code> 算法，此算法最早是由 <code>Cover</code> 和 <code>Hart</code> 提出的一种分类算法，是机器学习里面一个经典之作， 总体来说 <code>KNN</code> 算法是相对比较容易理解的。</p>
+<a id="more"></a>
+
+<p><strong><em>更多精彩文章请关注公众号『Pythonnote』或者『全栈技术精选』</em></strong></p>
+<h2 id="1-算法简介"><a href="#1-算法简介" class="headerlink" title="1.算法简介"></a>1.算法简介</h2><h3 id="1-1-概念"><a href="#1-1-概念" class="headerlink" title="1.1 概念"></a>1.1 概念</h3><p>如果一个样本在特征空间中的 <strong>k 个最相似(即特征空间中最邻近)的样本中的大多数属于某一个类别</strong>，则该样本也属于这个类别。</p>
+<p><strong>实现流程：</strong></p>
+<p>1）计算已知类别数据集中的点与当前点之间的距离</p>
+<p>2）按距离递增次序排序</p>
+<p>3）选取与当前点距离最小的 <code>k</code> 个点</p>
+<p>4）统计前 <code>k</code> 个点所在的类别出现的频率</p>
+<p>5）返回前 <code>k</code> 个点出现频率最高的类别作为当前点的预测分类</p>
+<h3 id="1-2-欧式距离"><a href="#1-2-欧式距离" class="headerlink" title="1.2 欧式距离"></a>1.2 欧式距离</h3><p>两个样本的距离可以通过如下公式计算，又叫<strong>欧式距离</strong> 。</p>
+<p><img src="https://github.com/EthanYan6/pic/raw/master/1.3%20%E6%AC%A7%E5%BC%8F%E8%B7%9D%E7%A6%BB1.png" alt="欧式距离1"></p>
+<p><img src="https://github.com/EthanYan6/pic/raw/master/1.4%20%E6%AC%A7%E5%BC%8F%E8%B7%9D%E7%A6%BB2.png" alt="欧式距离2"></p>
+<h3 id="1-3-示例"><a href="#1-3-示例" class="headerlink" title="1.3 示例"></a>1.3 示例</h3><p>假设我们现在有几部电影</p>
+<p><img src="https://github.com/EthanYan6/pic/raw/master/image-20190316204421392.png" alt="示例1"></p>
+<p>其中 <code>?</code> 号电影不知道类别，如何去预测？我们可以利用K近邻算法的思想</p>
+<p><img src="https://github.com/EthanYan6/pic/raw/master/image-20190316204448303.png" alt="示例2"></p>
+<p>分别计算每个电影和被预测电影的距离，然后求解</p>
+<p><img src="https://github.com/EthanYan6/pic/raw/master/image-20190316204517137.png" alt="示例3"></p>
+<h2 id="2-KNN-api-初步使用"><a href="#2-KNN-api-初步使用" class="headerlink" title="2.KNN api 初步使用"></a>2.KNN api 初步使用</h2><h3 id="2-1-Scikit-learn工具介绍"><a href="#2-1-Scikit-learn工具介绍" class="headerlink" title="2.1 Scikit-learn工具介绍"></a>2.1 Scikit-learn工具介绍</h3><ul>
+<li><code>Python</code> 语言的机器学习工具</li>
+<li><code>Scikit-learn</code> 包括许多知名的机器学习算法的实现</li>
+<li><code>Scikit-learn</code> 文档完善，容易上手，丰富的 <code>API</code></li>
+<li>目前稳定版本0.19.1</li>
+</ul>
+<h3 id="2-2-安装"><a href="#2-2-安装" class="headerlink" title="2.2 安装"></a>2.2 安装</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip3 install scikit-learn==0.19.1</span><br></pre></td></tr></table></figure>
+
+<p>安装好之后可以通过以下命令查看是否安装成功</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> sklearn</span><br></pre></td></tr></table></figure>
+
+<p><strong>注：</strong>安装 <code>scikit-learn</code> 需要 <code>Numpy</code>,  <code>Scipy</code> 等库。</p>
+<h3 id="2-3-包含内容"><a href="#2-3-包含内容" class="headerlink" title="2.3 包含内容"></a>2.3 包含内容</h3><ul>
+<li>分类、聚类、回归</li>
+<li>特征工程</li>
+<li>模型选择、调优</li>
+</ul>
+<h3 id="2-4-KNN-算法-api"><a href="#2-4-KNN-算法-api" class="headerlink" title="2.4 KNN 算法 api"></a>2.4 KNN 算法 api</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sklearn.neighbors.KNeighborsClassifier(n_neighbors=5)</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><code>n_neighbors</code>：<code>int</code>,可选（默认= 5），<code>k_neighbors</code> 查询默认使用的邻居数</p>
+</blockquote>
+<h3 id="2-5-示例"><a href="#2-5-示例" class="headerlink" title="2.5 示例"></a>2.5 示例</h3><h4 id="2-5-1-步骤分析"><a href="#2-5-1-步骤分析" class="headerlink" title="2.5.1 步骤分析"></a>2.5.1 步骤分析</h4><p>1.获取数据集</p>
+<p>2.数据基本处理（该案例中省略）</p>
+<p>3.特征工程（该案例中省略）</p>
+<p>4.机器学习</p>
+<p>5.模型评估（该案例中省略）</p>
+<h4 id="2-5-2-实现"><a href="#2-5-2-实现" class="headerlink" title="2.5.2 实现"></a>2.5.2 实现</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 导入模块</span></span><br><span class="line"><span class="keyword">from</span> sklearn.neighbors <span class="keyword">import</span> KNeighborsClassifier</span><br><span class="line"><span class="comment"># 构造数据集</span></span><br><span class="line">x = [[<span class="number">0</span>], [<span class="number">1</span>], [<span class="number">2</span>], [<span class="number">3</span>]]</span><br><span class="line">y = [<span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">1</span>]</span><br><span class="line"><span class="comment"># 机器学习 -- 模型训练</span></span><br><span class="line"><span class="comment"># 实例化API</span></span><br><span class="line">estimator = KNeighborsClassifier(n_neighbors=<span class="number">2</span>)</span><br><span class="line"><span class="comment"># 使用fit方法进行训练</span></span><br><span class="line">estimator.fit(x, y)</span><br><span class="line">estimator.predict([[<span class="number">1</span>]])</span><br></pre></td></tr></table></figure>
+
+<h2 id="3-距离度量"><a href="#3-距离度量" class="headerlink" title="3.距离度量"></a>3.距离度量</h2><h3 id="3-1-欧式距离-Euclidean-Distance"><a href="#3-1-欧式距离-Euclidean-Distance" class="headerlink" title="3.1 欧式距离(Euclidean Distance)"></a>3.1 欧式距离(Euclidean Distance)</h3><p>欧氏距离是最容易直观理解的距离度量方法，我们小学、初中和高中接触到的两个点在空间中的距离一般都是指欧氏距离。</p>
+<p>举例:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">X=[[<span class="number">1</span>,<span class="number">1</span>],[<span class="number">2</span>,<span class="number">2</span>],[<span class="number">3</span>,<span class="number">3</span>],[<span class="number">4</span>,<span class="number">4</span>]];</span><br><span class="line">经计算得:</span><br><span class="line">d = <span class="number">1.4142</span>    <span class="number">2.8284</span>    <span class="number">4.2426</span>    <span class="number">1.4142</span>    <span class="number">2.8284</span>    <span class="number">1.4142</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="3-2-曼哈顿距离-Manhattan-Distance"><a href="#3-2-曼哈顿距离-Manhattan-Distance" class="headerlink" title="3.2 曼哈顿距离(Manhattan Distance)"></a>3.2 曼哈顿距离(Manhattan Distance)</h3><p>在曼哈顿街区要从一个十字路口开车到另一个十字路口，驾驶距离显然不是两点间的直线距离。这个实际驾驶距离就是「曼哈顿距离」。曼哈顿距离也称为「城市街区距离」(City Block distance)。</p>
+<p><img src="https://github.com/EthanYan6/pic/raw/master/1.5%20%E6%9B%BC%E5%93%88%E9%A1%BF%E8%B7%9D%E7%A6%BB.png" alt="曼哈顿距离1"></p>
+<p><img src="https://github.com/EthanYan6/pic/raw/master/1.6%20%E6%9B%BC%E5%93%88%E9%A1%BF%E8%B7%9D%E7%A6%BB.png" alt="曼哈顿距离2"></p>
+<p>举例:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">X=[[<span class="number">1</span>,<span class="number">1</span>],[<span class="number">2</span>,<span class="number">2</span>],[<span class="number">3</span>,<span class="number">3</span>],[<span class="number">4</span>,<span class="number">4</span>]];</span><br><span class="line">经计算得:</span><br><span class="line">d =   <span class="number">2</span>     <span class="number">4</span>     <span class="number">6</span>     <span class="number">2</span>     <span class="number">4</span>     <span class="number">2</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="3-3-切比雪夫距离-Chebyshev-Distance"><a href="#3-3-切比雪夫距离-Chebyshev-Distance" class="headerlink" title="3.3 切比雪夫距离 (Chebyshev Distance)"></a>3.3 切比雪夫距离 (Chebyshev Distance)</h3><p>国际象棋中，国王可以直行、横行、斜行，所以国王走一步可以移动到相邻8个方格中的任意一个。国王从格子(x1,y1)走到格子(x2,y2)最少需要多少步？这个距离就叫切比雪夫距离。</p>
+<p><img src="https://github.com/EthanYan6/pic/raw/master/1.7%20%E5%88%87%E6%AF%94%E9%9B%AA%E5%A4%AB%E8%B7%9D%E7%A6%BB.png" alt="切比雪夫距离1"></p>
+<p><img src="https://github.com/EthanYan6/pic/raw/master/1.8%20%E5%88%87%E6%AF%94%E9%9B%AA%E5%A4%AB%E8%B7%9D%E7%A6%BB.png" alt="切比雪夫距离2"></p>
+<p>举例:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">X=[[1,1],[2,2],[3,3],[4,4]];</span><br><span class="line">经计算得:</span><br><span class="line">d =   1     2     3     1     2     1</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-4-闵可夫斯基距离-Minkowski-Distance"><a href="#3-4-闵可夫斯基距离-Minkowski-Distance" class="headerlink" title="3.4 闵可夫斯基距离(Minkowski Distance)"></a>3.4 闵可夫斯基距离(Minkowski Distance)</h3><p>闵氏距离不是一种距离，而是一组距离的定义，是对多个距离度量公式的概括性的表述。</p>
+<p>两个n维变量a(x11,x12,…,x1n)与b(x21,x22,…,x2n)间的闵可夫斯基距离定义为：</p>
+<p><img src="https://github.com/EthanYan6/pic/raw/master/image-20190225182628694.png" alt="闵可夫斯基距离"></p>
+<p>其中p是一个变参数：</p>
+<p>当p=1时，就是曼哈顿距离；</p>
+<p>当p=2时，就是欧氏距离；</p>
+<p>当p→∞时，就是切比雪夫距离。</p>
+<p>根据p的不同，闵氏距离可以表示某一 类/种 的距离。</p>
+<p><strong>小结：</strong></p>
+<p>1.闵氏距离，包括曼哈顿距离、欧氏距离和切比雪夫距离都存在明显的缺点:</p>
+<p>比如： 二维样本(身高[单位:cm],体重[单位:kg]),现有三个样本：a(180,50)，b(190,50)，c(180,60)。</p>
+<p>a与b的闵氏距离（无论是曼哈顿距离、欧氏距离或切比雪夫距离）等于a与c的闵氏距离。但实际上身高的10cm并不能和体重的10kg划等号。</p>
+<p><strong>2.闵氏距离的缺点：</strong></p>
+<p> <strong>(1)将各个分量的量纲(scale)，也就是“单位”相同的看待了;</strong></p>
+<p> <strong>(2)未考虑各个分量的分布（期望，方差等）可能是不同的。</strong></p>
+<h3 id="3-5-标准化欧氏距离-Standardized-EuclideanDistance"><a href="#3-5-标准化欧氏距离-Standardized-EuclideanDistance" class="headerlink" title="3.5 标准化欧氏距离 (Standardized EuclideanDistance)"></a>3.5 标准化欧氏距离 (Standardized EuclideanDistance)</h3><p>标准化欧氏距离是针对欧氏距离的缺点而作的一种改进。</p>
+<p>思路：既然数据各维分量的分布不一样，那先将各个分量都「标准化」到均值、方差相等。假设样本集X的均值(mean)为m，标准差(standard deviation)为s，X的「标准化变量」表示为：</p>
+<p><img src="https://github.com/EthanYan6/pic/raw/master/image-20190213184012294.png" alt="image-20190213184012294"></p>
+<p>如果将方差的倒数看成一个权重，也可称之为加权欧氏距离(Weighted Euclidean distance)。</p>
+<p>举例:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">X=[[<span class="number">1</span>,<span class="number">1</span>],[<span class="number">2</span>,<span class="number">2</span>],[<span class="number">3</span>,<span class="number">3</span>],[<span class="number">4</span>,<span class="number">4</span>]];（假设两个分量的标准差分别为<span class="number">0.5</span>和<span class="number">1</span>）</span><br><span class="line">经计算得:</span><br><span class="line">d =   <span class="number">2.2361</span>    <span class="number">4.4721</span>    <span class="number">6.7082</span>    <span class="number">2.2361</span>    <span class="number">4.4721</span>    <span class="number">2.2361</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="3-6-余弦距离-Cosine-Distance"><a href="#3-6-余弦距离-Cosine-Distance" class="headerlink" title="3.6 余弦距离(Cosine Distance)"></a>3.6 余弦距离(Cosine Distance)</h3><p>几何中，夹角余弦可用来衡量两个向量方向的差异；机器学习中，借用这一概念来衡量样本向量之间的差异。</p>
+<ul>
+<li>二维空间中向量A(x1,y1)与向量B(x2,y2)的夹角余弦公式：</li>
+</ul>
+<p><img src="https://github.com/EthanYan6/pic/raw/master/14200251_RZRZ.png" alt="余弦距离"></p>
+<ul>
+<li>两个n维样本点a(x11,x12,…,x1n)和b(x21,x22,…,x2n)的夹角余弦为：</li>
+</ul>
+<p><img src="https://github.com/EthanYan6/pic/raw/master/14200252_SE1M.png" alt="余弦距离"></p>
+<p>即：</p>
+<p><img src="https://github.com/EthanYan6/pic/raw/master/14200252_tITR.png" alt="余弦距离"></p>
+<p>夹角余弦取值范围为[-1,1]。余弦越大表示两个向量的夹角越小，余弦越小表示两向量的夹角越大。当两个向量的方向重合时余弦取最大值1，当两个向量的方向完全相反余弦取最小值-1。</p>
+<p>举例:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">X=[[1,1],[1,2],[2,5],[1,-4]]</span><br><span class="line">经计算得:</span><br><span class="line">d =   0.9487    0.9191   -0.5145    0.9965   -0.7593   -0.8107</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-7-汉明距离-Hamming-Distance-【了解】"><a href="#3-7-汉明距离-Hamming-Distance-【了解】" class="headerlink" title="3.7 汉明距离(Hamming Distance)【了解】"></a>3.7 汉明距离(Hamming Distance)【了解】</h3><p>两个等长字符串s1与s2的汉明距离为：将其中一个变为另外一个所需要作的最小字符替换次数。</p>
+<p>另外还有一些距离，但是并不需要详细学习：<strong>杰卡德距离(Jaccard Distance)</strong>、<strong>马氏距离(Mahalanobis Distance)</strong></p>
+<h2 id="4-k-值的选择"><a href="#4-k-值的选择" class="headerlink" title="4.k 值的选择"></a>4.k 值的选择</h2><p><strong>K值过小</strong>：</p>
+<p> 容易受到异常点的影响</p>
+<p><strong>k值过大：</strong></p>
+<p> 受到样本均衡的问题</p>
+<hr>
+<p><strong>K值选择问题，李航博士的「统计学习方法」一书中所说：</strong></p>
+<p>1) 选择较小的K值，就相当于用较小的领域中的训练实例进行预测，「学习」近似误差会减小，只有与输入实例较近或相似的训练实例才会对预测结果起作用，与此同时带来的问题是「学习」的估计误差会增大，换句话说，<strong>K值的减小就意味着整体模型变得复杂，容易发生过拟合；</strong></p>
+<p>2) 选择较大的K值，就相当于用较大领域中的训练实例进行预测，其优点是可以减少学习的估计误差，但缺点是学习的近似误差会增大。这时候，<strong>与输入实例较远（不相似的）训练实例也会对预测器作用，使预测发生错误，且K值的增大就意味着整体的模型变得简单。</strong></p>
+<p>3) K=N（N为训练样本个数），则完全不足取，因为此时无论输入实例是什么，都只是简单的预测它属于在训练实例中最多的类，模型过于简单，忽略了训练实例中大量有用信息。</p>
+<p>在实际应用中，K值一般取一个比较小的数值，例如采用交叉验证法（简单来说，就是把训练数据在分成两组:训练集和验证集）来选择最优的K值。对这个简单的分类器进行泛化，用核方法把这个线性模型扩展到非线性的情况，具体方法是把低维数据集映射到高维特征空间。</p>
+<hr>
+<p><strong>近似误差</strong>：对现有训练集的训练误差，关注训练集，如果近似误差过小可能会出现过拟合的现象，对现有的训练集能有很好的预测，但是对未知的测试样本将会出现较大偏差的预测。模型本身不是最接近最佳模型。</p>
+<p><strong>估计误差</strong>：可以理解为对测试集的测试误差，关注测试集，估计误差小说明对未知数据的预测能力好，模型本身最接近最佳模型。</p>
+<p><strong><em>更多精彩文章请关注公众号『Pythonnote』或者『全栈技术精选』</em></strong></p>
+
+      
+      <!-- reward -->
+      
+      <div id="reward-btn">
+        打赏
+      </div>
+      
+    </div>
+      <!-- copyright -->
+      
+        <div class="declare">
+          <ul class="post-copyright">
+            <li>
+              <i class="ri-copyright-line"></i>
+              <strong>版权声明： </strong s>
+              本博客所有文章除特别声明外，均采用 <a href="https://www.apache.org/licenses/LICENSE-2.0.html" rel="external nofollow"
+                target="_blank">Apache License 2.0</a> 许可协议。转载请注明出处！
+            </li>
+          </ul>
+        </div>
+        
+    <footer class="article-footer">
+      
+          
+<div class="share-btn">
+      <span class="share-sns share-outer">
+        <i class="ri-share-forward-line"></i>
+        分享
+      </span>
+      <div class="share-wrap">
+        <i class="arrow"></i>
+        <div class="share-icons">
+          
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="ri-weibo-fill"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="ri-wechat-fill"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="ri-qq-fill"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="ri-douban-line"></i>
+          </a>
+          <!-- <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a> -->
+          
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="ri-facebook-circle-fill"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="ri-twitter-fill"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="ri-google-fill"></i>
+          </a>
+        </div>
+      </div>
+</div>
+
+<div class="wx-share-modal">
+    <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://www.pythonnote.cn/2020/02/16/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%AE%97%E6%B3%95%E4%B9%8BK-%E8%BF%91%E9%82%BB%E7%AE%97%E6%B3%95/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div id="share-mask"></div>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" rel="tag">机器学习</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li></ul>
+
+
+    </footer>
+
+  </div>
+
+  
+  
+  <nav class="article-nav">
+    
+    
+      <a href="/2020/02/10/%E5%85%B3%E7%B3%BB%E6%95%B0%E6%8D%AE%E5%BA%93%E4%B9%8B%E8%A7%86%E5%9B%BE/" class="article-nav-link">
+        <strong class="article-nav-caption">下一篇</strong>
+        <div class="article-nav-title">关系数据库之视图</div>
+      </a>
+    
+  </nav>
+
+
+  
+
+  
+  
+<!-- valine评论 -->
+<div id="vcomments-box">
+    <div id="vcomments">
+    </div>
+</div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src='https://cdn.jsdelivr.net/npm/valine@1.3.10/dist/Valine.min.js'></script>
+<script>
+    new Valine({
+        el: '#vcomments',
+        notify: false,
+        verify: '',
+        app_id: 'KyuIqv0TGYfFpt5wguqvikhD-gzGzoHsz',
+        app_key: 'f6Vbsc3Y9hlCH2zJDPMpL6gj',
+        path: window.location.pathname,
+        avatar: 'mp',
+        placeholder: '给我的文章加点评论吧~',
+        recordIP: true
+    });
+    const infoEle = document.querySelector('#vcomments .info');
+    if (infoEle && infoEle.childNodes && infoEle.childNodes.length > 0) {
+        infoEle.childNodes.forEach(function (item) {
+            item.parentNode.removeChild(item);
+        });
+    }
+</script>
+<style>
+    #vcomments-box {
+        padding: 5px 30px;
+    }
+
+    @media screen and (max-width: 800px) {
+        #vcomments-box {
+            padding: 5px 0px;
+        }
+    }
+
+    #vcomments-box #vcomments {
+        background-color: #fff;
+    }
+
+    .v .vlist .vcard .vh {
+        padding-right: 20px;
+    }
+
+    .v .vlist .vcard {
+        padding-left: 10px;
+    }
+</style>
+
+  
+
+  
+  
+  
+
+</article>
+</section>
+      <footer class="footer">
+  <div class="outer">
+    <ul class="list-inline">
+      <li>
+        
+        
+        <span>
+  <i>PV:<span id="busuanzi_value_page_pv"></span></i>
+  <i>UV:<span id="busuanzi_value_site_uv"></span></i>
+</span>
+        
+      </li>
+      <li>
+        <!-- cnzz统计 -->
+        
+        <script type="text/javascript" src='https://s4.cnzz.com/z_stat.php?id=1278605887&amp;web_id=1278605887'></script>
+        
+      </li>
+    </ul>
+    
+    <ul class="list-inline">
+      <li>
+        友情链接：<a href="https://www.javastudy.cloud" target="_blank" rel="noopener">&gt; javaDemo站 &lt;</a><br>
+      </li>
+    </ul>
+
+    <ul class="list-inline">
+      <li>
+        更多精彩文章请关注微信公众号『全栈技术精选』，id 为『Pythonnote』
+      </li>
+    </ul>
+        
+    <ul class="list-inline">
+      <li>
+        &copy;
+        2019-2020
+        小闫同学
+      </li>
+      <li>
+        
+          Created by
+        
+        
+        <a href="https://github.com/EthanYan6" target="_blank">EthanYan</a> Thanks <a href="https://github.com/Shen-Yu/hexo-theme-ayer" target="_blank">Ayer</a>
+        
+      </li>
+    </ul>
+
+  </div>
+</footer>
+    <div class="to_top">
+        <div class="totop" id="totop">
+  <i class="ri-arrow-up-line"></i>
+</div>
+      </div>
+    </main>
+      <aside class="sidebar">
+        <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+  <div class="logo">
+    <a href="/"><img src="/images/ayer-side.svg" alt="小闫同学劝你多喝烫水"></a>
+  </div>
+  
+  <ul class="nav nav-main">
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/">主页</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/archives">归档</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/categories">分类</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags">标签</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="https://www.pythonnote.cn/OfficialDocuments/">文档</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="https://www.pythonnote.cn/resume/">关于我</a>
+    </li>
+    
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      
+      <a class="nav-item-link nav-item-search"  title="Search">
+        <i class="ri-search-line"></i>
+      </a>
+      
+      
+      <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+        <i class="ri-rss-line"></i>
+      </a>
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+      </aside>
+      <div id="mask"></div>
+
+<!-- #reward -->
+<div id="reward">
+  <span class="close"><i class="ri-close-line"></i></span>
+  <p class="reward-p"><i class="ri-cup-line"></i>请我喝杯咖啡吧~</p>
+  <div class="reward-box">
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/alipay.jpg">
+      <span class="reward-type">支付宝</span>
+    </div>
+    
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/wechat.jpg">
+      <span class="reward-type">微信</span>
+    </div>
+    
+  </div>
+</div>
+      <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.justifiedGallery.min.js"></script>
+<script src="/js/lazyload.min.js"></script>
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+<script src="/js/share.js"></script>
+
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+<script>
+  try {
+    var typed = new Typed("#subtitle", {
+    strings: ['小闫不才','世间纵有弱水三千，偏我眼中只有姑娘一人，勿怪','请关注微信公众号「Pythonnote」'],
+    startDelay: 0,
+    typeSpeed: 200,
+    loop: true,
+    backSpeed: 100,
+    showCursor: true
+    });
+  } catch (err) {
+  }
+  
+</script>
+
+
+
+<script src="/js/tocbot.min.js"></script>
+<script>
+  // Tocbot_v4.7.0  http://tscanlin.github.io/tocbot/
+  tocbot.init({
+    tocSelector: '.tocbot',
+    contentSelector: '.article-entry',
+    headingSelector: 'h1, h2, h3, h4, h5, h6',
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    scrollContainer:'main',
+    positionFixedSelector: '.tocbot',
+    positionFixedClass: 'is-position-fixed',
+    fixedSidebarOffset: 'auto',
+    onClick: (e) => {
+      $('.toc-link').removeClass('is-active-link');
+      $(`a[href=${e.target.hash}]`).addClass('is-active-link');
+      $(e.target.hash).scrollIntoView();
+      return false;
+    }
+  });
+</script>
+
+
+<script>
+  var ayerConfig = {
+    mathjax: false
+  }
+</script>
+
+<script src="/js/ayer.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.css">
+
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.css">
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"></script>
+
+<script>
+    function viewer_init() {
+        let pswpElement = document.querySelectorAll('.pswp')[0];
+        let $imgArr = document.querySelectorAll(('.article-entry img:not(.reward-img)'))
+
+        $imgArr.forEach(($em, i) => {
+            $em.onclick = () => {
+                // slider展开状态
+                // todo: 这样不好，后面改成状态
+                if (document.querySelector('.left-col.show')) return
+                let items = []
+                $imgArr.forEach(($em2, i2) => {
+                    let img = $em2.getAttribute('data-idx', i2)
+                    let src = $em2.getAttribute('data-target') || $em2.getAttribute('src')
+                    let title = $em2.getAttribute('alt')
+                    // 获得原图尺寸
+                    const image = new Image()
+                    image.src = src
+                    items.push({
+                        src: src,
+                        w: image.width || $em2.width,
+                        h: image.height || $em2.height,
+                        title: title
+                    })
+                })
+                var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, {
+                    index: parseInt(i)
+                });
+                gallery.init()
+            }
+        })
+    }
+    viewer_init()
+</script>
+
+
+
+
+<script type="text/javascript" src="https://js.users.51.la/20544303.js"></script>
+  </div>
+</body>
+
+</html>

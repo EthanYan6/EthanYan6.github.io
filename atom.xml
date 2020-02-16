@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.pythonnote.cn/"/>
-  <updated>2020-02-10T12:43:09.954Z</updated>
+  <updated>2020-02-16T11:07:13.796Z</updated>
   <id>http://www.pythonnote.cn/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>机器学习算法之K-近邻算法</title>
+    <link href="http://www.pythonnote.cn/2020/02/16/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%AE%97%E6%B3%95%E4%B9%8BK-%E8%BF%91%E9%82%BB%E7%AE%97%E6%B3%95/"/>
+    <id>http://www.pythonnote.cn/2020/02/16/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%AE%97%E6%B3%95%E4%B9%8BK-%E8%BF%91%E9%82%BB%E7%AE%97%E6%B3%95/</id>
+    <published>2020-02-16T09:28:14.000Z</published>
+    <updated>2020-02-16T11:07:13.796Z</updated>
+    
+    <summary type="html">
+    
+      &lt;center&gt;Author：闫玉良&lt;/center&gt;
+
+&lt;p&gt;&lt;code&gt;K Nearest Neighbor&lt;/code&gt; 算法又叫 &lt;code&gt;KNN&lt;/code&gt; 算法，此算法最早是由 &lt;code&gt;Cover&lt;/code&gt; 和 &lt;code&gt;Hart&lt;/code&gt; 提出的一种分类算法，是机器学习里面一个经典之作， 总体来说 &lt;code&gt;KNN&lt;/code&gt; 算法是相对比较容易理解的。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="算法" scheme="http://www.pythonnote.cn/categories/%E7%AE%97%E6%B3%95/"/>
+    
+      <category term="机器学习" scheme="http://www.pythonnote.cn/categories/%E7%AE%97%E6%B3%95/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+    
+    
+      <category term="算法" scheme="http://www.pythonnote.cn/tags/%E7%AE%97%E6%B3%95/"/>
+    
+      <category term="机器学习" scheme="http://www.pythonnote.cn/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+    
+  </entry>
   
   <entry>
     <title>关系数据库之视图</title>
@@ -493,30 +520,6 @@ bat 脚本？如果不是从事微软开发相关工作的人员，是不是感�
       <category term="windows" scheme="http://www.pythonnote.cn/tags/windows/"/>
     
       <category term="script" scheme="http://www.pythonnote.cn/tags/script/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>python 字符串前面的那些特殊字符</title>
-    <link href="http://www.pythonnote.cn/2019/11/04/python%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%89%8D%E9%9D%A2%E7%9A%84%E9%82%A3%E4%BA%9B%E7%89%B9%E6%AE%8A%E5%AD%97%E7%AC%A6/"/>
-    <id>http://www.pythonnote.cn/2019/11/04/python%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%89%8D%E9%9D%A2%E7%9A%84%E9%82%A3%E4%BA%9B%E7%89%B9%E6%AE%8A%E5%AD%97%E7%AC%A6/</id>
-    <published>2019-11-04T12:10:14.000Z</published>
-    <updated>2020-01-10T02:15:37.856Z</updated>
-    
-    <summary type="html">
-    
-      &lt;center&gt;Author：闫玉良&lt;/center&gt;
-对于 Python 的字符串大家并不陌生，引号引用即为字符串。那么字符串前面经常加的一些特殊字母就让初学者懵逼了，今天我们就来详细讲一下 ......
-    
-    </summary>
-    
-    
-      <category term="python" scheme="http://www.pythonnote.cn/categories/python/"/>
-    
-    
-      <category term="python" scheme="http://www.pythonnote.cn/tags/python/"/>
-    
-      <category term="字符串" scheme="http://www.pythonnote.cn/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/"/>
     
   </entry>
   
