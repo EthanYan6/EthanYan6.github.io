@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.pythonnote.cn/"/>
-  <updated>2020-02-17T11:17:08.536Z</updated>
+  <updated>2020-02-17T12:21:45.156Z</updated>
   <id>http://www.pythonnote.cn/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="http://www.pythonnote.cn/2020/02/17/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%AE%97%E6%B3%95%E4%B9%8Bkd%E6%A0%91/"/>
     <id>http://www.pythonnote.cn/2020/02/17/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%AE%97%E6%B3%95%E4%B9%8Bkd%E6%A0%91/</id>
     <published>2020-02-17T08:04:01.000Z</published>
-    <updated>2020-02-17T11:17:08.536Z</updated>
+    <updated>2020-02-17T12:21:45.156Z</updated>
     
     <summary type="html">
     
@@ -37,14 +37,10 @@
     
       <category term="数据结构" scheme="http://www.pythonnote.cn/categories/%E7%AE%97%E6%B3%95/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
     
-      <category term="机器学习" scheme="http://www.pythonnote.cn/categories/%E7%AE%97%E6%B3%95/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
-    
     
       <category term="算法" scheme="http://www.pythonnote.cn/tags/%E7%AE%97%E6%B3%95/"/>
     
       <category term="数据结构" scheme="http://www.pythonnote.cn/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
-    
-      <category term="机器学习" scheme="http://www.pythonnote.cn/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
     
   </entry>
   
@@ -313,9 +309,9 @@
       <category term="Mac" scheme="http://www.pythonnote.cn/categories/Mac/"/>
     
     
-      <category term="python" scheme="http://www.pythonnote.cn/tags/python/"/>
-    
       <category term="MacOS" scheme="http://www.pythonnote.cn/tags/MacOS/"/>
+    
+      <category term="python" scheme="http://www.pythonnote.cn/tags/python/"/>
     
       <category term="virtualenv" scheme="http://www.pythonnote.cn/tags/virtualenv/"/>
     

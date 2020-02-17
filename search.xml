@@ -69,12 +69,10 @@
       <categories>
         <category>算法</category>
         <category>数据结构</category>
-        <category>机器学习</category>
       </categories>
       <tags>
         <tag>算法</tag>
         <tag>数据结构</tag>
-        <tag>机器学习</tag>
       </tags>
   </entry>
   <entry>
@@ -944,8 +942,8 @@
         <category>Mac</category>
       </categories>
       <tags>
-        <tag>python</tag>
         <tag>MacOS</tag>
+        <tag>python</tag>
         <tag>virtualenv</tag>
       </tags>
   </entry>
