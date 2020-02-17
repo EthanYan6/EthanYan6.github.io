@@ -1,6 +1,83 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>机器学习算法之kd树</title>
+    <url>/2020/02/17/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%AE%97%E6%B3%95%E4%B9%8Bkd%E6%A0%91/</url>
+    <content><![CDATA[<center>Author：闫玉良</center>
+
+<p>上篇文章讲了 <code>K-近邻算法</code> ，但是引出了一个问题：</p>
+<p>实现 <code>K-近邻算法</code> 时，<strong>主要考虑的问题是如何对训练数据进行快速 k 近邻搜索。</strong>这在特征空间维数大及训练数据容量大时尤其必要。<strong>k 近邻法最简单的实现是线性扫描（穷举搜索），即要计算输入实例与每一个训练实例的距离。计算并存储好以后，再查找 K 近邻。</strong>当训练集很大时，计算非常耗时。为了提高 <code>KNN</code> 搜索的效率，可以考虑使用特殊的结构存储训练数据，以减小计算距离的次数。</p>
+<a id="more"></a>
+
+<p><strong><em>更多精彩文章请关注公众号『Pythonnote』或者『全栈技术精选』</em></strong></p>
+<p>为了解决上述问题，我们引入了 <code>kd</code> 树，下面来了解一下吧。</p>
+<h2 id="1-初识-kd-树"><a href="#1-初识-kd-树" class="headerlink" title="1.初识 kd 树"></a>1.初识 kd 树</h2><p><strong><code>KNN</code></strong> 在每次预测一个点时，都需要计算训练数据集里每个点到这个点的距离，然后选出距离最近的 k 个点进行投票。<strong>当数据集很大时，这个计算成本非常高，针对 N 个样本，D 个特征的数据集，其算法复杂度为 <code>O(DN^2)</code></strong>。</p>
+<p><strong>kd 树</strong>：为了避免每次都重新计算一遍距离，算法会把距离信息保存在一棵树里，这样就可以在每次计算之前从树里查询距离信息，尽量避免重新计算。其基本原理是，<strong>如果 A 和 B 距离很远，B 和 C 距离很近，那么 A 和 C 的距离也很远</strong>。有了这个信息，就可以在合适的时候跳过距离远的点。这样优化后的算法复杂度可降低到 <strong><code>O(DNlog(N))</code></strong>。</p>
+<blockquote>
+<p>感兴趣的读者可参阅论文：Bentley，J.L.，Communications of the ACM（1975）。</p>
+</blockquote>
+<p>1989年，另外一种称为 <strong><code>Ball Tree</code></strong> 的算法，在 <code>kd Tree</code> 的基础上对性能进一步进行了优化。</p>
+<blockquote>
+<p>感兴趣的读者可以搜索 <strong>Five balltree construction algorithms</strong> 来了解详细的算法信息。</p>
+</blockquote>
+<h2 id="2-树的构建"><a href="#2-树的构建" class="headerlink" title="2.树的构建"></a>2.树的构建</h2><p><img src="https://gitee.com/Ethanyan/pic_data/raw/master/image-20190213191654082.png" alt="kd树1"></p>
+<p><img src="https://gitee.com/Ethanyan/pic_data/raw/master/image-20190213191739222.png" alt="kd2"></p>
+<p>上方左侧图片中：黄色的点作为根节点，上面的点归左子树，下面的点归右子树。接下来再不断地划分，如上方右图，分割的那条线叫做分割超平面（splitting hyperplane），在一维中是一个点，二维中是线，三维的是面。</p>
+<p><img src="https://gitee.com/Ethanyan/pic_data/raw/master/image-20190219101722826.png" alt="kd3"></p>
+<p>黄色节点就是 <code>Root</code> 节点，下一层是红色，再下一层是绿色，再下一层是蓝色。</p>
+<h3 id="2-1-构造方法"><a href="#2-1-构造方法" class="headerlink" title="2.1 构造方法"></a>2.1 构造方法</h3><p>（1）构造根结点，使根结点对应于 k 维空间中包含所有实例点的超矩形区域；</p>
+<p>（2）通过递归的方法，不断地对 k 维空间进行切分，生成子结点。在超矩形区域上选择一个坐标轴和在此坐标轴上的一个切分点，确定一个超平面，这个超平面通过选定的切分点并垂直于选定的坐标轴，将当前超矩形区域切分为左右两个子区域（子结点）；这时，实例被分到两个子区域。</p>
+<p>（3）上述过程直到子区域内没有实例时终止（终止时的结点为叶结点）。在此过程中，将实例保存在相应的结点上。</p>
+<p>（4）通常，循环的选择坐标轴对空间切分，选择训练实例点在坐标轴上的中位数为切分点，这样得到的 <code>kd树</code> 是平衡的</p>
+<blockquote>
+<p>平衡二叉树：它是一棵空树，或其左子树和右子树的深度之差的绝对值不超过1，且它的左子树和右子树都是平衡二叉树。</p>
+</blockquote>
+<p> <code>kd树</code> 中每个节点是一个向量，和二叉树按照数的大小划分不同的是， <code>kd树</code> 每层需要选定向量中的某一维，然后根据这一维按左小右大的方式划分数据。在构建 <code>kd树</code> 时，关键需要解决2个问题：</p>
+<p><strong>（1）选择向量的哪一维进行划分；</strong></p>
+<p><strong>（2）如何划分数据；</strong></p>
+<p>第一个问题简单的解决方法可以是随机选择某一维或按顺序选择，但是<strong>更好的方法应该是在数据比较分散的那一维进行划分（分散的程度可以根据方差来衡量）</strong>。好的划分方法可以使构建的树比较平衡，可以每次选择中位数来进行划分，这样问题2也得到了解决。</p>
+<h2 id="3-最近邻域搜索（Nearest-Neighbor-Lookup）"><a href="#3-最近邻域搜索（Nearest-Neighbor-Lookup）" class="headerlink" title="3.最近邻域搜索（Nearest-Neighbor Lookup）"></a>3.最近邻域搜索（Nearest-Neighbor Lookup）</h2><p><code>kd 树</code>(K-dimension tree) 是<strong>一种对 k 维空间中的实例点进行存储以便对其进行快速检索的树形数据结构。</strong><code>kd树</code> 是一种二叉树，表示对 k 维空间的一个划分，<strong>构造 <code>kd树</code> 相当于不断地用垂直于坐标轴的超平面将 K 维空间切分，构成一系列的 K 维超矩形区域</strong>。<code>kd树</code> 的每个结点对应于一个 k 维超矩形区域。<strong>利用 <code>kd树</code> 可以省去对大部分数据点的搜索，从而减少搜索的计算量。</strong> </p>
+<p><img src="https://gitee.com/Ethanyan/pic_data/raw/master/image-20190213223817957.png" alt="kd4"></p>
+<p>接下来需要引入一个概念「<strong>最近邻域搜索</strong>」，类比「二分查找」：给出一组数据：[9 1 4 7 2 5 0 3 8]，要查找8。如果挨个查找（线性扫描），那么将会把数据集都遍历一遍。而如果排一下序那数据集就变成了：[0 1 2 3 4 5 6 7 8 9]，按前一种方式我们进行了很多没有必要的查找，现在如果我们以5为分界点，那么数据集就被划分为了左右两个 <code>簇</code> ： [0 1 2 3 4] 和 [6 7 8 9]。</p>
+<p>因此，根本就没有必要进入第一个簇，可以直接进入第二个簇进行查找。把二分查找中的数据点换成 k 维数据点，这样的划分就变成了用超平面对 k 维空间的划分。空间划分就是对数据点进行分类，「挨得近」的数据点就在一个空间里面。</p>
+<h2 id="4-示例"><a href="#4-示例" class="headerlink" title="4.示例"></a>4.示例</h2><h3 id="4-1-树的建立"><a href="#4-1-树的建立" class="headerlink" title="4.1 树的建立"></a>4.1 树的建立</h3><p>给定一个二维空间数据集：T={(2,3),(5,4),(9,6),(4,7),(8,1),(7,2)}，构造一个平衡 <code>kd树</code>。</p>
+<p><img src="https://gitee.com/Ethanyan/pic_data/raw/master/image-20190219102142984.png" alt="kd5"></p>
+<p>（1）思路引导：</p>
+<p>根结点对应包含数据集 T 的矩形，选择 x(1) 轴，6个数据点的 x(1) 坐标中位数是6，这里选最接近的 (7,2) 点，以平面 x(1)=7 将空间分为左、右两个子矩形（子结点）；接着左矩形以 x(2)=4 分为两个子矩形（左矩形中{(2,3),(5,4),(4,7)}点的 x(2) 坐标中位数正好为4），右矩形以 x(2)=6 分为两个子矩形，如此递归，最后得到如下图所示的特征空间划分和 <code>kd树</code>。</p>
+<blockquote>
+<p>「百度百科」中位数，又称中点数，中值。中位数是按顺序排列的一组数据中居于中间位置的数，即在这组数据中，有一半的数据比他大，有一半的数据比他小</p>
+</blockquote>
+<p><img src="https://gitee.com/Ethanyan/pic_data/raw/master/image-20190219102409567.png" alt="kd6"></p>
+<h3 id="4-2-最近领域的搜索"><a href="#4-2-最近领域的搜索" class="headerlink" title="4.2 最近领域的搜索"></a>4.2 最近领域的搜索</h3><p>假设标记为星星的点是 test point， 绿色的点是找到的近似点，在回溯过程中，需要用到一个队列，存储需要回溯的点，在判断其他子节点空间中是否有可能有距离查询点更近的数据点时，做法是以查询点为圆心，以当前的最近距离为半径画圆，这个圆称为候选超球（candidate hypersphere），如果圆与回溯点的轴相交，则需要将轴另一边的节点都放到回溯队列里面来。</p>
+<p><img src="https://gitee.com/Ethanyan/pic_data/raw/master/image-20190213224152601.png" alt="kd7"></p>
+<p>样本集{(2,3),(5,4), (9,6), (4,7), (8,1), (7,2)}</p>
+<h4 id="4-2-1-查询点为-2-1-3-1"><a href="#4-2-1-查询点为-2-1-3-1" class="headerlink" title="4.2.1 查询点为(2.1,3.1)"></a>4.2.1 查询点为(2.1,3.1)</h4><p><img src="https://gitee.com/Ethanyan/pic_data/raw/master/image-20190213224414342.png" alt="kd8"></p>
+<p>星号表示要查询的点（2.1,3.1）。通过二叉搜索，顺着搜索路径很快就能找到最邻近的近似点，也就是叶子节点（2,3）。而找到的叶子节点并不一定就是最邻近的，最邻近肯定距离查询点更近，应该位于以查询点为圆心且通过叶子节点的圆域内。为了找到真正的最近邻，还需要进行相关的「回溯」操作。也就是说，算法首先沿搜索路径反向查找是否有距离查询点更近的数据点。</p>
+<p>首先进行二叉树搜索：在 (7,2) 点测试到达 (5,4) ，在 (5,4) 点测试到达 (2,3) ，然后 <code>search_path</code> 中的结点为 &lt;(7,2),(5,4), (2,3)&gt; ，从 <code>search_path</code> 中取出 (2,3) 作为当前最佳结点 <code>nearest</code>，<code>dist</code> 为0.141；</p>
+<p>然后回溯至 (5,4)，以 (2.1,3.1) 为圆心，以 dist=0.141 为半径画一个圆，并不和超平面 y=4 相交，如上图，所以不必跳到结点 (5,4) 的右子空间去搜索，因为右子空间中不可能有更近样本点了。</p>
+<p>于是再回溯至 (7,2) ，同理，以 (2.1,3.1) 为圆心，以 dist=0.141 为半径画一个圆并不和超平面 x=7 相交，所以也不用跳到结点 (7,2) 的右子空间去搜索。</p>
+<p>至此，<code>search_path</code> 为空，结束整个搜索，返回 nearest(2,3) 作为(2.1,3.1) 的最近邻点，最近距离为 0.141。</p>
+<h4 id="4-2-2-查询点为-2-4-5"><a href="#4-2-2-查询点为-2-4-5" class="headerlink" title="4.2.2 查询点为(2,4.5)"></a>4.2.2 查询点为(2,4.5)</h4><p><img src="https://gitee.com/Ethanyan/pic_data/raw/master/image-20190219103050940.png" alt="kd9"></p>
+<p>类比上个例子，首先进行二叉树搜索：在 (7,2) 处测试到达 (5,4)，在 (5,4) 处测试到达 (4,7)【优先选择在本域搜索】，然后 <code>search_path</code> 中的结点为 &lt;(7,2),(5,4), (4,7)&gt;，从<code>search_path</code> 中取出 (4,7 ) 作为当前最佳结点 <code>nearest</code>，<code>dist</code>为3.202；</p>
+<p>然后回溯至 (5,4)，以 (2,4.5) 为圆心，以 dist=3.202 为半径画一个圆与超平面 y=4 相交，所以需要跳到 (5,4) 的左子空间去搜索。还要将 (2,3) 加入到 <code>search_path</code> 中，现在 <code>search_path</code> 中的结点为 &lt;(7,2),(2, 3)&gt;；另外，(5,4) 与 (2,4.5) 的距离为 3.04 &lt; dist = 3.202，所以将 (5,4) 赋给 <code>nearest</code>，并且 dist=3.04。</p>
+<p>回溯至 (2,3) 。(2,3) 是叶子节点，直接判断 (2,3) 是否离 (2,4.5) 更近，计算得到距离为1.5，所以 <code>nearest</code> 更新为(2,3)，<code>dist</code> 更新为(1.5)</p>
+<p>回溯至 (7,2)，同理，以 (2,4.5) 为圆心，以 dist=1.5 为半径画一个圆并不和超平面 x=7 相交, 所以不用跳到结点 (7,2) 的右子空间去搜索。</p>
+<p>至此，<code>search_path</code> 为空，结束整个搜索，返回 nearest(2,3) 作为(2,4.5) 的最近邻点，最近距离为1.5。</p>
+<h4 id="4-2-3-总结"><a href="#4-2-3-总结" class="headerlink" title="4.2.3 总结"></a>4.2.3 总结</h4><p>首先通过二叉树搜索（比较待查询节点和分裂节点的分裂维的值，小于等于就进入左子树分支，大于就进入右子树分支直到叶子结点），顺着「搜索路径」很快能找到最近邻的近似点，也就是与待查询点处于同一个子空间的叶子结点；然后再回溯搜索路径，并判断搜索路径上的结点的其他子结点空间中是否可能有距离查询点更近的数据点。如果有可能，则需要跳到其他子结点空间中去搜索（将其他子结点加入到搜索路径）。重复这个过程直到搜索路径为空。</p>
+<p><strong><em>更多精彩文章请关注公众号『Pythonnote』或者『全栈技术精选』</em></strong></p>
+]]></content>
+      <categories>
+        <category>算法</category>
+        <category>数据结构</category>
+        <category>机器学习</category>
+      </categories>
+      <tags>
+        <tag>算法</tag>
+        <tag>数据结构</tag>
+        <tag>机器学习</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>机器学习算法之K-近邻算法</title>
     <url>/2020/02/16/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%AE%97%E6%B3%95%E4%B9%8BK-%E8%BF%91%E9%82%BB%E7%AE%97%E6%B3%95/</url>
     <content><![CDATA[<center>Author：闫玉良</center>
@@ -867,8 +944,8 @@
         <category>Mac</category>
       </categories>
       <tags>
-        <tag>MacOS</tag>
         <tag>python</tag>
+        <tag>MacOS</tag>
         <tag>virtualenv</tag>
       </tags>
   </entry>
@@ -2070,52 +2147,6 @@ bat 脚本？如果不是从事微软开发相关工作的人员，是不是感�
       </tags>
   </entry>
   <entry>
-    <title>Elasticsearch 中这些必备 API 你晓得嘛？</title>
-    <url>/2019/10/25/Elasticsearch%20%E4%B8%AD%E8%BF%99%E4%BA%9B%E5%BF%85%E5%A4%87%20API%20%E4%BD%A0%E6%99%93%E5%BE%97%E5%98%9B%EF%BC%9F/</url>
-    <content><![CDATA[ <center>Author：闫玉良</center> 
-## 1.索引备份迁移
-
-<p>众所周知，ES 中的 mapping 只能在索引建立初期进行创建，且建立之后不可更改。mapping 对应的字段会映射成指定类型，未定义字段则自动映射，一般为 text 类型。那么想更改索引名或者更改某字段的 mapping 时，是否就束手无策了呢？当然不是！！！官方提供了一个接口，供索引备份迁移操作使用，那便是 <strong>reindex</strong>。当旧索引与新索引在同一节点时，效率相当高，万条数据瞬间完成（<code>大约只需0.4s</code>）。数百万数据也只需几分钟即可完成 操作，是不是很溜呢？快来学习一下吧。</p>
- <a id="more"></a> 
-
-<p><strong><em>更多精彩文章请关注公众号『Pythonnote』或者『全栈技术精选』</em></strong></p>
-<p><strong>请求方式：POST</strong></p>
-<p><strong>请求 API <code>_reindex</code></strong></p>
-<figure class="highlight json"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">"source"</span>: &#123;</span><br><span class="line">    <span class="attr">"index"</span>: <span class="string">"要备份的索引名"</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">"dest"</span>: &#123;</span><br><span class="line">    <span class="attr">"index"</span>: <span class="string">"新建的索引名"</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>如果新索引中有数据，且 id 与旧索引中重复，那么会进行覆盖操作。</p>
-</blockquote>
-<p>但是当数据量实在太大，高达几十 G 的时候，速度就会变得很慢，那是因为它底层还是利用了 scroll 操作。该如何进行<strong>优化</strong>呢？可以提升批量操作的文档数大小，如下：</p>
-<figure class="highlight json"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">"source"</span>: &#123;</span><br><span class="line">    <span class="attr">"index"</span>: <span class="string">"要备份的索引名"</span>,</span><br><span class="line">    <span class="attr">"size"</span> : <span class="number">5000</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">"dest"</span>: &#123;</span><br><span class="line">    <span class="attr">"index"</span>  : <span class="string">"新建的索引名"</span>,</span><br><span class="line">    <span class="attr">"routing"</span>: <span class="string">"=cat"</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>批量操作大小是如何确定的呢？是根据文档数以及文档容量进行确定的。根据查阅资料得知，一个好的起点是<strong>每批处理数据 5-15 MB</strong>，这是个什么概念？</p>
-<blockquote>
-<p>1000 个 1kb 的文档大约 1MB；1000 个 100kb 的文档是 100MB。</p>
-</blockquote>
-<p>然后<strong>逐步增加每批处理数据容量</strong>，进行调优，直到最终性能无法再次提升。还有一个方法，那便是提升硬件，比如<strong>换固态</strong>，你懂得~</p>
-<p>还有一种方法提升写入效率，这是终极操作，那便是 <code>sliced</code>。<code>reindex</code> 支持 Sliced Scroll 操作。它的原理可以简单的理解为将每次的 Scroll 请求分解，分解后并行化请求，从而提升效率。方式为：</p>
-<figure class="highlight json"><table><tr><td class="code"><pre><span class="line">POST _reindex?slices=5&amp;refresh</span><br><span class="line">&#123;</span><br><span class="line">  <span class="attr">"source"</span>: &#123;</span><br><span class="line">    <span class="attr">"index"</span>: <span class="string">"要备份的索引名"</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">"dest"</span>: &#123;</span><br><span class="line">    <span class="attr">"index"</span>: <span class="string">"新建的索引名"</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="2-删除索引中指定的数据"><a href="#2-删除索引中指定的数据" class="headerlink" title="2.删除索引中指定的数据"></a>2.删除索引中指定的数据</h2><p><strong>请求方式：POST</strong></p>
-<p><strong>请求 API <code>_delete_by_query</code></strong></p>
-<figure class="highlight json"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="attr">"query"</span>: &#123;</span><br><span class="line">        <span class="attr">"match"</span>: &#123;</span><br><span class="line">            <span class="attr">"字段名"</span>: <span class="string">"字段值"</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>方法便是先查出指定数据再删除。</p>
-</blockquote>
-<h2 id="3-设置副本数、分片、动态映射"><a href="#3-设置副本数、分片、动态映射" class="headerlink" title="3. 设置副本数、分片、动态映射"></a>3. 设置副本数、分片、动态映射</h2><p>设置这些指标项可在建立 mapping 时一同设置。</p>
-<figure class="highlight"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="attr">"settings"</span>:&#123;</span><br><span class="line">        <span class="attr">"index"</span>:&#123;</span><br><span class="line">            // 刷新间隔</span><br><span class="line">            "refresh_interval":"3s"</span><br><span class="line">        &#125;,</span><br><span class="line">        // 副本数</span><br><span class="line">        "number_of_replicas":"0",</span><br><span class="line">        // 切片（分布在每个节点上的切片）</span><br><span class="line">        "number_of_shards":"1"</span><br><span class="line">    &#125;,</span><br><span class="line">    "mappings":&#123;</span><br><span class="line">        "_doc":&#123;</span><br><span class="line">            // 自动映射为 keyword 类型而不是默认的text类型</span><br><span class="line">            "dynamic_templates":[</span><br><span class="line">                &#123;</span><br><span class="line">                    <span class="attr">"string_fields"</span>:&#123;</span><br><span class="line">                        <span class="attr">"match"</span>:<span class="string">"*"</span>,</span><br><span class="line">                        <span class="attr">"match_mapping_type"</span>:<span class="string">"string"</span>,</span><br><span class="line">                        <span class="attr">"mapping"</span>:&#123;</span><br><span class="line">                            <span class="attr">"type"</span>:<span class="string">"keyword"</span>,</span><br><span class="line">                            <span class="attr">"norms"</span>:<span class="literal">false</span></span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            ],</span><br><span class="line">            // 建立mapping</span><br><span class="line">            "properties":&#123;</span><br><span class="line">                "mydate":&#123;</span><br><span class="line">                    "type":"date",</span><br><span class="line">                    "format":"yyyy/MM/dd HH:mm:ss||date_time||strict_date_time"</span><br><span class="line">                &#125;,</span><br><span class="line">                "字段名":&#123;</span><br><span class="line">                    "type":"字段类型"</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-]]></content>
-      <categories>
-        <category>elasticsearch</category>
-      </categories>
-      <tags>
-        <tag>elasticsearch</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Git 上传大文件</title>
     <url>/2019/10/25/Git%20%E4%B8%8A%E4%BC%A0%E5%A4%A7%E6%96%87%E4%BB%B6/</url>
     <content><![CDATA[ <center>Author：闫玉良</center> 
@@ -2165,6 +2196,52 @@ bat 脚本？如果不是从事微软开发相关工作的人员，是不是感�
       </categories>
       <tags>
         <tag>git</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Elasticsearch 中这些必备 API 你晓得嘛？</title>
+    <url>/2019/10/25/Elasticsearch%20%E4%B8%AD%E8%BF%99%E4%BA%9B%E5%BF%85%E5%A4%87%20API%20%E4%BD%A0%E6%99%93%E5%BE%97%E5%98%9B%EF%BC%9F/</url>
+    <content><![CDATA[ <center>Author：闫玉良</center> 
+## 1.索引备份迁移
+
+<p>众所周知，ES 中的 mapping 只能在索引建立初期进行创建，且建立之后不可更改。mapping 对应的字段会映射成指定类型，未定义字段则自动映射，一般为 text 类型。那么想更改索引名或者更改某字段的 mapping 时，是否就束手无策了呢？当然不是！！！官方提供了一个接口，供索引备份迁移操作使用，那便是 <strong>reindex</strong>。当旧索引与新索引在同一节点时，效率相当高，万条数据瞬间完成（<code>大约只需0.4s</code>）。数百万数据也只需几分钟即可完成 操作，是不是很溜呢？快来学习一下吧。</p>
+ <a id="more"></a> 
+
+<p><strong><em>更多精彩文章请关注公众号『Pythonnote』或者『全栈技术精选』</em></strong></p>
+<p><strong>请求方式：POST</strong></p>
+<p><strong>请求 API <code>_reindex</code></strong></p>
+<figure class="highlight json"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">"source"</span>: &#123;</span><br><span class="line">    <span class="attr">"index"</span>: <span class="string">"要备份的索引名"</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">"dest"</span>: &#123;</span><br><span class="line">    <span class="attr">"index"</span>: <span class="string">"新建的索引名"</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>如果新索引中有数据，且 id 与旧索引中重复，那么会进行覆盖操作。</p>
+</blockquote>
+<p>但是当数据量实在太大，高达几十 G 的时候，速度就会变得很慢，那是因为它底层还是利用了 scroll 操作。该如何进行<strong>优化</strong>呢？可以提升批量操作的文档数大小，如下：</p>
+<figure class="highlight json"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">"source"</span>: &#123;</span><br><span class="line">    <span class="attr">"index"</span>: <span class="string">"要备份的索引名"</span>,</span><br><span class="line">    <span class="attr">"size"</span> : <span class="number">5000</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">"dest"</span>: &#123;</span><br><span class="line">    <span class="attr">"index"</span>  : <span class="string">"新建的索引名"</span>,</span><br><span class="line">    <span class="attr">"routing"</span>: <span class="string">"=cat"</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>批量操作大小是如何确定的呢？是根据文档数以及文档容量进行确定的。根据查阅资料得知，一个好的起点是<strong>每批处理数据 5-15 MB</strong>，这是个什么概念？</p>
+<blockquote>
+<p>1000 个 1kb 的文档大约 1MB；1000 个 100kb 的文档是 100MB。</p>
+</blockquote>
+<p>然后<strong>逐步增加每批处理数据容量</strong>，进行调优，直到最终性能无法再次提升。还有一个方法，那便是提升硬件，比如<strong>换固态</strong>，你懂得~</p>
+<p>还有一种方法提升写入效率，这是终极操作，那便是 <code>sliced</code>。<code>reindex</code> 支持 Sliced Scroll 操作。它的原理可以简单的理解为将每次的 Scroll 请求分解，分解后并行化请求，从而提升效率。方式为：</p>
+<figure class="highlight json"><table><tr><td class="code"><pre><span class="line">POST _reindex?slices=5&amp;refresh</span><br><span class="line">&#123;</span><br><span class="line">  <span class="attr">"source"</span>: &#123;</span><br><span class="line">    <span class="attr">"index"</span>: <span class="string">"要备份的索引名"</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">"dest"</span>: &#123;</span><br><span class="line">    <span class="attr">"index"</span>: <span class="string">"新建的索引名"</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="2-删除索引中指定的数据"><a href="#2-删除索引中指定的数据" class="headerlink" title="2.删除索引中指定的数据"></a>2.删除索引中指定的数据</h2><p><strong>请求方式：POST</strong></p>
+<p><strong>请求 API <code>_delete_by_query</code></strong></p>
+<figure class="highlight json"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="attr">"query"</span>: &#123;</span><br><span class="line">        <span class="attr">"match"</span>: &#123;</span><br><span class="line">            <span class="attr">"字段名"</span>: <span class="string">"字段值"</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>方法便是先查出指定数据再删除。</p>
+</blockquote>
+<h2 id="3-设置副本数、分片、动态映射"><a href="#3-设置副本数、分片、动态映射" class="headerlink" title="3. 设置副本数、分片、动态映射"></a>3. 设置副本数、分片、动态映射</h2><p>设置这些指标项可在建立 mapping 时一同设置。</p>
+<figure class="highlight"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="attr">"settings"</span>:&#123;</span><br><span class="line">        <span class="attr">"index"</span>:&#123;</span><br><span class="line">            // 刷新间隔</span><br><span class="line">            "refresh_interval":"3s"</span><br><span class="line">        &#125;,</span><br><span class="line">        // 副本数</span><br><span class="line">        "number_of_replicas":"0",</span><br><span class="line">        // 切片（分布在每个节点上的切片）</span><br><span class="line">        "number_of_shards":"1"</span><br><span class="line">    &#125;,</span><br><span class="line">    "mappings":&#123;</span><br><span class="line">        "_doc":&#123;</span><br><span class="line">            // 自动映射为 keyword 类型而不是默认的text类型</span><br><span class="line">            "dynamic_templates":[</span><br><span class="line">                &#123;</span><br><span class="line">                    <span class="attr">"string_fields"</span>:&#123;</span><br><span class="line">                        <span class="attr">"match"</span>:<span class="string">"*"</span>,</span><br><span class="line">                        <span class="attr">"match_mapping_type"</span>:<span class="string">"string"</span>,</span><br><span class="line">                        <span class="attr">"mapping"</span>:&#123;</span><br><span class="line">                            <span class="attr">"type"</span>:<span class="string">"keyword"</span>,</span><br><span class="line">                            <span class="attr">"norms"</span>:<span class="literal">false</span></span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            ],</span><br><span class="line">            // 建立mapping</span><br><span class="line">            "properties":&#123;</span><br><span class="line">                "mydate":&#123;</span><br><span class="line">                    "type":"date",</span><br><span class="line">                    "format":"yyyy/MM/dd HH:mm:ss||date_time||strict_date_time"</span><br><span class="line">                &#125;,</span><br><span class="line">                "字段名":&#123;</span><br><span class="line">                    "type":"字段类型"</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>elasticsearch</category>
+      </categories>
+      <tags>
+        <tag>elasticsearch</tag>
       </tags>
   </entry>
   <entry>
