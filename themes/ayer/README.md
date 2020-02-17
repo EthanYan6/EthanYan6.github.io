@@ -1,3 +1,9 @@
+### Install
+
+``` bash
+$ git clone https://github.com/Shen-Yu/hexo-theme-ayer.git themes/ayer
+```
+
 ### Enable
 
 Modify `theme` setting in `_config.yml` to `ayer`
@@ -58,6 +64,7 @@ progressBar: ture
 # Article Setting
 # (Use this to excerpt if article is too long：<!--more-->)
 excerpt_link: Read More...
+excerpt_all: false
 
 # Share
 share_enable: true
@@ -101,6 +108,7 @@ weixin: /images/wechat.jpg
 copyright_type: 2
 
 # Search
+# https://github.com/theme-next/hexo-generator-searchdb
 search: true
 
 # RSS
@@ -209,7 +217,7 @@ pageFooter: true
 ``` bash
   hexo new page categories
 ```
-Then paste following codes to file: _posts/categories/index.md
+Then paste following codes to file: /source/categories/index.md
 ``` md
 ---
 title: categories
@@ -252,8 +260,3 @@ Use Tocbot to parse the title tags (h1~h6) in the content and insert the directo
   toc: false
   ---
 	```
-
----
-
-<br/>
-<a src="https://github.com/Shen-Yu/hexo-theme-ayer">Ayer</a> by <a  href="https://github.com/Shen-Yu">Eric-Shen</a> is licensed under  <a rel="license" href="https://www.mit-license.org/">MIT</a>.
