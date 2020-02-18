@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.pythonnote.cn/"/>
-  <updated>2020-02-17T12:21:45.156Z</updated>
+  <updated>2020-02-18T12:29:19.192Z</updated>
   <id>http://www.pythonnote.cn/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>机器学习算法之线性回归</title>
+    <link href="http://www.pythonnote.cn/2020/02/18/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%AE%97%E6%B3%95%E4%B9%8B%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92/"/>
+    <id>http://www.pythonnote.cn/2020/02/18/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%AE%97%E6%B3%95%E4%B9%8B%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92/</id>
+    <published>2020-02-18T10:36:30.000Z</published>
+    <updated>2020-02-18T12:29:19.192Z</updated>
+    
+    <summary type="html">
+    
+      &lt;center&gt;Author：闫玉良&lt;/center&gt;
+
+&lt;p&gt;机器学习中最常见的一类问题：线性回归问题。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="算法" scheme="http://www.pythonnote.cn/categories/%E7%AE%97%E6%B3%95/"/>
+    
+      <category term="机器学习" scheme="http://www.pythonnote.cn/categories/%E7%AE%97%E6%B3%95/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+    
+    
+      <category term="算法" scheme="http://www.pythonnote.cn/tags/%E7%AE%97%E6%B3%95/"/>
+    
+      <category term="机器学习" scheme="http://www.pythonnote.cn/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+    
+  </entry>
   
   <entry>
     <title>机器学习算法之kd树</title>
@@ -309,9 +336,9 @@
       <category term="Mac" scheme="http://www.pythonnote.cn/categories/Mac/"/>
     
     
-      <category term="python" scheme="http://www.pythonnote.cn/tags/python/"/>
-    
       <category term="MacOS" scheme="http://www.pythonnote.cn/tags/MacOS/"/>
+    
+      <category term="python" scheme="http://www.pythonnote.cn/tags/python/"/>
     
       <category term="virtualenv" scheme="http://www.pythonnote.cn/tags/virtualenv/"/>
     
@@ -496,32 +523,6 @@ Linux 设置定时任务，crontab 执行 python 脚本不生效的问题：
       <category term="crontab" scheme="http://www.pythonnote.cn/tags/crontab/"/>
     
       <category term="定时任务" scheme="http://www.pythonnote.cn/tags/%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>MacBook Pro你真的会使用吗？</title>
-    <link href="http://www.pythonnote.cn/2019/11/17/MacBookPro%E4%BD%A0%E7%9C%9F%E7%9A%84%E4%BC%9A%E4%BD%BF%E7%94%A8%E5%90%97%EF%BC%9F/"/>
-    <id>http://www.pythonnote.cn/2019/11/17/MacBookPro%E4%BD%A0%E7%9C%9F%E7%9A%84%E4%BC%9A%E4%BD%BF%E7%94%A8%E5%90%97%EF%BC%9F/</id>
-    <published>2019-11-17T06:58:48.000Z</published>
-    <updated>2020-01-10T02:10:42.602Z</updated>
-    
-    <summary type="html">
-    
-      &lt;center&gt;Author：闫玉良&lt;/center&gt; 
-那些不使用鼠标的人是否是打肿脸充胖子？因囊中羞涩而安装的xx软件装不上怎么办？MacBook Pro真的那么好用吗？下面为您解答
-    
-    </summary>
-    
-    
-      <category term="Mac" scheme="http://www.pythonnote.cn/categories/Mac/"/>
-    
-    
-      <category term="MacOS" scheme="http://www.pythonnote.cn/tags/MacOS/"/>
-    
-      <category term="快捷键" scheme="http://www.pythonnote.cn/tags/%E5%BF%AB%E6%8D%B7%E9%94%AE/"/>
-    
-      <category term="MacBook Pro" scheme="http://www.pythonnote.cn/tags/MacBook-Pro/"/>
     
   </entry>
   

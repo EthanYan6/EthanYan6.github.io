@@ -1,6 +1,88 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>机器学习算法之线性回归</title>
+    <url>/2020/02/18/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%AE%97%E6%B3%95%E4%B9%8B%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92/</url>
+    <content><![CDATA[<center>Author：闫玉良</center>
+
+<p>机器学习中最常见的一类问题：线性回归问题。</p>
+<a id="more"></a>
+
+<p><strong><em>更多精彩文章请关注公众号『Pythonnote』或者『全栈技术精选』</em></strong></p>
+<h2 id="1-应用场景"><a href="#1-应用场景" class="headerlink" title="1.应用场景"></a>1.应用场景</h2><ul>
+<li>房价预测</li>
+</ul>
+<p>通过以往房屋面积与房屋价格对应情况，推断出现有房屋的价格。</p>
+<ul>
+<li>销售额度预测</li>
+</ul>
+<p>销售额度受影响因素很多，比如广告，市场环境等等。我们可以分析出其中的关系，从而预测销售额度。</p>
+<ul>
+<li>贷款额度预测</li>
+</ul>
+<p>银行对于每个人的贷款额度参考，预测出某人的贷款额度。</p>
+<p>……</p>
+<h2 id="2-线性回归"><a href="#2-线性回归" class="headerlink" title="2.线性回归"></a>2.线性回归</h2><p>在说线性回归之前，需要先搞清楚『分类』和『回归』这两个概念，这也是机器学习中很重要的概念。简单来讲，『分类』和『回归』都是预测目标值的过程，但是『分类』预测的是离散型变量，而『回归』预测的是连续型变量。下面开始介绍线性回归：</p>
+<p>线性回归(<code>Linear regression</code>)是利用<strong>回归方程(函数)</strong>对<strong>一个或多个自变量(特征值)和因变量(目标值)之间</strong>关系进行建模的一种分析方式。下面即对应公式：</p>
+<blockquote>
+<p>只有一个自变量的情况称为单变量回归，多于一个自变量情况的叫做多元回归</p>
+</blockquote>
+<p><img src="https://gitee.com/Ethanyan/pic_data/raw/master/%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92%E5%85%AC%E5%BC%8F.png" alt="线性回归公式"></p>
+<p>那么怎么理解呢？我们来看几个例子</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">期末成绩 = 0.7 × 考试成绩 + 0.3 × 平时成绩</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">房子价格 = 0.02 × 中心区域的距离 + 0.04 × 城市一氧化氮浓度 + (-0.12 × 自住房平均房价) + 0.254 × 城镇犯罪率</span><br></pre></td></tr></table></figure>
+
+<p>上面两个例子，<strong>我们看到特征值与目标值之间建立了一个关系，这个关系可以理解为线性模型</strong>。</p>
+<p>如果还是难以理解的话，那么再通俗易懂的解释一下：</p>
+<p>假设有很多小点点在屏幕上，他们看似杂乱，但貌似又有些关系。线性回归就是找出一条直线，尽可能的让给定的特征值点（屏幕上的小点点）都落到线上或均匀分布于两侧并靠近于这条线。</p>
+<blockquote>
+<p>当然这些点分布的不能过于散乱，他们的整体趋势必须是线性的，否则拟合结果就是非线性。</p>
+</blockquote>
+<p>这样看来，像不像给定几个点，然后求直线方程呢？（无限趋于完美情况，所有点都在直线上）这个直线方程就是<strong>「线性回归方程」</strong>，要求的参数就是「回归参数」</p>
+<h2 id="3-特征值与目标值关系分析"><a href="#3-特征值与目标值关系分析" class="headerlink" title="3.特征值与目标值关系分析"></a>3.特征值与目标值关系分析</h2><p>线性回归当中线性模型有两种：<strong>一种是线性关系，另一种是非线性关系。</strong>在这里我们只能画一个平面更好去理解，所以都用单个特征或两个特征举例子。</p>
+<h3 id="3-1-线性关系"><a href="#3-1-线性关系" class="headerlink" title="3.1 线性关系"></a>3.1 线性关系</h3><h4 id="3-1-1-单变量线性关系"><a href="#3-1-1-单变量线性关系" class="headerlink" title="3.1.1 单变量线性关系"></a>3.1.1 单变量线性关系</h4><p><img src="https://gitee.com/Ethanyan/pic_data/raw/master/%E7%BA%BF%E6%80%A7%E5%85%B3%E7%B3%BB%E5%9B%BE.png" alt="单变量线性关系"></p>
+<h4 id="3-1-2-多变量线性关系"><a href="#3-1-2-多变量线性关系" class="headerlink" title="3.1.2 多变量线性关系"></a>3.1.2 多变量线性关系</h4><p><img src="https://gitee.com/Ethanyan/pic_data/raw/master/%E5%A4%9A%E5%8F%98%E9%87%8F%E7%BA%BF%E6%80%A7%E5%85%B3%E7%B3%BB.png" alt="多变量线性关系"></p>
+<p><strong>注释：</strong>单特征与目标值的关系呈直线关系，或者两个特征与目标值呈现平面的关系。</p>
+<p>更高维度的我们不用自己去想，记住这种关系即可</p>
+<h3 id="3-2-非线性关系"><a href="#3-2-非线性关系" class="headerlink" title="3.2 非线性关系"></a>3.2 非线性关系</h3><p><img src="https://gitee.com/Ethanyan/pic_data/raw/master/%E9%9D%9E%E7%BA%BF%E6%80%A7%E5%85%B3%E7%B3%BB.png" alt="非线性关系"></p>
+<h2 id="4-线性回归api初步使用"><a href="#4-线性回归api初步使用" class="headerlink" title="4.线性回归api初步使用"></a>4.线性回归api初步使用</h2><h3 id="4-1-api"><a href="#4-1-api" class="headerlink" title="4.1 api"></a>4.1 api</h3><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sklearn.linear_model.LinearRegression()</span><br><span class="line"><span class="meta">#</span><span class="bash"> LinearRegression.coef_：回归系数</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="4-2-举例"><a href="#4-2-举例" class="headerlink" title="4.2 举例"></a>4.2 举例</h3><p><img src="https://gitee.com/Ethanyan/pic_data/raw/master/image-20190320204457160.png" alt="示例表格"></p>
+<h4 id="4-2-1-步骤分析"><a href="#4-2-1-步骤分析" class="headerlink" title="4.2.1 步骤分析"></a>4.2.1 步骤分析</h4><ul>
+<li>1.获取数据集</li>
+<li>2.数据基本处理（该案例中省略）</li>
+<li>3.特征工程（该案例中省略）</li>
+<li>4.机器学习</li>
+<li>5.模型评估（该案例中省略）</li>
+</ul>
+<h4 id="4-2-2-代码过程"><a href="#4-2-2-代码过程" class="headerlink" title="4.2.2 代码过程"></a>4.2.2 代码过程</h4><ul>
+<li>导入模块</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.linear_model <span class="keyword">import</span> LinearRegression</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>构造数据集</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">x = [[<span class="number">80</span>, <span class="number">86</span>],</span><br><span class="line">[<span class="number">82</span>, <span class="number">80</span>],</span><br><span class="line">[<span class="number">85</span>, <span class="number">78</span>],</span><br><span class="line">[<span class="number">90</span>, <span class="number">90</span>],</span><br><span class="line">[<span class="number">86</span>, <span class="number">82</span>],</span><br><span class="line">[<span class="number">82</span>, <span class="number">90</span>],</span><br><span class="line">[<span class="number">78</span>, <span class="number">80</span>],</span><br><span class="line">[<span class="number">92</span>, <span class="number">94</span>]]</span><br><span class="line">y = [<span class="number">84.2</span>, <span class="number">80.6</span>, <span class="number">80.1</span>, <span class="number">90</span>, <span class="number">83.2</span>, <span class="number">87.6</span>, <span class="number">79.4</span>, <span class="number">93.4</span>]</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>机器学习– 模型训练</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 实例化API</span></span><br><span class="line">estimator = LinearRegression()</span><br><span class="line"><span class="comment"># 使用fit方法进行训练</span></span><br><span class="line">estimator.fit(x,y)</span><br><span class="line"><span class="comment"># 回归系数</span></span><br><span class="line">estimator.coef_</span><br><span class="line"><span class="comment"># 预测</span></span><br><span class="line">estimator.predict([[<span class="number">100</span>, <span class="number">80</span>]])</span><br></pre></td></tr></table></figure>
+
+<p><strong><em>更多精彩文章请关注公众号『Pythonnote』或者『全栈技术精选』</em></strong></p>
+]]></content>
+      <categories>
+        <category>算法</category>
+        <category>机器学习</category>
+      </categories>
+      <tags>
+        <tag>算法</tag>
+        <tag>机器学习</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>机器学习算法之kd树</title>
     <url>/2020/02/17/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%AE%97%E6%B3%95%E4%B9%8Bkd%E6%A0%91/</url>
     <content><![CDATA[<center>Author：闫玉良</center>
@@ -942,8 +1024,8 @@
         <category>Mac</category>
       </categories>
       <tags>
-        <tag>python</tag>
         <tag>MacOS</tag>
+        <tag>python</tag>
         <tag>virtualenv</tag>
       </tags>
   </entry>
