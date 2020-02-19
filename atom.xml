@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.pythonnote.cn/"/>
-  <updated>2020-02-18T12:29:57.507Z</updated>
+  <updated>2020-02-19T05:47:24.425Z</updated>
   <id>http://www.pythonnote.cn/</id>
   
   <author>
@@ -17,11 +17,38 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>机器学习算法之线性回归的损失和优化</title>
+    <link href="http://www.pythonnote.cn/2020/02/19/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%AE%97%E6%B3%95%E4%B9%8B%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92%E7%9A%84%E6%8D%9F%E5%A4%B1%E5%92%8C%E4%BC%98%E5%8C%96/"/>
+    <id>http://www.pythonnote.cn/2020/02/19/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%AE%97%E6%B3%95%E4%B9%8B%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92%E7%9A%84%E6%8D%9F%E5%A4%B1%E5%92%8C%E4%BC%98%E5%8C%96/</id>
+    <published>2020-02-19T10:36:38.000Z</published>
+    <updated>2020-02-19T05:47:24.425Z</updated>
+    
+    <summary type="html">
+    
+      &lt;center&gt;Author：闫玉良&lt;/center&gt;
+
+&lt;p&gt;学习了线性回归，接下来就需要考虑其损失以及优化了。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="算法" scheme="http://www.pythonnote.cn/categories/%E7%AE%97%E6%B3%95/"/>
+    
+      <category term="机器学习" scheme="http://www.pythonnote.cn/categories/%E7%AE%97%E6%B3%95/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+    
+    
+      <category term="算法" scheme="http://www.pythonnote.cn/tags/%E7%AE%97%E6%B3%95/"/>
+    
+      <category term="机器学习" scheme="http://www.pythonnote.cn/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+    
+  </entry>
+  
+  <entry>
     <title>机器学习算法之线性回归</title>
     <link href="http://www.pythonnote.cn/2020/02/18/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%AE%97%E6%B3%95%E4%B9%8B%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92/"/>
     <id>http://www.pythonnote.cn/2020/02/18/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%AE%97%E6%B3%95%E4%B9%8B%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92/</id>
     <published>2020-02-18T10:36:30.000Z</published>
-    <updated>2020-02-18T12:29:57.507Z</updated>
+    <updated>2020-02-19T03:46:03.162Z</updated>
     
     <summary type="html">
     
@@ -47,8 +74,8 @@
     <title>机器学习算法之kd树</title>
     <link href="http://www.pythonnote.cn/2020/02/17/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%AE%97%E6%B3%95%E4%B9%8Bkd%E6%A0%91/"/>
     <id>http://www.pythonnote.cn/2020/02/17/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%AE%97%E6%B3%95%E4%B9%8Bkd%E6%A0%91/</id>
-    <published>2020-02-17T08:04:01.000Z</published>
-    <updated>2020-02-17T12:21:45.156Z</updated>
+    <published>2020-02-17T11:04:01.000Z</published>
+    <updated>2020-02-19T03:39:48.867Z</updated>
     
     <summary type="html">
     
@@ -75,8 +102,8 @@
     <title>机器学习算法之K-近邻算法</title>
     <link href="http://www.pythonnote.cn/2020/02/16/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%AE%97%E6%B3%95%E4%B9%8BK-%E8%BF%91%E9%82%BB%E7%AE%97%E6%B3%95/"/>
     <id>http://www.pythonnote.cn/2020/02/16/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%AE%97%E6%B3%95%E4%B9%8BK-%E8%BF%91%E9%82%BB%E7%AE%97%E6%B3%95/</id>
-    <published>2020-02-16T09:28:14.000Z</published>
-    <updated>2020-02-16T11:20:44.821Z</updated>
+    <published>2020-02-16T12:28:14.000Z</published>
+    <updated>2020-02-19T03:39:57.795Z</updated>
     
     <summary type="html">
     
@@ -125,8 +152,8 @@
     <title>git仓库上传了个无法点开的空文件夹是什么鬼？</title>
     <link href="http://www.pythonnote.cn/2020/02/09/git%E4%BB%93%E5%BA%93%E4%B8%8A%E4%BC%A0%E4%BA%86%E4%B8%AA%E6%97%A0%E6%B3%95%E7%82%B9%E5%BC%80%E7%9A%84%E7%A9%BA%E6%96%87%E4%BB%B6%E5%A4%B9%E6%98%AF%E4%BB%80%E4%B9%88%E9%AC%BC%EF%BC%9F/"/>
     <id>http://www.pythonnote.cn/2020/02/09/git%E4%BB%93%E5%BA%93%E4%B8%8A%E4%BC%A0%E4%BA%86%E4%B8%AA%E6%97%A0%E6%B3%95%E7%82%B9%E5%BC%80%E7%9A%84%E7%A9%BA%E6%96%87%E4%BB%B6%E5%A4%B9%E6%98%AF%E4%BB%80%E4%B9%88%E9%AC%BC%EF%BC%9F/</id>
-    <published>2020-02-09T05:00:45.000Z</published>
-    <updated>2020-02-09T06:20:00.189Z</updated>
+    <published>2020-02-09T15:00:45.000Z</published>
+    <updated>2020-02-19T03:41:00.570Z</updated>
     
     <summary type="html">
     
@@ -171,8 +198,8 @@
     <title>计算机网络知识点总结</title>
     <link href="http://www.pythonnote.cn/2020/02/02/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%9F%A5%E8%AF%86%E7%82%B9%E6%80%BB%E7%BB%93/"/>
     <id>http://www.pythonnote.cn/2020/02/02/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%9F%A5%E8%AF%86%E7%82%B9%E6%80%BB%E7%BB%93/</id>
-    <published>2020-02-02T07:43:23.000Z</published>
-    <updated>2020-02-02T12:07:45.398Z</updated>
+    <published>2020-02-02T10:43:23.000Z</published>
+    <updated>2020-02-19T03:41:36.448Z</updated>
     
     <summary type="html">
     
@@ -192,8 +219,8 @@
     <title>elasticsearch的一些小知识点</title>
     <link href="http://www.pythonnote.cn/2020/01/31/elasticsearch%E7%9A%84%E4%B8%80%E4%BA%9B%E5%B0%8F%E7%9F%A5%E8%AF%86%E7%82%B9/"/>
     <id>http://www.pythonnote.cn/2020/01/31/elasticsearch%E7%9A%84%E4%B8%80%E4%BA%9B%E5%B0%8F%E7%9F%A5%E8%AF%86%E7%82%B9/</id>
-    <published>2020-01-31T08:28:16.000Z</published>
-    <updated>2020-01-31T09:43:44.641Z</updated>
+    <published>2020-01-31T11:28:16.000Z</published>
+    <updated>2020-02-19T03:40:49.868Z</updated>
     
     <summary type="html">
     
@@ -220,8 +247,8 @@
     <title>还在拧螺丝？是时候学习造航母了！</title>
     <link href="http://www.pythonnote.cn/2020/01/30/%E8%BF%98%E5%9C%A8%E6%8B%A7%E8%9E%BA%E4%B8%9D%EF%BC%9F%E6%98%AF%E6%97%B6%E5%80%99%E5%AD%A6%E4%B9%A0%E9%80%A0%E8%88%AA%E6%AF%8D%E4%BA%86%EF%BC%81/"/>
     <id>http://www.pythonnote.cn/2020/01/30/%E8%BF%98%E5%9C%A8%E6%8B%A7%E8%9E%BA%E4%B8%9D%EF%BC%9F%E6%98%AF%E6%97%B6%E5%80%99%E5%AD%A6%E4%B9%A0%E9%80%A0%E8%88%AA%E6%AF%8D%E4%BA%86%EF%BC%81/</id>
-    <published>2020-01-30T08:58:02.000Z</published>
-    <updated>2020-01-30T10:40:18.048Z</updated>
+    <published>2020-01-30T11:58:02.000Z</published>
+    <updated>2020-02-19T03:41:24.419Z</updated>
     
     <summary type="html">
     
@@ -244,8 +271,8 @@
     <title>docker的一些小知识</title>
     <link href="http://www.pythonnote.cn/2020/01/29/docker%E7%9A%84%E4%B8%80%E4%BA%9B%E5%B0%8F%E7%9F%A5%E8%AF%86/"/>
     <id>http://www.pythonnote.cn/2020/01/29/docker%E7%9A%84%E4%B8%80%E4%BA%9B%E5%B0%8F%E7%9F%A5%E8%AF%86/</id>
-    <published>2020-01-29T06:10:49.000Z</published>
-    <updated>2020-01-29T08:42:12.147Z</updated>
+    <published>2020-01-29T11:10:49.000Z</published>
+    <updated>2020-02-19T03:43:32.426Z</updated>
     
     <summary type="html">
     
@@ -267,8 +294,8 @@
     <title>图</title>
     <link href="http://www.pythonnote.cn/2020/01/27/%E5%9B%BE/"/>
     <id>http://www.pythonnote.cn/2020/01/27/%E5%9B%BE/</id>
-    <published>2020-01-27T08:40:37.000Z</published>
-    <updated>2020-01-31T03:23:34.144Z</updated>
+    <published>2020-01-27T10:40:37.000Z</published>
+    <updated>2020-02-19T03:42:10.922Z</updated>
     
     <summary type="html">
     
@@ -452,8 +479,8 @@ Vue 框架如同 Python 中的 Django 框架一样，让一切操作变得超级
     <title>继续死磕前端</title>
     <link href="http://www.pythonnote.cn/2019/12/08/%E7%BB%A7%E7%BB%AD%E6%AD%BB%E7%A3%95%E5%89%8D%E7%AB%AF/"/>
     <id>http://www.pythonnote.cn/2019/12/08/%E7%BB%A7%E7%BB%AD%E6%AD%BB%E7%A3%95%E5%89%8D%E7%AB%AF/</id>
-    <published>2019-12-08T06:22:58.000Z</published>
-    <updated>2020-01-10T02:16:32.036Z</updated>
+    <published>2019-12-08T10:22:58.000Z</published>
+    <updated>2020-02-19T03:41:43.718Z</updated>
     
     <summary type="html">
     
@@ -478,8 +505,8 @@ Vue 框架如同 Python 中的 Django 框架一样，让一切操作变得超级
     <title>死磕前端ing～</title>
     <link href="http://www.pythonnote.cn/2019/12/07/%E6%AD%BB%E7%A3%95%E5%89%8D%E7%AB%AFing%EF%BD%9E/"/>
     <id>http://www.pythonnote.cn/2019/12/07/%E6%AD%BB%E7%A3%95%E5%89%8D%E7%AB%AFing%EF%BD%9E/</id>
-    <published>2019-12-07T05:39:37.000Z</published>
-    <updated>2020-01-10T02:16:26.278Z</updated>
+    <published>2019-12-07T15:39:37.000Z</published>
+    <updated>2020-02-19T03:41:50.210Z</updated>
     
     <summary type="html">
     
@@ -495,34 +522,6 @@ Vue 框架如同 Python 中的 Django 框架一样，让一切操作变得超级
     
     
       <category term="前端" scheme="http://www.pythonnote.cn/tags/%E5%89%8D%E7%AB%AF/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>crontab 执行python脚本不生效？（续）</title>
-    <link href="http://www.pythonnote.cn/2019/11/17/%E6%89%A7%E8%A1%8Cpython%E8%84%9A%E6%9C%AC/"/>
-    <id>http://www.pythonnote.cn/2019/11/17/%E6%89%A7%E8%A1%8Cpython%E8%84%9A%E6%9C%AC/</id>
-    <published>2019-11-17T07:17:31.000Z</published>
-    <updated>2020-01-10T02:16:15.201Z</updated>
-    
-    <summary type="html">
-    
-      &lt;center&gt;Author：闫玉良&lt;/center&gt; 
-Linux 设置定时任务，crontab 执行 python 脚本不生效的问题：
-    
-    </summary>
-    
-    
-      <category term="Linux" scheme="http://www.pythonnote.cn/categories/Linux/"/>
-    
-    
-      <category term="Linux" scheme="http://www.pythonnote.cn/tags/Linux/"/>
-    
-      <category term="python" scheme="http://www.pythonnote.cn/tags/python/"/>
-    
-      <category term="crontab" scheme="http://www.pythonnote.cn/tags/crontab/"/>
-    
-      <category term="定时任务" scheme="http://www.pythonnote.cn/tags/%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1/"/>
     
   </entry>
   
