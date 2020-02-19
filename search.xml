@@ -106,11 +106,14 @@
 <p><strong>多变量的梯度下降：</strong></p>
 <p><img src="https://gitee.com/Ethanyan/pic_data/raw/master/%E5%A4%9A%E5%8F%98%E9%87%8F%E7%9A%84%E6%A2%AF%E5%BA%A6%E4%B8%8B%E9%99%8D.png" alt="多变量的梯度下降"></p>
 <p><strong>正因为有了梯度下降这样一个优化算法，回归才具有「自动学习」的能力</strong></p>
-<ul>
-<li><h5 id="优化动态图演示"><a href="#优化动态图演示" class="headerlink" title="优化动态图演示"></a><strong>优化动态图演示</strong></h5></li>
+<h5 id="2-2-5-优化动态图演示"><a href="#2-2-5-优化动态图演示" class="headerlink" title="2.2.5 优化动态图演示"></a>2.2.5 优化动态图演示</h5><p><img src="https://s2.ax1x.com/2020/02/19/3EMkS1.gif" alt="线性回归优化动态图"></p>
+<h3 id="3-总结"><a href="#3-总结" class="headerlink" title="3.总结"></a>3.总结</h3><ul>
+<li>线性回归的损失函数 - 均方误差</li>
+<li>线性回归的优化方法<ul>
+<li>正规方程</li>
+<li>梯度下降</li>
 </ul>
-<p><img src="https://s2.ax1x.com/2020/02/19/3EMkS1.gif" alt="线性回归优化动态图"></p>
-<ul>
+</li>
 <li>梯度下降和正规方程的对比</li>
 </ul>
 <table>
@@ -141,14 +144,6 @@
 <li>岭回归</li>
 </ul>
 <p>大规模数据：<code>SGDRegressor</code></p>
-</li>
-</ul>
-<h3 id="3-总结"><a href="#3-总结" class="headerlink" title="3.总结"></a>3.总结</h3><ul>
-<li>线性回归的损失函数 - 均方误差</li>
-<li>线性回归的优化方法<ul>
-<li>正规方程</li>
-<li>梯度下降</li>
-</ul>
 </li>
 </ul>
 <p><strong><em>更多精彩文章请关注公众号『Pythonnote』或者『全栈技术精选』</em></strong></p>
