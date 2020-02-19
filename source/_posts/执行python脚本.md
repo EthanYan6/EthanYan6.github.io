@@ -1,6 +1,6 @@
 ---
 title: crontab 执行python脚本不生效？（续）
-date: 2019-11-17 15:17:31
+date: 2019-11-17 18:17:31
 tags:
 - python
 - Linux
