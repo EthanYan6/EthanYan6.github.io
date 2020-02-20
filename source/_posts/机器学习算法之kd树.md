@@ -10,7 +10,7 @@ categories:
 - 数据结构
 ---
 
-<center>Author：闫玉良</center>
+<center>Editor：闫玉良</center>
 
 上篇文章讲了 `K-近邻算法` ，但是引出了一个问题：
 

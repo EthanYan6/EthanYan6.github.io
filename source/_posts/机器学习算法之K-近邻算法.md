@@ -9,7 +9,7 @@ categories:
 - 机器学习
 ---
 
-<center>Author：闫玉良</center>
+<center>Editor：闫玉良</center>
 
 `K Nearest Neighbor` 算法又叫 `KNN` 算法，此算法最早是由 `Cover` 和 `Hart` 提出的一种分类算法，是机器学习里面一个经典之作， 总体来说 `KNN` 算法是相对比较容易理解的。
 
