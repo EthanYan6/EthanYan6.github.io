@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.pythonnote.cn/"/>
-  <updated>2020-02-19T05:53:20.488Z</updated>
+  <updated>2020-02-20T14:07:03.390Z</updated>
   <id>http://www.pythonnote.cn/</id>
   
   <author>
@@ -17,15 +17,44 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>机器学习算法之欠拟合和过拟合</title>
+    <link href="http://www.pythonnote.cn/2020/02/20/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%AE%97%E6%B3%95%E4%B9%8B%E6%AC%A0%E6%8B%9F%E5%90%88%E5%92%8C%E8%BF%87%E6%8B%9F%E5%90%88/"/>
+    <id>http://www.pythonnote.cn/2020/02/20/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%AE%97%E6%B3%95%E4%B9%8B%E6%AC%A0%E6%8B%9F%E5%90%88%E5%92%8C%E8%BF%87%E6%8B%9F%E5%90%88/</id>
+    <published>2020-02-20T11:41:19.000Z</published>
+    <updated>2020-02-20T14:07:03.390Z</updated>
+    
+    <summary type="html">
+    
+      &lt;center&gt;Editor：闫玉良&lt;/center&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;引言：&lt;/strong&gt;机器学习的基本问题是利用模型对数据进行拟合，学习的目的并非是对有限训练集进行正确预测，而是对未曾在训练集合出现的样本能够正确预测。模型对训练集数据的误差称为经验误差，对测试集数据的误差称为泛化误差。模型对训练集以外样本的预测能力就称为模型的泛化能力，追求这种泛化能力始终是机器学习的目标。过拟合和欠拟合是导致模型泛化能力不高的两种常见原因，都是模型学习能力与数据复杂度之间失配的结果。&lt;/p&gt;
+&lt;/blockquote&gt;
+    
+    </summary>
+    
+    
+      <category term="算法" scheme="http://www.pythonnote.cn/categories/%E7%AE%97%E6%B3%95/"/>
+    
+      <category term="数据结构" scheme="http://www.pythonnote.cn/categories/%E7%AE%97%E6%B3%95/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
+    
+    
+      <category term="算法" scheme="http://www.pythonnote.cn/tags/%E7%AE%97%E6%B3%95/"/>
+    
+      <category term="数据结构" scheme="http://www.pythonnote.cn/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
+    
+  </entry>
+  
+  <entry>
     <title>机器学习算法之线性回归的损失和优化</title>
     <link href="http://www.pythonnote.cn/2020/02/19/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%AE%97%E6%B3%95%E4%B9%8B%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92%E7%9A%84%E6%8D%9F%E5%A4%B1%E5%92%8C%E4%BC%98%E5%8C%96/"/>
     <id>http://www.pythonnote.cn/2020/02/19/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%AE%97%E6%B3%95%E4%B9%8B%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92%E7%9A%84%E6%8D%9F%E5%A4%B1%E5%92%8C%E4%BC%98%E5%8C%96/</id>
     <published>2020-02-19T10:36:38.000Z</published>
-    <updated>2020-02-19T05:53:20.488Z</updated>
+    <updated>2020-02-20T12:08:30.436Z</updated>
     
     <summary type="html">
     
-      &lt;center&gt;Author：闫玉良&lt;/center&gt;
+      &lt;center&gt;Editor：闫玉良&lt;/center&gt;
 
 &lt;p&gt;学习了线性回归，接下来就需要考虑其损失以及优化了。&lt;/p&gt;
     
@@ -48,11 +77,11 @@
     <link href="http://www.pythonnote.cn/2020/02/18/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%AE%97%E6%B3%95%E4%B9%8B%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92/"/>
     <id>http://www.pythonnote.cn/2020/02/18/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%AE%97%E6%B3%95%E4%B9%8B%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92/</id>
     <published>2020-02-18T10:36:30.000Z</published>
-    <updated>2020-02-19T03:46:03.162Z</updated>
+    <updated>2020-02-20T12:08:07.324Z</updated>
     
     <summary type="html">
     
-      &lt;center&gt;Author：闫玉良&lt;/center&gt;
+      &lt;center&gt;Editor：闫玉良&lt;/center&gt;
 
 &lt;p&gt;机器学习中最常见的一类问题：线性回归问题。&lt;/p&gt;
     
@@ -75,11 +104,11 @@
     <link href="http://www.pythonnote.cn/2020/02/17/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%AE%97%E6%B3%95%E4%B9%8Bkd%E6%A0%91/"/>
     <id>http://www.pythonnote.cn/2020/02/17/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%AE%97%E6%B3%95%E4%B9%8Bkd%E6%A0%91/</id>
     <published>2020-02-17T11:04:01.000Z</published>
-    <updated>2020-02-19T03:39:48.867Z</updated>
+    <updated>2020-02-20T12:09:03.106Z</updated>
     
     <summary type="html">
     
-      &lt;center&gt;Author：闫玉良&lt;/center&gt;
+      &lt;center&gt;Editor：闫玉良&lt;/center&gt;
 
 &lt;p&gt;上篇文章讲了 &lt;code&gt;K-近邻算法&lt;/code&gt; ，但是引出了一个问题：&lt;/p&gt;
 &lt;p&gt;实现 &lt;code&gt;K-近邻算法&lt;/code&gt; 时，&lt;strong&gt;主要考虑的问题是如何对训练数据进行快速 k 近邻搜索。&lt;/strong&gt;这在特征空间维数大及训练数据容量大时尤其必要。&lt;strong&gt;k 近邻法最简单的实现是线性扫描（穷举搜索），即要计算输入实例与每一个训练实例的距离。计算并存储好以后，再查找 K 近邻。&lt;/strong&gt;当训练集很大时，计算非常耗时。为了提高 &lt;code&gt;KNN&lt;/code&gt; 搜索的效率，可以考虑使用特殊的结构存储训练数据，以减小计算距离的次数。&lt;/p&gt;
@@ -103,11 +132,11 @@
     <link href="http://www.pythonnote.cn/2020/02/16/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%AE%97%E6%B3%95%E4%B9%8BK-%E8%BF%91%E9%82%BB%E7%AE%97%E6%B3%95/"/>
     <id>http://www.pythonnote.cn/2020/02/16/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%AE%97%E6%B3%95%E4%B9%8BK-%E8%BF%91%E9%82%BB%E7%AE%97%E6%B3%95/</id>
     <published>2020-02-16T12:28:14.000Z</published>
-    <updated>2020-02-19T03:39:57.795Z</updated>
+    <updated>2020-02-20T12:08:47.711Z</updated>
     
     <summary type="html">
     
-      &lt;center&gt;Author：闫玉良&lt;/center&gt;
+      &lt;center&gt;Editor：闫玉良&lt;/center&gt;
 
 &lt;p&gt;&lt;code&gt;K Nearest Neighbor&lt;/code&gt; 算法又叫 &lt;code&gt;KNN&lt;/code&gt; 算法，此算法最早是由 &lt;code&gt;Cover&lt;/code&gt; 和 &lt;code&gt;Hart&lt;/code&gt; 提出的一种分类算法，是机器学习里面一个经典之作， 总体来说 &lt;code&gt;KNN&lt;/code&gt; 算法是相对比较容易理解的。&lt;/p&gt;
     
@@ -498,30 +527,6 @@ Vue 框架如同 Python 中的 Django 框架一样，让一切操作变得超级
       <category term="前端" scheme="http://www.pythonnote.cn/tags/%E5%89%8D%E7%AB%AF/"/>
     
       <category term="jquery" scheme="http://www.pythonnote.cn/tags/jquery/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>死磕前端ing～</title>
-    <link href="http://www.pythonnote.cn/2019/12/07/%E6%AD%BB%E7%A3%95%E5%89%8D%E7%AB%AFing%EF%BD%9E/"/>
-    <id>http://www.pythonnote.cn/2019/12/07/%E6%AD%BB%E7%A3%95%E5%89%8D%E7%AB%AFing%EF%BD%9E/</id>
-    <published>2019-12-07T15:39:37.000Z</published>
-    <updated>2020-02-19T03:41:50.210Z</updated>
-    
-    <summary type="html">
-    
-      &lt;center&gt;Author：闫玉良&lt;/center&gt; 
-这么久没有发文，很多人关心我是否离开了这个美丽的世界 ... 这些同学，是如何居心？出来，我保证不打死你们。不过很久没有更新文章，确实抱歉，我的错，我有罪 ～（小声逼逼：我又不是签约作家，还被逼出了连载的味道，也是没谁了。）
-
-&lt;p&gt;今天咱们唠唠前端那点事儿，和前端死磕到底。&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="前端" scheme="http://www.pythonnote.cn/categories/%E5%89%8D%E7%AB%AF/"/>
-    
-    
-      <category term="前端" scheme="http://www.pythonnote.cn/tags/%E5%89%8D%E7%AB%AF/"/>
     
   </entry>
   
