@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.pythonnote.cn/"/>
-  <updated>2020-02-20T14:36:34.861Z</updated>
+  <updated>2020-02-21T06:49:09.388Z</updated>
   <id>http://www.pythonnote.cn/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>机器学习算法之逻辑回归</title>
+    <link href="http://www.pythonnote.cn/2020/02/21/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%AE%97%E6%B3%95%E4%B9%8B%E9%80%BB%E8%BE%91%E5%9B%9E%E5%BD%92/"/>
+    <id>http://www.pythonnote.cn/2020/02/21/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%AE%97%E6%B3%95%E4%B9%8B%E9%80%BB%E8%BE%91%E5%9B%9E%E5%BD%92/</id>
+    <published>2020-02-21T10:19:53.000Z</published>
+    <updated>2020-02-21T06:49:09.388Z</updated>
+    
+    <summary type="html">
+    
+      &lt;center&gt;Editor：闫玉良&lt;/center&gt;
+
+&lt;p&gt;逻辑回归（&lt;code&gt;Logistic Regression&lt;/code&gt;）是机器学习中的一种&lt;strong&gt;分类模型&lt;/strong&gt;。虽然名字中带有「回归」，但它却不是回归算法，而是一种分类算法。由于此算法的简单和高效，在实际应用中使用非常广泛。也许有人很好奇，那为什么叫做「回归」而不是「分类」呢？&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="算法" scheme="http://www.pythonnote.cn/categories/%E7%AE%97%E6%B3%95/"/>
+    
+      <category term="机器学习" scheme="http://www.pythonnote.cn/categories/%E7%AE%97%E6%B3%95/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+    
+    
+      <category term="算法" scheme="http://www.pythonnote.cn/tags/%E7%AE%97%E6%B3%95/"/>
+    
+      <category term="机器学习" scheme="http://www.pythonnote.cn/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+    
+  </entry>
   
   <entry>
     <title>机器学习算法之欠拟合和过拟合</title>
@@ -50,7 +77,7 @@
     <link href="http://www.pythonnote.cn/2020/02/19/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%AE%97%E6%B3%95%E4%B9%8B%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92%E7%9A%84%E6%8D%9F%E5%A4%B1%E5%92%8C%E4%BC%98%E5%8C%96/"/>
     <id>http://www.pythonnote.cn/2020/02/19/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%AE%97%E6%B3%95%E4%B9%8B%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92%E7%9A%84%E6%8D%9F%E5%A4%B1%E5%92%8C%E4%BC%98%E5%8C%96/</id>
     <published>2020-02-19T10:36:38.000Z</published>
-    <updated>2020-02-20T12:08:30.436Z</updated>
+    <updated>2020-02-21T05:20:43.520Z</updated>
     
     <summary type="html">
     
@@ -392,9 +419,9 @@
       <category term="Mac" scheme="http://www.pythonnote.cn/categories/Mac/"/>
     
     
-      <category term="MacOS" scheme="http://www.pythonnote.cn/tags/MacOS/"/>
-    
       <category term="python" scheme="http://www.pythonnote.cn/tags/python/"/>
+    
+      <category term="MacOS" scheme="http://www.pythonnote.cn/tags/MacOS/"/>
     
       <category term="virtualenv" scheme="http://www.pythonnote.cn/tags/virtualenv/"/>
     
@@ -501,32 +528,6 @@ Vue 框架如同 Python 中的 Django 框架一样，让一切操作变得超级
       <category term="前端" scheme="http://www.pythonnote.cn/tags/%E5%89%8D%E7%AB%AF/"/>
     
       <category term="vue" scheme="http://www.pythonnote.cn/tags/vue/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>继续死磕前端</title>
-    <link href="http://www.pythonnote.cn/2019/12/08/%E7%BB%A7%E7%BB%AD%E6%AD%BB%E7%A3%95%E5%89%8D%E7%AB%AF/"/>
-    <id>http://www.pythonnote.cn/2019/12/08/%E7%BB%A7%E7%BB%AD%E6%AD%BB%E7%A3%95%E5%89%8D%E7%AB%AF/</id>
-    <published>2019-12-08T10:22:58.000Z</published>
-    <updated>2020-02-19T03:41:43.718Z</updated>
-    
-    <summary type="html">
-    
-      &lt;center&gt;Author：闫玉良&lt;/center&gt; 
-昨天将所有的基础知识进行了回顾，今天继续磕，不死不休～
-
-&lt;p&gt;今天要说的便是 jquery 这个函数库，毕竟它影响范围之广，不会都不好意说自己会前端？&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="前端" scheme="http://www.pythonnote.cn/categories/%E5%89%8D%E7%AB%AF/"/>
-    
-    
-      <category term="前端" scheme="http://www.pythonnote.cn/tags/%E5%89%8D%E7%AB%AF/"/>
-    
-      <category term="jquery" scheme="http://www.pythonnote.cn/tags/jquery/"/>
     
   </entry>
   
