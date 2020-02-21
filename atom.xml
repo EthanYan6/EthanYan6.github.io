@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.pythonnote.cn/"/>
-  <updated>2020-02-21T06:49:09.388Z</updated>
+  <updated>2020-02-21T07:17:39.886Z</updated>
   <id>http://www.pythonnote.cn/</id>
   
   <author>
@@ -21,13 +21,13 @@
     <link href="http://www.pythonnote.cn/2020/02/21/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%AE%97%E6%B3%95%E4%B9%8B%E9%80%BB%E8%BE%91%E5%9B%9E%E5%BD%92/"/>
     <id>http://www.pythonnote.cn/2020/02/21/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%AE%97%E6%B3%95%E4%B9%8B%E9%80%BB%E8%BE%91%E5%9B%9E%E5%BD%92/</id>
     <published>2020-02-21T10:19:53.000Z</published>
-    <updated>2020-02-21T06:49:09.388Z</updated>
+    <updated>2020-02-21T07:17:39.886Z</updated>
     
     <summary type="html">
     
       &lt;center&gt;Editor：闫玉良&lt;/center&gt;
 
-&lt;p&gt;逻辑回归（&lt;code&gt;Logistic Regression&lt;/code&gt;）是机器学习中的一种&lt;strong&gt;分类模型&lt;/strong&gt;。虽然名字中带有「回归」，但它却不是回归算法，而是一种分类算法。由于此算法的简单和高效，在实际应用中使用非常广泛。也许有人很好奇，那为什么叫做「回归」而不是「分类」呢？&lt;/p&gt;
+&lt;p&gt;逻辑回归（&lt;code&gt;Logistic Regression&lt;/code&gt;）是机器学习中的一种&lt;strong&gt;分类模型&lt;/strong&gt;。虽然名字中带有「回归」，但它却不是回归算法，而是一种分类算法。由于此算法的简单和高效，在实际场景中应用非常广泛。也许有人很好奇，那为什么叫做「回归」而不是「分类」呢？&lt;/p&gt;
     
     </summary>
     
@@ -419,9 +419,9 @@
       <category term="Mac" scheme="http://www.pythonnote.cn/categories/Mac/"/>
     
     
-      <category term="python" scheme="http://www.pythonnote.cn/tags/python/"/>
-    
       <category term="MacOS" scheme="http://www.pythonnote.cn/tags/MacOS/"/>
+    
+      <category term="python" scheme="http://www.pythonnote.cn/tags/python/"/>
     
       <category term="virtualenv" scheme="http://www.pythonnote.cn/tags/virtualenv/"/>
     
