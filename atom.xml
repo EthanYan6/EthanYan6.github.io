@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.pythonnote.cn/"/>
-  <updated>2020-02-21T07:17:39.886Z</updated>
+  <updated>2020-02-22T11:44:35.860Z</updated>
   <id>http://www.pythonnote.cn/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>机器学习算法之决策树</title>
+    <link href="http://www.pythonnote.cn/2020/02/22/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%AE%97%E6%B3%95%E4%B9%8B%E5%86%B3%E7%AD%96%E6%A0%91/"/>
+    <id>http://www.pythonnote.cn/2020/02/22/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%AE%97%E6%B3%95%E4%B9%8B%E5%86%B3%E7%AD%96%E6%A0%91/</id>
+    <published>2020-02-22T07:42:01.000Z</published>
+    <updated>2020-02-22T11:44:35.860Z</updated>
+    
+    <summary type="html">
+    
+      &lt;center&gt;Editor：闫玉良&lt;/center&gt;
+
+&lt;p&gt;今天来学习一种新的&lt;strong&gt;分类&lt;/strong&gt;算法「决策树」&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="算法" scheme="http://www.pythonnote.cn/categories/%E7%AE%97%E6%B3%95/"/>
+    
+      <category term="数据结构" scheme="http://www.pythonnote.cn/categories/%E7%AE%97%E6%B3%95/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
+    
+    
+      <category term="算法" scheme="http://www.pythonnote.cn/tags/%E7%AE%97%E6%B3%95/"/>
+    
+      <category term="数据结构" scheme="http://www.pythonnote.cn/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
+    
+  </entry>
   
   <entry>
     <title>机器学习算法之逻辑回归</title>
@@ -488,36 +515,6 @@ Vue 框架如同 Python 中的 Django 框架一样，让一切操作变得超级
 长路漫漫，唯夜作伴。虽然一天的工作头昏脑胀，但是仍然放不下我心心念念的前端啊，扶我起来，我还可以学～
 
 &lt;p&gt;学习喜欢的事情，也是一种放松，come on！&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="前端" scheme="http://www.pythonnote.cn/categories/%E5%89%8D%E7%AB%AF/"/>
-    
-    
-      <category term="前端" scheme="http://www.pythonnote.cn/tags/%E5%89%8D%E7%AB%AF/"/>
-    
-      <category term="vue" scheme="http://www.pythonnote.cn/tags/vue/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>前端攻坚战</title>
-    <link href="http://www.pythonnote.cn/2019/12/09/%E5%89%8D%E7%AB%AF%E6%94%BB%E5%9D%9A%E6%88%98/"/>
-    <id>http://www.pythonnote.cn/2019/12/09/%E5%89%8D%E7%AB%AF%E6%94%BB%E5%9D%9A%E6%88%98/</id>
-    <published>2019-12-09T13:47:27.000Z</published>
-    <updated>2020-01-10T02:15:58.433Z</updated>
-    
-    <summary type="html">
-    
-      &lt;center&gt;Author：闫玉良&lt;/center&gt; 
-前端三大新框架：Angular.js、React.js、Vue.js。今天我们来磕这个最常用，影响极广的框架：Vue.js。
-
-&lt;p&gt;Vue.js可以作为一个js库来使用，也可以用它全套的工具来构建系统界面，这些可以根据项目的需要灵活选择，所以说，Vue.js是一套构建用户界面的渐进式框架。&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;Vue的核心库只关注视图层，Vue的目标是通过尽可能简单的 API 实现响应的数据绑定，在这一点上Vue.js类似于后台的模板语言。&lt;/p&gt;
-&lt;p&gt;Vue也可以将界面拆分成一个个的组件，通过组件来构建界面，然后用自动化工具来生成单页面(SPA - single page application)系统。&lt;/p&gt;
-&lt;/blockquote&gt;
     
     </summary>
     
