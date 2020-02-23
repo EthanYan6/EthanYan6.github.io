@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.pythonnote.cn/"/>
-  <updated>2020-02-22T11:44:35.860Z</updated>
+  <updated>2020-02-23T05:09:04.890Z</updated>
   <id>http://www.pythonnote.cn/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>机器学习算法之集成学习</title>
+    <link href="http://www.pythonnote.cn/2020/02/23/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%AE%97%E6%B3%95%E4%B9%8B%E9%9B%86%E6%88%90%E5%AD%A6%E4%B9%A0/"/>
+    <id>http://www.pythonnote.cn/2020/02/23/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%AE%97%E6%B3%95%E4%B9%8B%E9%9B%86%E6%88%90%E5%AD%A6%E4%B9%A0/</id>
+    <published>2020-02-23T03:23:47.000Z</published>
+    <updated>2020-02-23T05:09:04.890Z</updated>
+    
+    <summary type="html">
+    
+      &lt;center&gt;Editor：闫玉良&lt;/center&gt;
+
+&lt;p&gt;分类算法中有一种重要算法极其重要「集成学习」&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="算法" scheme="http://www.pythonnote.cn/categories/%E7%AE%97%E6%B3%95/"/>
+    
+      <category term="机器学习" scheme="http://www.pythonnote.cn/categories/%E7%AE%97%E6%B3%95/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+    
+    
+      <category term="算法" scheme="http://www.pythonnote.cn/tags/%E7%AE%97%E6%B3%95/"/>
+    
+      <category term="机器学习" scheme="http://www.pythonnote.cn/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+    
+  </entry>
   
   <entry>
     <title>机器学习算法之决策树</title>
@@ -48,7 +75,7 @@
     <link href="http://www.pythonnote.cn/2020/02/21/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%AE%97%E6%B3%95%E4%B9%8B%E9%80%BB%E8%BE%91%E5%9B%9E%E5%BD%92/"/>
     <id>http://www.pythonnote.cn/2020/02/21/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%AE%97%E6%B3%95%E4%B9%8B%E9%80%BB%E8%BE%91%E5%9B%9E%E5%BD%92/</id>
     <published>2020-02-21T10:19:53.000Z</published>
-    <updated>2020-02-21T07:17:39.886Z</updated>
+    <updated>2020-02-23T03:24:50.272Z</updated>
     
     <summary type="html">
     
@@ -489,32 +516,6 @@ CentOS 虚拟机许久未用，忘记密码如何是好？删掉再来又岂能�
     
       &lt;center&gt;Author:闫玉良&lt;/center&gt;
 Vue 框架如同 Python 中的 Django 框架一样，让一切操作变得超级简单，只需在规定的目录下书写规定的代码即可，至于如何运作，框架自己搞定。此篇文章仅用于记录 Vue 项目中的一些小坑。
-    
-    </summary>
-    
-    
-      <category term="前端" scheme="http://www.pythonnote.cn/categories/%E5%89%8D%E7%AB%AF/"/>
-    
-    
-      <category term="前端" scheme="http://www.pythonnote.cn/tags/%E5%89%8D%E7%AB%AF/"/>
-    
-      <category term="vue" scheme="http://www.pythonnote.cn/tags/vue/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>扶我起来,我还可以学～</title>
-    <link href="http://www.pythonnote.cn/2019/12/12/%E6%89%B6%E6%88%91%E8%B5%B7%E6%9D%A5-%E6%88%91%E8%BF%98%E5%8F%AF%E4%BB%A5%E5%AD%A6%EF%BD%9E/"/>
-    <id>http://www.pythonnote.cn/2019/12/12/%E6%89%B6%E6%88%91%E8%B5%B7%E6%9D%A5-%E6%88%91%E8%BF%98%E5%8F%AF%E4%BB%A5%E5%AD%A6%EF%BD%9E/</id>
-    <published>2019-12-12T14:22:22.000Z</published>
-    <updated>2020-02-17T13:24:10.816Z</updated>
-    
-    <summary type="html">
-    
-      &lt;center&gt;Author：闫玉良&lt;/center&gt; 
-长路漫漫，唯夜作伴。虽然一天的工作头昏脑胀，但是仍然放不下我心心念念的前端啊，扶我起来，我还可以学～
-
-&lt;p&gt;学习喜欢的事情，也是一种放松，come on！&lt;/p&gt;
     
     </summary>
     
