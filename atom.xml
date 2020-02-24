@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.pythonnote.cn/"/>
-  <updated>2020-02-23T05:42:23.115Z</updated>
+  <updated>2020-02-24T07:05:45.609Z</updated>
   <id>http://www.pythonnote.cn/</id>
   
   <author>
@@ -17,11 +17,38 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>机器学习算法之聚类算法</title>
+    <link href="http://www.pythonnote.cn/2020/02/24/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%AE%97%E6%B3%95%E4%B9%8B%E8%81%9A%E7%B1%BB%E7%AE%97%E6%B3%95/"/>
+    <id>http://www.pythonnote.cn/2020/02/24/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%AE%97%E6%B3%95%E4%B9%8B%E8%81%9A%E7%B1%BB%E7%AE%97%E6%B3%95/</id>
+    <published>2020-02-24T10:34:27.000Z</published>
+    <updated>2020-02-24T07:05:45.609Z</updated>
+    
+    <summary type="html">
+    
+      &lt;center&gt;Editor：闫玉良&lt;/center&gt;
+
+&lt;p&gt;今日开启新算法的学习「聚类算法」&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="算法" scheme="http://www.pythonnote.cn/categories/%E7%AE%97%E6%B3%95/"/>
+    
+      <category term="机器学习" scheme="http://www.pythonnote.cn/categories/%E7%AE%97%E6%B3%95/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+    
+    
+      <category term="算法" scheme="http://www.pythonnote.cn/tags/%E7%AE%97%E6%B3%95/"/>
+    
+      <category term="机器学习" scheme="http://www.pythonnote.cn/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+    
+  </entry>
+  
+  <entry>
     <title>机器学习算法之集成学习</title>
     <link href="http://www.pythonnote.cn/2020/02/23/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%AE%97%E6%B3%95%E4%B9%8B%E9%9B%86%E6%88%90%E5%AD%A6%E4%B9%A0/"/>
     <id>http://www.pythonnote.cn/2020/02/23/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%AE%97%E6%B3%95%E4%B9%8B%E9%9B%86%E6%88%90%E5%AD%A6%E4%B9%A0/</id>
     <published>2020-02-23T03:23:47.000Z</published>
-    <updated>2020-02-23T05:42:23.115Z</updated>
+    <updated>2020-02-24T02:36:21.500Z</updated>
     
     <summary type="html">
     
@@ -473,9 +500,9 @@
       <category term="Mac" scheme="http://www.pythonnote.cn/categories/Mac/"/>
     
     
-      <category term="MacOS" scheme="http://www.pythonnote.cn/tags/MacOS/"/>
-    
       <category term="python" scheme="http://www.pythonnote.cn/tags/python/"/>
+    
+      <category term="MacOS" scheme="http://www.pythonnote.cn/tags/MacOS/"/>
     
       <category term="virtualenv" scheme="http://www.pythonnote.cn/tags/virtualenv/"/>
     
@@ -502,30 +529,6 @@ CentOS 虚拟机许久未用，忘记密码如何是好？删掉再来又岂能�
       <category term="Linux" scheme="http://www.pythonnote.cn/tags/Linux/"/>
     
       <category term="CentOS" scheme="http://www.pythonnote.cn/tags/CentOS/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Vue脚手架搭建项目中的坑</title>
-    <link href="http://www.pythonnote.cn/2019/12/15/Vue%E8%84%9A%E6%89%8B%E6%9E%B6%E6%90%AD%E5%BB%BA%E9%A1%B9%E7%9B%AE%E4%B8%AD%E7%9A%84%E5%9D%91/"/>
-    <id>http://www.pythonnote.cn/2019/12/15/Vue%E8%84%9A%E6%89%8B%E6%9E%B6%E6%90%AD%E5%BB%BA%E9%A1%B9%E7%9B%AE%E4%B8%AD%E7%9A%84%E5%9D%91/</id>
-    <published>2019-12-15T10:43:13.000Z</published>
-    <updated>2020-02-17T13:26:34.740Z</updated>
-    
-    <summary type="html">
-    
-      &lt;center&gt;Author:闫玉良&lt;/center&gt;
-Vue 框架如同 Python 中的 Django 框架一样，让一切操作变得超级简单，只需在规定的目录下书写规定的代码即可，至于如何运作，框架自己搞定。此篇文章仅用于记录 Vue 项目中的一些小坑。
-    
-    </summary>
-    
-    
-      <category term="前端" scheme="http://www.pythonnote.cn/categories/%E5%89%8D%E7%AB%AF/"/>
-    
-    
-      <category term="前端" scheme="http://www.pythonnote.cn/tags/%E5%89%8D%E7%AB%AF/"/>
-    
-      <category term="vue" scheme="http://www.pythonnote.cn/tags/vue/"/>
     
   </entry>
   
