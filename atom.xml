@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.pythonnote.cn/"/>
-  <updated>2020-02-25T15:44:17.261Z</updated>
+  <updated>2020-02-25T15:58:46.905Z</updated>
   <id>http://www.pythonnote.cn/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="http://www.pythonnote.cn/2020/02/25/%E5%85%B3%E7%B3%BB%E6%95%B0%E6%8D%AE%E5%BA%93%E4%B9%8B%E5%AD%98%E5%82%A8%E8%BF%87%E7%A8%8B/"/>
     <id>http://www.pythonnote.cn/2020/02/25/%E5%85%B3%E7%B3%BB%E6%95%B0%E6%8D%AE%E5%BA%93%E4%B9%8B%E5%AD%98%E5%82%A8%E8%BF%87%E7%A8%8B/</id>
     <published>2020-02-25T10:48:02.000Z</published>
-    <updated>2020-02-25T15:44:17.261Z</updated>
+    <updated>2020-02-25T15:58:46.905Z</updated>
     
     <summary type="html">
     
@@ -523,9 +523,9 @@
       <category term="Mac" scheme="http://www.pythonnote.cn/categories/Mac/"/>
     
     
-      <category term="MacOS" scheme="http://www.pythonnote.cn/tags/MacOS/"/>
-    
       <category term="python" scheme="http://www.pythonnote.cn/tags/python/"/>
+    
+      <category term="MacOS" scheme="http://www.pythonnote.cn/tags/MacOS/"/>
     
       <category term="virtualenv" scheme="http://www.pythonnote.cn/tags/virtualenv/"/>
     
