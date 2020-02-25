@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.pythonnote.cn/"/>
-  <updated>2020-02-24T07:05:45.609Z</updated>
+  <updated>2020-02-25T15:44:17.261Z</updated>
   <id>http://www.pythonnote.cn/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>关系数据库之存储过程</title>
+    <link href="http://www.pythonnote.cn/2020/02/25/%E5%85%B3%E7%B3%BB%E6%95%B0%E6%8D%AE%E5%BA%93%E4%B9%8B%E5%AD%98%E5%82%A8%E8%BF%87%E7%A8%8B/"/>
+    <id>http://www.pythonnote.cn/2020/02/25/%E5%85%B3%E7%B3%BB%E6%95%B0%E6%8D%AE%E5%BA%93%E4%B9%8B%E5%AD%98%E5%82%A8%E8%BF%87%E7%A8%8B/</id>
+    <published>2020-02-25T10:48:02.000Z</published>
+    <updated>2020-02-25T15:44:17.261Z</updated>
+    
+    <summary type="html">
+    
+      &lt;center&gt;Editor：闫玉良&lt;/center&gt;
+
+&lt;p&gt;很多人在上学期间，也许并未学习过关系数据库中「存储过程」的相关内容，但在工作上是绕不开的，那今天就来学习一下吧。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="sql" scheme="http://www.pythonnote.cn/categories/sql/"/>
+    
+    
+      <category term="sql" scheme="http://www.pythonnote.cn/tags/sql/"/>
+    
+  </entry>
   
   <entry>
     <title>机器学习算法之聚类算法</title>
@@ -500,35 +523,11 @@
       <category term="Mac" scheme="http://www.pythonnote.cn/categories/Mac/"/>
     
     
-      <category term="python" scheme="http://www.pythonnote.cn/tags/python/"/>
-    
       <category term="MacOS" scheme="http://www.pythonnote.cn/tags/MacOS/"/>
     
+      <category term="python" scheme="http://www.pythonnote.cn/tags/python/"/>
+    
       <category term="virtualenv" scheme="http://www.pythonnote.cn/tags/virtualenv/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>CentOS这些情况你也遇到过</title>
-    <link href="http://www.pythonnote.cn/2019/12/22/CentOS%E8%BF%99%E4%BA%9B%E6%83%85%E5%86%B5%E4%BD%A0%E4%B9%9F%E9%81%87%E5%88%B0%E8%BF%87/"/>
-    <id>http://www.pythonnote.cn/2019/12/22/CentOS%E8%BF%99%E4%BA%9B%E6%83%85%E5%86%B5%E4%BD%A0%E4%B9%9F%E9%81%87%E5%88%B0%E8%BF%87/</id>
-    <published>2019-12-22T11:15:48.000Z</published>
-    <updated>2020-02-17T13:25:58.527Z</updated>
-    
-    <summary type="html">
-    
-      &lt;center&gt;Author: 闫玉良&lt;/center&gt;
-CentOS 虚拟机许久未用，忘记密码如何是好？删掉再来又岂能甘心？想安装某个命令，直接 yum install 就可以了吗？远程连接服务器报错该怎样操作？
-    
-    </summary>
-    
-    
-      <category term="Linux" scheme="http://www.pythonnote.cn/categories/Linux/"/>
-    
-    
-      <category term="Linux" scheme="http://www.pythonnote.cn/tags/Linux/"/>
-    
-      <category term="CentOS" scheme="http://www.pythonnote.cn/tags/CentOS/"/>
     
   </entry>
   

@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+   
+  <meta name="keywords" content="Python、Java、powershell、shell、Elasticsearch、MySQL、Redis、Django、Flask、爬虫、RPC、数据分析" />
+   
+  <meta name="description" content="多喝热水，热水治百病 &lt;- &lt;-" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <title>
+    关系数据库之存储过程 |  小闫同学劝你多喝烫水
+  </title>
+  <meta name="generator" content="hexo-theme-yilia-plus">
+  
+  <link rel="shortcut icon" href="/favicon.ico" />
+  
+  <link rel="stylesheet" href="/css/style.css">
+  <script src="/js/pace.min.js"></script>
+
+  
+
+  
+
+<link rel="alternate" href="/atom.xml" title="小闫同学劝你多喝烫水" type="application/atom+xml">
+</head>
+
+</html>
+
+<body>
+  <div id="app">
+    <main class="content">
+      <section class="outer">
+  <article id="post-关系数据库之存储过程" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
+  关系数据库之存储过程
+</h1>
+  
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2020/02/25/%E5%85%B3%E7%B3%BB%E6%95%B0%E6%8D%AE%E5%BA%93%E4%B9%8B%E5%AD%98%E5%82%A8%E8%BF%87%E7%A8%8B/" class="article-date">
+  <time datetime="2020-02-25T10:48:02.000Z" itemprop="datePublished">2020-02-25</time>
+</a>
+      
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/sql/">sql</a>
+  </div>
+
+      
+      
+<div class="word_count">
+    <span class="post-time">
+        <span class="post-meta-item-icon">
+            <i class="ri-quill-pen-line"></i>
+            <span class="post-meta-item-text"> 字数统计:</span>
+            <span class="post-count">2.2k字</span>
+        </span>
+    </span>
+
+    <span class="post-time">
+        &nbsp; | &nbsp;
+        <span class="post-meta-item-icon">
+            <i class="ri-book-open-line"></i>
+            <span class="post-meta-item-text"> 阅读时长≈</span>
+            <span class="post-count">9分钟</span>
+        </span>
+    </span>
+</div>
+
+      
+    </div>
+    
+
+    
+    
+    <div class="tocbot"></div>
+
+
+
+
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+
+
+      
+
+      
+      <center>Editor：闫玉良</center>
+
+<p>很多人在上学期间，也许并未学习过关系数据库中「存储过程」的相关内容，但在工作上是绕不开的，那今天就来学习一下吧。</p>
+<a id="more"></a>
+
+<p><strong><em>更多精彩文章请关注公众号『Pythonnote』或者『全栈技术精选』</em></strong></p>
+<p>无论是 <code>MySQL</code> 还是 <code>SQL Server</code> 数据库，最新版本都已支持『存储过程』。但是为了通用性，本文章以 <code>MySQL</code> 为例。</p>
+<blockquote>
+<p>因为 <code>SQL Server</code> 数据库为商业软件，所以其使用率较开源的 <code>MySQL</code> 来说要低一些。对于大数据处理来说， <code>MySQL</code> 更有优势，这就更使得很多中型、大型网站都使用 <code>MySQL</code> 。二者语法上也有些许差别，考虑到学习之后的应用情况，特选 <code>MySQL</code>。</p>
+</blockquote>
+<h1 id="存储过程"><a href="#存储过程" class="headerlink" title="存储过程"></a>存储过程</h1><h2 id="1-简介"><a href="#1-简介" class="headerlink" title="1.简介"></a>1.简介</h2><p>存储过程『<code>Stored Procedure</code>』是一种在数据库中存储复杂程序，以便外部程序调用的一种数据库对象，即面向对象的思想。它通过编译后存储在数据库中，用户可以像调用函数一样通过特定的方式执行存储过程。</p>
+<p>简单来讲，存储过程就是封装了一堆 <code>SQL</code> 语句，方便复用。如此直白，应该不会不理解了。</p>
+<h3 id="1-1-优点"><a href="#1-1-优点" class="headerlink" title="1.1 优点"></a>1.1 优点</h3><p>1) 通过封装，隐藏执行的 <code>SQL</code> 语句，以及逻辑操作。</p>
+<p>2) 可以像函数一样传递参数，并回传值。</p>
+<h3 id="1-2-缺点"><a href="#1-2-缺点" class="headerlink" title="1.2 缺点"></a>1.2 缺点</h3><p>1) 存储过程根据数据库的不同而不同，<strong>移植性弱</strong>。比如切换不同厂商的数据库，由于编程语言的差别，需要重新编译。</p>
+<p>2) 无法使用 <code>select</code> 指令来执行，它属于子程序，区别于用户定义的函数。</p>
+<h2 id="2-创建和调用"><a href="#2-创建和调用" class="headerlink" title="2.创建和调用"></a>2.创建和调用</h2><p>1) 自定义结束符号。一般在 <code>mysql</code> 中，我们使用封号来结束语句，可以临时修改为其他符号：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 将语句的结束符号从分号;临时改为两个$$或//(可以是自定义)</span></span><br><span class="line">DELIMITER $$</span><br><span class="line">或</span><br><span class="line">DELIMITER //</span><br></pre></td></tr></table></figure>
+
+<p>2) 创建存储过程</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">PROCEDURE</span> 存储过程名称(参数...)</span><br></pre></td></tr></table></figure>
+
+<p>3) 一个存储过程开始与结束符号</p>
+ <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">BEGIN</span> .... <span class="keyword">END</span></span><br></pre></td></tr></table></figure>
+
+<p>4) 创建存储函数</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">function</span> 存储函数名称(参数)</span><br></pre></td></tr></table></figure>
+
+<p>5) 调用存储过程</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">call</span> 存储过程名称(参数);</span><br></pre></td></tr></table></figure>
+
+<p>6) 存储过程体以 <code>begin</code> 开始，以 <code>end</code> 结束，当然，这是可以嵌套的。</p>
+<blockquote>
+<p>注意：每个嵌套块以及其中的每条语句，都必须以封号结尾，最外层（表示过程体结束的 <code>begin-end</code> 块不需要写）</p>
+</blockquote>
+<p>7) 为每一个语句块打标签，可以增强可读性，并不易丢掉过多嵌套块中的某个结尾。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">label1: <span class="keyword">BEGIN</span></span><br><span class="line">　　label2: <span class="keyword">BEGIN</span></span><br><span class="line">　　　　label3: <span class="keyword">BEGIN</span></span><br><span class="line">　　　　　　statements; </span><br><span class="line">　　　　<span class="keyword">END</span> label3 ;</span><br><span class="line">　　<span class="keyword">END</span> label2;</span><br><span class="line"><span class="keyword">END</span> label1</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-1-示例"><a href="#2-1-示例" class="headerlink" title="2.1 示例"></a>2.1 示例</h3><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; delimiter $$　　-- 将语句的结束符号从分号;临时改为两个$$(可以是自定义)</span><br><span class="line">mysql&gt; CREATE PROCEDURE delete_matches(IN p_playerno INTEGER)</span><br><span class="line">    -&gt; BEGIN</span><br><span class="line">    -&gt; 　　DELETE FROM MATCHES</span><br><span class="line">    -&gt;    WHERE playerno = p_playerno;</span><br><span class="line">    -&gt; END$$</span><br><span class="line">Query OK, 0 rows affected (0.01 sec)</span><br><span class="line"> </span><br><span class="line">mysql&gt; delimiter;　　-- 将语句的结束符号恢复为分号</span><br></pre></td></tr></table></figure>
+
+<p>上面的存储过程解读：存储过程名为「<code>delete_matches</code>」；存储过程需要传入的参数为 <code>INTEGER</code> 类型的 <code>p_playerno</code> （球员编号）；由 <code>BEGIN</code> 表示过程体开始，执行的语句为删除 <code>MATCHES</code> 表中字段 <code>playerno</code> 的值等于传入参数值的记录。以 <code>END</code> 表示过程体结束。</p>
+<p>调用这一存储过程时：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; call delete_matches(57);</span><br><span class="line">Query OK, 1 row affected (0.03 sec)</span><br></pre></td></tr></table></figure>
+
+<h2 id="3-参数"><a href="#3-参数" class="headerlink" title="3.参数"></a>3.参数</h2><p>从示例中我们可以看到传入参数表示为：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">PROCEDURE</span> delete_matches(<span class="keyword">IN</span> p_playerno <span class="built_in">INTEGER</span>)</span><br></pre></td></tr></table></figure>
+
+<p>已知参数名称与参数类型，那么括号中 <code>IN</code> 代表什么意思呢？</p>
+<p>答： <code>IN</code> 代表传入参数，也就是调用存储过程时，向存储过程内传入值。</p>
+<p>除此之外还有另外两个参数：<code>OUT</code> 和 <code>INOUT</code></p>
+<p><code>OUT</code> ：传出参数，也就是存储过程向调用者传出值。类似于程序中的 <code>return</code></p>
+<p><code>INOUT</code>：传入传出参数，比如传入一个值，存储过程中引用后再修改，向调用者传出新值。</p>
+<p><strong>变量赋值：</strong></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SET</span> @变量=值</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-1-in"><a href="#3-1-in" class="headerlink" title="3.1 in"></a>3.1 in</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; delimiter $$ -- 将语句的结束符号从分号;临时改为两个$$(可以是自定义)</span><br><span class="line">mysql&gt; create procedure in_param(in p_in int)</span><br><span class="line">    -&gt; begin</span><br><span class="line">    -&gt; 　　select p_in; -- 查询传入的变量</span><br><span class="line">    -&gt; 　　set p_in=2; -- 重新设置变量</span><br><span class="line">    -&gt;    select P_in; -- 查询修改后的变量</span><br><span class="line">    -&gt; end$$</span><br><span class="line">mysql&gt; delimiter ;</span><br><span class="line"> </span><br><span class="line">mysql&gt; set @p_in=1; --设置全局变量</span><br><span class="line"> </span><br><span class="line">mysql&gt; call in_param(@p_in); -- 调用存储过程，传入设置的变量值</span><br><span class="line">+<span class="comment">------+</span></span><br><span class="line">| p_in |</span><br><span class="line">+<span class="comment">------+</span></span><br><span class="line">|    1 |</span><br><span class="line">+<span class="comment">------+</span></span><br><span class="line"> </span><br><span class="line">+<span class="comment">------+</span></span><br><span class="line">| P_in |</span><br><span class="line">+<span class="comment">------+</span></span><br><span class="line">|    2 |</span><br><span class="line">+<span class="comment">------+</span></span><br><span class="line"> </span><br><span class="line">mysql&gt; select @p_in; -- 查询全局变量</span><br><span class="line">+<span class="comment">-------+</span></span><br><span class="line">| @p_in |</span><br><span class="line">+<span class="comment">-------+</span></span><br><span class="line">|     1 |</span><br><span class="line">+<span class="comment">-------+</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>以上可以看出，<code>p_in</code> 在存储过程中被修改，但并不影响 <code>@p_in</code> 的值，因为前者为局部变量、后者为全局变量。</p>
+</blockquote>
+<h3 id="3-2-out"><a href="#3-2-out" class="headerlink" title="3.2 out"></a>3.2 out</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; delimiter //</span><br><span class="line">mysql&gt; create procedure out_param(out p_out int)</span><br><span class="line">    -&gt;   begin</span><br><span class="line">    -&gt;     select p_out;</span><br><span class="line">    -&gt;     set p_out=2;</span><br><span class="line">    -&gt;     select p_out;</span><br><span class="line">    -&gt;   end</span><br><span class="line">    -&gt; //</span><br><span class="line">mysql&gt; delimiter ;</span><br><span class="line"> </span><br><span class="line">mysql&gt; set @p_out=1;</span><br><span class="line"> </span><br><span class="line">mysql&gt; call out_param(@p_out);</span><br><span class="line">+<span class="comment">-------+</span></span><br><span class="line">| p_out |</span><br><span class="line">+<span class="comment">-------+</span></span><br><span class="line">|  NULL |</span><br><span class="line">+<span class="comment">-------+</span></span><br><span class="line"><span class="comment">-- 因为out是向调用者输出参数，不接收输入的参数，所以存储过程里的p_out为null</span></span><br><span class="line">+<span class="comment">-------+</span></span><br><span class="line">| p_out |</span><br><span class="line">+<span class="comment">-------+</span></span><br><span class="line">|     2 |</span><br><span class="line">+<span class="comment">-------+</span></span><br><span class="line"> </span><br><span class="line">mysql&gt; select @p_out;</span><br><span class="line">+<span class="comment">--------+</span></span><br><span class="line">| @p_out |</span><br><span class="line">+<span class="comment">--------+</span></span><br><span class="line">|      2 |</span><br><span class="line">+<span class="comment">--------+</span></span><br><span class="line"><span class="comment">-- 调用了out_param存储过程，输出参数，改变了p_out变量的值</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="3-3-inout"><a href="#3-3-inout" class="headerlink" title="3.3 inout"></a>3.3 inout</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; delimiter $$</span><br><span class="line">mysql&gt; create procedure inout_param(inout p_inout int)</span><br><span class="line">    -&gt;   begin</span><br><span class="line">    -&gt;     select p_inout;</span><br><span class="line">    -&gt;     set p_inout=2;</span><br><span class="line">    -&gt;     select p_inout;</span><br><span class="line">    -&gt;   end</span><br><span class="line">    -&gt; $$</span><br><span class="line">mysql&gt; delimiter ;</span><br><span class="line"> </span><br><span class="line">mysql&gt; set @p_inout=1;</span><br><span class="line"> </span><br><span class="line">mysql&gt; call inout_param(@p_inout);</span><br><span class="line">+<span class="comment">---------+</span></span><br><span class="line">| p_inout |</span><br><span class="line">+<span class="comment">---------+</span></span><br><span class="line">|       1 |</span><br><span class="line">+<span class="comment">---------+</span></span><br><span class="line"> </span><br><span class="line">+<span class="comment">---------+</span></span><br><span class="line">| p_inout |</span><br><span class="line">+<span class="comment">---------+</span></span><br><span class="line">|       2 |</span><br><span class="line">+<span class="comment">---------+</span></span><br><span class="line"> </span><br><span class="line">mysql&gt; select @p_inout;</span><br><span class="line">+<span class="comment">----------+</span></span><br><span class="line">| @p_inout |</span><br><span class="line">+<span class="comment">----------+</span></span><br><span class="line">|        2 |</span><br><span class="line">+<span class="comment">----------+</span></span><br><span class="line"><span class="comment">-- 调用了inout_param存储过程，接受了输入的参数，也输出参数，改变了变量</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="4-变量"><a href="#4-变量" class="headerlink" title="4.变量"></a>4.变量</h2><h3 id="4-1-变量声明"><a href="#4-1-变量声明" class="headerlink" title="4.1 变量声明"></a>4.1 变量声明</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">DECLARE</span> variable_name [,variable_name...] datatype [<span class="keyword">DEFAULT</span> <span class="keyword">value</span>];</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>注意：局部变量声明一定要放置在存储过程体的开始。</p>
+<p><code>datatype</code> 为 <code>MySQL</code> 的数据类型，如： <code>int</code>，<code>float</code>， <code>date</code>，<code>varchar(length)</code></p>
+</blockquote>
+<p><strong>示例：</strong></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">DECLARE</span> l_int <span class="built_in">int</span> <span class="keyword">unsigned</span> <span class="keyword">default</span> <span class="number">4000000</span>;  </span><br><span class="line"><span class="keyword">DECLARE</span> l_numeric <span class="built_in">number</span>(<span class="number">8</span>,<span class="number">2</span>) <span class="keyword">DEFAULT</span> <span class="number">9.95</span>;  </span><br><span class="line"><span class="keyword">DECLARE</span> l_date <span class="built_in">date</span> <span class="keyword">DEFAULT</span> <span class="string">'1999-12-31'</span>;  </span><br><span class="line"><span class="keyword">DECLARE</span> l_datetime datetime <span class="keyword">DEFAULT</span> <span class="string">'1999-12-31 23:59:59'</span>;  </span><br><span class="line"><span class="keyword">DECLARE</span> l_varchar <span class="built_in">varchar</span>(<span class="number">255</span>) <span class="keyword">DEFAULT</span> <span class="string">'This will not be padded'</span>;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><code>unsigned</code> 就是将数字类型无符号化</p>
+</blockquote>
+<h3 id="4-2-变量赋值"><a href="#4-2-变量赋值" class="headerlink" title="4.2 变量赋值"></a>4.2 变量赋值</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SET</span> 变量名 = 表达式值 [,variable_name = expression ...]</span><br></pre></td></tr></table></figure>
+
+<h3 id="4-3-用户变量"><a href="#4-3-用户变量" class="headerlink" title="4.3 用户变量"></a>4.3 用户变量</h3><p>大家一定会有些迷惑，为什么有些变量是直接为变量名赋值，而有些变量则需要在变量名前加 <code>@</code> 呢？那是因为添加后，变为了用户变量名。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">mysql &gt; SET @name='Ethan Yan';  </span><br><span class="line">mysql &gt; SELECT @name;  </span><br><span class="line">+<span class="comment">---------------------+  </span></span><br><span class="line">|      @name          |  </span><br><span class="line">+<span class="comment">---------------------+  </span></span><br><span class="line">|      Ethan Yan      |  </span><br><span class="line">+<span class="comment">---------------------+</span></span><br></pre></td></tr></table></figure>
+
+<p>在存储过程中使用用户变量：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">mysql &gt; CREATE PROCEDURE GreetWorld( ) SELECT CONCAT(@greeting,' World');  </span><br><span class="line">mysql &gt; SET @greeting='Hello';  </span><br><span class="line">mysql &gt; CALL GreetWorld( );  </span><br><span class="line">+<span class="comment">----------------------------+  </span></span><br><span class="line">| CONCAT(@greeting,' World') |  </span><br><span class="line">+<span class="comment">----------------------------+  </span></span><br><span class="line">|  Hello World               |  </span><br><span class="line">+<span class="comment">----------------------------+</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="5-注释"><a href="#5-注释" class="headerlink" title="5.注释"></a>5.注释</h2><p>单行注视：<code>--</code></p>
+<p>多行注视：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* </span></span><br><span class="line"><span class="comment">此处为多行注释</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="6-常用操作"><a href="#6-常用操作" class="headerlink" title="6.常用操作"></a>6.常用操作</h2><h3 id="6-1-MySQL-存储过程的查询"><a href="#6-1-MySQL-存储过程的查询" class="headerlink" title="6.1 MySQL 存储过程的查询"></a>6.1 MySQL 存储过程的查询</h3><p>1) 查询数据库中的所有存储过程</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">selectname from mysql.proc where db='数据库名';</span><br><span class="line"></span><br><span class="line">或者</span><br><span class="line"></span><br><span class="line">selectroutine_name from information_schema.routines where routine_schema='数据库名';</span><br><span class="line"></span><br><span class="line">或者</span><br><span class="line"></span><br><span class="line">showprocedure status where db='数据库名';</span><br></pre></td></tr></table></figure>
+
+<p>2) 查询某个存储过程详细内容</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SHOWCREATE PROCEDURE 数据库.存储过程名;</span><br></pre></td></tr></table></figure>
+
+<h3 id="6-2-MySQL-存储过程的修改"><a href="#6-2-MySQL-存储过程的修改" class="headerlink" title="6.2 MySQL 存储过程的修改"></a>6.2 MySQL 存储过程的修改</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ALTER</span> <span class="keyword">PROCEDURE</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="6-3-MySQL-存储过程的删除"><a href="#6-3-MySQL-存储过程的删除" class="headerlink" title="6.3 MySQL 存储过程的删除"></a>6.3 MySQL 存储过程的删除</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">DROP</span> <span class="keyword">PROCEDURE</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="6-4-MySQL-存储过程的控制语句"><a href="#6-4-MySQL-存储过程的控制语句" class="headerlink" title="6.4 MySQL 存储过程的控制语句"></a>6.4 MySQL 存储过程的控制语句</h3><p>1) <strong>变量作用域：</strong>局部变量在存储过程内优先级高，当执行到 <code>END</code> 时，局部变量消失。如果不想消失，可以通过参数 <code>OUT</code> 将其传出给调用者。</p>
+<p>2) <strong>条件语句1：</strong> <code>if-then-else</code></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">if ... then</span><br><span class="line">... ;</span><br><span class="line">else</span><br><span class="line">...;</span><br><span class="line"><span class="keyword">end</span> <span class="keyword">if</span>;</span><br></pre></td></tr></table></figure>
+
+<p>3) <strong>条件语句2：</strong> <code>case</code> </p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">mysql &gt; DELIMITER //  </span><br><span class="line">mysql &gt; CREATE PROCEDURE proc3 (in parameter int)  </span><br><span class="line">     -&gt; begin </span><br><span class="line">     -&gt; declare var int;  </span><br><span class="line">     -&gt; set var=parameter+1;  </span><br><span class="line">     -&gt; case var  </span><br><span class="line">     -&gt; when 0 then   </span><br><span class="line">     -&gt; insert into t values(17);  </span><br><span class="line">     -&gt; when 1 then   </span><br><span class="line">     -&gt; insert into t values(18);  </span><br><span class="line">     -&gt; else   </span><br><span class="line">     -&gt; insert into t values(19);  </span><br><span class="line">     -&gt; end case;  </span><br><span class="line">     -&gt; end;  </span><br><span class="line">     -&gt; //  </span><br><span class="line">mysql &gt; DELIMITER ; </span><br><span class="line">case</span><br><span class="line">    when var=0 then</span><br><span class="line">        <span class="keyword">insert</span> <span class="keyword">into</span> t <span class="keyword">values</span>(<span class="number">30</span>);</span><br><span class="line">    when var&gt;0 then</span><br><span class="line">    when var&lt;0 then</span><br><span class="line">    else</span><br><span class="line"><span class="keyword">end</span> <span class="keyword">case</span></span><br></pre></td></tr></table></figure>
+
+<p>4) 循环语句1 <code>while ···· end while</code></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">while 条件 <span class="keyword">do</span></span><br><span class="line">    <span class="comment">--循环体</span></span><br><span class="line">endwhile</span><br></pre></td></tr></table></figure>
+
+<p>5) 循环语句2 <code>repeat···· end repea</code></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">repeat</span><br><span class="line">    <span class="comment">--循环体</span></span><br><span class="line">until 循环条件  </span><br><span class="line"><span class="keyword">end</span> <span class="keyword">repeat</span>;</span><br></pre></td></tr></table></figure>
+
+<p>6) 循环语句3 <code>loop ·····endloop</code></p>
+<p><code>loop</code> 循环不需要初始条件，这点和 <code>while</code> 循环相似，同时和 <code>repeat</code>循环一样不需要结束条件,<code>leave</code> 语句的意义是离开循环。</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">mysql &gt; DELIMITER //  </span><br><span class="line">mysql &gt; CREATE PROCEDURE proc6 ()  </span><br><span class="line">     -&gt; begin </span><br><span class="line">     -&gt; declare v int;  </span><br><span class="line">     -&gt; set v=0;  </span><br><span class="line">     -&gt; LOOP_LABLE:loop  </span><br><span class="line">     -&gt; insert into t values(v);  </span><br><span class="line">     -&gt; set v=v+1;  </span><br><span class="line">     -&gt; if v &gt;=5 then </span><br><span class="line">     -&gt; leave LOOP_LABLE;  </span><br><span class="line">     -&gt; end if;  </span><br><span class="line">     -&gt; end loop;  </span><br><span class="line">     -&gt; end;  </span><br><span class="line">     -&gt; //  </span><br><span class="line">mysql &gt; DELIMITER ;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><code>LABLES</code> 标号：标号可以用在<code>begin</code> <code>repeat</code> <code>while</code> 或者 <code>loop</code> 语句前，语句标号只能在合法的语句前面使用。可以跳出循环，使运行指令达到复合语句的最后一步。</p>
+</blockquote>
+<p>7) 迭代</p>
+<p><code>ITERATE</code> 通过引用复合语句的标号，来从新开始复合语句：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">mysql &gt; DELIMITER //  </span><br><span class="line">mysql &gt; CREATE PROCEDURE proc10 ()  </span><br><span class="line">     -&gt; begin </span><br><span class="line">     -&gt; declare v int;  </span><br><span class="line">     -&gt; set v=0;  </span><br><span class="line">     -&gt; LOOP_LABLE:loop  </span><br><span class="line">     -&gt; if v=3 then   </span><br><span class="line">     -&gt; set v=v+1;  </span><br><span class="line">     -&gt; ITERATE LOOP_LABLE;  </span><br><span class="line">     -&gt; end if;  </span><br><span class="line">     -&gt; insert into t values(v);  </span><br><span class="line">     -&gt; set v=v+1;  </span><br><span class="line">     -&gt; if v&gt;=5 then </span><br><span class="line">     -&gt; leave LOOP_LABLE;  </span><br><span class="line">     -&gt; end if;  </span><br><span class="line">     -&gt; end loop;  </span><br><span class="line">     -&gt; end;  </span><br><span class="line">     -&gt; //  </span><br><span class="line">mysql &gt; DELIMITER ;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>参考文章：</p>
+<p><a href="https://www.cnblogs.com/geaozhang/p/6797357.html" target="_blank" rel="noopener">https://www.cnblogs.com/geaozhang/p/6797357.html</a></p>
+<p><a href="http://blog.sina.com.cn/s/blog_86fe5b440100wdyt.html" target="_blank" rel="noopener">http://blog.sina.com.cn/s/blog_86fe5b440100wdyt.html</a></p>
+</blockquote>
+<p><strong><em>更多精彩文章请关注公众号『Pythonnote』或者『全栈技术精选』</em></strong></p>
+
+      
+      <!-- reward -->
+      
+      <div id="reward-btn">
+        打赏
+      </div>
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+        <div class="declare">
+          <ul class="post-copyright">
+            <li>
+              <i class="ri-copyright-line"></i>
+              <strong>版权声明： </strong s>
+              本博客所有文章除特别声明外，均采用 <a href="https://www.apache.org/licenses/LICENSE-2.0.html" rel="external nofollow"
+                target="_blank">Apache License 2.0</a> 许可协议。转载请注明出处！
+            </li>
+          </ul>
+        </div>
+        
+    <footer class="article-footer">
+      
+          
+<div class="share-btn">
+      <span class="share-sns share-outer">
+        <i class="ri-share-forward-line"></i>
+        分享
+      </span>
+      <div class="share-wrap">
+        <i class="arrow"></i>
+        <div class="share-icons">
+          
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="ri-weibo-fill"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="ri-wechat-fill"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="ri-qq-fill"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="ri-douban-line"></i>
+          </a>
+          <!-- <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a> -->
+          
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="ri-facebook-circle-fill"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="ri-twitter-fill"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="ri-google-fill"></i>
+          </a>
+        </div>
+      </div>
+</div>
+
+<div class="wx-share-modal">
+    <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://www.pythonnote.cn/2020/02/25/%E5%85%B3%E7%B3%BB%E6%95%B0%E6%8D%AE%E5%BA%93%E4%B9%8B%E5%AD%98%E5%82%A8%E8%BF%87%E7%A8%8B/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div id="share-mask"></div>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/sql/" rel="tag">sql</a></li></ul>
+
+
+    </footer>
+
+  </div>
+
+  
+  
+  <nav class="article-nav">
+    
+    
+      <a href="/2020/02/24/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%AE%97%E6%B3%95%E4%B9%8B%E8%81%9A%E7%B1%BB%E7%AE%97%E6%B3%95/" class="article-nav-link">
+        <strong class="article-nav-caption">下一篇</strong>
+        <div class="article-nav-title">机器学习算法之聚类算法</div>
+      </a>
+    
+  </nav>
+
+
+  
+
+  
+  
+<!-- valine评论 -->
+<div id="vcomments-box">
+    <div id="vcomments">
+    </div>
+</div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src='https://cdn.jsdelivr.net/npm/valine@1.3.10/dist/Valine.min.js'></script>
+<script>
+    new Valine({
+        el: '#vcomments',
+        app_id: 'KyuIqv0TGYfFpt5wguqvikhD-gzGzoHsz',
+        app_key: 'f6Vbsc3Y9hlCH2zJDPMpL6gj',
+        path: window.location.pathname,
+        notify: 'false',
+        verify: 'false',
+        avatar: 'mp',
+        placeholder: '给我的文章加点评论吧~',
+        recordIP: true
+    });
+    const infoEle = document.querySelector('#vcomments .info');
+    if (infoEle && infoEle.childNodes && infoEle.childNodes.length > 0) {
+        infoEle.childNodes.forEach(function (item) {
+            item.parentNode.removeChild(item);
+        });
+    }
+</script>
+<style>
+    #vcomments-box {
+        padding: 5px 30px;
+    }
+
+    @media screen and (max-width: 800px) {
+        #vcomments-box {
+            padding: 5px 0px;
+        }
+    }
+
+    #vcomments-box #vcomments {
+        background-color: #fff;
+    }
+
+    .v .vlist .vcard .vh {
+        padding-right: 20px;
+    }
+
+    .v .vlist .vcard {
+        padding-left: 10px;
+    }
+</style>
+
+  
+
+  
+  
+  
+
+</article>
+</section>
+      <footer class="footer">
+  <div class="outer">
+    <ul class="list-inline">
+      <li>
+        
+        
+        <span>
+  <i>PV:<span id="busuanzi_value_page_pv"></span></i>
+  <i>UV:<span id="busuanzi_value_site_uv"></span></i>
+</span>
+        
+      </li>
+      <li>
+        <!-- cnzz统计 -->
+        
+        <script type="text/javascript" src='https://s4.cnzz.com/z_stat.php?id=1278605887&amp;web_id=1278605887'></script>
+        
+      </li>
+    </ul>
+    
+    <ul class="list-inline">
+      <li>
+        友情链接：<a href="https://www.javastudy.cloud" target="_blank" rel="noopener">&gt; javaDemo站 &lt;</a><br>
+      </li>
+    </ul>
+
+    <ul class="list-inline">
+      <li>
+        更多精彩文章请关注微信公众号『全栈技术精选』，id 为『Pythonnote』
+      </li>
+    </ul>
+        
+    <ul class="list-inline">
+      <li>
+        &copy;
+        2019-2020
+        小闫同学
+      </li>
+      <li>
+        
+          Created by
+        
+        
+        <a href="https://github.com/EthanYan6" target="_blank">EthanYan</a> Thanks <a href="https://github.com/Shen-Yu/hexo-theme-ayer" target="_blank">Ayer</a>
+        
+      </li>
+    </ul>
+
+  </div>
+</footer>
+    <div class="to_top">
+        <div class="totop" id="totop">
+  <i class="ri-arrow-up-line"></i>
+</div>
+      </div>
+    </main>
+      <aside class="sidebar">
+        <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+  <div class="logo">
+    <a href="/"><img src="/images/ayer-side.svg" alt="小闫同学劝你多喝烫水"></a>
+  </div>
+  
+  <ul class="nav nav-main">
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/">主页</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/archives">归档</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/categories">分类</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags">标签</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="https://www.pythonnote.cn/OfficialDocuments/">文档</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="https://www.pythonnote.cn/resume/">关于</a>
+    </li>
+    
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      
+      <a class="nav-item-link nav-item-search"  title="Search">
+        <i class="ri-search-line"></i>
+      </a>
+      
+      
+      <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+        <i class="ri-rss-line"></i>
+      </a>
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+      </aside>
+      <div id="mask"></div>
+
+<!-- #reward -->
+<div id="reward">
+  <span class="close"><i class="ri-close-line"></i></span>
+  <p class="reward-p"><i class="ri-cup-line"></i>请我喝杯咖啡吧~</p>
+  <div class="reward-box">
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/alipay.jpg">
+      <span class="reward-type">支付宝</span>
+    </div>
+    
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/wechat.jpg">
+      <span class="reward-type">微信</span>
+    </div>
+    
+  </div>
+</div>
+      <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.justifiedGallery.min.js"></script>
+<script src="/js/lazyload.min.js"></script>
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+<script src="/js/share.js"></script>
+
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+<script>
+  try {
+    var typed = new Typed("#subtitle", {
+    strings: ['小闫不才','世间纵有弱水三千，偏我眼中只有姑娘一人，勿怪','请关注微信公众号「Pythonnote」'],
+    startDelay: 0,
+    typeSpeed: 200,
+    loop: true,
+    backSpeed: 100,
+    showCursor: true
+    });
+  } catch (err) {
+  }
+  
+</script>
+
+
+
+<script src="/js/tocbot.min.js"></script>
+<script>
+  // Tocbot_v4.7.0  http://tscanlin.github.io/tocbot/
+  tocbot.init({
+    tocSelector: '.tocbot',
+    contentSelector: '.article-entry',
+    headingSelector: 'h1, h2, h3, h4, h5, h6',
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    scrollContainer:'main',
+    positionFixedSelector: '.tocbot',
+    positionFixedClass: 'is-position-fixed',
+    fixedSidebarOffset: 'auto',
+    onClick: (e) => {
+      $('.toc-link').removeClass('is-active-link');
+      $(`a[href=${e.target.hash}]`).addClass('is-active-link');
+      $(e.target.hash).scrollIntoView();
+      return false;
+    }
+  });
+</script>
+
+
+<script>
+  var ayerConfig = {
+    mathjax: false
+  }
+</script>
+
+<script src="/js/ayer.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.css">
+
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.css">
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"></script>
+
+<script>
+    function viewer_init() {
+        let pswpElement = document.querySelectorAll('.pswp')[0];
+        let $imgArr = document.querySelectorAll(('.article-entry img:not(.reward-img)'))
+
+        $imgArr.forEach(($em, i) => {
+            $em.onclick = () => {
+                // slider展开状态
+                // todo: 这样不好，后面改成状态
+                if (document.querySelector('.left-col.show')) return
+                let items = []
+                $imgArr.forEach(($em2, i2) => {
+                    let img = $em2.getAttribute('data-idx', i2)
+                    let src = $em2.getAttribute('data-target') || $em2.getAttribute('src')
+                    let title = $em2.getAttribute('alt')
+                    // 获得原图尺寸
+                    const image = new Image()
+                    image.src = src
+                    items.push({
+                        src: src,
+                        w: image.width || $em2.width,
+                        h: image.height || $em2.height,
+                        title: title
+                    })
+                })
+                var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, {
+                    index: parseInt(i)
+                });
+                gallery.init()
+            }
+        })
+    }
+    viewer_init()
+</script>
+
+
+
+
+<script type="text/javascript" src="https://js.users.51.la/20544303.js"></script>
+  </div>
+</body>
+
+</html>
