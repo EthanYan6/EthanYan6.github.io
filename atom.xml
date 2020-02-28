@@ -523,9 +523,9 @@
       <category term="Mac" scheme="http://www.pythonnote.cn/categories/Mac/"/>
     
     
-      <category term="python" scheme="http://www.pythonnote.cn/tags/python/"/>
-    
       <category term="MacOS" scheme="http://www.pythonnote.cn/tags/MacOS/"/>
+    
+      <category term="python" scheme="http://www.pythonnote.cn/tags/python/"/>
     
       <category term="virtualenv" scheme="http://www.pythonnote.cn/tags/virtualenv/"/>
     
