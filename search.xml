@@ -1,6 +1,75 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>有了Pycharm，就卸载了Postman吧</title>
+    <url>/2020/02/28/%E6%9C%89%E4%BA%86Pycharm%EF%BC%8C%E5%B0%B1%E5%8D%B8%E8%BD%BD%E4%BA%86Postman%E5%90%A7/</url>
+    <content><![CDATA[ <center>Author：闫玉良</center> 
+
+<p><code>Web</code> 开发还在一手 <code>PyCharm</code> 一手 <code>Postman</code> 吗？快给电脑减负（卸载掉 <code>Postman</code>）吧！教你如何使用 <code>PyCharm</code> 替代 <code>Postman</code> 。</p>
+<a id="more"></a>
+
+<p><strong><em>更多精彩文章请关注公众号『Pythonnote』或者『全栈技术精选』</em></strong></p>
+<p>在 <code>PyCharm</code> 的 <code>Professional</code>  版本中，有一个专门测试 <code>RESTful</code> 接口的工具「<code>HTTP client</code>」。也许你从未听说过，但是看了这篇文章后你将发现一个新世界。</p>
+<h2 id="1-窗口化操作"><a href="#1-窗口化操作" class="headerlink" title="1.窗口化操作"></a>1.窗口化操作</h2><p>如果你习惯了 <code>Postman</code> ，无法突然适应发生的变化，可以采用此种方法。</p>
+<h3 id="1-1-步骤"><a href="#1-1-步骤" class="headerlink" title="1.1 步骤"></a>1.1 步骤</h3><p>1) 点击顶部菜单栏中的 「<code>Tools</code>」 按钮</p>
+<p>2) 点击下拉菜单中的 「<code>HTTP client</code>」</p>
+<p>3) 点击菜单中的「<code>Test RESTful Web Service</code>」</p>
+<p><img src="https://gitee.com/Ethanyan/pic_data/raw/master/httpclient.png" alt="HTTP client"></p>
+<p><strong>下面是界面介绍：</strong></p>
+<p><img src="https://gitee.com/Ethanyan/pic_data/raw/master/httpclientdesc.png" alt="HTTP client提示"></p>
+<h2 id="2-curl-操作"><a href="#2-curl-操作" class="headerlink" title="2.curl 操作"></a>2.curl 操作</h2><p>如果你是一个 <code>Linux</code> 习惯者，可以在黑窗口中来去自如，那么完全可以使用此种方法。</p>
+<h3 id="2-1-步骤"><a href="#2-1-步骤" class="headerlink" title="2.1 步骤"></a>2.1 步骤</h3><p>1) 点击顶部菜单栏中的 「<code>Tools</code>」 按钮</p>
+<p>2) 点击下拉菜单中的 「<code>HTTP client</code>」</p>
+<p>3) 点击菜单中的「<code>Convert cURL to HTTP Request</code>」</p>
+<p><img src="https://gitee.com/Ethanyan/pic_data/raw/master/curl.png" alt="HTTP client2"></p>
+<p>4) 然后你会看到如下界面，再按要求填写完成之后，点击「<code>CONVERT</code>」进行转换。转换后会发现进入了一个脚本文件（详细请看后面内容介绍），点击 <code>url</code> 左侧的运行绿色按钮即可执行访问。</p>
+<p><img src="https://gitee.com/Ethanyan/pic_data/raw/master/curldesc.png" alt="HTTP client2提示"></p>
+<h2 id="3-编写脚本文件"><a href="#3-编写脚本文件" class="headerlink" title="3.编写脚本文件"></a>3.编写脚本文件</h2><p>如果是最新版本的 <code>PyCharm</code> ，官方强烈推荐你使用最新的方式，即类似于脚本的方法，直接编写访问用例。语法超级简单，就好像写接口文档一样。界面超级清爽，以下将会以常见的场景讲解使用方法。</p>
+<h3 id="3-1-步骤"><a href="#3-1-步骤" class="headerlink" title="3.1 步骤"></a>3.1 步骤</h3><p>1) 首先创建3个文件：<code>http-client.env.json</code>(此文件为配置文件，文件名固定)、<code>http-client.private.env.json</code>(此文件为配置文件，文件名固定)、<code>xxx.http</code>(此为脚本文件，<code>xxx</code> 为自定义名称)</p>
+<p>2) 配置环境文件 <code>http-client.env.json</code>。此文件是通用配置文件，比如有两套环境（开发和测试），可以使用如下的方式进行配置，在使用时随意切换：</p>
+<figure class="highlight json"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="attr">"development"</span>: &#123;</span><br><span class="line">        <span class="attr">"host"</span>: <span class="string">"192.168.0.88"</span>,</span><br><span class="line">        <span class="attr">"id-value"</span>: <span class="number">1</span>,</span><br><span class="line">        <span class="attr">"username"</span>: <span class="string">""</span>,</span><br><span class="line">        <span class="attr">"password"</span>: <span class="string">""</span>,</span><br><span class="line">        <span class="attr">"my-var"</span>: <span class="string">"my-dev-value"</span></span><br><span class="line">    &#125;,</span><br><span class="line"></span><br><span class="line">    <span class="attr">"test"</span>: &#123;</span><br><span class="line">        <span class="attr">"host"</span>: <span class="string">"192.168.0.99"</span>,</span><br><span class="line">        <span class="attr">"id-value"</span>: <span class="number">2</span>,</span><br><span class="line">        <span class="attr">"username"</span>: <span class="string">""</span>,</span><br><span class="line">        <span class="attr">"password"</span>: <span class="string">""</span>,</span><br><span class="line">        <span class="attr">"my-var"</span>: <span class="string">"my-test-value"</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>1.配置文件中的字段可以自定义，相当于变量。脚本文件中使用变量的语法是 <code></code>。字段名便是环境配置文件中定义的字段。</p>
+<p>2.也许你好奇为什么 <code>username</code> 和 <code>password</code> 两个字段空着。那是因为如此私密的信息当然要保存在私密文件中啦 ~ 此时就用到了下一个文件 <code>http-client.private.env.json</code></p>
+</blockquote>
+<p>3) 配置私密环境文件  <code>http-client.private.env.json</code> 。此文件中保存账号密码等信息：</p>
+<figure class="highlight json"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="attr">"development"</span>: &#123;</span><br><span class="line">        <span class="attr">"username"</span>: <span class="string">"admin"</span>,</span><br><span class="line">        <span class="attr">"password"</span>: <span class="string">"admin"</span></span><br><span class="line">    &#125;,</span><br><span class="line"></span><br><span class="line">    <span class="attr">"test"</span>: &#123;</span><br><span class="line">        <span class="attr">"username"</span>: <span class="string">"admin"</span>,</span><br><span class="line">        <span class="attr">"password"</span>: <span class="string">"admin"</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>4) 编写脚本文件。</p>
+<blockquote>
+<p>如果没有变量，没有账号密码等私密信息，完全可以省略上面的步骤，直接编写访问用例</p>
+</blockquote>
+<p>语法如下：</p>
+<figure class="highlight"><table><tr><td class="code"><pre><span class="line"># 此处是注释信息，采用井号</span><br><span class="line"># 访问方式，格式：请求方式 url</span><br><span class="line">GET http://&#123;&#123;host&#125;&#125;/es/stage_order_info/_search</span><br><span class="line"># 请求头,注意：请求头与url之间不许有空行</span><br><span class="line"><span class="attribute">Accept</span>: application/json</span><br><span class="line"># 引用变量的方法：&#123;&#123;xxx&#125;&#125;</span><br><span class="line"><span class="attribute">Authorization</span>: Basic &#123;&#123;username&#125;&#125; &#123;&#123;password&#125;&#125;</span><br><span class="line">...</span><br><span class="line"># 请求体，如果有的话</span><br><span class="line">...</span><br><span class="line"># 最后以三个井号结尾</span><br><span class="line"></span><br><span class="line">###</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-2-示例"><a href="#3-2-示例" class="headerlink" title="3.2 示例"></a>3.2 示例</h3><p>1) <code>GET</code> 方式请求：</p>
+<figure class="highlight"><table><tr><td class="code"><pre><span class="line">GET http://&#123;&#123;host&#125;&#125;/es/stage_order_info/_search</span><br><span class="line"><span class="attribute">Accept</span>: application/json</span><br><span class="line"><span class="attribute">Authorization</span>: Basic &#123;&#123;username&#125;&#125; &#123;&#123;password&#125;&#125;</span><br><span class="line"></span><br><span class="line">###</span><br></pre></td></tr></table></figure>
+
+<p>2) <code>DELETE</code> 方式请求：</p>
+<figure class="highlight"><table><tr><td class="code"><pre><span class="line">DELETE http://&#123;&#123;host&#125;&#125;/es/ethanyantest</span><br><span class="line"><span class="attribute">Authorization</span>: Basic &#123;&#123;username&#125;&#125; &#123;&#123;password&#125;&#125;</span><br><span class="line"></span><br><span class="line">###</span><br></pre></td></tr></table></figure>
+
+<p>3) <code>PUT</code> 方式请求：</p>
+<figure class="highlight"><table><tr><td class="code"><pre><span class="line">PUT http://&#123;&#123;host&#125;&#125;/es/ethanyantest/_doc/1</span><br><span class="line"><span class="attribute">Authorization</span>: Basic &#123;&#123;username&#125;&#125; &#123;&#123;password&#125;&#125;</span><br><span class="line"><span class="attribute">Content-Type</span>: application/json</span><br><span class="line"></span><br><span class="line">&#123;"testfield": "测试成功"&#125;</span><br><span class="line"></span><br><span class="line">###</span><br></pre></td></tr></table></figure>
+
+<p>4) <code>POST</code> 方式请求：</p>
+<figure class="highlight"><table><tr><td class="code"><pre><span class="line">POST http://&#123;&#123;host&#125;&#125;/es/ethanyantest/_doc/1/_update</span><br><span class="line"><span class="attribute">Authorization</span>: Basic &#123;&#123;username&#125;&#125; &#123;&#123;password&#125;&#125;</span><br><span class="line"><span class="attribute">Content-Type</span>: application/json</span><br><span class="line"></span><br><span class="line">&#123;</span><br><span class="line">   "doc" : &#123;</span><br><span class="line">      "testfield" : [ "&#123;&#123;testfield&#125;&#125;" ],</span><br><span class="line">      "views": 0</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">###</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-3-运行方式"><a href="#3-3-运行方式" class="headerlink" title="3.3 运行方式"></a>3.3 运行方式</h3><p>1.点击请求地址前的运行按钮：</p>
+<p><img src="https://gitee.com/Ethanyan/pic_data/raw/master/%E8%BF%90%E8%A1%8C1.png" alt="运行方式1"></p>
+<p>2.选择运行环境：</p>
+<p><img src="https://gitee.com/Ethanyan/pic_data/raw/master/image-20200228213716238.png" alt="运行方式1"></p>
+<p><strong><em>更多精彩文章请关注公众号『Pythonnote』或者『全栈技术精选』</em></strong></p>
+]]></content>
+      <categories>
+        <category>pycharm</category>
+      </categories>
+      <tags>
+        <tag>pycharm</tag>
+        <tag>postman</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>关系数据库之存储过程</title>
     <url>/2020/02/25/%E5%85%B3%E7%B3%BB%E6%95%B0%E6%8D%AE%E5%BA%93%E4%B9%8B%E5%AD%98%E5%82%A8%E8%BF%87%E7%A8%8B/</url>
     <content><![CDATA[<center>Editor：闫玉良</center>
