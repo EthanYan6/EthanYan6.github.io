@@ -11,8 +11,8 @@ menu:
 # https://github.com/mattboldt/typed.js
 subtitle:
   enable: true  # 是否开启动效
-  text: 小闫不才  # 显示的文字
-  text2: 世间纵有弱水三千，偏我眼中只有姑娘一人，勿怪   # 滚动播放，如果不需要可以留空
+  text: Python、Java、powershell、shell、Elasticsearch、MySQL、Redis、Django、Flask、爬虫、RPC、数据分析  # 显示的文字
+  text2: 上面列出的都不会   # 滚动播放，如果不需要可以留空
   text3: 请关注微信公众号「Pythonnote」  # 最多支持三段文字
   startDelay: 0   # 延迟时间
   typeSpeed: 200  # 打字速度
@@ -28,7 +28,7 @@ logo: /images/ayer-side.svg
 # enable-是否启用封面；path-封面背景图；logo-封面logo
 cover:
   enable: true
-  path: /images/cover1.jpg  # images目录下附送多张美图，可更换
+  path: /images/cover8.jpg  # images目录下附送多张美图，可更换
   logo: false #/images/ayer.svg，如果不要直接设置成false
 
 # 页面顶部进度条  
@@ -97,8 +97,8 @@ leancloud:
 # Valine配置
 valine:
   enable: true # 是否启用
-  verify: false # 是否启用防垃圾验证
-  notify: false # 是否开启邮件提醒(https://valine.js.org/notify.html)
+  verify: true # 是否启用防垃圾验证
+  notify: true # 是否开启邮件提醒(https://valine.js.org/notify.html)
   avatar: mp # 头像样式(https://valine.js.org/avatar.html)
   placeholder: 给我的文章加点评论吧~ # placeholder
 
