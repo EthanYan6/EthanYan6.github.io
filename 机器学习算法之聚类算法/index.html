@@ -1,0 +1,776 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+   
+  <meta name="keywords" content="Python,Java,powershell,shell,Elasticsearch,MySQL,Redis,Django,Flask,爬虫,RPC,数据分析,人工智能,算法,数据结构" />
+   
+  <meta name="description" content="多喝烫水，开水治百病 &lt;- &lt;-" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <title>
+    机器学习算法之聚类算法 |  脸滚键盘缺了个键
+  </title>
+  <meta name="generator" content="hexo-theme-yilia-plus">
+  
+  <link rel="shortcut icon" href="/favicon.ico" />
+  
+  <link rel="stylesheet" href="/css/style.css">
+  <script src="/js/pace.min.js"></script>
+
+  
+
+  
+
+<link rel="alternate" href="/atom.xml" title="脸滚键盘缺了个键" type="application/atom+xml">
+</head>
+
+</html>
+
+<body>
+  <div id="app">
+    <main class="content">
+      <section class="outer">
+  <article id="post-机器学习算法之聚类算法" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
+  机器学习算法之聚类算法
+</h1>
+  
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%AE%97%E6%B3%95%E4%B9%8B%E8%81%9A%E7%B1%BB%E7%AE%97%E6%B3%95/" class="article-date">
+  <time datetime="2020-02-24T10:34:27.000Z" itemprop="datePublished">2020-02-24</time>
+</a>
+      
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E7%AE%97%E6%B3%95/">算法</a> / <a class="article-category-link" href="/categories/%E7%AE%97%E6%B3%95/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">机器学习</a>
+  </div>
+
+      
+      
+<div class="word_count">
+    <span class="post-time">
+        <span class="post-meta-item-icon">
+            <i class="ri-quill-pen-line"></i>
+            <span class="post-meta-item-text"> 字数统计:</span>
+            <span class="post-count">3.8k字</span>
+        </span>
+    </span>
+
+    <span class="post-time">
+        &nbsp; | &nbsp;
+        <span class="post-meta-item-icon">
+            <i class="ri-book-open-line"></i>
+            <span class="post-meta-item-text"> 阅读时长≈</span>
+            <span class="post-count">13分钟</span>
+        </span>
+    </span>
+</div>
+
+      
+    </div>
+    
+
+    
+    
+    <div class="tocbot"></div>
+
+
+
+
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+
+
+      
+
+      
+      <center>Editor：闫玉良</center>
+
+<p>今日开启新算法的学习「聚类算法」</p>
+<a id="more"></a>
+
+<p><strong><em>更多精彩文章请关注公众号『Pythonnote』或者『全栈技术精选』</em></strong></p>
+<h2 id="1-认识聚类算法"><a href="#1-认识聚类算法" class="headerlink" title="1.认识聚类算法"></a>1.认识聚类算法</h2><h3 id="1-1-应用"><a href="#1-1-应用" class="headerlink" title="1.1 应用"></a>1.1 应用</h3><p>1) 用户画像，广告推荐，<code>Data Segmentation</code>，搜索引擎的流量推荐，恶意流量识别</p>
+<p>2) 基于位置信息的商业推送，新闻聚类，筛选排序</p>
+<p>3) 图像分割，降维，识别；离群点检测；信用卡异常消费；发掘相同功能的基因片段</p>
+<h3 id="1-2-概念"><a href="#1-2-概念" class="headerlink" title="1.2 概念"></a>1.2 概念</h3><p><strong>聚类算法</strong>：</p>
+<p>一种典型的<strong>无监督</strong>学习算法，主要用于将相似的样本自动归到一个类别中。</p>
+<p>在聚类算法中根据样本之间的相似性，将样本划分到不同的类别中，对于不同的相似度计算方法，会得到不同的聚类结果，常用的相似度计算方法有欧式距离法。</p>
+<h3 id="1-3-与分类算法最大的区别"><a href="#1-3-与分类算法最大的区别" class="headerlink" title="1.3 与分类算法最大的区别"></a>1.3 与分类算法最大的区别</h3><p>聚类算法是无监督的学习算法，而分类算法属于监督的学习算法。</p>
+<h2 id="2-聚类算法-API-初步使用"><a href="#2-聚类算法-API-初步使用" class="headerlink" title="2.聚类算法 API 初步使用"></a>2.聚类算法 API 初步使用</h2><h3 id="2-1-API-介绍"><a href="#2-1-API-介绍" class="headerlink" title="2.1 API 介绍"></a>2.1 API 介绍</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">sklearn.cluster.KMeans(n_clusters=<span class="number">8</span>)</span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="string">参数:</span></span><br><span class="line"><span class="string">  n_clusters:开始的聚类中心数量</span></span><br><span class="line"><span class="string">    - 整型，缺省值=8，生成的聚类数，即产生的质心（centroids）数。</span></span><br><span class="line"><span class="string">    </span></span><br><span class="line"><span class="string">方法:</span></span><br><span class="line"><span class="string">  estimator.fit(x)</span></span><br><span class="line"><span class="string">  estimator.predict(x)</span></span><br><span class="line"><span class="string">  estimator.fit_predict(x)</span></span><br><span class="line"><span class="string">    - 计算聚类中心并预测每个样本属于哪个类别,相当于先调用fit(x),然后再调用predict(x)</span></span><br><span class="line"><span class="string">"""</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="2-2-案例"><a href="#2-2-案例" class="headerlink" title="2.2 案例"></a>2.2 案例</h3><p>随机创建不同二维数据集作为训练集，并结合 <code>k-means</code> 算法将其聚类，你可以尝试分别聚类不同数量的簇，并观察聚类效果：</p>
+<p><img src="https://s2.ax1x.com/2020/02/24/33LfPI.png" alt="image-20190219163451509"></p>
+<p>聚类参数 <code>n_cluster</code> 传值不同，得到的聚类结果不同</p>
+<p><img src="https://s2.ax1x.com/2020/02/24/33LXin.png" alt="image-20190219163505530"></p>
+<h4 id="2-2-1-流程分析"><a href="#2-2-1-流程分析" class="headerlink" title="2.2.1 流程分析"></a>2.2.1 流程分析</h4><p><img src="https://s2.ax1x.com/2020/02/24/33OpsU.png" alt="image-20190219163649472"></p>
+<h4 id="2-2-2-代码实现"><a href="#2-2-2-代码实现" class="headerlink" title="2.2.2 代码实现"></a>2.2.2 代码实现</h4><p>1) 创建数据集</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"><span class="keyword">from</span> sklearn.datasets.samples_generator <span class="keyword">import</span> make_blobs</span><br><span class="line"><span class="keyword">from</span> sklearn.cluster <span class="keyword">import</span> KMeans</span><br><span class="line"><span class="keyword">from</span> sklearn.metrics <span class="keyword">import</span> calinski_harabaz_score</span><br><span class="line"></span><br><span class="line"><span class="comment"># 创建数据集</span></span><br><span class="line"><span class="comment"># X为样本特征，Y为样本簇类别， 共1000个样本，每个样本4个特征，共4个簇，</span></span><br><span class="line"><span class="comment"># 簇中心在[-1,-1], [0,0],[1,1], [2,2]， 簇方差分别为[0.4, 0.2, 0.2, 0.2]</span></span><br><span class="line">X, y = make_blobs(n_samples=<span class="number">1000</span>, n_features=<span class="number">2</span>, centers=[[<span class="number">-1</span>, <span class="number">-1</span>], [<span class="number">0</span>, <span class="number">0</span>], [<span class="number">1</span>, <span class="number">1</span>], [<span class="number">2</span>, <span class="number">2</span>]],</span><br><span class="line">                  cluster_std=[<span class="number">0.4</span>, <span class="number">0.2</span>, <span class="number">0.2</span>, <span class="number">0.2</span>],</span><br><span class="line">                  random_state=<span class="number">9</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 数据集可视化</span></span><br><span class="line">plt.scatter(X[:, <span class="number">0</span>], X[:, <span class="number">1</span>], marker=<span class="string">'o'</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+
+<p>2) 使用 <code>k-means</code> 进行聚类,并使用 <code>CH</code> 方法评估</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">y_pred = KMeans(n_clusters=<span class="number">2</span>, random_state=<span class="number">9</span>).fit_predict(X)</span><br><span class="line"><span class="comment"># 分别尝试n_cluses=2\3\4,然后查看聚类效果</span></span><br><span class="line">plt.scatter(X[:, <span class="number">0</span>], X[:, <span class="number">1</span>], c=y_pred)</span><br><span class="line">plt.show()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 用Calinski-Harabasz Index评估的聚类分数</span></span><br><span class="line">print(calinski_harabaz_score(X, y_pred))</span><br></pre></td></tr></table></figure>
+
+<h2 id="3-聚类算法实现流程"><a href="#3-聚类算法实现流程" class="headerlink" title="3.聚类算法实现流程"></a>3.聚类算法实现流程</h2><p><strong><code>k-means</code> 其实包含两层内容：</strong></p>
+<p><code>K</code> ：初始中心点个数（计划聚类数）</p>
+<p><code>means</code>：求中心点到其他数据点距离的平均值</p>
+<h3 id="3-1-k-means-聚类步骤"><a href="#3-1-k-means-聚类步骤" class="headerlink" title="3.1 k-means 聚类步骤"></a>3.1 k-means 聚类步骤</h3><p>1) 随机设置 <code>K</code> 个特征空间内的点作为初始的聚类中心</p>
+<p>2) 对于其他每个点计算到 <code>K</code> 个中心的距离，未知的点选择最近的一个聚类中心点作为标记类别</p>
+<p>3) 紧接着，重新计算出每个聚类的新中心点（平均值）</p>
+<p>4) 如果计算得出的新中心点与原中心点一样（质心不再移动），那么结束，否则重新进行第二步过程</p>
+<p>通过下图解释实现流程：</p>
+<p><img src="https://gitee.com/Ethanyan/pic_data/raw/master/K-means%E8%BF%87%E7%A8%8B%E5%88%86%E6%9E%90.png" alt="K-meansè¿‡ç¨‹åˆ†æž"></p>
+<p>k聚类动态效果图</p>
+<p><img src="https://gitee.com/Ethanyan/pic_data/raw/master/2019-02-19%2017.06.49.gif" alt="2019-02-19 17.06.49"></p>
+<h3 id="3-2-案例练习"><a href="#3-2-案例练习" class="headerlink" title="3.2 案例练习"></a>3.2 案例练习</h3><p>案例：</p>
+<p><img src="https://gitee.com/Ethanyan/pic_data/raw/master/image-20190219171158984.png" alt="image-20190219171158984"></p>
+<p>1) 随机设置 <code>K</code> 个特征空间内的点作为初始的聚类中心（本案例中设置 <code>p1</code> 和 <code>p2</code> ）</p>
+<p><img src="https://gitee.com/Ethanyan/pic_data/raw/master/image-20190219171244828.png" alt="image-20190219171244828"></p>
+<p>2) 对于其他每个点计算到 <code>K</code> 个中心的距离，未知的点选择最近的一个聚类中心点作为标记类别</p>
+<p><img src="https://gitee.com/Ethanyan/pic_data/raw/master/image-20190219171326923.png" alt="image-20190219171326923"></p>
+<p><img src="https://gitee.com/Ethanyan/pic_data/raw/master/image-20190219171338441.png" alt="image-20190219171338441"></p>
+<p>3) 重新计算出每个聚类的新中心点（平均值）</p>
+<p><img src="https://gitee.com/Ethanyan/pic_data/raw/master/image-20190219171727035.png" alt="image-20190219171727035"></p>
+<p>4) 如果计算得出的新中心点与原中心点一样（质心不再移动），那么结束，否则重新进行第二步过程「经过判断，需要重复上述步骤，开始新一轮迭代」</p>
+<p><img src="https://gitee.com/Ethanyan/pic_data/raw/master/image-20190219171951607.png" alt="image-20190219171951607"></p>
+<p><img src="https://gitee.com/Ethanyan/pic_data/raw/master/image-20190219172011618.png" alt="image-20190219172011618"></p>
+<p>5) 当每次迭代结果不变时，认为算法收敛，聚类完成，<strong><code>K-Means</code> 一定会停下，不可能陷入一直选质心的过程。</strong></p>
+<p><img src="https://gitee.com/Ethanyan/pic_data/raw/master/image-20190219172125388.png" alt="image-20190219172125388"></p>
+<h3 id="3-3-小结"><a href="#3-3-小结" class="headerlink" title="3.3 小结"></a>3.3 小结</h3><p><strong>流程</strong>：</p>
+<p>1) 事先<strong>确定常数 <code>K</code></strong>，常数 <code>K</code> 意味着最终的聚类类别数;</p>
+<p>2) 首先随机<strong>选定初始点为质心</strong>，并通过计算每一个样本与质心之间的相似度(这里为欧式距离)，将样本点归到最相似的类中，</p>
+<p>3) 接着，<strong>重新计算</strong>每个类的质心(即为类中心)，重复这样的过程，直到<strong>质心不再改变</strong>，</p>
+<p>4) 最终就确定了每个样本所属的类别以及每个类的质心。</p>
+<p><strong>注意</strong>：由于每次都要计算所有的样本与每一个质心之间的相似度，故在大规模的数据集上，<code>K-Means</code> 算法的收敛速度比较慢。</p>
+<h2 id="4-模型评估"><a href="#4-模型评估" class="headerlink" title="4.模型评估"></a>4.模型评估</h2><h3 id="4-1-误差平方和-SSE-The-sum-of-squares-due-to-error"><a href="#4-1-误差平方和-SSE-The-sum-of-squares-due-to-error" class="headerlink" title="4.1 误差平方和(SSE \The sum of squares due to error)"></a>4.1 误差平方和(SSE \The sum of squares due to error)</h3><p>举例：(下图中数据-0.2, 0.4, -0.8, 1.3, -0.7, 均为真实值和预测值的差)</p>
+<p><img src="https://gitee.com/Ethanyan/pic_data/raw/master/image-20190308211436382.png" alt="image-20190308211436382"></p>
+<p>在 <code>k-means</code> 中的应用：</p>
+<p><img src="https://gitee.com/Ethanyan/pic_data/raw/master/image-20190219173503991.png" alt="image-20190219173503991.png"></p>
+<p><img src="https://gitee.com/Ethanyan/pic_data/raw/master/image-20190219173610490.png" alt="image-20190219173610490"></p>
+<p>公式各部分内容:</p>
+<p><img src="https://gitee.com/Ethanyan/pic_data/raw/master/image-20190308211313308.png" alt="image-20190308211313308"></p>
+<p>上图中: <code>k=2</code></p>
+<p><strong>1) <code>SSE</code> 图最终的结果，对图松散度的衡量。</strong>(eg: <code>SSE(左图)</code> &lt; <code>SSE(右图)</code>)</p>
+<p>2) <code>SSE</code> 随着聚类迭代，其值会越来越小，直到最后趋于稳定</p>
+<p>3) 如果质心的初始值选择不好，<code>SSE</code> 只会达到一个不怎么好的局部最优解</p>
+<h3 id="4-2「肘」方法-Elbow-method-—-K值确定"><a href="#4-2「肘」方法-Elbow-method-—-K值确定" class="headerlink" title="4.2「肘」方法(Elbow method) — K值确定"></a>4.2「肘」方法(Elbow method) — K值确定</h3><p>1) 对于 <code>n</code> 个点的数据集，迭代计算 <code>k from 1 to n</code>，每次聚类完成后计算每个点到其所属的簇中心的距离的平方和；</p>
+<p>2) 平方和是会逐渐变小的，直到 <code>k==n</code> 时平方和为0，因为每个点都是它所在的簇中心本身。</p>
+<p>3) 在这个平方和变化过程中，会出现一个拐点也即「肘」点，<strong>下降率突然变缓时即认为是最佳的 <code>k</code> 值</strong>。</p>
+<p>在决定什么时候停止训练时，肘形判据同样有效，数据通常有更多的噪音，在<strong>增加分类无法带来更多回报时，我们停止增加类别</strong>。</p>
+<h3 id="4-3-轮廓系数法-Silhouette-Coefficient"><a href="#4-3-轮廓系数法-Silhouette-Coefficient" class="headerlink" title="4.3 轮廓系数法(Silhouette Coefficient)"></a>4.3 轮廓系数法(Silhouette Coefficient)</h3><p>结合了聚类的凝聚度（Cohesion）和分离度（Separation），用于评估聚类的效果：</p>
+<p><img src="https://gitee.com/Ethanyan/pic_data/raw/master/image-20190219174853018.png" alt="image-20190219174853018"></p>
+<p><strong>目的：</strong>内部距离最小化，外部距离最大化</p>
+<p><img src="https://gitee.com/Ethanyan/pic_data/raw/master/image-20190219175813875.png" alt="image-20190219175813875"></p>
+<p>计算样本 <code>i</code> 到同簇其他样本的平均距离 <code>ai</code>，<code>ai</code> 越小样本 <code>i</code> 的簇内不相似度越小，说明样本 <code>i</code> 越应该被聚类到该簇。</p>
+<p>计算样本 <code>i</code> 到最近簇 <code>Cj</code> 的所有样本的平均距离 <code>bij</code>，称样本 <code>i</code> 与最近簇 <code>Cj</code> 的不相似度，定义为样本 <code>i</code> 的簇间不相似度：<code>bi =min{bi1, bi2, ..., bik}</code>，<code>bi</code> 越大，说明样本 <code>i</code> 越不属于其他簇。</p>
+<p>求出所有样本的轮廓系数后再求平均值就得到了<strong>平均轮廓系数</strong>。</p>
+<p>平均轮廓系数的取值范围为[-1,1]，系数越大，聚类效果越好。</p>
+<p>簇内样本的距离越近，簇间样本距离越远。</p>
+<h3 id="4-4-CH-系数-Calinski-Harabasz-Index"><a href="#4-4-CH-系数-Calinski-Harabasz-Index" class="headerlink" title="4.4 CH 系数(Calinski-Harabasz Index)"></a>4.4 CH 系数(Calinski-Harabasz Index)</h3><p><strong>Calinski-Harabasz：</strong></p>
+<p>类别内部数据的协方差越小越好，类别之间的协方差越大越好（换句话说：类别内部数据的距离平方和越小越好，类别之间的距离平方和越大越好），这样的 <code>Calinski-Harabasz</code> 分数 <code>s</code> 会高，分数 <code>s</code> 高则聚类效果越好。</p>
+<p><img src="https://s2.ax1x.com/2020/02/24/38u9OO.png" alt="image-20190219182033877"></p>
+<p><code>tr</code> 为<strong>矩阵的迹</strong>, <code>Bk</code> 为类别之间的协方差矩阵，<code>Wk</code> 为类别内部数据的协方差矩阵;</p>
+<p><code>m</code> 为训练集样本数，<code>k</code> 为类别数。</p>
+<p><img src="https://s2.ax1x.com/2020/02/24/38uept.png" alt="image-20190219182615777"></p>
+<p>使用矩阵的迹进行求解的理解：</p>
+<p>矩阵的对角线可以表示一个物体的相似性</p>
+<p>在机器学习里，主要为了获取数据的特征值，那么就是说，在任何一个矩阵计算出来之后，都可以简单化，只要获取矩阵的迹，就可以表示这一块数据的最重要的特征了，这样就可以把很多无关紧要的数据删除掉，达到简化数据，提高处理速度。</p>
+<p><code>CH</code> 需要达到的目的：<strong>用尽量少的类别聚类尽量多的样本，同时获得较好的聚类效果。</strong></p>
+<h3 id="4-5-总结"><a href="#4-5-总结" class="headerlink" title="4.5 总结"></a>4.5 总结</h3><p>1) <strong>肘部法</strong>：下降率突然变缓时即认为是最佳的 <code>k</code> 值</p>
+<p>2) <strong><code>SC</code> 系数</strong>：取值为[-1, 1]，其值越大越好</p>
+<p>3)  <strong><code>CH</code>系数</strong>：分数 <code>s</code> 高则聚类效果越好</p>
+<h2 id="5-算法优化"><a href="#5-算法优化" class="headerlink" title="5.算法优化"></a>5.算法优化</h2><h3 id="5-1-k-means-算法小结"><a href="#5-1-k-means-算法小结" class="headerlink" title="5.1 k-means 算法小结"></a>5.1 k-means 算法小结</h3><p><strong>优点：</strong></p>
+<p> 1) 原理简单（靠近中心点），实现容易</p>
+<p> 2) 聚类效果中上（依赖K的选择）</p>
+<p> 3) 空间复杂度 <code>O(N)</code>，时间复杂度 <code>O(IKN)</code></p>
+<blockquote>
+<p><code>N</code> 为样本点个数，<code>K</code> 为中心点个数，<code>I</code> 为迭代次数</p>
+</blockquote>
+<p><strong>缺点：</strong></p>
+<p> 1) 对离群点，噪声敏感 （中心点易偏移）</p>
+<p> 2) 很难发现大小差别很大的簇及进行增量计算</p>
+<p> 3) 结果不一定是全局最优，只能保证局部最优（与 <code>K</code> 的个数及初值选取有关）</p>
+<h3 id="5-2-Canopy-算法配合初始聚类"><a href="#5-2-Canopy-算法配合初始聚类" class="headerlink" title="5.2 Canopy 算法配合初始聚类"></a>5.2 Canopy 算法配合初始聚类</h3><h4 id="5-2-1-实现流程"><a href="#5-2-1-实现流程" class="headerlink" title="5.2.1 实现流程"></a>5.2.1 实现流程</h4><p><img src="https://s2.ax1x.com/2020/02/24/38KJVe.png" alt="image-20190219190832599"></p>
+<h4 id="5-2-2-优缺点"><a href="#5-2-2-优缺点" class="headerlink" title="5.2.2 优缺点"></a>5.2.2 优缺点</h4><p><strong>优点：</strong></p>
+<p> 1) <code>Kmeans</code> 对噪声抗干扰较弱，通过 <code>Canopy</code> 对比，将较小的 <code>NumPoint</code> 的 <code>Cluster</code> 直接去掉有利于抗干扰。</p>
+<p> 2) <code>Canopy</code> 选择出来的每个 <code>Canopy</code> 的 <code>centerPoint</code> 作为 <code>K</code> 会更精确。</p>
+<p> 3) 只是针对每个 <code>Canopy</code> 的内做 <code>Kmeans</code> 聚类，减少相似计算的数量。</p>
+<p><strong>缺点：</strong></p>
+<p> 1) 算法中 <code>T1</code>、<code>T2</code> 的确定问题 ，依旧可能落入局部最优解</p>
+<h3 id="5-3-K-means"><a href="#5-3-K-means" class="headerlink" title="5.3 K-means++"></a>5.3 K-means++</h3><p><img src="https://s2.ax1x.com/2020/02/24/38KvM6.png" alt="image-20190219233830941"></p>
+<p><img src="https://s2.ax1x.com/2020/02/24/38MCIH.png" alt="image-20190219233845360"></p>
+<p><img src="https://s2.ax1x.com/2020/02/24/38MkRI.png" alt="image-20190219233904862"></p>
+<p><img src="https://s2.ax1x.com/2020/02/24/38Mudg.png" alt="image-20190219233921494"></p>
+<p><code>kmeans++</code> 目的，让选择的质心尽可能的分散</p>
+<p>如下图中，如果第一个质心选择在圆心，那么最优可能选择到的下一个点在 <code>P(A)</code> 这个区域（根据颜色进行划分）</p>
+<p><img src="https://s2.ax1x.com/2020/02/24/38M1Wn.png" alt="image-20190219234135506"></p>
+<h3 id="5-4-二分-k-means"><a href="#5-4-二分-k-means" class="headerlink" title="5.4 二分 k-means"></a>5.4 二分 k-means</h3><p><strong>实现流程：</strong></p>
+<p>1) 所有点作为一个簇</p>
+<p>2) 将该簇一分为二</p>
+<p>3) 选择能最大限度降低聚类代价函数（也就是误差平方和）的簇划分为两个簇。</p>
+<p>4) 以此进行下去，直到簇的数目等于用户给定的数目 <code>k</code>为止。</p>
+<p><img src="https://s2.ax1x.com/2020/02/24/38M6OK.png" alt="image-20190323000108301"></p>
+<p><strong>隐含的一个原则</strong></p>
+<p>因为聚类的误差平方和能够衡量聚类性能，该值越小表示数据点越接近于他们的质心，聚类效果就越好。所以需要对误差平方和最大的簇进行再一次划分，因为误差平方和越大，表示该簇聚类效果越不好，越有可能是多个簇被当成了一个簇，所以我们首先需要对这个簇进行划分。</p>
+<p>二分 <code>K</code> 均值算法可以加速 <code>K-means</code> 算法的执行速度，因为它的相似度计算少了并且不受初始化问题的影响，因为这里不存在随机点的选取，且每一步都保证了误差最小。</p>
+<h3 id="5-5-k-medoids（k-中心聚类算法）"><a href="#5-5-k-medoids（k-中心聚类算法）" class="headerlink" title="5.5 k-medoids（k-中心聚类算法）"></a>5.5 k-medoids（k-中心聚类算法）</h3><p><code>K-medoids</code> 和 <code>K-means</code> 是有区别的，<strong>不一样的地方在于中心点的选取</strong></p>
+<blockquote>
+<p><code>K-means</code> 中，将中心点取为当前 <code>cluster</code> 中所有数据点的平均值，对异常点很敏感!</p>
+<p><code>K-medoids</code> 中，将从当前 <code>cluster</code> 中选取到其他所有（当前 <code>cluster</code> 中的）点的距离之和最小的点作为中心点。</p>
+</blockquote>
+<p><img src="https://s2.ax1x.com/2020/02/24/38M7Of.png" alt="image-20190220000002208"></p>
+<p><strong>算法流程：</strong></p>
+<p>1) 总体 <code>n</code> 个样本点中任意选取 <code>k</code> 个点作为 <code>medoids</code></p>
+<p>2) 按照与 <code>medoids</code> 最近的原则，将剩余的 <code>n-k</code> 个点分配到当前最佳的 <code>medoids</code> 代表的类中</p>
+<p>3) 对于第 <code>i</code> 个类中除对应 <code>medoids</code> 点外的所有其他点，按顺序计算当其为新的 <code>medoids</code> 时，代价函数的值，遍历所有可能，选取代价函数最小时对应的点作为新的 <code>medoids</code></p>
+<p>4) 重复2-3的过程，直到所有的 <code>medoids</code> 点不再发生变化或已达到设定的最大迭代次数</p>
+<p>5) 产出最终确定的 <code>k</code> 个类</p>
+<p><strong>k-medoids对噪声鲁棒性好。</strong></p>
+<p>例：当一个 <code>cluster</code> 样本点只有少数几个，如（1,1）（1,2）（2,1）（1000,1000）。其中（1000,1000）是噪声。如果按照 <code>k-means</code> 质心大致会处在（1,1）（1000,1000）中间，这显然不是我们想要的。这时 <code>k-medoids</code> 就可以避免这种情况，他会在（1,1）（1,2）（2,1）（1000,1000）中选出一个样本点使 <code>cluster</code> 的绝对误差最小，计算可知一定会在前三个点中选取。</p>
+<p><code>k-medoids</code> 只能对小样本起作用，样本大，速度就太慢了，当样本多的时候，少数几个噪音对 <code>k-means</code> 的质心影响也没有想象中的那么重，所以 <code>k-means</code> 的应用明显比 <code>k-medoids</code> 多。</p>
+<h3 id="5-6-Kernel-k-means（了解）"><a href="#5-6-Kernel-k-means（了解）" class="headerlink" title="5.6 Kernel k-means（了解）"></a>5.6 Kernel k-means（了解）</h3><p><code>kernel k-means</code> 实际上，就是将每个样本进行一个投射到高维空间的处理，然后再将处理后的数据使用普通的 <code>k-means</code> 算法思想进行聚类。</p>
+<p><img src="https://s2.ax1x.com/2020/02/24/38Qm11.png" alt="image-20190219235240810"></p>
+<h3 id="5-7-ISODATA（了解）"><a href="#5-7-ISODATA（了解）" class="headerlink" title="5.7 ISODATA（了解）"></a>5.7 ISODATA（了解）</h3><p>类别数目随着聚类过程而变化；</p>
+<p>对类别数会进行合并，分裂；</p>
+<p>「合并」当聚类结果某一类中样本数太少，或两个类间的距离太近时</p>
+<p>「分裂」当聚类结果中某一类的类内方差太大，将该类进行分裂</p>
+<h3 id="5-8-Mini-Batch-K-Means（了解）"><a href="#5-8-Mini-Batch-K-Means（了解）" class="headerlink" title="5.8 Mini Batch K-Means（了解）"></a>5.8 Mini Batch K-Means（了解）</h3><p>适合大数据的聚类算法</p>
+<p>大数据量是什么量级？通常当样本量大于1万做聚类时，就需要考虑选用<code>Mini Batch K-Means</code> 算法。</p>
+<p><code>Mini Batch KMeans</code> 使用了 <code>Mini Batch</code>（分批处理）的方法对数据点之间的距离进行计算。</p>
+<p><code>Mini Batch</code> 计算过程中不必使用所有的数据样本，而是从不同类别的样本中抽取一部分样本来代表各自类型进行计算。由于计算样本量少，所以会相应的减少运行时间，但另一方面抽样也必然会带来准确度的下降。</p>
+<p>该算法的迭代步骤有两步：</p>
+<p>1) 从数据集中随机抽取一些数据形成小批量，把他们分配给最近的质心</p>
+<p>2) 更新质心</p>
+<p>与 <code>Kmeans</code> 相比，数据的更新在每一个小的样本集上。对于每一个小批量，通过计算平均值得到更新质心，并把小批量里的数据分配给该质心，随着迭代次数的增加，这些质心的变化是逐渐减小的，直到质心稳定或者达到指定的迭代次数，停止计算。</p>
+<h3 id="5-9-总结"><a href="#5-9-总结" class="headerlink" title="5.9 总结"></a>5.9 总结</h3><table>
+<thead>
+<tr>
+<th><strong>优化方法</strong></th>
+<th><strong>思路</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Canopy+kmeans</td>
+<td>Canopy粗聚类配合kmeans</td>
+</tr>
+<tr>
+<td>kmeans++</td>
+<td>距离越远越容易成为新的质心</td>
+</tr>
+<tr>
+<td>二分k-means</td>
+<td>拆除SSE最大的簇</td>
+</tr>
+<tr>
+<td>k-medoids</td>
+<td>和kmeans选取中心点的方式不同</td>
+</tr>
+<tr>
+<td>kernel kmeans</td>
+<td>映射到高维空间</td>
+</tr>
+<tr>
+<td>ISODATA</td>
+<td>动态聚类</td>
+</tr>
+<tr>
+<td>Mini-batch K-Means</td>
+<td>大数据集分批聚类</td>
+</tr>
+</tbody></table>
+<p><strong><em>更多精彩文章请关注公众号『Pythonnote』或者『全栈技术精选』</em></strong></p>
+
+      
+      <!-- reward -->
+      
+      <div id="reward-btn">
+        打赏
+      </div>
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+        <div class="declare">
+          <ul class="post-copyright">
+            <li>
+              <i class="ri-copyright-line"></i>
+              <strong>版权声明： </strong s>
+              本博客所有文章除特别声明外，均采用 <a href="https://www.apache.org/licenses/LICENSE-2.0.html" rel="external nofollow"
+                target="_blank">Apache License 2.0</a> 许可协议。转载请注明出处！
+            </li>
+          </ul>
+        </div>
+        
+    <footer class="article-footer">
+      
+          
+<div class="share-btn">
+      <span class="share-sns share-outer">
+        <i class="ri-share-forward-line"></i>
+        分享
+      </span>
+      <div class="share-wrap">
+        <i class="arrow"></i>
+        <div class="share-icons">
+          
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="ri-weibo-fill"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="ri-wechat-fill"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="ri-qq-fill"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="ri-douban-line"></i>
+          </a>
+          <!-- <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a> -->
+          
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="ri-facebook-circle-fill"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="ri-twitter-fill"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="ri-google-fill"></i>
+          </a>
+        </div>
+      </div>
+</div>
+
+<div class="wx-share-modal">
+    <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://www.pythonnote.cn/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%AE%97%E6%B3%95%E4%B9%8B%E8%81%9A%E7%B1%BB%E7%AE%97%E6%B3%95/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div id="share-mask"></div>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" rel="tag">机器学习</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li></ul>
+
+
+    </footer>
+
+  </div>
+
+  
+  
+  <nav class="article-nav">
+    
+      <a href="/%E5%85%B3%E7%B3%BB%E6%95%B0%E6%8D%AE%E5%BA%93%E4%B9%8B%E5%AD%98%E5%82%A8%E8%BF%87%E7%A8%8B/" class="article-nav-link">
+        <strong class="article-nav-caption">上一篇</strong>
+        <div class="article-nav-title">
+          
+            关系数据库之存储过程
+          
+        </div>
+      </a>
+    
+    
+      <a href="/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%AE%97%E6%B3%95%E4%B9%8B%E9%9B%86%E6%88%90%E5%AD%A6%E4%B9%A0/" class="article-nav-link">
+        <strong class="article-nav-caption">下一篇</strong>
+        <div class="article-nav-title">机器学习算法之集成学习</div>
+      </a>
+    
+  </nav>
+
+
+  
+
+  
+  
+<!-- valine评论 -->
+<div id="vcomments-box">
+    <div id="vcomments">
+    </div>
+</div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src='https://cdn.jsdelivr.net/npm/valine@1.3.10/dist/Valine.min.js'></script>
+<script>
+    new Valine({
+        el: '#vcomments',
+        app_id: 'KyuIqv0TGYfFpt5wguqvikhD-gzGzoHsz',
+        app_key: 'f6Vbsc3Y9hlCH2zJDPMpL6gj',
+        path: window.location.pathname,
+        notify: 'true',
+        verify: 'true',
+        avatar: 'mp',
+        placeholder: '给我的文章加点评论吧~',
+        recordIP: true
+    });
+    const infoEle = document.querySelector('#vcomments .info');
+    if (infoEle && infoEle.childNodes && infoEle.childNodes.length > 0) {
+        infoEle.childNodes.forEach(function (item) {
+            item.parentNode.removeChild(item);
+        });
+    }
+</script>
+<style>
+    #vcomments-box {
+        padding: 5px 30px;
+    }
+
+    @media screen and (max-width: 800px) {
+        #vcomments-box {
+            padding: 5px 0px;
+        }
+    }
+
+    #vcomments-box #vcomments {
+        background-color: #fff;
+    }
+
+    .v .vlist .vcard .vh {
+        padding-right: 20px;
+    }
+
+    .v .vlist .vcard {
+        padding-left: 10px;
+    }
+</style>
+
+  
+
+  
+  
+  
+
+</article>
+</section>
+      <footer class="footer">
+  <div class="outer">
+    <ul class="list-inline">
+      <li>
+        
+        
+        <span>
+  <i>页面访问量:<span id="busuanzi_value_page_pv"></span></i>
+  <i>独立访客访问数:<span id="busuanzi_value_site_uv"></span></i>
+</span>
+        
+      </li>
+      <li>
+        <!-- cnzz统计 -->
+        
+        <script type="text/javascript">document.write(unescape("%3Cspan id='cnzz_stat_icon_1278605887'%3E%3C/span%3E%3Cscript src='https://s4.cnzz.com/z_stat.php%3Fid%3D1278605887%26online%3D2' type='text/javascript'%3E%3C/script%3E"));</script>
+        
+      </li>
+    </ul>
+    
+    <ul class="list-inline">
+      <li>
+        友情链接：<a href="https://www.javastudy.cloud" target="_blank" rel="external nofollow noopener">&gt; javaDemo站 &lt;</a><br>
+      </li>
+    </ul>
+
+    <ul class="list-inline">
+      <li>
+        更多精彩文章请关注微信公众号『全栈技术精选』，id 为『Pythonnote』
+      </li>
+    </ul>
+        
+    <ul class="list-inline">
+      <li>
+        &copy;
+        2019-2020
+        小闫同学
+      </li>
+      <li>
+        
+          Created by
+        
+        
+        <a href="https://github.com/EthanYan6" target="_blank">EthanYan</a> Thanks <a href="https://github.com/Shen-Yu/hexo-theme-ayer" rel="external nofollow" target="_blank">Ayer</a>
+        
+      </li>
+    </ul>
+
+  </div>
+</footer>
+    <div class="to_top">
+        <div class="totop" id="totop">
+  <i class="ri-arrow-up-line"></i>
+</div>
+      </div>
+    </main>
+      <aside class="sidebar">
+        <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+  <div class="logo">
+    <a href="/"><img src="/images/ayer-side.svg" alt="脸滚键盘缺了个键"></a>
+  </div>
+  
+  <ul class="nav nav-main">
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/">主页</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/archives">归档</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/categories">分类</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags">标签</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="https://www.pythonnote.cn/OfficialDocuments/">文档</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="https://www.pythonnote.cn/resume/">关于</a>
+    </li>
+    
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      
+      <a class="nav-item-link nav-item-search"  title="搜索">
+        <i class="ri-search-line"></i>
+      </a>
+      
+      
+      <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+        <i class="ri-rss-line"></i>
+      </a>
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+      </aside>
+      <div id="mask"></div>
+
+<!-- #reward -->
+<div id="reward">
+  <span class="close"><i class="ri-close-line"></i></span>
+  <p class="reward-p"><i class="ri-cup-line"></i>请我喝杯咖啡吧~</p>
+  <div class="reward-box">
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/alipay.jpg">
+      <span class="reward-type">支付宝</span>
+    </div>
+    
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/wechat.jpg">
+      <span class="reward-type">微信</span>
+    </div>
+    
+  </div>
+</div>
+      <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.justifiedGallery.min.js"></script>
+<script src="/js/lazyload.min.js"></script>
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+<script src="/js/share.js"></script>
+
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+<script>
+  try {
+    var typed = new Typed("#subtitle", {
+    strings: ['Python、Java、powershell、shell、Elasticsearch、MySQL、Redis、Django、Flask、爬虫、RPC、数据分析','上面列出的都不会','请关注微信公众号「Pythonnote」'],
+    startDelay: 0,
+    typeSpeed: 200,
+    loop: true,
+    backSpeed: 100,
+    showCursor: true
+    });
+  } catch (err) {
+  }
+  
+</script>
+
+
+
+<script src="/js/tocbot.min.js"></script>
+<script>
+  // Tocbot_v4.7.0  http://tscanlin.github.io/tocbot/
+  tocbot.init({
+    tocSelector: '.tocbot',
+    contentSelector: '.article-entry',
+    headingSelector: 'h1, h2, h3, h4, h5, h6',
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    scrollContainer:'main',
+    positionFixedSelector: '.tocbot',
+    positionFixedClass: 'is-position-fixed',
+    fixedSidebarOffset: 'auto',
+    onClick: (e) => {
+      $('.toc-link').removeClass('is-active-link');
+      $(`a[href=${e.target.hash}]`).addClass('is-active-link');
+      $(e.target.hash).scrollIntoView();
+      return false;
+    }
+  });
+</script>
+
+
+<script>
+  var ayerConfig = {
+    mathjax: false
+  }
+</script>
+
+<script src="/js/ayer.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.css">
+
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.css">
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"></script>
+
+<script>
+    function viewer_init() {
+        let pswpElement = document.querySelectorAll('.pswp')[0];
+        let $imgArr = document.querySelectorAll(('.article-entry img:not(.reward-img)'))
+
+        $imgArr.forEach(($em, i) => {
+            $em.onclick = () => {
+                // slider展开状态
+                // todo: 这样不好，后面改成状态
+                if (document.querySelector('.left-col.show')) return
+                let items = []
+                $imgArr.forEach(($em2, i2) => {
+                    let img = $em2.getAttribute('data-idx', i2)
+                    let src = $em2.getAttribute('data-target') || $em2.getAttribute('src')
+                    let title = $em2.getAttribute('alt')
+                    // 获得原图尺寸
+                    const image = new Image()
+                    image.src = src
+                    items.push({
+                        src: src,
+                        w: image.width || $em2.width,
+                        h: image.height || $em2.height,
+                        title: title
+                    })
+                })
+                var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, {
+                    index: parseInt(i)
+                });
+                gallery.init()
+            }
+        })
+    }
+    viewer_init()
+</script>
+
+
+
+
+<script type="text/javascript" src="https://js.users.51.la/20544303.js"></script>
+  </div>
+</body>
+
+</html>
