@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.pythonnote.cn/"/>
-  <updated>2020-02-28T13:54:56.279Z</updated>
+  <updated>2020-03-03T14:53:25.695Z</updated>
   <id>http://www.pythonnote.cn/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>一起看看大火的手机号一键登录</title>
+    <link href="http://www.pythonnote.cn/%E4%B8%80%E8%B5%B7%E7%9C%8B%E7%9C%8B%E5%A4%A7%E7%81%AB%E7%9A%84%E6%89%8B%E6%9C%BA%E5%8F%B7%E4%B8%80%E9%94%AE%E7%99%BB%E5%BD%95/"/>
+    <id>http://www.pythonnote.cn/%E4%B8%80%E8%B5%B7%E7%9C%8B%E7%9C%8B%E5%A4%A7%E7%81%AB%E7%9A%84%E6%89%8B%E6%9C%BA%E5%8F%B7%E4%B8%80%E9%94%AE%E7%99%BB%E5%BD%95/</id>
+    <published>2020-03-03T13:41:59.000Z</published>
+    <updated>2020-03-03T14:53:25.695Z</updated>
+    
+    <summary type="html">
+    
+      &lt;center&gt;Author：闫玉良&lt;/center&gt;
+
+&lt;p&gt;不知你是否发现：大批手机 &lt;code&gt;app&lt;/code&gt; 登录页面，突然之间变成了一键登录。之前大火的 &lt;code&gt;通过手机号码获取短信验证码&lt;/code&gt; 登录模式正悄悄退去。这神奇的操作是如何实现的呢？&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="手机号一键登录" scheme="http://www.pythonnote.cn/categories/%E6%89%8B%E6%9C%BA%E5%8F%B7%E4%B8%80%E9%94%AE%E7%99%BB%E5%BD%95/"/>
+    
+    
+      <category term="手机号一键登录" scheme="http://www.pythonnote.cn/tags/%E6%89%8B%E6%9C%BA%E5%8F%B7%E4%B8%80%E9%94%AE%E7%99%BB%E5%BD%95/"/>
+    
+  </entry>
   
   <entry>
     <title>有了Pycharm，就卸载了Postman吧</title>
@@ -498,34 +521,6 @@
       <category term="算法" scheme="http://www.pythonnote.cn/tags/%E7%AE%97%E6%B3%95/"/>
     
       <category term="数据结构" scheme="http://www.pythonnote.cn/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>机器学习工程师必知的十大算法</title>
-    <link href="http://www.pythonnote.cn/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%B7%A5%E7%A8%8B%E5%B8%88%E5%BF%85%E7%9F%A5%E7%9A%84%E5%8D%81%E5%A4%A7%E7%AE%97%E6%B3%95/"/>
-    <id>http://www.pythonnote.cn/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%B7%A5%E7%A8%8B%E5%B8%88%E5%BF%85%E7%9F%A5%E7%9A%84%E5%8D%81%E5%A4%A7%E7%AE%97%E6%B3%95/</id>
-    <published>2020-01-26T14:51:41.000Z</published>
-    <updated>2020-01-31T03:23:18.053Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;It is no doubt that the sub-field of machine learning / artificial intelligence has increasingly gained more popularity in the past couple of years. As Big Data is the hottest trend in the tech industry at the moment, machine learning is incredibly powerful to make predictions or calculated suggestions based on large amounts of data. Some of the most common examples of machine learning are Netflix’s algorithms to make movie suggestions based on movies you have watched in the past or Amazon’s algorithms that recommend books based on books you have bought before.&lt;/p&gt;
-&lt;p&gt;毫无疑问，机器学习 / 人工智能的子领域在过去几年越来越受欢迎。目前大数据在科技行业已经炙手可热，而基于大量数据来进行预测或者得出建议的机器学习无疑是非常强大的。一些最常见的机器学习例子，比如 Netflix 的算法可以根据你以前看过的电影来进行电影推荐，而 Amazon 的算法则可以根据你以前买过的书来推荐书籍。&lt;/p&gt;
-&lt;p&gt;So if you want to learn more about machine learning, how do you start?&lt;/p&gt;
-&lt;p&gt;所以如果你想了解更多有关机器学习的内容，那么你该如何入门？&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="算法" scheme="http://www.pythonnote.cn/categories/%E7%AE%97%E6%B3%95/"/>
-    
-      <category term="机器学习" scheme="http://www.pythonnote.cn/categories/%E7%AE%97%E6%B3%95/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
-    
-    
-      <category term="算法" scheme="http://www.pythonnote.cn/tags/%E7%AE%97%E6%B3%95/"/>
-    
-      <category term="机器学习" scheme="http://www.pythonnote.cn/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
     
   </entry>
   
