@@ -6,16 +6,17 @@
 title: 脸滚键盘缺了个键
 subtitle: 公众号『全栈技术精选』
 description: 多喝烫水，开水治百病 <- <-
-keywords: Python、Java、powershell、shell、Elasticsearch、MySQL、Redis、Django、Flask、爬虫、RPC、数据分析
+keywords: Python,Java,powershell,shell,Elasticsearch,MySQL,Redis,Django,Flask,爬虫,RPC,数据分析,人工智能,算法,数据结构
 author: 小闫同学
-language: en
+language: zh-CN
 timezone:
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
 url: http://www.pythonnote.cn
 root: /
-permalink: :year/:month/:day/:title/
+# :year/:month/:day/:title/
+permalink: :title/
 permalink_defaults:
 pretty_urls:
   trailing_index: true # Set to false to remove trailing index.html from permalinks
@@ -108,3 +109,7 @@ feed:
     content_limit: 140
     content_limit_delim: ' '
     order_by: -date
+
+# 自动生成sitemap
+sitemap:
+path: sitemap.xml
