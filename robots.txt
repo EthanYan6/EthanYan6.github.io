@@ -1,0 +1,12 @@
+User-agent: *
+Allow: /
+Allow: /archives/
+Allow: /categories/
+Allow: /about/
+Allow: /tags/
+Allow: /contact/
+Allow: /page/
+
+Disallow: /js/
+Disallow: /css/
+Disallow: /fancybox/
