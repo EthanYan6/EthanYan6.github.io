@@ -260,3 +260,9 @@ Use Tocbot to parse the title tags (h1~h6) in the content and insert the directo
   toc: false
   ---
 	```
+
+---
+
+<br/>
+<a src="https://github.com/Shen-Yu/hexo-theme-ayer">Ayer</a> by <a  href="https://github.com/Shen-Yu">Eric-Shen</a> is licensed under  <a rel="license" href="https://www.mit-license.org/">MIT</a>.
+
