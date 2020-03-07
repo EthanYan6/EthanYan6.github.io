@@ -757,7 +757,7 @@ bat 脚本？如果不是从事微软开发相关工作的人员，是不是感�
 
 </article>
     
-    <article id="post-Git 上传大文件" class="article article-type-post" itemscope
+    <article id="post-Elasticsearch 中这些必备 API 你晓得嘛？" class="article article-type-post" itemscope
   itemprop="blogPost" data-scroll-reveal>
 
   <div class="article-inner">
@@ -765,8 +765,8 @@ bat 脚本？如果不是从事微软开发相关工作的人员，是不是感�
     <header class="article-header">
        
 <h2 itemprop="name">
-  <a class="article-title" href="/Git%20%E4%B8%8A%E4%BC%A0%E5%A4%A7%E6%96%87%E4%BB%B6/"
-    >Git 上传大文件</a
+  <a class="article-title" href="/Elasticsearch%20%E4%B8%AD%E8%BF%99%E4%BA%9B%E5%BF%85%E5%A4%87%20API%20%E4%BD%A0%E6%99%93%E5%BE%97%E5%98%9B%EF%BC%9F/"
+    >Elasticsearch 中这些必备 API 你晓得嘛？</a
   >
 </h2>
   
@@ -776,12 +776,12 @@ bat 脚本？如果不是从事微软开发相关工作的人员，是不是感�
 
     
     <div class="article-meta">
-      <a href="/Git%20%E4%B8%8A%E4%BC%A0%E5%A4%A7%E6%96%87%E4%BB%B6/" class="article-date">
+      <a href="/Elasticsearch%20%E4%B8%AD%E8%BF%99%E4%BA%9B%E5%BF%85%E5%A4%87%20API%20%E4%BD%A0%E6%99%93%E5%BE%97%E5%98%9B%EF%BC%9F/" class="article-date">
   <time datetime="2019-10-25T12:18:57.000Z" itemprop="datePublished">2019-10-25</time>
 </a>
       
   <div class="article-category">
-    <a class="article-category-link" href="/categories/git/">git</a>
+    <a class="article-category-link" href="/categories/elasticsearch/">elasticsearch</a>
   </div>
 
       
@@ -801,9 +801,11 @@ bat 脚本？如果不是从事微软开发相关工作的人员，是不是感�
 
       
       <center>Author：闫玉良</center> 
-我们知道 github 上面限制每次推送的文件不能超过 100M，否则报错失败，那么非要推送大文件呢？有没有什么解决办法呢？答案当然是肯定的。这就用到了 `Git LFS` 。
+
+
+<p>众所周知，ES 中的 mapping 只能在索引建立初期进行创建，且建立之后不可更改。mapping 对应的字段会映射成指定类型，未定义字段则自动映射，一般为 text 类型。那么想更改索引名或者更改某字段的 mapping 时，是否就束手无策了呢？当然不是！！！官方提供了一个接口，供索引备份迁移操作使用，那便是 <strong>reindex</strong>。当旧索引与新索引在同一节点时，效率相当高，万条数据瞬间完成（<code>大约只需0.4s</code>）。数百万数据也只需几分钟即可完成 操作，是不是很溜呢？快来学习一下吧。</p>
       
-      <a class="article-more-link" href="/Git%20%E4%B8%8A%E4%BC%A0%E5%A4%A7%E6%96%87%E4%BB%B6/">阅读全文...</a>
+      <a class="article-more-link" href="/Elasticsearch%20%E4%B8%AD%E8%BF%99%E4%BA%9B%E5%BF%85%E5%A4%87%20API%20%E4%BD%A0%E6%99%93%E5%BE%97%E5%98%9B%EF%BC%9F/">阅读全文...</a>
       
       
       <!-- reward -->
@@ -816,7 +818,7 @@ bat 脚本？如果不是从事微软开发相关工作的人员，是不是感�
     <footer class="article-footer">
       
       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/git/" rel="tag">git</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/elasticsearch/" rel="tag">elasticsearch</a></li></ul>
 
 
     </footer>

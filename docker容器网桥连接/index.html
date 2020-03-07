@@ -103,15 +103,16 @@
       
       <center>Author：闫玉良</center>
 容器之间如何互相通讯？具体的命令有哪些？
-<a id="more"></a>
-***更多精彩文章请关注公众号『Pythonnote』或者『全栈技术精选』***
-# 网桥
-网桥可以简单的理解为「局域网」，使加入网桥的容器之间可以互相通讯、暴露全部链接，同时与外界又保证了相对隔离的运行环境。
-## 1.创建网桥
-命令：
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker network create --driver bridge [网桥名称]</span><br></pre></td></tr></table></figure>
-> 参数 `--driver bridge` 是默认配置，可写可不写
 
+<a id="more"></a>
+
+<p><strong><em>更多精彩文章请关注公众号『Pythonnote』或者『全栈技术精选』</em></strong></p>
+<h1 id="网桥"><a href="#网桥" class="headerlink" title="网桥"></a>网桥</h1><p>网桥可以简单的理解为「局域网」，使加入网桥的容器之间可以互相通讯、暴露全部链接，同时与外界又保证了相对隔离的运行环境。</p>
+<h2 id="1-创建网桥"><a href="#1-创建网桥" class="headerlink" title="1.创建网桥"></a>1.创建网桥</h2><p>命令：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker network create --driver bridge [网桥名称]</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>参数 <code>--driver bridge</code> 是默认配置，可写可不写</p>
+</blockquote>
 <h2 id="2-连接网桥"><a href="#2-连接网桥" class="headerlink" title="2.连接网桥"></a>2.连接网桥</h2><p>连接网桥分为两种方式，一种是在创建容器时链接网桥，一种是在容器运行时链接网桥。</p>
 <p>1) 创建容器时：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker create --name [容器名称] --network [网桥名称] [镜像名称]</span><br></pre></td></tr></table></figure>
