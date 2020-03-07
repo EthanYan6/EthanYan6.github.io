@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.pythonnote.cn/"/>
-  <updated>2020-03-06T13:30:11.871Z</updated>
+  <updated>2020-03-07T11:16:40.068Z</updated>
   <id>http://www.pythonnote.cn/</id>
   
   <author>
@@ -17,11 +17,33 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>docker容器网桥连接</title>
+    <link href="http://www.pythonnote.cn/docker%E5%AE%B9%E5%99%A8%E7%BD%91%E6%A1%A5%E8%BF%9E%E6%8E%A5/"/>
+    <id>http://www.pythonnote.cn/docker%E5%AE%B9%E5%99%A8%E7%BD%91%E6%A1%A5%E8%BF%9E%E6%8E%A5/</id>
+    <published>2020-03-07T09:56:51.000Z</published>
+    <updated>2020-03-07T11:16:40.068Z</updated>
+    
+    <summary type="html">
+    
+      &lt;center&gt;Author：闫玉良&lt;/center&gt;
+容器之间如何互相通讯？具体的命令有哪些？
+    
+    </summary>
+    
+    
+      <category term="docker" scheme="http://www.pythonnote.cn/categories/docker/"/>
+    
+    
+      <category term="docker" scheme="http://www.pythonnote.cn/tags/docker/"/>
+    
+  </entry>
+  
+  <entry>
     <title>docker容器数据持久化</title>
     <link href="http://www.pythonnote.cn/docker%E5%AE%B9%E5%99%A8%E6%95%B0%E6%8D%AE%E6%8C%81%E4%B9%85%E5%8C%96/"/>
     <id>http://www.pythonnote.cn/docker%E5%AE%B9%E5%99%A8%E6%95%B0%E6%8D%AE%E6%8C%81%E4%B9%85%E5%8C%96/</id>
     <published>2020-03-06T10:04:08.000Z</published>
-    <updated>2020-03-06T13:30:11.871Z</updated>
+    <updated>2020-03-06T13:54:03.552Z</updated>
     
     <summary type="html">
     
@@ -494,30 +516,6 @@
     
     
       <category term="elasticsearch" scheme="http://www.pythonnote.cn/tags/elasticsearch/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>还在拧螺丝？是时候学习造航母了！</title>
-    <link href="http://www.pythonnote.cn/%E8%BF%98%E5%9C%A8%E6%8B%A7%E8%9E%BA%E4%B8%9D%EF%BC%9F%E6%98%AF%E6%97%B6%E5%80%99%E5%AD%A6%E4%B9%A0%E9%80%A0%E8%88%AA%E6%AF%8D%E4%BA%86%EF%BC%81/"/>
-    <id>http://www.pythonnote.cn/%E8%BF%98%E5%9C%A8%E6%8B%A7%E8%9E%BA%E4%B8%9D%EF%BC%9F%E6%98%AF%E6%97%B6%E5%80%99%E5%AD%A6%E4%B9%A0%E9%80%A0%E8%88%AA%E6%AF%8D%E4%BA%86%EF%BC%81/</id>
-    <published>2020-01-30T11:58:02.000Z</published>
-    <updated>2020-02-19T03:41:24.419Z</updated>
-    
-    <summary type="html">
-    
-      &lt;center&gt;Author：闫玉良&lt;/center&gt;
-面试造航母，实际拧螺丝。这是大部分互联网人面对的实际情境，如何跳出舒适的圈子，撤离局部，俯览大局？
-    
-    </summary>
-    
-    
-      <category term="部署" scheme="http://www.pythonnote.cn/categories/%E9%83%A8%E7%BD%B2/"/>
-    
-    
-      <category term="架构" scheme="http://www.pythonnote.cn/tags/%E6%9E%B6%E6%9E%84/"/>
-    
-      <category term="部署" scheme="http://www.pythonnote.cn/tags/%E9%83%A8%E7%BD%B2/"/>
     
   </entry>
   
