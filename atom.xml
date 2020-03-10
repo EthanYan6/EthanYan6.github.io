@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.pythonnote.cn/"/>
-  <updated>2020-03-07T11:24:04.417Z</updated>
+  <updated>2020-03-10T11:25:37.874Z</updated>
   <id>http://www.pythonnote.cn/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>python的这些小知识你注意到了吗？</title>
+    <link href="http://www.pythonnote.cn/python%E7%9A%84%E8%BF%99%E4%BA%9B%E5%B0%8F%E7%9F%A5%E8%AF%86%E4%BD%A0%E6%B3%A8%E6%84%8F%E5%88%B0%E4%BA%86%E5%90%97%EF%BC%9F/"/>
+    <id>http://www.pythonnote.cn/python%E7%9A%84%E8%BF%99%E4%BA%9B%E5%B0%8F%E7%9F%A5%E8%AF%86%E4%BD%A0%E6%B3%A8%E6%84%8F%E5%88%B0%E4%BA%86%E5%90%97%EF%BC%9F/</id>
+    <published>2020-03-10T08:07:41.000Z</published>
+    <updated>2020-03-10T11:25:37.874Z</updated>
+    
+    <summary type="html">
+    
+      &lt;center&gt;Author：闫玉良&lt;/center&gt;
+
+&lt;p&gt;本文将对一些小知识进行汇总，这些知识也许你用了 &lt;code&gt;python&lt;/code&gt; 很久，但仍然没注意到。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="python" scheme="http://www.pythonnote.cn/categories/python/"/>
+    
+    
+      <category term="python" scheme="http://www.pythonnote.cn/tags/python/"/>
+    
+  </entry>
   
   <entry>
     <title>docker容器网桥连接</title>
@@ -488,34 +511,6 @@
     
     
       <category term="计算机网络" scheme="http://www.pythonnote.cn/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>elasticsearch的一些小知识点</title>
-    <link href="http://www.pythonnote.cn/elasticsearch%E7%9A%84%E4%B8%80%E4%BA%9B%E5%B0%8F%E7%9F%A5%E8%AF%86%E7%82%B9/"/>
-    <id>http://www.pythonnote.cn/elasticsearch%E7%9A%84%E4%B8%80%E4%BA%9B%E5%B0%8F%E7%9F%A5%E8%AF%86%E7%82%B9/</id>
-    <published>2020-01-31T11:28:16.000Z</published>
-    <updated>2020-02-19T03:40:49.868Z</updated>
-    
-    <summary type="html">
-    
-      &lt;center&gt;Author：闫玉良&lt;/center&gt;
-
-&lt;p&gt;这个假期有多少人新添了一份职业「云监工」，又有多少人干起了小区保安的工作（统计着进出小区的车辆），还有一些人无聊到数火龙果的「黑芝麻」…… 实不相瞒，我也一样，只不过无聊之际，偶尔看看书。之前对于 elasticsearch 介绍过一些常用的 API ，今天再做一些额外的补充。&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;「云监工」：网络流行词，来源于央视频直播武汉开建的防治传染病医院火神山医院的建设工地，网友们虽然不能到现场出把力，但也给自己加了一个身份：云监工，通过直播镜头去“监督”医院的建设进度。&lt;/p&gt;
-&lt;p&gt;小区保安工作：很多人在家无聊，自觉统计着出入小区人员车辆数量，以帮助监督是否有人在疫情期间四处乱逛。&lt;/p&gt;
-&lt;p&gt;数火龙果的籽：这个起源于网友晒出的图片，为一个火龙果所有的籽标上了序号。&lt;/p&gt;
-&lt;/blockquote&gt;
-    
-    </summary>
-    
-    
-      <category term="elasticsearch" scheme="http://www.pythonnote.cn/categories/elasticsearch/"/>
-    
-    
-      <category term="elasticsearch" scheme="http://www.pythonnote.cn/tags/elasticsearch/"/>
     
   </entry>
   
