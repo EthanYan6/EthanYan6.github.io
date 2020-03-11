@@ -124,7 +124,7 @@ gitalk:
 # GitHub Ribbons-封面右上角的forkme
 github: 
   # (关闭请设置为false)
-  url: false
+  url: https://github.com/EthanYan6/EthanYan6.github.io
 
 # fancybox(仅用于相册展示，若需要可配置albums)
 fancybox: true
