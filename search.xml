@@ -2339,8 +2339,8 @@
         <category>Mac</category>
       </categories>
       <tags>
-        <tag>MacOS</tag>
         <tag>python</tag>
+        <tag>MacOS</tag>
         <tag>virtualenv</tag>
       </tags>
   </entry>
