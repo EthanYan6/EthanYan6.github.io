@@ -2,6 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://www.pythonnote.cn/Django%E8%BF%81%E7%A7%BB%E6%95%B0%E6%8D%AE%E5%BA%93%E6%8A%A5%E9%94%99%E8%A7%A3%E5%86%B3/</loc>
+    
+    <lastmod>2020-03-12T12:51:41.114Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://www.pythonnote.cn/docker%E5%AE%B9%E5%99%A8%E6%95%B0%E6%8D%AE%E6%8C%81%E4%B9%85%E5%8C%96/</loc>
+    
+    <lastmod>2020-03-12T12:16:26.179Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://www.pythonnote.cn/tags/index.html</loc>
     
     <lastmod>2020-03-12T10:21:09.479Z</lastmod>
@@ -40,13 +54,6 @@
     <loc>https://www.pythonnote.cn/docker%E5%AE%B9%E5%99%A8%E7%BD%91%E6%A1%A5%E8%BF%9E%E6%8E%A5/</loc>
     
     <lastmod>2020-03-07T11:24:04.417Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://www.pythonnote.cn/docker%E5%AE%B9%E5%99%A8%E6%95%B0%E6%8D%AE%E6%8C%81%E4%B9%85%E5%8C%96/</loc>
-    
-    <lastmod>2020-03-06T13:54:03.552Z</lastmod>
     
   </url>
   

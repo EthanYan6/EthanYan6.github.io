@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://www.pythonnote.cn/"/>
-  <updated>2020-03-10T11:26:04.046Z</updated>
+  <updated>2020-03-12T12:51:41.114Z</updated>
   <id>https://www.pythonnote.cn/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Django迁移数据库报错解决</title>
+    <link href="https://www.pythonnote.cn/Django%E8%BF%81%E7%A7%BB%E6%95%B0%E6%8D%AE%E5%BA%93%E6%8A%A5%E9%94%99%E8%A7%A3%E5%86%B3/"/>
+    <id>https://www.pythonnote.cn/Django%E8%BF%81%E7%A7%BB%E6%95%B0%E6%8D%AE%E5%BA%93%E6%8A%A5%E9%94%99%E8%A7%A3%E5%86%B3/</id>
+    <published>2020-03-12T12:14:29.000Z</published>
+    <updated>2020-03-12T12:51:41.114Z</updated>
+    
+    <summary type="html">
+    
+      &lt;center&gt;Author：闫玉良&lt;/center&gt;
+
+&lt;p&gt;&lt;code&gt;Django&lt;/code&gt; 最新版本创建应用后，迁移数据库报错怎么办？&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="django" scheme="https://www.pythonnote.cn/categories/django/"/>
+    
+    
+      <category term="django" scheme="https://www.pythonnote.cn/tags/django/"/>
+    
+  </entry>
   
   <entry>
     <title>python的这些小知识你注意到了吗？</title>
@@ -66,7 +89,7 @@
     <link href="https://www.pythonnote.cn/docker%E5%AE%B9%E5%99%A8%E6%95%B0%E6%8D%AE%E6%8C%81%E4%B9%85%E5%8C%96/"/>
     <id>https://www.pythonnote.cn/docker%E5%AE%B9%E5%99%A8%E6%95%B0%E6%8D%AE%E6%8C%81%E4%B9%85%E5%8C%96/</id>
     <published>2020-03-06T10:04:08.000Z</published>
-    <updated>2020-03-06T13:54:03.552Z</updated>
+    <updated>2020-03-12T12:16:26.179Z</updated>
     
     <summary type="html">
     
@@ -490,27 +513,6 @@
     
     
       <category term="elasticsearch" scheme="https://www.pythonnote.cn/tags/elasticsearch/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>计算机网络知识点总结</title>
-    <link href="https://www.pythonnote.cn/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%9F%A5%E8%AF%86%E7%82%B9%E6%80%BB%E7%BB%93/"/>
-    <id>https://www.pythonnote.cn/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%9F%A5%E8%AF%86%E7%82%B9%E6%80%BB%E7%BB%93/</id>
-    <published>2020-02-02T10:43:23.000Z</published>
-    <updated>2020-02-19T03:41:36.448Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;&lt;strong&gt;《计算机网络》第五版 谢希仁&lt;/strong&gt; 知识点大汇总&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="计算机网络" scheme="https://www.pythonnote.cn/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/"/>
-    
-    
-      <category term="计算机网络" scheme="https://www.pythonnote.cn/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/"/>
     
   </entry>
   
