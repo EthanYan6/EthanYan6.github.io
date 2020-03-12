@@ -2,6 +2,34 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://www.pythonnote.cn/about/index.html</loc>
+    
+    <lastmod>2020-03-12T10:07:11.784Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://www.pythonnote.cn/videos/index.html</loc>
+    
+    <lastmod>2020-03-12T09:44:52.928Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://www.pythonnote.cn/categories/index.html</loc>
+    
+    <lastmod>2020-03-12T09:32:18.279Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://www.pythonnote.cn/tags/index.html</loc>
+    
+    <lastmod>2020-03-12T09:31:48.573Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://www.pythonnote.cn/python%E7%9A%84%E8%BF%99%E4%BA%9B%E5%B0%8F%E7%9F%A5%E8%AF%86%E4%BD%A0%E6%B3%A8%E6%84%8F%E5%88%B0%E4%BA%86%E5%90%97%EF%BC%9F/</loc>
     
     <lastmod>2020-03-10T11:26:04.046Z</lastmod>
@@ -268,20 +296,6 @@
   </url>
   
   <url>
-    <loc>https://www.pythonnote.cn/tags/index.html</loc>
-    
-    <lastmod>2020-02-08T14:19:24.449Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://www.pythonnote.cn/categories/index.html</loc>
-    
-    <lastmod>2020-02-08T14:19:00.966Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://www.pythonnote.cn/elasticsearch%E4%B8%ADjoin%E7%B1%BB%E5%9E%8B%E6%95%B0%E6%8D%AE%E5%A6%82%E4%BD%95%E8%BF%9B%E8%A1%8C%E7%88%B6%E5%AD%90%E6%96%87%E6%A1%A3%E6%9F%A5%E8%AF%A2/</loc>
     
     <lastmod>2020-02-07T07:48:03.118Z</lastmod>
@@ -292,13 +306,6 @@
     <loc>https://www.pythonnote.cn/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%B7%A5%E7%A8%8B%E5%B8%88%E5%BF%85%E7%9F%A5%E7%9A%84%E5%8D%81%E5%A4%A7%E7%AE%97%E6%B3%95/</loc>
     
     <lastmod>2020-01-31T03:23:18.053Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://www.pythonnote.cn/about/index.html</loc>
-    
-    <lastmod>2020-01-29T02:25:39.211Z</lastmod>
     
   </url>
   
@@ -327,13 +334,6 @@
     <loc>https://www.pythonnote.cn/bat%E8%84%9A%E6%9C%AC%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</loc>
     
     <lastmod>2020-01-10T02:08:21.176Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://www.pythonnote.cn/contact/index.html</loc>
-    
-    <lastmod>2019-10-28T01:43:52.572Z</lastmod>
     
   </url>
   
