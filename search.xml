@@ -1,6 +1,99 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>复用Django应用，使其可以通过pip安装</title>
+    <url>/%E5%A4%8D%E7%94%A8Django%E5%BA%94%E7%94%A8%EF%BC%8C%E4%BD%BF%E5%85%B6%E5%8F%AF%E4%BB%A5%E9%80%9A%E8%BF%87pip%E5%AE%89%E8%A3%85/</url>
+    <content><![CDATA[<center>Author：闫玉良</center>
+
+<p>想自己打包一个应用，可以像其他模块一样通过 <code>pip install</code> 安装吗？在 <code>Django</code> 项目中，一个应用如果通过此方式随用随安装是不是很帅气？快来看一下如何操作吧！</p>
+<a id="more"></a>
+
+<p><strong><em>更多精彩文章请关注公众号『Pythonnote』或者『全栈技术精选』</em></strong></p>
+<h1 id="1-前提"><a href="#1-前提" class="headerlink" title="1.前提"></a>1.前提</h1><h2 id="1-1应用规范"><a href="#1-1应用规范" class="headerlink" title="1.1应用规范"></a>1.1应用规范</h2><p>为了方便打包，你的应用应该解耦合，并且所有文件都规范放置。其中需要注意：按照 <code>Django3.0</code> 官方文档描述，每个应用中的模板文件 <code>templates</code> 应与主项目中通用模板文件 <code>templates</code> 分离，最主要目的是为了创建可复用应用。</p>
+<blockquote>
+<p>官方文档原文：Just like the static files, we could have all our templates together, in one big templates directory, and it would work perfectly well. However, templates that belong to a particular application should be placed in that application’s template directory.</p>
+</blockquote>
+<p><strong>保证应用所需文件全部包含在应用目录中</strong>即可开始操作。</p>
+<h2 id="1-2-环境"><a href="#1-2-环境" class="headerlink" title="1.2 环境"></a>1.2 环境</h2><p>安装模块：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">pip install setuptools </span><br><span class="line">pip install wheel</span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="2-操作"><a href="#2-操作" class="headerlink" title="2.操作"></a>2.操作</h1><h2 id="2-1-准备文件"><a href="#2-1-准备文件" class="headerlink" title="2.1 准备文件"></a>2.1 准备文件</h2><p>比如我要打包应用 <code>polls</code> ：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">polls</span><br><span class="line">├── __init__.py</span><br><span class="line">├── __pycache__</span><br><span class="line">│   ├── __init__.cpython-37.pyc</span><br><span class="line">│   ├── admin.cpython-37.pyc</span><br><span class="line">│   ├── apps.cpython-37.pyc</span><br><span class="line">│   ├── models.cpython-37.pyc</span><br><span class="line">│   ├── tests.cpython-37.pyc</span><br><span class="line">│   ├── urls.cpython-37.pyc</span><br><span class="line">│   ├── views.cpython-37.pyc</span><br><span class="line">│   └── views_bak.cpython-37.pyc</span><br><span class="line">├── admin.py</span><br><span class="line">├── apps.py</span><br><span class="line">├── migrations</span><br><span class="line">│   ├── 0001_initial.py</span><br><span class="line">│   ├── __init__.py</span><br><span class="line">│   └── __pycache__</span><br><span class="line">│       ├── 0001_initial.cpython-37.pyc</span><br><span class="line">│       └── __init__.cpython-37.pyc</span><br><span class="line">├── models.py</span><br><span class="line">├── static</span><br><span class="line">│   └── polls</span><br><span class="line">│       ├── images</span><br><span class="line">│       │   └── 1574779118421.jpg</span><br><span class="line">│       └── style.css</span><br><span class="line">├── templates</span><br><span class="line">│   └── polls</span><br><span class="line">│       ├── details.html</span><br><span class="line">│       ├── index.html</span><br><span class="line">│       └── results.html</span><br><span class="line">├── tests.py</span><br><span class="line">├── urls.py</span><br><span class="line">├── views.py</span><br><span class="line">└── views_bak.py # 视图备份文件</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-1-1-步骤"><a href="#2-1-1-步骤" class="headerlink" title="2.1.1 步骤"></a>2.1.1 步骤</h3><h4 id="2-1-1-1-创建总目录"><a href="#2-1-1-1-创建总目录" class="headerlink" title="2.1.1.1 创建总目录"></a>2.1.1.1 创建总目录</h4><p>1) 创建总目录，比如创建目录 <code>django-polls</code></p>
+<p>2) 然后将应用 <code>polls</code> 移入上方总目录，此时它的目录结构应该是：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">django-polls/polls</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="2-1-1-2-创建说明文档"><a href="#2-1-1-2-创建说明文档" class="headerlink" title="2.1.1.2 创建说明文档"></a>2.1.1.2 创建说明文档</h4><p>创建说明文档 <code>django-polls/README.rst</code></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">=====</span><br><span class="line">Polls</span><br><span class="line">=====</span><br><span class="line"></span><br><span class="line">Polls is a Django app to conduct Web-based polls. For each question,</span><br><span class="line">visitors can choose between a fixed number of answers.</span><br><span class="line"></span><br><span class="line">Detailed documentation is in the &quot;docs&quot; directory.</span><br><span class="line"></span><br><span class="line">Quick start</span><br><span class="line">-----------</span><br><span class="line"></span><br><span class="line">1. Add &quot;polls&quot; to your INSTALLED_APPS setting like this::</span><br><span class="line"></span><br><span class="line">    INSTALLED_APPS = [</span><br><span class="line">        ...</span><br><span class="line">        &apos;polls&apos;,</span><br><span class="line">    ]</span><br><span class="line"></span><br><span class="line">2. Include the polls URLconf in your project urls.py like this::</span><br><span class="line"></span><br><span class="line">    path(&apos;polls/&apos;, include(&apos;polls.urls&apos;)),</span><br><span class="line"></span><br><span class="line">3. Run ``python manage.py migrate`` to create the polls models.</span><br><span class="line"></span><br><span class="line">4. Start the development server and visit http://127.0.0.1:8000/admin/</span><br><span class="line">   to create a poll (you&apos;ll need the Admin app enabled).</span><br><span class="line"></span><br><span class="line">5. Visit http://127.0.0.1:8000/polls/ to participate in the poll.</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="2-1-1-3-创建授权协议文件"><a href="#2-1-1-3-创建授权协议文件" class="headerlink" title="2.1.1.3 创建授权协议文件"></a>2.1.1.3 创建授权协议文件</h4><p>创建一个 <code>django-polls/LICENSE</code> 文件</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Copyright (c) 2018 The Python Packaging Authority</span><br><span class="line"></span><br><span class="line">Permission is hereby granted, free of charge, to any person obtaining a copy</span><br><span class="line">of this software and associated documentation files (the &quot;Software&quot;), to deal</span><br><span class="line">in the Software without restriction, including without limitation the rights</span><br><span class="line">to use, copy, modify, merge, publish, distribute, sublicense, and/or sell</span><br><span class="line">copies of the Software, and to permit persons to whom the Software is</span><br><span class="line">furnished to do so, subject to the following conditions:</span><br><span class="line"></span><br><span class="line">The above copyright notice and this permission notice shall be included in all</span><br><span class="line">copies or substantial portions of the Software.</span><br><span class="line"></span><br><span class="line">THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR</span><br><span class="line">IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,</span><br><span class="line">FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE</span><br><span class="line">AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER</span><br><span class="line">LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,</span><br><span class="line">OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE</span><br><span class="line">SOFTWARE.</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>协议文件自己可以从网上寻找生成方式</p>
+</blockquote>
+<h4 id="2-1-1-4-创建安装文件"><a href="#2-1-1-4-创建安装文件" class="headerlink" title="2.1.1.4 创建安装文件"></a>2.1.1.4 创建安装文件</h4><p>1) 创建文件 <code>django-polls/setup.cfg</code> （此文件为模块的配置信息，比如作者的姓名、联系方式等）</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[metadata]</span><br><span class="line">name = django-polls</span><br><span class="line">version = 0.1</span><br><span class="line">description = A Django app to conduct Web-based polls.</span><br><span class="line">long_description = file: README.rst</span><br><span class="line">url = https://www.pythonnote.cn</span><br><span class="line">author = Ethan Yan</span><br><span class="line">author_email = yanyuliang6@163.com</span><br><span class="line">license = MIT  # Example license</span><br><span class="line">classifiers =</span><br><span class="line">    Environment :: Web Environment</span><br><span class="line">    Framework :: Django</span><br><span class="line">    Framework :: Django :: X.Y  # Replace &quot;X.Y&quot; as appropriate</span><br><span class="line">    Intended Audience :: Developers</span><br><span class="line">    License :: OSI Approved :: BSD License</span><br><span class="line">    Operating System :: OS Independent</span><br><span class="line">    Programming Language :: Python</span><br><span class="line">    Programming Language :: Python :: 3</span><br><span class="line">    Programming Language :: Python :: 3 :: Only</span><br><span class="line">    Programming Language :: Python :: 3.6</span><br><span class="line">    Programming Language :: Python :: 3.7</span><br><span class="line">    Programming Language :: Python :: 3.8</span><br><span class="line">    Topic :: Internet :: WWW/HTTP</span><br><span class="line">    Topic :: Internet :: WWW/HTTP :: Dynamic Content</span><br><span class="line"></span><br><span class="line">[options]</span><br><span class="line">include_package_data = true</span><br><span class="line">packages = find:</span><br></pre></td></tr></table></figure>
+
+<p>2) 创建文件 <code>django-polls/setup.py</code> （此文件是为了构建和安装应用）</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">from setuptools import setup</span><br><span class="line"></span><br><span class="line">setup()</span><br></pre></td></tr></table></figure>
+
+<h4 id="2-1-1-5-创建引用文件"><a href="#2-1-1-5-创建引用文件" class="headerlink" title="2.1.1.5 创建引用文件"></a>2.1.1.5 创建引用文件</h4><p>默认包中只包含 <code>Python</code> 模块和包。为了包含额外文件，我们需要创建一个名为 <code>MANIFEST.in</code> 的文件。为了包含模板、<code>README.rst</code> 和我们的 <code>LICENSE</code> 文件，创建文件 <code>django-polls/MANIFEST.in</code> 包含以下内容：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">include LICENSE</span><br><span class="line">include README.rst</span><br><span class="line">recursive-include polls/static *</span><br><span class="line">recursive-include polls/templates *</span><br><span class="line">recursive-include docs *</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><code>docs</code> 目录为文档存放目录，可有可无，视情况而定。如果需要引入其他文件，按照格式在上述文件中补充即可。</p>
+</blockquote>
+<p>最终的目录结构如下：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">django-polls</span><br><span class="line">├── LICENSE</span><br><span class="line">├── MANIFEST.in</span><br><span class="line">├── README.rst</span><br><span class="line">├── doc</span><br><span class="line">├── polls</span><br><span class="line">├── setup.cfg</span><br><span class="line">└── setup.py</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="2-2-打包"><a href="#2-2-打包" class="headerlink" title="2.2 打包"></a>2.2 打包</h2><p>接下来快看一下如何打包吧！</p>
+<p>1) 进入总目录 <code>django-polls</code> 中</p>
+<p>2) 执行如下命令：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">python setup.py sdist bdist_wheel</span><br></pre></td></tr></table></figure>
+
+<p>3) 最终的模块在如下位置：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">dist</span><br><span class="line">├── django-polls-0.1.tar.gz</span><br><span class="line">└── django_polls-0.1-py3-none-any.whl</span><br></pre></td></tr></table></figure>
+
+<p><code>django-polls-0.1.tar.gz</code> 即打包好的应用。</p>
+<h2 id="2-3-安装使用"><a href="#2-3-安装使用" class="headerlink" title="2.3 安装使用"></a>2.3 安装使用</h2><p>在应用包所在目录执行如下命令即可安装：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">python -m pip install django-polls-0.1.tar.gz</span><br></pre></td></tr></table></figure>
+
+<p>安装后如何在 <code>Django</code> 项目中使用呢？</p>
+<p>1) 在 <code>settings</code> 文件中添加如下应用：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">INSTALLED_APPS = [</span><br><span class="line">        ...</span><br><span class="line">        'polls',</span><br><span class="line">    ]</span><br></pre></td></tr></table></figure>
+
+<p>2) 在 <code>urls</code> 文件中添加如下代码：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">path('polls/', include('polls.urls')),</span><br></pre></td></tr></table></figure>
+
+<p>3) 迁移数据库文件，创建 <code>models</code>：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">python manage.py migrate</span><br></pre></td></tr></table></figure>
+
+<p>然后即可使用。如果想要使用我打包好的应用体验一把，可以在微信公众号「全栈技术精选」后台回复关键字「polls应用包」获取模块。</p>
+<h2 id="2-4-卸载"><a href="#2-4-卸载" class="headerlink" title="2.4 卸载"></a>2.4 卸载</h2><p>卸载：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">python -m pip uninstall django-polls</span><br></pre></td></tr></table></figure>
+
+
+
+<p><strong><em>更多精彩文章请关注公众号『Pythonnote』或者『全栈技术精选』</em></strong></p>
+]]></content>
+      <categories>
+        <category>django</category>
+      </categories>
+      <tags>
+        <tag>django</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Django迁移数据库报错解决</title>
     <url>/Django%E8%BF%81%E7%A7%BB%E6%95%B0%E6%8D%AE%E5%BA%93%E6%8A%A5%E9%94%99%E8%A7%A3%E5%86%B3/</url>
     <content><![CDATA[<center>Author：闫玉良</center>
