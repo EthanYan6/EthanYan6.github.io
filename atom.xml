@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://www.pythonnote.cn/"/>
-  <updated>2020-03-13T13:25:04.421Z</updated>
+  <updated>2020-03-16T08:33:18.200Z</updated>
   <id>https://www.pythonnote.cn/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>菜鸟去面试之一</title>
+    <link href="https://www.pythonnote.cn/%E8%8F%9C%E9%B8%9F%E5%8E%BB%E9%9D%A2%E8%AF%95%E4%B9%8B%E4%B8%80/"/>
+    <id>https://www.pythonnote.cn/%E8%8F%9C%E9%B8%9F%E5%8E%BB%E9%9D%A2%E8%AF%95%E4%B9%8B%E4%B8%80/</id>
+    <published>2020-03-16T07:08:31.000Z</published>
+    <updated>2020-03-16T08:33:18.200Z</updated>
+    
+    <summary type="html">
+    
+      &lt;center&gt;Author：闫玉良&lt;/center&gt;
+
+&lt;p&gt;春天到了，那颗躁动不安的心又踏上了面试之旅，菜鸟在前方探路，返回一手资料供你参考。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="python" scheme="https://www.pythonnote.cn/categories/python/"/>
+    
+    
+      <category term="python" scheme="https://www.pythonnote.cn/tags/python/"/>
+    
+  </entry>
   
   <entry>
     <title>复用Django应用，使其可以通过pip安装</title>
@@ -490,29 +513,6 @@
     
     
       <category term="sql" scheme="https://www.pythonnote.cn/tags/sql/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>git仓库上传了个无法点开的空文件夹是什么鬼？</title>
-    <link href="https://www.pythonnote.cn/git%E4%BB%93%E5%BA%93%E4%B8%8A%E4%BC%A0%E4%BA%86%E4%B8%AA%E6%97%A0%E6%B3%95%E7%82%B9%E5%BC%80%E7%9A%84%E7%A9%BA%E6%96%87%E4%BB%B6%E5%A4%B9%E6%98%AF%E4%BB%80%E4%B9%88%E9%AC%BC%EF%BC%9F/"/>
-    <id>https://www.pythonnote.cn/git%E4%BB%93%E5%BA%93%E4%B8%8A%E4%BC%A0%E4%BA%86%E4%B8%AA%E6%97%A0%E6%B3%95%E7%82%B9%E5%BC%80%E7%9A%84%E7%A9%BA%E6%96%87%E4%BB%B6%E5%A4%B9%E6%98%AF%E4%BB%80%E4%B9%88%E9%AC%BC%EF%BC%9F/</id>
-    <published>2020-02-09T15:00:45.000Z</published>
-    <updated>2020-02-19T03:41:00.570Z</updated>
-    
-    <summary type="html">
-    
-      &lt;center&gt;Author：闫玉良&lt;/center&gt; 
-
-&lt;p&gt;诡异之事年年有，只是今年有点多，在仓库上传到 GitHub 后，偶然在 GitHub 中瞄了一眼，我的天？这个图标不像文件夹啊？这个怎么点不开？git 上传正常啊？本地工作区和暂存区都是干净的了啊？&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="git" scheme="https://www.pythonnote.cn/categories/git/"/>
-    
-    
-      <category term="git" scheme="https://www.pythonnote.cn/tags/git/"/>
     
   </entry>
   
