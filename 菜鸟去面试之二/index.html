@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+   
+  <meta name="keywords" content="python,Django,sql,Python,Java,powershell,shell,Elasticsearch,MySQL,Redis,Django,Flask,爬虫,RPC,数据分析,人工智能,算法,数据结构" />
+   
+  <meta name="description" content="多喝烫水，开水治百病 &lt;- &lt;-" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <title>
+    菜鸟去面试之二 |  EthanYan&#39;s Blog
+  </title>
+  <meta name="generator" content="hexo-theme-yilia-plus">
+  
+  <link rel="shortcut icon" href="/favicon.ico" />
+  
+  <link rel="stylesheet" href="/css/main.css">
+  <script src="/js/pace.min.js"></script>
+
+  
+
+  
+
+  <script data-ad-client="ca-pub-4890841235714870" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<link rel="alternate" href="/atom.xml" title="EthanYan's Blog" type="application/atom+xml">
+</head>
+
+</html>
+
+<body>
+  <div id="app">
+    <main class="content">
+      <section class="outer">
+  <article id="post-菜鸟去面试之二" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
+  菜鸟去面试之二
+</h1>
+  
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/%E8%8F%9C%E9%B8%9F%E5%8E%BB%E9%9D%A2%E8%AF%95%E4%B9%8B%E4%BA%8C/" class="article-date">
+  <time datetime="2020-03-17T10:07:42.000Z" itemprop="datePublished">2020-03-17</time>
+</a>
+      
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/python/">python</a>
+  </div>
+
+      
+      
+<div class="word_count">
+    <span class="post-time">
+        <span class="post-meta-item-icon">
+            <i class="ri-quill-pen-line"></i>
+            <span class="post-meta-item-text"> 字数统计:</span>
+            <span class="post-count">1.3k字</span>
+        </span>
+    </span>
+
+    <span class="post-time">
+        &nbsp; | &nbsp;
+        <span class="post-meta-item-icon">
+            <i class="ri-book-open-line"></i>
+            <span class="post-meta-item-text"> 阅读时长≈</span>
+            <span class="post-count">5分钟</span>
+        </span>
+    </span>
+</div>
+
+      
+    </div>
+    
+
+    
+    
+    <div class="tocbot"></div>
+
+
+
+
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+
+
+      
+
+      
+      <center>Author：闫玉良</center>
+
+<p>今天是华为进行的复试，明天还有综合面试。快来看一下今天的题目吧。</p>
+<blockquote>
+<p>关于项目以及灵活的题目此处并未体现，只将一些记忆深刻的通用题目汇总展示，希望可以帮助到大家。</p>
+</blockquote>
+<a id="more"></a>
+
+<p><strong><em>更多精彩文章请关注公众号『Pythonnote』或者『全栈技术精选』</em></strong></p>
+<h2 id="1-Python"><a href="#1-Python" class="headerlink" title="1.Python"></a>1.Python</h2><h3 id="1-1-字符串的-find-和-index-方法有什么区别"><a href="#1-1-字符串的-find-和-index-方法有什么区别" class="headerlink" title="1.1 字符串的 find 和 index 方法有什么区别"></a>1.1 字符串的 find 和 index 方法有什么区别</h3><p>答：<code>find</code> 方法会检测某一字符串片段是否在指定字符串中，如果在内，会返回开始的索引值，不存在则返回 -1；<code>index</code> 方法与 <code>find</code> 作用相同，只不过在不存在的情况下会抛出异常。</p>
+<h3 id="1-2-元祖不使用下标的情况下如何取值"><a href="#1-2-元祖不使用下标的情况下如何取值" class="headerlink" title="1.2 元祖不使用下标的情况下如何取值"></a>1.2 元祖不使用下标的情况下如何取值</h3><p>答：可以采用如下类似字典的取值方法：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">mytuple = ((<span class="string">'a'</span>,<span class="number">1</span>),(<span class="string">'b'</span>,<span class="number">2</span>))</span><br><span class="line">value = dict(mytuple).get(<span class="string">'a'</span>)</span><br><span class="line">print(value)</span><br><span class="line"><span class="comment"># 1</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>这道题当时并未做出，无具体答案</p>
+</blockquote>
+<h3 id="1-3-列表推导式"><a href="#1-3-列表推导式" class="headerlink" title="1.3 列表推导式"></a>1.3 列表推导式</h3><p>问：已知列表 [‘a’, ‘b’, ‘c’]，需要得到列表 [‘aa’, ‘bb’, ‘cc’]。采用列表推导式的方式如何实现？</p>
+<p>答：代码如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">alist = [<span class="string">'a'</span>, <span class="string">'b'</span>, <span class="string">'c'</span>]</span><br><span class="line">newlist = [x+x <span class="keyword">for</span> x <span class="keyword">in</span> alist]</span><br><span class="line">print(newlist)</span><br><span class="line"><span class="comment"># ['aa', 'bb', 'cc']</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="1-4-三目运算符"><a href="#1-4-三目运算符" class="headerlink" title="1.4 三目运算符"></a>1.4 三目运算符</h3><p>问：<code>C</code> 语言中的如下代码：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">表达式<span class="number">1</span> ? 表达式<span class="number">2</span> : 表达式<span class="number">3</span>;</span><br></pre></td></tr></table></figure>
+
+<p>在 <code>python</code> 中如何实现？</p>
+<p>答：代码如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">表达式<span class="number">1</span> <span class="keyword">if</span> 表达式<span class="number">2</span> <span class="keyword">else</span> 表达式<span class="number">3</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="1-5-不定长参数如何定义与取值"><a href="#1-5-不定长参数如何定义与取值" class="headerlink" title="1.5 不定长参数如何定义与取值"></a>1.5 不定长参数如何定义与取值</h3><p>答：下面定义一个函数，使用不定长参数并在函数内部获取参数：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">func</span><span class="params">(name, age, *args, **kwargs)</span>:</span></span><br><span class="line">    print(name)</span><br><span class="line">    print(age)</span><br><span class="line">    print(<span class="string">"args is &#123;&#125;"</span>.format(args))</span><br><span class="line">    print(<span class="string">"kwargs is"</span>)</span><br><span class="line">    <span class="keyword">for</span> k, v <span class="keyword">in</span> kwargs.items():</span><br><span class="line">        print(<span class="string">"'&#123;&#125;': &#123;&#125;"</span>.format(k, v))</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">func(<span class="string">'Ethan'</span>, <span class="number">18</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, m=<span class="number">1</span>, n=<span class="number">2</span>)</span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="string">Ethan</span></span><br><span class="line"><span class="string">18</span></span><br><span class="line"><span class="string">args is (2, 3, 4)</span></span><br><span class="line"><span class="string">kwargs is</span></span><br><span class="line"><span class="string">'m': 1</span></span><br><span class="line"><span class="string">'n': 2</span></span><br><span class="line"><span class="string">"""</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="1-6-多进程"><a href="#1-6-多进程" class="headerlink" title="1.6 多进程"></a>1.6 多进程</h3><p>问：如何开启一个进程？</p>
+<p>答：在 <code>python</code> 中可以使用模块 <code>multiprocessing</code> 的 <code>Process</code> 方法开启多进程。具体代码如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> multiprocessing</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">run_proc</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="string">"""子进程要执行的代码"""</span></span><br><span class="line">    <span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">        print(<span class="string">"----2----"</span>)</span><br><span class="line">        time.sleep(<span class="number">1</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__==<span class="string">'__main__'</span>:</span><br><span class="line">    <span class="comment"># 创建子进程</span></span><br><span class="line">    sub_process = multiprocessing.Process(target=run_proc)</span><br><span class="line">    <span class="comment"># 启动子进程</span></span><br><span class="line">    sub_process.start()</span><br><span class="line">    <span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">        print(<span class="string">"----1----"</span>)</span><br><span class="line">        time.sleep(<span class="number">1</span>)</span><br></pre></td></tr></table></figure>
+
+<p>执行结果如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">---<span class="number">-1</span>----</span><br><span class="line">---<span class="number">-2</span>----</span><br><span class="line">---<span class="number">-2</span>----</span><br><span class="line">---<span class="number">-1</span>----</span><br><span class="line">---<span class="number">-2</span>----</span><br><span class="line">---<span class="number">-1</span>----</span><br><span class="line">---<span class="number">-2</span>----</span><br><span class="line">---<span class="number">-1</span>----</span><br></pre></td></tr></table></figure>
+
+<h2 id="2-Django"><a href="#2-Django" class="headerlink" title="2.Django"></a>2.Django</h2><h3 id="2-1-Django-如何执行原生-sql-语句"><a href="#2-1-Django-如何执行原生-sql-语句" class="headerlink" title="2.1 Django 如何执行原生 sql 语句"></a>2.1 Django 如何执行原生 sql 语句</h3><p>答：可以使用游标的方式，也可以使用 <code>raw</code> 方法或者 <code>extra</code> 方法。</p>
+<blockquote>
+<p>游标以及 <code>raw</code> 为官方文档提示的用法，另外一种来源于网络。</p>
+</blockquote>
+<h4 id="2-1-1-游标"><a href="#2-1-1-游标" class="headerlink" title="2.1.1 游标"></a>2.1.1 游标</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> django.db <span class="keyword">import</span> connection，connections</span><br><span class="line"></span><br><span class="line"><span class="comment"># cursor = connection.cursor()</span></span><br><span class="line"><span class="comment"># cursor = connections['数据库的名字，setting设置的'].cursor()</span></span><br><span class="line"><span class="keyword">with</span> connection.cursor() <span class="keyword">as</span> cursor:</span><br><span class="line">    cursor.execute(<span class="string">"要执行的sql语句"</span>)</span><br><span class="line">    row = cursor.fetchall()  <span class="comment"># fetchone,dictfetchall(cursor)</span></span><br><span class="line">    print(row)</span><br><span class="line">    <span class="comment"># ((xxx,xxx),(xxx,xxx)...)</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="2-1-2-raw"><a href="#2-1-2-raw" class="headerlink" title="2.1.2 raw"></a>2.1.2 raw</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">obj = 模型类.objects.raw(<span class="string">"原生sql"</span>)</span><br></pre></td></tr></table></figure>
+
+<h4 id="2-1-3-extra"><a href="#2-1-3-extra" class="headerlink" title="2.1.3 extra"></a>2.1.3 extra</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">模型类.objects.extra(可选择执行select后条件还是直接执行where后条件)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Entry.objects.extra(select=&#123;<span class="string">'new_id'</span>: <span class="string">"select col from sometable where othercol &gt; %s"</span>&#125;, select_params=(<span class="number">1</span>,))</span><br><span class="line"> </span><br><span class="line">Entry.objects.extra(where=[<span class="string">"foo='a' OR bar = 'a'"</span>, <span class="string">"baz = 'a'"</span>])</span><br><span class="line"> </span><br><span class="line">Entry.objects.extra(select=&#123;<span class="string">'new_id'</span>: <span class="string">"select id from tb where id &gt; %s"</span>&#125;, select_params=(<span class="number">1</span>,), order_by=[<span class="string">'-nid'</span>])</span><br><span class="line"></span><br><span class="line">————————————————</span><br><span class="line">版权声明：本文为CSDN博主「日上フブキ」的原创文章，遵循 CC <span class="number">4.0</span> BY-SA 版权协议，转载请附上原文出处链接及本声明。</span><br><span class="line">原文链接：https://blog.csdn.net/DeskyAki/article/details/<span class="number">89070360</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="2-2-如果需要给数据库插入1000条数据，如何操作"><a href="#2-2-如果需要给数据库插入1000条数据，如何操作" class="headerlink" title="2.2 如果需要给数据库插入1000条数据，如何操作"></a>2.2 如果需要给数据库插入1000条数据，如何操作</h3><blockquote>
+<p>我回答使用循环，面试官轻蔑一笑我只能投降。</p>
+</blockquote>
+<p>答：可以使用模块 <code>pymysql</code> 中游标的一个方法 <code>executemany</code>。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">execute(sql)</span><br><span class="line"></span><br><span class="line">    - 可接受一条语句从而执行</span><br><span class="line"></span><br><span class="line">executemany(templet,args)</span><br><span class="line"></span><br><span class="line">    - 能同时执行多条语句，执行同样多的sql语句比execute()快得多，强烈建议执行多条语句时使用executemany</span><br><span class="line"></span><br><span class="line">    - templet：sql模板字符串</span><br><span class="line"></span><br><span class="line">        - 例如： ‘insert into table(id,name) values(%s,%s)’</span><br><span class="line"></span><br><span class="line">    - args:模板字符串中的参数，是一个列表，列表中的每一个元素必须是元组！！！</span><br><span class="line"></span><br><span class="line">        - 例如：[(<span class="number">1</span>,<span class="string">'小明'</span>),(<span class="number">2</span>,<span class="string">'小红'</span>),(<span class="number">3</span>,<span class="string">'琦琦'</span>),(<span class="number">4</span>,<span class="string">'韩梅梅'</span>)]</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-3-Django-一个请求的执行过程"><a href="#2-3-Django-一个请求的执行过程" class="headerlink" title="2.3 Django 一个请求的执行过程"></a>2.3 Django 一个请求的执行过程</h3><p>答：当请求访问后端服务器时，会先根据 <code>url</code> 在项目总的 <code>urls.py</code> 文件中进行匹配，然后截取剩余路径到单个应用的 <code>urls.py</code> 文件中进行匹配（如果匹配不到直接返回404）。路由到具体视图后，可以与模型类进行交互，也可以与模板进行交互填充等。在完成具体的业务逻辑后，视图将填充好的页面返回给客户端进行渲染展示。</p>
+<blockquote>
+<p>可以结合 <code>MVT</code> 进行说明，也可以具体到代码细节进行阐释。</p>
+</blockquote>
+<h3 id="2-4-Django-获取参数的两种方法"><a href="#2-4-Django-获取参数的两种方法" class="headerlink" title="2.4 Django 获取参数的两种方法"></a>2.4 Django 获取参数的两种方法</h3><p>问：现在有两种方式向服务器传递参数，一种是路径方式传递，一种是表单类型传递。请说明一下在视图中如何取到这些参数，假设参数为 <code>a</code> 和 <code>b</code>。</p>
+<p>答：如果是路径方式传递的参数，可以使用如下方式获取：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">url(<span class="string">r'^example/(?P&lt;a&gt;[a-z]+)/(?P&lt;b&gt;\d&#123;4&#125;)/$'</span>, views.example),</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">example</span><span class="params">(request, a, b)</span>:</span></span><br><span class="line">    print(<span class="string">'a=%s'</span> % a)</span><br><span class="line">    print(<span class="string">'b=%s'</span> % b)</span><br><span class="line">    <span class="keyword">return</span> HttpResponse(<span class="string">'OK'</span>)</span><br></pre></td></tr></table></figure>
+
+<p>如果是表单类型传递，则利用下面的代码：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_body</span><span class="params">(request)</span>:</span></span><br><span class="line">    a = request.POST.get(<span class="string">'a'</span>)</span><br><span class="line">    b = request.POST.get(<span class="string">'b'</span>)</span><br><span class="line">    print(a)</span><br><span class="line">    print(b)</span><br><span class="line">    <span class="keyword">return</span> HttpResponse(<span class="string">'OK'</span>)</span><br></pre></td></tr></table></figure>
+
+<p><strong><em>更多精彩文章请关注公众号『Pythonnote』或者『全栈技术精选』</em></strong></p>
+
+      
+      <!-- reward -->
+      
+      <div id="reward-btn">
+        打赏
+      </div>
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+        <div class="declare">
+          <ul class="post-copyright">
+            <li>
+              <i class="ri-copyright-line"></i>
+              <strong>版权声明： </strong s>
+              本博客所有文章除特别声明外，均采用 <a href="https://www.apache.org/licenses/LICENSE-2.0.html" rel="external nofollow"
+                target="_blank">Apache License 2.0</a> 许可协议。转载请注明出处！
+            </li>
+          </ul>
+        </div>
+        
+    <footer class="article-footer">
+      
+          
+<div class="share-btn">
+      <span class="share-sns share-outer">
+        <i class="ri-share-forward-line"></i>
+        分享
+      </span>
+      <div class="share-wrap">
+        <i class="arrow"></i>
+        <div class="share-icons">
+          
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="ri-weibo-fill"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="ri-wechat-fill"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="ri-qq-fill"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="ri-douban-line"></i>
+          </a>
+          <!-- <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a> -->
+          
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="ri-facebook-circle-fill"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="ri-twitter-fill"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="ri-google-fill"></i>
+          </a>
+        </div>
+      </div>
+</div>
+
+<div class="wx-share-modal">
+    <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://www.pythonnote.cn/%E8%8F%9C%E9%B8%9F%E5%8E%BB%E9%9D%A2%E8%AF%95%E4%B9%8B%E4%BA%8C/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div id="share-mask"></div>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/" rel="tag">python</a></li></ul>
+
+
+    </footer>
+
+  </div>
+
+  
+  
+  <nav class="article-nav">
+    
+    
+      <a href="/%E8%8F%9C%E9%B8%9F%E5%8E%BB%E9%9D%A2%E8%AF%95%E4%B9%8B%E4%B8%80/" class="article-nav-link">
+        <strong class="article-nav-caption">下一篇</strong>
+        <div class="article-nav-title">菜鸟去面试之一</div>
+      </a>
+    
+  </nav>
+
+
+  
+
+  
+  
+<!-- valine评论 -->
+<div id="vcomments-box">
+    <div id="vcomments">
+    </div>
+</div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src='https://cdn.jsdelivr.net/npm/valine@1.3.10/dist/Valine.min.js'></script>
+<script>
+    new Valine({
+        el: '#vcomments',
+        app_id: 'KyuIqv0TGYfFpt5wguqvikhD-gzGzoHsz',
+        app_key: 'f6Vbsc3Y9hlCH2zJDPMpL6gj',
+        path: window.location.pathname,
+        notify: 'true',
+        verify: 'true',
+        avatar: 'mp',
+        placeholder: '给我的文章加点评论吧~',
+        recordIP: true
+    });
+    const infoEle = document.querySelector('#vcomments .info');
+    if (infoEle && infoEle.childNodes && infoEle.childNodes.length > 0) {
+        infoEle.childNodes.forEach(function (item) {
+            item.parentNode.removeChild(item);
+        });
+    }
+</script>
+<style>
+    #vcomments-box {
+        padding: 5px 30px;
+    }
+
+    @media screen and (max-width: 800px) {
+        #vcomments-box {
+            padding: 5px 0px;
+        }
+    }
+
+    #vcomments-box #vcomments {
+        background-color: #fff;
+    }
+
+    .v .vlist .vcard .vh {
+        padding-right: 20px;
+    }
+
+    .v .vlist .vcard {
+        padding-left: 10px;
+    }
+</style>
+
+  
+
+  
+  
+  
+
+</article>
+</section>
+      <footer class="footer">
+  <div class="outer">
+    <ul class="list-inline">
+      <li>
+        
+        
+        <span>
+  <i>页面访问量:<span id="busuanzi_value_page_pv"></span></i>
+  <i>独立访客访问数:<span id="busuanzi_value_site_uv"></span></i>
+</span>
+        
+      </li>
+      <li>
+        <!-- cnzz统计 -->
+        
+        <script type="text/javascript">document.write(unescape("%3Cspan id='cnzz_stat_icon_1278605887'%3E%3C/span%3E%3Cscript src='https://s4.cnzz.com/z_stat.php%3Fid%3D1278605887%26online%3D2' type='text/javascript'%3E%3C/script%3E"));</script>
+        
+      </li>
+    </ul>
+    
+    <ul class="list-inline">
+      <li>
+        友情链接：<a href="https://www.javastudy.cloud" target="_blank" rel="external nofollow noopener">&gt; javaDemo站 &lt;</a><br>
+      </li>
+    </ul>
+
+    <ul class="list-inline">
+      <li>
+        更多精彩文章请关注微信公众号『全栈技术精选』，id 为『Pythonnote』
+      </li>
+    </ul>
+        
+    <ul class="list-inline">
+      <li>
+        &copy;
+        2020
+        小闫同学
+      </li>
+      <li>
+        
+          Created by
+        
+        
+        <a href="https://github.com/EthanYan6" target="_blank">EthanYan</a> Thanks <a href="https://github.com/Shen-Yu/hexo-theme-ayer" rel="external nofollow" target="_blank">Ayer</a>
+        
+      </li>
+    </ul>
+
+  </div>
+</footer>
+      <div class="to_top">
+        <div class="totop" id="totop">
+  <i class="ri-arrow-up-line"></i>
+</div>
+      </div>
+    </main>
+    <aside class="sidebar">
+      <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+  <div class="logo">
+    <a href="/"><img src="/images/helloworld.svg" alt="EthanYan&#39;s Blog"></a>
+  </div>
+  
+  <ul class="nav nav-main">
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/">主页</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/archives">归档</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/categories">分类</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags">标签</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="https://ethanyan.gitee.io/bullet_screen_comments/" target="_blank" rel="noopener">弹幕</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/videos">视频</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="https://www.pythonnote.cn/OfficialDocuments/">文档</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/about">关于</a>
+    </li>
+    
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      
+      <a class="nav-item-link nav-item-search"  title="搜索">
+        <i class="ri-search-line"></i>
+      </a>
+      
+      
+      <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+        <i class="ri-rss-line"></i>
+      </a>
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+    </aside>
+    <div id="mask"></div>
+
+<!-- #reward -->
+<div id="reward">
+  <span class="close"><i class="ri-close-line"></i></span>
+  <p class="reward-p"><i class="ri-cup-line"></i>请我喝杯咖啡吧~</p>
+  <div class="reward-box">
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/alipay.jpg">
+      <span class="reward-type">支付宝</span>
+    </div>
+    
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/wechat.jpg">
+      <span class="reward-type">微信</span>
+    </div>
+    
+  </div>
+</div>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.justifiedGallery.min.js"></script>
+<script src="/js/lazyload.min.js"></script>
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+<script src="/js/share.js"></script>
+
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+<script>
+  try {
+    var typed = new Typed("#subtitle", {
+    strings: ['上划查看文章','Python、Java、powershell、shell、Elasticsearch、MySQL、Redis、Django、Flask、爬虫、RPC、数据分析、机器学习','请关注微信公众号「全栈技术精选」'],
+    startDelay: 0,
+    typeSpeed: 200,
+    loop: true,
+    backSpeed: 100,
+    showCursor: true
+    });
+  } catch (err) {
+  }
+  
+</script>
+
+
+
+<script src="/js/tocbot.min.js"></script>
+<script>
+  // Tocbot_v4.7.0  http://tscanlin.github.io/tocbot/
+  tocbot.init({
+    tocSelector: '.tocbot',
+    contentSelector: '.article-entry',
+    headingSelector: 'h1, h2, h3, h4, h5, h6',
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    scrollContainer:'main',
+    positionFixedSelector: '.tocbot',
+    positionFixedClass: 'is-position-fixed',
+    fixedSidebarOffset: 'auto',
+    onClick: (e) => {
+      $('.toc-link').removeClass('is-active-link');
+      $(`a[href=${e.target.hash}]`).addClass('is-active-link');
+      $(e.target.hash).scrollIntoView();
+      return false;
+    }
+  });
+</script>
+
+
+<script>
+  var ayerConfig = {
+    mathjax: false
+  }
+</script>
+
+<script src="/js/ayer.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.css">
+
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.css">
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"></script>
+
+<script>
+    function viewer_init() {
+        let pswpElement = document.querySelectorAll('.pswp')[0];
+        let $imgArr = document.querySelectorAll(('.article-entry img:not(.reward-img)'))
+
+        $imgArr.forEach(($em, i) => {
+            $em.onclick = () => {
+                // slider展开状态
+                // todo: 这样不好，后面改成状态
+                if (document.querySelector('.left-col.show')) return
+                let items = []
+                $imgArr.forEach(($em2, i2) => {
+                    let img = $em2.getAttribute('data-idx', i2)
+                    let src = $em2.getAttribute('data-target') || $em2.getAttribute('src')
+                    let title = $em2.getAttribute('alt')
+                    // 获得原图尺寸
+                    const image = new Image()
+                    image.src = src
+                    items.push({
+                        src: src,
+                        w: image.width || $em2.width,
+                        h: image.height || $em2.height,
+                        title: title
+                    })
+                })
+                var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, {
+                    index: parseInt(i)
+                });
+                gallery.init()
+            }
+        })
+    }
+    viewer_init()
+</script>
+
+
+
+
+<script type="text/javascript" src="https://js.users.51.la/20544303.js"></script>
+
+    
+    <div id="music">
+    
+    
+    
+    <iframe frameborder="no" border="1" marginwidth="0" marginheight="0" width="200" height="52"
+        src="//music.163.com/outchain/player?type=2&id=1385179994&auto=1&height=32"></iframe>
+</div>
+
+<style>
+    #music {
+        position: fixed;
+        right: 15px;
+        bottom: 0;
+        z-index: 998;
+    }
+</style>
+    
+  </div>
+</body>
+
+</html>
