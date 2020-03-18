@@ -1,6 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>多线程如何获取结果</title>
+    <url>/%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%A6%82%E4%BD%95%E8%8E%B7%E5%8F%96%E7%BB%93%E6%9E%9C/</url>
+    <content><![CDATA[<center>Author：闫玉良</center>
+
+<p>下午的综合面试，技术方面只询问了项目，剩下时间全是背景调查，双方提问、互相了解情况。所以今天的文章就没有面试题了，总结一位老哥教我的一个知识点：多线程如何获取结果。</p>
+<a id="more"></a>
+
+<p><strong><em>更多精彩文章请关注公众号『Pythonnote』或者『全栈技术精选』</em></strong></p>
+<h2 id="1-场景"><a href="#1-场景" class="headerlink" title="1.场景"></a>1.场景</h2><p>大家一般都会开启多线程去处理任务，如果需要获取线程处理结果怎么办？</p>
+<p>有人会说『全局变量』，但是又会引出共享全局变量后资源竞争导致数据错误的问题。只能通过添加互斥锁进行解决，互斥锁又不能发挥多线程的优势，很是头大。</p>
+<p>那么该如何解决呢？</p>
+<h2 id="2-解决办法"><a href="#2-解决办法" class="headerlink" title="2.解决办法"></a>2.解决办法</h2><p>老哥教我可以自定义一个类解决：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> threading</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyThread</span><span class="params">(threading.Thread)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, func, args)</span>:</span></span><br><span class="line">        super(MyThread, self).__init__()</span><br><span class="line">        self.func = func</span><br><span class="line">        self.args = args</span><br><span class="line">        self.result = self.func(*self.args)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">get_result</span><span class="params">(self)</span>:</span></span><br><span class="line">        threading.Thread.join(self)</span><br><span class="line">        <span class="keyword">try</span>:</span><br><span class="line">            <span class="keyword">return</span> self.result</span><br><span class="line">        <span class="keyword">except</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">None</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>使用方式</strong>：直接创建一个对象 <code>thread</code>，在使用方法 <code>thread.start()</code> 后，再调用 <code>get_result()</code> 方法即可获取。</p>
+<p><strong><em>更多精彩文章请关注公众号『Pythonnote』或者『全栈技术精选』</em></strong></p>
+]]></content>
+      <categories>
+        <category>python</category>
+      </categories>
+      <tags>
+        <tag>python</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>菜鸟去面试之二</title>
     <url>/%E8%8F%9C%E9%B8%9F%E5%8E%BB%E9%9D%A2%E8%AF%95%E4%B9%8B%E4%BA%8C/</url>
     <content><![CDATA[<center>Author：闫玉良</center>
@@ -2601,8 +2626,8 @@
         <category>Mac</category>
       </categories>
       <tags>
-        <tag>MacOS</tag>
         <tag>python</tag>
+        <tag>MacOS</tag>
         <tag>virtualenv</tag>
       </tags>
   </entry>

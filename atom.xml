@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://www.pythonnote.cn/"/>
-  <updated>2020-03-17T12:58:00.908Z</updated>
+  <updated>2020-03-18T13:27:04.944Z</updated>
   <id>https://www.pythonnote.cn/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>多线程如何获取结果</title>
+    <link href="https://www.pythonnote.cn/%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%A6%82%E4%BD%95%E8%8E%B7%E5%8F%96%E7%BB%93%E6%9E%9C/"/>
+    <id>https://www.pythonnote.cn/%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%A6%82%E4%BD%95%E8%8E%B7%E5%8F%96%E7%BB%93%E6%9E%9C/</id>
+    <published>2020-03-18T12:53:03.000Z</published>
+    <updated>2020-03-18T13:27:04.944Z</updated>
+    
+    <summary type="html">
+    
+      &lt;center&gt;Author：闫玉良&lt;/center&gt;
+
+&lt;p&gt;下午的综合面试，技术方面只询问了项目，剩下时间全是背景调查，双方提问、互相了解情况。所以今天的文章就没有面试题了，总结一位老哥教我的一个知识点：多线程如何获取结果。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="python" scheme="https://www.pythonnote.cn/categories/python/"/>
+    
+    
+      <category term="python" scheme="https://www.pythonnote.cn/tags/python/"/>
+    
+  </entry>
   
   <entry>
     <title>菜鸟去面试之二</title>
@@ -489,33 +512,6 @@
       <category term="算法" scheme="https://www.pythonnote.cn/tags/%E7%AE%97%E6%B3%95/"/>
     
       <category term="数据结构" scheme="https://www.pythonnote.cn/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>机器学习算法之K-近邻算法</title>
-    <link href="https://www.pythonnote.cn/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%AE%97%E6%B3%95%E4%B9%8BK-%E8%BF%91%E9%82%BB%E7%AE%97%E6%B3%95/"/>
-    <id>https://www.pythonnote.cn/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%AE%97%E6%B3%95%E4%B9%8BK-%E8%BF%91%E9%82%BB%E7%AE%97%E6%B3%95/</id>
-    <published>2020-02-16T12:28:14.000Z</published>
-    <updated>2020-02-20T12:08:47.711Z</updated>
-    
-    <summary type="html">
-    
-      &lt;center&gt;Editor：闫玉良&lt;/center&gt;
-
-&lt;p&gt;&lt;code&gt;K Nearest Neighbor&lt;/code&gt; 算法又叫 &lt;code&gt;KNN&lt;/code&gt; 算法，此算法最早是由 &lt;code&gt;Cover&lt;/code&gt; 和 &lt;code&gt;Hart&lt;/code&gt; 提出的一种分类算法，是机器学习里面一个经典之作， 总体来说 &lt;code&gt;KNN&lt;/code&gt; 算法是相对比较容易理解的。&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="算法" scheme="https://www.pythonnote.cn/categories/%E7%AE%97%E6%B3%95/"/>
-    
-      <category term="机器学习" scheme="https://www.pythonnote.cn/categories/%E7%AE%97%E6%B3%95/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
-    
-    
-      <category term="算法" scheme="https://www.pythonnote.cn/tags/%E7%AE%97%E6%B3%95/"/>
-    
-      <category term="机器学习" scheme="https://www.pythonnote.cn/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
     
   </entry>
   
