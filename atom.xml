@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://www.pythonnote.cn/"/>
-  <updated>2020-03-18T13:27:04.944Z</updated>
+  <updated>2020-03-21T07:29:17.663Z</updated>
   <id>https://www.pythonnote.cn/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>mysql中保存并操作json对象</title>
+    <link href="https://www.pythonnote.cn/mysql%E4%B8%AD%E4%BF%9D%E5%AD%98%E5%B9%B6%E6%93%8D%E4%BD%9Cjson%E5%AF%B9%E8%B1%A1/"/>
+    <id>https://www.pythonnote.cn/mysql%E4%B8%AD%E4%BF%9D%E5%AD%98%E5%B9%B6%E6%93%8D%E4%BD%9Cjson%E5%AF%B9%E8%B1%A1/</id>
+    <published>2020-03-21T03:14:18.000Z</published>
+    <updated>2020-03-21T07:29:17.663Z</updated>
+    
+    <summary type="html">
+    
+      &lt;center&gt;Author：闫玉良&lt;/center&gt;
+
+&lt;p&gt;对于最常使用的数据格式 &lt;code&gt;json&lt;/code&gt; 而言，数据库 &lt;code&gt;mysql&lt;/code&gt; 提供了保存及一系列操作方法供大家使用，下面我们就来学习一下吧。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="sql" scheme="https://www.pythonnote.cn/categories/sql/"/>
+    
+    
+      <category term="sql" scheme="https://www.pythonnote.cn/tags/sql/"/>
+    
+  </entry>
   
   <entry>
     <title>多线程如何获取结果</title>
@@ -484,34 +507,6 @@
       <category term="算法" scheme="https://www.pythonnote.cn/tags/%E7%AE%97%E6%B3%95/"/>
     
       <category term="机器学习" scheme="https://www.pythonnote.cn/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>机器学习算法之kd树</title>
-    <link href="https://www.pythonnote.cn/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%AE%97%E6%B3%95%E4%B9%8Bkd%E6%A0%91/"/>
-    <id>https://www.pythonnote.cn/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%AE%97%E6%B3%95%E4%B9%8Bkd%E6%A0%91/</id>
-    <published>2020-02-17T11:04:01.000Z</published>
-    <updated>2020-02-20T12:09:03.106Z</updated>
-    
-    <summary type="html">
-    
-      &lt;center&gt;Editor：闫玉良&lt;/center&gt;
-
-&lt;p&gt;上篇文章讲了 &lt;code&gt;K-近邻算法&lt;/code&gt; ，但是引出了一个问题：&lt;/p&gt;
-&lt;p&gt;实现 &lt;code&gt;K-近邻算法&lt;/code&gt; 时，&lt;strong&gt;主要考虑的问题是如何对训练数据进行快速 k 近邻搜索。&lt;/strong&gt;这在特征空间维数大及训练数据容量大时尤其必要。&lt;strong&gt;k 近邻法最简单的实现是线性扫描（穷举搜索），即要计算输入实例与每一个训练实例的距离。计算并存储好以后，再查找 K 近邻。&lt;/strong&gt;当训练集很大时，计算非常耗时。为了提高 &lt;code&gt;KNN&lt;/code&gt; 搜索的效率，可以考虑使用特殊的结构存储训练数据，以减小计算距离的次数。&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="算法" scheme="https://www.pythonnote.cn/categories/%E7%AE%97%E6%B3%95/"/>
-    
-      <category term="数据结构" scheme="https://www.pythonnote.cn/categories/%E7%AE%97%E6%B3%95/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
-    
-    
-      <category term="算法" scheme="https://www.pythonnote.cn/tags/%E7%AE%97%E6%B3%95/"/>
-    
-      <category term="数据结构" scheme="https://www.pythonnote.cn/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
     
   </entry>
   
