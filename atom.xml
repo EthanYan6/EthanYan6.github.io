@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://www.pythonnote.cn/"/>
-  <updated>2020-03-21T07:29:17.663Z</updated>
+  <updated>2020-03-22T08:17:00.323Z</updated>
   <id>https://www.pythonnote.cn/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>分布式id</title>
+    <link href="https://www.pythonnote.cn/%E5%88%86%E5%B8%83%E5%BC%8Fid/"/>
+    <id>https://www.pythonnote.cn/%E5%88%86%E5%B8%83%E5%BC%8Fid/</id>
+    <published>2020-03-22T05:11:17.000Z</published>
+    <updated>2020-03-22T08:17:00.323Z</updated>
+    
+    <summary type="html">
+    
+      &lt;center&gt;Author：闫玉良&lt;/center&gt;
+
+&lt;p&gt;当产品使用人数达到一定量级，一般会采用分库分表等优化操作，但是分布式 &lt;code&gt;id&lt;/code&gt; 如何保证全局唯一呢？&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="分布式" scheme="https://www.pythonnote.cn/categories/%E5%88%86%E5%B8%83%E5%BC%8F/"/>
+    
+    
+      <category term="分布式" scheme="https://www.pythonnote.cn/tags/%E5%88%86%E5%B8%83%E5%BC%8F/"/>
+    
+  </entry>
   
   <entry>
     <title>mysql中保存并操作json对象</title>
@@ -468,33 +491,6 @@
       &lt;center&gt;Editor：闫玉良&lt;/center&gt;
 
 &lt;p&gt;学习了线性回归，接下来就需要考虑其损失以及优化了。&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="算法" scheme="https://www.pythonnote.cn/categories/%E7%AE%97%E6%B3%95/"/>
-    
-      <category term="机器学习" scheme="https://www.pythonnote.cn/categories/%E7%AE%97%E6%B3%95/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
-    
-    
-      <category term="算法" scheme="https://www.pythonnote.cn/tags/%E7%AE%97%E6%B3%95/"/>
-    
-      <category term="机器学习" scheme="https://www.pythonnote.cn/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>机器学习算法之线性回归</title>
-    <link href="https://www.pythonnote.cn/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%AE%97%E6%B3%95%E4%B9%8B%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92/"/>
-    <id>https://www.pythonnote.cn/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%AE%97%E6%B3%95%E4%B9%8B%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92/</id>
-    <published>2020-02-18T10:36:30.000Z</published>
-    <updated>2020-02-20T12:08:07.324Z</updated>
-    
-    <summary type="html">
-    
-      &lt;center&gt;Editor：闫玉良&lt;/center&gt;
-
-&lt;p&gt;机器学习中最常见的一类问题：线性回归问题。&lt;/p&gt;
     
     </summary>
     
