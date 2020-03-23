@@ -4,13 +4,13 @@
 <head>
   <meta charset="utf-8" />
    
-  <meta name="keywords" content="分布式,Python,Java,powershell,shell,Elasticsearch,MySQL,Redis,Django,Flask,爬虫,RPC,数据分析,人工智能,算法,数据结构" />
+  <meta name="keywords" content="flask,生产环境,production,Python,Java,powershell,shell,Elasticsearch,MySQL,Redis,Django,Flask,爬虫,RPC,数据分析,人工智能,算法,数据结构" />
    
   <meta name="description" content="多喝烫水，开水治百病 &lt;- &lt;-" />
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
   <title>
-    分布式id |  EthanYan&#39;s Blog
+    生产环境隐藏敏感配置信息方案 |  EthanYan&#39;s Blog
   </title>
   <meta name="generator" content="hexo-theme-yilia-plus">
   
@@ -33,7 +33,7 @@
   <div id="app">
     <main class="content">
       <section class="outer">
-  <article id="post-分布式id" class="article article-type-post" itemscope
+  <article id="post-生产环境隐藏敏感配置信息方案" class="article article-type-post" itemscope
   itemprop="blogPost" data-scroll-reveal>
 
   <div class="article-inner">
@@ -41,7 +41,7 @@
     <header class="article-header">
        
 <h1 class="article-title sea-center" style="border-left:0" itemprop="name">
-  分布式id
+  生产环境隐藏敏感配置信息方案
 </h1>
   
 
@@ -50,12 +50,12 @@
 
     
     <div class="article-meta">
-      <a href="/%E5%88%86%E5%B8%83%E5%BC%8Fid/" class="article-date">
-  <time datetime="2020-03-22T05:11:17.000Z" itemprop="datePublished">2020-03-22</time>
+      <a href="/%E7%94%9F%E4%BA%A7%E7%8E%AF%E5%A2%83%E9%9A%90%E8%97%8F%E6%95%8F%E6%84%9F%E9%85%8D%E7%BD%AE%E4%BF%A1%E6%81%AF%E6%96%B9%E6%A1%88/" class="article-date">
+  <time datetime="2020-03-23T11:06:19.000Z" itemprop="datePublished">2020-03-23</time>
 </a>
       
   <div class="article-category">
-    <a class="article-category-link" href="/categories/%E5%88%86%E5%B8%83%E5%BC%8F/">分布式</a>
+    <a class="article-category-link" href="/categories/flask/">flask</a>
   </div>
 
       
@@ -65,7 +65,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> 字数统计:</span>
-            <span class="post-count">1.9k字</span>
+            <span class="post-count">719字</span>
         </span>
     </span>
 
@@ -74,7 +74,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-book-open-line"></i>
             <span class="post-meta-item-text"> 阅读时长≈</span>
-            <span class="post-count">6分钟</span>
+            <span class="post-count">2分钟</span>
         </span>
     </span>
 </div>
@@ -103,62 +103,36 @@
       
       <center>Author：闫玉良</center>
 
-<p>当产品使用人数达到一定量级，一般会采用分库分表等优化操作，但是分布式 <code>id</code> 如何保证全局唯一呢？</p>
+<p>项目上线时需要切换生产环境配置信息，这些信息可以直接被保存在项目中吗？如果保存下来，不小心提交到仓库或被破解查看，生产环境岂不是裸奔？那么该如何解决？</p>
 <a id="more"></a>
 
 <p><strong><em>更多精彩文章请关注公众号『Pythonnote』或者『全栈技术精选』</em></strong></p>
-<h2 id="1-UUID"><a href="#1-UUID" class="headerlink" title="1.UUID"></a>1.UUID</h2><p><code>UUID</code> 全称是 <code>Universally Unique Identifier</code> ，翻译为通用唯一识别码。此码由网卡 <code>MAC</code> 地址、时间戳、时序、随机数等等一系列元素组合而成，从而保证唯一。碰撞几率几乎为零，大可不必考虑重复问题，放心使用即可。其被广泛应用于各种场景，如图片验证码编号，分布式 <code>id</code> 等。</p>
-<p><code>UUID</code> 是由128位二进制组成，一般转换为十六进制，然后使用 <code>String</code> 表示。</p>
-<h3 id="1-1-优点"><a href="#1-1-优点" class="headerlink" title="1.1 优点"></a>1.1 优点</h3><p>1) 通过本地生成，没有经过网络 <code>I/O</code>，性能较优</p>
-<p>2) 无序，无法预测其生成顺序</p>
+<h2 id="1-演示环境"><a href="#1-演示环境" class="headerlink" title="1.演示环境"></a>1.演示环境</h2><p>本文以 <code>Flask</code> 项目为例说明，简单环境信息：</p>
+<p>1) <code>Flask</code> + <code>Flask-RESTful</code></p>
+<p>2) <code>CentOS</code></p>
+<h2 id="2-方案"><a href="#2-方案" class="headerlink" title="2.方案"></a>2.方案</h2><p>一般配置信息都保存在指定目录下，分为测试、开发以及生产。其中测试与开发配置文件的保留，问题不大，关键就是生产环境配置信息如何处理。</p>
+<p>1) 可以在 <code>.gitignore</code> 文件中添加忽略文件，使其不被提交到仓库。</p>
 <blockquote>
-<p>但是无序也变成了它的缺点之一</p>
+<p>虽然不在仓库内，但是配置文件仍然在项目中</p>
 </blockquote>
-<h3 id="1-2-缺点"><a href="#1-2-缺点" class="headerlink" title="1.2 缺点"></a>1.2 缺点</h3><p>1) 128位二进制一般转换成36位的十六进制，因为过于长只能使用 <code>String</code> 存储，空间占用较多</p>
-<p>2) 不能生成递增有序的数字。这就导致作为数据库表主键之后效率远不及自增主键</p>
-<blockquote>
-<p>由于不规则，每向数据库插入一条数据就需要重新排列，因此效率不及自增主键</p>
-</blockquote>
-<h2 id="2-数据库表自身主键"><a href="#2-数据库表自身主键" class="headerlink" title="2.数据库表自身主键"></a>2.数据库表自身主键</h2><p>在使用唯一标识符时，下意识会考虑到主键自增，因为经常使用，似乎并没有什么问题。但是不要忘记，一般公司产品并未达到分库分表的使用场景，所以不会有任何问题，但并不代表其一直有效。那么它就无法使用了吗？当然不是，可以使用特殊方式：</p>
-<p>1) 单独维护一张表，用来生成 <code>id</code> 供分库分表之后共同使用，保证唯一。但是由于所有数据库依赖这张表，其一旦发生意外将导致服务直接崩掉无法使用，所以需要三思而后行。</p>
-<p>2) 使用主键的另外一种方式，设置起始值与步长。比如分了两张表，第一张表的主键从1开始，步长为2，表现为：1，3，5 … 第二张表的主键从2开始，步长为2，表现为：2,4,6 … </p>
-<h3 id="2-1-优点"><a href="#2-1-优点" class="headerlink" title="2.1 优点"></a>2.1 优点</h3><p>1) 简单方便</p>
-<p>2) 有序递增</p>
-<p>3) 方便排序和分页</p>
-<h3 id="2-2-缺点"><a href="#2-2-缺点" class="headerlink" title="2.2 缺点"></a>2.2 缺点</h3><p>1) 分库分表会带来问题，需要进行特殊处理</p>
-<p>2) 并发性能不高，受限于数据库的性能</p>
-<p>3) 简单递增容易被其他人猜测利用。比如你有一个用户服务的递增，那么其他人可以根据分析注册的用户 <code>id</code> 来得到当天你的服务有多少人注册，从而描绘出此服务当前整体状况。</p>
-<p>4) 数据库宕机后服务不可用</p>
-<h2 id="3-Redis"><a href="#3-Redis" class="headerlink" title="3.Redis"></a>3.Redis</h2><p>不要认为 <code>redis</code> 只可以用来做缓存，它的使用场景超多。此处利用命令 <code>lncr</code> 即可生成分布式 <code>id</code>。</p>
-<blockquote>
-<p><code>lncr</code> 命令是将 <code>key</code> 中存储的数字值进行加一操作。如果 <code>key</code> 不存在，那么其值会被初始化为0.</p>
-</blockquote>
-<p>注意：因为 <code>Redis</code> 是单线程的，所以可以保证原子性。就不要再担忧并发数据出错问题了 ~</p>
-<h3 id="3-1-优点"><a href="#3-1-优点" class="headerlink" title="3.1 优点"></a>3.1 优点</h3><p>1) 性能比数据库高得多</p>
-<p>2) 能满足有序递增的要求</p>
-<h3 id="3-2-缺点"><a href="#3-2-缺点" class="headerlink" title="3.2 缺点"></a>3.2 缺点</h3><p>1) <code>redis</code> 是基于内存的键值数据库，虽然有 <code>AOF</code> 和 <code>RDB</code> 等持久化操作，但是依然会存在数据丢失问题，从而导致 <code>id</code> 不唯一。</p>
-<blockquote>
-<p>有人会问，数据丢失和不唯一有什么关联？比如数据库生成的主键到111113了，但是发生宕机，有一秒的数据丢失，恢复后从111111开始计算，因此重复了两个值111112和111113。</p>
-</blockquote>
-<p>2) 依赖于 <code>redis</code> ，如果其不稳定，那么也会影响 <code>id</code> 的生成。</p>
-<h2 id="4-雪花算法"><a href="#4-雪花算法" class="headerlink" title="4.雪花算法"></a>4.雪花算法</h2><p>雪花算法由 <code>Twitter</code> 提出，英文名为 <code>Snowflake</code> ，它的目的是生成一个 <code>64bit</code> 的整数（<code>1bit</code>符号位 + <code>41bit</code>时间戳 + <code>10bit</code>工作机器<code>id</code> +  <code>12bit</code>序列号 ）。由于其保持增长有序并能通过处理保证唯一而被各大厂商广泛应用于分布式，比如头条。</p>
-<p>1) <code>1bit</code> 是符号位，不做任何处理</p>
-<p>2) <code>41bit</code> 用来记录时间戳，这里可以记录69年，如果设置好起始时间，比如今年是2020年，那么可以用到2089年。有人会问，到时候怎么办？放心吧，一般产品的生命周期不到69年，即使它活过了69年，此系统一定重构过好多次，因此不是问题</p>
-<p>3) <code>10bit</code> 用来记录机器的 <code>id</code> ，总共可以记录1024台。一般前5位代表数据中心，后面5位是某个数据中心的机器 <code>id</code></p>
-<p>4) <code>12bit</code> 是循环位，用来解决同一个毫秒之内产生不同的 <code>id</code> 。12位最多可以记录4095个，也就是在同一个机器同一毫秒最多记录4095个，多余的需要进行等待下一毫秒</p>
-<p>上述规范适用于 <code>64bit</code> 划分标准，其他情况可以根据实际场景划分。比如：服务目前 <code>QPS</code> 10万，预计几年之内会发展到百万；当前机器三地部署（上海、北京和贵州）；机器共有10台左右，预计未来增加到百台以上。</p>
-<p>这个时候我们根据上面的场景可以再次合理划分 <code>62bit</code> 。<code>QPS</code> 几年之内到百万，那么每毫秒就是千级请求，目前10台机器每台承担百万级的请求，为了保证扩展，后面的循环位可以限制到1024，也就是2的10次方，循环位10位足矣。机器三地部署，我们可以用 <code>3bit</code> 总共8来表示机房位置，当前的机器10台，为了保证扩展到百台，可以使用 <code>7bit</code> 也就是128来表示，时间位依然是 <code>41bit</code> ，那么还剩下 64-10-3-7-41-1，也就是 <code>2bit</code>。剩下的 <code>2bit</code> 可以用来进行扩展。</p>
-<blockquote>
-<p><code>QPS</code> 是每秒查询率</p>
-</blockquote>
-<h3 id="4-1-优点"><a href="#4-1-优点" class="headerlink" title="4.1 优点"></a>4.1 优点</h3><p>1) 由于时间戳是不断增大的，再加上循环位不断增加，其他位置相对固定，所以可以保证生成有序的 <code>id</code>，提高数据库的性能。</p>
-<h3 id="4-2-缺点"><a href="#4-2-缺点" class="headerlink" title="4.2 缺点"></a>4.2 缺点</h3><p>1) 时间回拨问题可能导致重复 <code>id</code></p>
-<blockquote>
-<p>雪花算法强依赖时间，而我们的机器可能因为各种原因发生时间回拨（与时间服务器校准，发现机器时间快了，往回调一下），这就导致有可能生成重复 <code>id</code>。</p>
-<p>解决方案一：用当前时间和上一次时间进行判断，如果发生回拨，算法抛出错误，保证不重复（用户看到提示界面，再次进行操作时，肯定已经过了几秒，所以我们毫秒级的处理丝毫不慌，用户体验也并不会降低）。</p>
-<p>解决方案二：关闭机器与 <code>ntp</code> 同步</p>
-</blockquote>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>四种方案各有优缺点，可以根据产品体量自行选择。不过推荐雪花算法。你懂得 ~</p>
+<p>2) 可以通过添加环境变量的方式解决。推荐指数5颗星 ~ </p>
+<h2 id="3-方案实施"><a href="#3-方案实施" class="headerlink" title="3.方案实施"></a>3.方案实施</h2><p>可以保留项目中开发（测试）环境配置文件，将需要修改的数据库配置项等单独在生产环境配置文件中重写，并配置环境变量（生产配置文件路径）。然后在项目加载默认配置信息后，通过环境变量引入生产配置信息，从而覆盖掉无用配置，隐藏敏感信息。这样我们的生产信息既不在仓库内，也不在项目中，而是在服务器某个角落。项目中的配置信息都是本地配置项，被人知道也无妨，保留后还能造成迷惑。</p>
+<h3 id="3-1-在服务器任意目录下存放生产环境配置信息"><a href="#3-1-在服务器任意目录下存放生产环境配置信息" class="headerlink" title="3.1 在服务器任意目录下存放生产环境配置信息"></a>3.1 在服务器任意目录下存放生产环境配置信息</h3><p>生产配置文件 <code>app_deploy.py</code> 中既可以保存 <code>MySQL</code> 、<code>Redis</code> 和 <code>Elasticsearch</code> 数据库集群信息，还可以保存私钥等敏感信息。</p>
+<p>比如我们将其存放在如下路径：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/root/config/app_deploy.py</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-2-配置环境变量"><a href="#3-2-配置环境变量" class="headerlink" title="3.2 配置环境变量"></a>3.2 配置环境变量</h3><p>在部署项目的 <code>shell</code> 脚本中添加如下信息：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">export TOUTIAO_APP_SETTING=/root/config/app_deploy.py</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-3-设置常量保存环境变量名"><a href="#3-3-设置常量保存环境变量名" class="headerlink" title="3.3 设置常量保存环境变量名"></a>3.3 设置常量保存环境变量名</h3><p>在项目如下文件中：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">.../common/utils/constants.py</span><br></pre></td></tr></table></figure>
+
+<p>添加常量信息：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">GLOBAL_SETTING_ENV_NAME = 'TOUTIAO_APP_SETTING'</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-4-在项目初始化文件中加载环境变量"><a href="#3-4-在项目初始化文件中加载环境变量" class="headerlink" title="3.4 在项目初始化文件中加载环境变量"></a>3.4 在项目初始化文件中加载环境变量</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> flask <span class="keyword">import</span> Flask</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">create_flask_app</span><span class="params">(config, enable_config_file=False)</span>:</span></span><br><span class="line">    <span class="string">"""</span></span><br><span class="line"><span class="string">    创建 Flask 应用</span></span><br><span class="line"><span class="string">    :param config: 配置信息对象</span></span><br><span class="line"><span class="string">    :param enable_config_file: 是否允许运行环境中的配置文件覆盖已加载的配置信息</span></span><br><span class="line"><span class="string">    :return: Flask 应用</span></span><br><span class="line"><span class="string">    """</span></span><br><span class="line">    app = Flask(__name__)</span><br><span class="line">    app.config.from_object(config)</span><br><span class="line">    <span class="keyword">if</span> enable_config_file:</span><br><span class="line">        <span class="keyword">from</span> utils <span class="keyword">import</span> constants</span><br><span class="line">        app.config.from_envvar(constants.GLOBAL_SETTING_ENV_NAME, silent=<span class="literal">True</span>)</span><br><span class="line">        </span><br><span class="line">    <span class="keyword">return</span> app</span><br></pre></td></tr></table></figure>
+
+<p>以上只是本人在实际项目中的一个小应用，可以类比去设置 <code>Django</code> 项目。当然，如果你有更好方法可以后台给小闫留言，不胜感激。</p>
 <p><strong><em>更多精彩文章请关注公众号『Pythonnote』或者『全栈技术精选』</em></strong></p>
 
       
@@ -229,14 +203,14 @@
     <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://www.pythonnote.cn/%E5%88%86%E5%B8%83%E5%BC%8Fid/" alt="微信分享二维码">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://www.pythonnote.cn/%E7%94%9F%E4%BA%A7%E7%8E%AF%E5%A2%83%E9%9A%90%E8%97%8F%E6%95%8F%E6%84%9F%E9%85%8D%E7%BD%AE%E4%BF%A1%E6%81%AF%E6%96%B9%E6%A1%88/" alt="微信分享二维码">
     </div>
 </div>
 
 <div id="share-mask"></div>
       
       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%88%86%E5%B8%83%E5%BC%8F/" rel="tag">分布式</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/flask/" rel="tag">flask</a></li></ul>
 
 
     </footer>
@@ -247,19 +221,10 @@
   
   <nav class="article-nav">
     
-      <a href="/%E7%94%9F%E4%BA%A7%E7%8E%AF%E5%A2%83%E9%9A%90%E8%97%8F%E6%95%8F%E6%84%9F%E9%85%8D%E7%BD%AE%E4%BF%A1%E6%81%AF%E6%96%B9%E6%A1%88/" class="article-nav-link">
-        <strong class="article-nav-caption">上一篇</strong>
-        <div class="article-nav-title">
-          
-            生产环境隐藏敏感配置信息方案
-          
-        </div>
-      </a>
     
-    
-      <a href="/mysql%E4%B8%AD%E4%BF%9D%E5%AD%98%E5%B9%B6%E6%93%8D%E4%BD%9Cjson%E5%AF%B9%E8%B1%A1/" class="article-nav-link">
+      <a href="/%E5%88%86%E5%B8%83%E5%BC%8Fid/" class="article-nav-link">
         <strong class="article-nav-caption">下一篇</strong>
-        <div class="article-nav-title">mysql中保存并操作json对象</div>
+        <div class="article-nav-title">分布式id</div>
       </a>
     
   </nav>
