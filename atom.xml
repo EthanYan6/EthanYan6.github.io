@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://www.pythonnote.cn/"/>
-  <updated>2020-03-23T12:46:16.337Z</updated>
+  <updated>2020-03-24T12:29:06.255Z</updated>
   <id>https://www.pythonnote.cn/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>redis延伸</title>
+    <link href="https://www.pythonnote.cn/redis%E5%BB%B6%E4%BC%B8/"/>
+    <id>https://www.pythonnote.cn/redis%E5%BB%B6%E4%BC%B8/</id>
+    <published>2020-03-24T07:57:06.000Z</published>
+    <updated>2020-03-24T12:29:06.255Z</updated>
+    
+    <summary type="html">
+    
+      &lt;center&gt;Author：闫玉良&lt;/center&gt;
+
+&lt;p&gt;在掌握了 &lt;code&gt;redis&lt;/code&gt; 常用的五种类型以及适用场景后，快来学习更多高级操作吧 ~&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="redis" scheme="https://www.pythonnote.cn/categories/redis/"/>
+    
+    
+      <category term="redis" scheme="https://www.pythonnote.cn/tags/redis/"/>
+    
+  </entry>
   
   <entry>
     <title>生产环境隐藏敏感配置信息方案</title>
@@ -470,35 +493,6 @@
       <category term="算法" scheme="https://www.pythonnote.cn/tags/%E7%AE%97%E6%B3%95/"/>
     
       <category term="机器学习" scheme="https://www.pythonnote.cn/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>机器学习算法之欠拟合和过拟合</title>
-    <link href="https://www.pythonnote.cn/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%AE%97%E6%B3%95%E4%B9%8B%E6%AC%A0%E6%8B%9F%E5%90%88%E5%92%8C%E8%BF%87%E6%8B%9F%E5%90%88/"/>
-    <id>https://www.pythonnote.cn/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%AE%97%E6%B3%95%E4%B9%8B%E6%AC%A0%E6%8B%9F%E5%90%88%E5%92%8C%E8%BF%87%E6%8B%9F%E5%90%88/</id>
-    <published>2020-02-20T11:41:19.000Z</published>
-    <updated>2020-02-20T14:36:34.861Z</updated>
-    
-    <summary type="html">
-    
-      &lt;center&gt;Editor：闫玉良&lt;/center&gt;
-
-&lt;blockquote&gt;
-&lt;p&gt;&lt;strong&gt;引言：&lt;/strong&gt;机器学习的基本问题是利用模型对数据进行拟合，学习的目的并非是对有限训练集进行正确预测，而是对未曾在训练集合出现的样本能够正确预测。模型对训练集数据的误差称为经验误差，对测试集数据的误差称为泛化误差。模型对训练集以外样本的预测能力就称为模型的泛化能力，追求这种泛化能力始终是机器学习的目标。过拟合和欠拟合是导致模型泛化能力不高的两种常见原因，都是模型学习能力与数据复杂度之间失配的结果。&lt;/p&gt;
-&lt;/blockquote&gt;
-    
-    </summary>
-    
-    
-      <category term="算法" scheme="https://www.pythonnote.cn/categories/%E7%AE%97%E6%B3%95/"/>
-    
-      <category term="数据结构" scheme="https://www.pythonnote.cn/categories/%E7%AE%97%E6%B3%95/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
-    
-    
-      <category term="算法" scheme="https://www.pythonnote.cn/tags/%E7%AE%97%E6%B3%95/"/>
-    
-      <category term="数据结构" scheme="https://www.pythonnote.cn/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
     
   </entry>
   

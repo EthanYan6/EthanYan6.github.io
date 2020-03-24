@@ -4,13 +4,13 @@
 <head>
   <meta charset="utf-8" />
    
-  <meta name="keywords" content="Python,Java,powershell,shell,Elasticsearch,MySQL,Redis,Django,Flask,爬虫,RPC,数据分析,人工智能,算法,数据结构" />
+  <meta name="keywords" content="redis,事务,持久化,Python,Java,powershell,shell,Elasticsearch,MySQL,Redis,Django,Flask,爬虫,RPC,数据分析,人工智能,算法,数据结构" />
    
   <meta name="description" content="多喝烫水，开水治百病 &lt;- &lt;-" />
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
   <title>
-    hexo命令速查小册 |  EthanYan&#39;s Blog
+    redis延伸 |  EthanYan&#39;s Blog
   </title>
   <meta name="generator" content="hexo-theme-yilia-plus">
   
@@ -33,7 +33,7 @@
   <div id="app">
     <main class="content">
       <section class="outer">
-  <article id="post-hexo命令速查小册" class="article article-type-post" itemscope
+  <article id="post-redis延伸" class="article article-type-post" itemscope
   itemprop="blogPost" data-scroll-reveal>
 
   <div class="article-inner">
@@ -41,7 +41,7 @@
     <header class="article-header">
        
 <h1 class="article-title sea-center" style="border-left:0" itemprop="name">
-  hexo命令速查小册
+  redis延伸
 </h1>
   
 
@@ -50,12 +50,12 @@
 
     
     <div class="article-meta">
-      <a href="/hexo%E5%91%BD%E4%BB%A4%E9%80%9F%E6%9F%A5%E5%B0%8F%E5%86%8C/" class="article-date">
-  <time datetime="2019-10-27T11:41:36.000Z" itemprop="datePublished">2019-10-27</time>
+      <a href="/redis%E5%BB%B6%E4%BC%B8/" class="article-date">
+  <time datetime="2020-03-24T07:57:06.000Z" itemprop="datePublished">2020-03-24</time>
 </a>
       
   <div class="article-category">
-    <a class="article-category-link" href="/categories/hexo/">hexo</a>
+    <a class="article-category-link" href="/categories/redis/">redis</a>
   </div>
 
       
@@ -65,7 +65,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> 字数统计:</span>
-            <span class="post-count">1.2k字</span>
+            <span class="post-count">1.1k字</span>
         </span>
     </span>
 
@@ -101,81 +101,64 @@
       
 
       
-       <center>Author：闫玉良</center> 
-最近都在搭建自己的博客，不断的调整显示效果，以及添加一些初始功能，总算大体框架完成，细枝末节尚待商榷。小闫同学的博客地址为  http://www.pythonnote.cn/  ，希望大家多多捧场 ~ 当然也希望大家多多关注公众号『全栈技术精选』
+      <center>Author：闫玉良</center>
 
-<p>先来几张效果图压场，deng ~ deng ~ dengdeng</p>
+<p>在掌握了 <code>redis</code> 常用的五种类型以及适用场景后，快来学习更多高级操作吧 ~</p>
 <a id="more"></a>
 
 <p><strong><em>更多精彩文章请关注公众号『Pythonnote』或者『全栈技术精选』</em></strong></p>
-<p><img src="https://github.com/EthanYan6/pic/raw/master/hexo%E5%91%BD%E4%BB%A4%E9%80%9F%E6%9F%A5%E5%B0%8F%E5%86%8C/blog1.png" alt></p>
-<p><img src="https://github.com/EthanYan6/pic/raw/master/hexo%E5%91%BD%E4%BB%A4%E9%80%9F%E6%9F%A5%E5%B0%8F%E5%86%8C/blog2.png" alt></p>
-<p><img src="https://github.com/EthanYan6/pic/raw/master/hexo%E5%91%BD%E4%BB%A4%E9%80%9F%E6%9F%A5%E5%B0%8F%E5%86%8C/blog3.png" alt></p>
-<p>前端超牛逼的效果有没有感动到 ~ 这当然不是我自己做的，还要感谢 Jonathan Klughertz</p>
-<p>如果认为这篇文章要教如何搭建个人博客，那就让你失望了，因为百度上面相关教程太多太多，我不认为自己写的比其他人更详细更好。只是给大家指引一下方向即可。</p>
-<p>搭建博客的过程中使用到了框架 Node.js、HEXO 以及 GitHub 。</p>
-<p>下面就经常使用到的 hexo 的命令做一个总结，方便在使用过程中快速查阅。</p>
-<h4 id="创建新文章"><a href="#创建新文章" class="headerlink" title="创建新文章"></a>创建新文章</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hexo n "article name"</span><br><span class="line">或者</span><br><span class="line">hexo new "article name"</span><br></pre></td></tr></table></figure>
-
-<h4 id="快速部署"><a href="#快速部署" class="headerlink" title="快速部署"></a>快速部署</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo clean &amp;&amp; hexo g &amp;&amp; hexo d</span><br></pre></td></tr></table></figure>
-
-<p>其实上述为 3 个命令，为了节省时间，我经常联合使用。</p>
+<h2 id="1-Redis-事务"><a href="#1-Redis-事务" class="headerlink" title="1.Redis 事务"></a>1.Redis 事务</h2><p><code>redis</code> 中有类似于事务的东西，保证事务执行时不被其他客户端发来的请求中断。但是和关系数据库并不相同。它的事务<strong>不支持回滚操作</strong>，因此在统一执行事务中所有命令时，即使有一条失败，之前执行过的命令仍然生效。</p>
 <blockquote>
-<p>hexo clean 清除缓存</p>
-<p>hexo g 生成静态页面（generate）</p>
-<p>hexo d 部署（deploy）</p>
+<p>事务执行过程：开启事务，进行相关操作（所有操作按顺序添加到队列中），执行。</p>
 </blockquote>
-<h4 id="本地效果预览"><a href="#本地效果预览" class="headerlink" title="本地效果预览"></a>本地效果预览</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo s</span><br></pre></td></tr></table></figure>
-
+<p>此处可能有人会问：既然不支持回滚，那么在事务执行的过程中，所处理的数据被其他人修改了，怎么办？<code>redis</code> 提供了一个监视器 <code>watch</code> 命令，它的执行过程如下：</p>
+<p>1) 使用监视器监控一个变量</p>
+<p>2) 使用 <code>multi</code> 开启事务</p>
+<p>3) 向队列中添加一系列命令</p>
+<p>4) 在使用 <code>exec</code> 统一执行队列中所有操作前，监视器会去查看监控的变量是否被更改过，如果有变化直接报错，没有则正常执行</p>
+<p>看到上述执行过程后，会发现它类似于「乐观锁」</p>
 <blockquote>
-<p>s 为 server 的简写，因此你也可以写成 hexo server。hexo 的命令大多都是如此</p>
+<p>单机支持事务，集群不支持。</p>
+<p>可以使用命令 <code>info Replication</code> 查看所属角色（主 <code>Master</code> 从 <code>Slave</code> 信息）</p>
 </blockquote>
-<h4 id="文章摘要"><a href="#文章摘要" class="headerlink" title="文章摘要"></a>文章摘要</h4><p>首页会根据分页效果展示文章，如果不设置摘要，文章会拉长页面篇幅。</p>
-<p>我们只需要在文章摘要后添加一行内容即可：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--more--&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="1-1-相关命令"><a href="#1-1-相关命令" class="headerlink" title="1.1 相关命令"></a>1.1 相关命令</h3><p><code>multi</code> 开启事务</p>
+<p><code>exec</code> 统一执行</p>
+<p><code>watch</code> 监视器「乐观锁」</p>
+<h3 id="1-2-模块化操作"><a href="#1-2-模块化操作" class="headerlink" title="1.2 模块化操作"></a>1.2 模块化操作</h3><p>我们在使用 <code>python</code> 第三方库操作 <code>redis</code> 时，一般通过 <code>pipeline</code> 管道进行接收命令，然后 <code>execute</code> 顺序执行管道中所有操作。</p>
+<p><strong>优点：</strong>可以在客户端统一收集指令；会隐式的执行 <code>multi</code> 与 <code>exec</code> 命令。</p>
+<h2 id="2-Redis-持久化"><a href="#2-Redis-持久化" class="headerlink" title="2.Redis 持久化"></a>2.Redis 持久化</h2><p><code>redis</code> 是内存型的数据库，为保证发生宕机时可以恢复数据，所以需要持久化。共有下方两种方式：</p>
+<h3 id="2-1-RDB"><a href="#2-1-RDB" class="headerlink" title="2.1 RDB"></a>2.1 RDB</h3><p>快照持久化（把当前内存状态刷入硬盘）</p>
+<p>1) 创建子进程执行，停顿时长（随着数据量的增大，创建子进程所耗费的时间会越来越长。比如使用了40G内存后，创建一个子进程可能耗费4s多，这4s数据库会处于停服状态）</p>
+<p>2) 定期触发（默认开启）</p>
+<p>3) 手动执行 <code>BGSAVE</code> 命令（<code>background save</code> 后台保存）时触发</p>
+<p>4) 执行 <code>SHUTDOWN</code> 关闭数据库时触发</p>
+<h3 id="2-2-AOF"><a href="#2-2-AOF" class="headerlink" title="2.2 AOF"></a>2.2 AOF</h3><p>追加文件的方式进行持久化</p>
+<p>1) 保存的是操作指令</p>
+<p>2) 默认关闭</p>
+<p>3) 可以选择 <code>appendsync always</code> / <code>everysec</code> / <code>no</code> 三种方式，一般选择每秒记录一次</p>
+<p>4) 占用磁盘一定量时会进行压缩，可手动开启配置项</p>
+<p><strong>在实际使用时一般两种方式都开启。</strong></p>
+<h2 id="3-Redis-复制集"><a href="#3-Redis-复制集" class="headerlink" title="3.Redis 复制集"></a>3.Redis 复制集</h2><p>为了在部分节点无法通讯时，保证服务仍然可用。</p>
+<h3 id="3-1-设置方式"><a href="#3-1-设置方式" class="headerlink" title="3.1 设置方式"></a>3.1 设置方式</h3><p>1) 服务运行时执行命令 <code>slaveof</code></p>
+<p>2) 服务启动前在 <code>redis.conf</code> 配置文件中填写以下代码：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">slaveof &lt;masterip&gt; &lt;masterport&gt;</span><br></pre></td></tr></table></figure>
 
-<p>最后效果图为：</p>
-<p><img src="https://github.com/EthanYan6/pic/raw/master/hexo%E5%91%BD%E4%BB%A4%E9%80%9F%E6%9F%A5%E5%B0%8F%E5%86%8C/blog4.png" alt></p>
-<h4 id="添加标签"><a href="#添加标签" class="headerlink" title="添加标签"></a>添加标签</h4><p>先执行：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo new page "tags"</span><br></pre></td></tr></table></figure>
+<h3 id="3-2-注意事项"><a href="#3-2-注意事项" class="headerlink" title="3.2 注意事项"></a>3.2 注意事项</h3><p>只能一主多从（不允许存在互为备份的两个 <code>master</code>），但是可以层级化，如下图所示。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">            master</span><br><span class="line">           /     \</span><br><span class="line">     slave1        slave2</span><br><span class="line">    /      \</span><br><span class="line">slave3   slave4       ......</span><br></pre></td></tr></table></figure>
 
-<p>再在目录 <code>source/tags/index.md</code> 中添加：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">title: tags</span><br><span class="line">date: 2019-05-27 13:47:40</span><br><span class="line">type: "tags"</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
+<p>使用如下命令查看当前 <code>redis</code> 服务器所扮演角色：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">info Replication</span><br></pre></td></tr></table></figure>
 
-<p>最后只需要在写文章时添加 <code>tags</code> 属性即可。</p>
-<p>如果只添加一个标签：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tags: test</span><br></pre></td></tr></table></figure>
-
-<p>多标签，文章开头添加：（yaml语法）</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">tags:</span><br><span class="line">- test1</span><br><span class="line">- test2</span><br><span class="line">- test3</span><br></pre></td></tr></table></figure>
-
-<h4 id="添加文章分类目录"><a href="#添加文章分类目录" class="headerlink" title="添加文章分类目录"></a>添加文章分类目录</h4><p>添加分类如同标签一样，只需要将 <code>tags</code> 换成 <code>categories</code> 即可，如：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo new page "categories"</span><br></pre></td></tr></table></figure>
-
-<p><strong>注意：</strong>如下形式，同篇文章添加多个目录和标签：</p>
-<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">tags:</span></span><br><span class="line"><span class="bullet">-</span> <span class="string">算法</span></span><br><span class="line"><span class="bullet">-</span> <span class="string">数据结构</span></span><br><span class="line"><span class="attr">categories:</span></span><br><span class="line"><span class="bullet">-</span> <span class="string">算法</span></span><br><span class="line"><span class="bullet">-</span> <span class="string">数据结构</span></span><br></pre></td></tr></table></figure>
-
-<p><strong>同篇文章添加多个目录和标签时，请将与其他文章共同的目录放置在前面，优先级高一些。</strong>比如，文章A归为目录算法和机器学习下，文章B归为目录算法和数据结构下。他们在划分目录时，需如下填写：</p>
-<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 文章A</span></span><br><span class="line"><span class="attr">categories:</span></span><br><span class="line"><span class="bullet">-</span> <span class="string">算法</span></span><br><span class="line"><span class="bullet">-</span> <span class="string">机器学习</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 文章B</span></span><br><span class="line"><span class="attr">categories:</span></span><br><span class="line"><span class="bullet">-</span> <span class="string">算法</span></span><br><span class="line"><span class="bullet">-</span> <span class="string">数据结构</span></span><br></pre></td></tr></table></figure>
-
-<p>如果先写各自不同的目录，再写共同目录时，会在前端目录展示页面中出现重复目录。因为框架在创建目录时，会按如下形式创建表示目录的文件夹，以上述例子示范：</p>
-<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">算法</span></span><br><span class="line"><span class="string">├──</span> <span class="string">机器学习</span></span><br><span class="line"><span class="string">└──</span> <span class="string">数据结构</span></span><br><span class="line"><span class="comment"># 框架会先创建一个算法的文件夹，然后在算法文件夹下创建两个其他文件夹，这样避免目录重复</span></span><br></pre></td></tr></table></figure>
-
-<p>如果在目录填写时按如下情况：</p>
-<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 文章A</span></span><br><span class="line"><span class="attr">categories:</span></span><br><span class="line"><span class="bullet">-</span> <span class="string">机器学习</span></span><br><span class="line"><span class="bullet">-</span> <span class="string">算法</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 文章B</span></span><br><span class="line"><span class="attr">categories:</span></span><br><span class="line"><span class="bullet">-</span> <span class="string">数据结构</span></span><br><span class="line"><span class="bullet">-</span> <span class="string">算法</span></span><br></pre></td></tr></table></figure>
-
-<p>框架在生成目录时：</p>
-<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">机器学习</span></span><br><span class="line"><span class="string">└──</span> <span class="string">算法</span></span><br><span class="line"></span><br><span class="line"><span class="string">数据结构</span></span><br><span class="line"><span class="string">└──</span> <span class="string">算法</span></span><br><span class="line"><span class="comment"># 框架会先生成每篇文章中各自不同的目录，然后在其下创建算法目录，造成重复</span></span><br></pre></td></tr></table></figure>
-
-<p>框架在生成目录时，会优先创建写在首位的目录，再创建写在后面为止的目录，所以在展示所有的目录时，会出现重复的两个 <code>算法</code> 目录。</p>
-<h4 id="文章中插入图片"><a href="#文章中插入图片" class="headerlink" title="文章中插入图片"></a>文章中插入图片</h4><p>如果在 Markdown 中直接插图，再转成静态页面时，路径会找不到，导致图片无法正常显示。解决办法有很多，我最喜欢的便是利用 GitHub 新建一个放置图片的仓库（当然很多人使用七牛云也很方便），然后在文章中使用插入连接的方式插入图片即可：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">![](https://github.com/EthanYan6/pic/raw/master/hexo%E5%91%BD%E4%BB%A4%E9%80%9F%E6%9F%A5%E5%B0%8F%E5%86%8C/blog1.png)</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>连接地址利用以下步骤获取：打开GitHub图片仓库后，看到 Download 按钮，右键复制链接</p>
-</blockquote>
-<h4 id="绑定域名"><a href="#绑定域名" class="headerlink" title="绑定域名"></a>绑定域名</h4><p>大家首先需要去腾讯云或者阿里云购买一个域名，然后备案，再通过解析绑定个人博客地址。百度教程超详细，不过多阐述</p>
-<p>命令暂且总结到此，预知后事如何，且听下回分解 ~</p>
+<h2 id="4-Sentinel-哨兵"><a href="#4-Sentinel-哨兵" class="headerlink" title="4.Sentinel 哨兵"></a>4.Sentinel 哨兵</h2><p>1) 是一个独立的进程，安装之后默认存在，可以通过源码文件<code>sentinel.conf</code> 查看。</p>
+<p>2) 哨兵独立于 <code>redis</code> 之外运行。</p>
+<h3 id="4-1-作用"><a href="#4-1-作用" class="headerlink" title="4.1 作用"></a>4.1 作用</h3><p>看管 <code>redis</code> 主从角色关系，进行故障转移（<code>failover</code>） ，从而实现高可用。它的功能简单来说就是 <code>master</code> 死掉了，可以自动将 <code>slave</code> 上升为 <code>master</code> 。</p>
+<h3 id="4-2-注意"><a href="#4-2-注意" class="headerlink" title="4.2 注意"></a>4.2 注意</h3><p>至少运行3个实例，因为决定 <code>redis</code> 是否挂掉需要选举，超过半数投票才可以使 <code>master</code> 客观下线。还会在哨兵中选举出一个 <code>leader</code> 去故障转移，在 <code>slave</code> 中选出哪台被上升为 <code>master</code></p>
+<h2 id="5-redis-用途"><a href="#5-redis-用途" class="headerlink" title="5.redis 用途"></a>5.redis 用途</h2><p>1) 缓存</p>
+<p>2) 持久存储：比如数据库的冗余字段存放到 <code>redis</code> 中</p>
+<p>3) 队列：消息平台，比如 <code>celery</code> 的消息队列实现</p>
+<p>4) 排行榜/计数器</p>
+<p>5) 发布订阅</p>
+<p><strong><em>更多精彩文章请关注公众号『Pythonnote』或者『全栈技术精选』</em></strong></p>
 
       
       <!-- reward -->
@@ -245,14 +228,14 @@
     <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://www.pythonnote.cn/hexo%E5%91%BD%E4%BB%A4%E9%80%9F%E6%9F%A5%E5%B0%8F%E5%86%8C/" alt="微信分享二维码">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://www.pythonnote.cn/redis%E5%BB%B6%E4%BC%B8/" alt="微信分享二维码">
     </div>
 </div>
 
 <div id="share-mask"></div>
       
       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/blog/" rel="tag">blog</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/command/" rel="tag">command</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hexo/" rel="tag">hexo</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/redis/" rel="tag">redis</a></li></ul>
 
 
     </footer>
@@ -263,19 +246,10 @@
   
   <nav class="article-nav">
     
-      <a href="/Python%E5%90%8E%E7%AB%AF%E9%9D%A2%E8%AF%95%E6%B1%87%E6%80%BB/" class="article-nav-link">
-        <strong class="article-nav-caption">上一篇</strong>
-        <div class="article-nav-title">
-          
-            Python后端面试汇总
-          
-        </div>
-      </a>
     
-    
-      <a href="/Git%20%E4%B8%8A%E4%BC%A0%E5%A4%A7%E6%96%87%E4%BB%B6/" class="article-nav-link">
+      <a href="/%E7%94%9F%E4%BA%A7%E7%8E%AF%E5%A2%83%E9%9A%90%E8%97%8F%E6%95%8F%E6%84%9F%E9%85%8D%E7%BD%AE%E4%BF%A1%E6%81%AF%E6%96%B9%E6%A1%88/" class="article-nav-link">
         <strong class="article-nav-caption">下一篇</strong>
-        <div class="article-nav-title">Git 上传大文件</div>
+        <div class="article-nav-title">生产环境隐藏敏感配置信息方案</div>
       </a>
     
   </nav>

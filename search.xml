@@ -1,6 +1,75 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>redis延伸</title>
+    <url>/redis%E5%BB%B6%E4%BC%B8/</url>
+    <content><![CDATA[<center>Author：闫玉良</center>
+
+<p>在掌握了 <code>redis</code> 常用的五种类型以及适用场景后，快来学习更多高级操作吧 ~</p>
+<a id="more"></a>
+
+<p><strong><em>更多精彩文章请关注公众号『Pythonnote』或者『全栈技术精选』</em></strong></p>
+<h2 id="1-Redis-事务"><a href="#1-Redis-事务" class="headerlink" title="1.Redis 事务"></a>1.Redis 事务</h2><p><code>redis</code> 中有类似于事务的东西，保证事务执行时不被其他客户端发来的请求中断。但是和关系数据库并不相同。它的事务<strong>不支持回滚操作</strong>，因此在统一执行事务中所有命令时，即使有一条失败，之前执行过的命令仍然生效。</p>
+<blockquote>
+<p>事务执行过程：开启事务，进行相关操作（所有操作按顺序添加到队列中），执行。</p>
+</blockquote>
+<p>此处可能有人会问：既然不支持回滚，那么在事务执行的过程中，所处理的数据被其他人修改了，怎么办？<code>redis</code> 提供了一个监视器 <code>watch</code> 命令，它的执行过程如下：</p>
+<p>1) 使用监视器监控一个变量</p>
+<p>2) 使用 <code>multi</code> 开启事务</p>
+<p>3) 向队列中添加一系列命令</p>
+<p>4) 在使用 <code>exec</code> 统一执行队列中所有操作前，监视器会去查看监控的变量是否被更改过，如果有变化直接报错，没有则正常执行</p>
+<p>看到上述执行过程后，会发现它类似于「乐观锁」</p>
+<blockquote>
+<p>单机支持事务，集群不支持。</p>
+<p>可以使用命令 <code>info Replication</code> 查看所属角色（主 <code>Master</code> 从 <code>Slave</code> 信息）</p>
+</blockquote>
+<h3 id="1-1-相关命令"><a href="#1-1-相关命令" class="headerlink" title="1.1 相关命令"></a>1.1 相关命令</h3><p><code>multi</code> 开启事务</p>
+<p><code>exec</code> 统一执行</p>
+<p><code>watch</code> 监视器「乐观锁」</p>
+<h3 id="1-2-模块化操作"><a href="#1-2-模块化操作" class="headerlink" title="1.2 模块化操作"></a>1.2 模块化操作</h3><p>我们在使用 <code>python</code> 第三方库操作 <code>redis</code> 时，一般通过 <code>pipeline</code> 管道进行接收命令，然后 <code>execute</code> 顺序执行管道中所有操作。</p>
+<p><strong>优点：</strong>可以在客户端统一收集指令；会隐式的执行 <code>multi</code> 与 <code>exec</code> 命令。</p>
+<h2 id="2-Redis-持久化"><a href="#2-Redis-持久化" class="headerlink" title="2.Redis 持久化"></a>2.Redis 持久化</h2><p><code>redis</code> 是内存型的数据库，为保证发生宕机时可以恢复数据，所以需要持久化。共有下方两种方式：</p>
+<h3 id="2-1-RDB"><a href="#2-1-RDB" class="headerlink" title="2.1 RDB"></a>2.1 RDB</h3><p>快照持久化（把当前内存状态刷入硬盘）</p>
+<p>1) 创建子进程执行，停顿时长（随着数据量的增大，创建子进程所耗费的时间会越来越长。比如使用了40G内存后，创建一个子进程可能耗费4s多，这4s数据库会处于停服状态）</p>
+<p>2) 定期触发（默认开启）</p>
+<p>3) 手动执行 <code>BGSAVE</code> 命令（<code>background save</code> 后台保存）时触发</p>
+<p>4) 执行 <code>SHUTDOWN</code> 关闭数据库时触发</p>
+<h3 id="2-2-AOF"><a href="#2-2-AOF" class="headerlink" title="2.2 AOF"></a>2.2 AOF</h3><p>追加文件的方式进行持久化</p>
+<p>1) 保存的是操作指令</p>
+<p>2) 默认关闭</p>
+<p>3) 可以选择 <code>appendsync always</code> / <code>everysec</code> / <code>no</code> 三种方式，一般选择每秒记录一次</p>
+<p>4) 占用磁盘一定量时会进行压缩，可手动开启配置项</p>
+<p><strong>在实际使用时一般两种方式都开启。</strong></p>
+<h2 id="3-Redis-复制集"><a href="#3-Redis-复制集" class="headerlink" title="3.Redis 复制集"></a>3.Redis 复制集</h2><p>为了在部分节点无法通讯时，保证服务仍然可用。</p>
+<h3 id="3-1-设置方式"><a href="#3-1-设置方式" class="headerlink" title="3.1 设置方式"></a>3.1 设置方式</h3><p>1) 服务运行时执行命令 <code>slaveof</code></p>
+<p>2) 服务启动前在 <code>redis.conf</code> 配置文件中填写以下代码：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">slaveof &lt;masterip&gt; &lt;masterport&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-2-注意事项"><a href="#3-2-注意事项" class="headerlink" title="3.2 注意事项"></a>3.2 注意事项</h3><p>只能一主多从（不允许存在互为备份的两个 <code>master</code>），但是可以层级化，如下图所示。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">            master</span><br><span class="line">           /     \</span><br><span class="line">     slave1        slave2</span><br><span class="line">    /      \</span><br><span class="line">slave3   slave4       ......</span><br></pre></td></tr></table></figure>
+
+<p>使用如下命令查看当前 <code>redis</code> 服务器所扮演角色：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">info Replication</span><br></pre></td></tr></table></figure>
+
+<h2 id="4-Sentinel-哨兵"><a href="#4-Sentinel-哨兵" class="headerlink" title="4.Sentinel 哨兵"></a>4.Sentinel 哨兵</h2><p>1) 是一个独立的进程，安装之后默认存在，可以通过源码文件<code>sentinel.conf</code> 查看。</p>
+<p>2) 哨兵独立于 <code>redis</code> 之外运行。</p>
+<h3 id="4-1-作用"><a href="#4-1-作用" class="headerlink" title="4.1 作用"></a>4.1 作用</h3><p>看管 <code>redis</code> 主从角色关系，进行故障转移（<code>failover</code>） ，从而实现高可用。它的功能简单来说就是 <code>master</code> 死掉了，可以自动将 <code>slave</code> 上升为 <code>master</code> 。</p>
+<h3 id="4-2-注意"><a href="#4-2-注意" class="headerlink" title="4.2 注意"></a>4.2 注意</h3><p>至少运行3个实例，因为决定 <code>redis</code> 是否挂掉需要选举，超过半数投票才可以使 <code>master</code> 客观下线。还会在哨兵中选举出一个 <code>leader</code> 去故障转移，在 <code>slave</code> 中选出哪台被上升为 <code>master</code></p>
+<h2 id="5-redis-用途"><a href="#5-redis-用途" class="headerlink" title="5.redis 用途"></a>5.redis 用途</h2><p>1) 缓存</p>
+<p>2) 持久存储：比如数据库的冗余字段存放到 <code>redis</code> 中</p>
+<p>3) 队列：消息平台，比如 <code>celery</code> 的消息队列实现</p>
+<p>4) 排行榜/计数器</p>
+<p>5) 发布订阅</p>
+<p><strong><em>更多精彩文章请关注公众号『Pythonnote』或者『全栈技术精选』</em></strong></p>
+]]></content>
+      <categories>
+        <category>redis</category>
+      </categories>
+      <tags>
+        <tag>redis</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>生产环境隐藏敏感配置信息方案</title>
     <url>/%E7%94%9F%E4%BA%A7%E7%8E%AF%E5%A2%83%E9%9A%90%E8%97%8F%E6%95%8F%E6%84%9F%E9%85%8D%E7%BD%AE%E4%BF%A1%E6%81%AF%E6%96%B9%E6%A1%88/</url>
     <content><![CDATA[<center>Author：闫玉良</center>
@@ -4055,52 +4124,6 @@ bat 脚本？如果不是从事微软开发相关工作的人员，是不是感�
       </tags>
   </entry>
   <entry>
-    <title>Elasticsearch 中这些必备 API 你晓得嘛？</title>
-    <url>/Elasticsearch%20%E4%B8%AD%E8%BF%99%E4%BA%9B%E5%BF%85%E5%A4%87%20API%20%E4%BD%A0%E6%99%93%E5%BE%97%E5%98%9B%EF%BC%9F/</url>
-    <content><![CDATA[ <center>Author：闫玉良</center> 
-
-
-<p>众所周知，ES 中的 mapping 只能在索引建立初期进行创建，且建立之后不可更改。mapping 对应的字段会映射成指定类型，未定义字段则自动映射，一般为 text 类型。那么想更改索引名或者更改某字段的 mapping 时，是否就束手无策了呢？当然不是！！！官方提供了一个接口，供索引备份迁移操作使用，那便是 <strong>reindex</strong>。当旧索引与新索引在同一节点时，效率相当高，万条数据瞬间完成（<code>大约只需0.4s</code>）。数百万数据也只需几分钟即可完成 操作，是不是很溜呢？快来学习一下吧。</p>
- <a id="more"></a> 
-
-<p><strong><em>更多精彩文章请关注公众号『Pythonnote』或者『全栈技术精选』</em></strong></p>
-<h2 id="1-索引备份迁移"><a href="#1-索引备份迁移" class="headerlink" title="1.索引备份迁移"></a>1.索引备份迁移</h2><p><strong>请求方式：POST</strong></p>
-<p><strong>请求 API <code>_reindex</code></strong></p>
-<figure class="highlight json"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">"source"</span>: &#123;</span><br><span class="line">    <span class="attr">"index"</span>: <span class="string">"要备份的索引名"</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">"dest"</span>: &#123;</span><br><span class="line">    <span class="attr">"index"</span>: <span class="string">"新建的索引名"</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>如果新索引中有数据，且 id 与旧索引中重复，那么会进行覆盖操作。</p>
-</blockquote>
-<p>但是当数据量实在太大，高达几十 G 的时候，速度就会变得很慢，那是因为它底层还是利用了 scroll 操作。该如何进行<strong>优化</strong>呢？可以提升批量操作的文档数大小，如下：</p>
-<figure class="highlight json"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">"source"</span>: &#123;</span><br><span class="line">    <span class="attr">"index"</span>: <span class="string">"要备份的索引名"</span>,</span><br><span class="line">    <span class="attr">"size"</span> : <span class="number">5000</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">"dest"</span>: &#123;</span><br><span class="line">    <span class="attr">"index"</span>  : <span class="string">"新建的索引名"</span>,</span><br><span class="line">    <span class="attr">"routing"</span>: <span class="string">"=cat"</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>批量操作大小是如何确定的呢？是根据文档数以及文档容量进行确定的。根据查阅资料得知，一个好的起点是<strong>每批处理数据 5-15 MB</strong>，这是个什么概念？</p>
-<blockquote>
-<p>1000 个 1kb 的文档大约 1MB；1000 个 100kb 的文档是 100MB。</p>
-</blockquote>
-<p>然后<strong>逐步增加每批处理数据容量</strong>，进行调优，直到最终性能无法再次提升。还有一个方法，那便是提升硬件，比如<strong>换固态</strong>，你懂得~</p>
-<p>还有一种方法提升写入效率，这是终极操作，那便是 <code>sliced</code>。<code>reindex</code> 支持 Sliced Scroll 操作。它的原理可以简单的理解为将每次的 Scroll 请求分解，分解后并行化请求，从而提升效率。方式为：</p>
-<figure class="highlight json"><table><tr><td class="code"><pre><span class="line">POST _reindex?slices=5&amp;refresh</span><br><span class="line">&#123;</span><br><span class="line">  <span class="attr">"source"</span>: &#123;</span><br><span class="line">    <span class="attr">"index"</span>: <span class="string">"要备份的索引名"</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">"dest"</span>: &#123;</span><br><span class="line">    <span class="attr">"index"</span>: <span class="string">"新建的索引名"</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="2-删除索引中指定的数据"><a href="#2-删除索引中指定的数据" class="headerlink" title="2.删除索引中指定的数据"></a>2.删除索引中指定的数据</h2><p><strong>请求方式：POST</strong></p>
-<p><strong>请求 API <code>_delete_by_query</code></strong></p>
-<figure class="highlight json"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="attr">"query"</span>: &#123;</span><br><span class="line">        <span class="attr">"match"</span>: &#123;</span><br><span class="line">            <span class="attr">"字段名"</span>: <span class="string">"字段值"</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>方法便是先查出指定数据再删除。</p>
-</blockquote>
-<h2 id="3-设置副本数、分片、动态映射"><a href="#3-设置副本数、分片、动态映射" class="headerlink" title="3. 设置副本数、分片、动态映射"></a>3. 设置副本数、分片、动态映射</h2><p>设置这些指标项可在建立 mapping 时一同设置。</p>
-<figure class="highlight"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="attr">"settings"</span>:&#123;</span><br><span class="line">        <span class="attr">"index"</span>:&#123;</span><br><span class="line">            // 刷新间隔</span><br><span class="line">            "refresh_interval":"3s"</span><br><span class="line">        &#125;,</span><br><span class="line">        // 副本数</span><br><span class="line">        "number_of_replicas":"0",</span><br><span class="line">        // 切片（分布在每个节点上的切片）</span><br><span class="line">        "number_of_shards":"1"</span><br><span class="line">    &#125;,</span><br><span class="line">    "mappings":&#123;</span><br><span class="line">        "_doc":&#123;</span><br><span class="line">            // 自动映射为 keyword 类型而不是默认的text类型</span><br><span class="line">            "dynamic_templates":[</span><br><span class="line">                &#123;</span><br><span class="line">                    <span class="attr">"string_fields"</span>:&#123;</span><br><span class="line">                        <span class="attr">"match"</span>:<span class="string">"*"</span>,</span><br><span class="line">                        <span class="attr">"match_mapping_type"</span>:<span class="string">"string"</span>,</span><br><span class="line">                        <span class="attr">"mapping"</span>:&#123;</span><br><span class="line">                            <span class="attr">"type"</span>:<span class="string">"keyword"</span>,</span><br><span class="line">                            <span class="attr">"norms"</span>:<span class="literal">false</span></span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            ],</span><br><span class="line">            // 建立mapping</span><br><span class="line">            "properties":&#123;</span><br><span class="line">                "mydate":&#123;</span><br><span class="line">                    "type":"date",</span><br><span class="line">                    "format":"yyyy/MM/dd HH:mm:ss||date_time||strict_date_time"</span><br><span class="line">                &#125;,</span><br><span class="line">                "字段名":&#123;</span><br><span class="line">                    "type":"字段类型"</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-]]></content>
-      <categories>
-        <category>elasticsearch</category>
-      </categories>
-      <tags>
-        <tag>elasticsearch</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Git 上传大文件</title>
     <url>/Git%20%E4%B8%8A%E4%BC%A0%E5%A4%A7%E6%96%87%E4%BB%B6/</url>
     <content><![CDATA[ <center>Author：闫玉良</center> 
@@ -4150,6 +4173,52 @@ bat 脚本？如果不是从事微软开发相关工作的人员，是不是感�
       </categories>
       <tags>
         <tag>git</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Elasticsearch 中这些必备 API 你晓得嘛？</title>
+    <url>/Elasticsearch%20%E4%B8%AD%E8%BF%99%E4%BA%9B%E5%BF%85%E5%A4%87%20API%20%E4%BD%A0%E6%99%93%E5%BE%97%E5%98%9B%EF%BC%9F/</url>
+    <content><![CDATA[ <center>Author：闫玉良</center> 
+
+
+<p>众所周知，ES 中的 mapping 只能在索引建立初期进行创建，且建立之后不可更改。mapping 对应的字段会映射成指定类型，未定义字段则自动映射，一般为 text 类型。那么想更改索引名或者更改某字段的 mapping 时，是否就束手无策了呢？当然不是！！！官方提供了一个接口，供索引备份迁移操作使用，那便是 <strong>reindex</strong>。当旧索引与新索引在同一节点时，效率相当高，万条数据瞬间完成（<code>大约只需0.4s</code>）。数百万数据也只需几分钟即可完成 操作，是不是很溜呢？快来学习一下吧。</p>
+ <a id="more"></a> 
+
+<p><strong><em>更多精彩文章请关注公众号『Pythonnote』或者『全栈技术精选』</em></strong></p>
+<h2 id="1-索引备份迁移"><a href="#1-索引备份迁移" class="headerlink" title="1.索引备份迁移"></a>1.索引备份迁移</h2><p><strong>请求方式：POST</strong></p>
+<p><strong>请求 API <code>_reindex</code></strong></p>
+<figure class="highlight json"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">"source"</span>: &#123;</span><br><span class="line">    <span class="attr">"index"</span>: <span class="string">"要备份的索引名"</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">"dest"</span>: &#123;</span><br><span class="line">    <span class="attr">"index"</span>: <span class="string">"新建的索引名"</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>如果新索引中有数据，且 id 与旧索引中重复，那么会进行覆盖操作。</p>
+</blockquote>
+<p>但是当数据量实在太大，高达几十 G 的时候，速度就会变得很慢，那是因为它底层还是利用了 scroll 操作。该如何进行<strong>优化</strong>呢？可以提升批量操作的文档数大小，如下：</p>
+<figure class="highlight json"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">"source"</span>: &#123;</span><br><span class="line">    <span class="attr">"index"</span>: <span class="string">"要备份的索引名"</span>,</span><br><span class="line">    <span class="attr">"size"</span> : <span class="number">5000</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">"dest"</span>: &#123;</span><br><span class="line">    <span class="attr">"index"</span>  : <span class="string">"新建的索引名"</span>,</span><br><span class="line">    <span class="attr">"routing"</span>: <span class="string">"=cat"</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>批量操作大小是如何确定的呢？是根据文档数以及文档容量进行确定的。根据查阅资料得知，一个好的起点是<strong>每批处理数据 5-15 MB</strong>，这是个什么概念？</p>
+<blockquote>
+<p>1000 个 1kb 的文档大约 1MB；1000 个 100kb 的文档是 100MB。</p>
+</blockquote>
+<p>然后<strong>逐步增加每批处理数据容量</strong>，进行调优，直到最终性能无法再次提升。还有一个方法，那便是提升硬件，比如<strong>换固态</strong>，你懂得~</p>
+<p>还有一种方法提升写入效率，这是终极操作，那便是 <code>sliced</code>。<code>reindex</code> 支持 Sliced Scroll 操作。它的原理可以简单的理解为将每次的 Scroll 请求分解，分解后并行化请求，从而提升效率。方式为：</p>
+<figure class="highlight json"><table><tr><td class="code"><pre><span class="line">POST _reindex?slices=5&amp;refresh</span><br><span class="line">&#123;</span><br><span class="line">  <span class="attr">"source"</span>: &#123;</span><br><span class="line">    <span class="attr">"index"</span>: <span class="string">"要备份的索引名"</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">"dest"</span>: &#123;</span><br><span class="line">    <span class="attr">"index"</span>: <span class="string">"新建的索引名"</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="2-删除索引中指定的数据"><a href="#2-删除索引中指定的数据" class="headerlink" title="2.删除索引中指定的数据"></a>2.删除索引中指定的数据</h2><p><strong>请求方式：POST</strong></p>
+<p><strong>请求 API <code>_delete_by_query</code></strong></p>
+<figure class="highlight json"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="attr">"query"</span>: &#123;</span><br><span class="line">        <span class="attr">"match"</span>: &#123;</span><br><span class="line">            <span class="attr">"字段名"</span>: <span class="string">"字段值"</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>方法便是先查出指定数据再删除。</p>
+</blockquote>
+<h2 id="3-设置副本数、分片、动态映射"><a href="#3-设置副本数、分片、动态映射" class="headerlink" title="3. 设置副本数、分片、动态映射"></a>3. 设置副本数、分片、动态映射</h2><p>设置这些指标项可在建立 mapping 时一同设置。</p>
+<figure class="highlight"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="attr">"settings"</span>:&#123;</span><br><span class="line">        <span class="attr">"index"</span>:&#123;</span><br><span class="line">            // 刷新间隔</span><br><span class="line">            "refresh_interval":"3s"</span><br><span class="line">        &#125;,</span><br><span class="line">        // 副本数</span><br><span class="line">        "number_of_replicas":"0",</span><br><span class="line">        // 切片（分布在每个节点上的切片）</span><br><span class="line">        "number_of_shards":"1"</span><br><span class="line">    &#125;,</span><br><span class="line">    "mappings":&#123;</span><br><span class="line">        "_doc":&#123;</span><br><span class="line">            // 自动映射为 keyword 类型而不是默认的text类型</span><br><span class="line">            "dynamic_templates":[</span><br><span class="line">                &#123;</span><br><span class="line">                    <span class="attr">"string_fields"</span>:&#123;</span><br><span class="line">                        <span class="attr">"match"</span>:<span class="string">"*"</span>,</span><br><span class="line">                        <span class="attr">"match_mapping_type"</span>:<span class="string">"string"</span>,</span><br><span class="line">                        <span class="attr">"mapping"</span>:&#123;</span><br><span class="line">                            <span class="attr">"type"</span>:<span class="string">"keyword"</span>,</span><br><span class="line">                            <span class="attr">"norms"</span>:<span class="literal">false</span></span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            ],</span><br><span class="line">            // 建立mapping</span><br><span class="line">            "properties":&#123;</span><br><span class="line">                "mydate":&#123;</span><br><span class="line">                    "type":"date",</span><br><span class="line">                    "format":"yyyy/MM/dd HH:mm:ss||date_time||strict_date_time"</span><br><span class="line">                &#125;,</span><br><span class="line">                "字段名":&#123;</span><br><span class="line">                    "type":"字段类型"</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>elasticsearch</category>
+      </categories>
+      <tags>
+        <tag>elasticsearch</tag>
       </tags>
   </entry>
   <entry>
