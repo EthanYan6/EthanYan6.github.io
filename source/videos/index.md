@@ -16,6 +16,6 @@ date: 2020-02-28 09:42:52
 
 
 
-<center> > 欢迎扫描下方二维码关注本人微信公众号 < </center>
+<center> > 扫描下方二维码关注微信公众号 < </center>
 
 ![全栈技术精选](https://gitee.com/Ethanyan/pic_data/raw/master/Pythonnote.png)
