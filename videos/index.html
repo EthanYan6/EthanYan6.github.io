@@ -33,7 +33,7 @@
   <div id="app">
     <main class="content">
       <section class="outer">
-  <article id="page-" class="article article-type-page" itemscope
+  <article id="post-videos" class="article article-type-post" itemscope
   itemprop="blogPost" data-scroll-reveal>
 
   <div class="article-inner">
@@ -49,6 +49,45 @@
     
 
     
+    <div class="article-meta">
+      <a href="/videos/" class="article-date">
+  <time datetime="2020-02-28T01:42:52.000Z" itemprop="datePublished">2020-02-28</time>
+</a>
+      
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/website/">website</a>
+  </div>
+
+      
+      
+<div class="word_count">
+    <span class="post-time">
+        <span class="post-meta-item-icon">
+            <i class="ri-quill-pen-line"></i>
+            <span class="post-meta-item-text"> 字数统计:</span>
+            <span class="post-count">77字</span>
+        </span>
+    </span>
+
+    <span class="post-time">
+        &nbsp; | &nbsp;
+        <span class="post-meta-item-icon">
+            <i class="ri-book-open-line"></i>
+            <span class="post-meta-item-text"> 阅读时长≈</span>
+            <span class="post-count">1分钟</span>
+        </span>
+    </span>
+</div>
+
+      
+    </div>
+    
+
+    
+    
+
+
+
 
     
 
@@ -61,6 +100,8 @@
 
       
       <center>小闫邀您观看</center>
+
+<a id="more"></a>
 
 <blockquote>
 <p>以下内容均为个人录制，发表于微信公众号「全栈技术精选」与微信视频号「小闫同学啊」</p>
@@ -148,6 +189,8 @@
 <div id="share-mask"></div>
       
       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/website/" rel="tag">website</a></li></ul>
+
 
     </footer>
 
@@ -155,11 +198,52 @@
 
   
   
+  <nav class="article-nav">
+    
+      <a href="/%E6%9C%89%E4%BA%86Pycharm%EF%BC%8C%E5%B0%B1%E5%8D%B8%E8%BD%BD%E4%BA%86Postman%E5%90%A7/" class="article-nav-link">
+        <strong class="article-nav-caption">上一篇</strong>
+        <div class="article-nav-title">
+          
+            有了Pycharm，就卸载了Postman吧
+          
+        </div>
+      </a>
+    
+    
+      <a href="/%E5%85%B3%E7%B3%BB%E6%95%B0%E6%8D%AE%E5%BA%93%E4%B9%8B%E5%AD%98%E5%82%A8%E8%BF%87%E7%A8%8B/" class="article-nav-link">
+        <strong class="article-nav-caption">下一篇</strong>
+        <div class="article-nav-title">关系数据库之存储过程</div>
+      </a>
+    
+  </nav>
+
 
   
 
   
 
+  
+  
+  <div class="gitalk" id="gitalk-container"></div>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.6.2/dist/gitalk.css">
+  <script src="https://cdn.jsdelivr.net/npm/gitalk@1.6.2/dist/gitalk.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/blueimp-md5@2.10.0/js/md5.min.js"></script>
+  <script type="text/javascript">
+    var gitalk = new Gitalk({
+      clientID: '7fca30c64efa45b3b8bf',
+      clientSecret: '07412c4cdedf0c21192e8db8f6e550d9d2774639',
+      repo: 'blog-comment',
+      owner: 'EthanYan6',
+      admin: ['EthanYan6'],
+      // id: location.pathname,      // Ensure uniqueness and length less than 50
+      id: md5(location.pathname),
+      distractionFreeMode: false,  // Facebook-like distraction free mode
+      pagerDirection: 'last'
+    })
+  
+    gitalk.render('gitalk-container')
+  </script>
+  
   
 
 </article>
@@ -251,7 +335,7 @@
     </li>
     
     <li class="nav-item">
-      <a class="nav-item-link" href="/videos">视频</a>
+      <a class="nav-item-link" href="https://www.pythonnote.cn/videos">视频</a>
     </li>
     
     <li class="nav-item">
@@ -259,7 +343,7 @@
     </li>
     
     <li class="nav-item">
-      <a class="nav-item-link" href="/about">关于</a>
+      <a class="nav-item-link" href="https://www.pythonnote.cn/about%20me/">关于</a>
     </li>
     
   </ul>
@@ -334,6 +418,28 @@
 </script>
 
 
+
+<script src="/js/tocbot.min.js"></script>
+<script>
+  // Tocbot_v4.7.0  http://tscanlin.github.io/tocbot/
+  tocbot.init({
+    tocSelector: '.tocbot',
+    contentSelector: '.article-entry',
+    headingSelector: 'h1, h2, h3, h4, h5, h6',
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    scrollContainer:'main',
+    positionFixedSelector: '.tocbot',
+    positionFixedClass: 'is-position-fixed',
+    fixedSidebarOffset: 'auto',
+    onClick: (e) => {
+      $('.toc-link').removeClass('is-active-link');
+      $(`a[href=${e.target.hash}]`).addClass('is-active-link');
+      $(e.target.hash).scrollIntoView();
+      return false;
+    }
+  });
+</script>
 
 
 <script>
