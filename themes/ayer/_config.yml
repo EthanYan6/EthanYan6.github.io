@@ -42,7 +42,7 @@ music:
   # 播放器尺寸类型(1：小尺寸、2：大尺寸)
   type: 1
   id: 1385179994  # 网易云分享的音乐ID(更换音乐请更改此配置项)
-  autoPlay: true  # 是否开启自动播放
+  autoPlay: false  # 是否开启自动播放
 
 # 文章配置
 # 文章太长，截断按钮文字(在需要截断的行增加此标记：<!--more-->)
@@ -128,6 +128,9 @@ github:
 
 # fancybox(仅用于相册展示，若需要可配置albums)
 fancybox: true
+
+# 页面点击小红心(开启请设置为true)
+clickLove: true
 
 # 访问量统计(不蒜子)
 busuanzi:
