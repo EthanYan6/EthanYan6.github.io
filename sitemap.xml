@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://www.pythonnote.cn/about/index.html</loc>
+    
+    <lastmod>2020-04-05T05:54:55.802Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://www.pythonnote.cn/redis%E5%BB%B6%E4%BC%B8/</loc>
     
     <lastmod>2020-03-24T12:29:06.255Z</lastmod>
@@ -75,13 +82,6 @@
     <loc>https://www.pythonnote.cn/tags/index.html</loc>
     
     <lastmod>2020-03-12T10:21:09.479Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://www.pythonnote.cn/about/index.html</loc>
-    
-    <lastmod>2020-03-12T10:07:11.784Z</lastmod>
     
   </url>
   
