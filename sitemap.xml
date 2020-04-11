@@ -2,16 +2,23 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://www.pythonnote.cn/videos/</loc>
+    <loc>https://www.pythonnote.cn/Pocoo%E9%A3%8E%E6%A0%BC/</loc>
     
-    <lastmod>2020-04-05T06:14:40.004Z</lastmod>
+    <lastmod>2020-04-11T12:38:04.128Z</lastmod>
     
   </url>
   
   <url>
     <loc>https://www.pythonnote.cn/about%20me/</loc>
     
-    <lastmod>2020-04-05T06:14:06.578Z</lastmod>
+    <lastmod>2020-04-05T06:23:06.445Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://www.pythonnote.cn/videos/</loc>
+    
+    <lastmod>2020-04-05T06:14:40.004Z</lastmod>
     
   </url>
   

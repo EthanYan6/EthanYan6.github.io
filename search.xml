@@ -1,6 +1,83 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Pocoo风格</title>
+    <url>/Pocoo%E9%A3%8E%E6%A0%BC/</url>
+    <content><![CDATA[<p>「无规矩不成方圆」<code>Python</code> 官方为所有开发人员制定了一套编码规范 - <code>PEP 8</code>。然而大部分研发团队并没有满足于此，就如同 <code>Flask</code> 框架的开发团队 <code>Pocoo</code> ，基于 <code>PEP 8</code> 进行调整扩充，形成了一套新的编码风格。如果你的项目正好使用了此框架，强烈建议仔细阅读。</p>
+<a id="more"></a>
+
+<p><strong><em>更多精彩文章请关注公众号『Pythonnote』或者『全栈技术精选』</em></strong></p>
+<h2 id="1-整体布局"><a href="#1-整体布局" class="headerlink" title="1.整体布局"></a>1.整体布局</h2><p>1) 缩进采用4个空格，而非制表符（ <code>Tab</code> 键）</p>
+<p>2) 每行代码的长度不应该超过84个字符，最好保持在79个以内</p>
+<blockquote>
+<p>可以通过 <code>break</code> 、 <code>continue</code> 和 <code>return</code> 等关键字避免层层嵌套，既保持代码的美观，又提升可读性（不必左右拉取进度条）。</p>
+</blockquote>
+<p>3) 如果代码超过如何续行？可以尝试反斜杠 <code>\</code>  ，如下方的示例：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">this_is_a_very_long(function_call, 'with many parameters') \</span><br><span class="line">    .that_returns_an_object_with_an_attribute</span><br><span class="line"></span><br><span class="line">MyModel.query.filter(MyModel.scalar &gt; 120) \</span><br><span class="line">             .order_by(MyModel.name.desc()) \</span><br><span class="line">             .limit(10)</span><br><span class="line">             </span><br><span class="line">this_is_a_very_long(function_call, 'with many parameters',</span><br><span class="line">                    23, 42, 'and even more')</span><br><span class="line">                    </span><br><span class="line">items = [</span><br><span class="line">    'this is the first', 'set of items', 'with more items',</span><br><span class="line">    'to come in this line', 'like this'</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>注意：为了保持美观，可以将链式调用中每个方法前的点 <code>.</code> 对齐；如果是括号内的换行，请将下一行与上一行的括号对齐，不需要使用续行符号；如果字典、列表、元祖内元素超级多，在起始括号后立即换行。</p>
+</blockquote>
+<p>4) 顶层函数和类由两个空行分隔，其它一个空行。不要使用过多空行来分隔代码逻辑段。例如:</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">def hello(name):</span><br><span class="line">    print 'Hello %s!' % name</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def goodbye(name):</span><br><span class="line">    print 'See you %s.' % name</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">class MyClass(object):</span><br><span class="line">    """This is a simple docstring"""</span><br><span class="line"></span><br><span class="line">    def __init__(self, name):</span><br><span class="line">        self.name = name</span><br><span class="line"></span><br><span class="line">    def get_annoying_name(self):</span><br><span class="line">        return self.name.upper() + '!!!!111'</span><br></pre></td></tr></table></figure>
+
+<h2 id="2-表达式与代码语句"><a href="#2-表达式与代码语句" class="headerlink" title="2.表达式与代码语句"></a>2.表达式与代码语句</h2><h3 id="2-1-常规空格规则"><a href="#2-1-常规空格规则" class="headerlink" title="2.1 常规空格规则"></a>2.1 常规空格规则</h3><p>1) 不是关键词的一元运算符不使用空格（例如： <code>-</code>、 <code>~</code> 等等），对于圆括号也是这样。</p>
+<p>2) 用空格包围二元运算符。</p>
+<p>对:</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">exp = -1.05</span><br><span class="line">value = (item_value / item_count) * offset / exp</span><br><span class="line">value = my_list[index]</span><br><span class="line">value = my_dict['key']</span><br></pre></td></tr></table></figure>
+
+<p>错:</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">exp = - 1.05</span><br><span class="line">value = ( item_value / item_count ) * offset / exp</span><br><span class="line">value = (item_value/item_count)*offset/exp</span><br><span class="line">value=( item_value/item_count ) * offset/exp</span><br><span class="line">value = my_list[ index ]</span><br><span class="line">value = my_dict ['key']</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-2-禁止-Yoda-语句"><a href="#2-2-禁止-Yoda-语句" class="headerlink" title="2.2 禁止 Yoda 语句"></a>2.2 禁止 <code>Yoda</code> 语句</h3><p>永远不要用变量来比较常量，而是用常量来比较变量：</p>
+<p>对:</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">if method == 'md5':</span><br><span class="line">    pass</span><br></pre></td></tr></table></figure>
+
+<p>错:</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">if 'md5' == method:</span><br><span class="line">    pass</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-3-比较"><a href="#2-3-比较" class="headerlink" title="2.3 比较"></a>2.3 比较</h3><p>1) 针对任意类型使用 <code>==</code> 和 <code>!=</code></p>
+<p>2) 针对单一类型使用 <code>is</code> 和 <code>is not</code>（例如： <code>foo is not None</code> ）</p>
+<p>3) 永远不要与 <code>True</code> 或 <code>False</code> 作比较（例如永远不要写 <code>foo == False</code> ，而应当写 <code>not foo</code> ）</p>
+<h3 id="2-4-排除检验"><a href="#2-4-排除检验" class="headerlink" title="2.4 排除检验"></a>2.4 排除检验</h3><p>使用 <code>foo not in bar</code> 而不是 <code>not foo in bar</code></p>
+<h3 id="2-5-实例检验"><a href="#2-5-实例检验" class="headerlink" title="2.5 实例检验"></a>2.5 实例检验</h3><p>使用 <code>isinstance(a, C)</code> 而不是 <code>type(A) is C</code> ，但是通常应当避免检验实例，而应当检验特性。</p>
+<h2 id="3-命名"><a href="#3-命名" class="headerlink" title="3.命名"></a>3.命名</h2><p>1) 类名采用大驼峰： <code>CamelCase</code> ，缩写词大写（ <code>HTTPWriter</code> 而不是 <code>HttpWriter</code>）</p>
+<p>2) 变量名采用下划线连接： <code>lowercase_with_underscores</code></p>
+<p>3) 方法和函数名采用下划线连接： <code>lowercase_with_underscores</code></p>
+<p>4) 常量全部大写并采用下划线连接： <code>UPPERCASE_WITH_UNDERSCORES</code></p>
+<p>5) 预编译正则表达式： <code>name_re</code></p>
+<p>被保护的成员以单个下划线作为前缀，混合类则使用双下划线。</p>
+<p>如果使用关键字作为类的名称，那么在名称末尾添加下划线。与内置构件冲突是允许的，请一定不要用 在变量名后添加下划线 的方式解决冲突。如果函数需要访问一个隐蔽的内置构件，请重新绑定内置构件到一个不同的名字。</p>
+<h3 id="3-1-函数和方法参数"><a href="#3-1-函数和方法参数" class="headerlink" title="3.1 函数和方法参数"></a>3.1 函数和方法参数</h3><p>1) 类方法: <code>cls</code> 作为第一个参数</p>
+<p>2) 实例方法: <code>self</code> 作为第一个参数</p>
+<p>3) 用于属性的 <code>lambda</code> 表达式应该把第一个参数替换为 <code>x</code> ， 像下方代码一样：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">display_name = property(lambda x: x.real_name or x.username)</span><br></pre></td></tr></table></figure>
+
+<h2 id="4-文档字符串"><a href="#4-文档字符串" class="headerlink" title="4.文档字符串"></a>4.文档字符串</h2><h3 id="4-1-文档字符串约定"><a href="#4-1-文档字符串约定" class="headerlink" title="4.1 文档字符串约定"></a>4.1 文档字符串约定</h3><p>所有的文档字符串为 <code>Sphinx</code> 可理解的 <code>reStructuredText</code> 格式。它们的形态 因行数不同而不同。如果只有一行，三引号闭合在同一行，否则开头的三引号与文本在同一行，结尾的三引号独立一行:</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">def foo():</span><br><span class="line">    """This is a simple docstring"""</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def bar():</span><br><span class="line">    """This is a longer docstring with so much information in there</span><br><span class="line">    that it spans three lines.  In this case the closing triple quote</span><br><span class="line">    is on its own line.</span><br><span class="line">    """</span><br></pre></td></tr></table></figure>
+
+<h3 id="4-2-模块首行"><a href="#4-2-模块首行" class="headerlink" title="4.2 模块首行"></a>4.2 模块首行</h3><p>模块首行包含一个 <code>utf-8</code> 编码声明（即使没有使用非 <code>ASCII</code> 字符，也始终推荐这么做）和一个标准的文档字符串:</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> -*- coding: utf-8 -*-</span></span><br><span class="line">"""</span><br><span class="line">    package.module</span><br><span class="line">    ~~~~~~~~~~~~~~</span><br><span class="line"></span><br><span class="line">    A brief description goes here.</span><br><span class="line"></span><br><span class="line">    :copyright: (c) YEAR by AUTHOR.</span><br><span class="line">    :license: LICENSE_NAME, see LICENSE_FILE for more details.</span><br><span class="line">"""</span><br></pre></td></tr></table></figure>
+
+<p>谨记使用合适的版权和许可证文件以利于通过 <code>Flask</code> 扩展审核。</p>
+<h2 id="5-注释"><a href="#5-注释" class="headerlink" title="5.注释"></a>5.注释</h2><p>注释的规则与文档字符串类似。两者都使用 <code>reStructuredText</code> 格式。如果一个 注释被用于一个说明类属性，在起始的井号（ <code>#</code> ）后加一个冒号:</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">class User(object):</span><br><span class="line">    #: the name of the user as unicode string</span><br><span class="line">    name = Column(String)</span><br><span class="line">    #: the sha1 hash of the password + inline salt</span><br><span class="line">    pw_hash = Column(String)</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>翻译自官方文档 <a href="https://flask.palletsprojects.com/en/1.0.x/styleguide/" target="_blank" rel="noopener">https://flask.palletsprojects.com/en/1.0.x/styleguide/</a></p>
+</blockquote>
+<p><strong><em>更多精彩文章请关注公众号『Pythonnote』或者『全栈技术精选』</em></strong></p>
+]]></content>
+      <categories>
+        <category>flask</category>
+        <category>pocoo</category>
+      </categories>
+      <tags>
+        <tag>flask</tag>
+        <tag>pocoo</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>redis延伸</title>
     <url>/redis%E5%BB%B6%E4%BC%B8/</url>
     <content><![CDATA[<center>Author：闫玉良</center>

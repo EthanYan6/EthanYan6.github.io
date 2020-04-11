@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://www.pythonnote.cn/"/>
-  <updated>2020-03-24T12:29:06.255Z</updated>
+  <updated>2020-04-11T12:38:04.128Z</updated>
   <id>https://www.pythonnote.cn/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Pocoo风格</title>
+    <link href="https://www.pythonnote.cn/Pocoo%E9%A3%8E%E6%A0%BC/"/>
+    <id>https://www.pythonnote.cn/Pocoo%E9%A3%8E%E6%A0%BC/</id>
+    <published>2020-04-11T11:03:49.000Z</published>
+    <updated>2020-04-11T12:38:04.128Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;「无规矩不成方圆」&lt;code&gt;Python&lt;/code&gt; 官方为所有开发人员制定了一套编码规范 - &lt;code&gt;PEP 8&lt;/code&gt;。然而大部分研发团队并没有满足于此，就如同 &lt;code&gt;Flask&lt;/code&gt; 框架的开发团队 &lt;code&gt;Pocoo&lt;/code&gt; ，基于 &lt;code&gt;PEP 8&lt;/code&gt; 进行调整扩充，形成了一套新的编码风格。如果你的项目正好使用了此框架，强烈建议仔细阅读。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="flask" scheme="https://www.pythonnote.cn/categories/flask/"/>
+    
+      <category term="pocoo" scheme="https://www.pythonnote.cn/categories/flask/pocoo/"/>
+    
+    
+      <category term="flask" scheme="https://www.pythonnote.cn/tags/flask/"/>
+    
+      <category term="pocoo" scheme="https://www.pythonnote.cn/tags/pocoo/"/>
+    
+  </entry>
   
   <entry>
     <title>redis延伸</title>
@@ -460,33 +485,6 @@
       <category term="算法" scheme="https://www.pythonnote.cn/tags/%E7%AE%97%E6%B3%95/"/>
     
       <category term="机器学习" scheme="https://www.pythonnote.cn/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>机器学习算法之决策树</title>
-    <link href="https://www.pythonnote.cn/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%AE%97%E6%B3%95%E4%B9%8B%E5%86%B3%E7%AD%96%E6%A0%91/"/>
-    <id>https://www.pythonnote.cn/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%AE%97%E6%B3%95%E4%B9%8B%E5%86%B3%E7%AD%96%E6%A0%91/</id>
-    <published>2020-02-22T07:42:01.000Z</published>
-    <updated>2020-02-22T11:44:35.860Z</updated>
-    
-    <summary type="html">
-    
-      &lt;center&gt;Editor：闫玉良&lt;/center&gt;
-
-&lt;p&gt;今天来学习一种新的&lt;strong&gt;分类&lt;/strong&gt;算法「决策树」&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="算法" scheme="https://www.pythonnote.cn/categories/%E7%AE%97%E6%B3%95/"/>
-    
-      <category term="数据结构" scheme="https://www.pythonnote.cn/categories/%E7%AE%97%E6%B3%95/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
-    
-    
-      <category term="算法" scheme="https://www.pythonnote.cn/tags/%E7%AE%97%E6%B3%95/"/>
-    
-      <category term="数据结构" scheme="https://www.pythonnote.cn/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
     
   </entry>
   
