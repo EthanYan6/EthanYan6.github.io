@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://www.pythonnote.cn/"/>
-  <updated>2020-04-12T16:28:52.087Z</updated>
+  <updated>2020-04-16T13:19:23.260Z</updated>
   <id>https://www.pythonnote.cn/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Hadoop学习笔记(一)</title>
+    <link href="https://www.pythonnote.cn/Hadoop%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E4%B8%80/"/>
+    <id>https://www.pythonnote.cn/Hadoop%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E4%B8%80/</id>
+    <published>2020-04-16T09:18:04.000Z</published>
+    <updated>2020-04-16T13:19:23.260Z</updated>
+    
+    <summary type="html">
+    
+      &lt;center&gt;Author：闫玉良&lt;/center&gt;
+
+&lt;p&gt;大数据必备技能之 &lt;code&gt;Hadoop&lt;/code&gt; ，你了解吗？&lt;/p&gt;
+&lt;p&gt;官方文档汇总：&lt;a href=&quot;https://www.pythonnote.cn/OfficialDocuments/&quot;&gt;https://www.pythonnote.cn/OfficialDocuments/&lt;/a&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;包含了后端常使用的各种文档，小闫静心制作，快收藏起来吧 ~&lt;/p&gt;
+&lt;/blockquote&gt;
+    
+    </summary>
+    
+    
+      <category term="hadoop" scheme="https://www.pythonnote.cn/categories/hadoop/"/>
+    
+    
+      <category term="hadoop" scheme="https://www.pythonnote.cn/tags/hadoop/"/>
+    
+  </entry>
   
   <entry>
     <title>Flask如何处理一个请求</title>
@@ -454,33 +481,6 @@
     
     
       <category term="sql" scheme="https://www.pythonnote.cn/tags/sql/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>机器学习算法之聚类算法</title>
-    <link href="https://www.pythonnote.cn/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%AE%97%E6%B3%95%E4%B9%8B%E8%81%9A%E7%B1%BB%E7%AE%97%E6%B3%95/"/>
-    <id>https://www.pythonnote.cn/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%AE%97%E6%B3%95%E4%B9%8B%E8%81%9A%E7%B1%BB%E7%AE%97%E6%B3%95/</id>
-    <published>2020-02-24T10:34:27.000Z</published>
-    <updated>2020-02-24T07:05:45.609Z</updated>
-    
-    <summary type="html">
-    
-      &lt;center&gt;Editor：闫玉良&lt;/center&gt;
-
-&lt;p&gt;今日开启新算法的学习「聚类算法」&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="算法" scheme="https://www.pythonnote.cn/categories/%E7%AE%97%E6%B3%95/"/>
-    
-      <category term="机器学习" scheme="https://www.pythonnote.cn/categories/%E7%AE%97%E6%B3%95/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
-    
-    
-      <category term="算法" scheme="https://www.pythonnote.cn/tags/%E7%AE%97%E6%B3%95/"/>
-    
-      <category term="机器学习" scheme="https://www.pythonnote.cn/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
     
   </entry>
   
