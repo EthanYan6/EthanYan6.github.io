@@ -10,7 +10,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
   <title>
-    Hadoop学习笔记(一) |  EthanYan&#39;s Blog
+    Hadoop学习笔记(二)之HDFS |  EthanYan&#39;s Blog
   </title>
   <meta name="generator" content="hexo-theme-yilia-plus">
   
@@ -33,7 +33,7 @@
   <div id="app">
     <main class="content">
       <section class="outer">
-  <article id="post-Hadoop学习笔记-一" class="article article-type-post" itemscope
+  <article id="post-Hadoop学习笔记-二" class="article article-type-post" itemscope
   itemprop="blogPost" data-scroll-reveal>
 
   <div class="article-inner">
@@ -41,7 +41,7 @@
     <header class="article-header">
        
 <h1 class="article-title sea-center" style="border-left:0" itemprop="name">
-  Hadoop学习笔记(一)
+  Hadoop学习笔记(二)之HDFS
 </h1>
   
 
@@ -50,8 +50,8 @@
 
     
     <div class="article-meta">
-      <a href="/Hadoop%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E4%B8%80/" class="article-date">
-  <time datetime="2020-04-16T09:18:04.000Z" itemprop="datePublished">2020-04-16</time>
+      <a href="/Hadoop%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E4%BA%8C/" class="article-date">
+  <time datetime="2020-04-17T07:27:21.000Z" itemprop="datePublished">2020-04-17</time>
 </a>
       
   <div class="article-category">
@@ -65,7 +65,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> 字数统计:</span>
-            <span class="post-count">1.3k字</span>
+            <span class="post-count">2.5k字</span>
         </span>
     </span>
 
@@ -74,7 +74,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-book-open-line"></i>
             <span class="post-meta-item-text"> 阅读时长≈</span>
-            <span class="post-count">4分钟</span>
+            <span class="post-count">9分钟</span>
         </span>
     </span>
 </div>
@@ -103,7 +103,7 @@
       
       <center>Author：闫玉良</center>
 
-<p>大数据必备技能之 <code>Hadoop</code> ，你了解吗？</p>
+<p> <code>Hadoop</code> 之分布式文件系统，你了解吗？</p>
 <p>官方文档汇总：<a href="https://www.pythonnote.cn/OfficialDocuments/">https://www.pythonnote.cn/OfficialDocuments/</a></p>
 <blockquote>
 <p>包含了后端常使用的各种文档，小闫静心制作，快收藏起来吧 ~</p>
@@ -111,34 +111,89 @@
 <a id="more"></a>
 
 <p><strong><em>更多精彩文章请关注公众号『Pythonnote』或者『全栈技术精选』</em></strong></p>
-<h1 id="Hadoop-简介"><a href="#Hadoop-简介" class="headerlink" title="Hadoop 简介"></a>Hadoop 简介</h1><h2 id="1-介绍"><a href="#1-介绍" class="headerlink" title="1.介绍"></a>1.介绍</h2><p><code>Hadoop</code> 是阿帕奇基金会(<code>Apache</code>)开源的一款分布式系统基础架构。由以下几部分组成：<code>HDFS</code> 、<code>MapReduce</code> 和 <code>YARN</code> 。它使用户可以快速简便的开发分布式程序去处理数据，而不需掌握过多的分布式知识以及底层实现逻辑。</p>
-<h2 id="2-发展史"><a href="#2-发展史" class="headerlink" title="2.发展史"></a>2.发展史</h2><p>1) 02年由 <code>Doug Cutting</code> 开发了一款网络搜索引擎 <code>Nutch</code> ，这便是 <code>Hadoop</code> 的前身。</p>
-<p>2) 03年到04年诞生了 <code>GFS</code> 和 <code>Map Reduce</code>。</p>
-<p>3) 08年 <code>Hadoop</code> 创造了最快排序 <code>1TB</code> 数据的新世界纪录。<code>Hive</code> 成为了它的子项目。</p>
-<p>4) 11年 <code>Hadoop</code> 1.0.0版本出现。</p>
-<p>5) 13年到15年 <code>Hadoop</code> 2.x版本诞生并不断更新迭代。</p>
-<p>6) 16年  <code>Hadoop</code> 进入3.x时代。</p>
-<h2 id="3-核心"><a href="#3-核心" class="headerlink" title="3.核心"></a>3.核心</h2><p>分布式文件系统 <code>HDFS</code> ；分布式计算系统 <code>MapReduce</code> ；分布式资源管理系统 <code>YARN</code> 。</p>
-<h3 id="3-1-HDFS"><a href="#3-1-HDFS" class="headerlink" title="3.1 HDFS"></a>3.1 HDFS</h3><p><strong>核心（角色）：</strong><code>NameNode</code>、<code>DataNode</code></p>
-<p><strong>作用：</strong>分布式文件存储</p>
-<p><strong>特点：</strong>高可靠性、高扩展性、高吞吐率。</p>
+<h1 id="HDFS"><a href="#HDFS" class="headerlink" title="HDFS"></a>HDFS</h1><h2 id="1-HDFS-入门"><a href="#1-HDFS-入门" class="headerlink" title="1.HDFS 入门"></a>1.HDFS 入门</h2><h3 id="1-1-背景"><a href="#1-1-背景" class="headerlink" title="1.1 背景"></a>1.1 背景</h3><p>面对各行各业日益增长的数据量，普通的机器无论在存储空间还是管理能力上都显得力不从心。既然单台机器的资源有限，那么增加机器的方式是否可行？答案是肯定的，于是乎出现了分布式的概念。分布式文件管理系统便可以将一堆机器组合在一起，并隐藏细节，让用户感觉与之前单机储存文件毫无差别，但其实文件是通过网络来访问的。</p>
+<h3 id="1-2-简介"><a href="#1-2-简介" class="headerlink" title="1.2 简介"></a>1.2 简介</h3><p>1) 官方称：<code>HDFS</code> 可以运行在廉价的服务器上，为海量的数据存储提供了高容错、高可靠性、高可扩展性、高获得性、高吞吐率等特征。</p>
+<p>2) <code>HDFS</code> 基于开源的 <code>GFS</code> 开发实现。</p>
+<p>3) <code>HDFS</code> 的默认存储单位是数据块 <code>Block</code>，默认数据块大小是 <code>64MB</code> 。文件存储时会分成一个个数据块，但是当一个小文件没达到数据块大小时，文件是多大就占用多大的空间。</p>
+<p>4) <code>NameNode</code> 称为元数据节点，管理保存所有的节点信息、文件信息等等。它的一些系统文件我们需要了解：<code>edits</code> 保存了一些操作信息；<code>fsimage</code> 是名字空间文件。</p>
+<p>5) 数据节点 <code>DataNode</code> 是存储数据的地方，一个文件会被分成若干个数据块储存在对应的数据节点上。数据节点的系统文件：以 <code>blk_</code> 开头无后缀的文件保存的就是数据块，以 <code>blk_</code> 开头以 <code>.meta</code> 结尾的文件则保存对应数据块的属性信息，<code>subdir</code> 开头的目录保存的也是数据块相关信息（数据块太多了，就一起放在这种目录下）。</p>
+<p>6) 从元数据节点 <code>Secondary Name Node</code> 虽然名字中有个「从」字，但并非是备份，而是与 <code>Name Node</code> 各司其职，它主要的作用是隔一段时间合并一下日志文件等，并帮助 <code>Name Node</code> 将内存中的元数据信息 <code>checkpoint</code> 到硬盘上。</p>
 <blockquote>
-<p>副本可以保证高可靠性</p>
+<p><code>checkpoint</code> 即检查点，保存某一刻内存数据到硬盘的文件中。</p>
 </blockquote>
-<p><strong>原理：</strong><code>NameNode</code> 负责管理存储所有的元数据信息（文件系统的目录信息、文件信息以及分块等信息）。<code>DataNode</code> 负责管理存储块文件。<code>DataNode</code> 会定时向 <code>NameNode</code> 报告自己的状态（比如磁盘空间、资源消耗、是死是活），可将此过程称为心跳。当客户端发起一次读或写的请求，请求先到达 <code>NameNode</code> ，它判断一下读写权限，再查找一个可用并适合的 <code>DataNode</code> ，然后向客户端返回该 <code>DataNode</code> 的相关信息。客户端拿到节点信息后与其交互，进行读或写操作。完成后客户端拿到对应结果（读取的数据或者写结果状态信息），最后向 <code>NameNode</code> 反馈结果。</p>
-<p>注意：<code>HDFS</code> 会将数据文件以指定的块大小拆分成数据块，并将数据块以副本的方式保存到不同的节点上。其中数据写入时采用的方式是先完成第一个副本，然后再将其复制到其他节点，保证一个节点出现异常，数据不会丢失。过程虽然复杂，但是用户无感知，所有的切分、容错、负载均衡等都悄悄的完成，使得用户只知道上传了一个文件或者读取了一个文件。</p>
-<h3 id="3-2-MapReduce"><a href="#3-2-MapReduce" class="headerlink" title="3.2 MapReduce"></a>3.2 MapReduce</h3><p><strong>核心：</strong><code>Map</code>(映射)、<code>Reduce</code>(归纳)</p>
-<p><strong>作用：</strong>大数据量计算</p>
-<p><strong>特点：</strong>简化并行应用开发，不需要关注并行计算底层实现，而是直接调用所提供的 <code>API</code> 即可。</p>
-<p><strong>原理：</strong>将输入的数据集切分为若干独立的数据块，由 <code>map</code> 任务以并行的方式处理。然后将 <code>map</code> 的输出先进性排序，然后再把结果输入 <code>reduce</code> 任务，由 <code>reduce</code> 任务来完成最终的统一处理。</p>
-<p>注意：部署 <code>Hadoop</code> 集群时，通常计算节点和存储节点部署在同一节点，使作业优先调度到那些已经存储有数据的节点进行计算，这样可以大大节省数据传输消耗的带宽。</p>
-<h3 id="3-3-YARN"><a href="#3-3-YARN" class="headerlink" title="3.3 YARN"></a>3.3 YARN</h3><p><strong>来源：</strong>是为了解除 <code>Hadoop1.x</code> 中只能运行 <code>MapReduce</code> 框架的限制，将 <code>MapReduce</code> 框架中 <code>Job Tracker</code> 的资源管理和作业调度监控功能进行分离。</p>
-<p><strong>作用：</strong>为运行在 <code>YARN</code> 上的分布式应用程序提供统一的资源管理和调度</p>
-<p><strong>特点：</strong>为 <code>Hadoop</code> 集群在利用率、资源统一管理和数据共享等方面带来了极大便利；可以运行不同类型的作业：<code>MapReduce</code> 、<code>Spark</code> 等计算框架。</p>
-<h2 id="4-选择原因"><a href="#4-选择原因" class="headerlink" title="4.选择原因"></a>4.选择原因</h2><p>首先当然是它开源，免费的原因（你懂得 ~）。其次就是社区活跃，参与的人超多，这样一来，在使用过程中有任何问题，随时可以找到解决办法，而不需死扣晦涩的文档。还有它适用于大数据分布式存储和计算的各个场景，满足很多人的需求。最后就是它的成熟性，发展的十余年间，被各大企业所验证。</p>
-<h2 id="5-版本"><a href="#5-版本" class="headerlink" title="5.版本"></a>5.版本</h2><p>1) 社区版（官方，免费，但可能需要自己再研发额外功能）</p>
-<p>2) <code>Cloudera CDH</code> （目前公司使用最多，安装、配置、升级等简便，文档完善，与 <code>Spark</code> 结合好，但是不开源，而且和社区版在某些功能上有些出入）</p>
-<p>3) <code>Hortonworks HDP</code> （原装 <code>Hadoop</code> ，开源，版本与社区版一致，支持 <code>Tez</code>，集成了开源监控方案 <code>Ganglia</code> 和 <code>Nagios</code>，但是安装升级等比较繁琐，需要费点功夫）</p>
+<h3 id="1-3-优点"><a href="#1-3-优点" class="headerlink" title="1.3 优点"></a>1.3 优点</h3><p>1) 可以处理超大文件（<code>MB</code> 到 <code>TB</code> 级别）</p>
+<p>2) 对于服务器要求不高，<code>Hadoop</code> 集群可部署在廉价的机器上节约项目成本，因为它的多副本，使你不必担心宕机等意外事故带来的影响。</p>
+<p>3) 一次写入，多次读取。</p>
+<p>4) 现在还支持对已有文件追加内容。</p>
+<h3 id="1-4-缺点"><a href="#1-4-缺点" class="headerlink" title="1.4 缺点"></a>1.4 缺点</h3><p>1) 不适合低延迟数据访问，即访问数据时间可能会长一些。</p>
+<p>2) 不适合存储大量小文件。因为存储一个文件，其元数据会保存在 <code>NameNode</code> 中，而 <code>NameNode</code> 的内存决定了 <code>HDFS</code> 储存文件的上限，大量小文件会耗费资源。</p>
+<blockquote>
+<p>文件存储后，其元数据（文件的相关信息，如创建日期，文件大小，存储路径等等）会保存在 <code>NameNode</code> 中。一个小文件和一个大文件的元数据大小是差不多的，元数据存储满后，不再接受文件存储。如果存储大量的小文件，会导致存储空间上的浪费，还会增加 <code>NameNode</code> 的压力，从而影响集群性能。可以采用 <code>Sequence File</code> 等方式对小文件进行合并，或者使用 <code>Name Node Federation</code> 的方式改善。</p>
+</blockquote>
+<h3 id="1-5-设计目标"><a href="#1-5-设计目标" class="headerlink" title="1.5 设计目标"></a>1.5 设计目标</h3><p>1) 集群中管理数量庞大的服务器，如何做到错误检测，快速、自动恢复是核心目标。</p>
+<p>2) 需要高数据传输带宽，保证支撑数以千万计的文件。</p>
+<p>3) 需要支持大文件存储。</p>
+<p>4) 移动计算而非移动数据。</p>
+<h3 id="1-6-架构"><a href="#1-6-架构" class="headerlink" title="1.6 架构"></a>1.6 架构</h3><p>1) <code>HDFS</code> 采用 <code>master/slave</code> 架构。</p>
+<p>2) 一个 <code>HDFS</code> 集群由一个 <code>NameNode</code> 和一些 <code>DataNode</code> 组成， <code>NameNode</code> 相当于控制中心，负责管理文件系统的名字空间、数据块与数据节点的映射以及数据节点的调度。 <code>DataNode</code> 则负责处理实际的客户端读写的请求，存储数据。</p>
+<h2 id="2-HDFS-基本操作"><a href="#2-HDFS-基本操作" class="headerlink" title="2.HDFS 基本操作"></a>2.HDFS 基本操作</h2><h3 id="2-1-HDFS-shell"><a href="#2-1-HDFS-shell" class="headerlink" title="2.1 HDFS shell"></a>2.1 HDFS shell</h3><blockquote>
+<p>先启动 <code>Hadoop</code> 才能使用</p>
+</blockquote>
+<p>1) 列出文件目录，同 <code>ls</code>：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hadoop fs -ls 目录路径</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>递归的查看文件可以使用 <code>-R</code> 参数</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 列出 /data 下的所有文件</span></span><br><span class="line">hadoop fs -ls -R /data</span><br></pre></td></tr></table></figure>
+
+<p>2) 在 <code>HDFS</code> 中创建文件夹</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hadoop fs -mkdir 文件夹名称</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>如果想嵌套（级联）的创建目录，可以使用 <code>-p</code> 参数</p>
+</blockquote>
+<p>3) 上传文件到 <code>HDFS</code></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hadoop fs -put 本地文件路径 HDFS文件路径</span><br></pre></td></tr></table></figure>
+
+<p>4) 从 <code>HDFS</code> 上下载文件</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hadoop fs -get HDFS文件路径 本地路径</span><br></pre></td></tr></table></figure>
+
+<p>5) 查看 <code>HDFS</code> 上某个文件内容</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hadoop fs -cat HDFS上文件路径</span><br></pre></td></tr></table></figure>
+
+<p>6) 统计目录下各文件的大小</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hadoop fs -du 目录路径</span><br></pre></td></tr></table></figure>
+
+<p>7) 删除  <code>HDFS</code> 上某个文件或文件夹</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hadoop fs -rm 文件</span><br><span class="line">hadoop fs -rmdir 文件夹</span><br></pre></td></tr></table></figure>
+
+<p>8) 帮助命令</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hadoop fs -help 命令</span><br></pre></td></tr></table></figure>
+
+<h2 id="3-HDFS-运行原理"><a href="#3-HDFS-运行原理" class="headerlink" title="3.HDFS 运行原理"></a>3.HDFS 运行原理</h2><h3 id="3-1-读流程"><a href="#3-1-读流程" class="headerlink" title="3.1 读流程"></a>3.1 读流程</h3><p>客户端通过 <code>RPC</code> 调用 <code>NameNode</code> 的相关方法，如果客户端身份验证成功，会获取到要读取的文件对应的数据块保存在哪些 <code>DataNode</code> 上；客户端向 <code>DataNode</code> 发起读取的请求，获取数据（客户端读取的是连续的流，但实际过程是先到最近的 <code>DataNode</code> 读取数据，读取完之后连接关闭，再去读取下一个 <code>DataNode</code> 上的数据块）；当所有的数据读取完成后，资源关闭。</p>
+<h3 id="3-2-写流程"><a href="#3-2-写流程" class="headerlink" title="3.2 写流程"></a>3.2 写流程</h3><p>客户端向 <code>NameNode</code> 发起  <code>RPC</code> 请求创建文件， <code>NameNode</code> 验证用户权限、检测文件是否存在，最终创建一条元数据信息，然后客户端开始向 <code>DataNode</code> 保存数据，进行切分并完成第一个副本的创建，再将其复制到其他的节点上，直到所有的节点完成后，关闭连接。</p>
+<h3 id="3-3-副本"><a href="#3-3-副本" class="headerlink" title="3.3 副本"></a>3.3 副本</h3><p><code>HDFS</code> 上文件对应的数据块保存有多个副本，并为其提供容错机制，当副本丢失或者宕机时，能够快速自动恢复。但是要注意，我们需要对副本系数进行设置，而且此系数一经写入，不可更改。</p>
+<h4 id="3-3-1-摆放策略"><a href="#3-3-1-摆放策略" class="headerlink" title="3.3.1 摆放策略"></a>3.3.1 摆放策略</h4><p>第一个副本放置在上传文件的 <code>Data Node</code> 上，如果是在集群外提交，则根据磁盘速度以及 <code>CPU</code> 效率选取一个节点。</p>
+<p>第二个副本放在与第一个副本不同机架的节点上。</p>
+<p>第三个副本放在与第二个副本相同机架的不同节点上。</p>
+<p>更多的副本就随机放在节点中。</p>
+<h3 id="3-4-负载均衡"><a href="#3-4-负载均衡" class="headerlink" title="3.4 负载均衡"></a>3.4 负载均衡</h3><p>1) 如果某个 <code>DataNode</code> 上空闲空间低于临界点，按照负载均衡策略，系统会自动将数据转移到其他空闲的 <code>DataNode</code> 上。</p>
+<p>2) 如果对某个文件的请求突然增加，有可能启动一个计划来创建该文件新的副本，最后再重新平衡集群中其他数据。</p>
+<p>3) <code>HDFS</code> 会调整存储分布以均衡 <code>IO</code> 性能，平衡 <code>IO</code> 负载，平均数据，平衡集群。</p>
+<p>4) <code>Hadoop</code> 的 <code>bin/start-balancer.sh</code> 脚本可以启动均衡服务。使用 <code>-threshold</code> 参数设置判断集群是否平衡的阈值；使用 <code>hdfs-site.xml</code> 文件中的 <code>dfs.balance.bandwidth</code> 设置 <code>Balancer</code> 运行时允许占用的带宽。 </p>
+<h2 id="4-HDFS-高级知识"><a href="#4-HDFS-高级知识" class="headerlink" title="4.HDFS 高级知识"></a>4.HDFS 高级知识</h2><h3 id="4-1-序列化机制"><a href="#4-1-序列化机制" class="headerlink" title="4.1 序列化机制"></a>4.1 序列化机制</h3><p>1) 序列化：将对象转化为字节流，以便在网络上传输或者写在磁盘上持久化存储。</p>
+<p>2) 反序列化：将字节流转回成对象。</p>
+<p>3) <code>Hadoop</code> 中多个节点进程间通讯是通过 <code>RPC</code> 完成的，所以需要序列化机制。</p>
+<p>4) <code>Hadoop</code> 序列化中，用户可以复用对象，减少了 <code>java</code> 对象的分配和回收，提高应用效率。</p>
+<h3 id="4-2-Sequence-File"><a href="#4-2-Sequence-File" class="headerlink" title="4.2 Sequence File"></a>4.2 Sequence File</h3><h4 id="4-2-1-概述"><a href="#4-2-1-概述" class="headerlink" title="4.2.1 概述"></a>4.2.1 概述</h4><p>前面我们介绍过，当 <code>HDFS</code> 中保存有大量的小文件时，<code>NameNode</code> 压力会很大，使得存储的元数据信息非常多，而 <code>Sequence File</code> 则可以将小文件合并。</p>
+<p>1) <code>Sequence File</code> 是 <code>Hadoop</code> 提供的一种对二进制文件的支持。</p>
+<p>2) 二进制文件直接将键值对序列化到文件中。</p>
+<p>3) 使用 <code>Sequence File</code> 进行存储的文件，占用空间会大于原数据，因为为了查找方便，<code>Sequence File</code> 的存储中添加了一些额外的信息，使得数据增大。</p>
+<h4 id="4-2-2-特点"><a href="#4-2-2-特点" class="headerlink" title="4.2.2 特点"></a>4.2.2 特点</h4><p>1) 支持压缩。分为基于 <code>Record</code> 和 <code>Block</code> 压缩，前一种只压缩值不压缩键，后一种则是键和值都压缩。默认为无压缩，每个记录（<code>Record</code>）是由它的记录长度（字节数）、键的长度、键和值组成。</p>
+<p>2) 对于 <code>MapReduce</code> 任务十分友好，因为文件可以被切分，使用 <code>Map Task</code> 并行处理可大幅提高作业的执行效率。</p>
+<p>3) 使用简单，因为 <code>Hadoop</code> 提供了 <code>API</code> ，业务逻辑中应用便捷。</p>
+<h3 id="4-3-Map-File"><a href="#4-3-Map-File" class="headerlink" title="4.3 Map File"></a>4.3 Map File</h3><p><code>Map File</code> 是排序过的 <code>Sequence File</code> ，由 <code>index</code> 和 <code>data</code> 两部分组成。<code>index</code> 是文件的数据索引，主要记录了每个 <code>Record</code> 的 <code>key</code> 值以及该  <code>Record</code> 在文件中的偏移位置。在 <code>Map File</code> 被访问的时候，索引文件会先被加载到内存，通过 <code>index</code> 映射关系可快速定位到指定 <code>Record</code> 所在文件位置。所以 <code>Map File</code> 比 <code>Sequence File</code> 检索效率更高，缺点便是维护多余的 <code>index</code> 数据，占用了部分内存。</p>
 <blockquote>
 <p>学习自《基于Hadoop与Spark的大数据开发实战》</p>
 </blockquote>
@@ -212,7 +267,7 @@
     <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://www.pythonnote.cn/Hadoop%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E4%B8%80/" alt="微信分享二维码">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://www.pythonnote.cn/Hadoop%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E4%BA%8C/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -230,19 +285,10 @@
   
   <nav class="article-nav">
     
-      <a href="/Hadoop%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E4%BA%8C/" class="article-nav-link">
-        <strong class="article-nav-caption">上一篇</strong>
-        <div class="article-nav-title">
-          
-            Hadoop学习笔记(二)之HDFS
-          
-        </div>
-      </a>
     
-    
-      <a href="/Flask%E5%A6%82%E4%BD%95%E5%A4%84%E7%90%86%E4%B8%80%E4%B8%AA%E8%AF%B7%E6%B1%82/" class="article-nav-link">
+      <a href="/Hadoop%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E4%B8%80/" class="article-nav-link">
         <strong class="article-nav-caption">下一篇</strong>
-        <div class="article-nav-title">Flask如何处理一个请求</div>
+        <div class="article-nav-title">Hadoop学习笔记(一)</div>
       </a>
     
   </nav>
