@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://www.pythonnote.cn/"/>
-  <updated>2020-04-18T08:30:43.397Z</updated>
+  <updated>2020-04-19T08:23:28.744Z</updated>
   <id>https://www.pythonnote.cn/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Hadoop学习笔记(四)之YARN</title>
+    <link href="https://www.pythonnote.cn/Hadoop%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E5%9B%9B/"/>
+    <id>https://www.pythonnote.cn/Hadoop%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E5%9B%9B/</id>
+    <published>2020-04-19T06:03:13.000Z</published>
+    <updated>2020-04-19T08:23:28.744Z</updated>
+    
+    <summary type="html">
+    
+      &lt;center&gt;Author：闫玉良&lt;/center&gt;
+
+&lt;p&gt; &lt;code&gt;Hadoop&lt;/code&gt; 之 &lt;code&gt;YARN&lt;/code&gt;，你了解吗？&lt;/p&gt;
+&lt;p&gt;官方文档汇总：&lt;a href=&quot;https://www.pythonnote.cn/OfficialDocuments/&quot;&gt;https://www.pythonnote.cn/OfficialDocuments/&lt;/a&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;包含了后端常使用的各种文档，小闫静心制作，快收藏起来吧 ~&lt;/p&gt;
+&lt;/blockquote&gt;
+    
+    </summary>
+    
+    
+      <category term="hadoop" scheme="https://www.pythonnote.cn/categories/hadoop/"/>
+    
+    
+      <category term="hadoop" scheme="https://www.pythonnote.cn/tags/hadoop/"/>
+    
+  </entry>
   
   <entry>
     <title>Hadoop学习笔记(三)之MapReduce</title>
@@ -466,31 +493,6 @@
     
     
       <category term="手机号一键登录" scheme="https://www.pythonnote.cn/tags/%E6%89%8B%E6%9C%BA%E5%8F%B7%E4%B8%80%E9%94%AE%E7%99%BB%E5%BD%95/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>有了Pycharm，就卸载了Postman吧</title>
-    <link href="https://www.pythonnote.cn/%E6%9C%89%E4%BA%86Pycharm%EF%BC%8C%E5%B0%B1%E5%8D%B8%E8%BD%BD%E4%BA%86Postman%E5%90%A7/"/>
-    <id>https://www.pythonnote.cn/%E6%9C%89%E4%BA%86Pycharm%EF%BC%8C%E5%B0%B1%E5%8D%B8%E8%BD%BD%E4%BA%86Postman%E5%90%A7/</id>
-    <published>2020-02-28T12:04:12.000Z</published>
-    <updated>2020-02-28T13:54:56.279Z</updated>
-    
-    <summary type="html">
-    
-      &lt;center&gt;Author：闫玉良&lt;/center&gt; 
-
-&lt;p&gt;&lt;code&gt;Web&lt;/code&gt; 开发还在一手 &lt;code&gt;PyCharm&lt;/code&gt; 一手 &lt;code&gt;Postman&lt;/code&gt; 吗？快给电脑减负（卸载掉 &lt;code&gt;Postman&lt;/code&gt;）吧！教你如何使用 &lt;code&gt;PyCharm&lt;/code&gt; 替代 &lt;code&gt;Postman&lt;/code&gt; 。&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="pycharm" scheme="https://www.pythonnote.cn/categories/pycharm/"/>
-    
-    
-      <category term="pycharm" scheme="https://www.pythonnote.cn/tags/pycharm/"/>
-    
-      <category term="postman" scheme="https://www.pythonnote.cn/tags/postman/"/>
     
   </entry>
   
