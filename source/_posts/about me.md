@@ -23,8 +23,6 @@ categories: website
 
 
 
-> 目前正处于求职阶段，如果老板赏识，请戳我简历 「[蟹老板~请戳我](https://www.pythonnote.cn/resume/)」
-
 
 
 
