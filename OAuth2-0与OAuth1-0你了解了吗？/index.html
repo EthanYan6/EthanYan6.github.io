@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+   
+  <meta name="keywords" content="Python,Java,powershell,shell,Elasticsearch,MySQL,Redis,Django,Flask,爬虫,RPC,数据分析,人工智能,算法,数据结构" />
+   
+  <meta name="description" content="EthanYan&#39;s Blog" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <title>
+    OAuth2.0与OAuth1.0你了解了吗？ |  EthanYan&#39;s Blog
+  </title>
+  <meta name="generator" content="hexo-theme-yilia-plus">
+  
+  <link rel="shortcut icon" href="/favicon.ico" />
+  
+  <link rel="stylesheet" href="/css/main.css">
+  <script src="/js/pace.min.js"></script>
+
+  
+
+  
+
+  <script data-ad-client="ca-pub-4890841235714870" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<link rel="alternate" href="/atom.xml" title="EthanYan's Blog" type="application/atom+xml">
+</head>
+
+</html>
+
+<body>
+  <div id="app">
+    <main class="content">
+      <section class="outer">
+  <article id="post-OAuth2-0与OAuth1-0你了解了吗？" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
+  OAuth2.0与OAuth1.0你了解了吗？
+</h1>
+  
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/OAuth2-0%E4%B8%8EOAuth1-0%E4%BD%A0%E4%BA%86%E8%A7%A3%E4%BA%86%E5%90%97%EF%BC%9F/" class="article-date">
+  <time datetime="2020-05-07T10:41:18.000Z" itemprop="datePublished">2020-05-07</time>
+</a>
+      
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/oauth/">oauth</a>
+  </div>
+
+      
+      
+<div class="word_count">
+    <span class="post-time">
+        <span class="post-meta-item-icon">
+            <i class="ri-quill-pen-line"></i>
+            <span class="post-meta-item-text"> 字数统计:</span>
+            <span class="post-count">1k字</span>
+        </span>
+    </span>
+
+    <span class="post-time">
+        &nbsp; | &nbsp;
+        <span class="post-meta-item-icon">
+            <i class="ri-book-open-line"></i>
+            <span class="post-meta-item-text"> 阅读时长≈</span>
+            <span class="post-count">3分钟</span>
+        </span>
+    </span>
+</div>
+
+      
+    </div>
+    
+
+    
+    
+    <div class="tocbot"></div>
+
+
+
+
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+
+
+      
+
+      
+      <center>Author：闫玉良</center>
+
+<p>使用了 <code>OAuth2.0</code> ，但是你晓得为什么使用 <code>OAuth2.0</code> 吗？快来看看吧。</p>
+<a id="more"></a>
+
+<p><strong><em>更多精彩文章请关注公众号『Pythonnote』或者『全栈技术精选』</em></strong></p>
+<h2 id="1-OAuth简介"><a href="#1-OAuth简介" class="headerlink" title="1.OAuth简介"></a>1.OAuth简介</h2><p><code>OAuth</code> 协议简单的来说就是第三方应用在不知道我方用户账号密码的情况下，通过我们的授权，进行登录操作。它减少了用户注册的次数，方便用户快捷登录，提升用户体验度，更保障了用户的信息不被泄露。毕竟 <code>qq/微博</code> 大部分人都使用，而第三方应用却很少有人使用，用户既可以使用常用的登录方式登录，又不需要担心  <code>qq/微博</code>  泄露我们的信息给第三方应用。</p>
+<h2 id="2-OAuth2-0选择缘由"><a href="#2-OAuth2-0选择缘由" class="headerlink" title="2.OAuth2.0选择缘由"></a>2.OAuth2.0选择缘由</h2><h3 id="2-1-OAuth1-0"><a href="#2-1-OAuth1-0" class="headerlink" title="2.1 OAuth1.0"></a>2.1 OAuth1.0</h3><p><img src="https://img-blog.csdnimg.cn/20190521200756553.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2l2b2xjYW5v,size_16,color_FFFFFF,t_70" alt="OAuth1.0过程解析"></p>
+<h4 id="2-1-1-访问过程"><a href="#2-1-1-访问过程" class="headerlink" title="2.1.1 访问过程"></a>2.1.1 访问过程</h4><p>1) 客户端向资源服务器请求未授权 <code>Request Token</code></p>
+<p>2) 服务器返回未授权<code>Request Token</code>和 <code>secret</code>，具体返回的参数为：<code>oauth_token</code> 和 <code>oauth_token_secret</code></p>
+<p>3) 客户端携带上一步的 <code>oauth_token</code> 以及 <code>oauth_callback</code> 等参数请求服务器，调起授权页面</p>
+<p>4) 用户授权</p>
+<p>5) 资源服务器将用户重定向回客户端，并带回授权过的 <code>Request Token</code> 也就是 <code>oauth_token</code></p>
+<p>6) 获取到授权 <code>Request Token</code>，再向资源服务器换取票据  <code>accessToken</code> </p>
+<p>7) 通过票据 <code>accessToken</code> 访问用户在资源服务器存储的受保护的资源</p>
+<h4 id="2-1-2-优点"><a href="#2-1-2-优点" class="headerlink" title="2.1.2 优点"></a>2.1.2 优点</h4><p> <code>OAuth1.0</code> 协议每个 <code>Token</code> 都会进行加密</p>
+<h4 id="2-1-3-缺点"><a href="#2-1-3-缺点" class="headerlink" title="2.1.3 缺点"></a>2.1.3 缺点</h4><p>1) 用的是 <code>http</code> 协议</p>
+<p>2) 容易在申请 <code>RequestToken</code> 过程中，被攻击者调包，然后伪造回调地址，拿到用户的 <code>accessToken</code> 然后为所欲为。</p>
+<h3 id="2-2-OAuth2-0"><a href="#2-2-OAuth2-0" class="headerlink" title="2.2 OAuth2.0"></a>2.2 OAuth2.0</h3><p><img src="https://images0.cnblogs.com/blog2015/545673/201505/221134251825386.png" alt="OAuth2.0"></p>
+<h4 id="2-2-1-访问过程"><a href="#2-2-1-访问过程" class="headerlink" title="2.2.1 访问过程"></a>2.2.1 访问过程</h4><p>在 <code>OAuth2.0</code> 协议中常用的授权方法有四种：授权码模式、简化模式、密码模式、客户端模式。通过授权码模式进行说明：</p>
+<p>1) 引导用户到授权服务器，请求用户授权，用户授权后返回授权码(<code>Authorization Code</code>)</p>
+<p>2) 客户端由授权码到授权服务器换取访问令牌(<code>Access Token</code>)</p>
+<blockquote>
+<p>如果需要，开发者可以通过 <code>refresh_token</code> 刷新授权 <code>access_token</code>，避免过期</p>
+</blockquote>
+<p>3) 用访问令牌去访问得到授权的资源</p>
+<h4 id="2-2-2-优点"><a href="#2-2-2-优点" class="headerlink" title="2.2.2 优点"></a>2.2.2 优点</h4><p>1) 使用 <code>https</code> ，更加安全</p>
+<p>2) 所有的 <code>token</code> 不再有对应的 <code>secret</code> 存在，签名过程简洁</p>
+<p>3) 能更好地支持不是基于浏览器的应用</p>
+<p>4) 有刷新令牌的机制</p>
+<h4 id="2-2-3-缺点"><a href="#2-2-3-缺点" class="headerlink" title="2.2.3 缺点"></a>2.2.3 缺点</h4><p>1) <code>OAuth2.0</code> 不兼容老版本</p>
+<p>2) <code>OAuth2.0</code> 的访问令牌，也就是 <code>access_token</code> 有有效期</p>
+<h3 id="2-3-对比"><a href="#2-3-对比" class="headerlink" title="2.3 对比"></a>2.3 对比</h3><p>1)  <code>OAuth2.0</code> 使用 <code>https</code> 的方式更加安全； <code>OAuth1.0</code> 虽然所有的 <code>token</code> 都会进行加密，但因为使用 <code>http</code> 方式而有被劫持攻击风险。</p>
+<p>2)  <code>OAuth2.0</code> 可以通过多种方式获取访问令牌，考虑到了客户端存在的各种形态，包容性好；而  <code>OAuth1.0</code> 只有一种方式</p>
+<p>3) <code>OAuth2.0</code> 较 <code>OAuth1.0</code> 相比，整个授权验证流程更简单更安全（省去了复杂的签名过程）</p>
+<h2 id="3-其他"><a href="#3-其他" class="headerlink" title="3.其他"></a>3.其他</h2><p>1.授权码模式中，为什么不直接获取令牌，而是通过授权码，岂不是多此一举？</p>
+<p>答：授权码是为了防止中间者攻击。比如第三方使用 <code>http</code> 协议，直接传递令牌，很容易被劫持，有了授权码之后，情况便大不相同。授权码一般有效期十分钟且只能被使用一次，攻击者即使获取到授权码，换到了令牌，当第三方应用也通过授权码获取令牌时，授权服务器就会因为授权码被使用两次而让令牌失效，从而保证安全。</p>
+<p>2.为什么授权模式为了避免 <code>CSRF</code> 攻击，可以在 <code>URL</code> 请求后面加个参数 <code>state</code>，这是什么原理？</p>
+<p>答：<code>state</code> 参数能标记这是来自哪一个网站，且 <code>state</code> 参数是攻击者拿不到的，因此可以避免 <code>CSRF</code> 攻击。</p>
+<p><strong><em>更多精彩文章请关注公众号『Pythonnote』或者『全栈技术精选』</em></strong></p>
+
+      
+      <!-- reward -->
+      
+      <div id="reward-btn">
+        打赏
+      </div>
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+        <div class="declare">
+          <ul class="post-copyright">
+            <li>
+              <i class="ri-copyright-line"></i>
+              <strong>版权声明： </strong s>
+              本博客所有文章除特别声明外，均采用 <a href="https://www.apache.org/licenses/LICENSE-2.0.html" rel="external nofollow"
+                target="_blank">Apache License 2.0</a> 许可协议。转载请注明出处！
+            </li>
+          </ul>
+        </div>
+        
+    <footer class="article-footer">
+      
+          
+<div class="share-btn">
+      <span class="share-sns share-outer">
+        <i class="ri-share-forward-line"></i>
+        分享
+      </span>
+      <div class="share-wrap">
+        <i class="arrow"></i>
+        <div class="share-icons">
+          
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="ri-weibo-fill"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="ri-wechat-fill"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="ri-qq-fill"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="ri-douban-line"></i>
+          </a>
+          <!-- <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a> -->
+          
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="ri-facebook-circle-fill"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="ri-twitter-fill"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="ri-google-fill"></i>
+          </a>
+        </div>
+      </div>
+</div>
+
+<div class="wx-share-modal">
+    <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://www.pythonnote.cn/OAuth2-0%E4%B8%8EOAuth1-0%E4%BD%A0%E4%BA%86%E8%A7%A3%E4%BA%86%E5%90%97%EF%BC%9F/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div id="share-mask"></div>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/oauth/" rel="tag">oauth</a></li></ul>
+
+
+    </footer>
+
+  </div>
+
+  
+  
+  <nav class="article-nav">
+    
+    
+      <a href="/%E8%8F%9C%E9%B8%9F%E5%8E%BB%E9%9D%A2%E8%AF%95%E4%B9%8B%E4%B8%89/" class="article-nav-link">
+        <strong class="article-nav-caption">下一篇</strong>
+        <div class="article-nav-title">菜鸟去面试之三</div>
+      </a>
+    
+  </nav>
+
+
+  
+
+  
+
+  
+  
+  <div class="gitalk" id="gitalk-container"></div>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.6.2/dist/gitalk.css">
+  <script src="https://cdn.jsdelivr.net/npm/gitalk@1.6.2/dist/gitalk.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/blueimp-md5@2.10.0/js/md5.min.js"></script>
+  <script type="text/javascript">
+    var gitalk = new Gitalk({
+      clientID: '7fca30c64efa45b3b8bf',
+      clientSecret: '07412c4cdedf0c21192e8db8f6e550d9d2774639',
+      repo: 'blog-comment',
+      owner: 'EthanYan6',
+      admin: ['EthanYan6'],
+      // id: location.pathname,      // Ensure uniqueness and length less than 50
+      id: md5(location.pathname),
+      distractionFreeMode: false,  // Facebook-like distraction free mode
+      pagerDirection: 'last'
+    })
+  
+    gitalk.render('gitalk-container')
+  </script>
+  
+  
+
+</article>
+</section>
+      <footer class="footer">
+  <div class="outer">
+    <ul class="list-inline">
+      <li>
+        
+        
+        <span>
+  <i>页面访问量:<span id="busuanzi_value_page_pv"></span></i>
+  <i>独立访客访问数:<span id="busuanzi_value_site_uv"></span></i>
+</span>
+        
+      </li>
+      <li>
+        <!-- cnzz统计 -->
+        
+        <script type="text/javascript">document.write(unescape("%3Cspan id='cnzz_stat_icon_1278605887'%3E%3C/span%3E%3Cscript src='https://s4.cnzz.com/z_stat.php%3Fid%3D1278605887%26online%3D2' type='text/javascript'%3E%3C/script%3E"));</script>
+        
+      </li>
+    </ul>
+    
+    <ul class="list-inline">
+      <li>
+        友情链接：<a href="https://www.javastudy.cloud" target="_blank" rel="external nofollow noopener">&gt; javaDemo站 &lt;</a><br>
+      </li>
+    </ul>
+
+    <ul class="list-inline">
+      <li>
+        更多精彩文章请关注微信公众号『全栈技术精选』，id 为『Pythonnote』
+      </li>
+    </ul>
+        
+    <ul class="list-inline">
+      <li>
+        &copy;
+        2020
+        小闫同学
+      </li>
+      <li>
+        
+          Created by
+        
+        
+        <a href="https://github.com/EthanYan6" target="_blank">EthanYan</a> Thanks <a href="https://github.com/Shen-Yu/hexo-theme-ayer" rel="external nofollow" target="_blank">Ayer</a>
+        
+      </li>
+    </ul>
+
+  </div>
+</footer>
+      <div class="to_top">
+        <div class="totop" id="totop">
+  <i class="ri-arrow-up-line"></i>
+</div>
+      </div>
+    </main>
+    <aside class="sidebar">
+      <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+  <div class="logo">
+    <a href="/"><img src="/images/helloworld.svg" alt="EthanYan&#39;s Blog"></a>
+  </div>
+  
+  <ul class="nav nav-main">
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/">主页</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/archives">归档</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/categories">分类</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags">标签</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="https://ethanyan.gitee.io/bullet_screen_comments/" target="_blank" rel="noopener">弹幕</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="https://www.pythonnote.cn/videos">视频</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="https://www.pythonnote.cn/OfficialDocuments/">文档</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="https://www.pythonnote.cn/about%20me/">关于</a>
+    </li>
+    
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      
+      <a class="nav-item-link nav-item-search"  title="搜索">
+        <i class="ri-search-line"></i>
+      </a>
+      
+      
+      <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+        <i class="ri-rss-line"></i>
+      </a>
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+    </aside>
+    <div id="mask"></div>
+
+<!-- #reward -->
+<div id="reward">
+  <span class="close"><i class="ri-close-line"></i></span>
+  <p class="reward-p"><i class="ri-cup-line"></i>请我喝杯咖啡吧~</p>
+  <div class="reward-box">
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/alipay.jpg">
+      <span class="reward-type">支付宝</span>
+    </div>
+    
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/wechat.jpg">
+      <span class="reward-type">微信</span>
+    </div>
+    
+  </div>
+</div>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.justifiedGallery.min.js"></script>
+<script src="/js/lazyload.min.js"></script>
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+<script src="/js/share.js"></script>
+
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+<script>
+  try {
+    var typed = new Typed("#subtitle", {
+    strings: ['上划查看文章','Python、Java、powershell、shell、Elasticsearch、MySQL、Redis、Django、Flask、爬虫、RPC、数据分析、机器学习','请关注微信公众号「全栈技术精选」'],
+    startDelay: 0,
+    typeSpeed: 200,
+    loop: true,
+    backSpeed: 100,
+    showCursor: true
+    });
+  } catch (err) {
+  }
+  
+</script>
+
+
+
+<script src="/js/tocbot.min.js"></script>
+<script>
+  // Tocbot_v4.7.0  http://tscanlin.github.io/tocbot/
+  tocbot.init({
+    tocSelector: '.tocbot',
+    contentSelector: '.article-entry',
+    headingSelector: 'h1, h2, h3, h4, h5, h6',
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    scrollContainer:'main',
+    positionFixedSelector: '.tocbot',
+    positionFixedClass: 'is-position-fixed',
+    fixedSidebarOffset: 'auto',
+    onClick: (e) => {
+      $('.toc-link').removeClass('is-active-link');
+      $(`a[href=${e.target.hash}]`).addClass('is-active-link');
+      $(e.target.hash).scrollIntoView();
+      return false;
+    }
+  });
+</script>
+
+
+<script>
+  var ayerConfig = {
+    mathjax: false
+  }
+</script>
+
+<script src="/js/ayer.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.css">
+
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.css">
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"></script>
+
+<script>
+    function viewer_init() {
+        let pswpElement = document.querySelectorAll('.pswp')[0];
+        let $imgArr = document.querySelectorAll(('.article-entry img:not(.reward-img)'))
+
+        $imgArr.forEach(($em, i) => {
+            $em.onclick = () => {
+                // slider展开状态
+                // todo: 这样不好，后面改成状态
+                if (document.querySelector('.left-col.show')) return
+                let items = []
+                $imgArr.forEach(($em2, i2) => {
+                    let img = $em2.getAttribute('data-idx', i2)
+                    let src = $em2.getAttribute('data-target') || $em2.getAttribute('src')
+                    let title = $em2.getAttribute('alt')
+                    // 获得原图尺寸
+                    const image = new Image()
+                    image.src = src
+                    items.push({
+                        src: src,
+                        w: image.width || $em2.width,
+                        h: image.height || $em2.height,
+                        title: title
+                    })
+                })
+                var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, {
+                    index: parseInt(i)
+                });
+                gallery.init()
+            }
+        })
+    }
+    viewer_init()
+</script>
+
+
+
+
+<script type="text/javascript" src="https://js.users.51.la/20544303.js"></script>
+
+   <script src="/js/clickLove.js"></script>
+ 
+
+    
+    <div id="music">
+    
+    
+    
+    <iframe frameborder="no" border="1" marginwidth="0" marginheight="0" width="200" height="52"
+        src="//music.163.com/outchain/player?type=2&id=1385179994&auto=0&height=32"></iframe>
+</div>
+
+<style>
+    #music {
+        position: fixed;
+        right: 15px;
+        bottom: 0;
+        z-index: 998;
+    }
+</style>
+    
+  </div>
+</body>
+
+</html>

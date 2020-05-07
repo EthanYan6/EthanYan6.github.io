@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://www.pythonnote.cn/"/>
-  <updated>2020-05-01T12:56:59.590Z</updated>
+  <updated>2020-05-07T12:09:31.023Z</updated>
   <id>https://www.pythonnote.cn/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>OAuth2.0与OAuth1.0你了解了吗？</title>
+    <link href="https://www.pythonnote.cn/OAuth2-0%E4%B8%8EOAuth1-0%E4%BD%A0%E4%BA%86%E8%A7%A3%E4%BA%86%E5%90%97%EF%BC%9F/"/>
+    <id>https://www.pythonnote.cn/OAuth2-0%E4%B8%8EOAuth1-0%E4%BD%A0%E4%BA%86%E8%A7%A3%E4%BA%86%E5%90%97%EF%BC%9F/</id>
+    <published>2020-05-07T10:41:18.000Z</published>
+    <updated>2020-05-07T12:09:31.023Z</updated>
+    
+    <summary type="html">
+    
+      &lt;center&gt;Author：闫玉良&lt;/center&gt;
+
+&lt;p&gt;使用了 &lt;code&gt;OAuth2.0&lt;/code&gt; ，但是你晓得为什么使用 &lt;code&gt;OAuth2.0&lt;/code&gt; 吗？快来看看吧。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="oauth" scheme="https://www.pythonnote.cn/categories/oauth/"/>
+    
+    
+      <category term="oauth" scheme="https://www.pythonnote.cn/tags/oauth/"/>
+    
+  </entry>
   
   <entry>
     <title>菜鸟去面试之三</title>
@@ -268,7 +291,7 @@
     <link href="https://www.pythonnote.cn/mysql%E4%B8%AD%E4%BF%9D%E5%AD%98%E5%B9%B6%E6%93%8D%E4%BD%9Cjson%E5%AF%B9%E8%B1%A1/"/>
     <id>https://www.pythonnote.cn/mysql%E4%B8%AD%E4%BF%9D%E5%AD%98%E5%B9%B6%E6%93%8D%E4%BD%9Cjson%E5%AF%B9%E8%B1%A1/</id>
     <published>2020-03-21T03:14:18.000Z</published>
-    <updated>2020-03-21T07:29:17.663Z</updated>
+    <updated>2020-05-07T09:35:42.967Z</updated>
     
     <summary type="html">
     
@@ -469,29 +492,6 @@
     
     
       <category term="docker" scheme="https://www.pythonnote.cn/tags/docker/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>分享一份全国行政区划sql数据库表</title>
-    <link href="https://www.pythonnote.cn/%E5%88%86%E4%BA%AB%E4%B8%80%E4%BB%BD%E5%85%A8%E5%9B%BD%E8%A1%8C%E6%94%BF%E5%8C%BA%E5%88%92sql%E6%95%B0%E6%8D%AE%E5%BA%93%E8%A1%A8/"/>
-    <id>https://www.pythonnote.cn/%E5%88%86%E4%BA%AB%E4%B8%80%E4%BB%BD%E5%85%A8%E5%9B%BD%E8%A1%8C%E6%94%BF%E5%8C%BA%E5%88%92sql%E6%95%B0%E6%8D%AE%E5%BA%93%E8%A1%A8/</id>
-    <published>2020-03-04T13:53:18.000Z</published>
-    <updated>2020-03-04T14:56:50.137Z</updated>
-    
-    <summary type="html">
-    
-      &lt;center&gt;Author：闫玉良&lt;/center&gt;
-
-&lt;p&gt;还在为寻找全国行政区划的数据而烦恼吗？还在因为一个 &lt;code&gt;Excel&lt;/code&gt; 表格无法确定信息是否全面而惆怅吗？快来看看为你准备好的东西吧！&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="sql" scheme="https://www.pythonnote.cn/categories/sql/"/>
-    
-    
-      <category term="sql" scheme="https://www.pythonnote.cn/tags/sql/"/>
     
   </entry>
   
