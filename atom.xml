@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://www.pythonnote.cn/"/>
-  <updated>2020-05-07T12:09:31.023Z</updated>
+  <updated>2020-05-12T09:44:29.331Z</updated>
   <id>https://www.pythonnote.cn/</id>
   
   <author>
@@ -17,11 +17,33 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>Markdown语法奇奇怪怪小知识</title>
+    <link href="https://www.pythonnote.cn/Markdown%E8%AF%AD%E6%B3%95%E5%A5%87%E5%A5%87%E6%80%AA%E6%80%AA%E5%B0%8F%E7%9F%A5%E8%AF%86/"/>
+    <id>https://www.pythonnote.cn/Markdown%E8%AF%AD%E6%B3%95%E5%A5%87%E5%A5%87%E6%80%AA%E6%80%AA%E5%B0%8F%E7%9F%A5%E8%AF%86/</id>
+    <published>2020-05-12T09:03:24.000Z</published>
+    <updated>2020-05-12T09:44:29.331Z</updated>
+    
+    <summary type="html">
+    
+      &lt;center&gt;Author：闫玉良&lt;/center&gt; 
+`markdown` 语法因为其通用性、简便性广受程序员的喜爱，下面再记录一些语法。
+    
+    </summary>
+    
+    
+      <category term="markdown" scheme="https://www.pythonnote.cn/categories/markdown/"/>
+    
+    
+      <category term="markdown" scheme="https://www.pythonnote.cn/tags/markdown/"/>
+    
+  </entry>
+  
+  <entry>
     <title>OAuth2.0与OAuth1.0你了解了吗？</title>
     <link href="https://www.pythonnote.cn/OAuth2-0%E4%B8%8EOAuth1-0%E4%BD%A0%E4%BA%86%E8%A7%A3%E4%BA%86%E5%90%97%EF%BC%9F/"/>
     <id>https://www.pythonnote.cn/OAuth2-0%E4%B8%8EOAuth1-0%E4%BD%A0%E4%BA%86%E8%A7%A3%E4%BA%86%E5%90%97%EF%BC%9F/</id>
     <published>2020-05-07T10:41:18.000Z</published>
-    <updated>2020-05-07T12:09:31.023Z</updated>
+    <updated>2020-05-07T12:12:59.065Z</updated>
     
     <summary type="html">
     
@@ -461,29 +483,6 @@
     
       &lt;center&gt;Author：闫玉良&lt;/center&gt;
 容器之间如何互相通讯？具体的命令有哪些？
-    
-    </summary>
-    
-    
-      <category term="docker" scheme="https://www.pythonnote.cn/categories/docker/"/>
-    
-    
-      <category term="docker" scheme="https://www.pythonnote.cn/tags/docker/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>docker容器数据持久化</title>
-    <link href="https://www.pythonnote.cn/docker%E5%AE%B9%E5%99%A8%E6%95%B0%E6%8D%AE%E6%8C%81%E4%B9%85%E5%8C%96/"/>
-    <id>https://www.pythonnote.cn/docker%E5%AE%B9%E5%99%A8%E6%95%B0%E6%8D%AE%E6%8C%81%E4%B9%85%E5%8C%96/</id>
-    <published>2020-03-06T10:04:08.000Z</published>
-    <updated>2020-03-12T12:16:26.179Z</updated>
-    
-    <summary type="html">
-    
-      &lt;center&gt;Author：闫玉良&lt;/center&gt;
-
-&lt;p&gt;&lt;code&gt;docker&lt;/code&gt; 容器内的数据是独立于镜像之外的，那么如何将其持久化到宿主机呢？答案便是利用「数据卷」，那什么又是「数据卷」呢？&lt;/p&gt;
     
     </summary>
     
