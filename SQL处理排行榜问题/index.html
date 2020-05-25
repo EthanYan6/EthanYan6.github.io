@@ -10,7 +10,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
   <title>
-    Markdown语法奇奇怪怪小知识 |  EthanYan&#39;s Blog
+    SQL处理排行榜问题 |  EthanYan&#39;s Blog
   </title>
   <meta name="generator" content="hexo-theme-yilia-plus">
   
@@ -33,7 +33,7 @@
   <div id="app">
     <main class="content">
       <section class="outer">
-  <article id="post-Markdown语法奇奇怪怪小知识" class="article article-type-post" itemscope
+  <article id="post-SQL处理排行榜问题" class="article article-type-post" itemscope
   itemprop="blogPost" data-scroll-reveal>
 
   <div class="article-inner">
@@ -41,7 +41,7 @@
     <header class="article-header">
        
 <h1 class="article-title sea-center" style="border-left:0" itemprop="name">
-  Markdown语法奇奇怪怪小知识
+  SQL处理排行榜问题
 </h1>
   
 
@@ -50,12 +50,12 @@
 
     
     <div class="article-meta">
-      <a href="/Markdown%E8%AF%AD%E6%B3%95%E5%A5%87%E5%A5%87%E6%80%AA%E6%80%AA%E5%B0%8F%E7%9F%A5%E8%AF%86/" class="article-date">
-  <time datetime="2020-05-12T09:03:24.000Z" itemprop="datePublished">2020-05-12</time>
+      <a href="/SQL%E5%A4%84%E7%90%86%E6%8E%92%E8%A1%8C%E6%A6%9C%E9%97%AE%E9%A2%98/" class="article-date">
+  <time datetime="2020-05-25T07:59:00.000Z" itemprop="datePublished">2020-05-25</time>
 </a>
       
   <div class="article-category">
-    <a class="article-category-link" href="/categories/markdown/">markdown</a>
+    <a class="article-category-link" href="/categories/sql/">sql</a>
   </div>
 
       
@@ -65,7 +65,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> 字数统计:</span>
-            <span class="post-count">361字</span>
+            <span class="post-count">548字</span>
         </span>
     </span>
 
@@ -74,7 +74,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-book-open-line"></i>
             <span class="post-meta-item-text"> 阅读时长≈</span>
-            <span class="post-count">1分钟</span>
+            <span class="post-count">2分钟</span>
         </span>
     </span>
 </div>
@@ -101,29 +101,39 @@
       
 
       
-       <center>Author：闫玉良</center> 
+      <center>Author：闫玉良</center>
 
-
-<p><code>markdown</code> 语法因为其通用性、简便性广受程序员的喜爱，下面再记录一些语法。</p>
- <a id="more"></a> 
+<p>对现有的数据，根据某一字段进行排名，如果没有 <code>RANK</code> 函数，<code>SQL</code> 语句怎么写？接下来就分享一道面试题……</p>
+<a id="more"></a>
 
 <p><strong><em>更多精彩文章请关注公众号『Pythonnote』或者『全栈技术精选』</em></strong></p>
-<h2 id="1-上标-下标"><a href="#1-上标-下标" class="headerlink" title="1.上标/下标"></a>1.上标/下标</h2><h3 id="示例："><a href="#示例：" class="headerlink" title="示例："></a>示例：</h3><p>氧气: O<sub>2</sub></p>
-<p><code>n</code> 的平方: n<sup>2</sup></p>
-<h3 id="语法："><a href="#语法：" class="headerlink" title="语法："></a>语法：</h3><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">氧气: O<span class="xml"><span class="tag">&lt;<span class="name">sub</span>&gt;</span></span>2<span class="xml"><span class="tag">&lt;/<span class="name">sub</span>&gt;</span></span></span><br><span class="line">n的平方: n<span class="xml"><span class="tag">&lt;<span class="name">sup</span>&gt;</span></span>2<span class="xml"><span class="tag">&lt;/<span class="name">sup</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
+<h2 id="1-面试题"><a href="#1-面试题" class="headerlink" title="1.面试题"></a>1.面试题</h2><p>现在有一张表，保存着学生的相关信息（<code>id</code> 、名字以及分数），如下图所示。请写出 <code>sql</code> 语句查询排名第4的学生信息。</p>
+<img src="https://gitee.com/Ethanyan/pic_data/raw/master/%E6%8E%92%E5%90%8D%E9%97%AE%E9%A2%981.png" alt="排名问题" style="zoom:50%;">
 
-<h2 id="2-注脚"><a href="#2-注脚" class="headerlink" title="2.注脚"></a>2.注脚</h2><h3 id="示例：-1"><a href="#示例：-1" class="headerlink" title="示例："></a>示例：</h3><p><img src="https://gitee.com/Ethanyan/pic_data/raw/master/%E6%B3%A8%E8%84%9A.png" alt="注脚示例"></p>
-<h3 id="语法：-1"><a href="#语法：-1" class="headerlink" title="语法："></a>语法：</h3><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">欢迎关注公众号「全栈技术精选[^1]」，它由小闫同学[^2]一手创建，旨在技术共享。</span><br><span class="line"></span><br><span class="line">[<span class="symbol">^1</span>]:<span class="link">全栈技术精选是一个汇集了后端开发、数据分析、爬虫等全方位的技术公众号，干货满满而且免费</span></span><br><span class="line"></span><br><span class="line">[<span class="symbol">^2</span>]:<span class="link">小闫同学是一名 `python` 开发工程师，也是一名技术文章博主</span></span><br></pre></td></tr></table></figure>
+<h2 id="2-答案"><a href="#2-答案" class="headerlink" title="2.答案"></a>2.答案</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> 进行排名，相同的分数同名次</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">select</span> *</span><br><span class="line"><span class="keyword">from</span> (<span class="keyword">select</span> <span class="keyword">name</span>,</span><br><span class="line">             score,</span><br><span class="line">            (<span class="keyword">case</span> <span class="keyword">when</span> @p=score <span class="keyword">then</span> @r</span><br><span class="line">                  <span class="keyword">when</span> @p:=score <span class="keyword">then</span> @r:=@r+<span class="number">1</span> <span class="keyword">end</span>) <span class="keyword">as</span> stu_rank</span><br><span class="line">        <span class="keyword">from</span> tb_student, (<span class="keyword">select</span> @r:=<span class="number">0</span>,@p:=<span class="literal">NULL</span>) r</span><br><span class="line">       <span class="keyword">order</span> <span class="keyword">by</span> score <span class="keyword">desc</span>) v_rank</span><br><span class="line"><span class="keyword">where</span> v_rank.stu_rank=<span class="number">4</span>;</span><br></pre></td></tr></table></figure>
 
-<h2 id="3-居中"><a href="#3-居中" class="headerlink" title="3.居中"></a>3.居中</h2><h3 id="示例：-2"><a href="#示例：-2" class="headerlink" title="示例："></a>示例：</h3><center>作者：小闫</center>
+<blockquote>
+<p>此语句为小闫参考网络类似案例后所写，可以达到预期效果，但在性能或者复杂度上可能有所欠缺，如果您有更好的方法，请关注公众号「全栈技术精选」后台给我留言吧</p>
+</blockquote>
+<h2 id="3-分析"><a href="#3-分析" class="headerlink" title="3.分析"></a>3.分析</h2><h3 id="3-1-准备数据"><a href="#3-1-准备数据" class="headerlink" title="3.1 准备数据"></a>3.1 准备数据</h3><p>在讲解之前，先让我们创建一个测试数据库 <code>testdb</code>，然后创建一张测试用表 <code>tb_student</code>：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">use</span> testdb;</span><br><span class="line"></span><br><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> tb_student(</span><br><span class="line">    <span class="keyword">id</span> <span class="built_in">int</span> auto_increment primary <span class="keyword">key</span>,</span><br><span class="line">    <span class="keyword">name</span> <span class="built_in">varchar</span>(<span class="number">10</span>),</span><br><span class="line">    score <span class="built_in">int</span></span><br><span class="line">);</span><br></pre></td></tr></table></figure>
 
-<h3 id="语法：-2"><a href="#语法：-2" class="headerlink" title="语法："></a>语法：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;center&gt;作者：小闫&lt;/center&gt;</span><br></pre></td></tr></table></figure>
+<p>然后按照图片中的信息进行构造数据：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> tb_student(<span class="keyword">name</span>, score) <span class="keyword">values</span>(<span class="string">'小三'</span>, <span class="number">1000</span>);</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> tb_student(<span class="keyword">name</span>, score) <span class="keyword">values</span>(<span class="string">'jack'</span>, <span class="number">99</span>);</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> tb_student(<span class="keyword">name</span>, score) <span class="keyword">values</span>(<span class="string">'rose'</span>, <span class="number">10</span>);</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> tb_student(<span class="keyword">name</span>, score) <span class="keyword">values</span>(<span class="string">'马蓉'</span>, <span class="number">8</span>);</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> tb_student(<span class="keyword">name</span>, score) <span class="keyword">values</span>(<span class="string">'李小璐'</span>, <span class="number">40</span>);</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> tb_student(<span class="keyword">name</span>, score) <span class="keyword">values</span>(<span class="string">'fuck'</span>, <span class="number">300</span>);</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> tb_student(<span class="keyword">name</span>, score) <span class="keyword">values</span>(<span class="string">'李小璐2'</span>, <span class="number">40</span>);</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> tb_student(<span class="keyword">name</span>, score) <span class="keyword">values</span>(<span class="string">'李小璐3'</span>, <span class="number">40</span>);</span><br></pre></td></tr></table></figure>
 
-<h2 id="4-流程图"><a href="#4-流程图" class="headerlink" title="4.流程图"></a>4.流程图</h2><h3 id="示例：-3"><a href="#示例：-3" class="headerlink" title="示例："></a>示例：</h3><p><img src="https://gitee.com/Ethanyan/pic_data/raw/master/%E6%B5%81%E7%A8%8B%E5%9B%BE.png" alt="流程图"></p>
-<h3 id="语法：-3"><a href="#语法：-3" class="headerlink" title="语法："></a>语法：</h3><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="code">```flow</span></span><br><span class="line"><span class="code">st=&gt;start: Start|past:&gt;http://www.google.com[blank]</span></span><br><span class="line"><span class="code">e=&gt;end: End:&gt;http://www.google.com</span></span><br><span class="line"><span class="code">op1=&gt;operation: My Operation|past</span></span><br><span class="line"><span class="code">op2=&gt;operation: Stuff|current</span></span><br><span class="line"><span class="code">sub1=&gt;subroutine: My Subroutine|invalid</span></span><br><span class="line"><span class="code">cond=&gt;condition: Yes </span></span><br><span class="line"><span class="code">or No?|approved:&gt;http://www.baidu.com</span></span><br><span class="line"><span class="code">c2=&gt;condition: Good idea|rejected</span></span><br><span class="line"><span class="code">io=&gt;inputoutput: catch something...|request</span></span><br><span class="line"><span class="code"></span></span><br><span class="line"><span class="code">st-&gt;op1(right)-&gt;cond</span></span><br><span class="line"><span class="code">cond(yes, right)-&gt;c2</span></span><br><span class="line"><span class="code">cond(no)-&gt;sub1(left)-&gt;op1</span></span><br><span class="line"><span class="code">c2(yes)-&gt;io-&gt;e</span></span><br><span class="line"><span class="code">c2(no)-&gt;op2-&gt;e</span></span><br><span class="line"><span class="code">```</span></span><br></pre></td></tr></table></figure>
+<h3 id="3-2-知识点"><a href="#3-2-知识点" class="headerlink" title="3.2 知识点"></a>3.2 知识点</h3><p><strong>赋值号</strong>：<code>:=</code></p>
+<p><strong>条件语句</strong>：<code>case when</code></p>
+<h3 id="3-3-过程"><a href="#3-3-过程" class="headerlink" title="3.3 过程"></a>3.3 过程</h3><p>1.首先需要根据分数进行排名（分数相同的同学，名次应该也是相同的，并列关系）</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="keyword">name</span>,</span><br><span class="line">       score,</span><br><span class="line">      (<span class="keyword">case</span> <span class="keyword">when</span> @p=score <span class="keyword">then</span> @r</span><br><span class="line">            <span class="keyword">when</span> @p:=score <span class="keyword">then</span> @r:=@r+<span class="number">1</span> <span class="keyword">end</span>) <span class="keyword">as</span> stu_rank</span><br><span class="line"><span class="keyword">from</span> tb_student, (<span class="keyword">select</span> @r:=<span class="number">0</span>,@p:=<span class="literal">NULL</span>) <span class="keyword">as</span> r</span><br><span class="line"><span class="keyword">order</span> <span class="keyword">by</span> score <span class="keyword">desc</span>;</span><br></pre></td></tr></table></figure>
 
-<h2 id="5-任务清单"><a href="#5-任务清单" class="headerlink" title="5.任务清单"></a>5.任务清单</h2><h3 id="示例：-4"><a href="#示例：-4" class="headerlink" title="示例："></a>示例：</h3><p><img src="https://gitee.com/Ethanyan/pic_data/raw/master/%E4%BB%BB%E5%8A%A1%E6%B8%85%E5%8D%95.png" alt="任务清单"></p>
-<h3 id="语法：-4"><a href="#语法：-4" class="headerlink" title="语法："></a>语法：</h3><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">-</span> <span class="selector-attr">[ ]</span> 任务一 还没有发表今日文章</span><br><span class="line"><span class="selector-tag">-</span> <span class="selector-attr">[x]</span> 任务二 收取广告费</span><br></pre></td></tr></table></figure>
+<img src="https://gitee.com/Ethanyan/pic_data/raw/master/%E6%8E%92%E5%90%8D%E9%97%AE%E9%A2%982.png" style="zoom:50%;">
+
+<p>2.然后再查出某一名次的学生</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> 进行排名，相同的分数应该是同名次</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">select</span> *</span><br><span class="line"><span class="keyword">from</span> (<span class="keyword">select</span> <span class="keyword">name</span>,</span><br><span class="line">             score,</span><br><span class="line">            (<span class="keyword">case</span> <span class="keyword">when</span> @p=score <span class="keyword">then</span> @r</span><br><span class="line">                  <span class="keyword">when</span> @p:=score <span class="keyword">then</span> @r:=@r+<span class="number">1</span> <span class="keyword">end</span>) <span class="keyword">as</span> stu_rank</span><br><span class="line">        <span class="keyword">from</span> tb_student, (<span class="keyword">select</span> @r:=<span class="number">0</span>,@p:=<span class="literal">NULL</span>) r</span><br><span class="line">       <span class="keyword">order</span> <span class="keyword">by</span> score <span class="keyword">desc</span>) v_rank</span><br><span class="line"><span class="keyword">where</span> v_rank.stu_rank=<span class="number">4</span>;</span><br></pre></td></tr></table></figure>
+
+<img src="https://gitee.com/Ethanyan/pic_data/raw/master/%E6%8E%92%E5%90%8D%E9%97%AE%E9%A2%983.png" style="zoom:50%;">
+
+
 
 <p><strong><em>更多精彩文章请关注公众号『Pythonnote』或者『全栈技术精选』</em></strong></p>
 
@@ -195,14 +205,14 @@
     <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://www.pythonnote.cn/Markdown%E8%AF%AD%E6%B3%95%E5%A5%87%E5%A5%87%E6%80%AA%E6%80%AA%E5%B0%8F%E7%9F%A5%E8%AF%86/" alt="微信分享二维码">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://www.pythonnote.cn/SQL%E5%A4%84%E7%90%86%E6%8E%92%E8%A1%8C%E6%A6%9C%E9%97%AE%E9%A2%98/" alt="微信分享二维码">
     </div>
 </div>
 
 <div id="share-mask"></div>
       
       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/markdown/" rel="tag">markdown</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/sql/" rel="tag">sql</a></li></ul>
 
 
     </footer>
@@ -213,19 +223,10 @@
   
   <nav class="article-nav">
     
-      <a href="/SQL%E5%A4%84%E7%90%86%E6%8E%92%E8%A1%8C%E6%A6%9C%E9%97%AE%E9%A2%98/" class="article-nav-link">
-        <strong class="article-nav-caption">上一篇</strong>
-        <div class="article-nav-title">
-          
-            SQL处理排行榜问题
-          
-        </div>
-      </a>
     
-    
-      <a href="/OAuth2-0%E4%B8%8EOAuth1-0%E4%BD%A0%E4%BA%86%E8%A7%A3%E4%BA%86%E5%90%97%EF%BC%9F/" class="article-nav-link">
+      <a href="/Markdown%E8%AF%AD%E6%B3%95%E5%A5%87%E5%A5%87%E6%80%AA%E6%80%AA%E5%B0%8F%E7%9F%A5%E8%AF%86/" class="article-nav-link">
         <strong class="article-nav-caption">下一篇</strong>
-        <div class="article-nav-title">OAuth2.0与OAuth1.0你了解了吗？</div>
+        <div class="article-nav-title">Markdown语法奇奇怪怪小知识</div>
       </a>
     
   </nav>
