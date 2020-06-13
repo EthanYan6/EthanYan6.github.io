@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://www.pythonnote.cn/"/>
-  <updated>2020-05-25T11:13:28.464Z</updated>
+  <updated>2020-06-13T08:22:46.964Z</updated>
   <id>https://www.pythonnote.cn/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Mac用户注意了,你的sed命令</title>
+    <link href="https://www.pythonnote.cn/Mac%E7%94%A8%E6%88%B7%E6%B3%A8%E6%84%8F%E4%BA%86-%E4%BD%A0%E7%9A%84sed%E5%91%BD%E4%BB%A4/"/>
+    <id>https://www.pythonnote.cn/Mac%E7%94%A8%E6%88%B7%E6%B3%A8%E6%84%8F%E4%BA%86-%E4%BD%A0%E7%9A%84sed%E5%91%BD%E4%BB%A4/</id>
+    <published>2020-06-13T04:31:55.000Z</published>
+    <updated>2020-06-13T08:22:46.964Z</updated>
+    
+    <summary type="html">
+    
+      &lt;center&gt;Author：闫玉良&lt;/center&gt;
+
+&lt;p&gt;在 &lt;code&gt;MacOS&lt;/code&gt; 上使用 &lt;code&gt;sed&lt;/code&gt; 命令时与 &lt;code&gt;linux&lt;/code&gt; 上并不相同，一定要主要！&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="Mac" scheme="https://www.pythonnote.cn/categories/Mac/"/>
+    
+    
+      <category term="MacOS" scheme="https://www.pythonnote.cn/tags/MacOS/"/>
+    
+      <category term="sed" scheme="https://www.pythonnote.cn/tags/sed/"/>
+    
+  </entry>
   
   <entry>
     <title>SQL处理排行榜问题</title>
@@ -471,29 +496,6 @@
     
     
       <category term="django" scheme="https://www.pythonnote.cn/tags/django/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>python的这些小知识你注意到了吗？</title>
-    <link href="https://www.pythonnote.cn/python%E7%9A%84%E8%BF%99%E4%BA%9B%E5%B0%8F%E7%9F%A5%E8%AF%86%E4%BD%A0%E6%B3%A8%E6%84%8F%E5%88%B0%E4%BA%86%E5%90%97%EF%BC%9F/"/>
-    <id>https://www.pythonnote.cn/python%E7%9A%84%E8%BF%99%E4%BA%9B%E5%B0%8F%E7%9F%A5%E8%AF%86%E4%BD%A0%E6%B3%A8%E6%84%8F%E5%88%B0%E4%BA%86%E5%90%97%EF%BC%9F/</id>
-    <published>2020-03-10T08:07:41.000Z</published>
-    <updated>2020-03-10T11:26:04.046Z</updated>
-    
-    <summary type="html">
-    
-      &lt;center&gt;Author：闫玉良&lt;/center&gt;
-
-&lt;p&gt;本文将对一些小知识进行汇总，这些知识也许你用了 &lt;code&gt;python&lt;/code&gt; 很久，但仍然没注意到。&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="python" scheme="https://www.pythonnote.cn/categories/python/"/>
-    
-    
-      <category term="python" scheme="https://www.pythonnote.cn/tags/python/"/>
     
   </entry>
   
