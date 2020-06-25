@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://www.pythonnote.cn/"/>
-  <updated>2020-06-25T05:58:34.296Z</updated>
+  <updated>2020-06-25T09:08:30.433Z</updated>
   <id>https://www.pythonnote.cn/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Extjs-lesson1</title>
+    <link href="https://www.pythonnote.cn/Extjs-lesson1/"/>
+    <id>https://www.pythonnote.cn/Extjs-lesson1/</id>
+    <published>2020-06-25T07:20:38.000Z</published>
+    <updated>2020-06-25T09:08:30.433Z</updated>
+    
+    <summary type="html">
+    
+      &lt;center&gt;Author：闫玉良&lt;/center&gt;
+
+&lt;p&gt;&lt;code&gt;Ext.js&lt;/code&gt; 系列课程笔记&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="extjs" scheme="https://www.pythonnote.cn/categories/extjs/"/>
+    
+    
+      <category term="extjs" scheme="https://www.pythonnote.cn/tags/extjs/"/>
+    
+  </entry>
   
   <entry>
     <title>Tmux让你开发效率飞起</title>
@@ -473,29 +496,6 @@
     
     
       <category term="python" scheme="https://www.pythonnote.cn/tags/python/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>复用Django应用，使其可以通过pip安装</title>
-    <link href="https://www.pythonnote.cn/%E5%A4%8D%E7%94%A8Django%E5%BA%94%E7%94%A8%EF%BC%8C%E4%BD%BF%E5%85%B6%E5%8F%AF%E4%BB%A5%E9%80%9A%E8%BF%87pip%E5%AE%89%E8%A3%85/"/>
-    <id>https://www.pythonnote.cn/%E5%A4%8D%E7%94%A8Django%E5%BA%94%E7%94%A8%EF%BC%8C%E4%BD%BF%E5%85%B6%E5%8F%AF%E4%BB%A5%E9%80%9A%E8%BF%87pip%E5%AE%89%E8%A3%85/</id>
-    <published>2020-03-13T11:53:44.000Z</published>
-    <updated>2020-03-13T13:25:04.421Z</updated>
-    
-    <summary type="html">
-    
-      &lt;center&gt;Author：闫玉良&lt;/center&gt;
-
-&lt;p&gt;想自己打包一个应用，可以像其他模块一样通过 &lt;code&gt;pip install&lt;/code&gt; 安装吗？在 &lt;code&gt;Django&lt;/code&gt; 项目中，一个应用如果通过此方式随用随安装是不是很帅气？快来看一下如何操作吧！&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="django" scheme="https://www.pythonnote.cn/categories/django/"/>
-    
-    
-      <category term="django" scheme="https://www.pythonnote.cn/tags/django/"/>
     
   </entry>
   

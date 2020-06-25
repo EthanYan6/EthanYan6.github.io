@@ -10,7 +10,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
   <title>
-    Tmux让你开发效率飞起 |  EthanYan&#39;s Blog
+    Extjs-lesson1 |  EthanYan&#39;s Blog
   </title>
   <meta name="generator" content="hexo-theme-yilia-plus">
   
@@ -33,7 +33,7 @@
   <div id="app">
     <main class="content">
       <section class="outer">
-  <article id="post-Tmux让你开发效率飞起" class="article article-type-post" itemscope
+  <article id="post-Extjs-lesson1" class="article article-type-post" itemscope
   itemprop="blogPost" data-scroll-reveal>
 
   <div class="article-inner">
@@ -41,7 +41,7 @@
     <header class="article-header">
        
 <h1 class="article-title sea-center" style="border-left:0" itemprop="name">
-  Tmux让你开发效率飞起
+  Extjs-lesson1
 </h1>
   
 
@@ -50,12 +50,12 @@
 
     
     <div class="article-meta">
-      <a href="/Tmux%E8%AE%A9%E4%BD%A0%E5%BC%80%E5%8F%91%E6%95%88%E7%8E%87%E9%A3%9E%E8%B5%B7/" class="article-date">
-  <time datetime="2020-06-25T03:32:52.000Z" itemprop="datePublished">2020-06-25</time>
+      <a href="/Extjs-lesson1/" class="article-date">
+  <time datetime="2020-06-25T07:20:38.000Z" itemprop="datePublished">2020-06-25</time>
 </a>
       
   <div class="article-category">
-    <a class="article-category-link" href="/categories/tmux/">tmux</a>
+    <a class="article-category-link" href="/categories/extjs/">extjs</a>
   </div>
 
       
@@ -65,7 +65,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> 字数统计:</span>
-            <span class="post-count">1.1k字</span>
+            <span class="post-count">827字</span>
         </span>
     </span>
 
@@ -74,7 +74,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-book-open-line"></i>
             <span class="post-meta-item-text"> 阅读时长≈</span>
-            <span class="post-count">4分钟</span>
+            <span class="post-count">3分钟</span>
         </span>
     </span>
 </div>
@@ -103,67 +103,54 @@
       
       <center>Author：闫玉良</center>
 
-<p><code>ssh</code> 连接突然中断，之前操作记录丢失怎么办？终端不好管理，分窗口太乱怎么办？分屏幕操作切到眼花缭乱怎么办？鼠标键盘配合手忙脚乱怎么办？快来试试开发辅助神器 <code>Tmux</code> 吧！</p>
+<p><code>Ext.js</code> 系列课程笔记</p>
 <a id="more"></a>
 
 <p><strong><em>更多精彩文章请关注公众号『Pythonnote』或者『全栈技术精选』</em></strong></p>
-<h2 id="1-简介"><a href="#1-简介" class="headerlink" title="1.简介"></a>1.简介</h2><p>你可以将 <code>Tmux</code> 称为一个分屏神器，但这有些以偏概全。因为它既可以有效的管理终端，又可以保存会话。它采用了 <code>C/S</code> 架构，使会话与终端窗口分离。这么说有些难理解，下面举个例子：</p>
-<p>正常情况都是打开终端，执行命令；关闭终端，结束会话。当你使用 <code>ssh</code> 远程登录时，如果由于不可抗力因素（比如你女朋友不想让你看电脑，而是陪陪她，然后突然断网…）使得会话中断，再次登录想接着之前的思路，对不起，找不到历史记录了，岂不是尴尬？</p>
-<p><code>Tmux</code> 就是为了解决这一痛点，将会话和终端分离。关闭终端后，会话继续保留，下次打开终端，连接即可。</p>
-<h2 id="2-概念"><a href="#2-概念" class="headerlink" title="2.概念"></a>2.概念</h2><h3 id="2-1-会话"><a href="#2-1-会话" class="headerlink" title="2.1 会话"></a>2.1 会话</h3><p>一个会话可以看做一个进程或者一个服务器，它保留着之前操作的所有信息。</p>
-<h3 id="2-2-窗口"><a href="#2-2-窗口" class="headerlink" title="2.2 窗口"></a>2.2 窗口</h3><p>进入一个会话后，我们可以创建许多窗口。每个窗口就好像给终端创建了 <code>tab</code> 页，每一个窗口都是一个终端页面。</p>
-<h3 id="2-3-面板-窗格"><a href="#2-3-面板-窗格" class="headerlink" title="2.3 面板/窗格"></a>2.3 面板/窗格</h3><p>一个窗口，我们可以分为很多个 <code>Panel</code> 。就是将一个终端分为上下左右等小窗格。</p>
+<h2 id="1-准备工作"><a href="#1-准备工作" class="headerlink" title="1.准备工作"></a>1.准备工作</h2><p>1) 熟悉 <code>HTML</code></p>
+<p>2) 熟悉 <code>CSS</code></p>
+<p>3) 熟练 <code>javaScript</code></p>
+<p>4) 熟练  <code>JS</code> 的面向对象（<code>oo</code>）编程</p>
+<p>5) 熟练 <code>Ajax</code></p>
 <blockquote>
-<p>如下图，将一个窗口分为左右两个窗格，左边执行项目，右边查看日志。</p>
+<p>书籍推荐：《JavaScript 设计模式》《征服Ajax Web 2.0 开发技术详解》</p>
 </blockquote>
-<p><img src="https://gitee.com/Ethanyan/pic_data/raw/master/tmux.png" alt="Tmux 展示图"></p>
-<h2 id="3-安装"><a href="#3-安装" class="headerlink" title="3.安装"></a>3.安装</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> Ubuntu 或 Debian</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> sudo apt-get install tmux</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> CentOS 或 Fedora</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> sudo yum install tmux</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> Mac</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> brew install tmux</span></span><br></pre></td></tr></table></figure>
+<h2 id="2-Hello-World"><a href="#2-Hello-World" class="headerlink" title="2.Hello World"></a>2.Hello World</h2><p>创建一个 <code>html</code> 页面，将 <code>ext</code> 的一些必要文件进行引入：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"viewport"</span> <span class="attr">content</span>=<span class="string">"width=device-width, initial-scale=1.0"</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>Document<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 引入 css 文件 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">type</span>=<span class="string">"text/css"</span> <span class="attr">href</span>=<span class="string">"./ext-2.3.0/resources/css/ext-all.css"</span>/&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 引入 js 文件 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span> <span class="attr">src</span>=<span class="string">"./ext-2.3.0/adapter/ext/ext-base.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span> <span class="attr">src</span>=<span class="string">"./ext-2.3.0/ext-all-debug.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 引入自己的 js 文件 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span> <span class="attr">src</span>=<span class="string">"./lesson01.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">body</span>&gt;</span><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
-<h3 id="3-1-启动退出"><a href="#3-1-启动退出" class="headerlink" title="3.1 启动退出"></a>3.1 启动退出</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 启动</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> tmux</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 退出</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> <span class="built_in">exit</span></span></span><br></pre></td></tr></table></figure>
+<p>创建对应的 <code>js</code> 文件 <code>lesson01.js</code> ：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  Ext.onReady(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    Ext.MessageBox.alert(<span class="string">"提示"</span>, <span class="string">"hello world"</span>);</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;)();</span><br></pre></td></tr></table></figure>
 
-<h2 id="4-常用操作命令总结"><a href="#4-常用操作命令总结" class="headerlink" title="4.常用操作命令总结"></a>4.常用操作命令总结</h2><p>它有很多的操作命令，与此同时还提供了各种快捷键，可以根据个人喜欢进行选择。一听见要记快捷键或者命令就头疼，有木有？放心，常用的没几个：</p>
-<h3 id="4-1-会话相关"><a href="#4-1-会话相关" class="headerlink" title="4.1 会话相关"></a>4.1 会话相关</h3><p>新建一个命名的会话，比如叫 <code>ethanyan_test</code></p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tmux new -s ethanyan_test</span><br></pre></td></tr></table></figure>
-
-<p>退出当前会话，但是保留，不杀死会话，为了下次直接连接</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tmux detach</span><br></pre></td></tr></table></figure>
-
-<p>下次打开终端窗口，在接入上次会话</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tmux at -t ethanyan_test</span><br></pre></td></tr></table></figure>
-
-<p>嫌弃会话的名称太难听了，想改个名字（这次我们使用快捷键方便一点）：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Ctrl+b $</span><br></pre></td></tr></table></figure>
-
-<p>解读：进入会话后，按 <code>Ctrl + b</code>，然后再输入 <code>$</code> 即可更改名字。（ <code>$</code> 就是在英文输入法下，先按 <code>shift</code> 再按键盘字母上面一排的数字 <code>4</code>）</p>
 <blockquote>
-<p>使用快捷键的方式，都是先按 <code>Ctrl + b</code>，告诉系统你要输入命令了，就如同 <code>vim</code> 中按 <code>esc</code> 进入命令模式一样，再输入快捷键。</p>
+<p>它的入口函数为 <code>onReady</code> ，即在加载完成 <code>html</code> 页面之后，再加载入口函数的内容。</p>
 </blockquote>
-<h3 id="4-2-窗口相关"><a href="#4-2-窗口相关" class="headerlink" title="4.2 窗口相关"></a>4.2 窗口相关</h3><p>窗口相关直接使用快捷键就完事了。</p>
-<p>按 <code>Ctrl + b</code> 之后，再按如下的快捷键：</p>
-<p><code>c</code> ：创建一个新窗口</p>
-<p><code>w</code> ：列出所有窗口，此时可通过方向键和回车键切换选择</p>
-<p><code>,</code> ：重命名当前窗口</p>
-<p><code>&amp;</code> ：关闭当前窗口</p>
-<h3 id="4-3-窗格相关"><a href="#4-3-窗格相关" class="headerlink" title="4.3 窗格相关"></a>4.3 窗格相关</h3><p>按 <code>Ctrl + b</code> 之后，再按如下的快捷键：</p>
-<p><code>方向键</code> ：选择窗格</p>
-<p><code>q</code> ：显示窗格编号，然后可以快速按对应数字键选择对应的窗格</p>
-<p><code>z</code> ：将当前的窗格全屏或者还原</p>
-<p><code>%</code> ：划分为左右两个窗格</p>
-<p><code>&quot;</code> ：划分为上下两个窗格</p>
+<p>显示效果：</p>
+<p><img src="https://gitee.com/Ethanyan/pic_data/raw/master/%E5%BC%B9%E7%AA%97.png" alt="ext-弹窗"></p>
+<h2 id="3-官方-API-文档"><a href="#3-官方-API-文档" class="headerlink" title="3.官方 API 文档"></a>3.官方 API 文档</h2><p>小闫同学将开发工程师常用的官方文档进行了汇总，地址为「<a href="https://www.pythonnote.cn/OfficialDocuments/」文档会不定期补充更新，请收藏或转发给好友。">https://www.pythonnote.cn/OfficialDocuments/」文档会不定期补充更新，请收藏或转发给好友。</a></p>
 <blockquote>
-<p>以上的快捷键和命令都是最最常用的，其他网上查到的命令不知道也无妨。</p>
+<p><code>Ext.js</code> 的文档也包含在内，点击对应按钮即可跳转。</p>
+<p>包含了英文文档以及中文文档，英文吃力的同学，中文更方便哦 ~</p>
 </blockquote>
-<h2 id="5-vi-命令记录"><a href="#5-vi-命令记录" class="headerlink" title="5.vi 命令记录"></a>5.vi 命令记录</h2><p>如果要到<strong>行首</strong>，可以在命令模式下，直接按数字键 <code>0</code>。如果要到<strong>行尾</strong>，按大写的 <code>A</code> ，即 <code>shift + a</code></p>
-<h3 id="5-1-NERDTree-插件的快捷键"><a href="#5-1-NERDTree-插件的快捷键" class="headerlink" title="5.1 NERDTree 插件的快捷键"></a>5.1 NERDTree 插件的快捷键</h3><p><code>o</code> : 打开节点或者打开文件（打开文件的时候，光标会跑到文件中）</p>
-<p><code>go</code> : 打开节点或者打开文件（打开文件的时候，光标在目录树中）</p>
-<p><code>p</code> : 到上级目录</p>
-<p><code>P</code> : 到根目录</p>
-<p><code>？</code>: 帮助</p>
-<p><code>q</code> : 关闭</p>
-<p><code>K</code> : 到同级目录的第一个节点</p>
-<p><code>J</code> : 到同级目录的最后一个节点</p>
-<p><code>i</code> : 水平分割预览</p>
-<p><code>s</code>: 垂直分割预览</p>
+<p><img src="https://gitee.com/Ethanyan/pic_data/raw/master/%E5%AE%98%E6%96%B9%E6%96%87%E6%A1%A3.png" alt="document"></p>
+<p>下面是官方文档界面说明：</p>
+<p><img src="https://gitee.com/Ethanyan/pic_data/raw/master/api%20%E8%AF%B4%E6%98%8E.png" alt="API-zh"></p>
+<blockquote>
+<p>文档讲解的超级详细，当哪里不理解的时候，可以快速检索学习。</p>
+</blockquote>
+<h2 id="4-对原生-js-扩展"><a href="#4-对原生-js-扩展" class="headerlink" title="4.对原生 js 扩展"></a>4.对原生 js 扩展</h2><h3 id="4-1-Array-remove"><a href="#4-1-Array-remove" class="headerlink" title="4.1 Array remove"></a>4.1 Array remove</h3><p><code>extjs</code> 对原生的 <code>js</code> 进行了一些扩展，使得开发更加的高效化，比如 <code>Array</code> 的方法：<code>remove</code>。下面是它的 <code>API</code></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">remove( o ) : Array</span><br><span class="line">Removes the specified object from the array. If the object is not found nothing happens.</span><br><span class="line"></span><br><span class="line">Available since: 1.1.0</span><br><span class="line"></span><br><span class="line">Parameters</span><br><span class="line">o : Object</span><br><span class="line">The object to remove</span><br><span class="line"></span><br><span class="line">Returns</span><br><span class="line">Array</span><br><span class="line">this array</span><br></pre></td></tr></table></figure>
+
+<p>简单的翻译来说：从数组中移除某个指定的对象，如果对象不存在，那么相当于什么都没发生，也不会报错。传入的参数是要移除的对象，返回的是这个数组。</p>
+<p><strong>示例</strong>：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> msgArray = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>];</span><br><span class="line">msgArray.remove(<span class="number">1</span>);</span><br><span class="line">alert(msgArray); <span class="comment">// 1 被移除，弹出窗口显示 2,3,4,5</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>如果直接在 <code>js</code> 代码中执行上述代码会报错：没有 <code>remove</code> 方法。而在 <code>Ext.onReady</code> 中执行上述代码时，会正常无误。</p>
+</blockquote>
+<p>当然上面只是众多 <code>API</code> 中的一个小例子，是为了说明它对原生 <code>js</code> 进行了很多扩展。那么他底层是怎么做的呢？</p>
+<h3 id="4-2-原理"><a href="#4-2-原理" class="headerlink" title="4.2 原理"></a>4.2 原理</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Array</span>.prototype.remove = <span class="function"><span class="keyword">function</span>(<span class="params">obj</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (<span class="literal">null</span> == obj) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>, n = <span class="number">0</span>; i &lt; <span class="keyword">this</span>.length; i++) &#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">this</span>[i] != obj) &#123;</span><br><span class="line">      <span class="keyword">this</span>[n++] = <span class="keyword">this</span>[i];</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">this</span>.length -= <span class="number">1</span>;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 测试</span></span><br><span class="line"><span class="keyword">var</span> msgArray = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>];</span><br><span class="line">msgArray.remove(<span class="number">1</span>);</span><br><span class="line">alert(msgArray); <span class="comment">// 1 被移除，弹出窗口显示 2,3,4,5</span></span><br></pre></td></tr></table></figure>
+
+<p>其实大部分都是通过上述 <code>prototype</code> 为类添加方法，只不过官方的代码逻辑一定比这个完善的多。</p>
 <p><strong><em>更多精彩文章请关注公众号『Pythonnote』或者『全栈技术精选』</em></strong></p>
 
       
@@ -234,14 +221,14 @@
     <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://www.pythonnote.cn/Tmux%E8%AE%A9%E4%BD%A0%E5%BC%80%E5%8F%91%E6%95%88%E7%8E%87%E9%A3%9E%E8%B5%B7/" alt="微信分享二维码">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://www.pythonnote.cn/Extjs-lesson1/" alt="微信分享二维码">
     </div>
 </div>
 
 <div id="share-mask"></div>
       
       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tmux/" rel="tag">tmux</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/extjs/" rel="tag">extjs</a></li></ul>
 
 
     </footer>
@@ -252,19 +239,10 @@
   
   <nav class="article-nav">
     
-      <a href="/Extjs-lesson1/" class="article-nav-link">
-        <strong class="article-nav-caption">上一篇</strong>
-        <div class="article-nav-title">
-          
-            Extjs-lesson1
-          
-        </div>
-      </a>
     
-    
-      <a href="/Mac%E7%94%A8%E6%88%B7%E6%B3%A8%E6%84%8F%E4%BA%86-%E4%BD%A0%E7%9A%84sed%E5%91%BD%E4%BB%A4/" class="article-nav-link">
+      <a href="/Tmux%E8%AE%A9%E4%BD%A0%E5%BC%80%E5%8F%91%E6%95%88%E7%8E%87%E9%A3%9E%E8%B5%B7/" class="article-nav-link">
         <strong class="article-nav-caption">下一篇</strong>
-        <div class="article-nav-title">Mac用户注意了,你的sed命令</div>
+        <div class="article-nav-title">Tmux让你开发效率飞起</div>
       </a>
     
   </nav>
