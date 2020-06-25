@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://www.pythonnote.cn/"/>
-  <updated>2020-06-13T08:22:46.964Z</updated>
+  <updated>2020-06-25T05:58:34.296Z</updated>
   <id>https://www.pythonnote.cn/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Tmux让你开发效率飞起</title>
+    <link href="https://www.pythonnote.cn/Tmux%E8%AE%A9%E4%BD%A0%E5%BC%80%E5%8F%91%E6%95%88%E7%8E%87%E9%A3%9E%E8%B5%B7/"/>
+    <id>https://www.pythonnote.cn/Tmux%E8%AE%A9%E4%BD%A0%E5%BC%80%E5%8F%91%E6%95%88%E7%8E%87%E9%A3%9E%E8%B5%B7/</id>
+    <published>2020-06-25T03:32:52.000Z</published>
+    <updated>2020-06-25T05:58:34.296Z</updated>
+    
+    <summary type="html">
+    
+      &lt;center&gt;Author：闫玉良&lt;/center&gt;
+
+&lt;p&gt;&lt;code&gt;ssh&lt;/code&gt; 连接突然中断，之前操作记录丢失怎么办？终端不好管理，分窗口太乱怎么办？分屏幕操作切到眼花缭乱怎么办？鼠标键盘配合手忙脚乱怎么办？快来试试开发辅助神器 &lt;code&gt;Tmux&lt;/code&gt; 吧！&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="tmux" scheme="https://www.pythonnote.cn/categories/tmux/"/>
+    
+    
+      <category term="tmux" scheme="https://www.pythonnote.cn/tags/tmux/"/>
+    
+  </entry>
   
   <entry>
     <title>Mac用户注意了,你的sed命令</title>
@@ -465,29 +488,6 @@
       &lt;center&gt;Author：闫玉良&lt;/center&gt;
 
 &lt;p&gt;想自己打包一个应用，可以像其他模块一样通过 &lt;code&gt;pip install&lt;/code&gt; 安装吗？在 &lt;code&gt;Django&lt;/code&gt; 项目中，一个应用如果通过此方式随用随安装是不是很帅气？快来看一下如何操作吧！&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="django" scheme="https://www.pythonnote.cn/categories/django/"/>
-    
-    
-      <category term="django" scheme="https://www.pythonnote.cn/tags/django/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Django迁移数据库报错解决</title>
-    <link href="https://www.pythonnote.cn/Django%E8%BF%81%E7%A7%BB%E6%95%B0%E6%8D%AE%E5%BA%93%E6%8A%A5%E9%94%99%E8%A7%A3%E5%86%B3/"/>
-    <id>https://www.pythonnote.cn/Django%E8%BF%81%E7%A7%BB%E6%95%B0%E6%8D%AE%E5%BA%93%E6%8A%A5%E9%94%99%E8%A7%A3%E5%86%B3/</id>
-    <published>2020-03-12T12:14:29.000Z</published>
-    <updated>2020-03-13T11:55:28.210Z</updated>
-    
-    <summary type="html">
-    
-      &lt;center&gt;Author：闫玉良&lt;/center&gt;
-
-&lt;p&gt;&lt;code&gt;Django&lt;/code&gt; 最新版本创建应用后，迁移数据库报错怎么办？&lt;/p&gt;
     
     </summary>
     
