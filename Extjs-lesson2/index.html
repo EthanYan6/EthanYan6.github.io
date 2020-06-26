@@ -10,7 +10,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
   <title>
-    Extjs-lesson1 |  EthanYan&#39;s Blog
+    Extjs-lesson2 |  EthanYan&#39;s Blog
   </title>
   <meta name="generator" content="hexo-theme-yilia-plus">
   
@@ -33,7 +33,7 @@
   <div id="app">
     <main class="content">
       <section class="outer">
-  <article id="post-Extjs-lesson1" class="article article-type-post" itemscope
+  <article id="post-Extjs-lesson2" class="article article-type-post" itemscope
   itemprop="blogPost" data-scroll-reveal>
 
   <div class="article-inner">
@@ -41,7 +41,7 @@
     <header class="article-header">
        
 <h1 class="article-title sea-center" style="border-left:0" itemprop="name">
-  Extjs-lesson1
+  Extjs-lesson2
 </h1>
   
 
@@ -50,8 +50,8 @@
 
     
     <div class="article-meta">
-      <a href="/Extjs-lesson1/" class="article-date">
-  <time datetime="2020-06-25T07:20:38.000Z" itemprop="datePublished">2020-06-25</time>
+      <a href="/Extjs-lesson2/" class="article-date">
+  <time datetime="2020-06-26T01:21:31.000Z" itemprop="datePublished">2020-06-26</time>
 </a>
       
   <div class="article-category">
@@ -65,7 +65,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> 字数统计:</span>
-            <span class="post-count">827字</span>
+            <span class="post-count">1.1k字</span>
         </span>
     </span>
 
@@ -74,7 +74,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-book-open-line"></i>
             <span class="post-meta-item-text"> 阅读时长≈</span>
-            <span class="post-count">3分钟</span>
+            <span class="post-count">4分钟</span>
         </span>
     </span>
 </div>
@@ -103,54 +103,48 @@
       
       <center>Author：闫玉良</center>
 
-<p><code>Ext.js</code> 系列课程笔记</p>
+<p><code>Ext.js</code> 系列课程笔记「类」</p>
 <a id="more"></a>
 
 <p><strong><em>更多精彩文章请关注公众号『Pythonnote』或者『全栈技术精选』</em></strong></p>
-<h2 id="1-准备工作"><a href="#1-准备工作" class="headerlink" title="1.准备工作"></a>1.准备工作</h2><p>1) 熟悉 <code>HTML</code></p>
-<p>2) 熟悉 <code>CSS</code></p>
-<p>3) 熟练 <code>javaScript</code></p>
-<p>4) 熟练  <code>JS</code> 的面向对象（<code>oo</code>）编程</p>
-<p>5) 熟练 <code>Ajax</code></p>
-<blockquote>
-<p>书籍推荐：《JavaScript 设计模式》《征服Ajax Web 2.0 开发技术详解》</p>
+<h2 id="1-定义类"><a href="#1-定义类" class="headerlink" title="1.定义类"></a>1.定义类</h2><p><code>Ext.js</code> 是面向对象的，因此我们需要了解一下它的语法，以便后续程序的展开。也许你一直好奇为什么使用该框架经常见到 <code>Ext</code>，因为框架中定义了各种类（提供了 300 多个类），不能保证与原生 <code>js</code> 或者其他框架没有一点冲突，因此将所有的命名封装到了 <code>Ext</code> 中，在此命名空间中就可以为所欲为了。就好比 <code>JQuery</code> 中的 <code>$</code>。</p>
+<p>本来想写 <code>Ext.define</code> 的，结果惊奇的发现 <code>Extjs2.3</code> 中没有该方法，我也是一脸懵逼。好吧，这一些列文章，我会围绕老版本 <code>2.3</code> 进行展开，以适应那些老版本的企业项目。既然如此，那我们就回顾一下 <code>js</code> 的面向对象吧。</p>
+<h3 id="1-1-构造函数模式"><a href="#1-1-构造函数模式" class="headerlink" title="1.1 构造函数模式"></a>1.1 构造函数模式</h3><blockquote>
+<p>所谓”构造函数”，其实就是一个普通函数，但是内部使用了<code>this</code>变量。对构造函数使用<code>new</code>运算符，就能生成实例，并且<code>this</code>变量会绑定在实例对象上。</p>
 </blockquote>
-<h2 id="2-Hello-World"><a href="#2-Hello-World" class="headerlink" title="2.Hello World"></a>2.Hello World</h2><p>创建一个 <code>html</code> 页面，将 <code>ext</code> 的一些必要文件进行引入：</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"viewport"</span> <span class="attr">content</span>=<span class="string">"width=device-width, initial-scale=1.0"</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>Document<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 引入 css 文件 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">type</span>=<span class="string">"text/css"</span> <span class="attr">href</span>=<span class="string">"./ext-2.3.0/resources/css/ext-all.css"</span>/&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 引入 js 文件 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span> <span class="attr">src</span>=<span class="string">"./ext-2.3.0/adapter/ext/ext-base.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span> <span class="attr">src</span>=<span class="string">"./ext-2.3.0/ext-all-debug.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 引入自己的 js 文件 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span> <span class="attr">src</span>=<span class="string">"./lesson01.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">body</span>&gt;</span><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Father</span>(<span class="params">name, age</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.name = name;</span><br><span class="line">  <span class="keyword">this</span>.age = age;</span><br><span class="line">  <span class="keyword">this</span>.call = <span class="string">"爸爸"</span></span><br><span class="line">  <span class="keyword">this</span>.like = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    alert(<span class="string">"藏私房钱~"</span>)</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>创建对应的 <code>js</code> 文件 <code>lesson01.js</code> ：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  Ext.onReady(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    Ext.MessageBox.alert(<span class="string">"提示"</span>, <span class="string">"hello world"</span>);</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;)();</span><br></pre></td></tr></table></figure>
+<h4 id="1-1-1-问题"><a href="#1-1-1-问题" class="headerlink" title="1.1.1 问题"></a>1.1.1 问题</h4><p>每生成一个实例， <code>call</code> 属性和 <code>like</code> 方法都会生成相同的内容，这是否太占用空间，浪费内存？那么能否只生成一次，以后的实例都去引用，而非重复内容创建多份呢？当然可以！请看下面：</p>
+<h3 id="1-2-Prototype模式"><a href="#1-2-Prototype模式" class="headerlink" title="1.2 Prototype模式"></a>1.2 Prototype模式</h3><p>昨天的文章 <a href="https://www.pythonnote.cn/Extjs-lesson1/">Extjs-lesson1</a> 末尾提到了这种方式。我们可以将所有不变的属性以及方法直接定义在 <code>prototype</code> 对象上来解决上面提到的问题。</p>
+<blockquote>
+<p><code>Javascript</code> 规定，每一个构造函数都有一个<code>prototype</code>属性，指向另一个对象。这个对象的所有属性和方法，都会被构造函数的实例继承。</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Father</span>(<span class="params">name, age</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.name = name;</span><br><span class="line">  <span class="keyword">this</span>.age = age;</span><br><span class="line">&#125;</span><br><span class="line">Father.prototype.call = <span class="string">"爸爸"</span>;</span><br><span class="line">Father.prototype.like = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  alert(<span class="string">"藏私房钱~"</span>);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
-<blockquote>
-<p>它的入口函数为 <code>onReady</code> ，即在加载完成 <code>html</code> 页面之后，再加载入口函数的内容。</p>
+<h2 id="2-继承"><a href="#2-继承" class="headerlink" title="2.继承"></a>2.继承</h2><h3 id="2-1-构造函数绑定"><a href="#2-1-构造函数绑定" class="headerlink" title="2.1 构造函数绑定"></a>2.1 构造函数绑定</h3><blockquote>
+<p>使用 <code>apply</code> 方法，让子类继承父类的方法</p>
 </blockquote>
-<p>显示效果：</p>
-<p><img src="https://gitee.com/Ethanyan/pic_data/raw/master/%E5%BC%B9%E7%AA%97.png" alt="ext-弹窗"></p>
-<h2 id="3-官方-API-文档"><a href="#3-官方-API-文档" class="headerlink" title="3.官方 API 文档"></a>3.官方 API 文档</h2><p>小闫同学将开发工程师常用的官方文档进行了汇总，地址为「<a href="https://www.pythonnote.cn/OfficialDocuments/」文档会不定期补充更新，请收藏或转发给好友。">https://www.pythonnote.cn/OfficialDocuments/」文档会不定期补充更新，请收藏或转发给好友。</a></p>
-<blockquote>
-<p><code>Ext.js</code> 的文档也包含在内，点击对应按钮即可跳转。</p>
-<p>包含了英文文档以及中文文档，英文吃力的同学，中文更方便哦 ~</p>
-</blockquote>
-<p><img src="https://gitee.com/Ethanyan/pic_data/raw/master/%E5%AE%98%E6%96%B9%E6%96%87%E6%A1%A3.png" alt="document"></p>
-<p>下面是官方文档界面说明：</p>
-<p><img src="https://gitee.com/Ethanyan/pic_data/raw/master/api%20%E8%AF%B4%E6%98%8E.png" alt="API-zh"></p>
-<blockquote>
-<p>文档讲解的超级详细，当哪里不理解的时候，可以快速检索学习。</p>
-</blockquote>
-<h2 id="4-对原生-js-扩展"><a href="#4-对原生-js-扩展" class="headerlink" title="4.对原生 js 扩展"></a>4.对原生 js 扩展</h2><h3 id="4-1-Array-remove"><a href="#4-1-Array-remove" class="headerlink" title="4.1 Array remove"></a>4.1 Array remove</h3><p><code>extjs</code> 对原生的 <code>js</code> 进行了一些扩展，使得开发更加的高效化，比如 <code>Array</code> 的方法：<code>remove</code>。下面是它的 <code>API</code></p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">remove( o ) : Array</span><br><span class="line">Removes the specified object from the array. If the object is not found nothing happens.</span><br><span class="line"></span><br><span class="line">Available since: 1.1.0</span><br><span class="line"></span><br><span class="line">Parameters</span><br><span class="line">o : Object</span><br><span class="line">The object to remove</span><br><span class="line"></span><br><span class="line">Returns</span><br><span class="line">Array</span><br><span class="line">this array</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">Father</span>(<span class="params">name, age</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.name = name;</span><br><span class="line">    <span class="keyword">this</span>.age = age;</span><br><span class="line">    <span class="keyword">this</span>.call = <span class="string">"爸爸"</span>;</span><br><span class="line">    <span class="keyword">this</span>.like = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">      alert(<span class="string">"藏私房钱~"</span>);</span><br><span class="line">    &#125;;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">Son</span>(<span class="params">name, age, school</span>) </span>&#123;</span><br><span class="line">    Father.apply(<span class="keyword">this</span>, <span class="built_in">arguments</span>);  <span class="xml"><span class="tag">&lt;<span class="name">----</span> 看这里</span></span></span><br><span class="line"><span class="xml">    this.name = name;</span></span><br><span class="line"><span class="xml">    this.age = age;</span></span><br><span class="line"><span class="xml">    this.school = school;</span></span><br><span class="line"><span class="xml">  &#125;</span></span><br><span class="line"><span class="xml">// 创建对象，调用父类方法</span></span><br><span class="line"><span class="xml">  var smallSon = new Son("小明", 6, "庞各庄一高");</span></span><br><span class="line"><span class="xml">  smallSon.like();</span></span><br></pre></td></tr></table></figure>
 
-<p>简单的翻译来说：从数组中移除某个指定的对象，如果对象不存在，那么相当于什么都没发生，也不会报错。传入的参数是要移除的对象，返回的是这个数组。</p>
-<p><strong>示例</strong>：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> msgArray = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>];</span><br><span class="line">msgArray.remove(<span class="number">1</span>);</span><br><span class="line">alert(msgArray); <span class="comment">// 1 被移除，弹出窗口显示 2,3,4,5</span></span><br></pre></td></tr></table></figure>
+<h3 id="2-2-Prototype模式"><a href="#2-2-Prototype模式" class="headerlink" title="2.2 Prototype模式"></a>2.2 Prototype模式</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Father</span>(<span class="params">name, age</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.name = name;</span><br><span class="line">  <span class="keyword">this</span>.age = age;</span><br><span class="line">&#125;</span><br><span class="line">Father.prototype.call = <span class="string">"爸爸"</span>;</span><br><span class="line">Father.prototype.like = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  alert(<span class="string">"藏私房钱~"</span>);</span><br><span class="line">&#125;;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Son</span>(<span class="params">name, age, school</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.name = name;</span><br><span class="line">  <span class="keyword">this</span>.age = age;</span><br><span class="line">  <span class="keyword">this</span>.school = school;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 将 Son 的 prototype 对象指向一个 Father 示例</span></span><br><span class="line">Son.prototype = <span class="keyword">new</span> Father();</span><br><span class="line"><span class="comment">// 将 constructor 属性，指向它原本的构造函数</span></span><br><span class="line">Son.prototype.constructor = Son;</span><br><span class="line"><span class="keyword">var</span> smallSon = <span class="keyword">new</span> Son(<span class="string">"小明"</span>, <span class="number">6</span>, <span class="string">"庞各庄一高"</span>);</span><br><span class="line">smallSon.like();</span><br></pre></td></tr></table></figure>
 
 <blockquote>
-<p>如果直接在 <code>js</code> 代码中执行上述代码会报错：没有 <code>remove</code> 方法。而在 <code>Ext.onReady</code> 中执行上述代码时，会正常无误。</p>
+<p>第一行代码会将原先 <code>Son</code> 的 <code>prototype</code> 对象重新赋值，导致原先的被删除。任何一个 <code>prototype</code> 对象都有一个 <code>constructor</code> 属性，指向它的构造函数。经过第一行代码之后， <code>constructor</code> 属性也指向了 <code>Father</code>，这样一来，所有通过 <code>Son</code> 构造的实例的  <code>constructor</code> 属性都会指向了 <code>Father</code>，继承将完全混乱，所以第二行代码进行拨乱反正。</p>
 </blockquote>
-<p>当然上面只是众多 <code>API</code> 中的一个小例子，是为了说明它对原生 <code>js</code> 进行了很多扩展。那么他底层是怎么做的呢？</p>
-<h3 id="4-2-原理"><a href="#4-2-原理" class="headerlink" title="4.2 原理"></a>4.2 原理</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Array</span>.prototype.remove = <span class="function"><span class="keyword">function</span>(<span class="params">obj</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (<span class="literal">null</span> == obj) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>, n = <span class="number">0</span>; i &lt; <span class="keyword">this</span>.length; i++) &#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">this</span>[i] != obj) &#123;</span><br><span class="line">      <span class="keyword">this</span>[n++] = <span class="keyword">this</span>[i];</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">this</span>.length -= <span class="number">1</span>;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 测试</span></span><br><span class="line"><span class="keyword">var</span> msgArray = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>];</span><br><span class="line">msgArray.remove(<span class="number">1</span>);</span><br><span class="line">alert(msgArray); <span class="comment">// 1 被移除，弹出窗口显示 2,3,4,5</span></span><br></pre></td></tr></table></figure>
+<h3 id="2-3-直接继承prototype"><a href="#2-3-直接继承prototype" class="headerlink" title="2.3 直接继承prototype"></a>2.3 直接继承prototype</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 将 Son 的 prototype 对象指向 Father 的 prototype 对象</span></span><br><span class="line">Son.prototype = Father.prototype;</span><br><span class="line"><span class="comment">// 将 constructor 属性，指向它原本的构造函数</span></span><br><span class="line">Son.prototype.constructor = Son;</span><br></pre></td></tr></table></figure>
 
-<p>其实大部分都是通过上述 <code>prototype</code> 为类添加方法，只不过官方的代码逻辑一定比这个完善的多。</p>
+<blockquote>
+<p><strong>优点</strong> ：效率比较高（不用执行和建立 <code>Father</code> 的实例了），比较省内存。</p>
+<p><strong>缺点 ：</strong> <code>Son.prototype</code> 和 <code>Father.prototype</code> 现在指向了同一个对象，那么任何对 <code>Son.prototype</code> 的修改，都会反映到 <code>Father.prototype</code>。</p>
+</blockquote>
+<h4 id="2-3-1-改进"><a href="#2-3-1-改进" class="headerlink" title="2.3.1 改进"></a>2.3.1 改进</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> oEmpty = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;&#125;;</span><br><span class="line">oEmpty.prototype = Father.prototype;</span><br><span class="line">Son.prototype = <span class="keyword">new</span> oEmpty();</span><br><span class="line">Son.prototype.constructor = Son;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>其实就是利用一个空对象做中介，既节省内存，又不会因为 <code>Son.prototype</code> 的修改，反映到 <code>Father.prototype</code> 上。</p>
+</blockquote>
+<h2 id="3-创建对象"><a href="#3-创建对象" class="headerlink" title="3.创建对象"></a>3.创建对象</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> smallSon = <span class="keyword">new</span> Son(<span class="string">"小明"</span>, <span class="number">6</span>, <span class="string">"庞各庄一高"</span>);</span><br></pre></td></tr></table></figure>
+
+<p>就是通过 <code>new</code> 关键字</p>
 <p><strong><em>更多精彩文章请关注公众号『Pythonnote』或者『全栈技术精选』</em></strong></p>
 
       
@@ -221,7 +215,7 @@
     <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://www.pythonnote.cn/Extjs-lesson1/" alt="微信分享二维码">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://www.pythonnote.cn/Extjs-lesson2/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -239,19 +233,10 @@
   
   <nav class="article-nav">
     
-      <a href="/Extjs-lesson2/" class="article-nav-link">
-        <strong class="article-nav-caption">上一篇</strong>
-        <div class="article-nav-title">
-          
-            Extjs-lesson2
-          
-        </div>
-      </a>
     
-    
-      <a href="/Tmux%E8%AE%A9%E4%BD%A0%E5%BC%80%E5%8F%91%E6%95%88%E7%8E%87%E9%A3%9E%E8%B5%B7/" class="article-nav-link">
+      <a href="/Extjs-lesson1/" class="article-nav-link">
         <strong class="article-nav-caption">下一篇</strong>
-        <div class="article-nav-title">Tmux让你开发效率飞起</div>
+        <div class="article-nav-title">Extjs-lesson1</div>
       </a>
     
   </nav>

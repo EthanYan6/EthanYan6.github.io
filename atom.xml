@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://www.pythonnote.cn/"/>
-  <updated>2020-06-25T09:08:30.433Z</updated>
+  <updated>2020-06-26T04:27:53.753Z</updated>
   <id>https://www.pythonnote.cn/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Extjs-lesson2</title>
+    <link href="https://www.pythonnote.cn/Extjs-lesson2/"/>
+    <id>https://www.pythonnote.cn/Extjs-lesson2/</id>
+    <published>2020-06-26T01:21:31.000Z</published>
+    <updated>2020-06-26T04:27:53.753Z</updated>
+    
+    <summary type="html">
+    
+      &lt;center&gt;Author：闫玉良&lt;/center&gt;
+
+&lt;p&gt;&lt;code&gt;Ext.js&lt;/code&gt; 系列课程笔记「类」&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="extjs" scheme="https://www.pythonnote.cn/categories/extjs/"/>
+    
+    
+      <category term="extjs" scheme="https://www.pythonnote.cn/tags/extjs/"/>
+    
+  </entry>
   
   <entry>
     <title>Extjs-lesson1</title>
@@ -465,29 +488,6 @@
 &lt;blockquote&gt;
 &lt;p&gt;关于项目以及灵活的题目此处并未体现，只将一些记忆深刻的通用题目汇总展示，希望可以帮助到大家。&lt;/p&gt;
 &lt;/blockquote&gt;
-    
-    </summary>
-    
-    
-      <category term="python" scheme="https://www.pythonnote.cn/categories/python/"/>
-    
-    
-      <category term="python" scheme="https://www.pythonnote.cn/tags/python/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>菜鸟去面试之一</title>
-    <link href="https://www.pythonnote.cn/%E8%8F%9C%E9%B8%9F%E5%8E%BB%E9%9D%A2%E8%AF%95%E4%B9%8B%E4%B8%80/"/>
-    <id>https://www.pythonnote.cn/%E8%8F%9C%E9%B8%9F%E5%8E%BB%E9%9D%A2%E8%AF%95%E4%B9%8B%E4%B8%80/</id>
-    <published>2020-03-16T07:08:31.000Z</published>
-    <updated>2020-03-16T08:40:56.127Z</updated>
-    
-    <summary type="html">
-    
-      &lt;center&gt;Author：闫玉良&lt;/center&gt;
-
-&lt;p&gt;春天到了，那颗躁动不安的心又踏上了面试之旅，菜鸟在前方探路，返回一手资料供你参考。&lt;/p&gt;
     
     </summary>
     
