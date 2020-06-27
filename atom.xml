@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://www.pythonnote.cn/"/>
-  <updated>2020-06-26T12:41:33.936Z</updated>
+  <updated>2020-06-27T07:38:43.749Z</updated>
   <id>https://www.pythonnote.cn/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Extjs-lesson4</title>
+    <link href="https://www.pythonnote.cn/Extjs-lesson4/"/>
+    <id>https://www.pythonnote.cn/Extjs-lesson4/</id>
+    <published>2020-06-27T03:12:04.000Z</published>
+    <updated>2020-06-27T07:38:43.749Z</updated>
+    
+    <summary type="html">
+    
+      &lt;center&gt;Author：闫玉良&lt;/center&gt;
+
+&lt;p&gt;&lt;code&gt;Ext.js&lt;/code&gt; 系列课程笔记「表单子项」&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="extjs" scheme="https://www.pythonnote.cn/categories/extjs/"/>
+    
+    
+      <category term="extjs" scheme="https://www.pythonnote.cn/tags/extjs/"/>
+    
+  </entry>
   
   <entry>
     <title>Extjs-lesson3</title>
@@ -470,29 +493,6 @@
     
     
       <category term="sql" scheme="https://www.pythonnote.cn/tags/sql/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>多线程如何获取结果</title>
-    <link href="https://www.pythonnote.cn/%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%A6%82%E4%BD%95%E8%8E%B7%E5%8F%96%E7%BB%93%E6%9E%9C/"/>
-    <id>https://www.pythonnote.cn/%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%A6%82%E4%BD%95%E8%8E%B7%E5%8F%96%E7%BB%93%E6%9E%9C/</id>
-    <published>2020-03-18T12:53:03.000Z</published>
-    <updated>2020-03-18T13:27:04.944Z</updated>
-    
-    <summary type="html">
-    
-      &lt;center&gt;Author：闫玉良&lt;/center&gt;
-
-&lt;p&gt;下午的综合面试，技术方面只询问了项目，剩下时间全是背景调查，双方提问、互相了解情况。所以今天的文章就没有面试题了，总结一位老哥教我的一个知识点：多线程如何获取结果。&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="python" scheme="https://www.pythonnote.cn/categories/python/"/>
-    
-    
-      <category term="python" scheme="https://www.pythonnote.cn/tags/python/"/>
     
   </entry>
   

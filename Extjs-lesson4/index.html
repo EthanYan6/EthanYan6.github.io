@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+   
+  <meta name="keywords" content="Python,Java,powershell,shell,Elasticsearch,MySQL,Redis,Django,Flask,爬虫,RPC,数据分析,人工智能,算法,数据结构" />
+   
+  <meta name="description" content="EthanYan&#39;s Blog" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <title>
+    Extjs-lesson4 |  EthanYan&#39;s Blog
+  </title>
+  <meta name="generator" content="hexo-theme-yilia-plus">
+  
+  <link rel="shortcut icon" href="/favicon.ico" />
+  
+  <link rel="stylesheet" href="/css/main.css">
+  <script src="/js/pace.min.js"></script>
+
+  
+
+  
+
+  <script data-ad-client="ca-pub-4890841235714870" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<link rel="alternate" href="/atom.xml" title="EthanYan's Blog" type="application/atom+xml">
+</head>
+
+</html>
+
+<body>
+  <div id="app">
+    <main class="content">
+      <section class="outer">
+  <article id="post-Extjs-lesson4" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
+  Extjs-lesson4
+</h1>
+  
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/Extjs-lesson4/" class="article-date">
+  <time datetime="2020-06-27T03:12:04.000Z" itemprop="datePublished">2020-06-27</time>
+</a>
+      
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/extjs/">extjs</a>
+  </div>
+
+      
+      
+<div class="word_count">
+    <span class="post-time">
+        <span class="post-meta-item-icon">
+            <i class="ri-quill-pen-line"></i>
+            <span class="post-meta-item-text"> 字数统计:</span>
+            <span class="post-count">1.8k字</span>
+        </span>
+    </span>
+
+    <span class="post-time">
+        &nbsp; | &nbsp;
+        <span class="post-meta-item-icon">
+            <i class="ri-book-open-line"></i>
+            <span class="post-meta-item-text"> 阅读时长≈</span>
+            <span class="post-count">7分钟</span>
+        </span>
+    </span>
+</div>
+
+      
+    </div>
+    
+
+    
+    
+    <div class="tocbot"></div>
+
+
+
+
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+
+
+      
+
+      
+      <center>Author：闫玉良</center>
+
+<p><code>Ext.js</code> 系列课程笔记「表单子项」</p>
+<a id="more"></a>
+
+<p><strong><em>更多精彩文章请关注公众号『Pythonnote』或者『全栈技术精选』</em></strong></p>
+<h2 id="1-TextField"><a href="#1-TextField" class="headerlink" title="1.TextField"></a>1.TextField</h2><h3 id="1-1-展示"><a href="#1-1-展示" class="headerlink" title="1.1 展示"></a>1.1 展示</h3><p><img src="https://gitee.com/Ethanyan/pic_data/raw/master/TextField.png" alt="TextField"></p>
+<h3 id="1-2-代码"><a href="#1-2-代码" class="headerlink" title="1.2 代码"></a>1.2 代码</h3><blockquote>
+<p>窗体 <code>Window</code> 以及表单 <code>FormPanel</code> 的代码省略，以后的代码将只展示必要部分。</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 初始化提示信息，让下面的框框显示提示动作</span></span><br><span class="line">Ext.QuickTips.init();</span><br><span class="line"><span class="comment">// 提示的方式在框框右边缘，参数的值有："qtip","title","under","side",id(元素id)</span></span><br><span class="line"><span class="comment">// side方式用的较多，右边出现红色感叹号，鼠标上去出现错误提示。</span></span><br><span class="line">Ext.form.Field.prototype.msgTarget = <span class="string">"side"</span>;</span><br><span class="line"><span class="comment">// 用户名</span></span><br><span class="line"><span class="comment">// 创建一个新的TextField文本框对象</span></span><br><span class="line"><span class="keyword">var</span> txtusername = <span class="keyword">new</span> Ext.form.TextField(&#123;</span><br><span class="line">  <span class="comment">// 宽</span></span><br><span class="line">  width: <span class="number">140</span>,</span><br><span class="line">  <span class="comment">// 不允许文本框为空</span></span><br><span class="line">  allowBlank: <span class="literal">false</span>,</span><br><span class="line">  <span class="comment">// 文本框的最大长度为 20 个字符；超过 20 个字符仍然可以输入，但会有警告信息</span></span><br><span class="line">  maxLength: <span class="number">20</span>,</span><br><span class="line">  <span class="comment">// 该 TextField 的名称</span></span><br><span class="line">  name: <span class="string">"username"</span>,</span><br><span class="line">  <span class="comment">// 文本框前面显示的文字</span></span><br><span class="line">  fieldLabel: <span class="string">"用户名称"</span>,</span><br><span class="line">  <span class="comment">// 当非空校验没有通过时的提示信息</span></span><br><span class="line">  blankText: <span class="string">"请输入用户名"</span>,</span><br><span class="line">  <span class="comment">// 当最大长度校验没有通过时的提示信息</span></span><br><span class="line">  maxLengthText: <span class="string">"用户名不能超过20个字符"</span></span><br><span class="line">&#125;);</span><br><span class="line"><span class="comment">// 密码input</span></span><br><span class="line"><span class="comment">// 创建一个新的TextField文本框对象</span></span><br><span class="line"><span class="keyword">var</span> txtpassword = <span class="keyword">new</span> Ext.form.TextField(&#123;</span><br><span class="line">  width: <span class="number">140</span>,</span><br><span class="line">  allowBlank: <span class="literal">false</span>,</span><br><span class="line">  maxLength: <span class="number">20</span>,</span><br><span class="line">  <span class="comment">// 字段类型，默认是 text，填写为 password 时密码会加密显示</span></span><br><span class="line">  inputType: <span class="string">"password"</span>,</span><br><span class="line">  name: <span class="string">"password"</span>,</span><br><span class="line">  fieldLabel: <span class="string">"密码"</span>,</span><br><span class="line">  blankText: <span class="string">"请输入密码"</span>,</span><br><span class="line">  maxLengthText: <span class="string">"密码不能超过20个字符"</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="2-Button"><a href="#2-Button" class="headerlink" title="2.Button"></a>2.Button</h2><h3 id="2-1-展示"><a href="#2-1-展示" class="headerlink" title="2.1 展示"></a>2.1 展示</h3><p><img src="https://gitee.com/Ethanyan/pic_data/raw/master/Button.png" alt="Button"></p>
+<h3 id="2-2-代码"><a href="#2-2-代码" class="headerlink" title="2.2 代码"></a>2.2 代码</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//提交按钮处理方法</span></span><br><span class="line"><span class="keyword">var</span> btnsubmitclick = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  Ext.MessageBox.alert(<span class="string">"提示"</span>, <span class="string">"你点了确定按钮!"</span>);</span><br><span class="line">&#125;;</span><br><span class="line"><span class="comment">//重置按钮"点击时"处理方法</span></span><br><span class="line"><span class="keyword">var</span> btnresetclick = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  Ext.MessageBox.alert(<span class="string">"提示"</span>, <span class="string">"你点了重置按钮!"</span>);</span><br><span class="line">&#125;;</span><br><span class="line"><span class="comment">//重置按钮"鼠标悬停"处理方法</span></span><br><span class="line"><span class="keyword">var</span> btnresetmouseover = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  Ext.MessageBox.alert(<span class="string">"提示"</span>, <span class="string">"你鼠标悬停在重置按钮之上!"</span>);</span><br><span class="line">&#125;;</span><br><span class="line"><span class="comment">//提交按钮</span></span><br><span class="line"><span class="comment">//创建一个新的Button按钮对象</span></span><br><span class="line"><span class="keyword">var</span> btnsubmit = <span class="keyword">new</span> Ext.Button(&#123;</span><br><span class="line">  text: <span class="string">"提交"</span>,</span><br><span class="line">  <span class="comment">//当用户点击的时候[即js中的onclick事件]执行方法btnsubmitclick。</span></span><br><span class="line">  handler: btnsubmitclick</span><br><span class="line">&#125;);</span><br><span class="line"><span class="comment">//重置按钮</span></span><br><span class="line"><span class="comment">//创建一个新的Button按钮对象</span></span><br><span class="line"><span class="keyword">var</span> btnreset = <span class="keyword">new</span> Ext.Button(&#123;</span><br><span class="line">  text: <span class="string">"重置"</span>,</span><br><span class="line">  <span class="comment">//事件监听，按顺序执行。填写格式：事件名: 处理函数</span></span><br><span class="line">  listeners: &#123;</span><br><span class="line">    <span class="comment">//鼠标悬停时执行方法btnresetmouseover</span></span><br><span class="line">    mouseover: btnresetmouseover,</span><br><span class="line">    <span class="comment">//当用户点击的时候[即js中的onclick事件]执行方法btnresetclick</span></span><br><span class="line">    click: btnresetclick</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><code>handler</code> 是一个特殊的 <code>listeners</code> ，执行的是首发事件。</p>
+</blockquote>
+<h2 id="3-NumberField"><a href="#3-NumberField" class="headerlink" title="3.NumberField"></a>3.NumberField</h2><h3 id="3-1-展示"><a href="#3-1-展示" class="headerlink" title="3.1 展示"></a>3.1 展示</h3><p><img src="https://gitee.com/Ethanyan/pic_data/raw/master/NumberField.png" alt="NumberField"></p>
+<h3 id="3-2-代码"><a href="#3-2-代码" class="headerlink" title="3.2 代码"></a>3.2 代码</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//创建一个NumberField数字文本框对象</span></span><br><span class="line"><span class="keyword">var</span> numberfield = <span class="keyword">new</span> Ext.form.NumberField(&#123;</span><br><span class="line">  <span class="comment">//文本框前面的显示文字（标签）</span></span><br><span class="line">  fieldLabel: <span class="string">"身高"</span>,</span><br><span class="line">  <span class="comment">//宽度</span></span><br><span class="line">  width: <span class="number">80</span>,</span><br><span class="line">  <span class="comment">//设置小数点后面的位数，当位数超过时系统会自动截断</span></span><br><span class="line">  decimalPrecision: <span class="number">1</span>,</span><br><span class="line">  <span class="comment">//设置数字文本框最小值</span></span><br><span class="line">  minValue: <span class="number">0.01</span>,</span><br><span class="line">  <span class="comment">//设置数字文本框最大值</span></span><br><span class="line">  maxValue: <span class="number">200</span>,</span><br><span class="line">  <span class="comment">//这个是自己添加的属性，属性添加可以参看重写文本框部分代码</span></span><br><span class="line">  unitText: <span class="string">" cm"</span>,</span><br><span class="line">  <span class="comment">//不允许为空</span></span><br><span class="line">  allowBlank: <span class="literal">false</span>,</span><br><span class="line">  <span class="comment">//如果校验为空时的提示文字</span></span><br><span class="line">  blankText: <span class="string">"请输入身高"</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h4 id="3-2-1-重写文本框"><a href="#3-2-1-重写文本框" class="headerlink" title="3.2.1 重写文本框"></a>3.2.1 重写文本框</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//重写Ext.form.TextField这个类</span></span><br><span class="line">Ext.override(Ext.form.TextField, &#123;</span><br><span class="line">  unitText: <span class="string">''</span>,</span><br><span class="line">  <span class="comment">//重写 onRender 方法</span></span><br><span class="line">  onRender: <span class="function"><span class="keyword">function</span> (<span class="params">ct, position</span>) </span>&#123;</span><br><span class="line">    Ext.form.TextField.superclass.onRender.call(<span class="keyword">this</span>, ct, position);</span><br><span class="line">    <span class="comment">// 如果单位字符串已定义 则在后方增加单位对象</span></span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">this</span>.unitText != <span class="string">''</span>) &#123;</span><br><span class="line">      <span class="keyword">this</span>.unitEl = ct.createChild(&#123;</span><br><span class="line">        tag: <span class="string">'div'</span>,</span><br><span class="line">        html: <span class="keyword">this</span>.unitText</span><br><span class="line">      &#125;);</span><br><span class="line">      <span class="comment">// 在样式表中加了样式"x-form-unit"。</span></span><br><span class="line">      <span class="keyword">this</span>.unitEl.addClass(<span class="string">'x-form-unit'</span>);</span><br><span class="line">      <span class="comment">// 增加单位名称的同时 按单位名称大小减少文本框的长度 初步考虑了中英文混排 未考虑为负的情况</span></span><br><span class="line">      <span class="keyword">this</span>.width = <span class="keyword">this</span>.width - (<span class="keyword">this</span>.unitText.replace(<span class="regexp">/[^\x00-\xff]/g</span>, <span class="string">"xx"</span>).length * <span class="number">6</span> + <span class="number">2</span>);</span><br><span class="line">      <span class="comment">// 同时修改错误提示图标的位置</span></span><br><span class="line">      <span class="keyword">this</span>.alignErrorIcon = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.errorIcon.alignTo(<span class="keyword">this</span>.unitEl, <span class="string">'tl-tr'</span>, [<span class="number">2</span>, <span class="number">0</span>]);</span><br><span class="line">      &#125;;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="4-Hidden"><a href="#4-Hidden" class="headerlink" title="4.Hidden"></a>4.Hidden</h2><blockquote>
+<p>毕竟是隐藏字段，顾名思义不可见，因此无展示图例</p>
+</blockquote>
+<h3 id="4-1-代码"><a href="#4-1-代码" class="headerlink" title="4.1 代码"></a>4.1 代码</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//新建一个Hidden隐藏字段对象</span></span><br><span class="line"><span class="keyword">var</span> hiddenfield = <span class="keyword">new</span> Ext.form.Hidden(&#123;</span><br><span class="line">  <span class="comment">//名称，后端收到的信息为 userid: 1</span></span><br><span class="line">  name: <span class="string">"userid"</span>,</span><br><span class="line">  <span class="comment">//值</span></span><br><span class="line">  value: <span class="string">"1"</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="5-DateField"><a href="#5-DateField" class="headerlink" title="5.DateField"></a>5.DateField</h2><h3 id="5-1-展示"><a href="#5-1-展示" class="headerlink" title="5.1 展示"></a>5.1 展示</h3><p><img src="https://gitee.com/Ethanyan/pic_data/raw/master/NumberField.png" alt="DateField"></p>
+<h3 id="5-2-代码"><a href="#5-2-代码" class="headerlink" title="5.2 代码"></a>5.2 代码</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//新建一个 DateField 日期字段对象</span></span><br><span class="line"><span class="keyword">var</span> datefield = <span class="keyword">new</span> Ext.form.DateField(&#123;</span><br><span class="line">  <span class="comment">//文本框前方显示文字（标签）</span></span><br><span class="line">  fieldLabel: <span class="string">"出生日期"</span>,</span><br><span class="line">  <span class="comment">//日期显示格式</span></span><br><span class="line">  format: <span class="string">"Y-m-d"</span>,</span><br><span class="line">  <span class="comment">//是否可编辑</span></span><br><span class="line">  editable: <span class="literal">false</span>,</span><br><span class="line">  <span class="comment">//是否可以为空</span></span><br><span class="line">  allowBlank: <span class="literal">false</span>,</span><br><span class="line">  <span class="comment">//校验为空时提示信息</span></span><br><span class="line">  blankText: <span class="string">"请选择日期"</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="6-RadioGroup"><a href="#6-RadioGroup" class="headerlink" title="6.RadioGroup"></a>6.RadioGroup</h2><h3 id="6-1-展示"><a href="#6-1-展示" class="headerlink" title="6.1 展示"></a>6.1 展示</h3><p><img src="https://gitee.com/Ethanyan/pic_data/raw/master/checkbox.png" alt="单选组"></p>
+<h3 id="6-2-代码"><a href="#6-2-代码" class="headerlink" title="6.2 代码"></a>6.2 代码</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//创建一个RadioGroup对象</span></span><br><span class="line"><span class="keyword">var</span> radiogroup = <span class="keyword">new</span> Ext.form.RadioGroup(&#123;</span><br><span class="line">  <span class="comment">//单选框前面的显示文字信息</span></span><br><span class="line">  fieldLabel: <span class="string">"性别"</span>,</span><br><span class="line">  <span class="comment">//宽度</span></span><br><span class="line">  width: <span class="number">100</span>,</span><br><span class="line">  items: [</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="comment">//这个属性是设置单选的关键</span></span><br><span class="line">      <span class="comment">//只有同一组 name 的单选按钮才能单选</span></span><br><span class="line">      name: <span class="string">"sex"</span>,</span><br><span class="line">      <span class="comment">//单选框的值</span></span><br><span class="line">      inputValue: <span class="string">"0"</span>,</span><br><span class="line">      <span class="comment">//单选框的文字说明</span></span><br><span class="line">      boxLabel: <span class="string">"男"</span>,</span><br><span class="line">      <span class="comment">//默认勾选男，哪个选项默认勾选，就在哪个选项中添加此属性</span></span><br><span class="line">      checked: <span class="literal">true</span></span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="comment">//与上方 name 设置一致</span></span><br><span class="line">      name: <span class="string">"sex"</span>,</span><br><span class="line">      <span class="comment">//单选框的值</span></span><br><span class="line">      inputValue: <span class="string">"1"</span>,</span><br><span class="line">      <span class="comment">//单选框的文字说明</span></span><br><span class="line">      boxLabel: <span class="string">"女"</span></span><br><span class="line">    &#125;</span><br><span class="line">  ]</span><br><span class="line">&#125;);</span><br><span class="line"><span class="comment">//获取单选组的值</span></span><br><span class="line">radiogroup.on(<span class="string">"change"</span>, <span class="function"><span class="keyword">function</span>(<span class="params">rdgroup, checked</span>) </span>&#123;</span><br><span class="line">  <span class="comment">//获取单选框的选中值</span></span><br><span class="line">  alert(checked.getRawValue());</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="7-CheckBoxGroup"><a href="#7-CheckBoxGroup" class="headerlink" title="7.CheckBoxGroup"></a>7.CheckBoxGroup</h2><h3 id="7-1-展示"><a href="#7-1-展示" class="headerlink" title="7.1 展示"></a>7.1 展示</h3><p><img src="https://gitee.com/Ethanyan/pic_data/raw/master/checkbox.png" alt="复选组"></p>
+<h3 id="7-2-代码"><a href="#7-2-代码" class="headerlink" title="7.2 代码"></a>7.2 代码</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//创建一个复选组的对象</span></span><br><span class="line"><span class="keyword">var</span> checkboxgroup = <span class="keyword">new</span> Ext.form.CheckboxGroup(&#123;</span><br><span class="line">  <span class="comment">//复选组前文字提示信息</span></span><br><span class="line">  fieldLabel: <span class="string">"兴趣爱好"</span>,</span><br><span class="line">  <span class="comment">//宽度</span></span><br><span class="line">  width: <span class="number">170</span>,</span><br><span class="line">  <span class="comment">//元素</span></span><br><span class="line">  items: [</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="comment">//选择框的文字说明</span></span><br><span class="line">      boxLabel: <span class="string">"抽烟"</span>,</span><br><span class="line">      <span class="comment">//选择框的值</span></span><br><span class="line">      inputValue: <span class="string">"0"</span></span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="comment">//选择框的文字说明</span></span><br><span class="line">      boxLabel: <span class="string">"喝酒"</span>,</span><br><span class="line">      <span class="comment">//选择框的值</span></span><br><span class="line">      inputValue: <span class="string">"1"</span></span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="comment">//选择框的文字说明</span></span><br><span class="line">      boxLabel: <span class="string">"烫头"</span>,</span><br><span class="line">      <span class="comment">//选择框的值</span></span><br><span class="line">      inputValue: <span class="string">"2"</span></span><br><span class="line">    &#125;</span><br><span class="line">  ]</span><br><span class="line">&#125;);</span><br><span class="line"><span class="comment">//获取复选组的值</span></span><br><span class="line">checkboxgroup.on(<span class="string">"change"</span>, <span class="function"><span class="keyword">function</span>(<span class="params">cbgroup, checked</span>) </span>&#123;</span><br><span class="line">  <span class="comment">//因为是多选，所以需要循环取出所有勾选的值</span></span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; checked.length; i++) &#123;</span><br><span class="line">    alert(checked[i].getRawValue());</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="8-Combobox"><a href="#8-Combobox" class="headerlink" title="8.Combobox"></a>8.Combobox</h2><h3 id="8-1-展示"><a href="#8-1-展示" class="headerlink" title="8.1 展示"></a>8.1 展示</h3><p><img src="https://gitee.com/Ethanyan/pic_data/raw/master/%E4%B8%8B%E6%8B%89%E6%A1%86.png" alt="Combobox"></p>
+<h3 id="8-2-代码"><a href="#8-2-代码" class="headerlink" title="8.2 代码"></a>8.2 代码</h3><blockquote>
+<p><code>Ext.js2.3</code> 中没有 <code>ArrayStore</code> ，我们使用 <code>Store</code> 替代</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//创建数据源[数组数据源]</span></span><br><span class="line"><span class="keyword">var</span> combostore = <span class="keyword">new</span> Ext.data.Store(&#123;</span><br><span class="line">  <span class="comment">// 数据本身，数组</span></span><br><span class="line">  data: [</span><br><span class="line">    [<span class="number">1</span>, <span class="string">"团员"</span>],</span><br><span class="line">    [<span class="number">2</span>, <span class="string">"党员"</span>],</span><br><span class="line">    [<span class="number">3</span>, <span class="string">"其他"</span>]</span><br><span class="line">  ],</span><br><span class="line">  <span class="comment">// 从上面数组中读取数据时，字段与数据一一对应解释为 Extjs 使用的数据</span></span><br><span class="line">  <span class="comment">// 参数为 id 列，以及其他各个字段的名称</span></span><br><span class="line">  reader: <span class="keyword">new</span> Ext.data.ArrayReader(&#123; <span class="attr">id</span>: <span class="string">"id"</span> &#125;, [<span class="string">"id"</span>, <span class="string">"name"</span>])</span><br><span class="line">&#125;);</span><br><span class="line"><span class="comment">//创建Combobox</span></span><br><span class="line"><span class="keyword">var</span> combobox = <span class="keyword">new</span> Ext.form.ComboBox(&#123;</span><br><span class="line">  <span class="comment">//下拉框前的提示文字信息</span></span><br><span class="line">  fieldLabel: <span class="string">"政治面貌"</span>,</span><br><span class="line">  <span class="comment">//数据源；此属性必填</span></span><br><span class="line">  store: combostore,</span><br><span class="line">  <span class="comment">//显示的列，对应数据源的 name 列；此属性必填</span></span><br><span class="line">  displayField: <span class="string">"name"</span>,</span><br><span class="line">  <span class="comment">//对应数据源中 id 列的值；此属性必填</span></span><br><span class="line">  valueField: <span class="string">"id"</span>,</span><br><span class="line">  <span class="comment">//请设置为”all”,否则默认为”query”的情况下，你选择某个值后，再此下拉时，只出现匹配选项。而 all 则每次都显示全部</span></span><br><span class="line">  triggerAction: <span class="string">"all"</span>,</span><br><span class="line">  <span class="comment">//未填时显示的提示信息</span></span><br><span class="line">  emptyText: <span class="string">"请选择..."</span>,</span><br><span class="line">  <span class="comment">//不允许为空</span></span><br><span class="line">  allowBlank: <span class="literal">false</span>,</span><br><span class="line">  <span class="comment">//校验为空时提示信息</span></span><br><span class="line">  blankText: <span class="string">"请选择政治面貌"</span>,</span><br><span class="line">  <span class="comment">//不可编辑</span></span><br><span class="line">  editable: <span class="literal">false</span>,</span><br><span class="line">  <span class="comment">//指定数据源为本地数据源，如果是本地创建的数据源，该属性也是必须的</span></span><br><span class="line">  <span class="comment">//设置为'remote'表示数据源来自于服务器</span></span><br><span class="line">  mode: <span class="string">"local"</span></span><br><span class="line">&#125;);</span><br><span class="line"><span class="comment">//Combobox获取值</span></span><br><span class="line"><span class="comment">//选择时alert出下拉列表的值</span></span><br><span class="line">combobox.on(<span class="string">"select"</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  alert(combobox.getValue());</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+
+
+<p><strong><em>更多精彩文章请关注公众号『Pythonnote』或者『全栈技术精选』</em></strong></p>
+
+      
+      <!-- reward -->
+      
+      <div id="reward-btn">
+        打赏
+      </div>
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+        <div class="declare">
+          <ul class="post-copyright">
+            <li>
+              <i class="ri-copyright-line"></i>
+              <strong>版权声明： </strong s>
+              本博客所有文章除特别声明外，均采用 <a href="https://www.apache.org/licenses/LICENSE-2.0.html" rel="external nofollow"
+                target="_blank">Apache License 2.0</a> 许可协议。转载请注明出处！
+            </li>
+          </ul>
+        </div>
+        
+    <footer class="article-footer">
+      
+          
+<div class="share-btn">
+      <span class="share-sns share-outer">
+        <i class="ri-share-forward-line"></i>
+        分享
+      </span>
+      <div class="share-wrap">
+        <i class="arrow"></i>
+        <div class="share-icons">
+          
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="ri-weibo-fill"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="ri-wechat-fill"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="ri-qq-fill"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="ri-douban-line"></i>
+          </a>
+          <!-- <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a> -->
+          
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="ri-facebook-circle-fill"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="ri-twitter-fill"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="ri-google-fill"></i>
+          </a>
+        </div>
+      </div>
+</div>
+
+<div class="wx-share-modal">
+    <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://www.pythonnote.cn/Extjs-lesson4/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div id="share-mask"></div>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/extjs/" rel="tag">extjs</a></li></ul>
+
+
+    </footer>
+
+  </div>
+
+  
+  
+  <nav class="article-nav">
+    
+    
+      <a href="/Extjs-lesson3/" class="article-nav-link">
+        <strong class="article-nav-caption">下一篇</strong>
+        <div class="article-nav-title">Extjs-lesson3</div>
+      </a>
+    
+  </nav>
+
+
+  
+
+  
+
+  
+  
+  <div class="gitalk" id="gitalk-container"></div>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.6.2/dist/gitalk.css">
+  <script src="https://cdn.jsdelivr.net/npm/gitalk@1.6.2/dist/gitalk.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/blueimp-md5@2.10.0/js/md5.min.js"></script>
+  <script type="text/javascript">
+    var gitalk = new Gitalk({
+      clientID: '7fca30c64efa45b3b8bf',
+      clientSecret: '07412c4cdedf0c21192e8db8f6e550d9d2774639',
+      repo: 'blog-comment',
+      owner: 'EthanYan6',
+      admin: ['EthanYan6'],
+      // id: location.pathname,      // Ensure uniqueness and length less than 50
+      id: md5(location.pathname),
+      distractionFreeMode: false,  // Facebook-like distraction free mode
+      pagerDirection: 'last'
+    })
+  
+    gitalk.render('gitalk-container')
+  </script>
+  
+  
+
+</article>
+</section>
+      <footer class="footer">
+  <div class="outer">
+    <ul class="list-inline">
+      <li>
+        
+        
+        <span>
+  <i>页面访问量:<span id="busuanzi_value_page_pv"></span></i>
+  <i>独立访客访问数:<span id="busuanzi_value_site_uv"></span></i>
+</span>
+        
+      </li>
+      <li>
+        <!-- cnzz统计 -->
+        
+        <script type="text/javascript">document.write(unescape("%3Cspan id='cnzz_stat_icon_1278605887'%3E%3C/span%3E%3Cscript src='https://s4.cnzz.com/z_stat.php%3Fid%3D1278605887%26online%3D2' type='text/javascript'%3E%3C/script%3E"));</script>
+        
+      </li>
+    </ul>
+    
+    <ul class="list-inline">
+      <li>
+        友情链接：<a href="https://www.javastudy.cloud" target="_blank" rel="external nofollow noopener">&gt; javaDemo站 &lt;</a><br>
+      </li>
+    </ul>
+
+    <ul class="list-inline">
+      <li>
+        更多精彩文章请关注微信公众号『全栈技术精选』，id 为『Pythonnote』
+      </li>
+    </ul>
+        
+    <ul class="list-inline">
+      <li>
+        &copy;
+        2020
+        小闫同学
+      </li>
+      <li>
+        
+          Created by
+        
+        
+        <a href="https://github.com/EthanYan6" target="_blank">EthanYan</a> Thanks <a href="https://github.com/Shen-Yu/hexo-theme-ayer" rel="external nofollow" target="_blank">Ayer</a>
+        
+      </li>
+    </ul>
+
+  </div>
+</footer>
+      <div class="to_top">
+        <div class="totop" id="totop">
+  <i class="ri-arrow-up-line"></i>
+</div>
+      </div>
+    </main>
+    <aside class="sidebar">
+      <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+  <div class="logo">
+    <a href="/"><img src="/images/helloworld.svg" alt="EthanYan&#39;s Blog"></a>
+  </div>
+  
+  <ul class="nav nav-main">
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/">主页</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/archives">归档</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/categories">分类</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags">标签</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="https://ethanyan.gitee.io/bullet_screen_comments/" target="_blank" rel="noopener">弹幕</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="https://www.pythonnote.cn/videos">视频</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="https://www.pythonnote.cn/OfficialDocuments/">文档</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="https://www.pythonnote.cn/about%20me/">关于</a>
+    </li>
+    
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      
+      <a class="nav-item-link nav-item-search"  title="搜索">
+        <i class="ri-search-line"></i>
+      </a>
+      
+      
+      <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+        <i class="ri-rss-line"></i>
+      </a>
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+    </aside>
+    <div id="mask"></div>
+
+<!-- #reward -->
+<div id="reward">
+  <span class="close"><i class="ri-close-line"></i></span>
+  <p class="reward-p"><i class="ri-cup-line"></i>请我喝杯咖啡吧~</p>
+  <div class="reward-box">
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/alipay.jpg">
+      <span class="reward-type">支付宝</span>
+    </div>
+    
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/wechat.jpg">
+      <span class="reward-type">微信</span>
+    </div>
+    
+  </div>
+</div>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.justifiedGallery.min.js"></script>
+<script src="/js/lazyload.min.js"></script>
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+<script src="/js/share.js"></script>
+
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+<script>
+  try {
+    var typed = new Typed("#subtitle", {
+    strings: ['上划查看文章','Python、Java、powershell、shell、Elasticsearch、MySQL、Redis、Django、Flask、爬虫、RPC、数据分析、机器学习','请关注微信公众号「全栈技术精选」'],
+    startDelay: 0,
+    typeSpeed: 200,
+    loop: true,
+    backSpeed: 100,
+    showCursor: true
+    });
+  } catch (err) {
+  }
+  
+</script>
+
+
+
+<script src="/js/tocbot.min.js"></script>
+<script>
+  // Tocbot_v4.7.0  http://tscanlin.github.io/tocbot/
+  tocbot.init({
+    tocSelector: '.tocbot',
+    contentSelector: '.article-entry',
+    headingSelector: 'h1, h2, h3, h4, h5, h6',
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    scrollContainer:'main',
+    positionFixedSelector: '.tocbot',
+    positionFixedClass: 'is-position-fixed',
+    fixedSidebarOffset: 'auto',
+    onClick: (e) => {
+      $('.toc-link').removeClass('is-active-link');
+      $(`a[href=${e.target.hash}]`).addClass('is-active-link');
+      $(e.target.hash).scrollIntoView();
+      return false;
+    }
+  });
+</script>
+
+
+<script>
+  var ayerConfig = {
+    mathjax: false
+  }
+</script>
+
+<script src="/js/ayer.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.css">
+
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.css">
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"></script>
+
+<script>
+    function viewer_init() {
+        let pswpElement = document.querySelectorAll('.pswp')[0];
+        let $imgArr = document.querySelectorAll(('.article-entry img:not(.reward-img)'))
+
+        $imgArr.forEach(($em, i) => {
+            $em.onclick = () => {
+                // slider展开状态
+                // todo: 这样不好，后面改成状态
+                if (document.querySelector('.left-col.show')) return
+                let items = []
+                $imgArr.forEach(($em2, i2) => {
+                    let img = $em2.getAttribute('data-idx', i2)
+                    let src = $em2.getAttribute('data-target') || $em2.getAttribute('src')
+                    let title = $em2.getAttribute('alt')
+                    // 获得原图尺寸
+                    const image = new Image()
+                    image.src = src
+                    items.push({
+                        src: src,
+                        w: image.width || $em2.width,
+                        h: image.height || $em2.height,
+                        title: title
+                    })
+                })
+                var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, {
+                    index: parseInt(i)
+                });
+                gallery.init()
+            }
+        })
+    }
+    viewer_init()
+</script>
+
+
+
+
+<script type="text/javascript" src="https://js.users.51.la/20544303.js"></script>
+
+   <script src="/js/clickLove.js"></script>
+ 
+
+    
+    <div id="music">
+    
+    
+    
+    <iframe frameborder="no" border="1" marginwidth="0" marginheight="0" width="200" height="52"
+        src="//music.163.com/outchain/player?type=2&id=1385179994&auto=1&height=32"></iframe>
+</div>
+
+<style>
+    #music {
+        position: fixed;
+        right: 15px;
+        bottom: 0;
+        z-index: 998;
+    }
+</style>
+    
+  </div>
+</body>
+
+</html>
