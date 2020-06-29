@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://www.pythonnote.cn/"/>
-  <updated>2020-06-29T12:46:00.826Z</updated>
+  <updated>2020-06-29T13:38:27.148Z</updated>
   <id>https://www.pythonnote.cn/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Extjs-lesson7</title>
+    <link href="https://www.pythonnote.cn/Extjs-lesson7/"/>
+    <id>https://www.pythonnote.cn/Extjs-lesson7/</id>
+    <published>2020-06-29T13:05:04.000Z</published>
+    <updated>2020-06-29T13:38:27.148Z</updated>
+    
+    <summary type="html">
+    
+      &lt;center&gt;Author：闫玉良&lt;/center&gt;
+
+&lt;p&gt;&lt;code&gt;Ext.js&lt;/code&gt; 系列课程笔记「Ajax」&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="extjs" scheme="https://www.pythonnote.cn/categories/extjs/"/>
+    
+    
+      <category term="extjs" scheme="https://www.pythonnote.cn/tags/extjs/"/>
+    
+  </entry>
   
   <entry>
     <title>Extjs-lesson6</title>
@@ -470,29 +493,6 @@
     
     
       <category term="redis" scheme="https://www.pythonnote.cn/tags/redis/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>生产环境隐藏敏感配置信息方案</title>
-    <link href="https://www.pythonnote.cn/%E7%94%9F%E4%BA%A7%E7%8E%AF%E5%A2%83%E9%9A%90%E8%97%8F%E6%95%8F%E6%84%9F%E9%85%8D%E7%BD%AE%E4%BF%A1%E6%81%AF%E6%96%B9%E6%A1%88/"/>
-    <id>https://www.pythonnote.cn/%E7%94%9F%E4%BA%A7%E7%8E%AF%E5%A2%83%E9%9A%90%E8%97%8F%E6%95%8F%E6%84%9F%E9%85%8D%E7%BD%AE%E4%BF%A1%E6%81%AF%E6%96%B9%E6%A1%88/</id>
-    <published>2020-03-23T11:06:19.000Z</published>
-    <updated>2020-03-23T12:46:16.337Z</updated>
-    
-    <summary type="html">
-    
-      &lt;center&gt;Author：闫玉良&lt;/center&gt;
-
-&lt;p&gt;项目上线时需要切换生产环境配置信息，这些信息可以直接被保存在项目中吗？如果保存下来，不小心提交到仓库或被破解查看，生产环境岂不是裸奔？那么该如何解决？&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="flask" scheme="https://www.pythonnote.cn/categories/flask/"/>
-    
-    
-      <category term="flask" scheme="https://www.pythonnote.cn/tags/flask/"/>
     
   </entry>
   
