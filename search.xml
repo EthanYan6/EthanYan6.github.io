@@ -1,6 +1,91 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>vim实现python函数跳转</title>
+    <url>/vim%E5%AE%9E%E7%8E%B0python%E5%87%BD%E6%95%B0%E8%B7%B3%E8%BD%AC/</url>
+    <content><![CDATA[<center>Author：闫玉良</center>
+
+<p>网上很多帖子都是说通过 <code>ctags</code> 或者 <code>ExuberantCtags</code> 来实现函数跳转，如果你是 <code>C</code> 语言开发者，无可厚非，<code>Python</code> 怎么办？快来看下面操作吧！</p>
+<a id="more"></a>
+
+<p><strong><em>更多精彩文章请关注公众号『Pythonnote』或者『全栈技术精选』</em></strong></p>
+<h2 id="1-步骤"><a href="#1-步骤" class="headerlink" title="1.步骤"></a>1.步骤</h2><p>1.下载一个文件</p>
+<p>2.使用下载的文件为项目生成 <code>tags</code> 文件（里面记录了所有函数、类等位置，做了对应关系）</p>
+<p>3.将生成的 <code>tags</code> 文件让 <code>vim</code> 读取</p>
+<p>4.使用快捷键跳转</p>
+<h2 id="2-详细操作"><a href="#2-详细操作" class="headerlink" title="2.详细操作"></a>2.详细操作</h2><p>1.复制然后利用浏览器打开网址：<a href="http://svn.python.org/projects/python/trunk/Tools/scripts/ptags.py" target="_blank" rel="noopener">http://svn.python.org/projects/python/trunk/Tools/scripts/ptags.py</a></p>
+<p>2.本地新建一个文件 <code>ptags.py</code> ，然后把打开网址后看到的内容拷贝进文件中。</p>
+<p>3.然后使用如下命令生成 <code>tags</code> 文件：</p>
+<p>3.1 为当前目录下所有 <code>python</code> 程序生成 <code>tags</code> 文件</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">ptags.py *.py</span><br></pre></td></tr></table></figure>
+
+<p>3.2 为整个项目生成 <code>tags</code> 文件：1.进入项目根目录；2.执行如下命令：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">find  . -name \*.py -print | xargs /xxx/xxx/ptags.py</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>根据 <code>ptags.py</code> 文件的位置填写绝对路径</p>
+</blockquote>
+<p><strong>备注</strong>：如果上述命令执行提示没有权限，不要着急使用 <code>sudo</code> ，大概率是你没有给新建的文件 <code>ptags.py</code> 赋予执行权限。<code>chmod 777 文件路径</code> 暴力赋予一下就好了</p>
+<p>4.让 <code>vim</code> 找到路径。</p>
+<p>4.1 打开配置文件</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">vim ~/.vimrc</span><br></pre></td></tr></table></figure>
+
+<p>4.2 添加如下内容，然后保存</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">set tags+=tags</span><br></pre></td></tr></table></figure>
+
+<p>4.3 在命令模式下输入如下命令，重新加载一下 <code>vim</code> 配置文件：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">:source $MYVIMRC</span><br></pre></td></tr></table></figure>
+
+<p>5.跳转方式：</p>
+<p>5.1 移动光标到某函数名下，然后使用快捷键 <code>ctrl + ]</code></p>
+<p>5.2 跳转回去：<code>ctrl + t</code></p>
+<p><strong><em>更多精彩文章请关注公众号『Pythonnote』或者『全栈技术精选』</em></strong></p>
+]]></content>
+      <categories>
+        <category>vim</category>
+      </categories>
+      <tags>
+        <tag>vim</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Tmux如何让滚屏起飞</title>
+    <url>/Tmux%E5%A6%82%E4%BD%95%E8%AE%A9%E6%BB%9A%E5%B1%8F%E8%B5%B7%E9%A3%9E/</url>
+    <content><![CDATA[<center>Author：闫玉良</center>
+
+<p>在 <code>Panel</code> 中查看历史时，滚屏只能一行一行走？那是你打开方式不正确！</p>
+<a id="more"></a>
+
+<p><strong><em>更多精彩文章请关注公众号『Pythonnote』或者『全栈技术精选』</em></strong></p>
+<h2 id="1-滚屏操作"><a href="#1-滚屏操作" class="headerlink" title="1.滚屏操作"></a>1.滚屏操作</h2><p><code>Tmux</code> 在 <code>Panel</code> （也有人叫面板或者窗格）中查看历史不像一般终端中那样方便。</p>
+<h3 id="1-1-以前"><a href="#1-1-以前" class="headerlink" title="1.1 以前"></a>1.1 以前</h3><p><strong>快捷键</strong>：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">先按 Ctrl + b</span><br><span class="line">然后按 [</span><br></pre></td></tr></table></figure>
+
+<p>使用快捷键进入 <code>copy-mode</code> 模式，就可以利用方向键上下移动光标查看了，但是如果历史信息太多，一行一行未免太不爽了，该如何操作呢？</p>
+<h3 id="1-2-现在"><a href="#1-2-现在" class="headerlink" title="1.2 现在"></a>1.2 现在</h3><p>为了向 <code>vi</code> 那样，可以半屏半屏，一屏一屏的滚，可以进行如下设置：</p>
+<p>1.先打开配置文件：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">vim ~/.tmux.conf</span><br></pre></td></tr></table></figure>
+
+<p>2.将下面设置输入：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">setw -g mode-keys vi</span><br></pre></td></tr></table></figure>
+
+<p>3.重新载入配置文件：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">tmux source-file ~/.tmux.conf</span><br></pre></td></tr></table></figure>
+
+<p>4.使用快捷键进入 <code>copy-mode</code> 模式，然后就可以像 <code>vi</code> 中一样操作了。</p>
+<p>比如：<code>Ctrl-u</code> 向上滚半屏， <code>Ctrl-d</code> 向下滚半屏。</p>
+<p><strong>根据某关键字搜索</strong>：</p>
+<p>使用快捷键进入 <code>copy-mode</code> 模式，然后按 <code>/</code> ，就可以输入关键字了，回车查找。</p>
+<p><strong><em>更多精彩文章请关注公众号『Pythonnote』或者『全栈技术精选』</em></strong></p>
+]]></content>
+      <categories>
+        <category>tmux</category>
+      </categories>
+      <tags>
+        <tag>tmux</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Extjs-lesson7</title>
     <url>/Extjs-lesson7/</url>
     <content><![CDATA[<center>Author：闫玉良</center>
