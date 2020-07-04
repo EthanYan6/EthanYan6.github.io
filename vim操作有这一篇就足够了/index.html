@@ -10,7 +10,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
   <title>
-    vim实现python函数跳转 |  EthanYan&#39;s Blog
+    vim操作有这一篇就足够了 |  EthanYan&#39;s Blog
   </title>
   <meta name="generator" content="hexo-theme-yilia-plus">
   
@@ -33,7 +33,7 @@
   <div id="app">
     <main class="content">
       <section class="outer">
-  <article id="post-vim实现python函数跳转" class="article article-type-post" itemscope
+  <article id="post-vim操作有这一篇就足够了" class="article article-type-post" itemscope
   itemprop="blogPost" data-scroll-reveal>
 
   <div class="article-inner">
@@ -41,7 +41,7 @@
     <header class="article-header">
        
 <h1 class="article-title sea-center" style="border-left:0" itemprop="name">
-  vim实现python函数跳转
+  vim操作有这一篇就足够了
 </h1>
   
 
@@ -50,8 +50,8 @@
 
     
     <div class="article-meta">
-      <a href="/vim%E5%AE%9E%E7%8E%B0python%E5%87%BD%E6%95%B0%E8%B7%B3%E8%BD%AC/" class="article-date">
-  <time datetime="2020-07-02T12:35:29.000Z" itemprop="datePublished">2020-07-02</time>
+      <a href="/vim%E6%93%8D%E4%BD%9C%E6%9C%89%E8%BF%99%E4%B8%80%E7%AF%87%E5%B0%B1%E8%B6%B3%E5%A4%9F%E4%BA%86/" class="article-date">
+  <time datetime="2020-07-04T04:21:13.000Z" itemprop="datePublished">2020-07-04</time>
 </a>
       
   <div class="article-category">
@@ -65,7 +65,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> 字数统计:</span>
-            <span class="post-count">457字</span>
+            <span class="post-count">2k字</span>
         </span>
     </span>
 
@@ -74,7 +74,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-book-open-line"></i>
             <span class="post-meta-item-text"> 阅读时长≈</span>
-            <span class="post-count">1分钟</span>
+            <span class="post-count">7分钟</span>
         </span>
     </span>
 </div>
@@ -103,40 +103,121 @@
       
       <center>Author：闫玉良</center>
 
-<p>网上很多帖子都是说通过 <code>ctags</code> 或者 <code>ExuberantCtags</code> 来实现函数跳转，如果你是 <code>C</code> 语言开发者，无可厚非，<code>Python</code> 怎么办？快来看下面操作吧！</p>
+<p><code>vi/vim</code> 的重要性不言而喻，比如登录服务器操作。那么如何掌握呢？看这一篇足矣。</p>
+<blockquote>
+<p>因为小闫同学最近迷上了 <code>vim</code>，正在使用并打算以后也用其彻底替代 <code>Pycharm</code> 等编辑工具，所以才有了此文。</p>
+</blockquote>
 <a id="more"></a>
 
 <p><strong><em>更多精彩文章请关注公众号『Pythonnote』或者『全栈技术精选』</em></strong></p>
-<h2 id="1-步骤"><a href="#1-步骤" class="headerlink" title="1.步骤"></a>1.步骤</h2><p>1.下载一个文件</p>
-<p>2.使用下载的文件为项目生成 <code>tags</code> 文件（里面记录了所有函数、类等位置，做了对应关系）</p>
-<p>3.将生成的 <code>tags</code> 文件让 <code>vim</code> 读取</p>
-<p>4.使用快捷键跳转</p>
-<h2 id="2-详细操作"><a href="#2-详细操作" class="headerlink" title="2.详细操作"></a>2.详细操作</h2><p>1.复制然后利用浏览器打开网址：<a href="http://svn.python.org/projects/python/trunk/Tools/scripts/ptags.py" target="_blank" rel="noopener">http://svn.python.org/projects/python/trunk/Tools/scripts/ptags.py</a></p>
-<p>2.本地新建一个文件 <code>ptags.py</code> ，然后把打开网址后看到的内容拷贝进文件中。</p>
-<p>3.然后使用如下命令生成 <code>tags</code> 文件：</p>
-<p>3.1 为当前目录下所有 <code>python</code> 程序生成 <code>tags</code> 文件</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ptags.py *.py</span><br></pre></td></tr></table></figure>
-
-<p>3.2 为整个项目生成 <code>tags</code> 文件：1.进入项目根目录；2.执行如下命令：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find  . -name \*.py -print | xargs /xxx/xxx/ptags.py</span><br></pre></td></tr></table></figure>
+<h2 id="1-介绍"><a href="#1-介绍" class="headerlink" title="1.介绍"></a>1.介绍</h2><p><code>vi/vim</code> 是 <code>Linux</code> 上内置的一款文本编辑器，就如同 <code>Windows</code> 上的笔记本工具一样。</p>
+<p>要想使用它，先要了解它的三种模式：<strong>命令模式</strong>、<strong>输入模式</strong>、<strong>末行模式</strong>（也被称为底线命令模式 <code>Last line mode</code>）。命令模式可以操作一些快捷键，比如滚屏操作，定位操作等；输入模式就是编辑模式，可以自由的打字输入；末行模式可以输入一些命令，来达到预期效果。</p>
+<p>使用 <code>vi/vim</code> 打开一个文件时，默认就是<strong>命令模式</strong>；在命令模式下输入 <code>i</code> 时，便进入了<strong>输入模式</strong>；在输入模式下按 <code>esc</code> 键时，又会返回命令模式。在命令模式下，按 <code>:</code> （也就是按<code>shift</code> + <code>;</code>）时，会看到光标在窗口底部，此时进入了<strong>末行模式</strong>，在 <code>:</code> 后便可以输入命令。</p>
+<blockquote>
+<p><code>vi</code> 是老版本文本编辑器，<code>vim</code> 现在成为了主流，他俩命令一样，只是 <code>vim</code> 扩展插件丰富，支持的功能更多而已。本文以常用的 <code>vim</code> 为例进行说明。</p>
+</blockquote>
+<h2 id="2-操作"><a href="#2-操作" class="headerlink" title="2.操作"></a>2.操作</h2><p>打开一个文件：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim test.txt</span><br></pre></td></tr></table></figure>
 
 <blockquote>
-<p>根据 <code>ptags.py</code> 文件的位置填写绝对路径</p>
+<p>输入上述命令会在当前目录下寻找并打开 <code>test.txt</code> 文件，如果没有，则在当前目录下新建一个 <code>test.txt</code> 文件。</p>
 </blockquote>
-<p><strong>备注</strong>：如果上述命令执行提示没有权限，不要着急使用 <code>sudo</code> ，大概率是你没有给新建的文件 <code>ptags.py</code> 赋予执行权限。<code>chmod 777 文件路径</code> 暴力赋予一下就好了</p>
-<p>4.让 <code>vim</code> 找到路径。</p>
-<p>4.1 打开配置文件</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim ~/.vimrc</span><br></pre></td></tr></table></figure>
+<h3 id="2-1-命令模式"><a href="#2-1-命令模式" class="headerlink" title="2.1 命令模式"></a>2.1 命令模式</h3><blockquote>
+<p>以下内容全为快捷键，直接按即可，不会有什么显示。</p>
+<p>2.注意区分大小写。</p>
+<p>3.打开文件默认进入的就是命令模式，输入模式或者末行模式下按 <code>esc</code> 键进入命令模式</p>
+</blockquote>
+<p>1) <strong>控制光标</strong>：<code>H</code>是左； <code>J</code> 是下；<code>K</code> 是上；<code>L</code> 是右。</p>
+<blockquote>
+<p>可以使用方向键 (←↓↑→)控制，但是通常不这么做，因为程序员的双手一般都放在字母区域，去按方向键，再回到字母区域所需时间太长。使用 <code>hjkl</code> ，标准打字姿势中右手完全可以操作，方便快捷。</p>
+</blockquote>
+<p>2) <strong>滚屏操作</strong>：需要与 <code>Ctrl</code> 键配合使用，向上滚动半屏是 <code>Ctrl + u</code> ，向下滚动半屏是 <code>Ctrl + d</code>。当然为了快速操作，还有滚动一屏：向上滚动一屏 <code>Ctrl + b</code> ，向下滚动一屏 <code>Ctrl + f</code>。</p>
+<blockquote>
+<p>为了记忆，滚动半屏可以看做是 <code>up/down</code> ，分别是 <code>u/d</code>；滚动全屏可以看做 <code>back/forword</code>，分别是 <code>b/f</code></p>
+</blockquote>
+<p>3) <strong>移动到行首或行尾</strong>：这个快捷键一定要记忆，超级方便。</p>
+<p><code>0</code> ：它是数字0。可以快速移动光标到所在行的行首。</p>
+<p><code>$</code> ：英文输入下，按 <code>shift</code> 和数字键 4 即可。可以快速移动光标到所在行行尾第一个不是非空字符下。</p>
+<p><code>^</code> ：英文输入下，按 <code>shift</code> 和数字键 6 即可。可以快速移动光标到所在行，<strong>第一个不为空格的字符</strong>处。因为敲代码时总有缩进，当然希望到这一行代码的第一个字母，而不是这一行行首的空格了。</p>
+<p>4) <strong>其他移动光标的操作</strong>：</p>
+<p><code>G</code> ：到文件最后一行。如果想要到指定的哪一行可以输入行号，再输入 <code>G</code> 。（注意：是大写的 <code>G</code>）比如到 67 行，输入 <code>67 + G</code></p>
+<blockquote>
+<p>到指定行是我最喜欢的功能。当然需要配合显示行号使用，显示行号会在命令模式处讲。</p>
+</blockquote>
+<p><code>gg</code> ：到文件第一行。</p>
+<p><code>&gt;&gt;</code> ：文本向右移动</p>
+<p><code>&lt;&lt;</code> ：文本左移</p>
+<p>5) <strong>删除操作</strong>：</p>
+<p><code>x</code> ：删除光标后一个字符</p>
+<p><code>X</code> ：（大写）删除光标前一个字符</p>
+<p><code>d</code> ：删除键</p>
+<p><code>dd</code> ：删除光标所在行。如果想要删除指定多少行，先输入数字，再输入 <code>dd</code> 即可，比如删除往下的 37 行内容（包含光标所在行），输入 <code>37 dd</code> 。</p>
+<p><code>d0</code> ：删除光标前所有内容</p>
+<p><code>D</code> ：删除光标后所有内容</p>
+<p><code>daw</code> ：删除光标所在单词（<strong>超级常用</strong>）</p>
+<p>配合可视模式选中一些内容，再按 <code>d</code> 就可以删除这些内容了。</p>
+<p>6) <strong>可视模式</strong>：<code>v</code> 按字符移动光标选择内容，<code>V</code> (大写) 按行上下移动选择内容。</p>
+<p>7) <strong>撤销</strong>：<code>u</code> 撤销一步操作，<code>Ctrl + r</code> 反撤销。</p>
+<p>8) <strong>复制粘贴</strong>：<code>y</code> 是复制，<code>p</code> 是粘贴。配合可视模式，选中内容后，按 <code>y</code> 即可复制，按 <code>p</code> 粘贴。<code>yy</code> 是复制光标所在行。</p>
+<blockquote>
+<p>注意：如果是复制一行内容，粘贴时会向下粘贴一行；如果是复制几个字符，会向光标后粘贴。<strong>只针对当前文件有效</strong>，也就是退出当前文件后，复制的内容不在了。</p>
+</blockquote>
+<p>9) <strong>重复操作</strong>：<code>.</code> 重复上一步操作</p>
+<p>10) <strong>替换操作</strong>：</p>
+<p>按 <code>r</code> 后再按要替换的字母。如将 <code>n</code> 替换为 <code>m</code> ：将光标移动到字母 <code>n</code> 下，然后按 <code>r</code> ，再按 <code>m</code> 即可。</p>
+<p>按 <code>R</code> 后，再按要替换的字母，替换后，光标会移动都后一个字符，可以再次执行替换操作，不必一直按 <code>r</code>。</p>
+<p>11) <strong>进入输入模式</strong>：</p>
+<p><code>i</code>：插入光标前一个字符</p>
+<p><code>a</code>：插入光标后一个字符</p>
+<p><code>I</code>：插入行首</p>
+<p><code>A</code>：插入行尾</p>
+<p><code>o</code>：向下新开一行,插入行首</p>
+<p><code>O</code>：（大写）向上新开一行,插入行首</p>
+<h3 id="2-2-输入模式"><a href="#2-2-输入模式" class="headerlink" title="2.2 输入模式"></a>2.2 输入模式</h3><p>输入模式下，不能使用快捷键，可以正常打字或者使用方向键控制光标。按 <code>Esc</code> 键进入命令模式。</p>
+<h3 id="2-3-末行模式"><a href="#2-3-末行模式" class="headerlink" title="2.3 末行模式"></a>2.3 末行模式</h3><p>在命令模式下，按 <code>:</code> 进入末行模式。退出末行模式按 <code>esc</code> 键，即可进入命令模式。</p>
+<p>1) 显示行号</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">:set nu</span><br></pre></td></tr></table></figure>
 
-<p>4.2 添加如下内容，然后保存</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">set tags+=tags</span><br></pre></td></tr></table></figure>
+<p>2) 查找</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">:/要查找的内容</span><br></pre></td></tr></table></figure>
 
-<p>4.3 在命令模式下输入如下命令，重新加载一下 <code>vim</code> 配置文件：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">:source $MYVIMRC</span><br></pre></td></tr></table></figure>
+<p>按 <code>n</code> 查找下一个；按 <code>N</code> 查找上一个。</p>
+<p>3) 高亮显示查找内容</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">:set hlsearch</span><br></pre></td></tr></table></figure>
 
-<p>5.跳转方式：</p>
-<p>5.1 移动光标到某函数名下，然后使用快捷键 <code>ctrl + ]</code></p>
-<p>5.2 跳转回去：<code>ctrl + t</code></p>
+<p>4) 替换</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">末行模式下，将当前文件中的所有abc替换成123</span><br><span class="line">:%s/abc/123/g</span><br><span class="line"></span><br><span class="line">末行模式下，将第一行至第10行之间的abc替换成123</span><br><span class="line">:1, 10s/abc/123/g</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>1.%表示整个文件；1, 10表示1到10行范围内</p>
+<p>2.<code>s</code> 表示替换</p>
+<p>3.<code>g</code> 表示全局</p>
+</blockquote>
+<h2 id="3-总结的一些骚操作"><a href="#3-总结的一些骚操作" class="headerlink" title="3.总结的一些骚操作"></a>3.总结的一些骚操作</h2><p>1.要查找光标所在单词，直接按下面的快捷键：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">*</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>也就是按 <code>shift</code> + 键盘字母区上方数字键8</p>
+</blockquote>
+<p>2.如何快速选中一个单词：先把光标移动到该单词下方，然后按 <code>b</code> 移动光标到单词首字母，按 <code>v</code> 进入可视模式，再按 <code>e</code> 选中当前单词，即 <code>bve</code>。选中之后就可以按 <code>y</code> 复制，或者按 <code>d</code> 删除了。</p>
+<p>3.我想把内容复制后，其他文件也使用，就好像 <code>ctrl c</code> 那样。可以使用如下快捷键：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">"+y</span><br></pre></td></tr></table></figure>
+
+<p>先选中所有复制内容，然后按上述快捷键（注意<strong>上述快捷键是三个字符</strong>）即可复制到系统的剪切板中。</p>
+<p>4.如果我想在新打开的文件中复制上一个文件中复制的内容呢？</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">"+p</span><br></pre></td></tr></table></figure>
+
+<h2 id="4-插件"><a href="#4-插件" class="headerlink" title="4.插件"></a>4.插件</h2><p><code>vim</code> 优秀就优秀在它可以使用插件，然后打造出一款类似 <code>Pycharm</code> 等 <code>IDE</code> 工具。本文列举一些常用插件，具体安装对应 GitHub 上操作，自己 <code>google</code> 一下。</p>
+<p><strong>插件管理工具</strong> ：<code>Vundle</code></p>
+<p><strong>目录树</strong>：<code>NERDTree</code></p>
+<p><strong>搜索文件</strong>：<code>CtrlP</code></p>
+<p><strong>基于内容搜索文件</strong>：<code>ack</code></p>
+<p><strong>python函数跳转功能</strong>：<code>ptags</code> 可以查看我的文章『<a href="https://www.pythonnote.cn/vim实现python函数跳转/』">https://www.pythonnote.cn/vim实现python函数跳转/』</a></p>
+<p><strong>代码折叠</strong>：这个不是插件，而是修改 <code>.vimrc</code> 配置文件，<code>Google</code> 一下</p>
+<p><strong>代码补全</strong>：<code>YCM</code> (<code>YouCompleteMe</code>)</p>
+<blockquote>
+<p>暂时就想起这么多，以后再扩展吧。</p>
+</blockquote>
 <p><strong><em>更多精彩文章请关注公众号『Pythonnote』或者『全栈技术精选』</em></strong></p>
 
       
@@ -207,7 +288,7 @@
     <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://www.pythonnote.cn/vim%E5%AE%9E%E7%8E%B0python%E5%87%BD%E6%95%B0%E8%B7%B3%E8%BD%AC/" alt="微信分享二维码">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://www.pythonnote.cn/vim%E6%93%8D%E4%BD%9C%E6%9C%89%E8%BF%99%E4%B8%80%E7%AF%87%E5%B0%B1%E8%B6%B3%E5%A4%9F%E4%BA%86/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -225,19 +306,10 @@
   
   <nav class="article-nav">
     
-      <a href="/vim%E6%93%8D%E4%BD%9C%E6%9C%89%E8%BF%99%E4%B8%80%E7%AF%87%E5%B0%B1%E8%B6%B3%E5%A4%9F%E4%BA%86/" class="article-nav-link">
-        <strong class="article-nav-caption">上一篇</strong>
-        <div class="article-nav-title">
-          
-            vim操作有这一篇就足够了
-          
-        </div>
-      </a>
     
-    
-      <a href="/Tmux%E5%A6%82%E4%BD%95%E8%AE%A9%E6%BB%9A%E5%B1%8F%E8%B5%B7%E9%A3%9E/" class="article-nav-link">
+      <a href="/vim%E5%AE%9E%E7%8E%B0python%E5%87%BD%E6%95%B0%E8%B7%B3%E8%BD%AC/" class="article-nav-link">
         <strong class="article-nav-caption">下一篇</strong>
-        <div class="article-nav-title">Tmux如何让滚屏起飞</div>
+        <div class="article-nav-title">vim实现python函数跳转</div>
       </a>
     
   </nav>
