@@ -67,7 +67,7 @@
 <p>9) <strong>重复操作</strong>：<code>.</code> 重复上一步操作</p>
 <p>10) <strong>替换操作</strong>：</p>
 <p>按 <code>r</code> 后再按要替换的字母。如将 <code>n</code> 替换为 <code>m</code> ：将光标移动到字母 <code>n</code> 下，然后按 <code>r</code> ，再按 <code>m</code> 即可。</p>
-<p>按 <code>R</code> 后，再按要替换的字母，替换后，光标会移动都后一个字符，可以再次执行替换操作，不必一直按 <code>r</code>。</p>
+<p>按 <code>R</code> 后，再按要替换的字母，替换后，光标会移动到后一个字符，可以再次执行替换操作，不必一直按 <code>r</code>。</p>
 <p>11) <strong>进入输入模式</strong>：</p>
 <p><code>i</code>：插入光标前一个字符</p>
 <p><code>a</code>：插入光标后一个字符</p>
