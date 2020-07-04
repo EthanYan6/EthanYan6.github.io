@@ -40,11 +40,11 @@
 <p>3) <strong>移动到行首或行尾</strong>：这个快捷键一定要记忆，超级方便。</p>
 <p><code>0</code> ：它是数字0。可以快速移动光标到所在行的行首。</p>
 <p><code>$</code> ：英文输入下，按 <code>shift</code> 和数字键 4 即可。可以快速移动光标到所在行行尾第一个不是非空字符下。</p>
-<p><code>^</code> ：英文输入下，按 <code>shift</code> 和数字键 6 即可。可以快速移动光标到所在行，<strong>第一个不为空格的字符</strong>处。因为敲代码时总有缩进，当然希望到这一行代码的第一个字母，而不是这一行行首的空格了。</p>
+<p><code>^</code> ：英文输入下，按 <code>shift</code> 和数字键 6 即可。可以快速移动光标到所在行，<strong>第一个非空字符</strong>处。因为敲代码时总有缩进，当然希望到这一行代码的第一个字母，而不是这一行行首的空格了。</p>
 <p>4) <strong>其他移动光标的操作</strong>：</p>
 <p><code>G</code> ：到文件最后一行。如果想要到指定的哪一行可以输入行号，再输入 <code>G</code> 。（注意：是大写的 <code>G</code>）比如到 67 行，输入 <code>67 + G</code></p>
 <blockquote>
-<p>到指定行是我最喜欢的功能。当然需要配合显示行号使用，显示行号会在命令模式处讲。</p>
+<p>到指定行是我最喜欢的功能。当然需要配合显示行号使用，显示行号会在末行模式处讲。</p>
 </blockquote>
 <p><code>gg</code> ：到文件第一行。</p>
 <p><code>&gt;&gt;</code> ：文本向右移动</p>
@@ -88,7 +88,7 @@
 <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">:set hlsearch</span><br></pre></td></tr></table></figure>
 
 <p>4) 替换</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">末行模式下，将当前文件中的所有abc替换成123</span><br><span class="line">:%s/abc/123/g</span><br><span class="line"></span><br><span class="line">末行模式下，将第一行至第10行之间的abc替换成123</span><br><span class="line">:1, 10s/abc/123/g</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 末行模式下，将当前文件中的所有abc替换成123</span></span><br><span class="line">:%s/abc/123/g</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 末行模式下，将第一行至第10行之间的abc替换成123</span></span><br><span class="line">:1, 10s/abc/123/g</span><br></pre></td></tr></table></figure>
 
 <blockquote>
 <p>1.%表示整个文件；1, 10表示1到10行范围内</p>
@@ -114,7 +114,7 @@
 <p><strong>目录树</strong>：<code>NERDTree</code></p>
 <p><strong>搜索文件</strong>：<code>CtrlP</code></p>
 <p><strong>基于内容搜索文件</strong>：<code>ack</code></p>
-<p><strong>python函数跳转功能</strong>：<code>ptags</code> 可以查看我的文章『<a href="https://www.pythonnote.cn/vim实现python函数跳转/』">https://www.pythonnote.cn/vim实现python函数跳转/』</a></p>
+<p><strong>python函数跳转功能</strong>：<code>ptags</code> 可以查看我的文章『<a href="https://www.pythonnote.cn/vim实现python函数跳转/">vim 实现 python 函数跳转</a>』</p>
 <p><strong>代码折叠</strong>：这个不是插件，而是修改 <code>.vimrc</code> 配置文件，<code>Google</code> 一下</p>
 <p><strong>代码补全</strong>：<code>YCM</code> (<code>YouCompleteMe</code>)</p>
 <blockquote>
