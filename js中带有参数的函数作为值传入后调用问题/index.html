@@ -65,7 +65,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> 字数统计:</span>
-            <span class="post-count">368字</span>
+            <span class="post-count">375字</span>
         </span>
     </span>
 
@@ -107,10 +107,10 @@
 <a id="more"></a>
 
 <p><strong><em>更多精彩文章请关注公众号『Pythonnote』或者『全栈技术精选』</em></strong></p>
-<h2 id="1-无参数函数作为参数传入调用"><a href="#1-无参数函数作为参数传入调用" class="headerlink" title="1.无参数函数作为参数传入调用"></a>1.无参数函数作为参数传入调用</h2><p>当根据实际情况，函数需要作为参数传入时，一般如下方式直接调用即可：</p>
+<h2 id="1-无参数函数作为参数传入调用"><a href="#1-无参数函数作为参数传入调用" class="headerlink" title="1.无参数函数作为参数传入调用"></a>1.无参数函数作为参数传入调用</h2><p>当根据实际情况，函数需要作为参数传入时，一般采用如下方式直接调用即可：</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fuc1</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="number">1</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fuc2</span>(<span class="params">a</span>) </span>&#123;</span><br><span class="line">  a();</span><br><span class="line">&#125;</span><br><span class="line">fuc2(fuc1); <span class="comment">// 1</span></span><br></pre></td></tr></table></figure>
 
-<h2 id="2-有参数函数作为参数传入调用"><a href="#2-有参数函数作为参数传入调用" class="headerlink" title="2.有参数函数作为参数传入调用"></a>2.有参数函数作为参数传入调用</h2><p>一般的函数都有参数，那么如何传参呢？可以使用如下方式：</p>
+<h2 id="2-有参数函数作为参数传入调用"><a href="#2-有参数函数作为参数传入调用" class="headerlink" title="2.有参数函数作为参数传入调用"></a>2.有参数函数作为参数传入调用</h2><p>一般的函数都有参数，那么这种情况又如何传参呢？可以使用如下方式：</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fuc1</span>(<span class="params">param</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(param);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fuc2</span>(<span class="params">a, b</span>) </span>&#123;</span><br><span class="line">  a(b);</span><br><span class="line">&#125;</span><br><span class="line">fuc2(fuc1, <span class="string">"欢迎关注微信公众号：全栈技术精选"</span>);</span><br></pre></td></tr></table></figure>
 
 <h2 id="3-有参数函数作为事件方法"><a href="#3-有参数函数作为事件方法" class="headerlink" title="3.有参数函数作为事件方法"></a>3.有参数函数作为事件方法</h2><p>现在要将传入的函数作为点击事件的处理程序，你一定想得是这样：</p>
