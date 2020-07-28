@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://www.pythonnote.cn/"/>
-  <updated>2020-07-11T11:11:16.478Z</updated>
+  <updated>2020-07-28T15:09:15.372Z</updated>
   <id>https://www.pythonnote.cn/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>如何写出优秀的代码</title>
+    <link href="https://www.pythonnote.cn/%E5%A6%82%E4%BD%95%E5%86%99%E5%87%BA%E4%BC%98%E7%A7%80%E7%9A%84%E4%BB%A3%E7%A0%81/"/>
+    <id>https://www.pythonnote.cn/%E5%A6%82%E4%BD%95%E5%86%99%E5%87%BA%E4%BC%98%E7%A7%80%E7%9A%84%E4%BB%A3%E7%A0%81/</id>
+    <published>2020-07-28T13:45:00.000Z</published>
+    <updated>2020-07-28T15:09:15.372Z</updated>
+    
+    <summary type="html">
+    
+      &lt;center&gt;Author：闫玉良&lt;/center&gt;
+
+&lt;p&gt;写了太多屎一样的代码，终于不臭了！&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="经验" scheme="https://www.pythonnote.cn/categories/%E7%BB%8F%E9%AA%8C/"/>
+    
+    
+      <category term="经验" scheme="https://www.pythonnote.cn/tags/%E7%BB%8F%E9%AA%8C/"/>
+    
+  </entry>
   
   <entry>
     <title>js中带有参数的函数作为值传入后调用问题</title>
@@ -447,33 +470,6 @@
       &lt;center&gt;Author：闫玉良&lt;/center&gt;
 
 &lt;p&gt; &lt;code&gt;Hadoop&lt;/code&gt; 之 &lt;code&gt;YARN&lt;/code&gt;，你了解吗？&lt;/p&gt;
-&lt;p&gt;官方文档汇总：&lt;a href=&quot;https://www.pythonnote.cn/OfficialDocuments/&quot;&gt;https://www.pythonnote.cn/OfficialDocuments/&lt;/a&gt;&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;包含了后端常使用的各种文档，小闫静心制作，快收藏起来吧 ~&lt;/p&gt;
-&lt;/blockquote&gt;
-    
-    </summary>
-    
-    
-      <category term="hadoop" scheme="https://www.pythonnote.cn/categories/hadoop/"/>
-    
-    
-      <category term="hadoop" scheme="https://www.pythonnote.cn/tags/hadoop/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Hadoop学习笔记(三)之MapReduce</title>
-    <link href="https://www.pythonnote.cn/Hadoop%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E4%B8%89/"/>
-    <id>https://www.pythonnote.cn/Hadoop%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E4%B8%89/</id>
-    <published>2020-04-18T04:39:18.000Z</published>
-    <updated>2020-04-18T08:30:43.397Z</updated>
-    
-    <summary type="html">
-    
-      &lt;center&gt;Author：闫玉良&lt;/center&gt;
-
-&lt;p&gt; &lt;code&gt;Hadoop&lt;/code&gt; 之分布式计算框架，你了解吗？&lt;/p&gt;
 &lt;p&gt;官方文档汇总：&lt;a href=&quot;https://www.pythonnote.cn/OfficialDocuments/&quot;&gt;https://www.pythonnote.cn/OfficialDocuments/&lt;/a&gt;&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;包含了后端常使用的各种文档，小闫静心制作，快收藏起来吧 ~&lt;/p&gt;

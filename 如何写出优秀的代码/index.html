@@ -10,7 +10,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
   <title>
-    js中带有参数的函数作为值传入后调用问题 |  EthanYan&#39;s Blog
+    如何写出优秀的代码 |  EthanYan&#39;s Blog
   </title>
   <meta name="generator" content="hexo-theme-yilia-plus">
   
@@ -33,7 +33,7 @@
   <div id="app">
     <main class="content">
       <section class="outer">
-  <article id="post-js中带有参数的函数作为值传入后调用问题" class="article article-type-post" itemscope
+  <article id="post-如何写出优秀的代码" class="article article-type-post" itemscope
   itemprop="blogPost" data-scroll-reveal>
 
   <div class="article-inner">
@@ -41,7 +41,7 @@
     <header class="article-header">
        
 <h1 class="article-title sea-center" style="border-left:0" itemprop="name">
-  js中带有参数的函数作为值传入后调用问题
+  如何写出优秀的代码
 </h1>
   
 
@@ -50,12 +50,12 @@
 
     
     <div class="article-meta">
-      <a href="/js%E4%B8%AD%E5%B8%A6%E6%9C%89%E5%8F%82%E6%95%B0%E7%9A%84%E5%87%BD%E6%95%B0%E4%BD%9C%E4%B8%BA%E5%80%BC%E4%BC%A0%E5%85%A5%E5%90%8E%E8%B0%83%E7%94%A8%E9%97%AE%E9%A2%98/" class="article-date">
-  <time datetime="2020-07-11T09:33:56.000Z" itemprop="datePublished">2020-07-11</time>
+      <a href="/%E5%A6%82%E4%BD%95%E5%86%99%E5%87%BA%E4%BC%98%E7%A7%80%E7%9A%84%E4%BB%A3%E7%A0%81/" class="article-date">
+  <time datetime="2020-07-28T13:45:00.000Z" itemprop="datePublished">2020-07-28</time>
 </a>
       
   <div class="article-category">
-    <a class="article-category-link" href="/categories/js/">js</a>
+    <a class="article-category-link" href="/categories/%E7%BB%8F%E9%AA%8C/">经验</a>
   </div>
 
       
@@ -65,7 +65,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> 字数统计:</span>
-            <span class="post-count">375字</span>
+            <span class="post-count">1.3k字</span>
         </span>
     </span>
 
@@ -74,7 +74,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-book-open-line"></i>
             <span class="post-meta-item-text"> 阅读时长≈</span>
-            <span class="post-count">1分钟</span>
+            <span class="post-count">4分钟</span>
         </span>
     </span>
 </div>
@@ -103,26 +103,55 @@
       
       <center>Author：闫玉良</center>
 
-<p>每天不是在写 <code>bug</code>，就是在解 <code>bug</code> 的路上~</p>
+<p>写了太多屎一样的代码，终于不臭了！</p>
 <a id="more"></a>
 
 <p><strong><em>更多精彩文章请关注公众号『Pythonnote』或者『全栈技术精选』</em></strong></p>
-<h2 id="1-无参数函数作为参数传入调用"><a href="#1-无参数函数作为参数传入调用" class="headerlink" title="1.无参数函数作为参数传入调用"></a>1.无参数函数作为参数传入调用</h2><p>当根据实际情况，函数需要作为参数传入时，一般采用如下方式直接调用即可：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fuc1</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="number">1</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fuc2</span>(<span class="params">a</span>) </span>&#123;</span><br><span class="line">  a();</span><br><span class="line">&#125;</span><br><span class="line">fuc2(fuc1); <span class="comment">// 1</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="2-有参数函数作为参数传入调用"><a href="#2-有参数函数作为参数传入调用" class="headerlink" title="2.有参数函数作为参数传入调用"></a>2.有参数函数作为参数传入调用</h2><p>一般的函数都有参数，那么这种情况又如何传参呢？可以使用如下方式：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fuc1</span>(<span class="params">param</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(param);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fuc2</span>(<span class="params">a, b</span>) </span>&#123;</span><br><span class="line">  a(b);</span><br><span class="line">&#125;</span><br><span class="line">fuc2(fuc1, <span class="string">"欢迎关注微信公众号：全栈技术精选"</span>);</span><br></pre></td></tr></table></figure>
-
-<h2 id="3-有参数函数作为事件方法"><a href="#3-有参数函数作为事件方法" class="headerlink" title="3.有参数函数作为事件方法"></a>3.有参数函数作为事件方法</h2><p>现在要将传入的函数作为点击事件的处理程序，你一定想得是这样：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fuc1</span>(<span class="params">param</span>) </span>&#123;</span><br><span class="line">  alert(param);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> link = <span class="built_in">document</span>.getElementsByClassName(<span class="string">"link1"</span>);</span><br><span class="line">link.onclick = fuc1(<span class="string">"我是小闫同学啊"</span>);</span><br></pre></td></tr></table></figure>
-
-<p>但是不好意思，<strong>不需要点击，一刷新页面，直接调用函数</strong>，弹出窗口！</p>
+<h2 id="1-第一坨屎-变量"><a href="#1-第一坨屎-变量" class="headerlink" title="1.第一坨屎-变量"></a>1.第一坨屎-变量</h2><p>为了不让下任『接盘侠』看到代码骂娘，我劝你善良。请不要使用如下方式命名变量：</p>
+<p>1.拼音命名（不会英文就去下载个某道词典，翻译一下嘛。<code>name</code> 总比 <code>mingzi</code> 好辨认吧？字数还少，还能国际通用）</p>
+<p>2.使用简单字母命名（<code>a</code>/<code>b</code>等等，别说其他人，过两天自己都不晓得写了个什么鬼）</p>
+<p>3.异想天开（不要随便拍脑袋起名，要做到见名知义。总不能一个 <code>id</code> 的列表，你叫个 <code>item</code> 吧？<code>xxx_id_list</code> 稍微强一些吧？）</p>
+<p>4.不要命名冲突（最起码在一个函数内，不能重复。 <code>project</code> 既是生产项目又是测试项目？变量不断被覆盖，奇奇怪怪的 <code>bug</code> 就够你喝一壶的了）</p>
 <blockquote>
-<p>因为在你写 fuc1(“我是小闫同学啊”) 时，默认就调用了此函数，都不需要点击。</p>
+<p>这种病的病根儿一般是词汇量匮乏，治疗建议某道翻译。</p>
 </blockquote>
-<p>如何才能达到在点击时才弹出窗口呢？你需要这样做：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//请关注：全栈技术精选</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fuc1</span>(<span class="params">param</span>) </span>&#123;</span><br><span class="line">  alert(param);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> link = <span class="built_in">document</span>.getElementById(<span class="string">"link1"</span>);</span><br><span class="line">link.onclick = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  fuc1(<span class="string">"我是小闫同学啊"</span>);</span><br><span class="line">  <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
+<p>5.查询数据库时，变量与字段名、模型类或者表名不一致（查的 <code>Product</code> 就不要叫 <code>Mobiles</code>；查的 <code>name</code> ，就不要叫 <code>leader</code> ）</p>
+<h2 id="2-第二坨屎-注释"><a href="#2-第二坨屎-注释" class="headerlink" title="2.第二坨屎-注释"></a>2.第二坨屎-注释</h2><p>为了第二天代码还认识你，请你添加注释。</p>
+<p>1.一定要添加注释，最起码重要的逻辑部分覆盖到。</p>
+<p>2.注释要清晰、易懂、简单明了。</p>
+<p>3.注释不是流水账，不是每一行代码的解释，而是某一块逻辑的说明。</p>
+<p>4.对于复杂的数据结构请举例说明。</p>
+<p>5.每个函数的说明文档起码要有。</p>
+<h2 id="3-第三坨屎-嵌套"><a href="#3-第三坨屎-嵌套" class="headerlink" title="3.第三坨屎-嵌套"></a>3.第三坨屎-嵌套</h2><p>1.不要里三层外三层的 <code>if-else</code>，逻辑判断可以有，但是一定有更加简明的表示方法。嵌套的层级太多，不仅难理解，还影响美观。</p>
+<p>2.简单的一层 <code>if-else</code> ，有时三元运算符会更加方便。</p>
+<p>3.若想你的程序执行效率高一些，就不要循环套循环。</p>
+<p>4.无论何时何地都不要在循环里面有查询数据库的语句。也许一次访问，只需要查询几次数据库，但是用户量大时，能把你数据库搞瘫。多使用一些 <code>bulk_create</code> 或者 <code>bulk_update</code> 等等类似的批量操作方法，一次访问远比多次访问数据库效率高。</p>
+<h2 id="4-第四坨屎-逻辑"><a href="#4-第四坨屎-逻辑" class="headerlink" title="4.第四坨屎-逻辑"></a>4.第四坨屎-逻辑</h2><p>1.请将复杂的逻辑单独抽出来做成函数或者类，不要让你的接口内部过于复杂。否则即使有注释，也太晦涩难懂。</p>
+<blockquote>
+<p>将复杂逻辑抽调后，不光能被其他地方调用，还能使你的接口清晰明了。</p>
+</blockquote>
+<p>2.实现一个功能，肯定不止一种方法，要不断的去优化，去寻找一条最快最简单的路径。</p>
+<blockquote>
+<p>当然优化的前提是存在，即使用笨办法也得先实现再说。</p>
+</blockquote>
+<h2 id="5-第五坨屎-校验"><a href="#5-第五坨屎-校验" class="headerlink" title="5.第五坨屎-校验"></a>5.第五坨屎-校验</h2><p>1.一定要添加必要的校验操作！一定要添加必要的校验操作！一定要添加必要的校验操作！重要的事情说三遍，想要保证程序的健壮性，永远不要相信用户的任何操作！（用户不是开发人员，一定会做出你想不到的操作。为了保证程序安全、数据安全，请添加校验）</p>
+<p>2.常用的校验有：为空校验、长度校验、规则校验、常识性校验（最起码上限不能低于下限）、业务校验、边界情况校验等。</p>
+<h2 id="6-第六坨屎-单元测试"><a href="#6-第六坨屎-单元测试" class="headerlink" title="6.第六坨屎-单元测试"></a>6.第六坨屎-单元测试</h2><p>1.自动化远比人工可靠。</p>
+<blockquote>
+<p>不是说人工偷懒，而是重复的点点点难免会有遗漏的情况。添加单元测试，就要可靠的多。</p>
+</blockquote>
+<p>2.单元测试并不是负担，当你重构代码时，你会发现它的重要作用！</p>
+<blockquote>
+<p>有单元测试做保障，测试通过就代表重构成功。不需要重复界面点点点，太浪费时间。当然前提是：你的单元测试是可靠的。</p>
+</blockquote>
+<p>3.重要的方法、逻辑，单元测试一定要覆盖到，它会保证你的程序安全上线！</p>
+<p>4.<code>code_review</code> 只能是看规范，看逻辑，肉眼能核对运行结果吗？提交代码先跑一遍单元测试，是否可靠的多？</p>
+<blockquote>
+<p>这就体现出来自动化测试的好处了，最简单的方法，在 <code>GitLab</code> 上集成单元测试，这样提交代码后自动运行单元测试，不通过肯定不会合并到 <code>master</code>  分支，保证线上环境安全。</p>
+</blockquote>
+<h2 id="7-第七坨屎-重用"><a href="#7-第七坨屎-重用" class="headerlink" title="7.第七坨屎-重用"></a>7.第七坨屎-重用</h2><p>1.将公共的代码抽调出来，做成公共模块、通用组件。<strong>减少程序代码量</strong>，让程序起飞。</p>
+<p>2.重用的优点不光是省代码这么简单，如果相同的代码这也有，那也有，出错怎么办？改几遍？<strong>便于维护</strong></p>
+<p>3.将常用的数字抽出一个常数文件，其他地方调用变量的形式使用，这样维护一个常数文件比维护分散在各个角落的代码要好的多。</p>
 <p><strong><em>更多精彩文章请关注公众号『Pythonnote』或者『全栈技术精选』</em></strong></p>
 
       
@@ -193,14 +222,14 @@
     <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://www.pythonnote.cn/js%E4%B8%AD%E5%B8%A6%E6%9C%89%E5%8F%82%E6%95%B0%E7%9A%84%E5%87%BD%E6%95%B0%E4%BD%9C%E4%B8%BA%E5%80%BC%E4%BC%A0%E5%85%A5%E5%90%8E%E8%B0%83%E7%94%A8%E9%97%AE%E9%A2%98/" alt="微信分享二维码">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://www.pythonnote.cn/%E5%A6%82%E4%BD%95%E5%86%99%E5%87%BA%E4%BC%98%E7%A7%80%E7%9A%84%E4%BB%A3%E7%A0%81/" alt="微信分享二维码">
     </div>
 </div>
 
 <div id="share-mask"></div>
       
       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/js/" rel="tag">js</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%BB%8F%E9%AA%8C/" rel="tag">经验</a></li></ul>
 
 
     </footer>
@@ -211,19 +240,10 @@
   
   <nav class="article-nav">
     
-      <a href="/%E5%A6%82%E4%BD%95%E5%86%99%E5%87%BA%E4%BC%98%E7%A7%80%E7%9A%84%E4%BB%A3%E7%A0%81/" class="article-nav-link">
-        <strong class="article-nav-caption">上一篇</strong>
-        <div class="article-nav-title">
-          
-            如何写出优秀的代码
-          
-        </div>
-      </a>
     
-    
-      <a href="/js%E5%8A%A8%E6%80%81%E7%BB%91%E5%AE%9A%E4%BA%8B%E4%BB%B6%EF%BC%8C%E6%97%A0%E6%B3%95%E4%BD%BF%E7%94%A8for%E5%BE%AA%E7%8E%AF%E4%B8%AD%E5%8F%98%E9%87%8Fi%E7%9A%84%E9%97%AE%E9%A2%98/" class="article-nav-link">
+      <a href="/js%E4%B8%AD%E5%B8%A6%E6%9C%89%E5%8F%82%E6%95%B0%E7%9A%84%E5%87%BD%E6%95%B0%E4%BD%9C%E4%B8%BA%E5%80%BC%E4%BC%A0%E5%85%A5%E5%90%8E%E8%B0%83%E7%94%A8%E9%97%AE%E9%A2%98/" class="article-nav-link">
         <strong class="article-nav-caption">下一篇</strong>
-        <div class="article-nav-title">js动态绑定事件，无法使用for循环中变量i的问题</div>
+        <div class="article-nav-title">js中带有参数的函数作为值传入后调用问题</div>
       </a>
     
   </nav>
