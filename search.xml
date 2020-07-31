@@ -1,6 +1,69 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>django这些查询技巧你会了吗?</title>
+    <url>/django%E8%BF%99%E4%BA%9B%E6%9F%A5%E8%AF%A2%E6%8A%80%E5%B7%A7%E4%BD%A0%E4%BC%9A%E4%BA%86%E5%90%97/</url>
+    <content><![CDATA[<center>Author：闫玉良</center>
+
+<p>任何不考虑后果的查询都是耍流氓！</p>
+<a id="more"></a>
+
+<p><strong><em>更多精彩文章请关注公众号『Pythonnote』或者『全栈技术精选』</em></strong></p>
+<h2 id="1-select-related"><a href="#1-select-related" class="headerlink" title="1.select_related"></a>1.select_related</h2><blockquote>
+<p>关联查询优化，只会进行<strong>一次</strong>查询，然后缓存结果。平时其他方法都是惰性查询，当每次取值时都会查询一次数据库。</p>
+<p><strong>建议</strong>：所有关联查询使用此方法。</p>
+</blockquote>
+<p>假设有两张表，一张表是书籍，一张表是英雄人物：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> django.db <span class="keyword">import</span> models</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 书籍表</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">BookInfo</span><span class="params">(models.Model)</span>:</span></span><br><span class="line">    btitle = models.CharField(max_length=<span class="number">20</span>, verbose_name=<span class="string">'名称'</span>)</span><br><span class="line"></span><br><span class="line">    <span class="class"><span class="keyword">class</span> <span class="title">Meta</span>:</span></span><br><span class="line">        db_table = <span class="string">'tb_books'</span></span><br><span class="line">        </span><br><span class="line"></span><br><span class="line"><span class="comment"># 英雄表</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">HeroInfo</span><span class="params">(models.Model)</span>:</span></span><br><span class="line">    GENDER_CHOICES = (</span><br><span class="line">        (<span class="number">0</span>, <span class="string">'male'</span>),</span><br><span class="line">        (<span class="number">1</span>, <span class="string">'female'</span>)</span><br><span class="line">    )</span><br><span class="line">    hname = models.CharField(max_length=<span class="number">20</span>, verbose_name=<span class="string">'名称'</span>)</span><br><span class="line">    hgender = models.SmallIntegerField(choices=GENDER_CHOICES, default=<span class="number">0</span>, verbose_name=<span class="string">'性别'</span>)</span><br><span class="line">    hbook = models.ForeignKey(BookInfo, on_delete=models.CASCADE, verbose_name=<span class="string">'图书'</span>)</span><br><span class="line"></span><br><span class="line">    <span class="class"><span class="keyword">class</span> <span class="title">Meta</span>:</span></span><br><span class="line">        db_table = <span class="string">'tb_heros'</span></span><br></pre></td></tr></table></figure>
+
+<p>现在要查询所有的英雄以及他们所在的书籍名称：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">heros = HeroInfo.objects.select_related(<span class="string">'hbook'</span>).all()</span><br><span class="line"><span class="comment"># 查询之后构造一个字典</span></span><br><span class="line">heros_dict = &#123;&#125;</span><br><span class="line"><span class="keyword">for</span> hero <span class="keyword">in</span> heros:</span><br><span class="line">  heros_dict[hero.hname] = hero.hbook.btitle  <span class="comment"># 关联查询后，直接使用.取值即可，不会再进行数据库查询</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>1.如上 <code>select_related</code> 中的参数 <code>hbook</code> 为外键名称，它会将所关联的表中所有信息都查询出来。</p>
+<p>如果书籍表 <code>BookInfo</code> 中还有外键，我们还想再关联查询那张表的信息，可以用如下的方式：<code>hbook__外键名称</code>，外键和外键之间用双下划线连接。如果有三层关系可以：<code>外键名称__外键名称__外键名称</code>，以此类推，快乐就完事儿了。</p>
+<p>3.<code>select_related</code> 中还可以通过参数 <code>depth</code> 指定查询的深度。比如示例中可以改为：<code>select_related(depth=1)</code>，它的意思就是往下查询一层。如果书籍表中还有外键，我们都想查询出来，可以：<code>select_related(depth=2)</code>，以此类推。</p>
+<p>4.示例中的方式是指定查询的外键，只查询了英雄类中所关联的图书。如果英雄类中有好几个外键，我们都想关联查询，参数 <code>depth</code> 的优势就凸显出来了，不需要详细写出每一个外键的名称。</p>
+</blockquote>
+<p>最后的结果形如：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="string">'迪迦'</span>: <span class="string">'迪迦奥特曼'</span>,</span><br><span class="line">  <span class="string">'武松'</span>: <span class="string">'水浒传'</span>,</span><br><span class="line">  ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>##2.values_list</p>
+<blockquote>
+<p>取出指定字段，组成列表</p>
+</blockquote>
+<p>比如我需要一个所有英雄名称的列表：<code>[&#39;迪迦&#39;, &#39;武松&#39;...]</code>。你可能想到的方法是查询出所有的英雄信息，然后遍历每个对象，将对象的名称放到指定的列表中，完成需求。使用 <code>values_list</code> 可以一步到位：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">list(HeroInfo.objects.values_list(<span class="string">'hname'</span>, flat=<span class="literal">True</span>))</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-1-详解"><a href="#2-1-详解" class="headerlink" title="2.1 详解"></a>2.1 详解</h3><p>1.<code>values_list</code> 中第一个参数填写的是要查询的字段名称，此处为 <code>hname</code> ；第二个参数 <code>flat</code> 设置为 <code>True</code> 是为了不以元祖的形式展示，而是直接将值取出来，形如：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">&lt;QuerySet [<span class="string">'迪迦'</span>, <span class="string">'武松'</span>...]&gt;</span><br><span class="line"><span class="comment"># 不设置 flat 结果如下</span></span><br><span class="line">&lt;QuerySet [(<span class="string">'迪迦'</span>,), (<span class="string">'武松'</span>,)...]&gt;</span><br></pre></td></tr></table></figure>
+
+<p>2.有人会问：为什么外面要使用 <code>list</code> 方法呢？如上示例，查询结果是一个 <code>QuerySet</code> 对象，为了使用方便，一般根据需要转换为 <code>python</code> 的列表。</p>
+<h2 id="3-annotate"><a href="#3-annotate" class="headerlink" title="3.annotate"></a>3.annotate</h2><blockquote>
+<p>聚合函数</p>
+</blockquote>
+<p><strong>需求</strong>：统计出英雄表中男女的数量，显示聚合结果。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> django.db.models <span class="keyword">import</span> Count</span><br><span class="line"></span><br><span class="line">HeroInfo.objects.values(<span class="string">'hgender'</span>).annotate(number=Count(<span class="string">'hgender'</span>))</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-1-详解"><a href="#3-1-详解" class="headerlink" title="3.1 详解"></a>3.1 详解</h3><p>1.上方的意思是根据字段 <code>hgender</code> 进行分组，然后统计每组的人数，人数一列起名为 <code>number</code></p>
+<p>2.查询结果如下：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">&lt;QuerySet [&#123;<span class="string">'hgender'</span>: <span class="number">0</span>, <span class="string">'number'</span>: <span class="number">10</span>&#125;, &#123;<span class="string">'hgender'</span>: <span class="number">1</span>, <span class="string">'number'</span>: <span class="number">3</span>&#125;]&gt;</span><br></pre></td></tr></table></figure>
+
+<p>3.可以看出英雄表中男性（0）为 10 人；女性（1）为 3 人。</p>
+<p>4.<strong>注意</strong>：<code>values</code> 和 <code>annotate</code> 的顺序一定要特别关注！示例中的顺序代表根据性别分组显示聚合结果，但是反过来后就变成了先根据 <code>hgender</code> 统计数量，最后只取字段 <code>hgender</code> 的值。</p>
+<blockquote>
+<p>也许你会想示例中既然  <code>annotate</code> 可以统计数量，那么直接使用去掉 <code>values</code> 不是好了？不对！它是统计了数量，但只是为查询的每行记录赋予了一个新字段 <code>number</code> ，并没有聚合结果，不如示例中那样清晰，哪个性别有几个，展示的明明白白。</p>
+</blockquote>
+<p><strong><em>更多精彩文章请关注公众号『Pythonnote』或者『全栈技术精选』</em></strong></p>
+]]></content>
+      <categories>
+        <category>django</category>
+      </categories>
+      <tags>
+        <tag>django</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>如何写出优秀的代码</title>
     <url>/%E5%A6%82%E4%BD%95%E5%86%99%E5%87%BA%E4%BC%98%E7%A7%80%E7%9A%84%E4%BB%A3%E7%A0%81/</url>
     <content><![CDATA[<center>Author：闫玉良</center>
