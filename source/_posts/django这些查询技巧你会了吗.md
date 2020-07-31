@@ -53,7 +53,7 @@ heros = HeroInfo.objects.select_related('hbook').all()
 # 查询之后构造一个字典
 heros_dict = {}
 for hero in heros:
-  heros_dict[hero.hname] = hero.hbook.btitle  # 关联查询后，直接使用.取值即可，不会再进行数据库查询
+  	heros_dict[hero.hname] = hero.hbook.btitle  # 关联查询后，直接使用.取值即可，不会再进行数据库查询
 ```
 
 > 1.如上 `select_related` 中的参数 `hbook` 为外键名称，它会将所关联的表中所有信息都查询出来。
