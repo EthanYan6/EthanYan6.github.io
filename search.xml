@@ -21,7 +21,7 @@
 
 <blockquote>
 <p>1.如上 <code>select_related</code> 中的参数 <code>hbook</code> 为外键名称，它会将所关联的表中所有信息都查询出来。</p>
-<p>如果书籍表 <code>BookInfo</code> 中还有外键，我们还想再关联查询那张表的信息，可以用如下的方式：<code>hbook__外键名称</code>，外键和外键之间用双下划线连接。如果有三层关系可以：<code>外键名称__外键名称__外键名称</code>，以此类推，快乐就完事儿了。</p>
+<p>2.如果书籍表 <code>BookInfo</code> 中还有外键，我们还想再关联查询那张表的信息，可以用如下的方式：<code>hbook__外键名称</code>，外键和外键之间用双下划线连接。如果有三层关系可以：<code>外键名称__外键名称__外键名称</code>，以此类推，快乐就完事儿了。</p>
 <p>3.<code>select_related</code> 中还可以通过参数 <code>depth</code> 指定查询的深度。比如示例中可以改为：<code>select_related(depth=1)</code>，它的意思就是往下查询一层。如果书籍表中还有外键，我们都想查询出来，可以：<code>select_related(depth=2)</code>，以此类推。</p>
 <p>4.示例中的方式是指定查询的外键，只查询了英雄类中所关联的图书。如果英雄类中有好几个外键，我们都想关联查询，参数 <code>depth</code> 的优势就凸显出来了，不需要详细写出每一个外键的名称。</p>
 </blockquote>
