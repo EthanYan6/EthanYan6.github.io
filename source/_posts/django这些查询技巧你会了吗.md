@@ -1,10 +1,9 @@
- ---
+---
 title: django这些查询技巧你会了吗?
 tags: django
 categories: django
 date: 2020-07-31 16:13:49
 ---
-
 <center>Author：闫玉良</center>
 
 任何不考虑后果的查询都是耍流氓！
