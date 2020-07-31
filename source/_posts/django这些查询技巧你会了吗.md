@@ -1,4 +1,4 @@
----
+ ---
 title: django这些查询技巧你会了吗?
 tags: django
 categories: django
@@ -75,7 +75,7 @@ for hero in heros:
 }
 ```
 
-##2.values_list
+## 2.values_list
 
 > 取出指定字段，组成列表
 
@@ -126,3 +126,4 @@ HeroInfo.objects.values('hgender').annotate(number=Count('hgender'))
 > 也许你会想示例中既然  `annotate` 可以统计数量，那么直接使用去掉 `values` 不是好了？不对！它是统计了数量，但只是为查询的每行记录赋予了一个新字段 `number` ，并没有聚合结果，不如示例中那样清晰，哪个性别有几个，展示的明明白白。
 
 ***更多精彩文章请关注公众号『Pythonnote』或者『全栈技术精选』***
+
