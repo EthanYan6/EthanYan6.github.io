@@ -65,7 +65,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> 字数统计:</span>
-            <span class="post-count">286字</span>
+            <span class="post-count">284字</span>
         </span>
     </span>
 
@@ -101,29 +101,40 @@
       
 
       
-      <center>Author：闫玉良</center>
-容器之间如何互相通讯？具体的命令有哪些？
-
+      <ul>
+<li><strong>Author：闫玉良</strong></li>
+</ul>
+<p>容器之间如何互相通讯？具体的命令有哪些？</p>
 <a id="more"></a>
 
 <p><strong><em>更多精彩文章请关注公众号『Pythonnote』或者『全栈技术精选』</em></strong></p>
 <h1 id="网桥"><a href="#网桥" class="headerlink" title="网桥"></a>网桥</h1><p>网桥可以简单的理解为「局域网」，使加入网桥的容器之间可以互相通讯、暴露全部链接，同时与外界又保证了相对隔离的运行环境。</p>
 <h2 id="1-创建网桥"><a href="#1-创建网桥" class="headerlink" title="1.创建网桥"></a>1.创建网桥</h2><p>命令：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker network create --driver bridge [网桥名称]</span><br></pre></td></tr></table></figure>
+
 <blockquote>
 <p>参数 <code>--driver bridge</code> 是默认配置，可写可不写</p>
 </blockquote>
 <h2 id="2-连接网桥"><a href="#2-连接网桥" class="headerlink" title="2.连接网桥"></a>2.连接网桥</h2><p>连接网桥分为两种方式，一种是在创建容器时链接网桥，一种是在容器运行时链接网桥。</p>
-<p>1) 创建容器时：</p>
+<ol>
+<li>创建容器时：</li>
+</ol>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker create --name [容器名称] --network [网桥名称] [镜像名称]</span><br></pre></td></tr></table></figure>
-<p>2) 容器运行状态时：</p>
+
+<ol start="2">
+<li>容器运行状态时：</li>
+</ol>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker network connect [网桥名称] [容器名称]</span><br></pre></td></tr></table></figure>
+
 <h2 id="3-查看所有网桥"><a href="#3-查看所有网桥" class="headerlink" title="3.查看所有网桥"></a>3.查看所有网桥</h2><p>命令：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker network ls</span><br></pre></td></tr></table></figure>
+
 <h2 id="4-查看某网桥的配置信息"><a href="#4-查看某网桥的配置信息" class="headerlink" title="4.查看某网桥的配置信息"></a>4.查看某网桥的配置信息</h2><p>命令：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker network inspect [网桥id或者名称]</span><br></pre></td></tr></table></figure>
+
 <h2 id="5-删除自定义网桥"><a href="#5-删除自定义网桥" class="headerlink" title="5.删除自定义网桥"></a>5.删除自定义网桥</h2><p>命令：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker network rm [网桥id或者名称]</span><br></pre></td></tr></table></figure>
+
 <p><strong><em>更多精彩文章请关注公众号『Pythonnote』或者『全栈技术精选』</em></strong></p>
 
       

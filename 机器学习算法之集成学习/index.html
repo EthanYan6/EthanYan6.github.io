@@ -101,8 +101,9 @@
       
 
       
-      <center>Editor：闫玉良</center>
-
+      <ul>
+<li><strong>Editor: 闫玉良</strong></li>
+</ul>
 <p>分类算法中有一种极其重要的算法「集成学习」</p>
 <a id="more"></a>
 
@@ -115,23 +116,31 @@
 <h2 id="2-Bagging-和-随机森林"><a href="#2-Bagging-和-随机森林" class="headerlink" title="2.Bagging 和 随机森林"></a>2.Bagging 和 随机森林</h2><h3 id="2-1-Bagging-集成原理"><a href="#2-1-Bagging-集成原理" class="headerlink" title="2.1 Bagging 集成原理"></a>2.1 Bagging 集成原理</h3><p><strong>目标：</strong>把下面的圈和方块进行分类</p>
 <p><img src="https://s2.ax1x.com/2020/02/23/3lrLse.png" alt="image-20190214160011298"></p>
 <p><strong>实现过程：</strong></p>
-<p>1) 采样不同数据集</p>
+<ol>
+<li>采样不同数据集</li>
+</ol>
 <p><img src="https://s2.ax1x.com/2020/02/23/3lsSit.png" alt="image-20190214160047813"></p>
-<p>2) 训练分类器</p>
+<ol start="2">
+<li>训练分类器</li>
+</ol>
 <p><img src="https://s2.ax1x.com/2020/02/23/3lsuWV.png" alt="image-20190214160135609"></p>
-<p>3) 平权投票，获取最终结果</p>
+<ol start="3">
+<li>平权投票，获取最终结果</li>
+</ol>
 <p><img src="https://s2.ax1x.com/2020/02/23/3lsBOe.png" alt="image-20190214160208609"></p>
-<p>4) 主要实现过程小结</p>
+<ol start="4">
+<li>主要实现过程小结</li>
+</ol>
 <p><img src="https://s2.ax1x.com/2020/02/23/3ls2fP.png" alt="image-20190214160248137"></p>
 <h3 id="2-2-随机森林构造过程"><a href="#2-2-随机森林构造过程" class="headerlink" title="2.2 随机森林构造过程"></a>2.2 随机森林构造过程</h3><p>在机器学习中，<strong>随机森林是一个包含多个决策树的分类器</strong>，并且其输出的类别是由个别树输出的类别的众数而定。</p>
 <p><strong>随机森林</strong> <strong>= Bagging +</strong> <strong>决策树</strong></p>
 <p><img src="https://s2.ax1x.com/2020/02/23/3lyGjS.png" alt="image-20190214160355272"></p>
-<p>例如，你训练了5棵树, 其中有4棵树的结果是 <code>True</code>，1棵树的结果是 <code>False</code>，那么最终投票结果就是 <code>True</code></p>
+<p>例如，你训练了 5 棵树, 其中有 4 棵树的结果是 <code>True</code>，1 棵树的结果是 <code>False</code>，那么最终投票结果就是 <code>True</code></p>
 <p><strong>随机森林够造过程中的关键步骤</strong>（用 <code>N</code> 来表示训练用例(样本)的个数，<code>M</code> 表示特征数目）：</p>
 <p><strong>1）一次随机选出一个样本，有放回的抽样，重复 <code>N</code> 次（有可能出现重复的样本）</strong></p>
-<p><strong>2） 随机去选出 <code>m</code> 个特征，<code>m&lt;&lt;M</code> ，建立决策树</strong> </p>
+<p><strong>2） 随机去选出 <code>m</code> 个特征，<code>m&lt;&lt;M</code> ，建立决策树</strong></p>
 <p><strong>思考</strong></p>
-<p>1.为什么要随机抽样训练集？　　</p>
+<p>1.为什么要随机抽样训练集？</p>
 <blockquote>
 <p>如果不进行随机抽样，每棵树的训练集都一样，那么最终训练出的树分类结果也是完全一样的</p>
 </blockquote>
@@ -141,21 +150,27 @@
 </blockquote>
 <h3 id="2-3-随机森林-api-介绍"><a href="#2-3-随机森林-api-介绍" class="headerlink" title="2.3 随机森林 api 介绍"></a>2.3 随机森林 api 介绍</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">sklearn.ensemble.RandomForestClassifier(n_estimators=<span class="number">10</span>, criterion=<span class="string">"gini"</span>, max_depth=<span class="literal">None</span>, bootstrap=<span class="literal">True</span>, random_state=<span class="literal">None</span>, min_samples_split=<span class="number">2</span>)</span><br><span class="line"></span><br><span class="line">- n_estimators：integer，optional（default = <span class="number">10</span>）森林里的树木数量<span class="number">120</span>,<span class="number">200</span>,<span class="number">300</span>,<span class="number">500</span>,<span class="number">800</span>,<span class="number">1200</span></span><br><span class="line">- Criterion：string，可选（default =<span class="string">"gini"</span>）分割特征的测量方法</span><br><span class="line">- max_depth：integer或<span class="literal">None</span>，可选（默认=无）树的最大深度 <span class="number">5</span>,<span class="number">8</span>,<span class="number">15</span>,<span class="number">25</span>,<span class="number">30</span></span><br><span class="line">- max_features=<span class="string">"auto”,每个决策树的最大特征数量</span></span><br><span class="line"><span class="string">  - If "</span>auto<span class="string">", then `max_features=sqrt(n_features)`.</span></span><br><span class="line"><span class="string">  - If "</span>sqrt<span class="string">", then `max_features=sqrt(n_features)`(same as "</span>auto<span class="string">").</span></span><br><span class="line"><span class="string">  - If "</span>log2<span class="string">", then `max_features=log2(n_features)`.</span></span><br><span class="line"><span class="string">  - If None, then `max_features=n_features`.</span></span><br><span class="line"><span class="string">- bootstrap：boolean，optional（default = True）是否在构建树时使用放回抽样</span></span><br><span class="line"><span class="string">- min_samples_split:节点划分最少样本数</span></span><br><span class="line"><span class="string">- min_samples_leaf:叶子节点的最小样本数</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"># 超参数：n_estimator, max_depth, min_samples_split,min_samples_leaf</span></span><br></pre></td></tr></table></figure>
 
-<h3 id="2-4-随机森林预测案例"><a href="#2-4-随机森林预测案例" class="headerlink" title="2.4 随机森林预测案例"></a>2.4 随机森林预测案例</h3><p>1) 实例化随机森林</p>
+<h3 id="2-4-随机森林预测案例"><a href="#2-4-随机森林预测案例" class="headerlink" title="2.4 随机森林预测案例"></a>2.4 随机森林预测案例</h3><ol>
+<li>实例化随机森林</li>
+</ol>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 随机森林去进行预测</span></span><br><span class="line">rf = RandomForestClassifier()</span><br></pre></td></tr></table></figure>
 
-<p>2) 定义超参数的选择列表</p>
+<ol start="2">
+<li>定义超参数的选择列表</li>
+</ol>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">param = &#123;<span class="string">"n_estimators"</span>: [<span class="number">120</span>,<span class="number">200</span>,<span class="number">300</span>,<span class="number">500</span>,<span class="number">800</span>,<span class="number">1200</span>], <span class="string">"max_depth"</span>: [<span class="number">5</span>, <span class="number">8</span>, <span class="number">15</span>, <span class="number">25</span>, <span class="number">30</span>]&#125;</span><br></pre></td></tr></table></figure>
 
-<p>3) 使用 <code>GridSearchCV</code> 进行网格搜索</p>
+<ol start="3">
+<li>使用 <code>GridSearchCV</code> 进行网格搜索</li>
+</ol>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 超参数调优</span></span><br><span class="line">gc = GridSearchCV(rf, param_grid=param, cv=<span class="number">2</span>)</span><br><span class="line"></span><br><span class="line">gc.fit(x_train, y_train)</span><br><span class="line"></span><br><span class="line">print(<span class="string">"随机森林预测的准确率为："</span>, gc.score(x_test, y_test))</span><br></pre></td></tr></table></figure>
 
 <blockquote>
 <p>注意：(1) 随机森林的建立过程；(2) 树的深度、树的个数等需要进行超参数调优</p>
 </blockquote>
-<h3 id="2-5-bagging-集成优点"><a href="#2-5-bagging-集成优点" class="headerlink" title="2.5 bagging 集成优点"></a>2.5 bagging 集成优点</h3><p><strong>Bagging + 决策树/线性回归/逻辑回归/深度学习… = bagging集成学习方法</strong></p>
+<h3 id="2-5-bagging-集成优点"><a href="#2-5-bagging-集成优点" class="headerlink" title="2.5 bagging 集成优点"></a>2.5 bagging 集成优点</h3><p><strong>Bagging + 决策树/线性回归/逻辑回归/深度学习… = bagging 集成学习方法</strong></p>
 <p>经过上面方式组成的集成学习方法:</p>
-<p><strong>1) 均可在原有算法上提高约2%左右的泛化正确率</strong></p>
+<p><strong>1) 均可在原有算法上提高约 2%左右的泛化正确率</strong></p>
 <p><strong>2) 简单, 方便, 通用</strong></p>
 <h2 id="3-Boosting"><a href="#3-Boosting" class="headerlink" title="3.Boosting"></a>3.Boosting</h2><h3 id="3-1-boosting-集成原理"><a href="#3-1-boosting-集成原理" class="headerlink" title="3.1 boosting 集成原理"></a>3.1 boosting 集成原理</h3><h4 id="3-1-1-什么是-boosting"><a href="#3-1-1-什么是-boosting" class="headerlink" title="3.1.1 什么是 boosting"></a>3.1.1 什么是 boosting</h4><p><img src="https://s2.ax1x.com/2020/02/23/3lcbtA.png" alt="image-20190214160534929"></p>
 <p><strong>随着学习的积累从弱到强</strong></p>
@@ -175,7 +190,7 @@
 <p><strong>Boosting 和 AdaBoost</strong></p>
 <p><code>boosting</code> 是一种集成技术，试图从多个弱分类器中创建强分类器。通过从训练数据构建一个模型，然后创建第二个模型试图纠正第一个模型中的错误。不断添加模型，直到训练集被完美地预测或者添加到最大数量。<br><code>AdaBoost</code> 是第一个为二分类开发的真正成功的提升算法。现代 <code>boosting</code> 方法建立在 <code>AdaBoost</code> 上，最著名的是随机梯度提升机（stochastic gradient boosting machines）。</p>
 <blockquote>
-<p>此描述转载自简书作者Bobby0322的「机器学习—提升和自适应增强（Boosting和AdaBoost）」一文。</p>
+<p>此描述转载自简书作者 Bobby0322 的「机器学习—提升和自适应增强（Boosting 和 AdaBoost）」一文。</p>
 </blockquote>
 <p><strong>bagging 集成与 boosting 集成的区别：</strong></p>
 <p>区别一：数据方面</p>
@@ -199,7 +214,7 @@
 <h4 id="3-2-2-GBDT-执行流程"><a href="#3-2-2-GBDT-执行流程" class="headerlink" title="3.2.2 GBDT 执行流程"></a>3.2.2 GBDT 执行流程</h4><p><img src="https://s2.ax1x.com/2020/02/23/3lh8mV.png" alt="image-20190307231055168"></p>
 <p>如果上式中的 <code>hi(x)</code>=决策树模型，则上式就变为：</p>
 <p><strong>GBDT = 梯度下降 + Boosting + 决策树</strong></p>
-<h4 id="3-2-3-案例"><a href="#3-2-3-案例" class="headerlink" title="3.2.3 案例"></a>3.2.3 案例</h4><p>预测编号5的身高:</p>
+<h4 id="3-2-3-案例"><a href="#3-2-3-案例" class="headerlink" title="3.2.3 案例"></a>3.2.3 案例</h4><p>预测编号 5 的身高:</p>
 <table>
 <thead>
 <tr>
@@ -244,7 +259,7 @@
 <p><img src="https://s2.ax1x.com/2020/02/23/3lhs0K.png" alt="image-20190307231938147"></p>
 <p>第二步：求解划分点。</p>
 <p><img src="https://s2.ax1x.com/2020/02/23/3lhf1A.png" alt="image-20190307232225237"></p>
-<p>得出：年龄21为划分点的 方差=0.01+0.0025=0.0125</p>
+<p>得出：年龄 21 为划分点的 方差=0.01+0.0025=0.0125</p>
 <p>第三步：通过调整后目标值，求解得出<code>h1(x)</code></p>
 <p><img src="https://s2.ax1x.com/2020/02/23/3lhT78.png" alt="image-20190307232510232"></p>
 <p>第四步：求解 <code>h2(x)</code></p>
@@ -252,10 +267,15 @@
 <p>… …</p>
 <p>得出结果：</p>
 <p><img src="https://s2.ax1x.com/2020/02/23/3l4p7T.png" alt="image-20190307232909127"></p>
-<p>编号5身高 = 1.475 + 0.03 + 0.275 = 1.78</p>
-<h4 id="3-2-4-GBDT-主要执行思想"><a href="#3-2-4-GBDT-主要执行思想" class="headerlink" title="3.2.4 GBDT 主要执行思想"></a>3.2.4 GBDT 主要执行思想</h4><p>1) 使用梯度下降法优化代价函数；</p>
-<p>2) 使用一层决策树作为弱学习器，负梯度作为目标值；</p>
-<p>3) 利用 <code>boosting</code> 思想进行集成。</p>
+<p>编号 5 身高 = 1.475 + 0.03 + 0.275 = 1.78</p>
+<h4 id="3-2-4-GBDT-主要执行思想"><a href="#3-2-4-GBDT-主要执行思想" class="headerlink" title="3.2.4 GBDT 主要执行思想"></a>3.2.4 GBDT 主要执行思想</h4><ol>
+<li><p>使用梯度下降法优化代价函数；</p>
+</li>
+<li><p>使用一层决策树作为弱学习器，负梯度作为目标值；</p>
+</li>
+<li><p>利用 <code>boosting</code> 思想进行集成。</p>
+</li>
+</ol>
 <h3 id="3-3-XGBoost-了解"><a href="#3-3-XGBoost-了解" class="headerlink" title="3.3 XGBoost(了解)"></a>3.3 XGBoost(了解)</h3><p><strong>XGBoost= 二阶泰勒展开+boosting+决策树+正则化</strong></p>
 <p><strong>面试题：了解 XGBoost 么，请详细说说它的原理</strong></p>
 <p>回答要点：二阶泰勒展开，<code>boosting</code>，决策树，正则化</p>

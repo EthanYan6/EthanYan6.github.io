@@ -101,8 +101,9 @@
       
 
       
-       <center>Author：闫玉良</center> 
-
+      <ul>
+<li><strong>Author：闫玉良</strong></li>
+</ul>
 <p>Mac 用户在使用 python 的虚拟环境时，你现在或者将来一定会遇到此问题，早发现早治疗 ～</p>
 <a id="more"></a>
 
@@ -114,7 +115,7 @@
 <img src="https://github.com/EthanYan6/pic/raw/master/python%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83%E6%8A%A5%E9%94%99-1.png" alt="报错1" style="zoom:50%;">
 
 <p>是不是很诡异？</p>
-<h3 id="2-原因分析"><a href="#2-原因分析" class="headerlink" title="2.原因分析"></a>2.原因分析</h3><p>出现上述问题，在查询过 <code>Google</code> 和 <code>stackoverflow</code> 等之后，发现了共性：都是使用 <code>MAC</code> 的用户，而且使用了  <code>brew</code> 包管理工具。</p>
+<h3 id="2-原因分析"><a href="#2-原因分析" class="headerlink" title="2.原因分析"></a>2.原因分析</h3><p>出现上述问题，在查询过 <code>Google</code> 和 <code>stackoverflow</code> 等之后，发现了共性：都是使用 <code>MAC</code> 的用户，而且使用了 <code>brew</code> 包管理工具。</p>
 <p>在执行 <code>brew update</code> 命令之后会升级所有管理的模块，比如 <code>Python</code> 。因此遇到 <code>Python</code> 有版本更新时，嘻嘻，恭喜你中奖了。</p>
 <p><code>Mac</code> 在创建虚拟环境后，会发现文件夹下有一些链接文件，各种软链接其实指向了系统的 <code>Python</code> （节省空间所致），所以当你更新了 <code>Python</code> 之后，它所在的路径中包含的版本号也会更新，路径立即失效（软链接其实就保存的就是绝对路径），你的虚拟环境也就无法正常启动了。</p>
 <p><strong><em>更多精彩文章请关注公众号『Pythonnote』或者『全栈技术精选』</em></strong></p>

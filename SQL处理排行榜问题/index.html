@@ -101,13 +101,14 @@
       
 
       
-      <center>Author：闫玉良</center>
-
+      <ul>
+<li><strong>Author：闫玉良</strong></li>
+</ul>
 <p>对现有的数据，根据某一字段进行排名，如果没有 <code>RANK</code> 函数，<code>SQL</code> 语句怎么写？接下来就分享一道面试题……</p>
 <a id="more"></a>
 
 <p><strong><em>更多精彩文章请关注公众号『Pythonnote』或者『全栈技术精选』</em></strong></p>
-<h2 id="1-面试题"><a href="#1-面试题" class="headerlink" title="1.面试题"></a>1.面试题</h2><p>现在有一张表，保存着学生的相关信息（<code>id</code> 、名字以及分数），如下图所示。请写出 <code>sql</code> 语句查询排名第4的学生信息。</p>
+<h2 id="1-面试题"><a href="#1-面试题" class="headerlink" title="1.面试题"></a>1.面试题</h2><p>现在有一张表，保存着学生的相关信息（<code>id</code> 、名字以及分数），如下图所示。请写出 <code>sql</code> 语句查询排名第 4 的学生信息。</p>
 <img src="https://gitee.com/Ethanyan/pic_data/raw/master/%E6%8E%92%E5%90%8D%E9%97%AE%E9%A2%981.png" alt="排名问题" style="zoom:50%;">
 
 <h2 id="2-答案"><a href="#2-答案" class="headerlink" title="2.答案"></a>2.答案</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> 进行排名，相同的分数同名次</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">select</span> *</span><br><span class="line"><span class="keyword">from</span> (<span class="keyword">select</span> <span class="keyword">name</span>,</span><br><span class="line">             score,</span><br><span class="line">            (<span class="keyword">case</span> <span class="keyword">when</span> @p=score <span class="keyword">then</span> @r</span><br><span class="line">                  <span class="keyword">when</span> @p:=score <span class="keyword">then</span> @r:=@r+<span class="number">1</span> <span class="keyword">end</span>) <span class="keyword">as</span> stu_rank</span><br><span class="line">        <span class="keyword">from</span> tb_student, (<span class="keyword">select</span> @r:=<span class="number">0</span>,@p:=<span class="literal">NULL</span>) r</span><br><span class="line">       <span class="keyword">order</span> <span class="keyword">by</span> score <span class="keyword">desc</span>) v_rank</span><br><span class="line"><span class="keyword">where</span> v_rank.stu_rank=<span class="number">4</span>;</span><br></pre></td></tr></table></figure>
@@ -132,8 +133,6 @@
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> 进行排名，相同的分数应该是同名次</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">select</span> *</span><br><span class="line"><span class="keyword">from</span> (<span class="keyword">select</span> <span class="keyword">name</span>,</span><br><span class="line">             score,</span><br><span class="line">            (<span class="keyword">case</span> <span class="keyword">when</span> @p=score <span class="keyword">then</span> @r</span><br><span class="line">                  <span class="keyword">when</span> @p:=score <span class="keyword">then</span> @r:=@r+<span class="number">1</span> <span class="keyword">end</span>) <span class="keyword">as</span> stu_rank</span><br><span class="line">        <span class="keyword">from</span> tb_student, (<span class="keyword">select</span> @r:=<span class="number">0</span>,@p:=<span class="literal">NULL</span>) r</span><br><span class="line">       <span class="keyword">order</span> <span class="keyword">by</span> score <span class="keyword">desc</span>) v_rank</span><br><span class="line"><span class="keyword">where</span> v_rank.stu_rank=<span class="number">4</span>;</span><br></pre></td></tr></table></figure>
 
 <img src="https://gitee.com/Ethanyan/pic_data/raw/master/%E6%8E%92%E5%90%8D%E9%97%AE%E9%A2%983.png" style="zoom:50%;">
-
-
 
 <p><strong><em>更多精彩文章请关注公众号『Pythonnote』或者『全栈技术精选』</em></strong></p>
 

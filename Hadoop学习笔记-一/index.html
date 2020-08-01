@@ -101,8 +101,9 @@
       
 
       
-      <center>Author：闫玉良</center>
-
+      <ul>
+<li><strong>Author：闫玉良</strong></li>
+</ul>
 <p>大数据必备技能之 <code>Hadoop</code> ，你了解吗？</p>
 <p>官方文档汇总：<a href="https://www.pythonnote.cn/OfficialDocuments/">https://www.pythonnote.cn/OfficialDocuments/</a></p>
 <blockquote>
@@ -112,12 +113,20 @@
 
 <p><strong><em>更多精彩文章请关注公众号『Pythonnote』或者『全栈技术精选』</em></strong></p>
 <h1 id="Hadoop-简介"><a href="#Hadoop-简介" class="headerlink" title="Hadoop 简介"></a>Hadoop 简介</h1><h2 id="1-介绍"><a href="#1-介绍" class="headerlink" title="1.介绍"></a>1.介绍</h2><p><code>Hadoop</code> 是阿帕奇基金会(<code>Apache</code>)开源的一款分布式系统基础架构。由以下几部分组成：<code>HDFS</code> 、<code>MapReduce</code> 和 <code>YARN</code> 。它使用户可以快速简便的开发分布式程序去处理数据，而不需掌握过多的分布式知识以及底层实现逻辑。</p>
-<h2 id="2-发展史"><a href="#2-发展史" class="headerlink" title="2.发展史"></a>2.发展史</h2><p>1) 02年由 <code>Doug Cutting</code> 开发了一款网络搜索引擎 <code>Nutch</code> ，这便是 <code>Hadoop</code> 的前身。</p>
-<p>2) 03年到04年诞生了 <code>GFS</code> 和 <code>Map Reduce</code>。</p>
-<p>3) 08年 <code>Hadoop</code> 创造了最快排序 <code>1TB</code> 数据的新世界纪录。<code>Hive</code> 成为了它的子项目。</p>
-<p>4) 11年 <code>Hadoop</code> 1.0.0版本出现。</p>
-<p>5) 13年到15年 <code>Hadoop</code> 2.x版本诞生并不断更新迭代。</p>
-<p>6) 16年  <code>Hadoop</code> 进入3.x时代。</p>
+<h2 id="2-发展史"><a href="#2-发展史" class="headerlink" title="2.发展史"></a>2.发展史</h2><ol>
+<li><p>02 年由 <code>Doug Cutting</code> 开发了一款网络搜索引擎 <code>Nutch</code> ，这便是 <code>Hadoop</code> 的前身。</p>
+</li>
+<li><p>03 年到 04 年诞生了 <code>GFS</code> 和 <code>Map Reduce</code>。</p>
+</li>
+<li><p>08 年 <code>Hadoop</code> 创造了最快排序 <code>1TB</code> 数据的新世界纪录。<code>Hive</code> 成为了它的子项目。</p>
+</li>
+<li><p>11 年 <code>Hadoop</code> 1.0.0 版本出现。</p>
+</li>
+<li><p>13 年到 15 年 <code>Hadoop</code> 2.x 版本诞生并不断更新迭代。</p>
+</li>
+<li><p>16 年 <code>Hadoop</code> 进入 3.x 时代。</p>
+</li>
+</ol>
 <h2 id="3-核心"><a href="#3-核心" class="headerlink" title="3.核心"></a>3.核心</h2><p>分布式文件系统 <code>HDFS</code> ；分布式计算系统 <code>MapReduce</code> ；分布式资源管理系统 <code>YARN</code> 。</p>
 <h3 id="3-1-HDFS"><a href="#3-1-HDFS" class="headerlink" title="3.1 HDFS"></a>3.1 HDFS</h3><p><strong>核心（角色）：</strong><code>NameNode</code>、<code>DataNode</code></p>
 <p><strong>作用：</strong>分布式文件存储</p>
@@ -136,11 +145,16 @@
 <p><strong>作用：</strong>为运行在 <code>YARN</code> 上的分布式应用程序提供统一的资源管理和调度</p>
 <p><strong>特点：</strong>为 <code>Hadoop</code> 集群在利用率、资源统一管理和数据共享等方面带来了极大便利；可以运行不同类型的作业：<code>MapReduce</code> 、<code>Spark</code> 等计算框架。</p>
 <h2 id="4-选择原因"><a href="#4-选择原因" class="headerlink" title="4.选择原因"></a>4.选择原因</h2><p>首先当然是它开源，免费的原因（你懂得 ~）。其次就是社区活跃，参与的人超多，这样一来，在使用过程中有任何问题，随时可以找到解决办法，而不需死扣晦涩的文档。还有它适用于大数据分布式存储和计算的各个场景，满足很多人的需求。最后就是它的成熟性，发展的十余年间，被各大企业所验证。</p>
-<h2 id="5-版本"><a href="#5-版本" class="headerlink" title="5.版本"></a>5.版本</h2><p>1) 社区版（官方，免费，但可能需要自己再研发额外功能）</p>
-<p>2) <code>Cloudera CDH</code> （目前公司使用最多，安装、配置、升级等简便，文档完善，与 <code>Spark</code> 结合好，但是不开源，而且和社区版在某些功能上有些出入）</p>
-<p>3) <code>Hortonworks HDP</code> （原装 <code>Hadoop</code> ，开源，版本与社区版一致，支持 <code>Tez</code>，集成了开源监控方案 <code>Ganglia</code> 和 <code>Nagios</code>，但是安装升级等比较繁琐，需要费点功夫）</p>
+<h2 id="5-版本"><a href="#5-版本" class="headerlink" title="5.版本"></a>5.版本</h2><ol>
+<li><p>社区版（官方，免费，但可能需要自己再研发额外功能）</p>
+</li>
+<li><p><code>Cloudera CDH</code> （目前公司使用最多，安装、配置、升级等简便，文档完善，与 <code>Spark</code> 结合好，但是不开源，而且和社区版在某些功能上有些出入）</p>
+</li>
+<li><p><code>Hortonworks HDP</code> （原装 <code>Hadoop</code> ，开源，版本与社区版一致，支持 <code>Tez</code>，集成了开源监控方案 <code>Ganglia</code> 和 <code>Nagios</code>，但是安装升级等比较繁琐，需要费点功夫）</p>
+</li>
+</ol>
 <blockquote>
-<p>学习自《基于Hadoop与Spark的大数据开发实战》</p>
+<p>学习自《基于 Hadoop 与 Spark 的大数据开发实战》</p>
 </blockquote>
 <p><strong><em>更多精彩文章请关注公众号『Pythonnote』或者『全栈技术精选』</em></strong></p>
 

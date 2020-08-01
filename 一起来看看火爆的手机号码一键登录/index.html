@@ -65,7 +65,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> 字数统计:</span>
-            <span class="post-count">989字</span>
+            <span class="post-count">982字</span>
         </span>
     </span>
 
@@ -101,8 +101,9 @@
       
 
       
-      <center>Author：闫玉良</center>
-
+      <ul>
+<li><strong>Author：闫玉良</strong></li>
+</ul>
 <p>不知你是否发现：大批手机 <code>app</code> 登录页面，突然之间变成了一键登录。之前大火的 <code>通过手机号码获取短信验证码</code> 登录模式正悄悄退去。这神奇的操作是如何实现的呢？</p>
 <a id="more"></a>
 
@@ -112,19 +113,31 @@
 <blockquote>
 <p>运营商是具备通过 <code>sim</code> 卡数据查询到手机号码的权限以及能力的。</p>
 </blockquote>
-<p>刚才说到三家运营商开放了相关接口，但是他们毕竟是竞争关系，彼此之间互不兼容，而且提供的优惠以及方式也是不同的。好比移动出了一款4G套餐100分钟500M；联通出了同价位套餐200分钟10G；电信一看不行，出了不限流量。作为用户的我们肯定会根据自身情况选择最合适的，但是一般也是只选其一。不要说你办了三家的卡，而且为了同时使用甚至买了三个手机，如果你是如此土豪，请收下我的膝盖。因此，对于我们应用，集成三家通讯商的 <code>SDK</code> 是不是有点不那么方便以及划算呢？第三方平台便应运而生，比如某蓝（因为他们公司至少有3个推广添加了我的微信，所以我印象颇深）。</p>
+<p>刚才说到三家运营商开放了相关接口，但是他们毕竟是竞争关系，彼此之间互不兼容，而且提供的优惠以及方式也是不同的。好比移动出了一款 4G 套餐 100 分钟 500M；联通出了同价位套餐 200 分钟 10G；电信一看不行，出了不限流量。作为用户的我们肯定会根据自身情况选择最合适的，但是一般也是只选其一。不要说你办了三家的卡，而且为了同时使用甚至买了三个手机，如果你是如此土豪，请收下我的膝盖。因此，对于我们应用，集成三家通讯商的 <code>SDK</code> 是不是有点不那么方便以及划算呢？第三方平台便应运而生，比如某蓝（因为他们公司至少有 3 个推广添加了我的微信，所以我印象颇深）。</p>
 <h2 id="2-原理"><a href="#2-原理" class="headerlink" title="2.原理"></a>2.原理</h2><p>作为技术人员，其实最关心的还是实现方式。结合网上各个平台的调用方式，绘制了此图：</p>
 <p><img src="https://gitee.com/Ethanyan/pic_data/raw/master/%E5%B0%8F%E9%97%AB%E6%8F%AD%E7%A7%98%E4%B8%80%E9%94%AE%E7%99%BB%E5%BD%95.png" alt="小闫揭秘一键登录"></p>
-<p>1) 用户打开 <code>app</code> 请求登录</p>
-<p>2) 显示登录， <code>app</code> 通过内置的认证 <code>SDK</code> 向运营商获取手机号码</p>
-<p>3) 获取成功时，为用户展示授权页面（就是是否一键登录）</p>
-<p>4) 等待用户进行点击授权</p>
-<p>5) 用户同意授权</p>
-<p>6) <code>SKD</code> 得到授权之后，获取 <code>token</code> ，然后向 <code>app</code> 返回接口调用 <code>token</code></p>
-<p>7) <code>app</code> 向 <code>app服务器</code> 传递获取到的 <code>token</code></p>
-<p>8) <code>app服务器</code> 拿着客户端传过来的 <code>token</code> 请求 <code>认证服务器</code> 获取手机号码接口</p>
-<p>9) <code>认证服务器</code> 返回手机号码给应用服务器</p>
-<p>10) 登录成功</p>
+<ol>
+<li><p>用户打开 <code>app</code> 请求登录</p>
+</li>
+<li><p>显示登录， <code>app</code> 通过内置的认证 <code>SDK</code> 向运营商获取手机号码</p>
+</li>
+<li><p>获取成功时，为用户展示授权页面（就是是否一键登录）</p>
+</li>
+<li><p>等待用户进行点击授权</p>
+</li>
+<li><p>用户同意授权</p>
+</li>
+<li><p><code>SKD</code> 得到授权之后，获取 <code>token</code> ，然后向 <code>app</code> 返回接口调用 <code>token</code></p>
+</li>
+<li><p><code>app</code> 向 <code>app服务器</code> 传递获取到的 <code>token</code></p>
+</li>
+<li><p><code>app服务器</code> 拿着客户端传过来的 <code>token</code> 请求 <code>认证服务器</code> 获取手机号码接口</p>
+</li>
+<li><p><code>认证服务器</code> 返回手机号码给应用服务器</p>
+</li>
+<li><p>登录成功</p>
+</li>
+</ol>
 <h2 id="3-后话"><a href="#3-后话" class="headerlink" title="3.后话"></a>3.后话</h2><p>虽然一键登录比短信验证码收取的费用便宜不了多少，但是其节省的时间以及简化的操作不止一点半点。对于注册时，更是省时省力，拉新超赞。</p>
 <p>对了，还有一点你需要知道，那就是这一操作必须建立在拥有顺畅的网络基础之上。</p>
 <blockquote>

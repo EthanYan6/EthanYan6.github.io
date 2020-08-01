@@ -101,55 +101,78 @@
       
 
       
-      <center>Editor：闫玉良</center>
-
+      <ul>
+<li><strong>Editor: 闫玉良</strong></li>
+</ul>
 <p>逻辑回归（<code>Logistic Regression</code>）是机器学习中的一种<strong>分类模型</strong>。虽然名字中带有「回归」，但它却不是回归算法，而是一种分类算法。由于此算法的简单和高效，在实际场景中应用非常广泛。也许有人很好奇，那为什么叫做「回归」而不是「分类」呢？</p>
 <a id="more"></a>
 
 <p><strong>答：</strong>名字中之所以包含「回归」，是因为其 <code>实质</code> ：是在线性回归的基础上，套用了一个逻辑函数。</p>
 <p><strong><em>更多精彩文章请关注公众号『Pythonnote』或者『全栈技术精选』</em></strong></p>
-<h1 id="逻辑回归"><a href="#逻辑回归" class="headerlink" title="逻辑回归"></a>逻辑回归</h1><h2 id="1-应用场景"><a href="#1-应用场景" class="headerlink" title="1.应用场景"></a>1.应用场景</h2><p>1) 广告点击率</p>
+<h1 id="逻辑回归"><a href="#逻辑回归" class="headerlink" title="逻辑回归"></a>逻辑回归</h1><h2 id="1-应用场景"><a href="#1-应用场景" class="headerlink" title="1.应用场景"></a>1.应用场景</h2><ol>
+<li>广告点击率</li>
+</ol>
 <blockquote>
 <p>点击率为点击者占整体浏览者的比例。整体浏览者分为点击者和非点击者。</p>
 </blockquote>
-<p>2) 验证垃圾邮件</p>
+<ol start="2">
+<li>验证垃圾邮件</li>
+</ol>
 <blockquote>
 <p>可判定邮件是垃圾邮件或者不是垃圾邮件。</p>
 </blockquote>
-<p>3) 患病</p>
+<ol start="3">
+<li>患病</li>
+</ol>
 <blockquote>
 <p>是否患病。</p>
 </blockquote>
-<p>4) 金融诈骗</p>
+<ol start="4">
+<li>金融诈骗</li>
+</ol>
 <blockquote>
 <p>判断此笔交易是否属于金融诈骗。</p>
 </blockquote>
-<p>5) 虚假账号</p>
+<ol start="5">
+<li>虚假账号</li>
+</ol>
 <blockquote>
 <p>是真实账号，还是虚假账号？</p>
 </blockquote>
 <p>通过以上示例，可以发现其特点，那就是<strong>同属于两个类别之间的判断</strong>。逻辑回归可谓是解决二分类问题的利器。</p>
 <h2 id="2-原理"><a href="#2-原理" class="headerlink" title="2.原理"></a>2.原理</h2><p>要想熟悉逻辑回归，必须掌握以下两点：</p>
-<p>1) 逻辑回归中，其输入值是什么？</p>
-<p>2) 如何判断逻辑回归的输出？</p>
+<ol>
+<li><p>逻辑回归中，其输入值是什么？</p>
+</li>
+<li><p>如何判断逻辑回归的输出？</p>
+</li>
+</ol>
 <h3 id="2-1-输入"><a href="#2-1-输入" class="headerlink" title="2.1 输入"></a>2.1 输入</h3><p><img src="https://s2.ax1x.com/2020/02/21/3nheuF.png" alt="逻辑回归输入.png"></p>
 <p>逻辑回归的输入其实就是一个线性回归的结果。（正解决了大家对文章开始部分，介绍逻辑回归实质时那句话的疑问）</p>
-<h3 id="2-2-激活函数"><a href="#2-2-激活函数" class="headerlink" title="2.2 激活函数"></a>2.2 激活函数</h3><p>1) <code>sigmoid</code> 函数</p>
+<h3 id="2-2-激活函数"><a href="#2-2-激活函数" class="headerlink" title="2.2 激活函数"></a>2.2 激活函数</h3><ol>
+<li><code>sigmoid</code> 函数</li>
+</ol>
 <p><img src="https://s2.ax1x.com/2020/02/21/3n4ZGt.png" alt="sigmoid公式.png"></p>
-<p>2) 判断标准：回归的结果输入到 <code>sigmoid</code> 函数当中，输出结果为 [0, 1] 区间中的一个概率值，默认为0.5为阈值</p>
+<ol start="2">
+<li>判断标准：回归的结果输入到 <code>sigmoid</code> 函数当中，输出结果为 [0, 1] 区间中的一个概率值，默认为 0.5 为阈值</li>
+</ol>
 <p><img src="https://s2.ax1x.com/2020/02/21/3n40Z4.png" alt="sigmoid图像.png"></p>
 <blockquote>
-<p>逻辑回归最终的分类是通过属于某个类别的概率值来判断是否属于这个类别，并且这个类别默认标记为1(正例)，另外的一个类别会标记为0(反例)。（方便损失计算）</p>
+<p>逻辑回归最终的分类是通过属于某个类别的概率值来判断是否属于这个类别，并且这个类别默认标记为 1(正例)，另外的一个类别会标记为 0(反例)。（方便损失计算）</p>
 </blockquote>
-<p><strong>输出结果解释：</strong>假设有两个类别 <code>A</code> 和 <code>B</code>，并且概率值为属于 <code>A(1)</code> 类别的概率值。现在有一个样本输入到逻辑回归，输出结果为0.6，这个概率值超过0.5，意味着训练或者预测的结果就是 <code>A(1)</code> 类别。反之，如果得出结果为0.3，那么训练或者预测结果就为 <code>B(0)</code> 类别。</p>
+<p><strong>输出结果解释：</strong>假设有两个类别 <code>A</code> 和 <code>B</code>，并且概率值为属于 <code>A(1)</code> 类别的概率值。现在有一个样本输入到逻辑回归，输出结果为 0.6，这个概率值超过 0.5，意味着训练或者预测的结果就是 <code>A(1)</code> 类别。反之，如果得出结果为 0.3，那么训练或者预测结果就为 <code>B(0)</code> 类别。</p>
 <p><img src="https://s2.ax1x.com/2020/02/21/3nIaE4.png" alt="逻辑回归运算过程.png"></p>
 <p>当预测结果不准确时，在线性回归中使用了均方误差衡量损失，那么对于逻辑回归，该如何去衡量此损失呢？</p>
 <h2 id="3-损失及优化"><a href="#3-损失及优化" class="headerlink" title="3.损失及优化"></a>3.损失及优化</h2><h3 id="3-1-损失"><a href="#3-1-损失" class="headerlink" title="3.1 损失"></a>3.1 损失</h3><p>逻辑回归的损失，称之为<strong>对数似然损失</strong>，公式如下：</p>
-<p>1) 分开类别：</p>
+<ol>
+<li>分开类别：</li>
+</ol>
 <p><img src="https://s2.ax1x.com/2020/02/21/3nIoxP.png" alt="单个对数似然损失.png"></p>
 <p>怎么理解单个的式子呢？此时就需要用到 <code>log</code> 的函数图像了：</p>
 <p><img src="https://s2.ax1x.com/2020/02/21/3noka4.png" alt="image-20190221142055367"></p>
-<p>2) 综合完整损失函数</p>
+<ol start="2">
+<li>综合完整损失函数</li>
+</ol>
 <p><img src="https://s2.ax1x.com/2020/02/21/3noDoQ.png" alt="完整对数似然损失.png"></p>
 <blockquote>
 <p>看到这个式子，其实同我们认识的信息熵类似。</p>
@@ -160,12 +183,16 @@
 <blockquote>
 <p>我们已经知道，<code>log(P)</code> 中 <code>P</code> 值越大，结果越小，所以可以对着这个损失的式子去分析</p>
 </blockquote>
-<h3 id="3-2-优化"><a href="#3-2-优化" class="headerlink" title="3.2 优化"></a>3.2 优化</h3><p>同样使用梯度下降优化算法，去减少损失函数的值。通过更新逻辑回归前面对应算法的权重参数，<strong>提升原本属于1类别的概率，降低原本是0类别的概率。</strong></p>
+<h3 id="3-2-优化"><a href="#3-2-优化" class="headerlink" title="3.2 优化"></a>3.2 优化</h3><p>同样使用梯度下降优化算法，去减少损失函数的值。通过更新逻辑回归前面对应算法的权重参数，<strong>提升原本属于 1 类别的概率，降低原本是 0 类别的概率。</strong></p>
 <h2 id="4-分类评估方法"><a href="#4-分类评估方法" class="headerlink" title="4.分类评估方法"></a>4.分类评估方法</h2><h3 id="4-1-混淆矩阵"><a href="#4-1-混淆矩阵" class="headerlink" title="4.1 混淆矩阵"></a>4.1 混淆矩阵</h3><p>在分类任务下，预测结果(Predicted Condition)与正确标记(True Condition)之间存在四种不同的组合，构成混淆矩阵(适用于多分类)</p>
 <p><img src="https://s2.ax1x.com/2020/02/21/3n7SBT.png" alt="image-20190321103913068"></p>
-<h3 id="4-2-精确率-Precision-与召回率-Recall"><a href="#4-2-精确率-Precision-与召回率-Recall" class="headerlink" title="4.2 精确率(Precision)与召回率(Recall)"></a>4.2 精确率(Precision)与召回率(Recall)</h3><p>1) <strong>精确率：</strong>预测结果为正例样本中真实为正例的比例（了解）</p>
+<h3 id="4-2-精确率-Precision-与召回率-Recall"><a href="#4-2-精确率-Precision-与召回率-Recall" class="headerlink" title="4.2 精确率(Precision)与召回率(Recall)"></a>4.2 精确率(Precision)与召回率(Recall)</h3><ol>
+<li><strong>精确率：</strong>预测结果为正例样本中真实为正例的比例（了解）</li>
+</ol>
 <p><img src="https://s2.ax1x.com/2020/02/21/3n7svq.png" alt="image-20190321103930761"></p>
-<p>2) <strong>召回率：</strong>真实结果为正例的样本中预测结果为正例的比例（查得全，对正样本的区分能力）</p>
+<ol start="2">
+<li><strong>召回率：</strong>真实结果为正例的样本中预测结果为正例的比例（查得全，对正样本的区分能力）</li>
+</ol>
 <p><img src="https://s2.ax1x.com/2020/02/21/3n7f54.png" alt="image-20190321103947092"></p>
 <p><strong><em>更多精彩文章请关注公众号『Pythonnote』或者『全栈技术精选』</em></strong></p>
 

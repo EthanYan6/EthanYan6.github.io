@@ -101,15 +101,16 @@
       
 
       
-      <center>Author：闫玉良</center>
-
+      <ul>
+<li><strong>Author：闫玉良</strong></li>
+</ul>
 <p>今天玩游戏的时候，突然想到了以前面试被问的一个小问题，特此记录，仅供参考</p>
 <a id="more"></a>
 
 <p><strong><em>更多精彩文章请关注公众号『Pythonnote』或者『全栈技术精选』</em></strong></p>
-<h2 id="1-关于docker故障排除"><a href="#1-关于docker故障排除" class="headerlink" title="1.关于docker故障排除"></a>1.关于docker故障排除</h2><p>很久之前在 <code>XX航空</code> 的面试中，面试官曾问过一个问题，大体情况如下（具体描述因为时间关系已经记不清了）：</p>
+<h2 id="1-关于-docker-故障排除"><a href="#1-关于-docker-故障排除" class="headerlink" title="1.关于 docker 故障排除"></a>1.关于 docker 故障排除</h2><p>很久之前在 <code>XX航空</code> 的面试中，面试官曾问过一个问题，大体情况如下（具体描述因为时间关系已经记不清了）：</p>
 <p><strong>面试官：当一个容器发生故障导致无法连接</strong>，你会如何操作？</p>
-<h4 id="一"><a href="#一" class="headerlink" title="一"></a>一</h4><p><strong>傻小闫：</strong>重启 <code>docker服务</code> 或 <code>容器</code> ？？？</p>
+<h3 id="一"><a href="#一" class="headerlink" title="一"></a>一</h3><p><strong>傻小闫：</strong>重启 <code>docker服务</code> 或 <code>容器</code> ？？？</p>
 <p><strong>面试官：</strong>说一下重启命令</p>
 <p><strong>傻小闫：</strong></p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 重启 docker</span></span><br><span class="line">systemctl restart docker</span><br><span class="line"><span class="meta">#</span><span class="bash"> 重启某容器</span></span><br><span class="line">docker restart 容器id或者容器name</span><br></pre></td></tr></table></figure>
@@ -117,7 +118,7 @@
 <p><strong>面试官：</strong>如果 <code>docker</code> 命令不是通过 <code>systemctl</code> 管理的，怎么办？如果执行重启命令之后仍然无法重启呢？</p>
 <p><strong>傻小闫：</strong>无论 <code>docker</code> 怎样进行安装，都会有相关重启命令吧？要是重启一次不管用，那就多重启两次！常言道：没有什么是重启解决不了的问题，如果有，就重启两次～</p>
 <p><strong>面试官：</strong>傻小闫，<code>out</code>！</p>
-<h4 id="二"><a href="#二" class="headerlink" title="二"></a>二</h4><p><strong>傻小闫：</strong>我会先查看 <code>docker</code> 的 <code>启停状态</code>，然后再排查该容器的相关信息，比如查看该容器的启停状态，查看该容器的 <code>日志</code> 以及 <code>进程</code> 相关信息，最后根据具体情况进行具体分析作出对应相关操作。</p>
+<h3 id="二"><a href="#二" class="headerlink" title="二"></a>二</h3><p><strong>傻小闫：</strong>我会先查看 <code>docker</code> 的 <code>启停状态</code>，然后再排查该容器的相关信息，比如查看该容器的启停状态，查看该容器的 <code>日志</code> 以及 <code>进程</code> 相关信息，最后根据具体情况进行具体分析作出对应相关操作。</p>
 <p><strong>面试官：</strong>那么写一下查看 <code>docker</code> 的 <code>启停状态</code> 相关命令，还有查看容器的 <code>日志</code> 以及 <code>进程</code> 的相关命令吧。</p>
 <p><strong>傻小闫：</strong>好的</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl status docker</span><br></pre></td></tr></table></figure>
@@ -138,7 +139,7 @@
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker inspect 容器id或者容器名称</span><br></pre></td></tr></table></figure>
 
 <p><strong>面试官微微点头，进行下一轮的问题轰炸…</strong></p>
-<h2 id="2-关于docker网络"><a href="#2-关于docker网络" class="headerlink" title="2.关于docker网络"></a>2.关于docker网络</h2><p>docker 中容器如何与外界进行通讯？当然是配置网络了，下面是最常用的一行命令，指定映射：</p>
+<h2 id="2-关于-docker-网络"><a href="#2-关于-docker-网络" class="headerlink" title="2.关于 docker 网络"></a>2.关于 docker 网络</h2><p>docker 中容器如何与外界进行通讯？当然是配置网络了，下面是最常用的一行命令，指定映射：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -d -p [宿主机ip]:[宿主机端口]:[容器端口] --name [容器名字] [镜像名称]</span><br></pre></td></tr></table></figure>
 
 <p>该命令会根据指定镜像创建一个容器，并指定容器的名称、宿主机映射到容器的地址和端口、容器对外绑定的端口。创建完成之后，宿主机就可以通过刚才宿主机指定的地址和端口访问容器指定的服务了（比如容器是一个 <code>nginx</code> ，我们将宿主机的 <code>192.168.0.33:1314</code> 映射到容器的 80 端口，宿主机访问 <code>192.168.0.33:1314</code> 即可访问 <code>nginx</code> 服务）。</p>
@@ -146,13 +147,13 @@
 <p>端口的范围：0 ～ 65535</p>
 </blockquote>
 <h3 id="2-1-网桥"><a href="#2-1-网桥" class="headerlink" title="2.1 网桥"></a>2.1 网桥</h3><p>宿主机与 <code>docker</code> 某容器之间可以进行通讯之后，那么容器之间该如何通讯呢？</p>
-<p>1.仍然可以通过上面提到的方式，使用宿主机的地址和端口进行访问。但是这样做有一个弊端，那就是只能访问容器暴露出的端口所提供的服务，十分有限。（<strong>推荐指数：2颗星</strong>）</p>
-<p>2.可以使用容器的 <code>ip</code> 进行访问，但是每次重启容器之后，地址的变化该如何是好？（<strong>推荐指数：1颗星</strong>）</p>
-<p>3.通过 <code>link</code> 建立连接。首先这种方式官方不推荐，所以也没有选择的必要，大家简单了解即可。我们需要有一个容器A（其他容器想要访问该容器），有一个容器B（该容器要去访问容器A），容器B在创建（启动）时需要使用参数 <code>--link</code> 进行设置。然后进入容器B，直接通过参数 <code>link</code> 指定的名字去访问容器A即可。<strong>注意一点：不可反向操作！</strong>即容器A无法 <code>ping</code> 通容器B。（<strong>推荐指数：1颗星</strong>）</p>
+<p>1.仍然可以通过上面提到的方式，使用宿主机的地址和端口进行访问。但是这样做有一个弊端，那就是只能访问容器暴露出的端口所提供的服务，十分有限。（<strong>推荐指数：2 颗星</strong>）</p>
+<p>2.可以使用容器的 <code>ip</code> 进行访问，但是每次重启容器之后，地址的变化该如何是好？（<strong>推荐指数：1 颗星</strong>）</p>
+<p>3.通过 <code>link</code> 建立连接。首先这种方式官方不推荐，所以也没有选择的必要，大家简单了解即可。我们需要有一个容器 A（其他容器想要访问该容器），有一个容器 B（该容器要去访问容器 A），容器 B 在创建（启动）时需要使用参数 <code>--link</code> 进行设置。然后进入容器 B，直接通过参数 <code>link</code> 指定的名字去访问容器 A 即可。<strong>注意一点：不可反向操作！</strong>即容器 A 无法 <code>ping</code> 通容器 B。（<strong>推荐指数：1 颗星</strong>）</p>
 <blockquote>
-<p>而且此操作如果希望容器A重启后，容器B的链接仍然生效，还需要额外操作，修改配置文件，十分繁琐，不推荐。</p>
+<p>而且此操作如果希望容器 A 重启后，容器 B 的链接仍然生效，还需要额外操作，修改配置文件，十分繁琐，不推荐。</p>
 </blockquote>
-<p>上述的手段都不推荐，那么直接引出今日主角登场『<strong>桥接网络</strong>』（<strong>推荐指数：5颗星</strong>）</p>
+<p>上述的手段都不推荐，那么直接引出今日主角登场『<strong>桥接网络</strong>』（<strong>推荐指数：5 颗星</strong>）</p>
 <p>首先需要创建一个网络：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker network create 网络名称</span><br></pre></td></tr></table></figure>
 

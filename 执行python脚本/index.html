@@ -65,7 +65,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> 字数统计:</span>
-            <span class="post-count">355字</span>
+            <span class="post-count">352字</span>
         </span>
     </span>
 
@@ -99,35 +99,42 @@
       
 
       
-       <center>Author：闫玉良</center> 
-Linux 设置定时任务，crontab 执行 python 脚本不生效的问题：
+      <ul>
+<li><strong>Author：闫玉良</strong></li>
+</ul>
+<p>Linux 设置定时任务，crontab 执行 python 脚本不生效的问题：</p>
 <a id="more"></a>
 
 <p><strong><em>更多精彩文章请关注公众号『Pythonnote』或者『全栈技术精选』</em></strong></p>
 <p>尝试方法：</p>
 <p>1.给 python 脚本第一行添加如下代码：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python</span></span><br></pre></td></tr></table></figure>
+
 <blockquote>
 <p>当然 python 解释器的路径要按照自己情况进行填写。</p>
 </blockquote>
 <p>2.如果 python 脚本报错，模块未找到等等，尝试如下方式：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> sys</span><br><span class="line">sys.path.append(<span class="string">'xxx&lt;第三方模块的路径&gt;'</span>)</span><br></pre></td></tr></table></figure>
+
 <blockquote>
 <p>如果是虚拟环境，有可能此路径不同，可以通过下列命令查看：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt;<span class="keyword">import</span> elasticsearch</span><br><span class="line">&gt;elasticsearch.__file__</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> elasticsearch</span><br><span class="line">elasticsearch.__file__</span><br></pre></td></tr></table></figure>
 </blockquote>
 <p>然后将路径复制到 <code>sys.path.append(&#39;&#39;)</code> 中的引号即可，如：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">D:\\E\\python_virtual\\fbl5n\\lib\\site-packages</span><br></pre></td></tr></table></figure>
+
 <p>3.python 脚本中不涉及复杂的逻辑，简单的函数即函数调用即可，如果出现下列代码，请去掉：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br></pre></td></tr></table></figure>
+
 <p>它会将 crontab 在调用的时候搞晕。</p>
 <p>4.可以写一个 shell 脚本去调用 python 脚本，如下：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">!/usr/bin/bash</span></span><br><span class="line">cd /opt</span><br><span class="line">/usr/bin/python3 mail_reminder.py &gt;&gt; log.txt 2&gt;&amp;1</span><br></pre></td></tr></table></figure>
+
 <blockquote>
-<p>0 表示stdin标准输入<br>1 表示stdout标准输出<br>2 表示stderr标准错误<br>&amp; 表示等同于的意思<br>2&gt;&amp;1 表示2的输出重定向等同于1</p>
+<p>0 表示 stdin 标准输入<br>1 表示 stdout 标准输出<br>2 表示 stderr 标准错误<br>&amp; 表示等同于的意思<br>2&gt;&amp;1 表示 2 的输出重定向等同于 1</p>
 </blockquote>
 <p>5.当报错编码问题时可以尝试使用如下方法：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">!/usr/bin/bash </span></span><br><span class="line">cd /opt </span><br><span class="line">PYTHONIOENCODING=utf-8 /usr/bin/python3 mail_reminder.py &gt;&gt; log.txt 2&gt;&amp;1</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">!/usr/bin/bash</span></span><br><span class="line">cd /opt</span><br><span class="line">PYTHONIOENCODING=utf-8 /usr/bin/python3 mail_reminder.py &gt;&gt; log.txt 2&gt;&amp;1</span><br></pre></td></tr></table></figure>
 
       
       <!-- reward -->
