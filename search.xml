@@ -3,9 +3,7 @@
   <entry>
     <title>django这些查询技巧你会了吗?</title>
     <url>/django%E8%BF%99%E4%BA%9B%E6%9F%A5%E8%AF%A2%E6%8A%80%E5%B7%A7%E4%BD%A0%E4%BC%9A%E4%BA%86%E5%90%97/</url>
-    <content><![CDATA[<ul>
-<li><strong>Author：闫玉良</strong></li>
-</ul>
+    <content><![CDATA[<p><strong>Author: 闫玉良</strong></p>
 <p>任何不考虑后果的查询都是耍流氓！</p>
 <a id="more"></a>
 
@@ -66,9 +64,7 @@
   <entry>
     <title>如何写出优秀的代码</title>
     <url>/%E5%A6%82%E4%BD%95%E5%86%99%E5%87%BA%E4%BC%98%E7%A7%80%E7%9A%84%E4%BB%A3%E7%A0%81/</url>
-    <content><![CDATA[<ul>
-<li><strong>Author：闫玉良</strong></li>
-</ul>
+    <content><![CDATA[<p><strong>Author: 闫玉良</strong></p>
 <p>写了太多屎一样的代码，终于不臭了！</p>
 <a id="more"></a>
 
@@ -130,9 +126,7 @@
   <entry>
     <title>js中带有参数的函数作为值传入后调用问题</title>
     <url>/js%E4%B8%AD%E5%B8%A6%E6%9C%89%E5%8F%82%E6%95%B0%E7%9A%84%E5%87%BD%E6%95%B0%E4%BD%9C%E4%B8%BA%E5%80%BC%E4%BC%A0%E5%85%A5%E5%90%8E%E8%B0%83%E7%94%A8%E9%97%AE%E9%A2%98/</url>
-    <content><![CDATA[<ul>
-<li><strong>Author：闫玉良</strong></li>
-</ul>
+    <content><![CDATA[<p><strong>Author: 闫玉良</strong></p>
 <p>每天不是在写 <code>bug</code>，就是在解 <code>bug</code> 的路上~</p>
 <a id="more"></a>
 
@@ -165,9 +159,7 @@
   <entry>
     <title>js动态绑定事件，无法使用for循环中变量i的问题</title>
     <url>/js%E5%8A%A8%E6%80%81%E7%BB%91%E5%AE%9A%E4%BA%8B%E4%BB%B6%EF%BC%8C%E6%97%A0%E6%B3%95%E4%BD%BF%E7%94%A8for%E5%BE%AA%E7%8E%AF%E4%B8%AD%E5%8F%98%E9%87%8Fi%E7%9A%84%E9%97%AE%E9%A2%98/</url>
-    <content><![CDATA[<ul>
-<li><strong>Author：闫玉良</strong></li>
-</ul>
+    <content><![CDATA[<p><strong>Author: 闫玉良</strong></p>
 <p>每天不是在写 <code>bug</code>，就是在解 <code>bug</code> 的路上~</p>
 <a id="more"></a>
 
@@ -192,9 +184,7 @@
   <entry>
     <title>vim操作有这一篇就足够了</title>
     <url>/vim%E6%93%8D%E4%BD%9C%E6%9C%89%E8%BF%99%E4%B8%80%E7%AF%87%E5%B0%B1%E8%B6%B3%E5%A4%9F%E4%BA%86/</url>
-    <content><![CDATA[<ul>
-<li><strong>Author：闫玉良</strong></li>
-</ul>
+    <content><![CDATA[<p><strong>Author: 闫玉良</strong></p>
 <p><code>vi/vim</code> 的重要性不言而喻，比如登录服务器操作。那么如何掌握呢？看这一篇足矣。</p>
 <blockquote>
 <p>因为小闫同学最近迷上了 <code>vim</code>，正在使用并打算以后也用其彻底替代 <code>Pycharm</code> 等编辑工具，所以才有了此文。</p>
@@ -356,9 +346,7 @@
   <entry>
     <title>vim实现python函数跳转</title>
     <url>/vim%E5%AE%9E%E7%8E%B0python%E5%87%BD%E6%95%B0%E8%B7%B3%E8%BD%AC/</url>
-    <content><![CDATA[<ul>
-<li><strong>Author：闫玉良</strong></li>
-</ul>
+    <content><![CDATA[<p><strong>Author: 闫玉良</strong></p>
 <p>网上很多帖子都是说通过 <code>ctags</code> 或者 <code>ExuberantCtags</code> 来实现函数跳转，如果你是 <code>C</code> 语言开发者，无可厚非，<code>Python</code> 怎么办？快来看下面操作吧！</p>
 <a id="more"></a>
 
@@ -405,9 +393,7 @@
   <entry>
     <title>Tmux如何让滚屏起飞</title>
     <url>/Tmux%E5%A6%82%E4%BD%95%E8%AE%A9%E6%BB%9A%E5%B1%8F%E8%B5%B7%E9%A3%9E/</url>
-    <content><![CDATA[<ul>
-<li><strong>Author：闫玉良</strong></li>
-</ul>
+    <content><![CDATA[<p><strong>Author: 闫玉良</strong></p>
 <p>在 <code>Panel</code> 中查看历史时，滚屏只能一行一行走？那是你打开方式不正确！</p>
 <a id="more"></a>
 
@@ -443,9 +429,7 @@
   <entry>
     <title>Extjs-lesson7</title>
     <url>/Extjs-lesson7/</url>
-    <content><![CDATA[<ul>
-<li><strong>Author：闫玉良</strong></li>
-</ul>
+    <content><![CDATA[<p><strong>Author: 闫玉良</strong></p>
 <p><code>Ext.js</code> 系列课程笔记「Ajax」</p>
 <a id="more"></a>
 
@@ -470,9 +454,7 @@
   <entry>
     <title>Extjs-lesson6</title>
     <url>/Extjs-lesson6/</url>
-    <content><![CDATA[<ul>
-<li><strong>Author：闫玉良</strong></li>
-</ul>
+    <content><![CDATA[<p><strong>Author: 闫玉良</strong></p>
 <p><code>Ext.js</code> 系列课程笔记「布局」</p>
 <a id="more"></a>
 
@@ -524,9 +506,7 @@
   <entry>
     <title>Extjs-lesson5</title>
     <url>/Extjs-lesson5/</url>
-    <content><![CDATA[<ul>
-<li><strong>Author：闫玉良</strong></li>
-</ul>
+    <content><![CDATA[<p><strong>Author: 闫玉良</strong></p>
 <p><code>Ext.js</code> 系列课程笔记「表单子项二」</p>
 <a id="more"></a>
 
@@ -549,9 +529,7 @@
   <entry>
     <title>Extjs-lesson4</title>
     <url>/Extjs-lesson4/</url>
-    <content><![CDATA[<ul>
-<li><strong>Author：闫玉良</strong></li>
-</ul>
+    <content><![CDATA[<p><strong>Author: 闫玉良</strong></p>
 <p><code>Ext.js</code> 系列课程笔记「表单子项」</p>
 <a id="more"></a>
 
@@ -605,9 +583,7 @@
   <entry>
     <title>Extjs-lesson3</title>
     <url>/Extjs-lesson3/</url>
-    <content><![CDATA[<ul>
-<li><strong>Author：闫玉良</strong></li>
-</ul>
+    <content><![CDATA[<p><strong>Author: 闫玉良</strong></p>
 <p><code>Ext.js</code> 系列课程笔记「组件」</p>
 <a id="more"></a>
 
@@ -662,9 +638,7 @@
   <entry>
     <title>Extjs-lesson2</title>
     <url>/Extjs-lesson2/</url>
-    <content><![CDATA[<ul>
-<li><strong>Author：闫玉良</strong></li>
-</ul>
+    <content><![CDATA[<p><strong>Author: 闫玉良</strong></p>
 <p><code>Ext.js</code> 系列课程笔记「类」</p>
 <a id="more"></a>
 
@@ -719,9 +693,7 @@
   <entry>
     <title>Extjs-lesson1</title>
     <url>/Extjs-lesson1/</url>
-    <content><![CDATA[<ul>
-<li><strong>Author：闫玉良</strong></li>
-</ul>
+    <content><![CDATA[<p><strong>Author: 闫玉良</strong></p>
 <p><code>Ext.js</code> 系列课程笔记</p>
 <a id="more"></a>
 
@@ -789,9 +761,7 @@
   <entry>
     <title>Tmux让你开发效率飞起</title>
     <url>/Tmux%E8%AE%A9%E4%BD%A0%E5%BC%80%E5%8F%91%E6%95%88%E7%8E%87%E9%A3%9E%E8%B5%B7/</url>
-    <content><![CDATA[<ul>
-<li><strong>Author：闫玉良</strong></li>
-</ul>
+    <content><![CDATA[<p><strong>Author: 闫玉良</strong></p>
 <p><code>ssh</code> 连接突然中断，之前操作记录丢失怎么办？终端不好管理，分窗口太乱怎么办？分屏幕操作切到眼花缭乱怎么办？鼠标键盘配合手忙脚乱怎么办？快来试试开发辅助神器 <code>Tmux</code> 吧！</p>
 <a id="more"></a>
 
@@ -865,9 +835,7 @@
   <entry>
     <title>Mac用户注意了,你的sed命令</title>
     <url>/Mac%E7%94%A8%E6%88%B7%E6%B3%A8%E6%84%8F%E4%BA%86-%E4%BD%A0%E7%9A%84sed%E5%91%BD%E4%BB%A4/</url>
-    <content><![CDATA[<ul>
-<li><strong>Author：闫玉良</strong></li>
-</ul>
+    <content><![CDATA[<p><strong>Author: 闫玉良</strong></p>
 <p>在 <code>MacOS</code> 上使用 <code>sed</code> 命令时与 <code>linux</code> 上并不相同，一定要主要！</p>
 <a id="more"></a>
 
@@ -905,9 +873,7 @@
   <entry>
     <title>SQL处理排行榜问题</title>
     <url>/SQL%E5%A4%84%E7%90%86%E6%8E%92%E8%A1%8C%E6%A6%9C%E9%97%AE%E9%A2%98/</url>
-    <content><![CDATA[<ul>
-<li><strong>Author：闫玉良</strong></li>
-</ul>
+    <content><![CDATA[<p><strong>Author: 闫玉良</strong></p>
 <p>对现有的数据，根据某一字段进行排名，如果没有 <code>RANK</code> 函数，<code>SQL</code> 语句怎么写？接下来就分享一道面试题……</p>
 <a id="more"></a>
 
@@ -950,9 +916,7 @@
   <entry>
     <title>Markdown语法奇奇怪怪小知识</title>
     <url>/Markdown%E8%AF%AD%E6%B3%95%E5%A5%87%E5%A5%87%E6%80%AA%E6%80%AA%E5%B0%8F%E7%9F%A5%E8%AF%86/</url>
-    <content><![CDATA[<ul>
-<li><strong>Author：闫玉良</strong></li>
-</ul>
+    <content><![CDATA[<p><strong>Author: 闫玉良</strong></p>
 <p><code>markdown</code> 语法因为其通用性、简便性广受程序员的喜爱，下面再记录一些语法。</p>
  <a id="more"></a>
 
@@ -986,9 +950,7 @@
   <entry>
     <title>OAuth2.0与OAuth1.0你了解了吗？</title>
     <url>/OAuth2-0%E4%B8%8EOAuth1-0%E4%BD%A0%E4%BA%86%E8%A7%A3%E4%BA%86%E5%90%97%EF%BC%9F/</url>
-    <content><![CDATA[<ul>
-<li><strong>Author：闫玉良</strong></li>
-</ul>
+    <content><![CDATA[<p><strong>Author: 闫玉良</strong></p>
 <p>使用了 <code>OAuth2.0</code> ，但是你晓得为什么使用 <code>OAuth2.0</code> 吗？快来看看吧。</p>
 <a id="more"></a>
 
@@ -1072,9 +1034,7 @@
   <entry>
     <title>菜鸟去面试之三</title>
     <url>/%E8%8F%9C%E9%B8%9F%E5%8E%BB%E9%9D%A2%E8%AF%95%E4%B9%8B%E4%B8%89/</url>
-    <content><![CDATA[<ul>
-<li><strong>Author：闫玉良</strong></li>
-</ul>
+    <content><![CDATA[<p><strong>Author: 闫玉良</strong></p>
 <p>受疫情影响，让互联网的寒冬更加寒冷，金三银四也凄凄惨惨戚戚。但在这几个月小闫发现，虽然初中级工程师岗位变少，但是高级工程师岗位却依然火爆，丝毫不受影响。让小闫不经想起大四实习时，总经理曾说「社会缺少的并不是人，而是人才。如何提升自己的核心竞争力才是破局之道，强者从不受寒冬影响」当然原话已经记不清，大概就是这么个意思，你懂的 ~</p>
 <p>言归正传，今天为大家再带来一些面试题，祝大家事随人愿。</p>
 <a id="more"></a>
@@ -1112,9 +1072,7 @@
   <entry>
     <title>Hadoop学习笔记(四)之YARN</title>
     <url>/Hadoop%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E5%9B%9B/</url>
-    <content><![CDATA[<ul>
-<li><strong>Author：闫玉良</strong></li>
-</ul>
+    <content><![CDATA[<p><strong>Author: 闫玉良</strong></p>
 <p><code>Hadoop</code> 之 <code>YARN</code>，你了解吗？</p>
 <p>官方文档汇总：<a href="https://www.pythonnote.cn/OfficialDocuments/">https://www.pythonnote.cn/OfficialDocuments/</a></p>
 <blockquote>
@@ -1197,9 +1155,7 @@
   <entry>
     <title>Hadoop学习笔记(三)之MapReduce</title>
     <url>/Hadoop%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E4%B8%89/</url>
-    <content><![CDATA[<ul>
-<li><strong>Author：闫玉良</strong></li>
-</ul>
+    <content><![CDATA[<p><strong>Author: 闫玉良</strong></p>
 <p><code>Hadoop</code> 之分布式计算框架，你了解吗？</p>
 <p>官方文档汇总：<a href="https://www.pythonnote.cn/OfficialDocuments/">https://www.pythonnote.cn/OfficialDocuments/</a></p>
 <blockquote>
@@ -1317,9 +1273,7 @@
   <entry>
     <title>Hadoop学习笔记(二)之HDFS</title>
     <url>/Hadoop%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E4%BA%8C/</url>
-    <content><![CDATA[<ul>
-<li><strong>Author：闫玉良</strong></li>
-</ul>
+    <content><![CDATA[<p><strong>Author: 闫玉良</strong></p>
 <p><code>Hadoop</code> 之分布式文件系统，你了解吗？</p>
 <p>官方文档汇总：<a href="https://www.pythonnote.cn/OfficialDocuments/">https://www.pythonnote.cn/OfficialDocuments/</a></p>
 <blockquote>
@@ -1492,9 +1446,7 @@
   <entry>
     <title>Hadoop学习笔记(一)</title>
     <url>/Hadoop%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E4%B8%80/</url>
-    <content><![CDATA[<ul>
-<li><strong>Author：闫玉良</strong></li>
-</ul>
+    <content><![CDATA[<p><strong>Author: 闫玉良</strong></p>
 <p>大数据必备技能之 <code>Hadoop</code> ，你了解吗？</p>
 <p>官方文档汇总：<a href="https://www.pythonnote.cn/OfficialDocuments/">https://www.pythonnote.cn/OfficialDocuments/</a></p>
 <blockquote>
@@ -1559,9 +1511,7 @@
   <entry>
     <title>Flask如何处理一个请求</title>
     <url>/Flask%E5%A6%82%E4%BD%95%E5%A4%84%E7%90%86%E4%B8%80%E4%B8%AA%E8%AF%B7%E6%B1%82/</url>
-    <content><![CDATA[<ul>
-<li><strong>Author：闫玉良</strong></li>
-</ul>
+    <content><![CDATA[<p><strong>Author: 闫玉良</strong></p>
 <p>客户端发起一个请求，<code>Flask</code> 都干了什么呢？<code>url</code> 如何与视图进行绑定的？</p>
 <a id="more"></a>
 
@@ -1717,9 +1667,7 @@ b.在此函数中可以对响应值,在返回之前做最后一步处理,再返�
   <entry>
     <title>redis延伸</title>
     <url>/redis%E5%BB%B6%E4%BC%B8/</url>
-    <content><![CDATA[<ul>
-<li><strong>Author：闫玉良</strong></li>
-</ul>
+    <content><![CDATA[<p><strong>Author: 闫玉良</strong></p>
 <p>在掌握了 <code>redis</code> 常用的五种类型以及适用场景后，快来学习更多高级操作吧 ~</p>
 <a id="more"></a>
 
@@ -1820,9 +1768,7 @@ b.在此函数中可以对响应值,在返回之前做最后一步处理,再返�
   <entry>
     <title>生产环境隐藏敏感配置信息方案</title>
     <url>/%E7%94%9F%E4%BA%A7%E7%8E%AF%E5%A2%83%E9%9A%90%E8%97%8F%E6%95%8F%E6%84%9F%E9%85%8D%E7%BD%AE%E4%BF%A1%E6%81%AF%E6%96%B9%E6%A1%88/</url>
-    <content><![CDATA[<ul>
-<li><strong>Author：闫玉良</strong></li>
-</ul>
+    <content><![CDATA[<p><strong>Author: 闫玉良</strong></p>
 <p>项目上线时需要切换生产环境配置信息，这些信息可以直接被保存在项目中吗？如果保存下来，不小心提交到仓库或被破解查看，生产环境岂不是裸奔？那么该如何解决？</p>
 <a id="more"></a>
 
@@ -1873,9 +1819,7 @@ b.在此函数中可以对响应值,在返回之前做最后一步处理,再返�
   <entry>
     <title>分布式id</title>
     <url>/%E5%88%86%E5%B8%83%E5%BC%8Fid/</url>
-    <content><![CDATA[<ul>
-<li><strong>Author：闫玉良</strong></li>
-</ul>
+    <content><![CDATA[<p><strong>Author: 闫玉良</strong></p>
 <p>当产品使用人数达到一定量级，一般会采用分库分表等优化操作，但是分布式 <code>id</code> 如何保证全局唯一呢？</p>
 <a id="more"></a>
 
@@ -1985,9 +1929,7 @@ b.在此函数中可以对响应值,在返回之前做最后一步处理,再返�
   <entry>
     <title>mysql中保存并操作json对象</title>
     <url>/mysql%E4%B8%AD%E4%BF%9D%E5%AD%98%E5%B9%B6%E6%93%8D%E4%BD%9Cjson%E5%AF%B9%E8%B1%A1/</url>
-    <content><![CDATA[<ul>
-<li><strong>Author：闫玉良</strong></li>
-</ul>
+    <content><![CDATA[<p><strong>Author: 闫玉良</strong></p>
 <p>对于最常使用的数据格式 <code>json</code> 而言，数据库 <code>mysql</code> 提供了保存及一系列操作方法供大家使用，下面我们就来学习一下吧。</p>
 <a id="more"></a>
 
@@ -2120,9 +2062,7 @@ b.在此函数中可以对响应值,在返回之前做最后一步处理,再返�
   <entry>
     <title>多线程如何获取结果</title>
     <url>/%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%A6%82%E4%BD%95%E8%8E%B7%E5%8F%96%E7%BB%93%E6%9E%9C/</url>
-    <content><![CDATA[<ul>
-<li><strong>Author：闫玉良</strong></li>
-</ul>
+    <content><![CDATA[<p><strong>Author: 闫玉良</strong></p>
 <p>下午的综合面试，技术方面只询问了项目，剩下时间全是背景调查，双方提问、互相了解情况。所以今天的文章就没有面试题了，总结一位老哥教我的一个知识点：多线程如何获取结果。</p>
 <a id="more"></a>
 
@@ -2146,9 +2086,7 @@ b.在此函数中可以对响应值,在返回之前做最后一步处理,再返�
   <entry>
     <title>菜鸟去面试之二</title>
     <url>/%E8%8F%9C%E9%B8%9F%E5%8E%BB%E9%9D%A2%E8%AF%95%E4%B9%8B%E4%BA%8C/</url>
-    <content><![CDATA[<ul>
-<li><strong>Author：闫玉良</strong></li>
-</ul>
+    <content><![CDATA[<p><strong>Author: 闫玉良</strong></p>
 <p>今天是华为进行的复试，明天还有综合面试。快来看一下今天的题目吧。</p>
 <blockquote>
 <p>关于项目以及灵活的题目此处并未体现，只将一些记忆深刻的通用题目汇总展示，希望可以帮助到大家。</p>
@@ -2225,9 +2163,7 @@ b.在此函数中可以对响应值,在返回之前做最后一步处理,再返�
   <entry>
     <title>菜鸟去面试之一</title>
     <url>/%E8%8F%9C%E9%B8%9F%E5%8E%BB%E9%9D%A2%E8%AF%95%E4%B9%8B%E4%B8%80/</url>
-    <content><![CDATA[<ul>
-<li><strong>Author：闫玉良</strong></li>
-</ul>
+    <content><![CDATA[<p><strong>Author: 闫玉良</strong></p>
 <p>春天到了，那颗躁动不安的心又踏上了面试之旅，菜鸟在前方探路，返回一手资料供你参考。</p>
 <a id="more"></a>
 
@@ -2259,9 +2195,7 @@ b.在此函数中可以对响应值,在返回之前做最后一步处理,再返�
   <entry>
     <title>复用Django应用，使其可以通过pip安装</title>
     <url>/%E5%A4%8D%E7%94%A8Django%E5%BA%94%E7%94%A8%EF%BC%8C%E4%BD%BF%E5%85%B6%E5%8F%AF%E4%BB%A5%E9%80%9A%E8%BF%87pip%E5%AE%89%E8%A3%85/</url>
-    <content><![CDATA[<ul>
-<li><strong>Author：闫玉良</strong></li>
-</ul>
+    <content><![CDATA[<p><strong>Author: 闫玉良</strong></p>
 <p>想自己打包一个应用，可以像其他模块一样通过 <code>pip install</code> 安装吗？在 <code>Django</code> 项目中，一个应用如果通过此方式随用随安装是不是很帅气？快来看一下如何操作吧！</p>
 <a id="more"></a>
 
@@ -2363,9 +2297,7 @@ b.在此函数中可以对响应值,在返回之前做最后一步处理,再返�
   <entry>
     <title>Django迁移数据库报错解决</title>
     <url>/Django%E8%BF%81%E7%A7%BB%E6%95%B0%E6%8D%AE%E5%BA%93%E6%8A%A5%E9%94%99%E8%A7%A3%E5%86%B3/</url>
-    <content><![CDATA[<ul>
-<li><strong>Author：闫玉良</strong></li>
-</ul>
+    <content><![CDATA[<p><strong>Author: 闫玉良</strong></p>
 <p><code>Django</code> 最新版本创建应用后，迁移数据库报错怎么办？</p>
 <a id="more"></a>
 
@@ -2420,9 +2352,7 @@ b.在此函数中可以对响应值,在返回之前做最后一步处理,再返�
   <entry>
     <title>python的这些小知识你注意到了吗？</title>
     <url>/python%E7%9A%84%E8%BF%99%E4%BA%9B%E5%B0%8F%E7%9F%A5%E8%AF%86%E4%BD%A0%E6%B3%A8%E6%84%8F%E5%88%B0%E4%BA%86%E5%90%97%EF%BC%9F/</url>
-    <content><![CDATA[<ul>
-<li><strong>Author：闫玉良</strong></li>
-</ul>
+    <content><![CDATA[<p><strong>Author: 闫玉良</strong></p>
 <p>本文将对一些小知识进行汇总，这些知识也许你用了 <code>python</code> 很久，但仍然没注意到。</p>
 <a id="more"></a>
 
@@ -2462,9 +2392,7 @@ b.在此函数中可以对响应值,在返回之前做最后一步处理,再返�
   <entry>
     <title>docker容器网桥连接</title>
     <url>/docker%E5%AE%B9%E5%99%A8%E7%BD%91%E6%A1%A5%E8%BF%9E%E6%8E%A5/</url>
-    <content><![CDATA[<ul>
-<li><strong>Author：闫玉良</strong></li>
-</ul>
+    <content><![CDATA[<p><strong>Author: 闫玉良</strong></p>
 <p>容器之间如何互相通讯？具体的命令有哪些？</p>
 <a id="more"></a>
 
@@ -2508,9 +2436,7 @@ b.在此函数中可以对响应值,在返回之前做最后一步处理,再返�
   <entry>
     <title>docker容器数据持久化</title>
     <url>/docker%E5%AE%B9%E5%99%A8%E6%95%B0%E6%8D%AE%E6%8C%81%E4%B9%85%E5%8C%96/</url>
-    <content><![CDATA[<ul>
-<li><strong>Author：闫玉良</strong></li>
-</ul>
+    <content><![CDATA[<p><strong>Author: 闫玉良</strong></p>
 <p><code>docker</code> 容器内的数据是独立于镜像之外的，那么如何将其持久化到宿主机呢？答案便是利用「数据卷」，那什么又是「数据卷」呢？</p>
 <a id="more"></a>
 
@@ -2574,7 +2500,9 @@ b.在此函数中可以对响应值,在返回之前做最后一步处理,再返�
 </ol>
 <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">docker exec -it nginx /bin/bash</span><br><span class="line"></span><br><span class="line">root@8694fd7cba10:/# cd /data</span><br><span class="line">root@8694fd7cba10:/data# ls</span><br><span class="line">testdata.txt</span><br><span class="line">root@8694fd7cba10:/data# echo 'xxx测试用' &gt;&gt; testdata.txt</span><br><span class="line">root@8694fd7cba10:/data# cat testdata.txt</span><br><span class="line">hello world</span><br><span class="line">xxx测试用</span><br><span class="line">root@8694fd7cba10:/data# exit</span><br><span class="line">exit</span><br></pre></td></tr></table></figure>
 
-<p>) 然后在本地查看发现内容也被更改。<strong>说明可以使用文件持久化数据</strong>。</p>
+<ol start="5">
+<li>然后在本地查看发现内容也被更改。<strong>说明可以使用文件持久化数据</strong>。</li>
+</ol>
 <h2 id="3-持久化到容器"><a href="#3-持久化到容器" class="headerlink" title="3.持久化到容器"></a>3.持久化到容器</h2><p>如果不想这些数据直接暴露在宿主机，可以使用数据卷容器的方式。将数据卷容器挂载到其他容器，就可以多个容器之间共享数据了，而且还可以持久化的保存数据（后面会讲解如何备份和恢复数据卷容器）</p>
 <p><strong>注意：数据卷容器不启动</strong></p>
 <h3 id="3-1-步骤"><a href="#3-1-步骤" class="headerlink" title="3.1 步骤"></a>3.1 步骤</h3><ol>
@@ -2663,9 +2591,7 @@ b.在此函数中可以对响应值,在返回之前做最后一步处理,再返�
   <entry>
     <title>分享一份全国行政区划sql数据库表</title>
     <url>/%E5%88%86%E4%BA%AB%E4%B8%80%E4%BB%BD%E5%85%A8%E5%9B%BD%E8%A1%8C%E6%94%BF%E5%8C%BA%E5%88%92sql%E6%95%B0%E6%8D%AE%E5%BA%93%E8%A1%A8/</url>
-    <content><![CDATA[<ul>
-<li><strong>Author：闫玉良</strong></li>
-</ul>
+    <content><![CDATA[<p><strong>Author: 闫玉良</strong></p>
 <p>还在为寻找全国行政区划的数据而烦恼吗？还在因为一个 <code>Excel</code> 表格无法确定信息是否全面而惆怅吗？快来看看为你准备好的东西吧！</p>
 <a id="more"></a>
 
@@ -2720,9 +2646,7 @@ b.在此函数中可以对响应值,在返回之前做最后一步处理,再返�
   <entry>
     <title>一起来看看火爆的手机号码一键登录</title>
     <url>/%E4%B8%80%E8%B5%B7%E6%9D%A5%E7%9C%8B%E7%9C%8B%E7%81%AB%E7%88%86%E7%9A%84%E6%89%8B%E6%9C%BA%E5%8F%B7%E7%A0%81%E4%B8%80%E9%94%AE%E7%99%BB%E5%BD%95/</url>
-    <content><![CDATA[<ul>
-<li><strong>Author：闫玉良</strong></li>
-</ul>
+    <content><![CDATA[<p><strong>Author: 闫玉良</strong></p>
 <p>不知你是否发现：大批手机 <code>app</code> 登录页面，突然之间变成了一键登录。之前大火的 <code>通过手机号码获取短信验证码</code> 登录模式正悄悄退去。这神奇的操作是如何实现的呢？</p>
 <a id="more"></a>
 
@@ -2774,9 +2698,7 @@ b.在此函数中可以对响应值,在返回之前做最后一步处理,再返�
   <entry>
     <title>有了Pycharm，就卸载了Postman吧</title>
     <url>/%E6%9C%89%E4%BA%86Pycharm%EF%BC%8C%E5%B0%B1%E5%8D%B8%E8%BD%BD%E4%BA%86Postman%E5%90%A7/</url>
-    <content><![CDATA[<ul>
-<li><strong>Author：闫玉良</strong></li>
-</ul>
+    <content><![CDATA[<p><strong>Author: 闫玉良</strong></p>
 <p><code>Web</code> 开发还在一手 <code>PyCharm</code> 一手 <code>Postman</code> 吗？快给电脑减负（卸载掉 <code>Postman</code>）吧！教你如何使用 <code>PyCharm</code> 替代 <code>Postman</code> 。</p>
 <a id="more"></a>
 
@@ -2896,9 +2818,7 @@ b.在此函数中可以对响应值,在返回之前做最后一步处理,再返�
   <entry>
     <title>关系数据库之存储过程</title>
     <url>/%E5%85%B3%E7%B3%BB%E6%95%B0%E6%8D%AE%E5%BA%93%E4%B9%8B%E5%AD%98%E5%82%A8%E8%BF%87%E7%A8%8B/</url>
-    <content><![CDATA[<ul>
-<li><strong>Author：闫玉良</strong></li>
-</ul>
+    <content><![CDATA[<p><strong>Author: 闫玉良</strong></p>
 <p>很多人在上学期间，也许并未学习过关系数据库中「存储过程」的相关内容，但在工作上是绕不开的，那今天就来学习一下吧。</p>
 <a id="more"></a>
 
@@ -3076,9 +2996,7 @@ b.在此函数中可以对响应值,在返回之前做最后一步处理,再返�
   <entry>
     <title>机器学习算法之聚类算法</title>
     <url>/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%AE%97%E6%B3%95%E4%B9%8B%E8%81%9A%E7%B1%BB%E7%AE%97%E6%B3%95/</url>
-    <content><![CDATA[<ul>
-<li><strong>Editor: 闫玉良</strong></li>
-</ul>
+    <content><![CDATA[<p><strong>Editor: 闫玉良</strong></p>
 <p>今日开启新算法的学习「聚类算法」</p>
 <a id="more"></a>
 
@@ -3363,9 +3281,7 @@ b.在此函数中可以对响应值,在返回之前做最后一步处理,再返�
   <entry>
     <title>机器学习算法之集成学习</title>
     <url>/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%AE%97%E6%B3%95%E4%B9%8B%E9%9B%86%E6%88%90%E5%AD%A6%E4%B9%A0/</url>
-    <content><![CDATA[<ul>
-<li><strong>Editor: 闫玉良</strong></li>
-</ul>
+    <content><![CDATA[<p><strong>Editor: 闫玉良</strong></p>
 <p>分类算法中有一种极其重要的算法「集成学习」</p>
 <a id="more"></a>
 
@@ -3561,9 +3477,7 @@ b.在此函数中可以对响应值,在返回之前做最后一步处理,再返�
   <entry>
     <title>机器学习算法之决策树</title>
     <url>/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%AE%97%E6%B3%95%E4%B9%8B%E5%86%B3%E7%AD%96%E6%A0%91/</url>
-    <content><![CDATA[<ul>
-<li><strong>Editor: 闫玉良</strong></li>
-</ul>
+    <content><![CDATA[<p><strong>Editor: 闫玉良</strong></p>
 <p>今天来学习一种新的<strong>分类</strong>算法「决策树」</p>
 <a id="more"></a>
 
@@ -3682,9 +3596,7 @@ b.在此函数中可以对响应值,在返回之前做最后一步处理,再返�
   <entry>
     <title>机器学习算法之逻辑回归</title>
     <url>/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%AE%97%E6%B3%95%E4%B9%8B%E9%80%BB%E8%BE%91%E5%9B%9E%E5%BD%92/</url>
-    <content><![CDATA[<ul>
-<li><strong>Editor: 闫玉良</strong></li>
-</ul>
+    <content><![CDATA[<p><strong>Editor: 闫玉良</strong></p>
 <p>逻辑回归（<code>Logistic Regression</code>）是机器学习中的一种<strong>分类模型</strong>。虽然名字中带有「回归」，但它却不是回归算法，而是一种分类算法。由于此算法的简单和高效，在实际场景中应用非常广泛。也许有人很好奇，那为什么叫做「回归」而不是「分类」呢？</p>
 <a id="more"></a>
 
@@ -3789,9 +3701,7 @@ b.在此函数中可以对响应值,在返回之前做最后一步处理,再返�
   <entry>
     <title>机器学习算法之欠拟合和过拟合</title>
     <url>/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%AE%97%E6%B3%95%E4%B9%8B%E6%AC%A0%E6%8B%9F%E5%90%88%E5%92%8C%E8%BF%87%E6%8B%9F%E5%90%88/</url>
-    <content><![CDATA[<ul>
-<li><strong>Editor: 闫玉良</strong></li>
-</ul>
+    <content><![CDATA[<p><strong>Editor: 闫玉良</strong></p>
 <blockquote>
 <p><strong>引言：</strong>机器学习的基本问题是利用模型对数据进行拟合，学习的目的并非是对有限训练集进行正确预测，而是对未曾在训练集合出现的样本能够正确预测。模型对训练集数据的误差称为经验误差，对测试集数据的误差称为泛化误差。模型对训练集以外样本的预测能力就称为模型的泛化能力，追求这种泛化能力始终是机器学习的目标。过拟合和欠拟合是导致模型泛化能力不高的两种常见原因，都是模型学习能力与数据复杂度之间失配的结果。</p>
 </blockquote>
@@ -3888,9 +3798,7 @@ b.在此函数中可以对响应值,在返回之前做最后一步处理,再返�
   <entry>
     <title>机器学习算法之线性回归的损失和优化</title>
     <url>/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%AE%97%E6%B3%95%E4%B9%8B%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92%E7%9A%84%E6%8D%9F%E5%A4%B1%E5%92%8C%E4%BC%98%E5%8C%96/</url>
-    <content><![CDATA[<ul>
-<li><strong>Editor: 闫玉良</strong></li>
-</ul>
+    <content><![CDATA[<p><strong>Editor: 闫玉良</strong></p>
 <p>学习了线性回归，接下来就需要考虑其损失以及优化了。</p>
 <a id="more"></a>
 
@@ -4046,9 +3954,7 @@ b.在此函数中可以对响应值,在返回之前做最后一步处理,再返�
   <entry>
     <title>机器学习算法之线性回归</title>
     <url>/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%AE%97%E6%B3%95%E4%B9%8B%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92/</url>
-    <content><![CDATA[<ul>
-<li><strong>Editor: 闫玉良</strong></li>
-</ul>
+    <content><![CDATA[<p><strong>Editor: 闫玉良</strong></p>
 <p>机器学习中最常见的一类问题：线性回归问题。</p>
 <a id="more"></a>
 
@@ -4129,9 +4035,7 @@ b.在此函数中可以对响应值,在返回之前做最后一步处理,再返�
   <entry>
     <title>机器学习算法之kd树</title>
     <url>/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%AE%97%E6%B3%95%E4%B9%8Bkd%E6%A0%91/</url>
-    <content><![CDATA[<ul>
-<li><strong>Editor: 闫玉良</strong></li>
-</ul>
+    <content><![CDATA[<p><strong>Editor: 闫玉良</strong></p>
 <p>上篇文章讲了 <code>K-近邻算法</code> ，但是引出了一个问题：</p>
 <p>实现 <code>K-近邻算法</code> 时，<strong>主要考虑的问题是如何对训练数据进行快速 k 近邻搜索。</strong>这在特征空间维数大及训练数据容量大时尤其必要。<strong>k 近邻法最简单的实现是线性扫描（穷举搜索），即要计算输入实例与每一个训练实例的距离。计算并存储好以后，再查找 K 近邻。</strong>当训练集很大时，计算非常耗时。为了提高 <code>KNN</code> 搜索的效率，可以考虑使用特殊的结构存储训练数据，以减小计算距离的次数。</p>
 <a id="more"></a>
@@ -4205,9 +4109,7 @@ b.在此函数中可以对响应值,在返回之前做最后一步处理,再返�
   <entry>
     <title>机器学习算法之K-近邻算法</title>
     <url>/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%AE%97%E6%B3%95%E4%B9%8BK-%E8%BF%91%E9%82%BB%E7%AE%97%E6%B3%95/</url>
-    <content><![CDATA[<ul>
-<li><strong>Author：闫玉良</strong></li>
-</ul>
+    <content><![CDATA[<p><strong>Author: 闫玉良</strong></p>
 <p><code>K Nearest Neighbor</code> 算法又叫 <code>KNN</code> 算法，此算法最早是由 <code>Cover</code> 和 <code>Hart</code> 提出的一种分类算法，是机器学习里面一个经典之作， 总体来说 <code>KNN</code> 算法是相对比较容易理解的。</p>
 <a id="more"></a>
 
@@ -4344,9 +4246,7 @@ b.在此函数中可以对响应值,在返回之前做最后一步处理,再返�
   <entry>
     <title>关系数据库之视图</title>
     <url>/%E5%85%B3%E7%B3%BB%E6%95%B0%E6%8D%AE%E5%BA%93%E4%B9%8B%E8%A7%86%E5%9B%BE/</url>
-    <content><![CDATA[<ul>
-<li><strong>Author：闫玉良</strong></li>
-</ul>
+    <content><![CDATA[<p><strong>Author: 闫玉良</strong></p>
 <p>请问视图是什么？视图相关语句有哪些？视图在什么场景下使用？夺命三连</p>
 <a id="more"></a>
 
@@ -4392,9 +4292,7 @@ b.在此函数中可以对响应值,在返回之前做最后一步处理,再返�
   <entry>
     <title>git仓库上传了个无法点开的空文件夹是什么鬼？</title>
     <url>/git%E4%BB%93%E5%BA%93%E4%B8%8A%E4%BC%A0%E4%BA%86%E4%B8%AA%E6%97%A0%E6%B3%95%E7%82%B9%E5%BC%80%E7%9A%84%E7%A9%BA%E6%96%87%E4%BB%B6%E5%A4%B9%E6%98%AF%E4%BB%80%E4%B9%88%E9%AC%BC%EF%BC%9F/</url>
-    <content><![CDATA[<ul>
-<li><strong>Author：闫玉良</strong></li>
-</ul>
+    <content><![CDATA[<p><strong>Author: 闫玉良</strong></p>
 <p>诡异之事年年有，只是今年有点多，在仓库上传到 GitHub 后，偶然在 GitHub 中瞄了一眼，我的天？这个图标不像文件夹啊？这个怎么点不开？git 上传正常啊？本地工作区和暂存区都是干净的了啊？</p>
 <a id="more"></a>
 
@@ -4441,9 +4339,7 @@ b.在此函数中可以对响应值,在返回之前做最后一步处理,再返�
   <entry>
     <title>elasticsearch中join类型数据如何进行父子文档查询</title>
     <url>/elasticsearch%E4%B8%ADjoin%E7%B1%BB%E5%9E%8B%E6%95%B0%E6%8D%AE%E5%A6%82%E4%BD%95%E8%BF%9B%E8%A1%8C%E7%88%B6%E5%AD%90%E6%96%87%E6%A1%A3%E6%9F%A5%E8%AF%A2/</url>
-    <content><![CDATA[<ul>
-<li><strong>Author：闫玉良</strong></li>
-</ul>
+    <content><![CDATA[<p><strong>Author: 闫玉良</strong></p>
 <p>ES 中 join 类型数据如何根据父文档查询全部子文档？又如何根据子文档查询其父文档呢？</p>
 <a id="more"></a>
 
@@ -4640,9 +4536,7 @@ b.在此函数中可以对响应值,在返回之前做最后一步处理,再返�
   <entry>
     <title>elasticsearch的一些小知识点</title>
     <url>/elasticsearch%E7%9A%84%E4%B8%80%E4%BA%9B%E5%B0%8F%E7%9F%A5%E8%AF%86%E7%82%B9/</url>
-    <content><![CDATA[<ul>
-<li><strong>Author：闫玉良</strong></li>
-</ul>
+    <content><![CDATA[<p><strong>Author: 闫玉良</strong></p>
 <p>这个假期有多少人新添了一份职业「云监工」，又有多少人干起了小区保安的工作（统计着进出小区的车辆），还有一些人无聊到数火龙果的「黑芝麻」…… 实不相瞒，我也一样，只不过无聊之际，偶尔看看书。之前对于 elasticsearch 介绍过一些常用的 API ，今天再做一些额外的补充。</p>
 <blockquote>
 <p>「云监工」：网络流行词，来源于央视频直播武汉开建的防治传染病医院火神山医院的建设工地，网友们虽然不能到现场出把力，但也给自己加了一个身份：云监工，通过直播镜头去“监督”医院的建设进度。</p>
@@ -4692,9 +4586,7 @@ b.在此函数中可以对响应值,在返回之前做最后一步处理,再返�
   <entry>
     <title>还在拧螺丝？是时候学习造航母了！</title>
     <url>/%E8%BF%98%E5%9C%A8%E6%8B%A7%E8%9E%BA%E4%B8%9D%EF%BC%9F%E6%98%AF%E6%97%B6%E5%80%99%E5%AD%A6%E4%B9%A0%E9%80%A0%E8%88%AA%E6%AF%8D%E4%BA%86%EF%BC%81/</url>
-    <content><![CDATA[<ul>
-<li><strong>Author：闫玉良</strong></li>
-</ul>
+    <content><![CDATA[<p><strong>Author: 闫玉良</strong></p>
 <p>面试造航母，实际拧螺丝。这是大部分互联网人面对的实际情境，如何跳出舒适的圈子，撤离局部，俯览大局？</p>
 <a id="more"></a>
 
@@ -4761,9 +4653,7 @@ b.在此函数中可以对响应值,在返回之前做最后一步处理,再返�
   <entry>
     <title>docker的一些小知识</title>
     <url>/docker%E7%9A%84%E4%B8%80%E4%BA%9B%E5%B0%8F%E7%9F%A5%E8%AF%86/</url>
-    <content><![CDATA[<ul>
-<li><strong>Author：闫玉良</strong></li>
-</ul>
+    <content><![CDATA[<p><strong>Author: 闫玉良</strong></p>
 <p>今天玩游戏的时候，突然想到了以前面试被问的一个小问题，特此记录，仅供参考</p>
 <a id="more"></a>
 
@@ -4837,9 +4727,7 @@ b.在此函数中可以对响应值,在返回之前做最后一步处理,再返�
   <entry>
     <title>图</title>
     <url>/%E5%9B%BE/</url>
-    <content><![CDATA[<ul>
-<li><strong>Author：闫玉良</strong></li>
-</ul>
+    <content><![CDATA[<p><strong>Author: 闫玉良</strong></p>
 <p>此图非彼图，今天来学习一种十分重要，在生活中也经常使用的数据结构「图」</p>
 <a id="more"></a>
 
@@ -5028,9 +4916,7 @@ b.在此函数中可以对响应值,在返回之前做最后一步处理,再返�
   <entry>
     <title>如果你是mac用户，这个问题不信你没遇到！</title>
     <url>/%E5%A6%82%E6%9E%9C%E4%BD%A0%E6%98%AFmac%E7%94%A8%E6%88%B7%EF%BC%8C%E8%BF%99%E4%B8%AA%E9%97%AE%E9%A2%98%E4%B8%8D%E4%BF%A1%E4%BD%A0%E6%B2%A1%E9%81%87%E5%88%B0%EF%BC%81/</url>
-    <content><![CDATA[<ul>
-<li><strong>Author：闫玉良</strong></li>
-</ul>
+    <content><![CDATA[<p><strong>Author: 闫玉良</strong></p>
 <p>Mac 用户在使用 python 的虚拟环境时，你现在或者将来一定会遇到此问题，早发现早治疗 ～</p>
 <a id="more"></a>
 
@@ -5081,9 +4967,7 @@ b.在此函数中可以对响应值,在返回之前做最后一步处理,再返�
   <entry>
     <title>CentOS这些情况你也遇到过</title>
     <url>/CentOS%E8%BF%99%E4%BA%9B%E6%83%85%E5%86%B5%E4%BD%A0%E4%B9%9F%E9%81%87%E5%88%B0%E8%BF%87/</url>
-    <content><![CDATA[<ul>
-<li><strong>Author：闫玉良</strong></li>
-</ul>
+    <content><![CDATA[<p><strong>Author: 闫玉良</strong></p>
 <p>CentOS 虚拟机许久未用，忘记密码如何是好？删掉再来又岂能甘心？想安装某个命令，直接 yum install 就可以了吗？远程连接服务器报错该怎样操作？</p>
 <a id="more"></a>
 
@@ -5160,9 +5044,7 @@ b.在此函数中可以对响应值,在返回之前做最后一步处理,再返�
   <entry>
     <title>Vue脚手架搭建项目中的坑</title>
     <url>/Vue%E8%84%9A%E6%89%8B%E6%9E%B6%E6%90%AD%E5%BB%BA%E9%A1%B9%E7%9B%AE%E4%B8%AD%E7%9A%84%E5%9D%91/</url>
-    <content><![CDATA[<ul>
-<li><strong>Author：闫玉良</strong></li>
-</ul>
+    <content><![CDATA[<p><strong>Author: 闫玉良</strong></p>
 <p>Vue 框架如同 Python 中的 Django 框架一样，让一切操作变得超级简单，只需在规定的目录下书写规定的代码即可，至于如何运作，框架自己搞定。此篇文章仅用于记录 Vue 项目中的一些小坑。</p>
 <a id="more"></a>
 
@@ -5198,9 +5080,7 @@ b.在此函数中可以对响应值,在返回之前做最后一步处理,再返�
   <entry>
     <title>扶我起来,我还可以学～</title>
     <url>/%E6%89%B6%E6%88%91%E8%B5%B7%E6%9D%A5-%E6%88%91%E8%BF%98%E5%8F%AF%E4%BB%A5%E5%AD%A6%EF%BD%9E/</url>
-    <content><![CDATA[<ul>
-<li><strong>Author：闫玉良</strong></li>
-</ul>
+    <content><![CDATA[<p><strong>Author: 闫玉良</strong></p>
 <p>长路漫漫，唯夜作伴。虽然一天的工作头昏脑胀，但是仍然放不下我心心念念的前端啊，扶我起来，我还可以学～</p>
 <p>学习喜欢的事情，也是一种放松，come on！</p>
 <a id="more"></a>
@@ -5282,9 +5162,7 @@ b.在此函数中可以对响应值,在返回之前做最后一步处理,再返�
   <entry>
     <title>前端攻坚战</title>
     <url>/%E5%89%8D%E7%AB%AF%E6%94%BB%E5%9D%9A%E6%88%98/</url>
-    <content><![CDATA[<ul>
-<li><strong>Author：闫玉良</strong></li>
-</ul>
+    <content><![CDATA[<p><strong>Author: 闫玉良</strong></p>
 <p>前端三大新框架：Angular.js、React.js、Vue.js。今天我们来磕这个最常用，影响极广的框架：Vue.js。</p>
 <p>Vue.js 可以作为一个 js 库来使用，也可以用它全套的工具来构建系统界面，这些可以根据项目的需要灵活选择，所以说，Vue.js 是一套构建用户界面的渐进式框架。</p>
 <blockquote>
@@ -5408,9 +5286,7 @@ b.在此函数中可以对响应值,在返回之前做最后一步处理,再返�
   <entry>
     <title>继续死磕前端</title>
     <url>/%E7%BB%A7%E7%BB%AD%E6%AD%BB%E7%A3%95%E5%89%8D%E7%AB%AF/</url>
-    <content><![CDATA[<ul>
-<li><strong>Author：闫玉良</strong></li>
-</ul>
+    <content><![CDATA[<p><strong>Author: 闫玉良</strong></p>
 <p>昨天将所有的基础知识进行了回顾，今天继续磕，不死不休～</p>
 <p>今天要说的便是 jquery 这个函数库，毕竟它影响范围之广，不会都不好意说自己会前端？</p>
 <a id="more"></a>
@@ -5662,9 +5538,7 @@ b.在此函数中可以对响应值,在返回之前做最后一步处理,再返�
   <entry>
     <title>死磕前端ing～</title>
     <url>/%E6%AD%BB%E7%A3%95%E5%89%8D%E7%AB%AFing%EF%BD%9E/</url>
-    <content><![CDATA[<ul>
-<li><strong>Author：闫玉良</strong></li>
-</ul>
+    <content><![CDATA[<p><strong>Author: 闫玉良</strong></p>
 <p>这么久没有发文，很多人关心我是否离开了这个美丽的世界 … 这些同学，是如何居心？出来，我保证不打死你们。不过很久没有更新文章，确实抱歉，我的错，我有罪 ～（小声逼逼：我又不是签约作家，还被逼出了连载的味道，也是没谁了。）</p>
 <p>今天咱们唠唠前端那点事儿，和前端死磕到底。</p>
 <a id="more"></a>
@@ -5890,9 +5764,7 @@ b.在此函数中可以对响应值,在返回之前做最后一步处理,再返�
   <entry>
     <title>MacBook Pro你真的会使用吗？</title>
     <url>/MacBookPro%E4%BD%A0%E7%9C%9F%E7%9A%84%E4%BC%9A%E4%BD%BF%E7%94%A8%E5%90%97%EF%BC%9F/</url>
-    <content><![CDATA[<ul>
-<li><strong>Author：闫玉良</strong></li>
-</ul>
+    <content><![CDATA[<p><strong>Author: 闫玉良</strong></p>
 <p>那些不使用鼠标的人是否是打肿脸充胖子？因囊中羞涩而安装的 xx 软件装不上怎么办？MacBook Pro 真的那么好用吗？下面为您解答</p>
 <a id="more"></a>
 
@@ -5961,9 +5833,7 @@ b.在此函数中可以对响应值,在返回之前做最后一步处理,再返�
   <entry>
     <title>crontab 执行python脚本不生效？（续）</title>
     <url>/%E6%89%A7%E8%A1%8Cpython%E8%84%9A%E6%9C%AC/</url>
-    <content><![CDATA[<ul>
-<li><strong>Author：闫玉良</strong></li>
-</ul>
+    <content><![CDATA[<p><strong>Author: 闫玉良</strong></p>
 <p>Linux 设置定时任务，crontab 执行 python 脚本不生效的问题：</p>
 <a id="more"></a>
 
@@ -6011,9 +5881,7 @@ b.在此函数中可以对响应值,在返回之前做最后一步处理,再返�
   <entry>
     <title>bat脚本常用命令</title>
     <url>/bat%E8%84%9A%E6%9C%AC%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</url>
-    <content><![CDATA[<ul>
-<li><strong>Author：闫玉良</strong></li>
-</ul>
+    <content><![CDATA[<p><strong>Author: 闫玉良</strong></p>
 <p>bat 脚本？如果不是从事微软开发相关工作的人员，是不是感觉很耳熟但是又好像不熟悉？还等什么，一睹为快</p>
 <a id="more"></a>
 
@@ -6071,9 +5939,7 @@ b.在此函数中可以对响应值,在返回之前做最后一步处理,再返�
   <entry>
     <title>python 字符串前面的那些特殊字符</title>
     <url>/python%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%89%8D%E9%9D%A2%E7%9A%84%E9%82%A3%E4%BA%9B%E7%89%B9%E6%AE%8A%E5%AD%97%E7%AC%A6/</url>
-    <content><![CDATA[<ul>
-<li><strong>Author：闫玉良</strong></li>
-</ul>
+    <content><![CDATA[<p><strong>Author: 闫玉良</strong></p>
 <p>对于 Python 的字符串大家并不陌生，引号引用即为字符串。那么字符串前面经常加的一些特殊字母就让初学者懵逼了，今天我们就来详细讲一下 ……</p>
 <a id="more"></a>
 
@@ -6110,9 +5976,7 @@ b.在此函数中可以对响应值,在返回之前做最后一步处理,再返�
   <entry>
     <title>crontab定时执行python脚本不成功解决方案</title>
     <url>/crontab%E5%AE%9A%E6%97%B6%E6%89%A7%E8%A1%8Cpython%E8%84%9A%E6%9C%AC%E4%B8%8D%E6%88%90%E5%8A%9F%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/</url>
-    <content><![CDATA[<ul>
-<li><strong>Author：闫玉良</strong></li>
-</ul>
+    <content><![CDATA[<p><strong>Author: 闫玉良</strong></p>
 <p>目前有一个需求是定时执行某个 python 脚本，但是在 Linux 上设置 crontab 后，不生效？手动执行生效？于是使用下面的方法执行即可：</p>
 <a id="more"></a>
 
@@ -6148,9 +6012,7 @@ b.在此函数中可以对响应值,在返回之前做最后一步处理,再返�
   <entry>
     <title>python导入导出pip环境中所有模块</title>
     <url>/python%E5%AF%BC%E5%85%A5%E5%AF%BC%E5%87%BApip%E7%8E%AF%E5%A2%83%E4%B8%AD%E6%89%80%E6%9C%89%E6%A8%A1%E5%9D%97/</url>
-    <content><![CDATA[<ul>
-<li><strong>Author：闫玉良</strong></li>
-</ul>
+    <content><![CDATA[<p><strong>Author: 闫玉良</strong></p>
 <p>刚入职接手项目，python 环境如何搭建？项目依赖模块如何安装？备份环境时如何将所有 pip 安装的模块导出？请看下文</p>
 <a id="more"></a>
 
@@ -6175,9 +6037,7 @@ b.在此函数中可以对响应值,在返回之前做最后一步处理,再返�
   <entry>
     <title>Python后端面试汇总</title>
     <url>/Python%E5%90%8E%E7%AB%AF%E9%9D%A2%E8%AF%95%E6%B1%87%E6%80%BB/</url>
-    <content><![CDATA[<ul>
-<li><strong>Author：闫玉良</strong></li>
-</ul>
+    <content><![CDATA[<p><strong>Author: 闫玉良</strong></p>
 <p>只身打入敌人内部，亲身经历，题目汇总，亲情大奉献，请点击以下链接观看：</p>
 <p><a href="http://mp.weixin.qq.com/mp/homepage?__biz=Mzg3NTA0OTM1OQ==&hid=8&sn=811ae175b0ce7f4208d0a3bea3157ac0&scene=18#wechat_redirect" target="_blank" rel="noopener">python 面试题大汇总</a></p>
 <a id="more"></a>
@@ -6221,9 +6081,7 @@ b.在此函数中可以对响应值,在返回之前做最后一步处理,再返�
   <entry>
     <title>hexo命令速查小册</title>
     <url>/hexo%E5%91%BD%E4%BB%A4%E9%80%9F%E6%9F%A5%E5%B0%8F%E5%86%8C/</url>
-    <content><![CDATA[<ul>
-<li><strong>Author：闫玉良</strong></li>
-</ul>
+    <content><![CDATA[<p><strong>Author: 闫玉良</strong></p>
 <p>最近都在搭建自己的博客，不断的调整显示效果，以及添加一些初始功能，总算大体框架完成，细枝末节尚待商榷。小闫同学的博客地址为 <a href="http://www.pythonnote.cn/">http://www.pythonnote.cn/</a> ，希望大家多多捧场 ~ 当然也希望大家多多关注公众号『全栈技术精选』</p>
 <p>先来几张效果图压场，deng ~ deng ~ dengdeng</p>
 <a id="more"></a>
@@ -6310,9 +6168,7 @@ b.在此函数中可以对响应值,在返回之前做最后一步处理,再返�
   <entry>
     <title>Elasticsearch 中这些必备 API 你晓得嘛？</title>
     <url>/Elasticsearch%20%E4%B8%AD%E8%BF%99%E4%BA%9B%E5%BF%85%E5%A4%87%20API%20%E4%BD%A0%E6%99%93%E5%BE%97%E5%98%9B%EF%BC%9F/</url>
-    <content><![CDATA[<ul>
-<li><strong>Author：闫玉良</strong></li>
-</ul>
+    <content><![CDATA[<p><strong>Author: 闫玉良</strong></p>
 <p>众所周知，ES 中的 mapping 只能在索引建立初期进行创建，且建立之后不可更改。mapping 对应的字段会映射成指定类型，未定义字段则自动映射，一般为 text 类型。那么想更改索引名或者更改某字段的 mapping 时，是否就束手无策了呢？当然不是！！！官方提供了一个接口，供索引备份迁移操作使用，那便是 <strong>reindex</strong>。当旧索引与新索引在同一节点时，效率相当高，万条数据瞬间完成（<code>大约只需0.4s</code>）。数百万数据也只需几分钟即可完成 操作，是不是很溜呢？快来学习一下吧。</p>
  <a id="more"></a>
 
@@ -6355,9 +6211,7 @@ b.在此函数中可以对响应值,在返回之前做最后一步处理,再返�
   <entry>
     <title>Git 上传大文件</title>
     <url>/Git%20%E4%B8%8A%E4%BC%A0%E5%A4%A7%E6%96%87%E4%BB%B6/</url>
-    <content><![CDATA[<ul>
-<li><strong>Author：闫玉良</strong></li>
-</ul>
+    <content><![CDATA[<p><strong>Author: 闫玉良</strong></p>
 <p>我们知道 github 上面限制每次推送的文件不能超过 100M，否则报错失败，那么非要推送大文件呢？有没有什么解决办法呢？答案当然是肯定的。这就用到了 <code>Git LFS</code> 。</p>
 <a id="more"></a>
 
@@ -6408,9 +6262,7 @@ b.在此函数中可以对响应值,在返回之前做最后一步处理,再返�
   <entry>
     <title>常用 es 查询盘点</title>
     <url>/%E5%B8%B8%E7%94%A8-es-%E6%9F%A5%E8%AF%A2%E7%9B%98%E7%82%B9/</url>
-    <content><![CDATA[<ul>
-<li><strong>Author：闫玉良</strong></li>
-</ul>
+    <content><![CDATA[<p><strong>Author: 闫玉良</strong></p>
 <p>熟悉了关系型数据库的结构概念以及查询，再去使用属于非关系型数据库的 Elasticsearch 时，简直是噩梦。第一道难关便是概念上的转换。索引？类型？文档？what？</p>
 <a id="more"></a>
 
@@ -6506,9 +6358,7 @@ b.在此函数中可以对响应值,在返回之前做最后一步处理,再返�
   <entry>
     <title>Git 彻底删除某个commit的方法</title>
     <url>/Git-%E5%BD%BB%E5%BA%95%E5%88%A0%E9%99%A4%E6%9F%90%E4%B8%AAcommit%E7%9A%84%E6%96%B9%E6%B3%95/</url>
-    <content><![CDATA[<ul>
-<li><strong>Author：闫玉良</strong></li>
-</ul>
+    <content><![CDATA[<p><strong>Author: 闫玉良</strong></p>
 <p>如果因为一些原因，需要删除某个错误的 commit ，而且需要干净的操作，彻底让其消失，不留痕迹，该如何操作？</p>
 <a id="more"></a>
 

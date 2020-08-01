@@ -101,9 +101,7 @@
       
 
       
-      <ul>
-<li><strong>Author：闫玉良</strong></li>
-</ul>
+      <p><strong>Author: 闫玉良</strong></p>
 <p><code>docker</code> 容器内的数据是独立于镜像之外的，那么如何将其持久化到宿主机呢？答案便是利用「数据卷」，那什么又是「数据卷」呢？</p>
 <a id="more"></a>
 
@@ -167,7 +165,9 @@
 </ol>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">docker exec -it nginx /bin/bash</span><br><span class="line"></span><br><span class="line">root@8694fd7cba10:/# cd /data</span><br><span class="line">root@8694fd7cba10:/data# ls</span><br><span class="line">testdata.txt</span><br><span class="line">root@8694fd7cba10:/data# echo 'xxx测试用' &gt;&gt; testdata.txt</span><br><span class="line">root@8694fd7cba10:/data# cat testdata.txt</span><br><span class="line">hello world</span><br><span class="line">xxx测试用</span><br><span class="line">root@8694fd7cba10:/data# exit</span><br><span class="line">exit</span><br></pre></td></tr></table></figure>
 
-<p>) 然后在本地查看发现内容也被更改。<strong>说明可以使用文件持久化数据</strong>。</p>
+<ol start="5">
+<li>然后在本地查看发现内容也被更改。<strong>说明可以使用文件持久化数据</strong>。</li>
+</ol>
 <h2 id="3-持久化到容器"><a href="#3-持久化到容器" class="headerlink" title="3.持久化到容器"></a>3.持久化到容器</h2><p>如果不想这些数据直接暴露在宿主机，可以使用数据卷容器的方式。将数据卷容器挂载到其他容器，就可以多个容器之间共享数据了，而且还可以持久化的保存数据（后面会讲解如何备份和恢复数据卷容器）</p>
 <p><strong>注意：数据卷容器不启动</strong></p>
 <h3 id="3-1-步骤"><a href="#3-1-步骤" class="headerlink" title="3.1 步骤"></a>3.1 步骤</h3><ol>
