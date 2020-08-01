@@ -4072,26 +4072,26 @@ b.在此函数中可以对响应值,在返回之前做最后一步处理,再返�
 
 <p><strong><em>更多精彩文章请关注公众号『Pythonnote』或者『全栈技术精选』</em></strong></p>
 <p>限制自己的不是外界，而是内心。你之所以没听过这句话，是因为它出自小闫同学（鹅鹅鹅～笑出了鹅叫声）为了避免三年螺丝工，还是提升一下自己，为造航母做准备吧。一些架构知识，既可以培养全局观，又可以助你深层次认识『螺丝』。</p>
-<h2 id="一、架构演变"><a href="#一、架构演变" class="headerlink" title="一、架构演变"></a>一、架构演变</h2><p>一般来说，任何一个项目至少有三层内容来组成：<strong>web访问层、数据库层、存储层</strong></p>
+<h2 id="一、架构演变"><a href="#一、架构演变" class="headerlink" title="一、架构演变"></a>一、架构演变</h2><p>一般来说，任何一个项目至少有三层内容来组成：<strong>web 访问层、数据库层、存储层</strong></p>
 <h3 id="1-1-初级阶段"><a href="#1-1-初级阶段" class="headerlink" title="1.1 初级阶段"></a>1.1 初级阶段</h3><p>在初级阶段又会人为细分为如下几个阶段：</p>
-<h4 id="1-1-1-单体阶段"><a href="#1-1-1-单体阶段" class="headerlink" title="1.1.1 单体阶段"></a>1.1.1 单体阶段</h4><p><strong>常见场景：</strong>项目初期 </p>
-<p><strong>部署特点：</strong>所有应用服务都在一台主机 </p>
+<h4 id="1-1-1-单体阶段"><a href="#1-1-1-单体阶段" class="headerlink" title="1.1.1 单体阶段"></a>1.1.1 单体阶段</h4><p><strong>常见场景：</strong>项目初期</p>
+<p><strong>部署特点：</strong>所有应用服务都在一台主机</p>
 <p><strong>应用特点：</strong>开发简单</p>
 <p><img src="https://github.com/EthanYan6/pic/raw/master/%E6%9E%B6%E6%9E%841.png" alt="单体阶段"></p>
-<h4 id="1-1-2-应用-数据分离阶段"><a href="#1-1-2-应用-数据分离阶段" class="headerlink" title="1.1.2 应用/数据分离阶段"></a>1.1.2 应用/数据分离阶段</h4><p><strong>常见场景：</strong>项目初期，用户访问数据库有压力 </p>
-<p><strong>部署特点：</strong>应用和数据库单独部署 </p>
+<h4 id="1-1-2-应用-数据分离阶段"><a href="#1-1-2-应用-数据分离阶段" class="headerlink" title="1.1.2 应用/数据分离阶段"></a>1.1.2 应用/数据分离阶段</h4><p><strong>常见场景：</strong>项目初期，用户访问数据库有压力</p>
+<p><strong>部署特点：</strong>应用和数据库单独部署</p>
 <p><strong>应用特点：</strong>开发简单</p>
 <p><img src="https://github.com/EthanYan6/pic/raw/master/%E6%9E%B6%E6%9E%842.png" alt="应用/数据分离阶段"></p>
 <h4 id="1-1-3-页面动静分离阶段"><a href="#1-1-3-页面动静分离阶段" class="headerlink" title="1.1.3 页面动静分离阶段"></a>1.1.3 页面动静分离阶段</h4><p><strong>常见场景：</strong>项目初期，用户访问页面有压力</p>
 <p><strong>部署特点：</strong>剥离用户读请求和写请求操作</p>
 <p><strong>应用特点：</strong>开发简单</p>
 <p><img src="https://github.com/EthanYan6/pic/raw/master/%E6%9E%B6%E6%9E%843.png" alt="页面动静分离阶段"></p>
-<h4 id="1-1-4-页面-数据缓存阶段"><a href="#1-1-4-页面-数据缓存阶段" class="headerlink" title="1.1.4 页面/数据缓存阶段"></a>1.1.4 页面/数据缓存阶段</h4><p><strong>常见场景：</strong>项目初期，用户访问有压力 </p>
-<p><strong>部署特点：</strong>代理和数据库前面增加缓存组件 </p>
+<h4 id="1-1-4-页面-数据缓存阶段"><a href="#1-1-4-页面-数据缓存阶段" class="headerlink" title="1.1.4 页面/数据缓存阶段"></a>1.1.4 页面/数据缓存阶段</h4><p><strong>常见场景：</strong>项目初期，用户访问有压力</p>
+<p><strong>部署特点：</strong>代理和数据库前面增加缓存组件</p>
 <p><strong>应用特点：</strong>开发简单</p>
 <p><img src="https://github.com/EthanYan6/pic/raw/master/%E6%9E%B6%E6%9E%844.png" alt="页面/数据缓存阶段"></p>
 <h3 id="1-2-中期阶段"><a href="#1-2-中期阶段" class="headerlink" title="1.2 中期阶段"></a>1.2 中期阶段</h3><h4 id="1-2-1-应用服务集群阶段"><a href="#1-2-1-应用服务集群阶段" class="headerlink" title="1.2.1 应用服务集群阶段"></a>1.2.1 应用服务集群阶段</h4><p><strong>常见场景：</strong>项目初期，用户访问有压力</p>
-<p><strong>部署特点：</strong>应用服务所在主机做集群负载均衡 </p>
+<p><strong>部署特点：</strong>应用服务所在主机做集群负载均衡</p>
 <p><strong>应用特点：</strong>业务中等</p>
 <p><img src="https://github.com/EthanYan6/pic/raw/master/%E6%9E%B6%E6%9E%845.png" alt="应用服务集群阶段"></p>
 <h4 id="1-2-2-数据库读写分离化"><a href="#1-2-2-数据库读写分离化" class="headerlink" title="1.2.2 数据库读写分离化"></a>1.2.2 数据库读写分离化</h4><p><strong>常见场景：</strong>项目初期，用户访问数据有压力</p>
@@ -4114,11 +4114,11 @@ b.在此函数中可以对响应值,在返回之前做最后一步处理,再返�
 <p><strong>部署特点：</strong>所有业务都可以自由部署</p>
 <p><strong>应用特点：</strong>业务复杂</p>
 <p><img src="https://github.com/EthanYan6/pic/raw/master/%E6%9E%B6%E6%9E%8410.png" alt="微服务阶段"></p>
-<h2 id="二、架构部署"><a href="#二、架构部署" class="headerlink" title="二、架构部署"></a>二、架构部署</h2><h3 id="2-1通用架构"><a href="#2-1通用架构" class="headerlink" title="2.1通用架构"></a>2.1通用架构</h3><p><strong>一级定位：</strong>核心组成部分 （web 、数据库、存储层 ）</p>
-<p><strong>二级定位：</strong>功能增强部分 （web缓存、代理、数据库缓存）</p>
+<h2 id="二、架构部署"><a href="#二、架构部署" class="headerlink" title="二、架构部署"></a>二、架构部署</h2><h3 id="2-1-通用架构"><a href="#2-1-通用架构" class="headerlink" title="2.1 通用架构"></a>2.1 通用架构</h3><p><strong>一级定位：</strong>核心组成部分 （web 、数据库、存储层 ）</p>
+<p><strong>二级定位：</strong>功能增强部分 （web 缓存、代理、数据库缓存）</p>
 <p><img src="https://github.com/EthanYan6/pic/raw/master/%E6%9E%B6%E6%9E%8411.png" alt="通用架构"></p>
-<h3 id="2-2部署项目"><a href="#2-2部署项目" class="headerlink" title="2.2部署项目"></a>2.2部署项目</h3><p>部署项目的时候，要遵循主次原则：</p>
-<p>1.对于架构层中的一级角色，我们的<strong>部署原则</strong>是：站在用户访问资源角度，从后向前依次部署。 </p>
+<h3 id="2-2-部署项目"><a href="#2-2-部署项目" class="headerlink" title="2.2 部署项目"></a>2.2 部署项目</h3><p>部署项目的时候，要遵循主次原则：</p>
+<p>1.对于架构层中的一级角色，我们的<strong>部署原则</strong>是：站在用户访问资源角度，从后向前依次部署。</p>
 <p>2.对于架构层中的二级角色，我们的<strong>部署原则</strong>是：站在用户访问资源压力角度，需要部署哪里，就部署哪里，注意前后的信息交流。</p>
 <p><strong><em>更多精彩文章请关注公众号『Pythonnote』或者『全栈技术精选』</em></strong></p>
 ]]></content>
@@ -5563,17 +5563,13 @@ bat 脚本？如果不是从事微软开发相关工作的人员，是不是感�
     <url>/about%20me/</url>
     <content><![CDATA[<a id="more"></a>
 
-
-
-
-
 <ul>
-<li>姓    名：闫玉良</li>
+<li>姓 名：闫玉良</li>
 <li>英文名：EthanYan</li>
-<li>昵    称：小闫同学</li>
+<li>昵 称：小闫同学</li>
 <li>微信公众号：全栈技术精选（<code>id</code> 为 <code>Pythonnote</code>）</li>
 <li>个人博客：<a href="https://www.pythonnote.cn/"><code>https://www.pythonnote.cn/</code></a></li>
-<li>个人博客2：<a href="https://tech.shangyexinzhi.com/" target="_blank" rel="noopener"><code>https://tech.shangyexinzhi.com</code></a></li>
+<li>个人博客 2：<a href="https://tech.shangyexinzhi.com/" target="_blank" rel="noopener"><code>https://tech.shangyexinzhi.com</code></a></li>
 <li>GitHub：<code>https://github.com/EthanYan6</code></li>
 <li>Gitee：<code>https://gitee.com/Ethanyan</code></li>
 <li>CSDN、简书与头条号更新不及时，暂且不填</li>
