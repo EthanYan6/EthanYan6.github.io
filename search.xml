@@ -5372,9 +5372,8 @@ Linux 设置定时任务，crontab 执行 python 脚本不生效的问题：
   <entry>
     <title>bat脚本常用命令</title>
     <url>/bat%E8%84%9A%E6%9C%AC%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</url>
-    <content><![CDATA[<center>Author：闫玉良</center>
-bat 脚本？如果不是从事微软开发相关工作的人员，是不是感觉很耳熟但是又好像不熟悉？还等什么，一睹为快
-
+    <content><![CDATA[<p>Author：闫玉良</p>
+<p>bat 脚本？如果不是从事微软开发相关工作的人员，是不是感觉很耳熟但是又好像不熟悉？还等什么，一睹为快</p>
 <a id="more"></a>
 
 <p><strong><em>更多精彩文章请关注公众号『Pythonnote』或者『全栈技术精选』</em></strong></p>
@@ -5574,8 +5573,6 @@ bat 脚本？如果不是从事微软开发相关工作的人员，是不是感�
 <li>Gitee：<code>https://gitee.com/Ethanyan</code></li>
 <li>CSDN、简书与头条号更新不及时，暂且不填</li>
 </ul>
-<center> > 扫描下方二维码关注微信公众号 < </center>
-
 <p><img src="https://gitee.com/Ethanyan/pic_data/raw/master/Pythonnote.png" alt="全栈技术精选"></p>
 ]]></content>
       <categories>
