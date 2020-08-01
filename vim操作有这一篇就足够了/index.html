@@ -101,7 +101,8 @@
       
 
       
-      <p><strong>Author: 闫玉良</strong></p>
+      <center>Author：闫玉良</center>
+
 <p><code>vi/vim</code> 的重要性不言而喻，比如登录服务器操作。那么如何掌握呢？看这一篇足矣。</p>
 <blockquote>
 <p>因为小闫同学最近迷上了 <code>vim</code>，正在使用并打算以后也用其彻底替代 <code>Pycharm</code> 等编辑工具，所以才有了此文。</p>
@@ -126,27 +127,19 @@
 <p>2.注意区分大小写。</p>
 <p>3.打开文件默认进入的就是命令模式，输入模式或者末行模式下按 <code>esc</code> 键进入命令模式</p>
 </blockquote>
-<ol>
-<li><strong>控制光标</strong>：<code>H</code>是左； <code>J</code> 是下；<code>K</code> 是上；<code>L</code> 是右。</li>
-</ol>
+<p>1) <strong>控制光标</strong>：<code>H</code>是左； <code>J</code> 是下；<code>K</code> 是上；<code>L</code> 是右。</p>
 <blockquote>
 <p>可以使用方向键 (←↓↑→)控制，但是通常不这么做，因为程序员的双手一般都放在字母区域，去按方向键，再回到字母区域所需时间太长。使用 <code>hjkl</code> ，标准打字姿势中右手完全可以操作，方便快捷。</p>
 </blockquote>
-<ol start="2">
-<li><strong>滚屏操作</strong>：需要与 <code>Ctrl</code> 键配合使用，向上滚动半屏是 <code>Ctrl + u</code> ，向下滚动半屏是 <code>Ctrl + d</code>。当然为了快速操作，还有滚动一屏：向上滚动一屏 <code>Ctrl + b</code> ，向下滚动一屏 <code>Ctrl + f</code>。</li>
-</ol>
+<p>2) <strong>滚屏操作</strong>：需要与 <code>Ctrl</code> 键配合使用，向上滚动半屏是 <code>Ctrl + u</code> ，向下滚动半屏是 <code>Ctrl + d</code>。当然为了快速操作，还有滚动一屏：向上滚动一屏 <code>Ctrl + b</code> ，向下滚动一屏 <code>Ctrl + f</code>。</p>
 <blockquote>
 <p>为了记忆，滚动半屏可以看做是 <code>up/down</code> ，分别是 <code>u/d</code>；滚动全屏可以看做 <code>back/forword</code>，分别是 <code>b/f</code></p>
 </blockquote>
-<ol start="3">
-<li><strong>移动到行首或行尾</strong>：这个快捷键一定要记忆，超级方便。</li>
-</ol>
-<p><code>0</code> ：它是数字 0。可以快速移动光标到所在行的行首。</p>
+<p>3) <strong>移动到行首或行尾</strong>：这个快捷键一定要记忆，超级方便。</p>
+<p><code>0</code> ：它是数字0。可以快速移动光标到所在行的行首。</p>
 <p><code>$</code> ：英文输入下，按 <code>shift</code> 和数字键 4 即可。可以快速移动光标到所在行行尾第一个不是非空字符下。</p>
 <p><code>^</code> ：英文输入下，按 <code>shift</code> 和数字键 6 即可。可以快速移动光标到所在行，<strong>第一个非空字符</strong>处。因为敲代码时总有缩进，当然希望到这一行代码的第一个字母，而不是这一行行首的空格了。</p>
-<ol start="4">
-<li><strong>其他移动光标的操作</strong>：</li>
-</ol>
+<p>4) <strong>其他移动光标的操作</strong>：</p>
 <p><code>G</code> ：到文件最后一行。如果想要到指定的哪一行可以输入行号，再输入 <code>G</code> 。（注意：是大写的 <code>G</code>）比如到 67 行，输入 <code>67 + G</code></p>
 <blockquote>
 <p>到指定行是我最喜欢的功能。当然需要配合显示行号使用，显示行号会在末行模式处讲。</p>
@@ -154,9 +147,7 @@
 <p><code>gg</code> ：到文件第一行。</p>
 <p><code>&gt;&gt;</code> ：文本向右移动</p>
 <p><code>&lt;&lt;</code> ：文本左移</p>
-<ol start="5">
-<li><strong>删除操作</strong>：</li>
-</ol>
+<p>5) <strong>删除操作</strong>：</p>
 <p><code>x</code> ：删除光标后一个字符</p>
 <p><code>X</code> ：（大写）删除光标前一个字符</p>
 <p><code>d</code> ：删除键</p>
@@ -165,28 +156,17 @@
 <p><code>D</code> ：删除光标后所有内容</p>
 <p><code>daw</code> ：删除光标所在单词（<strong>超级常用</strong>）</p>
 <p>配合可视模式选中一些内容，再按 <code>d</code> 就可以删除这些内容了。</p>
-<ol start="6">
-<li><p><strong>可视模式</strong>：<code>v</code> 按字符移动光标选择内容，<code>V</code> (大写) 按行上下移动选择内容。</p>
-</li>
-<li><p><strong>撤销</strong>：<code>u</code> 撤销一步操作，<code>Ctrl + r</code> 反撤销。</p>
-</li>
-<li><p><strong>复制粘贴</strong>：<code>y</code> 是复制，<code>p</code> 是粘贴。配合可视模式，选中内容后，按 <code>y</code> 即可复制，按 <code>p</code> 粘贴。<code>yy</code> 是复制光标所在行。</p>
-</li>
-</ol>
+<p>6) <strong>可视模式</strong>：<code>v</code> 按字符移动光标选择内容，<code>V</code> (大写) 按行上下移动选择内容。</p>
+<p>7) <strong>撤销</strong>：<code>u</code> 撤销一步操作，<code>Ctrl + r</code> 反撤销。</p>
+<p>8) <strong>复制粘贴</strong>：<code>y</code> 是复制，<code>p</code> 是粘贴。配合可视模式，选中内容后，按 <code>y</code> 即可复制，按 <code>p</code> 粘贴。<code>yy</code> 是复制光标所在行。</p>
 <blockquote>
 <p>注意：如果是复制一行内容，粘贴时会向下粘贴一行；如果是复制几个字符，会向光标后粘贴。<strong>只针对当前文件有效</strong>，也就是退出当前文件后，复制的内容不在了。</p>
 </blockquote>
-<ol start="9">
-<li><p><strong>重复操作</strong>：<code>.</code> 重复上一步操作</p>
-</li>
-<li><p><strong>替换操作</strong>：</p>
-</li>
-</ol>
+<p>9) <strong>重复操作</strong>：<code>.</code> 重复上一步操作</p>
+<p>10) <strong>替换操作</strong>：</p>
 <p>按 <code>r</code> 后再按要替换的字母。如将 <code>n</code> 替换为 <code>m</code> ：将光标移动到字母 <code>n</code> 下，然后按 <code>r</code> ，再按 <code>m</code> 即可。</p>
 <p>按 <code>R</code> 后，再按要替换的字母，替换后，光标会移动到后一个字符，可以再次执行替换操作，不必一直按 <code>r</code>。</p>
-<ol start="11">
-<li><strong>进入输入模式</strong>：</li>
-</ol>
+<p>11) <strong>进入输入模式</strong>：</p>
 <p><code>i</code>：插入光标前一个字符</p>
 <p><code>a</code>：插入光标后一个字符</p>
 <p><code>I</code>：插入行首</p>
@@ -195,42 +175,32 @@
 <p><code>O</code>：（大写）向上新开一行,插入行首</p>
 <h3 id="2-2-输入模式"><a href="#2-2-输入模式" class="headerlink" title="2.2 输入模式"></a>2.2 输入模式</h3><p>输入模式下，不能使用快捷键，可以正常打字或者使用方向键控制光标。按 <code>Esc</code> 键进入命令模式。</p>
 <h3 id="2-3-末行模式"><a href="#2-3-末行模式" class="headerlink" title="2.3 末行模式"></a>2.3 末行模式</h3><p>在命令模式下，按 <code>:</code> 进入末行模式。退出末行模式按 <code>esc</code> 键，即可进入命令模式。</p>
-<ol>
-<li>显示行号</li>
-</ol>
+<p>1) 显示行号</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">:set nu</span><br></pre></td></tr></table></figure>
 
-<ol start="2">
-<li>查找</li>
-</ol>
+<p>2) 查找</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">:/要查找的内容</span><br></pre></td></tr></table></figure>
 
 <p>按 <code>n</code> 查找下一个；按 <code>N</code> 查找上一个。</p>
-<ol start="3">
-<li>高亮显示查找内容</li>
-</ol>
+<p>3) 高亮显示查找内容</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">:set hlsearch</span><br></pre></td></tr></table></figure>
 
-<ol start="4">
-<li>替换</li>
-</ol>
+<p>4) 替换</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 末行模式下，将当前文件中的所有abc替换成123</span></span><br><span class="line">:%s/abc/123/g</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 末行模式下，将第一行至第10行之间的abc替换成123</span></span><br><span class="line">:1, 10s/abc/123/g</span><br></pre></td></tr></table></figure>
 
 <blockquote>
-<p>1.%表示整个文件；1, 10 表示 1 到 10 行范围内</p>
+<p>1.%表示整个文件；1, 10表示1到10行范围内</p>
 <p>2.<code>s</code> 表示替换</p>
 <p>3.<code>g</code> 表示全局</p>
 </blockquote>
-<ol start="5">
-<li>退出文件</li>
-</ol>
+<p>5) 退出文件</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 保存并退出</span></span><br><span class="line">:wq</span><br><span class="line"><span class="meta">#</span><span class="bash"> 直接退出</span></span><br><span class="line">:q</span><br><span class="line"><span class="meta">#</span><span class="bash"> 强制退出</span></span><br><span class="line">:q!</span><br></pre></td></tr></table></figure>
 
 <h2 id="3-总结的一些骚操作"><a href="#3-总结的一些骚操作" class="headerlink" title="3.总结的一些骚操作"></a>3.总结的一些骚操作</h2><p>1.要查找光标所在单词，直接按下面的快捷键：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">*</span><br></pre></td></tr></table></figure>
 
 <blockquote>
-<p>也就是按 <code>shift</code> + 键盘字母区上方数字键 8</p>
+<p>也就是按 <code>shift</code> + 键盘字母区上方数字键8</p>
 </blockquote>
 <p>2.如何快速选中一个单词：先把光标移动到该单词下方，然后按 <code>b</code> 移动光标到单词首字母，按 <code>v</code> 进入可视模式，再按 <code>e</code> 选中当前单词，即 <code>bve</code>。选中之后就可以按 <code>y</code> 复制，或者按 <code>d</code> 删除了。</p>
 <p>3.我想把内容复制后，其他文件也使用，就好像 <code>ctrl c</code> 那样。可以使用如下快捷键：</p>
@@ -245,7 +215,7 @@
 <p><strong>目录树</strong>：<code>NERDTree</code></p>
 <p><strong>搜索文件</strong>：<code>CtrlP</code></p>
 <p><strong>基于内容搜索文件</strong>：<code>ack</code></p>
-<p><strong>python 函数跳转功能</strong>：<code>ptags</code> 可以查看我的文章『<a href="https://www.pythonnote.cn/vim实现python函数跳转/">vim 实现 python 函数跳转</a>』</p>
+<p><strong>python函数跳转功能</strong>：<code>ptags</code> 可以查看我的文章『<a href="https://www.pythonnote.cn/vim实现python函数跳转/">vim 实现 python 函数跳转</a>』</p>
 <p><strong>代码折叠</strong>：这个不是插件，而是修改 <code>.vimrc</code> 配置文件，<code>Google</code> 一下</p>
 <p><strong>代码补全</strong>：<code>YCM</code> (<code>YouCompleteMe</code>)</p>
 <blockquote>

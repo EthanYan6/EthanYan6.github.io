@@ -101,8 +101,9 @@
       
 
       
-      <p><strong>Author: 闫玉良</strong></p>
-<p>Vue 框架如同 Python 中的 Django 框架一样，让一切操作变得超级简单，只需在规定的目录下书写规定的代码即可，至于如何运作，框架自己搞定。此篇文章仅用于记录 Vue 项目中的一些小坑。</p>
+      <center>Author:闫玉良</center>
+Vue 框架如同 Python 中的 Django 框架一样，让一切操作变得超级简单，只需在规定的目录下书写规定的代码即可，至于如何运作，框架自己搞定。此篇文章仅用于记录 Vue 项目中的一些小坑。
+
 <a id="more"></a>
 
 <p><strong><em>更多精彩文章请关注公众号『Pythonnote』或者『全栈技术精选』</em></strong></p>
@@ -115,7 +116,7 @@
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Too many blank lines at the end of file. Max of 0 allowed</span><br><span class="line"><span class="meta">#</span><span class="bash"> 结尾的空行太多了，超出最大限制</span></span><br></pre></td></tr></table></figure>
 
 <h4 id="2-字符串的坑"><a href="#2-字符串的坑" class="headerlink" title="2.字符串的坑"></a>2.字符串的坑</h4><p>在 <code>Python</code> 中字符串，可以是单引号、双引号，还可以是三引号。但如果在你的 <code>js</code> 文件中向这样写道：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line">  name: <span class="string">"CopClass"</span>,</span><br><span class="line">  data() &#123;</span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">      msg: <span class="string">"今晚吃什么"</span></span><br><span class="line">    &#125;;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line">  name: <span class="string">"CopClass"</span>,</span><br><span class="line">  data () &#123;</span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">      msg: <span class="string">'今晚吃什么'</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>它会提示：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">✘  http://eslint.org/docs/rules/quotes  Strings must use singlequote</span><br><span class="line">src/components/EnterPage.vue:13:9</span><br><span class="line">  name: "CopClass",</span><br></pre></td></tr></table></figure>

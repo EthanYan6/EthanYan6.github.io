@@ -101,8 +101,9 @@
       
 
       
-      <p><strong>Author: 闫玉良</strong></p>
-<p>最近都在搭建自己的博客，不断的调整显示效果，以及添加一些初始功能，总算大体框架完成，细枝末节尚待商榷。小闫同学的博客地址为 <a href="http://www.pythonnote.cn/">http://www.pythonnote.cn/</a> ，希望大家多多捧场 ~ 当然也希望大家多多关注公众号『全栈技术精选』</p>
+       <center>Author：闫玉良</center> 
+最近都在搭建自己的博客，不断的调整显示效果，以及添加一些初始功能，总算大体框架完成，细枝末节尚待商榷。小闫同学的博客地址为  http://www.pythonnote.cn/  ，希望大家多多捧场 ~ 当然也希望大家多多关注公众号『全栈技术精选』
+
 <p>先来几张效果图压场，deng ~ deng ~ dengdeng</p>
 <a id="more"></a>
 
@@ -145,16 +146,16 @@
 <p>如果只添加一个标签：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tags: test</span><br></pre></td></tr></table></figure>
 
-<p>多标签，文章开头添加：（yaml 语法）</p>
+<p>多标签，文章开头添加：（yaml语法）</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">tags:</span><br><span class="line">- test1</span><br><span class="line">- test2</span><br><span class="line">- test3</span><br></pre></td></tr></table></figure>
 
 <h4 id="添加文章分类目录"><a href="#添加文章分类目录" class="headerlink" title="添加文章分类目录"></a>添加文章分类目录</h4><p>添加分类如同标签一样，只需要将 <code>tags</code> 换成 <code>categories</code> 即可，如：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo new page "categories"</span><br></pre></td></tr></table></figure>
 
 <p><strong>注意：</strong>如下形式，同篇文章添加多个目录和标签：</p>
-<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">tags:</span></span><br><span class="line"><span class="bullet">  -</span> <span class="string">算法</span></span><br><span class="line"><span class="bullet">  -</span> <span class="string">数据结构</span></span><br><span class="line"><span class="attr">categories:</span></span><br><span class="line"><span class="bullet">  -</span> <span class="string">算法</span></span><br><span class="line"><span class="bullet">  -</span> <span class="string">数据结构</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">tags:</span></span><br><span class="line"><span class="bullet">-</span> <span class="string">算法</span></span><br><span class="line"><span class="bullet">-</span> <span class="string">数据结构</span></span><br><span class="line"><span class="attr">categories:</span></span><br><span class="line"><span class="bullet">-</span> <span class="string">算法</span></span><br><span class="line"><span class="bullet">-</span> <span class="string">数据结构</span></span><br></pre></td></tr></table></figure>
 
-<p><strong>同篇文章添加多个目录和标签时，请将与其他文章共同的目录放置在前面，优先级高一些。</strong>比如，文章 A 归为目录算法和机器学习下，文章 B 归为目录算法和数据结构下。他们在划分目录时，需如下填写：</p>
+<p><strong>同篇文章添加多个目录和标签时，请将与其他文章共同的目录放置在前面，优先级高一些。</strong>比如，文章A归为目录算法和机器学习下，文章B归为目录算法和数据结构下。他们在划分目录时，需如下填写：</p>
 <figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 文章A</span></span><br><span class="line"><span class="attr">categories:</span></span><br><span class="line"><span class="bullet">-</span> <span class="string">算法</span></span><br><span class="line"><span class="bullet">-</span> <span class="string">机器学习</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 文章B</span></span><br><span class="line"><span class="attr">categories:</span></span><br><span class="line"><span class="bullet">-</span> <span class="string">算法</span></span><br><span class="line"><span class="bullet">-</span> <span class="string">数据结构</span></span><br></pre></td></tr></table></figure>
 
 <p>如果先写各自不同的目录，再写共同目录时，会在前端目录展示页面中出现重复目录。因为框架在创建目录时，会按如下形式创建表示目录的文件夹，以上述例子示范：</p>
@@ -171,7 +172,7 @@
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">![](https://github.com/EthanYan6/pic/raw/master/hexo%E5%91%BD%E4%BB%A4%E9%80%9F%E6%9F%A5%E5%B0%8F%E5%86%8C/blog1.png)</span><br></pre></td></tr></table></figure>
 
 <blockquote>
-<p>连接地址利用以下步骤获取：打开 GitHub 图片仓库后，看到 Download 按钮，右键复制链接</p>
+<p>连接地址利用以下步骤获取：打开GitHub图片仓库后，看到 Download 按钮，右键复制链接</p>
 </blockquote>
 <h4 id="绑定域名"><a href="#绑定域名" class="headerlink" title="绑定域名"></a>绑定域名</h4><p>大家首先需要去腾讯云或者阿里云购买一个域名，然后备案，再通过解析绑定个人博客地址。百度教程超详细，不过多阐述</p>
 <p>命令暂且总结到此，预知后事如何，且听下回分解 ~</p>

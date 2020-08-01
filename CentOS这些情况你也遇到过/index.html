@@ -101,8 +101,9 @@
       
 
       
-      <p><strong>Author: 闫玉良</strong></p>
-<p>CentOS 虚拟机许久未用，忘记密码如何是好？删掉再来又岂能甘心？想安装某个命令，直接 yum install 就可以了吗？远程连接服务器报错该怎样操作？</p>
+      <center>Author: 闫玉良</center>
+CentOS 虚拟机许久未用，忘记密码如何是好？删掉再来又岂能甘心？想安装某个命令，直接 yum install 就可以了吗？远程连接服务器报错该怎样操作？
+
 <a id="more"></a>
 
 <p><strong><em>更多精彩文章请关注公众号『Pythonnote』或者『全栈技术精选』</em></strong></p>
@@ -126,7 +127,7 @@
 
 <p>7.接下来就是修改 <code>root</code> 账号密码了</p>
 <blockquote>
-<p>重复输入一个不少于 8 位的密码（密码在输入时是不显示的，只需要正确输入并回车即可）</p>
+<p>重复输入一个不少于8位的密码（密码在输入时是不显示的，只需要正确输入并回车即可）</p>
 </blockquote>
 <p>8.出现 <code>successfully</code> 字样表示修改成功，但要生效还需继续操作</p>
 <p>9.输入如下命令：</p>
@@ -144,7 +145,7 @@
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum search xxx</span><br></pre></td></tr></table></figure>
 
 <p>耐心等待几分钟，直到执行完毕。然后安装最后提示模块即可。</p>
-<h3 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum search killall</span><br></pre></td></tr></table></figure>
+<h4 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum search killall</span><br></pre></td></tr></table></figure>
 
 <p>提示：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Loaded plugins: fastestmirror, security</span><br><span class="line">Loading mirror speeds from cached hostfile</span><br><span class="line"></span><br><span class="line">base: mirrors.163.com</span><br><span class="line">extras: mirrors.aliyun.com</span><br><span class="line">*&gt; updates: mirrors.aliyun.com</span><br><span class="line">-----------------------------------Matched:killall-----------------------------------/</span><br><span class="line">psmisc.x86_64 : Utilities for managing processes on your system</span><br></pre></td></tr></table></figure>
@@ -166,6 +167,7 @@
 
 <p>3.最后再次使用命令进行连接发现连接成功：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh 用户@你要访问的ip地址</span><br></pre></td></tr></table></figure>
+
 
       
       <!-- reward -->

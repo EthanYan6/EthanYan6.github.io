@@ -65,7 +65,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> 字数统计:</span>
-            <span class="post-count">715字</span>
+            <span class="post-count">719字</span>
         </span>
     </span>
 
@@ -101,28 +101,21 @@
       
 
       
-      <p><strong>Author: 闫玉良</strong></p>
+      <center>Author：闫玉良</center>
+
 <p>项目上线时需要切换生产环境配置信息，这些信息可以直接被保存在项目中吗？如果保存下来，不小心提交到仓库或被破解查看，生产环境岂不是裸奔？那么该如何解决？</p>
 <a id="more"></a>
 
 <p><strong><em>更多精彩文章请关注公众号『Pythonnote』或者『全栈技术精选』</em></strong></p>
 <h2 id="1-演示环境"><a href="#1-演示环境" class="headerlink" title="1.演示环境"></a>1.演示环境</h2><p>本文以 <code>Flask</code> 项目为例说明，简单环境信息：</p>
-<ol>
-<li><p><code>Flask</code> + <code>Flask-RESTful</code></p>
-</li>
-<li><p><code>CentOS</code></p>
-</li>
-</ol>
+<p>1) <code>Flask</code> + <code>Flask-RESTful</code></p>
+<p>2) <code>CentOS</code></p>
 <h2 id="2-方案"><a href="#2-方案" class="headerlink" title="2.方案"></a>2.方案</h2><p>一般配置信息都保存在指定目录下，分为测试、开发以及生产。其中测试与开发配置文件的保留，问题不大，关键就是生产环境配置信息如何处理。</p>
-<ol>
-<li>可以在 <code>.gitignore</code> 文件中添加忽略文件，使其不被提交到仓库。</li>
-</ol>
+<p>1) 可以在 <code>.gitignore</code> 文件中添加忽略文件，使其不被提交到仓库。</p>
 <blockquote>
 <p>虽然不在仓库内，但是配置文件仍然在项目中</p>
 </blockquote>
-<ol start="2">
-<li>可以通过添加环境变量的方式解决。推荐指数 5 颗星 ~</li>
-</ol>
+<p>2) 可以通过添加环境变量的方式解决。推荐指数5颗星 ~ </p>
 <h2 id="3-方案实施"><a href="#3-方案实施" class="headerlink" title="3.方案实施"></a>3.方案实施</h2><p>可以保留项目中开发（测试）环境配置文件，将需要修改的数据库配置项等单独在生产环境配置文件中重写，并配置环境变量（生产配置文件路径）。然后在项目加载默认配置信息后，通过环境变量引入生产配置信息，从而覆盖掉无用配置，隐藏敏感信息。这样我们的生产信息既不在仓库内，也不在项目中，而是在服务器某个角落。项目中的配置信息都是本地配置项，被人知道也无妨，保留后还能造成迷惑。</p>
 <h3 id="3-1-在服务器任意目录下存放生产环境配置信息"><a href="#3-1-在服务器任意目录下存放生产环境配置信息" class="headerlink" title="3.1 在服务器任意目录下存放生产环境配置信息"></a>3.1 在服务器任意目录下存放生产环境配置信息</h3><p>生产配置文件 <code>app_deploy.py</code> 中既可以保存 <code>MySQL</code> 、<code>Redis</code> 和 <code>Elasticsearch</code> 数据库集群信息，还可以保存私钥等敏感信息。</p>
 <p>比如我们将其存放在如下路径：</p>
@@ -137,7 +130,7 @@
 <p>添加常量信息：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">GLOBAL_SETTING_ENV_NAME = 'TOUTIAO_APP_SETTING'</span><br></pre></td></tr></table></figure>
 
-<h3 id="3-4-在项目初始化文件中加载环境变量"><a href="#3-4-在项目初始化文件中加载环境变量" class="headerlink" title="3.4 在项目初始化文件中加载环境变量"></a>3.4 在项目初始化文件中加载环境变量</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> flask <span class="keyword">import</span> Flask</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">create_flask_app</span><span class="params">(config, enable_config_file=False)</span>:</span></span><br><span class="line">    <span class="string">"""</span></span><br><span class="line"><span class="string">    创建 Flask 应用</span></span><br><span class="line"><span class="string">    :param config: 配置信息对象</span></span><br><span class="line"><span class="string">    :param enable_config_file: 是否允许运行环境中的配置文件覆盖已加载的配置信息</span></span><br><span class="line"><span class="string">    :return: Flask 应用</span></span><br><span class="line"><span class="string">    """</span></span><br><span class="line">    app = Flask(__name__)</span><br><span class="line">    app.config.from_object(config)</span><br><span class="line">    <span class="keyword">if</span> enable_config_file:</span><br><span class="line">        <span class="keyword">from</span> utils <span class="keyword">import</span> constants</span><br><span class="line">        app.config.from_envvar(constants.GLOBAL_SETTING_ENV_NAME, silent=<span class="literal">True</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> app</span><br></pre></td></tr></table></figure>
+<h3 id="3-4-在项目初始化文件中加载环境变量"><a href="#3-4-在项目初始化文件中加载环境变量" class="headerlink" title="3.4 在项目初始化文件中加载环境变量"></a>3.4 在项目初始化文件中加载环境变量</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> flask <span class="keyword">import</span> Flask</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">create_flask_app</span><span class="params">(config, enable_config_file=False)</span>:</span></span><br><span class="line">    <span class="string">"""</span></span><br><span class="line"><span class="string">    创建 Flask 应用</span></span><br><span class="line"><span class="string">    :param config: 配置信息对象</span></span><br><span class="line"><span class="string">    :param enable_config_file: 是否允许运行环境中的配置文件覆盖已加载的配置信息</span></span><br><span class="line"><span class="string">    :return: Flask 应用</span></span><br><span class="line"><span class="string">    """</span></span><br><span class="line">    app = Flask(__name__)</span><br><span class="line">    app.config.from_object(config)</span><br><span class="line">    <span class="keyword">if</span> enable_config_file:</span><br><span class="line">        <span class="keyword">from</span> utils <span class="keyword">import</span> constants</span><br><span class="line">        app.config.from_envvar(constants.GLOBAL_SETTING_ENV_NAME, silent=<span class="literal">True</span>)</span><br><span class="line">        </span><br><span class="line">    <span class="keyword">return</span> app</span><br></pre></td></tr></table></figure>
 
 <p>以上只是本人在实际项目中的一个小应用，可以类比去设置 <code>Django</code> 项目。当然，如果你有更好方法可以后台给小闫留言，不胜感激。</p>
 <p><strong><em>更多精彩文章请关注公众号『Pythonnote』或者『全栈技术精选』</em></strong></p>

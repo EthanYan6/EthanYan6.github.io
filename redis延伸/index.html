@@ -74,7 +74,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-book-open-line"></i>
             <span class="post-meta-item-text"> 阅读时长≈</span>
-            <span class="post-count">3分钟</span>
+            <span class="post-count">4分钟</span>
         </span>
     </span>
 </div>
@@ -101,7 +101,8 @@
       
 
       
-      <p><strong>Author: 闫玉良</strong></p>
+      <center>Author：闫玉良</center>
+
 <p>在掌握了 <code>redis</code> 常用的五种类型以及适用场景后，快来学习更多高级操作吧 ~</p>
 <a id="more"></a>
 
@@ -111,16 +112,10 @@
 <p>事务执行过程：开启事务，进行相关操作（所有操作按顺序添加到队列中），执行。</p>
 </blockquote>
 <p>此处可能有人会问：既然不支持回滚，那么在事务执行的过程中，所处理的数据被其他人修改了，怎么办？<code>redis</code> 提供了一个监视器 <code>watch</code> 命令，它的执行过程如下：</p>
-<ol>
-<li><p>使用监视器监控一个变量</p>
-</li>
-<li><p>使用 <code>multi</code> 开启事务</p>
-</li>
-<li><p>向队列中添加一系列命令</p>
-</li>
-<li><p>在使用 <code>exec</code> 统一执行队列中所有操作前，监视器会去查看监控的变量是否被更改过，如果有变化直接报错，没有则正常执行</p>
-</li>
-</ol>
+<p>1) 使用监视器监控一个变量</p>
+<p>2) 使用 <code>multi</code> 开启事务</p>
+<p>3) 向队列中添加一系列命令</p>
+<p>4) 在使用 <code>exec</code> 统一执行队列中所有操作前，监视器会去查看监控的变量是否被更改过，如果有变化直接报错，没有则正常执行</p>
 <p>看到上述执行过程后，会发现它类似于「乐观锁」</p>
 <blockquote>
 <p>单机支持事务，集群不支持。</p>
@@ -133,35 +128,19 @@
 <p><strong>优点：</strong>可以在客户端统一收集指令；会隐式的执行 <code>multi</code> 与 <code>exec</code> 命令。</p>
 <h2 id="2-Redis-持久化"><a href="#2-Redis-持久化" class="headerlink" title="2.Redis 持久化"></a>2.Redis 持久化</h2><p><code>redis</code> 是内存型的数据库，为保证发生宕机时可以恢复数据，所以需要持久化。共有下方两种方式：</p>
 <h3 id="2-1-RDB"><a href="#2-1-RDB" class="headerlink" title="2.1 RDB"></a>2.1 RDB</h3><p>快照持久化（把当前内存状态刷入硬盘）</p>
-<ol>
-<li><p>创建子进程执行，停顿时长（随着数据量的增大，创建子进程所耗费的时间会越来越长。比如使用了 40G 内存后，创建一个子进程可能耗费 4s 多，这 4s 数据库会处于停服状态）</p>
-</li>
-<li><p>定期触发（默认开启）</p>
-</li>
-<li><p>手动执行 <code>BGSAVE</code> 命令（<code>background save</code> 后台保存）时触发</p>
-</li>
-<li><p>执行 <code>SHUTDOWN</code> 关闭数据库时触发</p>
-</li>
-</ol>
+<p>1) 创建子进程执行，停顿时长（随着数据量的增大，创建子进程所耗费的时间会越来越长。比如使用了40G内存后，创建一个子进程可能耗费4s多，这4s数据库会处于停服状态）</p>
+<p>2) 定期触发（默认开启）</p>
+<p>3) 手动执行 <code>BGSAVE</code> 命令（<code>background save</code> 后台保存）时触发</p>
+<p>4) 执行 <code>SHUTDOWN</code> 关闭数据库时触发</p>
 <h3 id="2-2-AOF"><a href="#2-2-AOF" class="headerlink" title="2.2 AOF"></a>2.2 AOF</h3><p>追加文件的方式进行持久化</p>
-<ol>
-<li><p>保存的是操作指令</p>
-</li>
-<li><p>默认关闭</p>
-</li>
-<li><p>可以选择 <code>appendsync always</code> / <code>everysec</code> / <code>no</code> 三种方式，一般选择每秒记录一次</p>
-</li>
-<li><p>占用磁盘一定量时会进行压缩，可手动开启配置项</p>
-</li>
-</ol>
+<p>1) 保存的是操作指令</p>
+<p>2) 默认关闭</p>
+<p>3) 可以选择 <code>appendsync always</code> / <code>everysec</code> / <code>no</code> 三种方式，一般选择每秒记录一次</p>
+<p>4) 占用磁盘一定量时会进行压缩，可手动开启配置项</p>
 <p><strong>在实际使用时一般两种方式都开启。</strong></p>
 <h2 id="3-Redis-复制集"><a href="#3-Redis-复制集" class="headerlink" title="3.Redis 复制集"></a>3.Redis 复制集</h2><p>为了在部分节点无法通讯时，保证服务仍然可用。</p>
-<h3 id="3-1-设置方式"><a href="#3-1-设置方式" class="headerlink" title="3.1 设置方式"></a>3.1 设置方式</h3><ol>
-<li><p>服务运行时执行命令 <code>slaveof</code></p>
-</li>
-<li><p>服务启动前在 <code>redis.conf</code> 配置文件中填写以下代码：</p>
-</li>
-</ol>
+<h3 id="3-1-设置方式"><a href="#3-1-设置方式" class="headerlink" title="3.1 设置方式"></a>3.1 设置方式</h3><p>1) 服务运行时执行命令 <code>slaveof</code></p>
+<p>2) 服务启动前在 <code>redis.conf</code> 配置文件中填写以下代码：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">slaveof &lt;masterip&gt; &lt;masterport&gt;</span><br></pre></td></tr></table></figure>
 
 <h3 id="3-2-注意事项"><a href="#3-2-注意事项" class="headerlink" title="3.2 注意事项"></a>3.2 注意事项</h3><p>只能一主多从（不允许存在互为备份的两个 <code>master</code>），但是可以层级化，如下图所示。</p>
@@ -170,26 +149,15 @@
 <p>使用如下命令查看当前 <code>redis</code> 服务器所扮演角色：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">info Replication</span><br></pre></td></tr></table></figure>
 
-<h2 id="4-Sentinel-哨兵"><a href="#4-Sentinel-哨兵" class="headerlink" title="4.Sentinel 哨兵"></a>4.Sentinel 哨兵</h2><ol>
-<li><p>是一个独立的进程，安装之后默认存在，可以通过源码文件<code>sentinel.conf</code> 查看。</p>
-</li>
-<li><p>哨兵独立于 <code>redis</code> 之外运行。</p>
-</li>
-</ol>
+<h2 id="4-Sentinel-哨兵"><a href="#4-Sentinel-哨兵" class="headerlink" title="4.Sentinel 哨兵"></a>4.Sentinel 哨兵</h2><p>1) 是一个独立的进程，安装之后默认存在，可以通过源码文件<code>sentinel.conf</code> 查看。</p>
+<p>2) 哨兵独立于 <code>redis</code> 之外运行。</p>
 <h3 id="4-1-作用"><a href="#4-1-作用" class="headerlink" title="4.1 作用"></a>4.1 作用</h3><p>看管 <code>redis</code> 主从角色关系，进行故障转移（<code>failover</code>） ，从而实现高可用。它的功能简单来说就是 <code>master</code> 死掉了，可以自动将 <code>slave</code> 上升为 <code>master</code> 。</p>
-<h3 id="4-2-注意"><a href="#4-2-注意" class="headerlink" title="4.2 注意"></a>4.2 注意</h3><p>至少运行 3 个实例，因为决定 <code>redis</code> 是否挂掉需要选举，超过半数投票才可以使 <code>master</code> 客观下线。还会在哨兵中选举出一个 <code>leader</code> 去故障转移，在 <code>slave</code> 中选出哪台被上升为 <code>master</code></p>
-<h2 id="5-redis-用途"><a href="#5-redis-用途" class="headerlink" title="5.redis 用途"></a>5.redis 用途</h2><ol>
-<li><p>缓存</p>
-</li>
-<li><p>持久存储：比如数据库的冗余字段存放到 <code>redis</code> 中</p>
-</li>
-<li><p>队列：消息平台，比如 <code>celery</code> 的消息队列实现</p>
-</li>
-<li><p>排行榜/计数器</p>
-</li>
-<li><p>发布订阅</p>
-</li>
-</ol>
+<h3 id="4-2-注意"><a href="#4-2-注意" class="headerlink" title="4.2 注意"></a>4.2 注意</h3><p>至少运行3个实例，因为决定 <code>redis</code> 是否挂掉需要选举，超过半数投票才可以使 <code>master</code> 客观下线。还会在哨兵中选举出一个 <code>leader</code> 去故障转移，在 <code>slave</code> 中选出哪台被上升为 <code>master</code></p>
+<h2 id="5-redis-用途"><a href="#5-redis-用途" class="headerlink" title="5.redis 用途"></a>5.redis 用途</h2><p>1) 缓存</p>
+<p>2) 持久存储：比如数据库的冗余字段存放到 <code>redis</code> 中</p>
+<p>3) 队列：消息平台，比如 <code>celery</code> 的消息队列实现</p>
+<p>4) 排行榜/计数器</p>
+<p>5) 发布订阅</p>
 <p><strong><em>更多精彩文章请关注公众号『Pythonnote』或者『全栈技术精选』</em></strong></p>
 
       

@@ -101,59 +101,46 @@
       
 
       
-      <p><strong>Author: 闫玉良</strong></p>
+      <center>Author：闫玉良</center>
+
 <p>对于最常使用的数据格式 <code>json</code> 而言，数据库 <code>mysql</code> 提供了保存及一系列操作方法供大家使用，下面我们就来学习一下吧。</p>
 <a id="more"></a>
 
 <p><strong><em>更多精彩文章请关注公众号『Pythonnote』或者『全栈技术精选』</em></strong></p>
 <h2 id="1-数据类型"><a href="#1-数据类型" class="headerlink" title="1.数据类型"></a>1.数据类型</h2><p>在 <code>mysql5.7</code> 版本之前， <code>json</code> 数据一般使用数据类型 <code>LONGBLOB</code> 或者 <code>LONGTEXT</code> 存储。后来大家「千呼万唤」官方才正式引入了数据类型 <code>JSON</code>。</p>
-<h2 id="2-创建-json-类型字段"><a href="#2-创建-json-类型字段" class="headerlink" title="2.创建 json 类型字段"></a>2.创建 json 类型字段</h2><ol>
-<li><p>创建一个测试数据库 <code>testdb</code></p>
-</li>
-<li><p>切换到此数据库下</p>
-</li>
-<li><p>创建一张表 <code>t1</code>，表中包含一个字段 <code>jsondoc</code> ，其字段类型为 <code>JSON</code></p>
-</li>
-<li><p>查看表的构建信息</p>
-</li>
-</ol>
+<h2 id="2-创建json类型字段"><a href="#2-创建json类型字段" class="headerlink" title="2.创建json类型字段"></a>2.创建json类型字段</h2><p>1) 创建一个测试数据库 <code>testdb</code></p>
+<p>2) 切换到此数据库下</p>
+<p>3) 创建一张表 <code>t1</code>，表中包含一个字段 <code>jsondoc</code> ，其字段类型为 <code>JSON</code></p>
+<p>4) 查看表的构建信息</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; create database testdb;</span><br><span class="line">Query OK, 1 row affected (0.03 sec)</span><br><span class="line"></span><br><span class="line">mysql&gt; use testdb;</span><br><span class="line">Database changed</span><br><span class="line"></span><br><span class="line">mysql&gt; create table t1 (jsondoc JSON);</span><br><span class="line">Query OK, 0 rows affected (0.07 sec)</span><br><span class="line"></span><br><span class="line">mysql&gt; show create table t1;</span><br><span class="line">+<span class="comment">-------+----------------------------------------------------------------------------------------------------------------------+</span></span><br><span class="line">| Table | <span class="keyword">Create</span> <span class="keyword">Table</span>                                                                                                         |</span><br><span class="line">+<span class="comment">-------+----------------------------------------------------------------------------------------------------------------------+</span></span><br><span class="line">| t1    | <span class="keyword">CREATE</span> <span class="keyword">TABLE</span> <span class="string">`t1`</span> (</span><br><span class="line">  <span class="string">`jsondoc`</span> <span class="keyword">json</span> <span class="keyword">DEFAULT</span> <span class="literal">NULL</span></span><br><span class="line">) <span class="keyword">ENGINE</span>=<span class="keyword">InnoDB</span> <span class="keyword">DEFAULT</span> <span class="keyword">CHARSET</span>=utf8mb4 <span class="keyword">COLLATE</span>=utf8mb4_0900_ai_ci |</span><br><span class="line">+<span class="comment">-------+----------------------------------------------------------------------------------------------------------------------+</span></span><br><span class="line"><span class="number">1</span> <span class="keyword">row</span> <span class="keyword">in</span> <span class="keyword">set</span> (<span class="number">0.01</span> sec)</span><br></pre></td></tr></table></figure>
-
 <h2 id="3-增删改查"><a href="#3-增删改查" class="headerlink" title="3.增删改查"></a>3.增删改查</h2><h3 id="3-1-新增数据"><a href="#3-1-新增数据" class="headerlink" title="3.1 新增数据"></a>3.1 新增数据</h3><p>新增三条测试数据</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> t1 <span class="keyword">values</span></span><br><span class="line">    (<span class="string">'&#123;"name":"ethanyan","age":25&#125;'</span>),</span><br><span class="line">    (<span class="string">'&#123;"x": 17, "x": "red"&#125;'</span>),</span><br><span class="line">    (<span class="string">'&#123;"x": 17, "x": "red", "x": [3, 5, 7]&#125;'</span>);</span><br></pre></td></tr></table></figure>
-
 <blockquote>
 <p>当我们插入的 <code>json</code> 中包含多个相同字段，表中只会保存最后一个值。可以看下方查询结果。</p>
 </blockquote>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; select * from t1;</span><br><span class="line">+<span class="comment">---------------------------------+</span></span><br><span class="line">| jsondoc                         |</span><br><span class="line">+<span class="comment">---------------------------------+</span></span><br><span class="line">| &#123;"age": 25, "name": "ethanyan"&#125; |</span><br><span class="line">| &#123;"x": "red"&#125;                    |</span><br><span class="line">| &#123;"x": [3, 5, 7]&#125;                |</span><br><span class="line">+<span class="comment">---------------------------------+</span></span><br><span class="line">3 rows in <span class="keyword">set</span> (<span class="number">0.00</span> sec)</span><br></pre></td></tr></table></figure>
 
 <blockquote>
-<p>官方文档提示在 8.0.3 版本中有 bug，上述同一 <code>json</code> 中相同字段情况，会保存第一个值。小闫使用的版本为 8.0.19，此 bug 已修复，最终效果为保存最后一个值。（按书写的先后顺序确定）</p>
+<p>官方文档提示在 8.0.3 版本中有bug，上述同一 <code>json</code> 中相同字段情况，会保存第一个值。小闫使用的版本为8.0.19，此bug已修复，最终效果为保存最后一个值。（按书写的先后顺序确定）</p>
 </blockquote>
 <h3 id="3-2-修改数据"><a href="#3-2-修改数据" class="headerlink" title="3.2 修改数据"></a>3.2 修改数据</h3><h4 id="3-2-1-案例一"><a href="#3-2-1-案例一" class="headerlink" title="3.2.1 案例一"></a>3.2.1 案例一</h4><p>将数据 <code>{&quot;x&quot;: &quot;red&quot;}</code> 修改为 <code>{&quot;name&quot;: &quot;hanhan&quot;, &quot;age&quot;: 12}</code></p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">update</span> t1</span><br><span class="line">    <span class="keyword">set</span> jsondoc=<span class="string">'&#123;"name": "hanhan", "age": 12&#125;'</span></span><br><span class="line">    <span class="keyword">where</span> json_extract(jsondoc,<span class="string">"$.x"</span>)=<span class="string">"red"</span>;</span><br></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">update</span> t1 </span><br><span class="line">    <span class="keyword">set</span> jsondoc=<span class="string">'&#123;"name": "hanhan", "age": 12&#125;'</span> </span><br><span class="line">    <span class="keyword">where</span> json_extract(jsondoc,<span class="string">"$.x"</span>)=<span class="string">"red"</span>;</span><br></pre></td></tr></table></figure>
 
-<p>1） <code>json_extract()</code> 函数可以根据 <code>JSON Path Syntax</code> 提取<code>json</code> 字符串中所需的键值。第一个参数 <code>jsondoc</code> 为 <code>json</code> 字符串（此处为字段名）；第二个参数 <code>$.x</code> 是 <code>JSON Path Syntax</code> （此处的意思为提取键 <code>x</code> 的值）。</p>
-<ol start="2">
-<li>整体解读：将表 <code>t1</code> 满足条件的记录中，字段 <code>jsondoc</code> 的值更改为 <code>{&quot;name&quot;: &quot;hanhan&quot;, &quot;age&quot;: 12}</code>。条件：提取 <code>json_doc</code> 中 <code>x</code> 值等于 <code>red</code> 的记录。</li>
-</ol>
+<p>1） <code>json_extract()</code> 函数可以根据 <code>JSON Path Syntax</code> 提取<code>json</code> 字符串中所需的键值。第一个参数 <code>jsondoc</code> 为 <code>json</code> 字符串（此处为字段名）；第二个参数 <code>$.x</code> 是  <code>JSON Path Syntax</code> （此处的意思为提取键 <code>x</code> 的值）。</p>
+<p>2) 整体解读：将表 <code>t1</code>  满足条件的记录中，字段 <code>jsondoc</code> 的值更改为 <code>{&quot;name&quot;: &quot;hanhan&quot;, &quot;age&quot;: 12}</code>。条件：提取 <code>json_doc</code> 中 <code>x</code> 值等于 <code>red</code> 的记录。</p>
 <h4 id="3-2-2-案例二"><a href="#3-2-2-案例二" class="headerlink" title="3.2.2 案例二"></a>3.2.2 案例二</h4><p>将数据 <code>{&quot;x&quot;: [3, 5, 7]}</code> 修改为 <code>{&quot;name&quot;: &quot;rose&quot;, &quot;age&quot;: 18}</code></p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">update</span> t1</span><br><span class="line">    <span class="keyword">set</span> jsondoc=<span class="string">'&#123;"name": "rose", "age": 18&#125;'</span></span><br><span class="line">    <span class="keyword">where</span> json_extract(jsondoc,<span class="string">"$.x[0]"</span>)=<span class="number">3</span>;</span><br></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">update</span> t1 </span><br><span class="line">    <span class="keyword">set</span> jsondoc=<span class="string">'&#123;"name": "rose", "age": 18&#125;'</span> </span><br><span class="line">    <span class="keyword">where</span> json_extract(jsondoc,<span class="string">"$.x[0]"</span>)=<span class="number">3</span>;</span><br></pre></td></tr></table></figure>
 
-<p>可以看出使用的函数、语法与案例一中大致相同，不同的是 <code>JSON Path Syntax</code>。</p>
-<ol>
-<li>如果 <code>json</code> 字符串中某一键值为数组，我们可以通过下标索引 <code>[n]</code> 的方式提取元素。</li>
-</ol>
+<p>可以看出使用的函数、语法与案例一中大致相同，不同的是  <code>JSON Path Syntax</code>。</p>
+<p>1) 如果 <code>json</code> 字符串中某一键值为数组，我们可以通过下标索引 <code>[n]</code> 的方式提取元素。</p>
 <blockquote>
 <p><code>n</code> 为下标</p>
 </blockquote>
-<ol start="2">
-<li>整体解读：将表 <code>t1</code> 满足条件的记录中，字段 <code>jsondoc</code> 的值更改为 <code>{&quot;name&quot;: &quot;rose&quot;, &quot;age&quot;: 18}</code>。条件：提取 <code>json_doc</code> 中 <code>x</code> 所指向数组下标为 0 的元素值等于 3 的记录。</li>
-</ol>
+<p>2) 整体解读：将表 <code>t1</code>  满足条件的记录中，字段 <code>jsondoc</code> 的值更改为 <code>{&quot;name&quot;: &quot;rose&quot;, &quot;age&quot;: 18}</code>。条件：提取 <code>json_doc</code> 中 <code>x</code> 所指向数组下标为0的元素值等于3的记录。</p>
 <h3 id="3-3-查询数据"><a href="#3-3-查询数据" class="headerlink" title="3.3 查询数据"></a>3.3 查询数据</h3><h4 id="3-3-1-查询全部"><a href="#3-3-1-查询全部" class="headerlink" title="3.3.1 查询全部"></a>3.3.1 查询全部</h4><p>我们可以查询全部数据，看上述操作是否已经修改数据。</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; select * from t1;</span><br><span class="line">+<span class="comment">---------------------------------+</span></span><br><span class="line">| jsondoc                         |</span><br><span class="line">+<span class="comment">---------------------------------+</span></span><br><span class="line">| &#123;"age": 25, "name": "ethanyan"&#125; |</span><br><span class="line">| &#123;"age": 12, "name": "hanhan"&#125;   |</span><br><span class="line">| &#123;"age": 18, "name": "rose"&#125;     |</span><br><span class="line">+<span class="comment">---------------------------------+</span></span><br><span class="line">3 rows in <span class="keyword">set</span> (<span class="number">0.00</span> sec)</span><br></pre></td></tr></table></figure>
 
-<h4 id="3-3-2-查询-json-中键值对"><a href="#3-3-2-查询-json-中键值对" class="headerlink" title="3.3.2 查询 json 中键值对"></a>3.3.2 查询 json 中键值对</h4><p>需求：查询表中字段 <code>jsondoc</code> 中 <code>name</code> 的值。</p>
+<h4 id="3-3-2-查询json中键值对"><a href="#3-3-2-查询json中键值对" class="headerlink" title="3.3.2 查询json中键值对"></a>3.3.2 查询json中键值对</h4><p>需求：查询表中字段 <code>jsondoc</code> 中 <code>name</code> 的值。</p>
 <p><strong>方式一：</strong> 使用操作符 <code>-&gt;</code></p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; select jsondoc-&gt;"$.name" from t1;</span><br><span class="line">+<span class="comment">-------------------+</span></span><br><span class="line">| jsondoc-&gt;"$.name" |</span><br><span class="line">+<span class="comment">-------------------+</span></span><br><span class="line">| "ethanyan"        |</span><br><span class="line">| "hanhan"          |</span><br><span class="line">| "rose"            |</span><br><span class="line">+<span class="comment">-------------------+</span></span><br><span class="line">3 rows in <span class="keyword">set</span> (<span class="number">0.00</span> sec)</span><br></pre></td></tr></table></figure>
 
@@ -164,12 +151,8 @@
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; select json_extract(jsondoc,'$.name') from t1;</span><br><span class="line">+<span class="comment">--------------------------------+</span></span><br><span class="line">| json_extract(jsondoc,'$.name') |</span><br><span class="line">+<span class="comment">--------------------------------+</span></span><br><span class="line">| "ethanyan"                     |</span><br><span class="line">| "hanhan"                       |</span><br><span class="line">| "rose"                         |</span><br><span class="line">+<span class="comment">--------------------------------+</span></span><br><span class="line">3 rows in <span class="keyword">set</span> (<span class="number">0.00</span> sec)</span><br></pre></td></tr></table></figure>
 
 <p><strong>注意：</strong></p>
-<ol>
-<li><p>可以看出方式一与方式三效果完全一致，方式二结果中没有双引号</p>
-</li>
-<li><p>操作符 <code>-&gt;</code> 和 <code>-&gt;&gt;</code> 的左侧为字段名，右侧为 <code>JSON Path Syntax</code></p>
-</li>
-</ol>
+<p>1) 可以看出方式一与方式三效果完全一致，方式二结果中没有双引号</p>
+<p>2) 操作符 <code>-&gt;</code> 和 <code>-&gt;&gt;</code> 的左侧为字段名，右侧为  <code>JSON Path Syntax</code> </p>
 <h3 id="3-4-删除数据"><a href="#3-4-删除数据" class="headerlink" title="3.4 删除数据"></a>3.4 删除数据</h3><p>最后我们删除一条记录：</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">delete</span> <span class="keyword">from</span> t1 <span class="keyword">where</span> json_extract(jsondoc,<span class="string">"$.name"</span>)=<span class="string">"rose"</span>;</span><br></pre></td></tr></table></figure>
 
@@ -188,6 +171,7 @@
 
 <h3 id="4-5-JSON-MERGE-PATCH"><a href="#4-5-JSON-MERGE-PATCH" class="headerlink" title="4.5 JSON_MERGE_PATCH"></a>4.5 JSON_MERGE_PATCH</h3><p>该函数会将多个 <code>json</code> 对象合并，并去重。我们与函数 4.4 进行比对直观感受一下。</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; select</span><br><span class="line">    -&gt;     json_merge_preserve('&#123;"a": 1, "b": 2&#125;', '&#123;"c": 3, "a": 4&#125;', '&#123;"c": 5, "d": 3&#125;') as preserve,</span><br><span class="line">    -&gt;     json_merge_patch('&#123;"a": 3, "b": 2&#125;', '&#123;"c": 3, "a": 4&#125;', '&#123;"c": 5, "d": 3&#125;') as patch\G</span><br><span class="line">*************************** 1. row ***************************</span><br><span class="line">preserve: &#123;"a": [1, 4], "b": 2, "c": [3, 5], "d": 3&#125;</span><br><span class="line">   patch: &#123;"a": 4, "b": 2, "c": 5, "d": 3&#125;</span><br><span class="line">1 row in <span class="keyword">set</span> (<span class="number">0.00</span> sec)</span><br></pre></td></tr></table></figure>
+
 
 <h3 id="4-6-JSON-VALID"><a href="#4-6-JSON-VALID" class="headerlink" title="4.6 JSON_VALID"></a>4.6 JSON_VALID</h3><p>验证是否为有效的 <code>json</code></p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; select json_valid('&#123;"name":1&#125;');</span><br><span class="line">+<span class="comment">--------------------------+</span></span><br><span class="line">| json_valid('&#123;"name":1&#125;') |</span><br><span class="line">+<span class="comment">--------------------------+</span></span><br><span class="line">|                        1 |</span><br><span class="line">+<span class="comment">--------------------------+</span></span><br><span class="line">1 row in <span class="keyword">set</span> (<span class="number">0.00</span> sec)</span><br><span class="line"></span><br><span class="line">mysql&gt; <span class="keyword">select</span> json_valid(<span class="string">'null'</span>);</span><br><span class="line">+<span class="comment">--------------------+</span></span><br><span class="line">| json_valid('null') |</span><br><span class="line">+<span class="comment">--------------------+</span></span><br><span class="line">|                  1 |</span><br><span class="line">+<span class="comment">--------------------+</span></span><br><span class="line">1 row in <span class="keyword">set</span> (<span class="number">0.00</span> sec)</span><br><span class="line"></span><br><span class="line">mysql&gt; <span class="keyword">select</span> json_valid(<span class="string">'NULL'</span>);</span><br><span class="line">+<span class="comment">--------------------+</span></span><br><span class="line">| json_valid('NULL') |</span><br><span class="line">+<span class="comment">--------------------+</span></span><br><span class="line">|                  0 |</span><br><span class="line">+<span class="comment">--------------------+</span></span><br><span class="line">1 row in <span class="keyword">set</span> (<span class="number">0.00</span> sec)</span><br></pre></td></tr></table></figure>
@@ -211,14 +195,9 @@
 <h3 id="4-10-JSON-REMOVE"><a href="#4-10-JSON-REMOVE" class="headerlink" title="4.10 JSON_REMOVE"></a>4.10 JSON_REMOVE</h3><p>接收 <code>JSON</code> 文档和一个或多个指定要从文档中删除的值的路径。返回值是原始文档减去该文档内存在的路径所选择的值。也就是删除指定键值对。</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; select json_remove(@j, '$[2]', '$[1].b[1]', '$[1].b[1]');</span><br><span class="line">+<span class="comment">---------------------------------------------------+</span></span><br><span class="line">| json_remove(@j, '$[2]', '$[1].b[1]', '$[1].b[1]') |</span><br><span class="line">+<span class="comment">---------------------------------------------------+</span></span><br><span class="line">| ["a", &#123;"b": [true]&#125;]                              |</span><br><span class="line">+<span class="comment">---------------------------------------------------+</span></span><br><span class="line">1 row in <span class="keyword">set</span> (<span class="number">0.00</span> sec)</span><br></pre></td></tr></table></figure>
 
-<h2 id="5-注意"><a href="#5-注意" class="headerlink" title="5.注意"></a>5.注意</h2><ol>
-<li><p>通过 <code>JSON_OBJECT</code> 转换的值字符集为 <code>utf8mb4</code>，<code>collation</code> 为 <code>utf8mb4_bin</code></p>
-</li>
-<li><p><code>utf8mb4</code> 是现在最新版本 <code>mysql</code> 默认的编码格式。</p>
-</li>
-<li><p>原来 <code>mysql</code> 支持的 <code>UTF-8</code> 编码最大字符长度为 3 字节，如果遇到 4 字节的宽字符就会插入异常了。最著名的错误便是 <code>Emoji</code>表情插入报错，还有很多不常用的汉字，以及任何新增的 <code>Unicode</code> 字符报错等等。</p>
-</li>
-</ol>
+<h2 id="5-注意"><a href="#5-注意" class="headerlink" title="5.注意"></a>5.注意</h2><p>1) 通过 <code>JSON_OBJECT</code> 转换的值字符集为 <code>utf8mb4</code>，<code>collation</code> 为 <code>utf8mb4_bin</code></p>
+<p>2) <code>utf8mb4</code> 是现在最新版本 <code>mysql</code> 默认的编码格式。</p>
+<p>3) 原来 <code>mysql</code> 支持的 <code>UTF-8</code> 编码最大字符长度为 3 字节，如果遇到 4 字节的宽字符就会插入异常了。最著名的错误便是 <code>Emoji</code>表情插入报错，还有很多不常用的汉字，以及任何新增的 <code>Unicode</code> 字符报错等等。</p>
 <blockquote>
 <p><code>Emoji</code> 是一种特殊的 <code>Unicode</code> 编码，常见于 <code>ios</code> 和 <code>android</code> 手机上</p>
 </blockquote>

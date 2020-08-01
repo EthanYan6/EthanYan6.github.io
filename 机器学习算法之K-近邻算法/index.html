@@ -101,7 +101,8 @@
       
 
       
-      <p><strong>Author: 闫玉良</strong></p>
+      <center>Editor：闫玉良</center>
+
 <p><code>K Nearest Neighbor</code> 算法又叫 <code>KNN</code> 算法，此算法最早是由 <code>Cover</code> 和 <code>Hart</code> 提出的一种分类算法，是机器学习里面一个经典之作， 总体来说 <code>KNN</code> 算法是相对比较容易理解的。</p>
 <a id="more"></a>
 
@@ -118,22 +119,22 @@
 <p><img src="https://github.com/EthanYan6/pic/raw/master/1.4%20%E6%AC%A7%E5%BC%8F%E8%B7%9D%E7%A6%BB2.png" alt="欧式距离2"></p>
 <h3 id="1-3-示例"><a href="#1-3-示例" class="headerlink" title="1.3 示例"></a>1.3 示例</h3><p>假设我们现在有几部电影</p>
 <p><img src="https://github.com/EthanYan6/pic/raw/master/image-20190316204421392.png" alt="示例1"></p>
-<p>其中 <code>?</code> 号电影不知道类别，如何去预测？我们可以利用 K 近邻算法的思想</p>
+<p>其中 <code>?</code> 号电影不知道类别，如何去预测？我们可以利用K近邻算法的思想</p>
 <p><img src="https://github.com/EthanYan6/pic/raw/master/image-20190316204448303.png" alt="示例2"></p>
 <p>分别计算每个电影和被预测电影的距离，然后求解</p>
 <p><img src="https://github.com/EthanYan6/pic/raw/master/image-20190316204517137.png" alt="示例3"></p>
-<h2 id="2-KNN-api-初步使用"><a href="#2-KNN-api-初步使用" class="headerlink" title="2.KNN api 初步使用"></a>2.KNN api 初步使用</h2><h3 id="2-1-Scikit-learn-工具介绍"><a href="#2-1-Scikit-learn-工具介绍" class="headerlink" title="2.1 Scikit-learn 工具介绍"></a>2.1 Scikit-learn 工具介绍</h3><ul>
+<h2 id="2-KNN-api-初步使用"><a href="#2-KNN-api-初步使用" class="headerlink" title="2.KNN api 初步使用"></a>2.KNN api 初步使用</h2><h3 id="2-1-Scikit-learn工具介绍"><a href="#2-1-Scikit-learn工具介绍" class="headerlink" title="2.1 Scikit-learn工具介绍"></a>2.1 Scikit-learn工具介绍</h3><ul>
 <li><code>Python</code> 语言的机器学习工具</li>
 <li><code>Scikit-learn</code> 包括许多知名的机器学习算法的实现</li>
 <li><code>Scikit-learn</code> 文档完善，容易上手，丰富的 <code>API</code></li>
-<li>目前稳定版本 0.19.1</li>
+<li>目前稳定版本0.19.1</li>
 </ul>
 <h3 id="2-2-安装"><a href="#2-2-安装" class="headerlink" title="2.2 安装"></a>2.2 安装</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip3 install scikit-learn==0.19.1</span><br></pre></td></tr></table></figure>
 
 <p>安装好之后可以通过以下命令查看是否安装成功</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> sklearn</span><br></pre></td></tr></table></figure>
 
-<p><strong>注：</strong>安装 <code>scikit-learn</code> 需要 <code>Numpy</code>, <code>Scipy</code> 等库。</p>
+<p><strong>注：</strong>安装 <code>scikit-learn</code> 需要 <code>Numpy</code>,  <code>Scipy</code> 等库。</p>
 <h3 id="2-3-包含内容"><a href="#2-3-包含内容" class="headerlink" title="2.3 包含内容"></a>2.3 包含内容</h3><ul>
 <li>分类、聚类、回归</li>
 <li>特征工程</li>
@@ -161,29 +162,29 @@
 <p>举例:</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">X=[[<span class="number">1</span>,<span class="number">1</span>],[<span class="number">2</span>,<span class="number">2</span>],[<span class="number">3</span>,<span class="number">3</span>],[<span class="number">4</span>,<span class="number">4</span>]];</span><br><span class="line">经计算得:</span><br><span class="line">d =   <span class="number">2</span>     <span class="number">4</span>     <span class="number">6</span>     <span class="number">2</span>     <span class="number">4</span>     <span class="number">2</span></span><br></pre></td></tr></table></figure>
 
-<h3 id="3-3-切比雪夫距离-Chebyshev-Distance"><a href="#3-3-切比雪夫距离-Chebyshev-Distance" class="headerlink" title="3.3 切比雪夫距离 (Chebyshev Distance)"></a>3.3 切比雪夫距离 (Chebyshev Distance)</h3><p>国际象棋中，国王可以直行、横行、斜行，所以国王走一步可以移动到相邻 8 个方格中的任意一个。国王从格子(x1,y1)走到格子(x2,y2)最少需要多少步？这个距离就叫切比雪夫距离。</p>
+<h3 id="3-3-切比雪夫距离-Chebyshev-Distance"><a href="#3-3-切比雪夫距离-Chebyshev-Distance" class="headerlink" title="3.3 切比雪夫距离 (Chebyshev Distance)"></a>3.3 切比雪夫距离 (Chebyshev Distance)</h3><p>国际象棋中，国王可以直行、横行、斜行，所以国王走一步可以移动到相邻8个方格中的任意一个。国王从格子(x1,y1)走到格子(x2,y2)最少需要多少步？这个距离就叫切比雪夫距离。</p>
 <p><img src="https://github.com/EthanYan6/pic/raw/master/1.7%20%E5%88%87%E6%AF%94%E9%9B%AA%E5%A4%AB%E8%B7%9D%E7%A6%BB.png" alt="切比雪夫距离1"></p>
 <p><img src="https://github.com/EthanYan6/pic/raw/master/1.8%20%E5%88%87%E6%AF%94%E9%9B%AA%E5%A4%AB%E8%B7%9D%E7%A6%BB.png" alt="切比雪夫距离2"></p>
 <p>举例:</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">X=[[<span class="number">1</span>,<span class="number">1</span>],[<span class="number">2</span>,<span class="number">2</span>],[<span class="number">3</span>,<span class="number">3</span>],[<span class="number">4</span>,<span class="number">4</span>]];</span><br><span class="line">经计算得:</span><br><span class="line">d =   <span class="number">1</span>     <span class="number">2</span>     <span class="number">3</span>     <span class="number">1</span>     <span class="number">2</span>     <span class="number">1</span></span><br></pre></td></tr></table></figure>
 
 <h3 id="3-4-闵可夫斯基距离-Minkowski-Distance"><a href="#3-4-闵可夫斯基距离-Minkowski-Distance" class="headerlink" title="3.4 闵可夫斯基距离(Minkowski Distance)"></a>3.4 闵可夫斯基距离(Minkowski Distance)</h3><p>闵氏距离不是一种距离，而是一组距离的定义，是对多个距离度量公式的概括性的表述。</p>
-<p>两个 n 维变量 a(x11,x12,…,x1n)与 b(x21,x22,…,x2n)间的闵可夫斯基距离定义为：</p>
+<p>两个n维变量a(x11,x12,…,x1n)与b(x21,x22,…,x2n)间的闵可夫斯基距离定义为：</p>
 <p><img src="https://github.com/EthanYan6/pic/raw/master/image-20190225182628694.png" alt="闵可夫斯基距离"></p>
-<p>其中 p 是一个变参数：</p>
-<p>当 p=1 时，就是曼哈顿距离；</p>
-<p>当 p=2 时，就是欧氏距离；</p>
-<p>当 p→∞ 时，就是切比雪夫距离。</p>
-<p>根据 p 的不同，闵氏距离可以表示某一 类/种 的距离。</p>
+<p>其中p是一个变参数：</p>
+<p>当p=1时，就是曼哈顿距离；</p>
+<p>当p=2时，就是欧氏距离；</p>
+<p>当p→∞时，就是切比雪夫距离。</p>
+<p>根据p的不同，闵氏距离可以表示某一 类/种 的距离。</p>
 <p><strong>小结：</strong></p>
 <p>1.闵氏距离，包括曼哈顿距离、欧氏距离和切比雪夫距离都存在明显的缺点:</p>
 <p>比如： 二维样本(身高[单位:cm],体重[单位:kg]),现有三个样本：a(180,50)，b(190,50)，c(180,60)。</p>
-<p>a 与 b 的闵氏距离（无论是曼哈顿距离、欧氏距离或切比雪夫距离）等于 a 与 c 的闵氏距离。但实际上身高的 10cm 并不能和体重的 10kg 划等号。</p>
+<p>a与b的闵氏距离（无论是曼哈顿距离、欧氏距离或切比雪夫距离）等于a与c的闵氏距离。但实际上身高的10cm并不能和体重的10kg划等号。</p>
 <p><strong>2.闵氏距离的缺点：</strong></p>
-<p><strong>(1)将各个分量的量纲(scale)，也就是“单位”相同的看待了;</strong></p>
-<p><strong>(2)未考虑各个分量的分布（期望，方差等）可能是不同的。</strong></p>
+<p> <strong>(1)将各个分量的量纲(scale)，也就是“单位”相同的看待了;</strong></p>
+<p> <strong>(2)未考虑各个分量的分布（期望，方差等）可能是不同的。</strong></p>
 <h3 id="3-5-标准化欧氏距离-Standardized-EuclideanDistance"><a href="#3-5-标准化欧氏距离-Standardized-EuclideanDistance" class="headerlink" title="3.5 标准化欧氏距离 (Standardized EuclideanDistance)"></a>3.5 标准化欧氏距离 (Standardized EuclideanDistance)</h3><p>标准化欧氏距离是针对欧氏距离的缺点而作的一种改进。</p>
-<p>思路：既然数据各维分量的分布不一样，那先将各个分量都「标准化」到均值、方差相等。假设样本集 X 的均值(mean)为 m，标准差(standard deviation)为 s，X 的「标准化变量」表示为：</p>
+<p>思路：既然数据各维分量的分布不一样，那先将各个分量都「标准化」到均值、方差相等。假设样本集X的均值(mean)为m，标准差(standard deviation)为s，X的「标准化变量」表示为：</p>
 <p><img src="https://github.com/EthanYan6/pic/raw/master/image-20190213184012294.png" alt="image-20190213184012294"></p>
 <p>如果将方差的倒数看成一个权重，也可称之为加权欧氏距离(Weighted Euclidean distance)。</p>
 <p>举例:</p>
@@ -191,36 +192,31 @@
 
 <h3 id="3-6-余弦距离-Cosine-Distance"><a href="#3-6-余弦距离-Cosine-Distance" class="headerlink" title="3.6 余弦距离(Cosine Distance)"></a>3.6 余弦距离(Cosine Distance)</h3><p>几何中，夹角余弦可用来衡量两个向量方向的差异；机器学习中，借用这一概念来衡量样本向量之间的差异。</p>
 <ul>
-<li>二维空间中向量 A(x1,y1)与向量 B(x2,y2)的夹角余弦公式：</li>
+<li>二维空间中向量A(x1,y1)与向量B(x2,y2)的夹角余弦公式：</li>
 </ul>
 <p><img src="https://github.com/EthanYan6/pic/raw/master/14200251_RZRZ.png" alt="余弦距离"></p>
 <ul>
-<li>两个 n 维样本点 a(x11,x12,…,x1n)和 b(x21,x22,…,x2n)的夹角余弦为：</li>
+<li>两个n维样本点a(x11,x12,…,x1n)和b(x21,x22,…,x2n)的夹角余弦为：</li>
 </ul>
 <p><img src="https://github.com/EthanYan6/pic/raw/master/14200252_SE1M.png" alt="余弦距离"></p>
 <p>即：</p>
 <p><img src="https://github.com/EthanYan6/pic/raw/master/14200252_tITR.png" alt="余弦距离"></p>
-<p>夹角余弦取值范围为[-1,1]。余弦越大表示两个向量的夹角越小，余弦越小表示两向量的夹角越大。当两个向量的方向重合时余弦取最大值 1，当两个向量的方向完全相反余弦取最小值-1。</p>
+<p>夹角余弦取值范围为[-1,1]。余弦越大表示两个向量的夹角越小，余弦越小表示两向量的夹角越大。当两个向量的方向重合时余弦取最大值1，当两个向量的方向完全相反余弦取最小值-1。</p>
 <p>举例:</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">X=[[<span class="number">1</span>,<span class="number">1</span>],[<span class="number">1</span>,<span class="number">2</span>],[<span class="number">2</span>,<span class="number">5</span>],[<span class="number">1</span>,<span class="number">-4</span>]]</span><br><span class="line">经计算得:</span><br><span class="line">d =   <span class="number">0.9487</span>    <span class="number">0.9191</span>   <span class="number">-0.5145</span>    <span class="number">0.9965</span>   <span class="number">-0.7593</span>   <span class="number">-0.8107</span></span><br></pre></td></tr></table></figure>
 
-<h3 id="3-7-汉明距离-Hamming-Distance-【了解】"><a href="#3-7-汉明距离-Hamming-Distance-【了解】" class="headerlink" title="3.7 汉明距离(Hamming Distance)【了解】"></a>3.7 汉明距离(Hamming Distance)【了解】</h3><p>两个等长字符串 s1 与 s2 的汉明距离为：将其中一个变为另外一个所需要作的最小字符替换次数。</p>
+<h3 id="3-7-汉明距离-Hamming-Distance-【了解】"><a href="#3-7-汉明距离-Hamming-Distance-【了解】" class="headerlink" title="3.7 汉明距离(Hamming Distance)【了解】"></a>3.7 汉明距离(Hamming Distance)【了解】</h3><p>两个等长字符串s1与s2的汉明距离为：将其中一个变为另外一个所需要作的最小字符替换次数。</p>
 <p>另外还有一些距离，但是并不需要详细学习：<strong>杰卡德距离(Jaccard Distance)</strong>、<strong>马氏距离(Mahalanobis Distance)</strong></p>
-<h2 id="4-k-值的选择"><a href="#4-k-值的选择" class="headerlink" title="4.k 值的选择"></a>4.k 值的选择</h2><p><strong>K 值过小</strong>：</p>
-<p>容易受到异常点的影响</p>
-<p><strong>k 值过大：</strong></p>
-<p>受到样本均衡的问题</p>
+<h2 id="4-k-值的选择"><a href="#4-k-值的选择" class="headerlink" title="4.k 值的选择"></a>4.k 值的选择</h2><p><strong>K值过小</strong>：</p>
+<p> 容易受到异常点的影响</p>
+<p><strong>k值过大：</strong></p>
+<p> 受到样本均衡的问题</p>
 <hr>
-<p><strong>K 值选择问题，李航博士的「统计学习方法」一书中所说：</strong></p>
-<ol>
-<li><p>选择较小的 K 值，就相当于用较小的领域中的训练实例进行预测，「学习」近似误差会减小，只有与输入实例较近或相似的训练实例才会对预测结果起作用，与此同时带来的问题是「学习」的估计误差会增大，换句话说，<strong>K 值的减小就意味着整体模型变得复杂，容易发生过拟合；</strong></p>
-</li>
-<li><p>选择较大的 K 值，就相当于用较大领域中的训练实例进行预测，其优点是可以减少学习的估计误差，但缺点是学习的近似误差会增大。这时候，<strong>与输入实例较远（不相似的）训练实例也会对预测器作用，使预测发生错误，且 K 值的增大就意味着整体的模型变得简单。</strong></p>
-</li>
-<li><p>K=N（N 为训练样本个数），则完全不足取，因为此时无论输入实例是什么，都只是简单的预测它属于在训练实例中最多的类，模型过于简单，忽略了训练实例中大量有用信息。</p>
-</li>
-</ol>
-<p>在实际应用中，K 值一般取一个比较小的数值，例如采用交叉验证法（简单来说，就是把训练数据在分成两组:训练集和验证集）来选择最优的 K 值。对这个简单的分类器进行泛化，用核方法把这个线性模型扩展到非线性的情况，具体方法是把低维数据集映射到高维特征空间。</p>
+<p><strong>K值选择问题，李航博士的「统计学习方法」一书中所说：</strong></p>
+<p>1) 选择较小的K值，就相当于用较小的领域中的训练实例进行预测，「学习」近似误差会减小，只有与输入实例较近或相似的训练实例才会对预测结果起作用，与此同时带来的问题是「学习」的估计误差会增大，换句话说，<strong>K值的减小就意味着整体模型变得复杂，容易发生过拟合；</strong></p>
+<p>2) 选择较大的K值，就相当于用较大领域中的训练实例进行预测，其优点是可以减少学习的估计误差，但缺点是学习的近似误差会增大。这时候，<strong>与输入实例较远（不相似的）训练实例也会对预测器作用，使预测发生错误，且K值的增大就意味着整体的模型变得简单。</strong></p>
+<p>3) K=N（N为训练样本个数），则完全不足取，因为此时无论输入实例是什么，都只是简单的预测它属于在训练实例中最多的类，模型过于简单，忽略了训练实例中大量有用信息。</p>
+<p>在实际应用中，K值一般取一个比较小的数值，例如采用交叉验证法（简单来说，就是把训练数据在分成两组:训练集和验证集）来选择最优的K值。对这个简单的分类器进行泛化，用核方法把这个线性模型扩展到非线性的情况，具体方法是把低维数据集映射到高维特征空间。</p>
 <hr>
 <p><strong>近似误差</strong>：对现有训练集的训练误差，关注训练集，如果近似误差过小可能会出现过拟合的现象，对现有的训练集能有很好的预测，但是对未知的测试样本将会出现较大偏差的预测。模型本身不是最接近最佳模型。</p>
 <p><strong>估计误差</strong>：可以理解为对测试集的测试误差，关注测试集，估计误差小说明对未知数据的预测能力好，模型本身最接近最佳模型。</p>
