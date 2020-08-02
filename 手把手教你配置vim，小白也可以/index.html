@@ -10,7 +10,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
   <title>
-    django这些查询技巧你会了吗? |  EthanYan&#39;s Blog
+    手把手教你配置vim，小白也可以 |  EthanYan&#39;s Blog
   </title>
   <meta name="generator" content="hexo-theme-yilia-plus">
   
@@ -33,7 +33,7 @@
   <div id="app">
     <main class="content">
       <section class="outer">
-  <article id="post-django这些查询技巧你会了吗" class="article article-type-post" itemscope
+  <article id="post-手把手教你配置vim，小白也可以" class="article article-type-post" itemscope
   itemprop="blogPost" data-scroll-reveal>
 
   <div class="article-inner">
@@ -41,7 +41,7 @@
     <header class="article-header">
        
 <h1 class="article-title sea-center" style="border-left:0" itemprop="name">
-  django这些查询技巧你会了吗?
+  手把手教你配置vim，小白也可以
 </h1>
   
 
@@ -50,12 +50,12 @@
 
     
     <div class="article-meta">
-      <a href="/django%E8%BF%99%E4%BA%9B%E6%9F%A5%E8%AF%A2%E6%8A%80%E5%B7%A7%E4%BD%A0%E4%BC%9A%E4%BA%86%E5%90%97/" class="article-date">
-  <time datetime="2020-07-31T08:13:49.000Z" itemprop="datePublished">2020-07-31</time>
+      <a href="/%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E4%BD%A0%E9%85%8D%E7%BD%AEvim%EF%BC%8C%E5%B0%8F%E7%99%BD%E4%B9%9F%E5%8F%AF%E4%BB%A5/" class="article-date">
+  <time datetime="2020-08-02T06:18:07.000Z" itemprop="datePublished">2020-08-02</time>
 </a>
       
   <div class="article-category">
-    <a class="article-category-link" href="/categories/django/">django</a>
+    <a class="article-category-link" href="/categories/vim/">vim</a>
   </div>
 
       
@@ -65,7 +65,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> 字数统计:</span>
-            <span class="post-count">1.1k字</span>
+            <span class="post-count">521字</span>
         </span>
     </span>
 
@@ -74,7 +74,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-book-open-line"></i>
             <span class="post-meta-item-text"> 阅读时长≈</span>
-            <span class="post-count">4分钟</span>
+            <span class="post-count">2分钟</span>
         </span>
     </span>
 </div>
@@ -101,56 +101,59 @@
       
 
       
-      <center>Author：闫玉良</center>
+      <center>Author: 闫玉良</center>
 
-<p>任何不考虑后果的查询都是耍流氓！</p>
+<p>想使用 <code>vim</code> ，但被各种配置项搞得头晕眼花？想让 <code>vim</code> 与众不同，奈何手残搞得系统崩溃？这篇文章就是你的福音！快来看看吧！</p>
 <a id="more"></a>
 
 <p><strong><em>更多精彩文章请关注公众号『Pythonnote』或者『全栈技术精选』</em></strong></p>
-<h2 id="1-select-related"><a href="#1-select-related" class="headerlink" title="1.select_related"></a>1.select_related</h2><blockquote>
-<p>关联查询优化，只会进行<strong>一次</strong>查询，然后缓存结果。平时其他方法都是惰性查询，当每次取值时都会查询一次数据库。</p>
-<p><strong>建议</strong>：所有关联查询使用此方法。</p>
-</blockquote>
-<p>假设有两张表，一张表是书籍，一张表是英雄人物：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> django.db <span class="keyword">import</span> models</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 书籍表</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">BookInfo</span><span class="params">(models.Model)</span>:</span></span><br><span class="line">    btitle = models.CharField(max_length=<span class="number">20</span>, verbose_name=<span class="string">'名称'</span>)</span><br><span class="line"></span><br><span class="line">    <span class="class"><span class="keyword">class</span> <span class="title">Meta</span>:</span></span><br><span class="line">        db_table = <span class="string">'tb_books'</span></span><br><span class="line">        </span><br><span class="line"></span><br><span class="line"><span class="comment"># 英雄表</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">HeroInfo</span><span class="params">(models.Model)</span>:</span></span><br><span class="line">    GENDER_CHOICES = (</span><br><span class="line">        (<span class="number">0</span>, <span class="string">'male'</span>),</span><br><span class="line">        (<span class="number">1</span>, <span class="string">'female'</span>)</span><br><span class="line">    )</span><br><span class="line">    hname = models.CharField(max_length=<span class="number">20</span>, verbose_name=<span class="string">'名称'</span>)</span><br><span class="line">    hgender = models.SmallIntegerField(choices=GENDER_CHOICES, default=<span class="number">0</span>, verbose_name=<span class="string">'性别'</span>)</span><br><span class="line">    hbook = models.ForeignKey(BookInfo, on_delete=models.CASCADE, verbose_name=<span class="string">'图书'</span>)</span><br><span class="line"></span><br><span class="line">    <span class="class"><span class="keyword">class</span> <span class="title">Meta</span>:</span></span><br><span class="line">        db_table = <span class="string">'tb_heros'</span></span><br></pre></td></tr></table></figure>
+<p><img src="https://github.com/EthanYan6/pic/raw/master/vim%E5%B1%95%E7%A4%BA.png" alt="vim展示"></p>
+<h2 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h2><h3 id="1-安装包管理工具"><a href="#1-安装包管理工具" class="headerlink" title="1.安装包管理工具"></a>1.安装包管理工具</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim</span><br></pre></td></tr></table></figure>
 
-<p>现在要查询所有的英雄以及他们所在的书籍名称：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">heros = HeroInfo.objects.select_related(<span class="string">'hbook'</span>).all()</span><br><span class="line"><span class="comment"># 查询之后构造一个字典</span></span><br><span class="line">heros_dict = &#123;&#125;</span><br><span class="line"><span class="keyword">for</span> hero <span class="keyword">in</span> heros:</span><br><span class="line">    heros_dict[hero.hname] = hero.hbook.btitle  <span class="comment"># 关联查询后，直接使用.取值即可，不会再进行数据库查询</span></span><br></pre></td></tr></table></figure>
+<h3 id="2-下载最经典的vim配色方案"><a href="#2-下载最经典的vim配色方案" class="headerlink" title="2.下载最经典的vim配色方案"></a>2.下载最经典的vim配色方案</h3><p>1.克隆所需仓库文件</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone https://github.com/tomasr/molokai.git ~/.vim/colors</span><br></pre></td></tr></table></figure>
+
+<p>2.移动文件</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mv ~/.vim/colors/colors/molokai.vim ~/.vim/colors</span><br></pre></td></tr></table></figure>
 
 <blockquote>
-<p>1.如上 <code>select_related</code> 中的参数 <code>hbook</code> 为外键名称，它会将所关联的表中所有信息都查询出来。</p>
-<p>2.如果书籍表 <code>BookInfo</code> 中还有外键，我们还想再关联查询那张表的信息，可以用如下的方式：<code>hbook__外键名称</code>，外键和外键之间用双下划线连接。如果有三层关系可以：<code>外键名称__外键名称__外键名称</code>，以此类推，快乐就完事儿了。</p>
-<p>3.<code>select_related</code> 中还可以通过参数 <code>depth</code> 指定查询的深度。比如示例中可以改为：<code>select_related(depth=1)</code>，它的意思就是往下查询一层。如果书籍表中还有外键，我们都想查询出来，可以：<code>select_related(depth=2)</code>，以此类推。</p>
-<p>4.示例中的方式是指定查询的外键，只查询了英雄类中所关联的图书。如果英雄类中有好几个外键，我们都想关联查询，参数 <code>depth</code> 的优势就凸显出来了，不需要详细写出每一个外键的名称。</p>
+<p>将克隆下来的代码中 <code>molokai.vim</code> 放到 <code>vim</code> 可读取配置的目录内（<code>~/.vim/colors</code>）。</p>
 </blockquote>
-<p>最后的结果形如：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="string">'迪迦'</span>: <span class="string">'迪迦奥特曼'</span>,</span><br><span class="line">  <span class="string">'武松'</span>: <span class="string">'水浒传'</span>,</span><br><span class="line">  ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>3.删除无用文件</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd ~/.vim/colors</span><br><span class="line">rm -rf colors README.md LICENSE.md</span><br></pre></td></tr></table></figure>
 
-<h2 id="2-values-list"><a href="#2-values-list" class="headerlink" title="2.values_list"></a>2.values_list</h2><blockquote>
-<p>取出指定字段，组成列表</p>
-</blockquote>
-<p>比如我需要一个所有英雄名称的列表：<code>[&#39;迪迦&#39;, &#39;武松&#39;...]</code>。你可能想到的方法是查询出所有的英雄信息，然后遍历每个对象，将对象的名称放到指定的列表中，完成需求。使用 <code>values_list</code> 可以一步到位：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">list(HeroInfo.objects.values_list(<span class="string">'hname'</span>, flat=<span class="literal">True</span>))</span><br></pre></td></tr></table></figure>
-
-<h3 id="2-1-详解"><a href="#2-1-详解" class="headerlink" title="2.1 详解"></a>2.1 详解</h3><p>1.<code>values_list</code> 中第一个参数填写的是要查询的字段名称，此处为 <code>hname</code> ；第二个参数 <code>flat</code> 设置为 <code>True</code> 是为了不以元祖的形式展示，而是直接将值取出来，形如：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;QuerySet [<span class="string">'迪迦'</span>, <span class="string">'武松'</span>...]&gt;</span><br><span class="line"><span class="comment"># 不设置 flat 结果如下</span></span><br><span class="line">&lt;QuerySet [(<span class="string">'迪迦'</span>,), (<span class="string">'武松'</span>,)...]&gt;</span><br></pre></td></tr></table></figure>
-
-<p>2.有人会问：为什么外面要使用 <code>list</code> 方法呢？如上示例，查询结果是一个 <code>QuerySet</code> 对象，为了使用方便，一般根据需要转换为 <code>python</code> 的列表。</p>
-<h2 id="3-annotate"><a href="#3-annotate" class="headerlink" title="3.annotate"></a>3.annotate</h2><blockquote>
-<p>聚合函数</p>
-</blockquote>
-<p><strong>需求</strong>：统计出英雄表中男女的数量，显示聚合结果。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> django.db.models <span class="keyword">import</span> Count</span><br><span class="line"></span><br><span class="line">HeroInfo.objects.values(<span class="string">'hgender'</span>).annotate(number=Count(<span class="string">'hgender'</span>))</span><br></pre></td></tr></table></figure>
-
-<h3 id="3-1-详解"><a href="#3-1-详解" class="headerlink" title="3.1 详解"></a>3.1 详解</h3><p>1.上方的意思是根据字段 <code>hgender</code> 进行分组，然后统计每组的人数，人数一列起名为 <code>number</code></p>
-<p>2.查询结果如下：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;QuerySet [&#123;<span class="string">'hgender'</span>: <span class="number">0</span>, <span class="string">'number'</span>: <span class="number">10</span>&#125;, &#123;<span class="string">'hgender'</span>: <span class="number">1</span>, <span class="string">'number'</span>: <span class="number">3</span>&#125;]&gt;</span><br></pre></td></tr></table></figure>
-
-<p>3.可以看出英雄表中男性（0）为 10 人；女性（1）为 3 人。</p>
-<p>4.<strong>注意</strong>：<code>values</code> 和 <code>annotate</code> 的顺序一定要特别关注！示例中的顺序代表根据性别分组显示聚合结果，但是反过来后就变成了先根据 <code>hgender</code> 统计数量，最后只取字段 <code>hgender</code> 的值。</p>
 <blockquote>
-<p>也许你会想示例中既然  <code>annotate</code> 可以统计数量，那么直接使用去掉 <code>values</code> 不是好了？不对！它是统计了数量，但只是为查询的每行记录赋予了一个新字段 <code>number</code> ，并没有聚合结果，不如示例中那样清晰，哪个性别有几个，展示的明明白白。</p>
+<p><code>colors</code> 中有用的文件我们已经移除，这个空目录可以删除；<code>README.md</code> 是说明文件；<code>LICENSE.md</code> 是授权说明文件。</p>
 </blockquote>
+<h3 id="3-安装搜索命令ag"><a href="#3-安装搜索命令ag" class="headerlink" title="3.安装搜索命令ag"></a>3.安装搜索命令ag</h3><h4 id="3-1-Ubuntu"><a href="#3-1-Ubuntu" class="headerlink" title="3.1 Ubuntu"></a>3.1 Ubuntu</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install silversearcher-ag</span><br></pre></td></tr></table></figure>
+
+<h4 id="3-2-CentOS"><a href="#3-2-CentOS" class="headerlink" title="3.2 CentOS"></a>3.2 CentOS</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">yum install epel-release</span><br><span class="line">yum -y install the_silver_searcher</span><br></pre></td></tr></table></figure>
+
+<h4 id="3-3-Mac"><a href="#3-3-Mac" class="headerlink" title="3.3 Mac"></a>3.3 Mac</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew install the_silver_searcher</span><br></pre></td></tr></table></figure>
+
+<h3 id="4-使用提供的-vimrc文件替换掉电脑中的同名配置文件"><a href="#4-使用提供的-vimrc文件替换掉电脑中的同名配置文件" class="headerlink" title="4.使用提供的.vimrc文件替换掉电脑中的同名配置文件"></a>4.使用提供的.vimrc文件替换掉电脑中的同名配置文件</h3><p><strong><code>.vimrc</code> 获取方式：关注微信公众号「全栈技术精选」，回复「vimrc」即可获取</strong></p>
+<p>1.将 <code>.vimrc</code> 放到家目录 <code>~/</code> 下</p>
+<p>2.使用 <code>vim</code> 打开 <code>.vimrc</code></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim ~/.vimrc</span><br></pre></td></tr></table></figure>
+
+<p>3.使用包管理器安装配置文件中的插件</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">:PluginInstall</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>上述命令在 <code>vim</code> 的命令模式下输入。输入完后回车，耐心等待下载，插件比较多耗时比较长。如果下载完成后，底部状态行会显示 <code>Done!</code></p>
+</blockquote>
+<h3 id="5-注意"><a href="#5-注意" class="headerlink" title="5.注意"></a>5.注意</h3><p>1.如果报错：The ycmd server SHUT DOWN (restart with …low the instructions in the documen</p>
+<p><strong>解决方法</strong>：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd ~/.vim/bundle/YouCompleteMe</span><br><span class="line">./install.py</span><br></pre></td></tr></table></figure>
+
+<p>2.如果报错：ERROR: Unable to find executable ‘cmake’. CMake is required to build ycmd</p>
+<p><strong>解决办法</strong>：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> Ubuntu</span></span><br><span class="line">sudo apt install cmake</span><br><span class="line"><span class="meta">#</span><span class="bash"> Mac</span></span><br><span class="line">brew install cmake</span><br></pre></td></tr></table></figure>
+
+<p>3.如果安装完后颜色显示与图片中不一致，状态栏颜色也是黑色，那么可以考虑使用如下方法解决。</p>
+<p><strong>解决方法</strong>：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">vim ~/.vimrc</span><br><span class="line"><span class="meta">#</span><span class="bash"> 添加如下信息</span></span><br><span class="line">set t_Co=256</span><br></pre></td></tr></table></figure>
+
 <p><strong><em>更多精彩文章请关注公众号『Pythonnote』或者『全栈技术精选』</em></strong></p>
 
       
@@ -221,14 +224,14 @@
     <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://www.pythonnote.cn/django%E8%BF%99%E4%BA%9B%E6%9F%A5%E8%AF%A2%E6%8A%80%E5%B7%A7%E4%BD%A0%E4%BC%9A%E4%BA%86%E5%90%97/" alt="微信分享二维码">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://www.pythonnote.cn/%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E4%BD%A0%E9%85%8D%E7%BD%AEvim%EF%BC%8C%E5%B0%8F%E7%99%BD%E4%B9%9F%E5%8F%AF%E4%BB%A5/" alt="微信分享二维码">
     </div>
 </div>
 
 <div id="share-mask"></div>
       
       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/django/" rel="tag">django</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vim/" rel="tag">vim</a></li></ul>
 
 
     </footer>
@@ -239,19 +242,10 @@
   
   <nav class="article-nav">
     
-      <a href="/%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E4%BD%A0%E9%85%8D%E7%BD%AEvim%EF%BC%8C%E5%B0%8F%E7%99%BD%E4%B9%9F%E5%8F%AF%E4%BB%A5/" class="article-nav-link">
-        <strong class="article-nav-caption">上一篇</strong>
-        <div class="article-nav-title">
-          
-            手把手教你配置vim，小白也可以
-          
-        </div>
-      </a>
     
-    
-      <a href="/%E5%A6%82%E4%BD%95%E5%86%99%E5%87%BA%E4%BC%98%E7%A7%80%E7%9A%84%E4%BB%A3%E7%A0%81/" class="article-nav-link">
+      <a href="/django%E8%BF%99%E4%BA%9B%E6%9F%A5%E8%AF%A2%E6%8A%80%E5%B7%A7%E4%BD%A0%E4%BC%9A%E4%BA%86%E5%90%97/" class="article-nav-link">
         <strong class="article-nav-caption">下一篇</strong>
-        <div class="article-nav-title">如何写出优秀的代码</div>
+        <div class="article-nav-title">django这些查询技巧你会了吗?</div>
       </a>
     
   </nav>
