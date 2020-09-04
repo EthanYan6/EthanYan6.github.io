@@ -599,13 +599,6 @@
 
   
   <url>
-    <loc>https://www.pythonnote.cn/tags/django/</loc>
-    <lastmod>2020-09-04</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://www.pythonnote.cn/tags/Linux/</loc>
     <lastmod>2020-09-04</lastmod>
     <changefreq>daily</changefreq>
@@ -614,6 +607,13 @@
   
   <url>
     <loc>https://www.pythonnote.cn/tags/CentOS/</loc>
+    <lastmod>2020-09-04</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.pythonnote.cn/tags/django/</loc>
     <lastmod>2020-09-04</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -704,20 +704,6 @@
   </url>
   
   <url>
-    <loc>https://www.pythonnote.cn/tags/sql/</loc>
-    <lastmod>2020-09-04</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.pythonnote.cn/tags/tmux/</loc>
-    <lastmod>2020-09-04</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://www.pythonnote.cn/tags/python/</loc>
     <lastmod>2020-09-04</lastmod>
     <changefreq>daily</changefreq>
@@ -732,7 +718,14 @@
   </url>
   
   <url>
-    <loc>https://www.pythonnote.cn/tags/website/</loc>
+    <loc>https://www.pythonnote.cn/tags/sql/</loc>
+    <lastmod>2020-09-04</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.pythonnote.cn/tags/tmux/</loc>
     <lastmod>2020-09-04</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -747,6 +740,13 @@
   
   <url>
     <loc>https://www.pythonnote.cn/tags/vue/</loc>
+    <lastmod>2020-09-04</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.pythonnote.cn/tags/website/</loc>
     <lastmod>2020-09-04</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -930,14 +930,14 @@
 
   
   <url>
-    <loc>https://www.pythonnote.cn/categories/django/</loc>
+    <loc>https://www.pythonnote.cn/categories/Linux/</loc>
     <lastmod>2020-09-04</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://www.pythonnote.cn/categories/Linux/</loc>
+    <loc>https://www.pythonnote.cn/categories/django/</loc>
     <lastmod>2020-09-04</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -1000,6 +1000,13 @@
   </url>
   
   <url>
+    <loc>https://www.pythonnote.cn/categories/%E9%9D%A2%E8%AF%95%E9%A2%98/</loc>
+    <lastmod>2020-09-04</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://www.pythonnote.cn/categories/sql/</loc>
     <lastmod>2020-09-04</lastmod>
     <changefreq>daily</changefreq>
@@ -1014,7 +1021,7 @@
   </url>
   
   <url>
-    <loc>https://www.pythonnote.cn/categories/%E9%9D%A2%E8%AF%95%E9%A2%98/</loc>
+    <loc>https://www.pythonnote.cn/categories/%E5%89%8D%E7%AB%AF/</loc>
     <lastmod>2020-09-04</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -1022,13 +1029,6 @@
   
   <url>
     <loc>https://www.pythonnote.cn/categories/website/</loc>
-    <lastmod>2020-09-04</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.pythonnote.cn/categories/%E5%89%8D%E7%AB%AF/</loc>
     <lastmod>2020-09-04</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -1119,13 +1119,6 @@
   </url>
   
   <url>
-    <loc>https://www.pythonnote.cn/categories/pycharm/</loc>
-    <lastmod>2020-09-04</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://www.pythonnote.cn/categories/windows/script/</loc>
     <lastmod>2020-09-04</lastmod>
     <changefreq>daily</changefreq>
@@ -1133,7 +1126,21 @@
   </url>
   
   <url>
+    <loc>https://www.pythonnote.cn/categories/pycharm/</loc>
+    <lastmod>2020-09-04</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://www.pythonnote.cn/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/</loc>
+    <lastmod>2020-09-04</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.pythonnote.cn/categories/%E9%83%A8%E7%BD%B2/</loc>
     <lastmod>2020-09-04</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -1148,13 +1155,6 @@
   
   <url>
     <loc>https://www.pythonnote.cn/categories/%E7%AE%97%E6%B3%95/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/</loc>
-    <lastmod>2020-09-04</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.pythonnote.cn/categories/%E9%83%A8%E7%BD%B2/</loc>
     <lastmod>2020-09-04</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
