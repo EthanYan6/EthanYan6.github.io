@@ -599,6 +599,13 @@
 
   
   <url>
+    <loc>https://www.pythonnote.cn/tags/django/</loc>
+    <lastmod>2020-09-04</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://www.pythonnote.cn/tags/Linux/</loc>
     <lastmod>2020-09-04</lastmod>
     <changefreq>daily</changefreq>
@@ -607,13 +614,6 @@
   
   <url>
     <loc>https://www.pythonnote.cn/tags/CentOS/</loc>
-    <lastmod>2020-09-04</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.pythonnote.cn/tags/django/</loc>
     <lastmod>2020-09-04</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -718,14 +718,14 @@
   </url>
   
   <url>
-    <loc>https://www.pythonnote.cn/tags/sql/</loc>
+    <loc>https://www.pythonnote.cn/tags/tmux/</loc>
     <lastmod>2020-09-04</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://www.pythonnote.cn/tags/tmux/</loc>
+    <loc>https://www.pythonnote.cn/tags/sql/</loc>
     <lastmod>2020-09-04</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -930,14 +930,14 @@
 
   
   <url>
-    <loc>https://www.pythonnote.cn/categories/Linux/</loc>
+    <loc>https://www.pythonnote.cn/categories/django/</loc>
     <lastmod>2020-09-04</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://www.pythonnote.cn/categories/django/</loc>
+    <loc>https://www.pythonnote.cn/categories/Linux/</loc>
     <lastmod>2020-09-04</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -1007,14 +1007,14 @@
   </url>
   
   <url>
-    <loc>https://www.pythonnote.cn/categories/sql/</loc>
+    <loc>https://www.pythonnote.cn/categories/tmux/</loc>
     <lastmod>2020-09-04</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://www.pythonnote.cn/categories/tmux/</loc>
+    <loc>https://www.pythonnote.cn/categories/sql/</loc>
     <lastmod>2020-09-04</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -1077,14 +1077,14 @@
   </url>
   
   <url>
-    <loc>https://www.pythonnote.cn/categories/flask/pocoo/</loc>
+    <loc>https://www.pythonnote.cn/categories/vim/</loc>
     <lastmod>2020-09-04</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://www.pythonnote.cn/categories/vim/</loc>
+    <loc>https://www.pythonnote.cn/categories/flask/pocoo/</loc>
     <lastmod>2020-09-04</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
