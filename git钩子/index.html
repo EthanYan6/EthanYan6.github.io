@@ -10,7 +10,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
   <title>
-    手把手教你配置vim，小白也可以 |  EthanYan&#39;s Blog
+    git钩子 |  EthanYan&#39;s Blog
   </title>
   <meta name="generator" content="hexo-theme-yilia-plus">
   
@@ -37,7 +37,7 @@
   <div id="app">
     <main class="content">
       <section class="outer">
-  <article id="post-手把手教你配置vim，小白也可以" class="article article-type-post" itemscope
+  <article id="post-git钩子" class="article article-type-post" itemscope
   itemprop="blogPost" data-scroll-reveal>
 
   <div class="article-inner">
@@ -45,7 +45,7 @@
     <header class="article-header">
        
 <h1 class="article-title sea-center" style="border-left:0" itemprop="name">
-  手把手教你配置vim，小白也可以
+  git钩子
 </h1>
   
 
@@ -54,12 +54,12 @@
 
     
     <div class="article-meta">
-      <a href="/%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E4%BD%A0%E9%85%8D%E7%BD%AEvim%EF%BC%8C%E5%B0%8F%E7%99%BD%E4%B9%9F%E5%8F%AF%E4%BB%A5/" class="article-date">
-  <time datetime="2020-08-02T06:18:07.000Z" itemprop="datePublished">2020-08-02</time>
+      <a href="/git%E9%92%A9%E5%AD%90/" class="article-date">
+  <time datetime="2020-09-05T08:55:41.000Z" itemprop="datePublished">2020-09-05</time>
 </a>
       
   <div class="article-category">
-    <a class="article-category-link" href="/categories/vim/">vim</a>
+    <a class="article-category-link" href="/categories/git/">git</a>
   </div>
 
       
@@ -69,7 +69,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> 字数统计:</span>
-            <span class="post-count">521字</span>
+            <span class="post-count">774字</span>
         </span>
     </span>
 
@@ -105,59 +105,53 @@
       
 
       
-      <center>Author: 闫玉良</center>
+       <center>Author：闫玉良</center> 
 
-<p>想使用 <code>vim</code> ，但被各种配置项搞得头晕眼花？想让 <code>vim</code> 与众不同，奈何手残搞得系统崩溃？这篇文章就是你的福音！快来看看吧！</p>
+<p>如同 <code>flask</code> 框架的请求钩子一样，<code>git</code> 也有钩子 (<code>hook</code>) 的概念，下面就让我们一起来看看吧。</p>
 <a id="more"></a>
 
 <p><strong><em>更多精彩文章请关注公众号『Pythonnote』或者『全栈技术精选』</em></strong></p>
-<p><img src="https://github.com/EthanYan6/pic/raw/master/vim%E5%B1%95%E7%A4%BA.png" alt="vim展示"></p>
-<h2 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h2><h3 id="1-安装包管理工具"><a href="#1-安装包管理工具" class="headerlink" title="1.安装包管理工具"></a>1.安装包管理工具</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim</span><br></pre></td></tr></table></figure>
-
-<h3 id="2-下载最经典的vim配色方案"><a href="#2-下载最经典的vim配色方案" class="headerlink" title="2.下载最经典的vim配色方案"></a>2.下载最经典的vim配色方案</h3><p>1.克隆所需仓库文件</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone https://github.com/tomasr/molokai.git ~/.vim/colors</span><br></pre></td></tr></table></figure>
-
-<p>2.移动文件</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mv ~/.vim/colors/colors/molokai.vim ~/.vim/colors</span><br></pre></td></tr></table></figure>
+<h2 id="1-概念"><a href="#1-概念" class="headerlink" title="1.概念"></a>1.概念</h2><p>执行某些命令前后，统一进行的操作。比如我要在每次 <code>commit</code> 前核查代码，就可以使用钩子 <code>pre-commit</code>。</p>
+<h2 id="2-分类"><a href="#2-分类" class="headerlink" title="2.分类"></a>2.分类</h2><p>1.<strong>客户端钩子</strong>：提交或者合并时，在客户端进行的操作。</p>
+<p>2.<strong>服务端钩子</strong>：接收推送时，在服务器端进行的操作。</p>
+<h2 id="3-原理"><a href="#3-原理" class="headerlink" title="3.原理"></a>3.原理</h2><p>这些钩子本质上是一些<strong>脚本</strong>，在执行特定命令时调用这些脚本以达到目的。</p>
+<p>大家可以在任意一个 <code>git</code> 管理的仓库下 <code>.git/hooks</code> 目录中找到官方示例。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">╰─❯ ls # cd .git/hooks</span><br><span class="line">applypatch-msg.sample     fsmonitor-watchman.sample pre-applypatch.sample     pre-push.sample           pre-receive.sample        update.sample</span><br><span class="line">commit-msg.sample         post-update.sample        pre-commit.sample         pre-rebase.sample         prepare-commit-msg.sample</span><br></pre></td></tr></table></figure>
 
 <blockquote>
-<p>将克隆下来的代码中 <code>molokai.vim</code> 放到 <code>vim</code> 可读取配置的目录内（<code>~/.vim/colors</code>）。</p>
+<p>当你查看这些示例时，会发现他们其实就是一些 <code>shell</code> 脚本，也会包含一些其他语言的代码，如 <code>perl</code>。</p>
+<p>语言不限定，甚至可以使用 <code>Python</code> 编写它们。</p>
 </blockquote>
-<p>3.删除无用文件</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd ~/.vim/colors</span><br><span class="line">rm -rf colors README.md LICENSE.md</span><br></pre></td></tr></table></figure>
+<h2 id="4-使用"><a href="#4-使用" class="headerlink" title="4.使用"></a>4.使用</h2><p>如果想体验一下官方示例，可以将官方示例的钩子脚本后缀名删掉，这样它就被激活了。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mv pre-commit.sample pre-commit</span><br></pre></td></tr></table></figure>
 
-<blockquote>
-<p><code>colors</code> 中有用的文件我们已经移除，这个空目录可以删除；<code>README.md</code> 是说明文件；<code>LICENSE.md</code> 是授权说明文件。</p>
-</blockquote>
-<h3 id="3-安装搜索命令ag"><a href="#3-安装搜索命令ag" class="headerlink" title="3.安装搜索命令ag"></a>3.安装搜索命令ag</h3><h4 id="3-1-Ubuntu"><a href="#3-1-Ubuntu" class="headerlink" title="3.1 Ubuntu"></a>3.1 Ubuntu</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install silversearcher-ag</span><br></pre></td></tr></table></figure>
+<h3 id="4-1-示例"><a href="#4-1-示例" class="headerlink" title="4.1 示例"></a>4.1 示例</h3><p>我希望在每次 <code>commit</code> 前输出一句话：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">this is pre-commit hook</span><br></pre></td></tr></table></figure>
 
-<h4 id="3-2-CentOS"><a href="#3-2-CentOS" class="headerlink" title="3.2 CentOS"></a>3.2 CentOS</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">yum install epel-release</span><br><span class="line">yum -y install the_silver_searcher</span><br></pre></td></tr></table></figure>
+<p><strong>步骤：</strong></p>
+<p>1.将官方示例进行备份</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cp pre-commit.sample pre-commit.sample.bak</span><br></pre></td></tr></table></figure>
 
-<h4 id="3-3-Mac"><a href="#3-3-Mac" class="headerlink" title="3.3 Mac"></a>3.3 Mac</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew install the_silver_searcher</span><br></pre></td></tr></table></figure>
+<p>2.修改 <code>pre-commit</code> 钩子脚本</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">vim pre-commit.sample</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash">!/bin/sh</span></span><br><span class="line">echo 'this is pre-commit hook'</span><br></pre></td></tr></table></figure>
 
-<h3 id="4-使用提供的-vimrc文件替换掉电脑中的同名配置文件"><a href="#4-使用提供的-vimrc文件替换掉电脑中的同名配置文件" class="headerlink" title="4.使用提供的.vimrc文件替换掉电脑中的同名配置文件"></a>4.使用提供的.vimrc文件替换掉电脑中的同名配置文件</h3><p><strong><code>.vimrc</code> 获取方式：关注微信公众号「全栈技术精选」，回复「vimrc」即可获取</strong></p>
-<p>1.将 <code>.vimrc</code> 放到家目录 <code>~/</code> 下</p>
-<p>2.使用 <code>vim</code> 打开 <code>.vimrc</code></p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim ~/.vimrc</span><br></pre></td></tr></table></figure>
+<p>3.激活钩子</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mv pre-commit.sample pre-commit</span><br></pre></td></tr></table></figure>
 
-<p>3.使用包管理器安装配置文件中的插件</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">:PluginInstall</span><br></pre></td></tr></table></figure>
+<p>4.在仓库做一些改变然后进行提交</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> ... <span class="keyword">do</span> something</span></span><br><span class="line">git add .</span><br><span class="line">git commit -m 'test hooks'</span><br></pre></td></tr></table></figure>
 
-<blockquote>
-<p>上述命令在 <code>vim</code> 的命令模式下输入。输入完后回车，耐心等待下载，插件比较多耗时比较长。如果下载完成后，底部状态行会显示 <code>Done!</code></p>
-</blockquote>
-<h3 id="5-注意"><a href="#5-注意" class="headerlink" title="5.注意"></a>5.注意</h3><p>1.如果报错：The ycmd server SHUT DOWN (restart with …low the instructions in the documen</p>
-<p><strong>解决方法</strong>：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd ~/.vim/bundle/YouCompleteMe</span><br><span class="line">./install.py</span><br></pre></td></tr></table></figure>
-
-<p>2.如果报错：ERROR: Unable to find executable ‘cmake’. CMake is required to build ycmd</p>
-<p><strong>解决办法</strong>：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> Ubuntu</span></span><br><span class="line">sudo apt install cmake</span><br><span class="line"><span class="meta">#</span><span class="bash"> Mac</span></span><br><span class="line">brew install cmake</span><br></pre></td></tr></table></figure>
-
-<p>3.如果安装完后颜色显示与图片中不一致，状态栏颜色也是黑色，那么可以考虑使用如下方法解决。</p>
-<p><strong>解决方法</strong>：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">vim ~/.vimrc</span><br><span class="line"><span class="meta">#</span><span class="bash"> 添加如下信息</span></span><br><span class="line">set t_Co=256</span><br></pre></td></tr></table></figure>
-
+<p>5.输出信息如下</p>
+<p><img src="https://gitee.com/Ethanyan/pic_data/raw/master/git-hooks-simple.png" alt="git-hooks-pre-commit"></p>
+<p>从图中可以看到执行了我们的脚本。</p>
+<h2 id="5-客户端常用的-hooks"><a href="#5-客户端常用的-hooks" class="headerlink" title="5.客户端常用的 hooks"></a>5.客户端常用的 hooks</h2><h3 id="5-1-pre-commit"><a href="#5-1-pre-commit" class="headerlink" title="5.1 pre-commit"></a>5.1 pre-commit</h3><p>在执行 <code>git commit</code> 键入提交信息前运行，如果脚本输出非零值，那么就会停止提交。</p>
+<p><strong>用途</strong>：做初步的 <code>code review</code> ，检查代码风格是否符合规范；检查代码是否有多余空白字符等等。</p>
+<h3 id="5-2-post-commit"><a href="#5-2-post-commit" class="headerlink" title="5.2 post-commit"></a>5.2 post-commit</h3><p>在整个提交过程完成后运行。</p>
+<p><strong>用途</strong>：提示信息。</p>
+<h3 id="5-3-pre-push"><a href="#5-3-pre-push" class="headerlink" title="5.3 pre-push"></a>5.3 pre-push</h3><p>在 <code>git push</code> 运行期间， 更新了远程引用但尚未传送对象时被调用。 它接受远程分支的名字和位置作为参数，同时从标准输入中读取一系列待更新的引用。 如果脚本输出非零值，那么就会停止推送。</p>
+<p><strong>用途</strong>：在推送开始之前，用它验证对引用的更新操作。</p>
+<h3 id="5-4-post-merge"><a href="#5-4-post-merge" class="headerlink" title="5.4 post-merge"></a>5.4 post-merge</h3><p>在 <code>git merge</code> 成功运行后，<code>post-merge</code> 钩子会被调用。 </p>
+<p><strong>用途</strong>：可以用它恢复 Git 无法跟踪的工作区数据，比如权限数据。 这个钩子也可以用来验证某些在 Git 控制之外的文件是否存在，这样你就能在工作区改变时，把这些文件复制进来。</p>
 <p><strong><em>更多精彩文章请关注公众号『Pythonnote』或者『全栈技术精选』</em></strong></p>
 
       
@@ -228,14 +222,14 @@
     <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://www.pythonnote.cn/%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E4%BD%A0%E9%85%8D%E7%BD%AEvim%EF%BC%8C%E5%B0%8F%E7%99%BD%E4%B9%9F%E5%8F%AF%E4%BB%A5/" alt="微信分享二维码">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://www.pythonnote.cn/git%E9%92%A9%E5%AD%90/" alt="微信分享二维码">
     </div>
 </div>
 
 <div id="share-mask"></div>
       
       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vim/" rel="tag">vim</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/git/" rel="tag">git</a></li></ul>
 
 
     </footer>
@@ -246,19 +240,10 @@
   
   <nav class="article-nav">
     
-      <a href="/git%E9%92%A9%E5%AD%90/" class="article-nav-link">
-        <strong class="article-nav-caption">上一篇</strong>
-        <div class="article-nav-title">
-          
-            git钩子
-          
-        </div>
-      </a>
     
-    
-      <a href="/django%E8%BF%99%E4%BA%9B%E6%9F%A5%E8%AF%A2%E6%8A%80%E5%B7%A7%E4%BD%A0%E4%BC%9A%E4%BA%86%E5%90%97/" class="article-nav-link">
+      <a href="/%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E4%BD%A0%E9%85%8D%E7%BD%AEvim%EF%BC%8C%E5%B0%8F%E7%99%BD%E4%B9%9F%E5%8F%AF%E4%BB%A5/" class="article-nav-link">
         <strong class="article-nav-caption">下一篇</strong>
-        <div class="article-nav-title">django这些查询技巧你会了吗?</div>
+        <div class="article-nav-title">手把手教你配置vim，小白也可以</div>
       </a>
     
   </nav>

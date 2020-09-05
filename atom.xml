@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://www.pythonnote.cn/"/>
-  <updated>2020-08-02T07:17:14.332Z</updated>
+  <updated>2020-09-05T09:49:55.514Z</updated>
   <id>https://www.pythonnote.cn/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>git钩子</title>
+    <link href="https://www.pythonnote.cn/git%E9%92%A9%E5%AD%90/"/>
+    <id>https://www.pythonnote.cn/git%E9%92%A9%E5%AD%90/</id>
+    <published>2020-09-05T08:55:41.000Z</published>
+    <updated>2020-09-05T09:49:55.514Z</updated>
+    
+    <summary type="html">
+    
+      &lt;center&gt;Author：闫玉良&lt;/center&gt; 
+
+&lt;p&gt;如同 &lt;code&gt;flask&lt;/code&gt; 框架的请求钩子一样，&lt;code&gt;git&lt;/code&gt; 也有钩子 (&lt;code&gt;hook&lt;/code&gt;) 的概念，下面就让我们一起来看看吧。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="git" scheme="https://www.pythonnote.cn/categories/git/"/>
+    
+    
+      <category term="git" scheme="https://www.pythonnote.cn/tags/git/"/>
+    
+  </entry>
   
   <entry>
     <title>手把手教你配置vim，小白也可以</title>
@@ -456,29 +479,6 @@
     
     
       <category term="markdown" scheme="https://www.pythonnote.cn/tags/markdown/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>OAuth2.0与OAuth1.0你了解了吗？</title>
-    <link href="https://www.pythonnote.cn/OAuth2-0%E4%B8%8EOAuth1-0%E4%BD%A0%E4%BA%86%E8%A7%A3%E4%BA%86%E5%90%97%EF%BC%9F/"/>
-    <id>https://www.pythonnote.cn/OAuth2-0%E4%B8%8EOAuth1-0%E4%BD%A0%E4%BA%86%E8%A7%A3%E4%BA%86%E5%90%97%EF%BC%9F/</id>
-    <published>2020-05-07T10:41:18.000Z</published>
-    <updated>2020-08-01T17:25:27.261Z</updated>
-    
-    <summary type="html">
-    
-      &lt;center&gt;Author：闫玉良&lt;/center&gt;
-
-&lt;p&gt;使用了 &lt;code&gt;OAuth2.0&lt;/code&gt; ，但是你晓得为什么使用 &lt;code&gt;OAuth2.0&lt;/code&gt; 吗？快来看看吧。&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="oauth" scheme="https://www.pythonnote.cn/categories/oauth/"/>
-    
-    
-      <category term="oauth" scheme="https://www.pythonnote.cn/tags/oauth/"/>
     
   </entry>
   
