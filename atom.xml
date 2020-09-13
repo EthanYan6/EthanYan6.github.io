@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://www.pythonnote.cn/"/>
-  <updated>2020-09-06T11:14:46.991Z</updated>
+  <updated>2020-09-13T09:23:48.847Z</updated>
   <id>https://www.pythonnote.cn/</id>
   
   <author>
@@ -15,6 +15,27 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>资源分享～你懂的&lt;-_&lt;-</title>
+    <link href="https://www.pythonnote.cn/%E8%B5%84%E6%BA%90%E5%88%86%E4%BA%AB%EF%BD%9E%E4%BD%A0%E6%87%82%E7%9A%84/"/>
+    <id>https://www.pythonnote.cn/%E8%B5%84%E6%BA%90%E5%88%86%E4%BA%AB%EF%BD%9E%E4%BD%A0%E6%87%82%E7%9A%84/</id>
+    <published>2020-09-13T08:46:51.000Z</published>
+    <updated>2020-09-13T09:23:48.847Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;都是好资源哦～&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="资源" scheme="https://www.pythonnote.cn/categories/%E8%B5%84%E6%BA%90/"/>
+    
+    
+      <category term="资源" scheme="https://www.pythonnote.cn/tags/%E8%B5%84%E6%BA%90/"/>
+    
+  </entry>
   
   <entry>
     <title>git钩子</title>
@@ -455,30 +476,6 @@
     
     
       <category term="sql" scheme="https://www.pythonnote.cn/tags/sql/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Markdown语法奇奇怪怪小知识</title>
-    <link href="https://www.pythonnote.cn/Markdown%E8%AF%AD%E6%B3%95%E5%A5%87%E5%A5%87%E6%80%AA%E6%80%AA%E5%B0%8F%E7%9F%A5%E8%AF%86/"/>
-    <id>https://www.pythonnote.cn/Markdown%E8%AF%AD%E6%B3%95%E5%A5%87%E5%A5%87%E6%80%AA%E6%80%AA%E5%B0%8F%E7%9F%A5%E8%AF%86/</id>
-    <published>2020-05-12T09:03:24.000Z</published>
-    <updated>2020-09-06T11:14:46.977Z</updated>
-    
-    <summary type="html">
-    
-      &lt;center&gt;Author：闫玉良&lt;/center&gt; 
-
-
-&lt;p&gt;&lt;code&gt;markdown&lt;/code&gt; 语法因为其通用性、简便性广受程序员的喜爱，下面再记录一些语法。&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="markdown" scheme="https://www.pythonnote.cn/categories/markdown/"/>
-    
-    
-      <category term="markdown" scheme="https://www.pythonnote.cn/tags/markdown/"/>
     
   </entry>
   
