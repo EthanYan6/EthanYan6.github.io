@@ -10,7 +10,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
   <title>
-    手把手教你配置vim，小白也可以 |  EthanYan&#39;s Blog
+    vim操作有这一篇就足够了 |  EthanYan&#39;s Blog
   </title>
   <meta name="generator" content="hexo-theme-yilia-plus">
   
@@ -45,7 +45,7 @@
     <header class="article-header">
        
 <h1 class="article-title sea-center" style="border-left:0" itemprop="name">
-  手把手教你配置vim，小白也可以
+  vim操作有这一篇就足够了
 </h1>
   
 
@@ -55,7 +55,7 @@
     
     <div class="article-meta">
       <a href="/%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E4%BD%A0%E9%85%8D%E7%BD%AEvim%EF%BC%8C%E5%B0%8F%E7%99%BD%E4%B9%9F%E5%8F%AF%E4%BB%A5/" class="article-date">
-  <time datetime="2020-08-02T06:18:07.000Z" itemprop="datePublished">2020-08-02</time>
+  <time datetime="2020-07-04T04:21:13.000Z" itemprop="datePublished">2020-07-04</time>
 </a>
       
   <div class="article-category">
@@ -69,7 +69,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> 字数统计:</span>
-            <span class="post-count">521字</span>
+            <span class="post-count">1.7k字</span>
         </span>
     </span>
 
@@ -78,7 +78,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-book-open-line"></i>
             <span class="post-meta-item-text"> 阅读时长≈</span>
-            <span class="post-count">2分钟</span>
+            <span class="post-count">7分钟</span>
         </span>
     </span>
 </div>
@@ -105,16 +105,26 @@
       
 
       
-      <center>Author: 闫玉良</center>
+      <center>Author：闫玉良</center>
 
-<p>想使用 <code>vim</code> ，但被各种配置项搞得头晕眼花？想让 <code>vim</code> 与众不同，奈何手残搞得系统崩溃？这篇文章就是你的福音！快来看看吧！</p>
+<h2 id="1-说明"><a href="#1-说明" class="headerlink" title="1.说明"></a>1.说明</h2><p><a href="https://www.pythonnote.cn/vim操作有这一篇就足够了/">vim使用教程</a></p>
+<p><a href="https://www.jianshu.com/p/c7ac15bc4883" target="_blank" rel="noopener">vim包管理工具vundle使用教程</a></p>
+<p>懒人配置vim方案，现成的 <code>.vimrc</code> 配置文件，仅需按照步骤安装即可。</p>
 <a id="more"></a>
 
-<p><strong><em>更多精彩文章请关注公众号『Pythonnote』或者『全栈技术精选』</em></strong></p>
+<p>此 <code>.vimrc</code> 中安装了一些常用的插件，如目录树、函数列表、文件搜索等等，大家可以根据需要，结合配置文件中注释内容，删除掉不需要的插件。（比如小闫同学写 <code>js</code> 、 <code>python</code> ，以及 <code>go</code> ，所以偏向这三者，有这三者的语法高亮、格式检查插件，如果你不需要，完全可以删除相应内容。） </p>
+<p>The lazy person configures the vim scheme, with detailed instructions, and the ready-made <code>.vimrc</code> configuration file for use.</p>
+<blockquote>
+<p>更多精彩内容，请关注微信公众号【Pythonnote】或者【全栈技术精选】<br> 请收藏个人网站 pythonnote.cn</p>
+</blockquote>
 <p><img src="https://github.com/EthanYan6/pic/raw/master/vim%E5%B1%95%E7%A4%BA.png" alt="vim展示"></p>
-<h2 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h2><h3 id="1-安装包管理工具"><a href="#1-安装包管理工具" class="headerlink" title="1.安装包管理工具"></a>1.安装包管理工具</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim</span><br></pre></td></tr></table></figure>
+<h2 id="2-步骤"><a href="#2-步骤" class="headerlink" title="2.步骤"></a>2.步骤</h2><h3 id="2-1-安装包管理工具"><a href="#2-1-安装包管理工具" class="headerlink" title="2.1 安装包管理工具"></a>2.1 安装包管理工具</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim</span><br></pre></td></tr></table></figure>
 
-<h3 id="2-下载最经典的vim配色方案"><a href="#2-下载最经典的vim配色方案" class="headerlink" title="2.下载最经典的vim配色方案"></a>2.下载最经典的vim配色方案</h3><p>1.克隆所需仓库文件</p>
+<h3 id="2-2-下载最经典的vim配色方案-选"><a href="#2-2-下载最经典的vim配色方案-选" class="headerlink" title="2.2 下载最经典的vim配色方案(选)"></a>2.2 下载最经典的vim配色方案(选)</h3><blockquote>
+<p>如果想使用此主题，按照下方步骤下载好后，打开 <code>.vimrc</code> 中下面代码的注释(删除代码前的双引号)即可使用：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">"colorscheme molokai</span><br></pre></td></tr></table></figure>
+</blockquote>
+<p>1.克隆所需仓库文件</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone https://github.com/tomasr/molokai.git ~/.vim/colors</span><br></pre></td></tr></table></figure>
 
 <p>2.移动文件</p>
@@ -129,24 +139,71 @@
 <blockquote>
 <p><code>colors</code> 中有用的文件我们已经移除，这个空目录可以删除；<code>README.md</code> 是说明文件；<code>LICENSE.md</code> 是授权说明文件。</p>
 </blockquote>
-<h3 id="3-安装搜索命令ag"><a href="#3-安装搜索命令ag" class="headerlink" title="3.安装搜索命令ag"></a>3.安装搜索命令ag</h3><h4 id="3-1-Ubuntu"><a href="#3-1-Ubuntu" class="headerlink" title="3.1 Ubuntu"></a>3.1 Ubuntu</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install silversearcher-ag</span><br></pre></td></tr></table></figure>
+<h3 id="2-3-安装搜索命令ag"><a href="#2-3-安装搜索命令ag" class="headerlink" title="2.3 安装搜索命令ag"></a>2.3 安装搜索命令ag</h3><blockquote>
+<p>配合 <code>vim</code> 插件 <code>ag.vim</code> 使用</p>
+</blockquote>
+<h4 id="2-3-1-Ubuntu"><a href="#2-3-1-Ubuntu" class="headerlink" title="2.3.1 Ubuntu"></a>2.3.1 Ubuntu</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install silversearcher-ag</span><br></pre></td></tr></table></figure>
 
-<h4 id="3-2-CentOS"><a href="#3-2-CentOS" class="headerlink" title="3.2 CentOS"></a>3.2 CentOS</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">yum install epel-release</span><br><span class="line">yum -y install the_silver_searcher</span><br></pre></td></tr></table></figure>
+<h4 id="2-3-2-CentOS"><a href="#2-3-2-CentOS" class="headerlink" title="2.3.2 CentOS"></a>2.3.2 CentOS</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">yum install epel-release</span><br><span class="line">yum -y install the_silver_searcher</span><br></pre></td></tr></table></figure>
 
-<h4 id="3-3-Mac"><a href="#3-3-Mac" class="headerlink" title="3.3 Mac"></a>3.3 Mac</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew install the_silver_searcher</span><br></pre></td></tr></table></figure>
+<h4 id="2-3-3-Mac"><a href="#2-3-3-Mac" class="headerlink" title="2.3.3 Mac"></a>2.3.3 Mac</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew install the_silver_searcher</span><br></pre></td></tr></table></figure>
 
-<h3 id="4-使用提供的-vimrc文件替换掉电脑中的同名配置文件"><a href="#4-使用提供的-vimrc文件替换掉电脑中的同名配置文件" class="headerlink" title="4.使用提供的.vimrc文件替换掉电脑中的同名配置文件"></a>4.使用提供的.vimrc文件替换掉电脑中的同名配置文件</h3><p><strong><code>.vimrc</code> 获取方式：关注微信公众号「全栈技术精选」，回复「vimrc」即可获取</strong></p>
-<p>1.将 <code>.vimrc</code> 放到家目录 <code>~/</code> 下</p>
+<h3 id="2-4-安装-ctags"><a href="#2-4-安装-ctags" class="headerlink" title="2.4 安装 ctags"></a>2.4 安装 ctags</h3><blockquote>
+<p>配合 <code>vim</code> 插件 <code>tagbar</code> 使用</p>
+</blockquote>
+<h4 id="2-4-1-Mac"><a href="#2-4-1-Mac" class="headerlink" title="2.4.1 Mac"></a>2.4.1 Mac</h4><p>1.安装</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># MAC</span><br><span class="line">brew install ctags-exuberant</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>因为 <code>mac</code> 系统中自带了一个老版本的 <code>ctags</code>，我们需要一个新版本的，并且让 <code>vim</code> 识别到我们新下载的内容，所以需要安装后，添加配置。</p>
+</blockquote>
+<p>2.创建文件识别我们安装的 <code>ctags</code></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim ~/.profile</span><br></pre></td></tr></table></figure>
+
+<p>3.添加一句话：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">export PATH="/usr/local/bin:/usr/local/sbin:$PATH"</span><br></pre></td></tr></table></figure>
+
+<p>4.保存后，终端刷新一下这个文件：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">source ~/.profile</span><br></pre></td></tr></table></figure>
+
+<h4 id="2-4-2-Ubuntu"><a href="#2-4-2-Ubuntu" class="headerlink" title="2.4.2 Ubuntu"></a>2.4.2 Ubuntu</h4><p>1.安装</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> Ubuntu</span></span><br><span class="line">sudo apt install ctags</span><br></pre></td></tr></table></figure>
+
+<p>2.将仓库中 <code>.vimrc</code> 中第67行内容中 <code>ctags</code> 命令的路径修改为下列内容</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">let g:tagbar_ctags_bin='/usr/bin/ctags'</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-5-安装代码格式化插件"><a href="#2-5-安装代码格式化插件" class="headerlink" title="2.5 安装代码格式化插件"></a>2.5 安装代码格式化插件</h3><p>1.配合 <code>vim</code> 插件 <code>vim-autopep8</code> 使用，可以自动格式化 <code>python</code> 代码</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo pip3 install autopep8</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><code>sudo</code> 是因为需要给全局安装，而不是当前用户安装</p>
+</blockquote>
+<p>2.配合 <code>vim</code> 插件 <code>vim-flake8</code> 使用，可以提示 <code>python</code> 代码错误并给出修改意见。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo pip3 install flake8</span><br></pre></td></tr></table></figure>
+
+<p>3.配合 <code>vim</code> 插件 <code>vim-prettier</code> 使用，可以格式化前端代码。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo npm install -g prettier</span><br></pre></td></tr></table></figure>
+
+<p>4.配合 <code>vim</code> 插件 <code>jedi-vim</code> 使用，可以对 <code>python</code> 代码进行补全以及跳转。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install jedi</span><br></pre></td></tr></table></figure>
+
+<p>5.配合 <code>vim-vue</code> 使用</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm i -g eslint eslint-plugin-vue</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-6-用仓库中-vimrc文件替换掉电脑中的同名配置文件"><a href="#2-6-用仓库中-vimrc文件替换掉电脑中的同名配置文件" class="headerlink" title="2.6 用仓库中.vimrc文件替换掉电脑中的同名配置文件"></a>2.6 用仓库中.vimrc文件替换掉电脑中的同名配置文件</h3><p>1.将 <code>.vimrc</code> 放到家目录 <code>~/</code> 下</p>
 <p>2.使用 <code>vim</code> 打开 <code>.vimrc</code></p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim ~/.vimrc</span><br></pre></td></tr></table></figure>
 
 <p>3.使用包管理器安装配置文件中的插件</p>
+<blockquote>
+<p>安装插件之前大家可以根据注释内容，删除掉不需要的插件</p>
+</blockquote>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">:PluginInstall</span><br></pre></td></tr></table></figure>
 
 <blockquote>
 <p>上述命令在 <code>vim</code> 的命令模式下输入。输入完后回车，耐心等待下载，插件比较多耗时比较长。如果下载完成后，底部状态行会显示 <code>Done!</code></p>
 </blockquote>
-<h3 id="5-注意"><a href="#5-注意" class="headerlink" title="5.注意"></a>5.注意</h3><p>1.如果报错：The ycmd server SHUT DOWN (restart with …low the instructions in the documen</p>
+<h3 id="2-7-注意"><a href="#2-7-注意" class="headerlink" title="2.7 注意"></a>2.7 注意</h3><p>1.如果报错：The ycmd server SHUT DOWN (restart with …low the instructions in the documen</p>
 <p><strong>解决方法</strong>：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd ~/.vim/bundle/YouCompleteMe</span><br><span class="line">./install.py</span><br></pre></td></tr></table></figure>
 
@@ -154,12 +211,59 @@
 <p><strong>解决办法</strong>：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> Ubuntu</span></span><br><span class="line">sudo apt install cmake</span><br><span class="line"><span class="meta">#</span><span class="bash"> Mac</span></span><br><span class="line">brew install cmake</span><br></pre></td></tr></table></figure>
 
-<p>3.如果安装完后颜色显示与图片中不一致，状态栏颜色也是黑色，那么可以考虑使用如下方法解决。</p>
+<p>3.如果 <code>Ubuntu</code> 用户使用 <code>xshell</code> 等工具连接服务器后，打开 <code>vim</code> 发现鼠标右键没用了，无法复制粘贴。</p>
+<p><strong>解决办法</strong>：将仓库 <code>.vimrc</code> 中第203行 <code>set mouse</code>  部分改为下列代码：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">set mouse=c</span><br></pre></td></tr></table></figure>
+
+<p>4.如果安装完后颜色显示与图片中不一致，状态栏颜色也是黑色，那么可以考虑使用如下方法解决。</p>
 <p><strong>解决方法</strong>：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">vim ~/.vimrc</span><br><span class="line"><span class="meta">#</span><span class="bash"> 添加如下信息</span></span><br><span class="line">set t_Co=256</span><br></pre></td></tr></table></figure>
 
-<p><strong><em>更多精彩文章请关注公众号『Pythonnote』或者『全栈技术精选』</em></strong></p>
+<h2 id="3-tmux配置过程"><a href="#3-tmux配置过程" class="headerlink" title="3.tmux配置过程"></a>3.tmux配置过程</h2><p><a href="https://www.pythonnote.cn/Tmux让你开发效率飞起/">tmux使用教程</a></p>
+<p><img src="./images/tmux%E7%A4%BA%E6%84%8F%E5%9B%BE.png" alt="tmux展示图片"></p>
+<h3 id="3-1-下载tmux包管理工具"><a href="#3-1-下载tmux包管理工具" class="headerlink" title="3.1 下载tmux包管理工具"></a>3.1 下载tmux包管理工具</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm</span><br></pre></td></tr></table></figure>
 
+<p><code>Tmux-plugins</code> 集合：<a href="https://github.com/tmux-plugins" target="_blank" rel="noopener">https://github.com/tmux-plugins</a></p>
+<h3 id="3-2-系统命令预备下载"><a href="#3-2-系统命令预备下载" class="headerlink" title="3.2 系统命令预备下载"></a>3.2 系统命令预备下载</h3><p>1.<code>tmux-urlview</code> 插件需要安装 <code>urlview</code> 命令。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> Mac</span></span><br><span class="line">brew install urlview</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>此插件可以寻找 <code>tmux</code> 中出现的所有的 <code>url</code> ，通过 <code>ctrl-b + u</code> 列出所有链接，然后回车直接用浏览器打开。</p>
+</blockquote>
+<p>2.<code>tmux-mem-cpu-load</code> 插件需要安装命令：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> Mac</span></span><br><span class="line">brew install tmux-mem-cpu-load</span><br></pre></td></tr></table></figure>
+
+<p>右下角显示的结果说明：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">  2885/7987MB [|||||     ]  51.2% 2.11 2.35 2.44</span><br><span class="line"></span><br><span class="line">   ^    ^          ^         ^     ^    ^    ^</span><br><span class="line">   |    |          |         |     |    |    |</span><br><span class="line">   1    2          3         4     5    6    7</span><br><span class="line">   </span><br><span class="line">1. Currently used memory.</span><br><span class="line">2. Available memory.</span><br><span class="line">3. CPU usage bar graph.</span><br><span class="line">4. CPU usage percentage.</span><br><span class="line">5. Load average for the past minute.</span><br><span class="line">6. Load average for the past 5 minutes.</span><br><span class="line">7. Load average for the past 15 minutes.</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><code>load average</code> 显示的是最近1分钟、5分钟和15分钟的系统平均负载</p>
+<p>如果底部栏右侧显示方框小问号，可以下载此字体 <a href="https://github.com/powerline/fonts" target="_blank" rel="noopener">powerline-font</a></p>
+</blockquote>
+<h3 id="3-3-将该仓库中-tmux-conf-放到家目录下"><a href="#3-3-将该仓库中-tmux-conf-放到家目录下" class="headerlink" title="3.3 将该仓库中 .tmux.conf 放到家目录下"></a>3.3 将该仓库中 .tmux.conf 放到家目录下</h3><p>如果你的家目录下存在同名文件，则替换为该仓库中的 <code>.tmux.conf</code> 文件。</p>
+<h3 id="3-3-安装配置文件中的插件"><a href="#3-3-安装配置文件中的插件" class="headerlink" title="3.3 安装配置文件中的插件"></a>3.3 安装配置文件中的插件</h3><p>1.进入 <code>tmux</code> 中，使用 <code>ctrl-b</code> 加上 <code>I</code> ，安装插件。</p>
+<blockquote>
+<p>配置文件有三个重要插件：一个显示剩余电量，一个显示 <code>CPU</code> 使用率，一个可以持久化保存当前所有窗口配置。</p>
+</blockquote>
+<p>2.<strong>持久化保存当前 <code>tmux</code> 所有窗口配置</strong>：</p>
+<blockquote>
+<p>保存内容包括：界面中所有命名 <code>Window</code>，每个 <code>Window</code> 中分割的 <code>Panel</code>，以及每个 <code>Panel</code> 中的路径。</p>
+</blockquote>
+<p>使用如下命令保存：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;ctrl-b&gt; + &lt;ctrl-s&gt;</span><br></pre></td></tr></table></figure>
+
+<p>断电或电脑关机重启后，先进入 <code>tmux</code>，然后使用如下命令恢复：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;ctrl-b&gt; + &lt;ctrl-r&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-5-注意"><a href="#3-5-注意" class="headerlink" title="3.5 注意"></a>3.5 注意</h3><p>1.如果进入 <code>tmux</code> 中打开 <code>vim</code> 时，发现状态栏以及背景等<strong>颜色不正常</strong></p>
+<p><strong>解决方法</strong>：</p>
+<p>使用 <code>tmux -2</code> 命令启动。</p>
+<blockquote>
+<p>之前我们都是使用 <code>tmux</code> 开启并进入到多窗口页面，现在添加参数 <code>-2</code></p>
+</blockquote>
+<p>2.如果使用 <code>ubuntu</code> 系统的话，有可能你会发现进入 <code>tmux</code> ，鼠标右键无法使用复制粘贴功能，弹出来的菜单是 <code>tmux</code> 的帮助菜单。</p>
+<p><strong>解决办法</strong>：在 <code>tmux</code> 中先按 <code>prefix</code> （ 也就是<code>Ctrl + B</code>），然后按冒号，输入如下内容：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 2.1版本之后</span></span><br><span class="line">: set -g mouse off </span><br><span class="line"><span class="meta">#</span><span class="bash"> 2.1版本之前</span></span><br><span class="line">: set -g mode-mouse off</span><br></pre></td></tr></table></figure>
       
       <!-- reward -->
       
@@ -246,19 +350,19 @@
   
   <nav class="article-nav">
     
-      <a href="/git%E9%92%A9%E5%AD%90/" class="article-nav-link">
+      <a href="/vim%E6%93%8D%E4%BD%9C%E6%9C%89%E8%BF%99%E4%B8%80%E7%AF%87%E5%B0%B1%E8%B6%B3%E5%A4%9F%E4%BA%86/" class="article-nav-link">
         <strong class="article-nav-caption">上一篇</strong>
         <div class="article-nav-title">
           
-            git钩子
+            vim操作有这一篇就足够了
           
         </div>
       </a>
     
     
-      <a href="/django%E8%BF%99%E4%BA%9B%E6%9F%A5%E8%AF%A2%E6%8A%80%E5%B7%A7%E4%BD%A0%E4%BC%9A%E4%BA%86%E5%90%97/" class="article-nav-link">
+      <a href="/vim%E5%AE%9E%E7%8E%B0python%E5%87%BD%E6%95%B0%E8%B7%B3%E8%BD%AC/" class="article-nav-link">
         <strong class="article-nav-caption">下一篇</strong>
-        <div class="article-nav-title">django这些查询技巧你会了吗?</div>
+        <div class="article-nav-title">vim实现python函数跳转</div>
       </a>
     
   </nav>

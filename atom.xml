@@ -61,29 +61,6 @@
   </entry>
   
   <entry>
-    <title>手把手教你配置vim，小白也可以</title>
-    <link href="https://www.pythonnote.cn/%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E4%BD%A0%E9%85%8D%E7%BD%AEvim%EF%BC%8C%E5%B0%8F%E7%99%BD%E4%B9%9F%E5%8F%AF%E4%BB%A5/"/>
-    <id>https://www.pythonnote.cn/%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E4%BD%A0%E9%85%8D%E7%BD%AEvim%EF%BC%8C%E5%B0%8F%E7%99%BD%E4%B9%9F%E5%8F%AF%E4%BB%A5/</id>
-    <published>2020-08-02T06:18:07.000Z</published>
-    <updated>2020-09-06T11:14:47.008Z</updated>
-    
-    <summary type="html">
-    
-      &lt;center&gt;Author: 闫玉良&lt;/center&gt;
-
-&lt;p&gt;想使用 &lt;code&gt;vim&lt;/code&gt; ，但被各种配置项搞得头晕眼花？想让 &lt;code&gt;vim&lt;/code&gt; 与众不同，奈何手残搞得系统崩溃？这篇文章就是你的福音！快来看看吧！&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="vim" scheme="https://www.pythonnote.cn/categories/vim/"/>
-    
-    
-      <category term="vim" scheme="https://www.pythonnote.cn/tags/vim/"/>
-    
-  </entry>
-  
-  <entry>
     <title>django这些查询技巧你会了吗?</title>
     <link href="https://www.pythonnote.cn/django%E8%BF%99%E4%BA%9B%E6%9F%A5%E8%AF%A2%E6%8A%80%E5%B7%A7%E4%BD%A0%E4%BC%9A%E4%BA%86%E5%90%97/"/>
     <id>https://www.pythonnote.cn/django%E8%BF%99%E4%BA%9B%E6%9F%A5%E8%AF%A2%E6%8A%80%E5%B7%A7%E4%BD%A0%E4%BC%9A%E4%BA%86%E5%90%97/</id>
@@ -180,7 +157,7 @@
     <link href="https://www.pythonnote.cn/vim%E6%93%8D%E4%BD%9C%E6%9C%89%E8%BF%99%E4%B8%80%E7%AF%87%E5%B0%B1%E8%B6%B3%E5%A4%9F%E4%BA%86/"/>
     <id>https://www.pythonnote.cn/vim%E6%93%8D%E4%BD%9C%E6%9C%89%E8%BF%99%E4%B8%80%E7%AF%87%E5%B0%B1%E8%B6%B3%E5%A4%9F%E4%BA%86/</id>
     <published>2020-07-04T04:21:13.000Z</published>
-    <updated>2020-09-06T11:14:46.999Z</updated>
+    <updated>2020-10-03T11:40:13.425Z</updated>
     
     <summary type="html">
     
@@ -190,6 +167,31 @@
 &lt;blockquote&gt;
 &lt;p&gt;因为小闫同学最近迷上了 &lt;code&gt;vim&lt;/code&gt;，正在使用并打算以后也用其彻底替代 &lt;code&gt;Pycharm&lt;/code&gt; 等编辑工具，所以才有了此文。&lt;/p&gt;
 &lt;/blockquote&gt;
+    
+    </summary>
+    
+    
+      <category term="vim" scheme="https://www.pythonnote.cn/categories/vim/"/>
+    
+    
+      <category term="vim" scheme="https://www.pythonnote.cn/tags/vim/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>vim操作有这一篇就足够了</title>
+    <link href="https://www.pythonnote.cn/%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E4%BD%A0%E9%85%8D%E7%BD%AEvim%EF%BC%8C%E5%B0%8F%E7%99%BD%E4%B9%9F%E5%8F%AF%E4%BB%A5/"/>
+    <id>https://www.pythonnote.cn/%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E4%BD%A0%E9%85%8D%E7%BD%AEvim%EF%BC%8C%E5%B0%8F%E7%99%BD%E4%B9%9F%E5%8F%AF%E4%BB%A5/</id>
+    <published>2020-07-04T04:21:13.000Z</published>
+    <updated>2020-10-03T11:41:30.314Z</updated>
+    
+    <summary type="html">
+    
+      &lt;center&gt;Author：闫玉良&lt;/center&gt;
+
+&lt;h2 id=&quot;1-说明&quot;&gt;&lt;a href=&quot;#1-说明&quot; class=&quot;headerlink&quot; title=&quot;1.说明&quot;&gt;&lt;/a&gt;1.说明&lt;/h2&gt;&lt;p&gt;&lt;a href=&quot;https://www.pythonnote.cn/vim操作有这一篇就足够了/&quot;&gt;vim使用教程&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://www.jianshu.com/p/c7ac15bc4883&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;vim包管理工具vundle使用教程&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;懒人配置vim方案，现成的 &lt;code&gt;.vimrc&lt;/code&gt; 配置文件，仅需按照步骤安装即可。&lt;/p&gt;
     
     </summary>
     
