@@ -28,10 +28,10 @@ b.heroinfo_set.all()
 
 使用 `values_list` 方法实现 `left join` 效果。
 
-一对应的模型类对象.objects.values_list(要查询的字段名)
+一对应的模型类对象.objects.values_list(要查询的字段名, ...)
 
 ```python
-BookInfo.objects.values_list('heroinfo__id', flat=True)
+BookInfo.objects.values_list('heroinfo__id', 'heroinfo__name')
 ```
 
 > 由一查多时，`values_list` 中会有一个字段（该字段是多模型类对象小写名），根据此字段可以查询多对象。如果要查询多对象的某个属性，则用两个下划线链接 `heroinfo__id`
