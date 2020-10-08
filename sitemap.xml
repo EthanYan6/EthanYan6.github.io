@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://www.pythonnote.cn/git%E5%B8%B8%E8%A7%81%E7%96%91%E9%9A%BE%E6%9D%82%E7%97%87%E8%A7%A3%E5%86%B3/</loc>
+    
+    <lastmod>2020-10-08</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://www.pythonnote.cn/Django%E7%94%B1%E4%B8%80%E6%9F%A5%E5%A4%9A/</loc>
     
     <lastmod>2020-10-08</lastmod>
@@ -662,13 +669,6 @@
   </url>
   
   <url>
-    <loc>https://www.pythonnote.cn/tags/flask/</loc>
-    <lastmod>2020-10-08</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://www.pythonnote.cn/tags/git/</loc>
     <lastmod>2020-10-08</lastmod>
     <changefreq>daily</changefreq>
@@ -677,6 +677,13 @@
   
   <url>
     <loc>https://www.pythonnote.cn/tags/hadoop/</loc>
+    <lastmod>2020-10-08</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.pythonnote.cn/tags/flask/</loc>
     <lastmod>2020-10-08</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -711,13 +718,6 @@
   </url>
   
   <url>
-    <loc>https://www.pythonnote.cn/tags/sed/</loc>
-    <lastmod>2020-10-08</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://www.pythonnote.cn/tags/oauth/</loc>
     <lastmod>2020-10-08</lastmod>
     <changefreq>daily</changefreq>
@@ -726,6 +726,13 @@
   
   <url>
     <loc>https://www.pythonnote.cn/tags/pocoo/</loc>
+    <lastmod>2020-10-08</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.pythonnote.cn/tags/sed/</loc>
     <lastmod>2020-10-08</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -900,14 +907,14 @@
   </url>
   
   <url>
-    <loc>https://www.pythonnote.cn/tags/virtualenv/</loc>
+    <loc>https://www.pythonnote.cn/tags/%E7%BB%8F%E9%AA%8C/</loc>
     <lastmod>2020-10-08</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://www.pythonnote.cn/tags/%E7%BB%8F%E9%AA%8C/</loc>
+    <loc>https://www.pythonnote.cn/tags/virtualenv/</loc>
     <lastmod>2020-10-08</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -1000,13 +1007,6 @@
   </url>
   
   <url>
-    <loc>https://www.pythonnote.cn/categories/flask/</loc>
-    <lastmod>2020-10-08</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://www.pythonnote.cn/categories/git/</loc>
     <lastmod>2020-10-08</lastmod>
     <changefreq>daily</changefreq>
@@ -1015,6 +1015,13 @@
   
   <url>
     <loc>https://www.pythonnote.cn/categories/hadoop/</loc>
+    <lastmod>2020-10-08</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.pythonnote.cn/categories/flask/</loc>
     <lastmod>2020-10-08</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -1112,6 +1119,13 @@
   </url>
   
   <url>
+    <loc>https://www.pythonnote.cn/categories/flask/pocoo/</loc>
+    <lastmod>2020-10-08</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://www.pythonnote.cn/categories/redis/</loc>
     <lastmod>2020-10-08</lastmod>
     <changefreq>daily</changefreq>
@@ -1120,13 +1134,6 @@
   
   <url>
     <loc>https://www.pythonnote.cn/categories/vim/</loc>
-    <lastmod>2020-10-08</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.pythonnote.cn/categories/flask/pocoo/</loc>
     <lastmod>2020-10-08</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>

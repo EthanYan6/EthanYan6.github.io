@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://www.pythonnote.cn/"/>
-  <updated>2020-10-08T06:03:28.109Z</updated>
+  <updated>2020-10-08T06:31:10.995Z</updated>
   <id>https://www.pythonnote.cn/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>git常见疑难杂症解决</title>
+    <link href="https://www.pythonnote.cn/git%E5%B8%B8%E8%A7%81%E7%96%91%E9%9A%BE%E6%9D%82%E7%97%87%E8%A7%A3%E5%86%B3/"/>
+    <id>https://www.pythonnote.cn/git%E5%B8%B8%E8%A7%81%E7%96%91%E9%9A%BE%E6%9D%82%E7%97%87%E8%A7%A3%E5%86%B3/</id>
+    <published>2020-10-08T06:14:21.000Z</published>
+    <updated>2020-10-08T06:31:10.995Z</updated>
+    
+    <summary type="html">
+    
+      &lt;center&gt;Author：闫玉良&lt;/center&gt; 
+
+&lt;p&gt;&lt;code&gt;git&lt;/code&gt; 如何撤销 &lt;code&gt;add&lt;/code&gt;、&lt;code&gt;commit&lt;/code&gt; 操作？如何删除远程分支？…&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="git" scheme="https://www.pythonnote.cn/categories/git/"/>
+    
+    
+      <category term="git" scheme="https://www.pythonnote.cn/tags/git/"/>
+    
+  </entry>
   
   <entry>
     <title>Django由一查多</title>
