@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://www.pythonnote.cn/"/>
-  <updated>2020-10-08T04:35:25.436Z</updated>
+  <updated>2020-10-08T05:27:16.851Z</updated>
   <id>https://www.pythonnote.cn/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Django由一查多</title>
+    <link href="https://www.pythonnote.cn/Django%E7%94%B1%E4%B8%80%E6%9F%A5%E5%A4%9A/"/>
+    <id>https://www.pythonnote.cn/Django%E7%94%B1%E4%B8%80%E6%9F%A5%E5%A4%9A/</id>
+    <published>2020-10-08T05:20:51.000Z</published>
+    <updated>2020-10-08T05:27:16.851Z</updated>
+    
+    <summary type="html">
+    
+      &lt;center&gt;Author：闫玉良&lt;/center&gt;
+
+&lt;p&gt;&lt;code&gt;Django&lt;/code&gt; 由一查多的各种方式。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="django" scheme="https://www.pythonnote.cn/categories/django/"/>
+    
+    
+      <category term="django" scheme="https://www.pythonnote.cn/tags/django/"/>
+    
+  </entry>
   
   <entry>
     <title>各语言数据类型总结</title>
@@ -921,7 +944,7 @@
     <link href="https://www.pythonnote.cn/Django%E8%BF%81%E7%A7%BB%E6%95%B0%E6%8D%AE%E5%BA%93%E6%8A%A5%E9%94%99%E8%A7%A3%E5%86%B3/"/>
     <id>https://www.pythonnote.cn/Django%E8%BF%81%E7%A7%BB%E6%95%B0%E6%8D%AE%E5%BA%93%E6%8A%A5%E9%94%99%E8%A7%A3%E5%86%B3/</id>
     <published>2020-03-12T12:14:29.000Z</published>
-    <updated>2020-09-06T11:14:46.964Z</updated>
+    <updated>2020-10-08T05:21:55.397Z</updated>
     
     <summary type="html">
     
