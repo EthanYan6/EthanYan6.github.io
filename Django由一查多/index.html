@@ -69,7 +69,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> 字数统计:</span>
-            <span class="post-count">322字</span>
+            <span class="post-count">321字</span>
         </span>
     </span>
 
@@ -116,8 +116,8 @@
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">b = BookInfo.objects.get(id=<span class="number">1</span>)</span><br><span class="line">b.heroinfo_set.all()</span><br></pre></td></tr></table></figure>
 
 <h3 id="二、多个对象同时查询"><a href="#二、多个对象同时查询" class="headerlink" title="二、多个对象同时查询"></a>二、多个对象同时查询</h3><p>使用 <code>values_list</code> 方法实现 <code>left join</code> 效果。</p>
-<p>一对应的模型类对象.objects.values_list(要查询的字段名)</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">BookInfo.objects.values_list(<span class="string">'heroinfo__id'</span>, flat=<span class="literal">True</span>)</span><br></pre></td></tr></table></figure>
+<p>一对应的模型类对象.objects.values_list(要查询的字段名, …)</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">BookInfo.objects.values_list(<span class="string">'heroinfo__id'</span>, <span class="string">'heroinfo__name'</span>)</span><br></pre></td></tr></table></figure>
 
 <blockquote>
 <p>由一查多时，<code>values_list</code> 中会有一个字段（该字段是多模型类对象小写名），根据此字段可以查询多对象。如果要查询多对象的某个属性，则用两个下划线链接 <code>heroinfo__id</code></p>
