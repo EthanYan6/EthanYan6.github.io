@@ -1,6 +1,100 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Python多版本管理工具</title>
+    <url>/Python%E5%A4%9A%E7%89%88%E6%9C%AC%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7/</url>
+    <content><![CDATA[<p>还在为电脑中只能设置一个 <code>python</code>  版本而烦恼吗？还在因为安装了一堆 <code>python</code> ，环境混乱而闹心吗？难道就不能在一个 <code>shell</code> 中随意切换不同的 <code>python</code> 版本吗？当然可以！</p>
+<a id="more"></a>
+
+<p><strong><em>更多精彩文章请关注公众号『Pythonnote』或者『全栈技术精选』</em></strong></p>
+<h2 id="1-pyenv-版本管理神器"><a href="#1-pyenv-版本管理神器" class="headerlink" title="1.pyenv - 版本管理神器"></a>1.pyenv - 版本管理神器</h2><blockquote>
+<p>  本文以 macOS 为例，其他系统请查看官网具体操作。</p>
+</blockquote>
+<h3 id="1-1-安装"><a href="#1-1-安装" class="headerlink" title="1.1 安装"></a>1.1 安装</h3><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">brew install pyenv</span><br></pre></td></tr></table></figure>
+
+<p>然后设置环境变量：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> pyenv</span></span><br><span class="line">export PYENV_ROOT=~/.pyenv</span><br><span class="line">export PATH=$PYENV_ROOT/shims:$PATH</span><br></pre></td></tr></table></figure>
+
+<p>可以在 <code>shell</code> 中直接设置，也可以保存到 <code>.zshrc</code> 或 <code>.bash_profile</code> 中永久生效。（根据实际情况选择）</p>
+<h3 id="1-2-基本操作"><a href="#1-2-基本操作" class="headerlink" title="1.2 基本操作"></a>1.2 基本操作</h3><h4 id="1-2-1-查看-pyenv-版本"><a href="#1-2-1-查看-pyenv-版本" class="headerlink" title="1.2.1 查看 pyenv 版本"></a>1.2.1 查看 pyenv 版本</h4><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> pyenv -v</span></span><br><span class="line">pyenv 1.2.6</span><br></pre></td></tr></table></figure>
+
+<h4 id="1-2-2-查看可安装-python-版本"><a href="#1-2-2-查看可安装-python-版本" class="headerlink" title="1.2.2 查看可安装 python 版本"></a>1.2.2 查看可安装 python 版本</h4><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> pyenv install --list</span></span><br><span class="line">Available versions:</span><br><span class="line">  2.1.3</span><br><span class="line">  2.2.3</span><br><span class="line">  2.3.7</span><br><span class="line">  ...</span><br></pre></td></tr></table></figure>
+
+<h4 id="1-2-3-选择版本进行安装"><a href="#1-2-3-选择版本进行安装" class="headerlink" title="1.2.3 选择版本进行安装"></a>1.2.3 选择版本进行安装</h4><blockquote>
+<p>  此处安装 3.6.8 版本</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> pyenv install 3.6.8</span></span><br><span class="line">python-build: use openssl from homebrew</span><br><span class="line">python-build: use readline from homebrew</span><br><span class="line">Downloading Python-3.6.8.tar.xz...</span><br><span class="line"><span class="meta">-&gt;</span><span class="bash"> https://www.python.org/ftp/python/3.6.8/Python-3.6.8.tar.xz</span></span><br><span class="line">Installing Python-3.6.8...</span><br><span class="line">python-build: use readline from homebrew</span><br><span class="line">Installed Python-3.6.8 to /Users/ethanyan/.pyenv/versions/3.6.8</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>  下载时候，最好搭个梯子，你懂得~</p>
+</blockquote>
+<h4 id="1-2-4-查看-pyenv-管理的所有版本"><a href="#1-2-4-查看-pyenv-管理的所有版本" class="headerlink" title="1.2.4 查看 pyenv 管理的所有版本"></a>1.2.4 查看 pyenv 管理的所有版本</h4><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> pyenv versions</span></span><br><span class="line">* system (set by /Users/ethanyan/.pyenv/version)</span><br><span class="line">  3.6.8</span><br><span class="line">  3.6.8/envs/resource_manage</span><br><span class="line">  resource_manage</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>  其中也会包含创建的虚拟环境，后面会讲到。</p>
+</blockquote>
+<h4 id="1-2-5-切换版本"><a href="#1-2-5-切换版本" class="headerlink" title="1.2.5 切换版本"></a>1.2.5 切换版本</h4><p>全局切换</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">pyenv global x.x.x</span><br></pre></td></tr></table></figure>
+
+<p>当前目录切换</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">pyenv local x.x.x</span><br></pre></td></tr></table></figure>
+
+<p>解除 <code>local</code> 设置</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">pyenv local --unset</span><br></pre></td></tr></table></figure>
+
+<p>切换为系统版本</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">pyenv global system</span><br></pre></td></tr></table></figure>
+
+<h4 id="1-2-6-卸载某个版本的-python"><a href="#1-2-6-卸载某个版本的-python" class="headerlink" title="1.2.6 卸载某个版本的 python"></a>1.2.6 卸载某个版本的 python</h4><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">pyenv uninstall x.x.x</span><br></pre></td></tr></table></figure>
+
+<h3 id="1-3-注意"><a href="#1-3-注意" class="headerlink" title="1.3 注意"></a>1.3 注意</h3><p><code>pyenv</code> 的开发团队目前还没有支持 <code>macOS</code> 最新系统 <code>Big Sur</code>。那我们就用不了了吗？作为程序员，这点困难都解决不了岂不是有点废柴。直接上步骤：</p>
+<p>首先直接 <code>brew install pyenv</code> ，忽略警告信息。问题出现在 <code>pyenv install</code> 后，编译失败。往下进行：</p>
+<h4 id="第一步-设置-Xcode"><a href="#第一步-设置-Xcode" class="headerlink" title="第一步 设置 Xcode"></a>第一步 设置 Xcode</h4><p>1.打开 <code>Xcode</code> </p>
+<p>2.菜单栏中依次选择 <code>Xcode</code> &gt;  <code>Preference</code> &gt; <code>Locations</code></p>
+<p>3.然后设置 <code>command-line tools</code> 即可。</p>
+<h4 id="第二步-使用如下命令安装-python"><a href="#第二步-使用如下命令安装-python" class="headerlink" title="第二步 使用如下命令安装 python"></a>第二步 使用如下命令安装 python</h4><blockquote>
+<p>  将其中的 3.6.8 换成任何你需要的版本即可。</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">CFLAGS="-I$(brew --prefix openssl)/include -I$(brew --prefix bzip2)/include -I$(brew --prefix readline)/include -I$(xcrun --show-sdk-path)/usr/include" LDFLAGS="-L$(brew --prefix openssl)/lib -L$(brew --prefix readline)/lib -L$(brew --prefix zlib)/lib -L$(brew --prefix bzip2)/lib" pyenv install --patch 3.6.8 &lt; &lt;(curl -sSL https://github.com/python/cpython/commit/8ea6353.patch\?full_index\=1)</span><br></pre></td></tr></table></figure>
+
+<p>然后你会发现安装成功了！</p>
+<h2 id="2-pyenv-virtualenv-创建不同-python-版本虚拟环境神器"><a href="#2-pyenv-virtualenv-创建不同-python-版本虚拟环境神器" class="headerlink" title="2.pyenv-virtualenv - 创建不同 python 版本虚拟环境神器"></a>2.pyenv-virtualenv - 创建不同 python 版本虚拟环境神器</h2><p>1.安装<a href="https://github.com/pyenv/pyenv-virtualenv" target="_blank" rel="noopener">pyenv-virtualenv</a></p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">git clone https://github.com/pyenv/pyenv-virtualenv.git $(pyenv root)/plugins/pyenv-virtualenv</span><br></pre></td></tr></table></figure>
+
+<p>2.设置环境变量：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">eval "$(pyenv init -)"</span><br><span class="line">eval "$(pyenv virtualenv-init -)"</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>  可以保存到 <code>.zshrc</code> 或 <code>.bash_profile</code> 中永久生效。（根据实际情况选择）</p>
+</blockquote>
+<p>3.重新初始化 <code>shell</code> 环境：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">exec $SHELL</span><br></pre></td></tr></table></figure>
+
+<p>4.创建虚拟环境：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">pyenv virtualenv 你安装的python版本号 虚拟环境名称</span><br></pre></td></tr></table></figure>
+
+<p>5.查看所有的虚拟环境：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">pyenv virtualenvs</span><br></pre></td></tr></table></figure>
+
+<p>6.激活虚拟环境：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">pyenv activate 虚拟环境名称</span><br></pre></td></tr></table></figure>
+
+<p>7.退出虚拟环境：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">pyenv deactivate</span><br></pre></td></tr></table></figure>
+
+<p>8.删除虚拟环境：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">pyenv virtualenv-delete 虚拟环境名称</span><br></pre></td></tr></table></figure>
+
+<p><strong><em>更多精彩文章请关注公众号『Pythonnote』或者『全栈技术精选』</em></strong></p>
+]]></content>
+      <categories>
+        <category>python</category>
+      </categories>
+      <tags>
+        <tag>python</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>git常见疑难杂症解决</title>
     <url>/git%E5%B8%B8%E8%A7%81%E7%96%91%E9%9A%BE%E6%9D%82%E7%97%87%E8%A7%A3%E5%86%B3/</url>
     <content><![CDATA[ <center>Author：闫玉良</center> 
