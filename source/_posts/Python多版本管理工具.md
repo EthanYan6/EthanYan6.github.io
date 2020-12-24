@@ -190,3 +190,4 @@ pyenv virtualenv-delete 虚拟环境名称
 ```
 
 ***更多精彩文章请关注公众号『Pythonnote』或者『全栈技术精选』***
+
