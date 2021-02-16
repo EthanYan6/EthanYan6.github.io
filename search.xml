@@ -1,6 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>小闫同学的IT日常-根据外键倒查关联表</title>
+    <url>/%E5%B0%8F%E9%97%AB%E5%90%8C%E5%AD%A6%E7%9A%84IT%E6%97%A5%E5%B8%B8-%E6%A0%B9%E6%8D%AE%E5%A4%96%E9%94%AE%E5%80%92%E6%9F%A5%E5%85%B3%E8%81%94%E8%A1%A8/</url>
+    <content><![CDATA[<p>当数据库关系十分复杂时，如何快速找出引用了用户表的所有数据表？通过 ER/EER 图查找？太麻烦了吧…</p>
+<a id="more"></a>
+
+<p><strong><em>更多精彩文章请关注公众号『Pythonnote』或者『全栈技术精选』</em></strong></p>
+<p>小王：“小闫同学，求助！！”</p>
+<p>小闫同学：“ 曰【yuē】~”</p>
+<p>小王：“现在遇到一个问题：由于业务要求，需要查找出引用 xx 表的全部数据库表”</p>
+<p>小闫同学：“你尝试了哪些方法？”</p>
+<p>小王：“刚开始先回忆了一番，但是发现关系找不全；然后又通过数据库工具生成了 EER 图，但是看的头都大了也没有结果。”</p>
+<p>小闫同学：“没有考虑过代码？比如 python 或者 SQL？”</p>
+<p>小王：“想了，但是奈何自身技术受限呀”（摊手表示无奈）</p>
+<p>小闫同学：“哈哈哈，书到用时方恨少吧？平时让你好好学的。”</p>
+<p>小王：“先别数落我了，救人一命胜造七级浮屠呀！”</p>
+<p>小闫同学：“好啦，不开玩笑了，给你这个 SQL 语句去用吧。用完之后，记得分析一下，研究透，变成自己的”</p>
+<p>小王：“好嘞！谢谢闫哥”</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">select</span></span><br><span class="line">TABLE_NAME,COLUMN_NAME,CONSTRAINT_NAME, REFERENCED_TABLE_NAME,REFERENCED_COLUMN_NAME</span><br><span class="line"><span class="keyword">from</span> INFORMATION_SCHEMA.KEY_COLUMN_USAGE</span><br><span class="line"><span class="keyword">where</span></span><br><span class="line">REFERENCED_TABLE_NAME = <span class="string">'表名'</span>;</span><br></pre></td></tr></table></figure>
+
+
+
+<p><strong><em>更多精彩文章请关注公众号『Pythonnote』或者『全栈技术精选』</em></strong></p>
+]]></content>
+      <categories>
+        <category>小闫同学的IT日常</category>
+      </categories>
+      <tags>
+        <tag>小闫同学的IT日常</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>小闫同学的IT日常-规矩礼节</title>
     <url>/%E5%B0%8F%E9%97%AB%E5%90%8C%E5%AD%A6%E7%9A%84IT%E6%97%A5%E5%B8%B8-%E8%A7%84%E7%9F%A9%E7%A4%BC%E8%8A%82/</url>
     <content><![CDATA[<p>规矩礼节是对自己的规范，而非对他人的苛责。处世之道是相处愉悦，而非处处受限。</p>
