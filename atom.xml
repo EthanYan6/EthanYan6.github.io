@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://www.pythonnote.cn/"/>
-  <updated>2021-03-06T09:44:09.459Z</updated>
+  <updated>2021-04-03T10:02:26.382Z</updated>
   <id>https://www.pythonnote.cn/</id>
   
   <author>
@@ -15,6 +15,27 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>小闫同学的IT日常-服务器意外断电MySQL无法启动</title>
+    <link href="https://www.pythonnote.cn/%E5%B0%8F%E9%97%AB%E5%90%8C%E5%AD%A6%E7%9A%84IT%E6%97%A5%E5%B8%B8-%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%84%8F%E5%A4%96%E6%96%AD%E7%94%B5MySQL%E6%97%A0%E6%B3%95%E5%90%AF%E5%8A%A8/"/>
+    <id>https://www.pythonnote.cn/%E5%B0%8F%E9%97%AB%E5%90%8C%E5%AD%A6%E7%9A%84IT%E6%97%A5%E5%B8%B8-%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%84%8F%E5%A4%96%E6%96%AD%E7%94%B5MySQL%E6%97%A0%E6%B3%95%E5%90%AF%E5%8A%A8/</id>
+    <published>2021-04-03T09:03:56.000Z</published>
+    <updated>2021-04-03T10:02:26.382Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;太刺激了，服务器断电，数据库无法启动！&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="mysql" scheme="https://www.pythonnote.cn/categories/mysql/"/>
+    
+    
+      <category term="mysql" scheme="https://www.pythonnote.cn/tags/mysql/"/>
+    
+  </entry>
   
   <entry>
     <title>小闫同学的IT日常-技术leader走了</title>
